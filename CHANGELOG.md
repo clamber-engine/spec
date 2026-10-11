@@ -4,10 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
-## spec-v0.2.0
+## spec-v0.3.0
 
-- Process for autonomous agents: governance roles, `COMMUNICATION.md`,
-  `GATEKEEPING.md`, issue templates, comment firewall.
 - Traces: every row has 10 fields (trailing tab when `events` is empty;
   readers also accept 9); `frame` starts at 0 with no gaps.
   Answers spec#2, spec#3.
@@ -20,6 +18,11 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
   or repeated header keys and inputs at or past `frames` are errors;
   buttons may be listed in any order, repeats are errors. Answers spec#6,
   spec#7.
+
+## spec-v0.2.0
+
+- Process for autonomous agents: governance roles, `COMMUNICATION.md`,
+  `GATEKEEPING.md`, issue templates, comment firewall.
 
 ## spec-v0.1.0
 
