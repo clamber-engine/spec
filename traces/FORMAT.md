@@ -12,10 +12,11 @@ The engine writes traces in the same format.
 # scenario: run-jump-flat
 # source: reference
 frame	input	x	y	vx	vy	state	ground	facing	events
-0	R	0	0	0	0	idle	1	R
-1	R	0.0625	0	0.0625	0	walk	1	R
+0	R	0	0	0	0	idle	1	R	
+1	R	0.0625	0	0.0625	0	walk	1	R	
+…
 60	RJA	84.5	0	2.25	0	run	1	R	jump_start
-61	RJA	86.75	-5	2.25	-5	jump	0	R
+61	RJA	86.75	-5	2.25	-5	jump	0	R	
 ```
 
 ## Header
@@ -47,6 +48,15 @@ Tab-separated, in this order. The column line is required and must match.
 | `ground` | `0`/`1` | Standing on solid ground at the end of the frame |
 | `facing` | `L`/`R` | Facing direction |
 | `events` | names | Comma-separated events from `VOCABULARY.md` that happened this frame; empty if none |
+
+Every row has exactly 10 fields. When no events happened, `events` is
+empty and the row ends with a tab after `facing`. Writers always write
+the trailing tab. Readers also accept a row of 9 fields as having empty
+`events`, and reject any other field count.
+
+The `frame` column starts at 0 on the first row and increases by exactly
+1 on each following row. A trace with a gap or a different first frame
+is invalid. (The example above is an excerpt; `…` marks omitted rows.)
 
 Values describe the state **after** the frame's update. Decimals are
 written in plain notation (no exponents) with as many places as needed;
