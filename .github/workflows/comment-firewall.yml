@@ -1,0 +1,54 @@
+name: comment-firewall
+
+# Deletes research-side comments and issues that contain code-shaped
+# content, so it can't reach the clean side without gatekeeper review.
+# See COMMUNICATION.md.
+
+on:
+  issue_comment:
+    types: [created, edited]
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+
+jobs:
+  check:
+    if: github.actor == 'clamber-research-bot'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const patterns = [
+              /\$[0-9A-Fa-f]{2}:[0-9A-Fa-f]{4}/,           // bank:offset
+              /(\$|0x)7[EeFf][0-9A-Fa-f]{4}\b/,             // work RAM
+              /\b0x[0-9A-Fa-f]{5,6}\b/,                     // ROM-sized offsets
+              /\b(rom|file)\s+offset/i,
+              /^\s*(LDA|STA|LDX|STX|LDY|STY|JSL|JSR|RTL|RTS|REP|SEP|PHB|PLB|XBA|TCD|MVN|MVP)(\.[bwl])?\s/m,
+              /disassembl|decompil/i,
+            ];
+            const { owner, repo } = context.repo;
+            const isComment = context.eventName === 'issue_comment';
+            const body = (isComment ? context.payload.comment.body
+                                    : `${context.payload.issue.title}\n${context.payload.issue.body}`) || '';
+            if (!patterns.some(p => p.test(body))) return;
+
+            const issue_number = context.payload.issue.number;
+            if (isComment) {
+              await github.rest.issues.deleteComment({ owner, repo, comment_id: context.payload.comment.id });
+            } else {
+              await github.rest.issues.update({
+                owner, repo, issue_number,
+                title: 'Removed by the comment firewall',
+                body: 'The original text was removed by the comment firewall.',
+                state: 'closed',
+              });
+            }
+            await github.rest.issues.addLabels({ owner, repo, issue_number, labels: ['firewall-removed'] });
+            await github.rest.issues.createComment({
+              owner, repo, issue_number,
+              body: 'A research-side message was removed by the comment firewall. See COMMUNICATION.md.',
+            });
+            core.setFailed('Removed code-shaped research-side content.');
