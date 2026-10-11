@@ -32,7 +32,13 @@ curve y,vy from jump_start for 40 tol 0.25
 
 ## Header
 
-`key: value` lines, until the first section.
+The first line must be exactly `# clamber-scenario v1`. A file without
+it, or with another version, is rejected. It is the only `#` line with a
+meaning; all others are comments.
+
+Then `key: value` lines, until the first section. Every key in the table
+below must appear once. A key not in the table, or a repeated key, is an
+error (this catches typos such as `frame:`).
 
 | Key | Required | Meaning |
 |---|---|---|
@@ -47,7 +53,12 @@ curve y,vy from jump_start for 40 tol 0.25
 One line per held input: `FRAMES  BUTTONS`.
 
 - `FRAMES` is a single frame (`60`) or an inclusive range (`60-79`).
-- `BUTTONS` is one or more of the neutral actions below, without separators.
+- `BUTTONS` is one or more of the neutral actions below, without
+  separators, in any order (`AJ` and `JA` are the same). Listing the same
+  action twice on one line (`RR`) is an error. Traces still write the
+  `input` column in the fixed order `LRUDJASP`.
+- Every frame a line covers must be below `frames` (0 to `frames` − 1).
+  A line covering a frame at or past `frames` is an error.
 - Lines combine: an action is held on a frame if any line covers it.
 - Frames not covered by any line have nothing held.
 

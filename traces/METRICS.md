@@ -1,8 +1,10 @@
 # Metrics (v1)
 
 Metrics are computed from a trace the same way for both sides, so their
-definitions must be exact. "Frame" means a trace row. If a metric's
-defining event never occurs, the metric is **missing**, and a missing
+definitions must be exact. "Frame" means a trace row. If any event a
+metric's definition names never occurs where required (including the
+closing `land` for `apex_height`, `airtime` and `bounce_height`, and the
+`jump_start` for `coyote_frames`), the metric is **missing**, and a missing
 metric fails the comparison unless both traces are missing it.
 
 | Name | Definition |
@@ -17,6 +19,11 @@ metric fails the comparison unless both traces are missing it.
 | `final_x` | `x` on the last frame |
 | `final_y` | `y` on the last frame |
 
+Height windows ("from that frame until the next `land`") include both
+the starting frame and the `land` frame. A trace that ends before the
+closing `land` makes the metric missing; the window never runs to the end
+of the trace instead.
+
 ## Curves
 
 `curve FIELDS from EVENT for N tol T` aligns the two traces on the first
@@ -24,6 +31,9 @@ frame carrying `EVENT` in each, then compares `FIELDS` on that frame and
 the following `N - 1` frames. Positions are compared relative to the
 aligned frame (`x - x₀`, `y - y₀`); velocities are compared directly.
 If either trace ends before `N` frames, the comparison fails.
+
+If `EVENT` never occurs in one trace, the curve fails. If it occurs in
+neither trace, the curve passes, the same rule as for missing metrics.
 
 The first frame where any field is outside tolerance is reported as the
 **first divergence**.
