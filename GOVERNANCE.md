@@ -1,36 +1,66 @@
 # Governance
 
+Clamber is built by AI agents working on two sides of a clean-room
+firewall, under the direction of one human.
+
 ## Roles
 
-| Role | Writes to | Notes |
-|---|---|---|
-| Clean | `engine` | Must never have studied the original's internals |
-| Research | `research` (private), `spec` via PR | May use any analysis tools |
-| Gatekeeper | Approves `spec` PRs | Usually research-side; never contributes to `engine` |
+| Role | Who | GitHub account | Environment | Can see |
+|---|---|---|---|---|
+| Director | Human | `elle-trudgett` (org owner) | Admin environment | `engine`, released `spec`, issues |
+| Research agents | Agents | `clamber-research-bot` | Research environment (has the ROM and emulator) | `research`, `spec-staging`, `spec` issues |
+| Gatekeeper agent | Agent | `clamber-gatekeeper-bot` | Research environment, separate user, no ROM or research checkout | `spec-staging`, `spec` |
+| Clean agents | Agents | `clamber-bot` | Clean environment | `engine`, released `spec`, `spec` issues |
 
-Sides are permanent: research → clean is never allowed.
+**The director** sets direction, files requirements, answers `needs-director`
+issues, and administers the orgs. The director never reads the `research`
+repo, `spec-staging`, or a research agent's working output, so that their
+instructions to either side can't carry internals across. Owner access to
+those repos is for administration only.
 
-## Roster
+**Research agents** study the original game by any means and turn findings
+into spec changes, proposed as pull requests on `clamber-research/spec-staging`.
 
-| GitHub handle | Side | Since |
-|---|---|---|
-| elle-trudgett | Research, gatekeeper, org owner (administration only on `engine`) | 2026-10-11 |
+**The gatekeeper agent** reviews every staging pull request against
+`REVIEW.md`, merges what passes, publishes it to `clamber-engine/spec`, and
+tags releases. It never reads the `research` repo: it judges only what a
+pull request says, the same way a clean reader would see it. See
+`GATEKEEPING.md`.
+
+**Clean agents** implement the engine from engine issues and released spec
+versions.
 
 ## Information flow
 
-`research` → `spec` (gatekeeper-reviewed, tagged) → `engine` (pinned tag).
-Nothing flows back except questions, asked publicly on this repo.
-No private channels about implementation between sides.
+```
+research ──► spec-staging (PR) ──gatekeeper──► spec (tagged release) ──► engine
+```
 
-## Agents
+Nothing flows from research to the clean side except through the
+gatekeeper. Questions flow the other way as issues on `spec`; see
+`COMMUNICATION.md`.
 
-AI agents may commit and push to `engine` and `research` without review,
-within the rules in each repo's `CLAUDE.md`. Changes to `spec` always go
-through a pull request approved by a gatekeeper. An agent never merges its
-own spec change.
+## Permanence
 
-## Known limitation
+An account, agent configuration or human on one side never moves to the
+other. Environments are never shared between sides.
 
-There is currently one gatekeeper, who is also the main spec author.
-Self-review against `REVIEW.md` is the interim process. Recruit a second
-research-side gatekeeper before the repositories go public.
+## Repository access
+
+| Team | Org | Repo access |
+|---|---|---|
+| `clean` | clamber-engine | `engine`: write, `spec`: read |
+| `research` | clamber-engine | `spec`: triage (issues and labels only) |
+| `gatekeepers` | clamber-engine | `spec`: write |
+| `research` | clamber-research | `research`: write, `spec-staging`: write |
+| `gatekeepers` | clamber-research | `spec-staging`: write (no access to `research`) |
+
+Base permissions in both orgs are "No permission".
+
+## Known limitations
+
+- Gatekeeping is done by an agent without human approval. The director
+  audits a sample of releases and every `firewall-removed` event.
+- The repositories are private on GitHub's free plan, so branch protection
+  and required reviews are not enforced by GitHub; the rules above are
+  enforced by account permissions and agent configuration.

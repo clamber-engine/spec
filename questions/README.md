@@ -1,4 +1,5 @@
 # Questions
 
-Clean-side clarification requests. GitHub issues work too. Answers come
-back as spec changes, not as free-form replies.
+Questions and corrections are filed as GitHub issues using the templates.
+See `COMMUNICATION.md`. This directory is kept for longer write-ups an
+issue links to.
