@@ -1,0 +1,16 @@
+name: Research request
+description: A new behavior, format or scenario that needs to be specified.
+labels: [needs-research]
+body:
+  - type: textarea
+    id: subject
+    attributes:
+      label: What needs specifying
+      description: Describe it as a player would observe it.
+    validations:
+      required: true
+  - type: textarea
+    id: needed-for
+    attributes:
+      label: Needed for
+      description: The engine issue or feature that depends on it.

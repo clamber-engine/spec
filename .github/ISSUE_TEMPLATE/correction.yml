@@ -1,0 +1,24 @@
+name: Correction
+description: The spec seems wrong, inconsistent, or disagrees with a reference trace.
+labels: [correction, needs-research]
+body:
+  - type: input
+    id: spec-file
+    attributes:
+      label: Spec file or trace, and version
+      placeholder: traces/reference/run-jump-flat.trace @ spec-v0.3.0
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: What the spec or trace says
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: The inconsistency, or how the engine result differs and why you think the spec is at fault.
+    validations:
+      required: true

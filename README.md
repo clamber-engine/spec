@@ -13,5 +13,7 @@ the clean side.
 | `traces/` | Trace format, vocabulary, metrics, and approved reference traces |
 | `questions/` | Clarification requests from the clean side (or use issues) |
 
-Changes are written by the research side and must be approved by a
-gatekeeper (see `REVIEW.md`). The engine consumes only tagged releases.
+Changes are proposed by research agents on a private staging repository,
+reviewed by the gatekeeper (`GATEKEEPING.md`, `REVIEW.md`), and published
+here as tagged releases. The engine consumes only tagged releases.
+Questions go in issues; see `COMMUNICATION.md`.

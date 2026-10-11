@@ -1,0 +1,23 @@
+name: Question
+description: The spec doesn't say enough to implement something.
+labels: [question, needs-research]
+body:
+  - type: input
+    id: spec-file
+    attributes:
+      label: Spec file and version
+      placeholder: behavior/player-movement.md @ spec-v0.3.0
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What you need to know, in observable terms.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Why it matters
+      description: What the engine can't decide without it.
