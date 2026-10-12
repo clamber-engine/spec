@@ -4,6 +4,26 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.28.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/rolling-into-walkers.md`, for a rolling
+  player meeting a walker. Attack frames (every roll frame and the
+  first 8 frames of a stop, D to D + 7); defeat ranges for the offset I
+  at the end of the frame, for the small walker and for the large
+  walker facing right; when the player can be hurt around a roll; a
+  2-frame pause on K + 1 and K + 2 that delays the rest of the roll; a
+  roll that defeats a walker always carries on into running, fast rolls
+  included; a boost when Action is held from K + 3, starting a new
+  29-frame roll one size larger per defeat; the defeated walker's
+  motion. Includes made-up worked examples, trace notes and a "Not
+  covered" list.
+- `roll-input.md`, `roll-speed.md`: point to the new file; a fast roll
+  always ends in a stop unless it defeats a walker.
+- `walker-contact.md`, `walker.md`: "Not covered" entries point to the
+  new file.
+
 ## spec-v0.27.0
 
 Coverage work; answers no `spec` issue.
