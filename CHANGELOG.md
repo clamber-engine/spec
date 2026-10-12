@@ -4,6 +4,24 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.30.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/view-vertical.md`, for how the view moves
+  up and down to follow the player. Covers the view's position and a
+  smoothed gap, the feet line, the ground used for aiming (the feet
+  line when grounded; in the air, the ground below when within two
+  32 px bands of the feet, otherwise none), the target with the feet
+  near the top of the picture, the level's vertical limits (a top, a
+  bottom and a rate per entry, chosen by `x`; storage left to the level
+  format), easing with usual and quick rates and the small-gap rule,
+  the shake during the first character's ground action, and the bounce
+  frames B and B + 1 on which it stays still. Includes three made-up
+  worked examples and a "Not covered" list.
+- `view.md`: points to the new file instead of listing the vertical
+  motion as not covered.
+
 ## spec-v0.29.0
 
 Coverage work; answers no `spec` issue.
