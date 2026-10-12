@@ -133,6 +133,6 @@ ignored.
 ## Not covered yet
 
 Roll speed and steering are in `roll-speed.md`, rolls into walkers in
-`rolling-into-walkers.md`. Rolls on slopes, rolls into other enemies,
+`rolling-into-walkers.md`, rolling off a ledge in `rolling-off-ledges.md`. Rolls on slopes, rolls into other enemies,
 and the other character. The Down + Action ground action
 is in `ground-action.md`.

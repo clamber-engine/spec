@@ -243,7 +243,9 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
   (with or without a direction).
 - Jumping from a face, and jumps from a standstill next to a rise (on
   the press frame the player stays put as above, but the take-off frame
-  was seen to move).
+  was seen to move). One case is measured: walking down the face at the
+  top of a ledge, a press whose next frame starts on the face gives no
+  jump (`walk-off.md`).
 - The frames after landing on a face from the air. Contact with faces
   and walls while airborne is in `air-walls.md`, except falls into pits
   that carry the player below the floor of the column they are in.

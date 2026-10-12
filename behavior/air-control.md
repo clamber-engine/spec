@@ -143,8 +143,9 @@ while they keep facing the way they walked off.
   leaves the ground.
 - Down held in the air.
 - An Action press on the take-off frame T.
-- Jumps that start from a roll, falls after rolling off a ledge, and
-  bounces off entities (see `bounce.md`).
+- Bounces off entities (see `bounce.md`). Jumps that start from a roll
+  are in `roll-speed.md`; falls after rolling off a ledge in
+  `rolling-off-ledges.md`.
 - Ceilings. Walls met in the air are in `air-walls.md`; platforms passed
   from below are in `platforms-from-below.md`.
 - The second character: its values are in `second-character.md`.
