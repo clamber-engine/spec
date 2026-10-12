@@ -107,7 +107,8 @@ or onto lower ground take longer only by the extra flight time.
 
 - Which contacts cause damage, and what happens to the enemy.
 - Being hit with two characters (losing one, and the change of lead
-  character), and any period of protection after a hit.
+  character): see `losing-a-character.md`.
+- Any period of protection after a hit.
 - Walls, ledges, pits and slopes met during the knock-back flight
   (measured on a slope only where it didn't change the motion, with the
   landings on the slope's floor height).
