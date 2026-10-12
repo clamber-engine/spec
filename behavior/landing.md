@@ -32,8 +32,8 @@ Otherwise the player stays airborne at the new position.
 - Exactly 5 px above the floor after moving is still airborne; anything
   less, down to a fraction of a pixel, lands.
 - The rule doesn't depend on horizontal speed (standing, walking or
-  running jumps) or on whether jump is held. Falls that didn't start with
-  a jump (walking off a ledge) haven't been measured yet.
+  running jumps) or on whether jump is held. Falls that start by walking
+  off a ledge follow the same rule (`walk-off.md`).
 - A player moving up, or with `vy` exactly 0 on the frame, never lands,
   even when closer than 5 px to the floor.
 
