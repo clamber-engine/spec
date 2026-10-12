@@ -151,8 +151,8 @@ every frame, take-off on frame T:
 
 - Walkers that aren't walking at full speed (turning, speeding up,
   stopped at a barrier, frozen) and walkers already bounced on.
-- Rolls into walkers (the walker was seen to be defeated), and contact
-  while crouching, carrying, after a bounce, or being knocked back.
+- Contact while crouching, carrying, after a bounce, or being knocked
+  back. Rolls into walkers are in `rolling-into-walkers.md`.
 - Falls without a jump (walking or rolling off a ledge): the player's
   vertical reach was seen to differ from that of a jump.
 - Walkers above the player (U below −6 on the ground, below −4 in the

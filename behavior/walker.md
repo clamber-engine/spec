@@ -163,7 +163,8 @@ to the end of B − 1, `y` down positive:
 ## Not covered
 
 - Whether a walker defeated by a bounce can still hurt the player while
-  it falls, and walkers defeated in other ways (rolls, thrown objects).
+  it falls, and walkers defeated in other ways (thrown objects; rolls
+  are in `rolling-into-walkers.md`).
 - Ledges and steep faces: one walker was seen to follow a steep face
   down and fall off its end without turning, then land on the floor
   below; this isn't specified. Walkers on other slopes.

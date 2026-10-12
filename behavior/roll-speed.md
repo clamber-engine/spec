@@ -125,7 +125,7 @@ slow roll, `vx` is 1 on D + 3 and then slows under the ground rule from
 D + 4.
 
 **A fast roll always ends in a stop**, even when Action is held on every
-frame from S to D.
+frame from S to D, unless it defeats a walker (`rolling-into-walkers.md`).
 
 **A roll started by a remembered press** (the 30-frame roll in
 `roll-input.md`, starting on D + 17 of the previous roll): on its first
@@ -158,8 +158,9 @@ on S + 9) and from S + 10 the normal one (1.0078125 on S + 10).
 
 ## Not covered
 
-- Rolls off ledges, into walls or enemies, and in the air. (On 1-in-4
-  slopes normal and fast rolls are as on flat floor; see `slopes.md`.)
+- Rolls off ledges, into walls or enemies other than walkers, and in
+  the air. (On 1-in-4 slopes normal and fast rolls are as on flat floor;
+  see `slopes.md`. Rolls into walkers are in `rolling-into-walkers.md`.)
 - Steering on D + 1 to D + 3 when the roll carries on into running
   (measured only with the input unchanged).
 - Running frames during the stop after a roll.
