@@ -4,6 +4,28 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.25.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/ground-action.md`, for the ground action the
+  first character starts by pressing `A` with `D` held on the press
+  frame while grounded (not from the air; a press remembered through
+  landing still rolls). It lasts 59 frames (P to P + 58), with a
+  direction set only by `L`/`R` held on P, and a speed that restarts
+  from 0 on P and follows the `ground-speed.md` rule toward
+  direction × 3. Covers how it ends (speed kept on E, normal rules from
+  E + 1), what directions, Action, Swap and Jump presses do during it
+  (a Jump press ends it early), the two-frame stop when it knocks out
+  an enemy, trace rows, worked examples and a "Not covered" list.
+- Traces: new state `ground_action` in `traces/VOCABULARY.md`.
+- `roll-input.md`: corrects the placeholder that said the player stops
+  and doesn't move after a Down + Action press; with a direction held
+  the player moves. Also states that Down makes no difference for the
+  second character, and that a press remembered through landing rolls
+  even with Down held. Its "Not covered" item, and the one in
+  `ground-speed.md`, point to the new file.
+
 ## spec-v0.24.0
 
 Coverage work; answers no `spec` issue.
