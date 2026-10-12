@@ -146,4 +146,5 @@ speed and from running speed. Shorter holds are not measured.
 - The Down + Action ground action (roll speed is in `roll-speed.md`).
 - Slopes are in `slopes.md`: on 1-in-4 slopes these rules apply
   unchanged.
-- Collisions with walls and entities, and the other character.
+- Collisions with walls and entities. The second character's values
+  are in `second-character.md`.
