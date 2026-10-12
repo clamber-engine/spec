@@ -4,6 +4,20 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.15.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/slopes.md`, for 1-in-4 slopes. Floor height
+  per 1-px column; while grounded `y` is the floor height of the column
+  under `x` after the horizontal move (whole pixels, `vy` 0, `ground` 1,
+  no `leave_ground` going downhill at the speeds measured). Walking,
+  running, stopping and normal and fast rolls are as on flat floor. The
+  take-off frame follows the floor; landing uses the column under the
+  new `x`. Synthetic worked examples and a "Not covered" list.
+- `ground-speed.md`, `jump-arc.md`, `landing.md` and `roll-speed.md`
+  point to the new spec.
+
 ## spec-v0.14.0
 
 Coverage work; answers no `spec` issue.
