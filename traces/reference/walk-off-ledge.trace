@@ -1,6 +1,7 @@
 # clamber-trace v1
 # scenario: walk-off-ledge
 # source: reference
+# title: title-1
 frame	input	x	y	vx	vy	state	ground	facing	events
 0	R	0.25	0	0.25	0	walk	1	R	
 1	R	0.71875	0	0.46875	0	walk	1	R	

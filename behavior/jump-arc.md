@@ -1,5 +1,7 @@
 # Jump arc
 
+Titles: `title-1`
+
 Vertical motion of a jump, from take-off until landing, and how holding
 the jump input changes it. Frames are logic frames at 60 Hz, numbered as
 in a trace. `y` and `vy` are as in a trace: down is positive, `vy` in px

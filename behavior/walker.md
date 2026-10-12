@@ -1,5 +1,7 @@
 # Walkers
 
+Titles: `title-1`
+
 A **walker** is the simplest ground enemy: it walks along the floor at a
 steady speed, turns around at the ends of its patrol, and is defeated by
 a bounce (`bounce.md`). This file covers how a walker moves, how it

@@ -1,5 +1,7 @@
 # Knocked out (hit with no other character)
 
+Titles: `title-1`
+
 What happens to the player when they take damage while they are the only
 character, from the hit until the level ends. Which contacts cause damage
 rather than a bounce (`bounce.md`), what happens with two characters, and

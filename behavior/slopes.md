@@ -1,5 +1,7 @@
 # Slopes
 
+Titles: `title-1`
+
 How a player moves on sloped floor: horizontal speed, height while
 grounded, stopping, jumping off and landing on a slope, and rolling.
 Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y` and
