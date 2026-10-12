@@ -4,6 +4,28 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.20.0
+
+Answers `spec` #10.
+
+- New `TITLES.md`: engine-neutral title ids `title-N`, numbered by each
+  title's position in the series in order of first release; ids are never
+  renamed or reused. Each measured title was measured on one 60 Hz
+  release; differences between releases are not covered. So far only
+  `title-1` has been measured, and it covers every behavior file and
+  reference trace.
+- `traces/FORMAT.md`: new header line `# title: <id>`, required once in
+  reference traces. Engine traces should carry it, naming the title whose
+  preset the run used; the comparison picks the engine preset for the
+  reference trace's title. If both traces name a title and the ids differ,
+  the comparison is not run and is reported as a title mismatch. An engine
+  trace without the line is compared as before; the format stays v1.
+- `behavior/README.md`: every behavior file has a `Titles:` line under its
+  heading; values hold only for the titles listed. All behavior files are
+  `title-1`.
+- Both reference traces gain `# title: title-1`; their rows are unchanged.
+- `README.md`: row for `TITLES.md`.
+
 ## spec-v0.19.0
 
 Coverage work; answers no `spec` issue.
