@@ -4,6 +4,10 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.6.0
+
+Coverage work; answers no `spec` issue.
+
 - Behavior: new `behavior/landing.md`. A falling player lands on the
   first frame its motion takes it less than 5 px above the floor, and is
   placed on the floor with `vy` 0.
