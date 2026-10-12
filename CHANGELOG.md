@@ -4,6 +4,14 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/air-control.md`. In the air (and on the
+  take-off and landing frames) horizontal speed follows the same target
+  speeds and rule as on flat ground. During a jump, facing follows the
+  held direction on the same frame with no turn delay; during a fall
+  after walking off a ledge it doesn't change. Table of jump distances.
+
 ## spec-v0.10.0
 
 Coverage work; answers no `spec` issue.

@@ -66,6 +66,7 @@ ledge's height on the frame before L.
   before L. Which drops the player follows and which make them airborne
   isn't specified yet. The rules above start from wherever the player is
   on the frame before L.
-- Horizontal motion during the fall.
+- Horizontal motion during the fall: see `air-control.md`, which covers
+  it from L + 1 on.
 - Jumping after walking off, rolling off a ledge, and the lead
   character swap.
