@@ -4,6 +4,23 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.39.0
+
+Answers the `title-2` jumping part of `spec` #11 (movement profiles).
+The issue stays open for the rest of `title-2` and for `title-3`.
+
+- Behavior: `jump-arc.md` gains "In `title-2`": take-off two frames
+  after the jump starts, take-off speed −8.21875, gravities 0.3515625
+  (held, rising) and 0.4375, the lighter gravity stopping at the top of
+  the arc even if jump is held, the cap of 8, a table of `apex_height`
+  and `airtime` by hold length, the full held arc, and an example.
+- Behavior: `jump-input.md` gains "In `title-2`": when a jump starts
+  (press made on G − 15 or later), the earliest jump after landing
+  (L + 1), presses made before landing, rolls, and jumps from a crouch
+  (including when the jump is cancelled or starts over).
+- `TITLES.md`: `title-2` listed as measured for `jump-arc.md` and
+  `jump-input.md` as well.
+
 ## spec-v0.38.0
 
 Answers the `title-2` ground-speed part of `spec` #11 (movement
