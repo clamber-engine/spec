@@ -4,6 +4,21 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.31.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/walker-view.md`, for when walkers are in the
+  level as the view moves. Covers the view position used (from the start
+  of the frame), the window around the picture in which a walker's start
+  makes it appear, the first frame after appearing, removal (start
+  outside the window and the walker far enough outside the picture),
+  removed walkers coming back at their start, defeated walkers never
+  coming back, and a group of walkers appearing together (partly
+  measured). Includes synthetic examples and a "Not covered" list.
+- `walker.md`: the patrol range is described as centred on the walker's
+  start, and its "Not covered" list points to the new file.
+
 ## spec-v0.30.0
 
 Coverage work; answers no `spec` issue.
