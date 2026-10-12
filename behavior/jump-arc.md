@@ -107,5 +107,5 @@ reference trace.
 
 Horizontal motion in the air (see `air-control.md`), jumps from moving
 ground (jumps from 1-in-4 slopes are in `slopes.md`), jumping after
-leaving a ledge, ceilings, bounces off enemies (see `bounce.md`), and the
-other character.
+leaving a ledge, ceilings, and bounces off enemies (see `bounce.md`). The second
+character's values are in `second-character.md`.

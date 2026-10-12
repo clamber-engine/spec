@@ -152,10 +152,10 @@ Rows from H + 36 (the other character):
 
 ## Not covered
 
-- The second character's own movement values (speeds, jumps, gravity,
-  air control): they differ from the first character's and haven't been
-  measured. All other behavior files were measured with the first
-  character.
+- The second character's own movement values are in
+  `second-character.md` (walking, running, crouching, jumps, air
+  control). Everything else in the other behavior files was measured
+  with the first character.
 - The second character being hit or knocked out. One measurement of the
   second character being knocked out (with no one left) followed the
   shape of `knock-out.md` but with different frame counts; those counts
