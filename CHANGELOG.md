@@ -4,6 +4,26 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.27.0
+
+Coverage work; answers no `spec` issue.
+
+- Scenarios: new `scenarios/roll-flat.scn`, walking right on flat
+  ground with a one-frame Action press, through the roll and the stop
+  after it. Metrics: `roll_distance`, `top_speed`, `final_x` and an
+  `x,vx` curve from `roll_start`.
+- Traces: new reference trace `traces/reference/roll-flat.trace`
+  (`title-1`).
+- `roll-input.md`: corrects the stop after a roll. Speed is 0 from D + 3
+  to D + 17 (it said D + 16) and normal movement starts on D + 18; a
+  direction held on D + 17 doesn't move the player yet, while a roll can
+  still start on D + 17. Adds facing during the stop. The worked example
+  is corrected to match.
+- `roll-speed.md`: `vx` is 0 from D + 4 to D + 17 and the ground speed
+  rule restarts from 0 on D + 18; a roll from a new press on D + 17
+  keeps speed 0 on its first frame.
+- `swap.md`: its note on the stop now says it lasts until D + 17.
+
 ## spec-v0.26.0
 
 Coverage work; answers no `spec` issue.
