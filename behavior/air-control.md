@@ -91,7 +91,7 @@ from T until landing.
 |---|---|---|---|
 | Standing | nothing | 0 | 0 |
 | Standing | Right | 85.5234375 | 2 |
-| Standing | Right and Action | 125.74609375 | 3 |
+| Standing | Right and Action, from T + 1 (see below) | 125.74609375 | 3 |
 | Walking at +2, Right | Right | 98 | 2 |
 | Walking at +2, Right | nothing | 12.4765625 | 0 |
 | Walking at +2, Right | Left | −73.19140625 | −2 |
@@ -99,6 +99,12 @@ from T until landing.
 | Running at +3, Right and Action | Right | 104.37109375 | 2 |
 | Running at +3, Right and Action | nothing | 18.62890625 | 0 |
 | Running at +3, Right and Action | Left and Action | −109.9375 | −3 |
+
+In the standing row with Right and Action, only Jump is held on P and
+on T, and Right and Action are held from T + 1 until landing, so the
+speed rule starts from 0 on T + 1. Holding them from T instead would be
+an Action press on the take-off frame, which is still grounded; that
+case is not covered (see `roll-input.md` for presses on the ground).
 
 Mirror images (moving left, Left held) give the same distances with the
 sign reversed. A jump with Jump held for 5 frames from P (landing on
@@ -134,8 +140,9 @@ while they keep facing the way they walked off.
   last airborne frame, and turns that are in progress when the player
   leaves the ground.
 - Down held in the air.
+- An Action press on the take-off frame T.
 - Jumps that start from a roll, falls after rolling off a ledge, and
-  bounces off entities.
+  bounces off entities (see `bounce.md`).
 - Hitting walls or ceilings in the air.
 - Speed on frame L of a walk-off fall and on the grounded frames just
   before it (on rounded edges the speed was seen to rise above the
