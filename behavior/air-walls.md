@@ -153,7 +153,8 @@ face rises from column 200 (`y` = −1, −5, −9, … for columns 200, 201,
 
 ## Not covered
 
-- Ceilings, and anything above the player's head.
+- Ceilings, and anything above the player's head. Platforms passed from
+  below are in `platforms-from-below.md`.
 - Vertical steps and other non-face rises of 4 to 63 px, rises met moving
   right that are higher than 3 px and not face columns, and faces
   steeper or less steep than 4 px per column.

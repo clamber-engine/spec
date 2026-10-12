@@ -145,7 +145,8 @@ while they keep facing the way they walked off.
 - An Action press on the take-off frame T.
 - Jumps that start from a roll, falls after rolling off a ledge, and
   bounces off entities (see `bounce.md`).
-- Ceilings. Walls met in the air are in `air-walls.md`.
+- Ceilings. Walls met in the air are in `air-walls.md`; platforms passed
+  from below are in `platforms-from-below.md`.
 - Speed on frame L of a walk-off fall and on the grounded frames just
   before it (on rounded edges the speed was seen to rise above the
   target there).
