@@ -4,6 +4,22 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.35.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/collectibles.md`, for single collectibles.
+  Covers a collectible's position, when one is taken (the first frame
+  ending with the player in range and the collectible in the view
+  window), offsets `I` (in the facing direction) and `D` (from the feet
+  line), pickup ranges for the first character by state (including
+  jumps by frame and vertical speed, and landing while standing still)
+  and for the second character when it leads, only the character under
+  control taking collectibles, the view window (using the view position
+  after the frame's move), when the count goes up (`P` + 33, `P` + 1
+  near the right edge, never when taken partly off the left edge), the
+  rollover at 100 with one more life, and a "Not covered" list.
+
 ## spec-v0.34.0
 
 Coverage work; answers no `spec` issue.
