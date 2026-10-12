@@ -4,6 +4,27 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.21.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/platforms-from-below.md`, for a jumping player
+  meeting ground above their head. Nothing overhead stops a rising
+  player: a platform has a top per column and an underside, and a player
+  who rises from below the underside into the layer between the two is
+  inside it. While inside, the platform neither blocks nor steps the
+  player sideways; a rising frame that starts 2 px or less below the top
+  (exact to 1/32 px) lifts the player onto it by whole pixels, as in
+  `air-walls.md`; a falling frame never lands on the top, so the player
+  falls back out through the underside. Moving sideways into a platform
+  from outside uses the column's top as the floor for `air-walls.md`
+  when the feet are at or above the underside, and ignores the platform
+  below it. Falling onto the top uses `landing.md`, except that a frame
+  ending below the underside isn't caught. Nothing new in the trace.
+  Measured cases, synthetic examples and a "Not covered" list.
+- `air-control.md`, `air-walls.md`: their "Not covered" ceiling items
+  point to the new file.
+
 ## spec-v0.20.0
 
 Answers `spec` #10.
