@@ -4,6 +4,19 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers the `title-2` air-control part of `spec` #11 (movement
+profiles). The issue stays open for the rest of `title-2` and for
+`title-3`.
+
+- Behavior: `air-control.md` gains "In `title-2`": the frames before
+  take-off (ground rules, no turn starts, no roll from an Action press),
+  air targets (2.25 or 3.375, chosen by the previous frame as on the
+  ground; Down makes no difference in the air), the unchanged speed rule,
+  facing from T + 1 to the landing frame, worked values and a table of
+  jump distances.
+- `ground-speed.md`: the `title-2` "Not covered" list points to it.
+- `TITLES.md`: `title-2` listed as measured for `air-control.md` as well.
+
 ## spec-v0.39.0
 
 Answers the `title-2` jumping part of `spec` #11 (movement profiles).
