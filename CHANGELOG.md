@@ -4,6 +4,26 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.24.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/swap.md`, for what happens when the player
+  presses `S` with the other character present. A press on Q starts a
+  swap unless there is no other character, a swap is still going on (up
+  to E), the player was in the air or landing on Q − 1, in a roll or
+  the stop after it, crouching (a window after the first Down frame and
+  after the release, per character), or the two characters' heights
+  differ by 8 px or more. Presses on a jump's press frame or the two
+  frames after it cancel the jump. Both characters stay still, then
+  each moves for 32 frames to where the other started (horizontal steps
+  of 1/32 of the whole-pixel distance; a vertical rule toward the
+  other's whole-pixel height that ignores the floor; facing unchanged),
+  with a frame table per character and when control returns. Trace
+  rows, worked examples with made-up numbers and a "Not covered" list.
+- `second-character.md`: its "Not covered" item about the swap points
+  to the new file.
+
 ## spec-v0.23.0
 
 Coverage work; answers no `spec` issue.
