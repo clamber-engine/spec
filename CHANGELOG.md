@@ -4,6 +4,20 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.32.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/falling-out.md`, for when the player falls
+  below the bottom of the level. Covers the level's height `Yb` (storage
+  left to the level format), the fall-out frame Z (the first frame
+  ending more than 48 px below `Yb`, with the exact edge), input ignored
+  from Z, the player out of sight and the view still from Z + 1, no
+  pauses, the last frame at Z + 96, the same ending with two characters,
+  trace rows for Z to Z + 96, a made-up example and a "Not covered" list.
+- `knock-out.md`: points to the new file instead of listing falling out
+  of the level as not covered.
+
 ## spec-v0.31.0
 
 Coverage work; answers no `spec` issue.
