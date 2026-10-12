@@ -4,6 +4,10 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.7.0
+
+Coverage work; answers no `spec` issue.
+
 - Behavior: new `behavior/walk-off.md`. Walking off a ledge: the player
   drops 3.4375 px on the first airborne frame, then falls with `vy`
   starting at 1/256 and growing by 0.4375 per frame up to 8; landing as
