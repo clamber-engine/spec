@@ -4,6 +4,13 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.5.0
+
+- Behavior: new `behavior/roll-input.md`. When an Action press starts a
+  roll (any grounded press without Down; not in the air, except a late
+  press held through landing), how a roll ends depending on whether Action
+  stays held, and when the next roll can start. Answers spec#9.
+
 ## spec-v0.4.0
 
 - Behavior: new `behavior/jump-input.md`. Covers jump timing on the
