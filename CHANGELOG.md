@@ -4,6 +4,13 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/jump-arc.md`. A jump takes off with `vy` −7;
+  each airborne frame after take-off `vy` grows by 0.28125 while jump has
+  been held without a break since the press, by 0.4375 otherwise, capped
+  at 8. Tables of apex height and airtime by how long jump is held.
+
 ## spec-v0.7.0
 
 Coverage work; answers no `spec` issue.
