@@ -1,12 +1,16 @@
 # Jump input timing
 
-Titles: `title-1`
+Titles: `title-1`, `title-2`
 
 When a jump press turns into a jump. Frames are logic frames at 60 Hz,
 numbered as in a trace. The **press frame** is the first frame the jump
 input is held after a frame where it was not held. The **landing frame**
 is the frame carrying the `land` event. Measured on flat ground with the
 lead character.
+
+The sections below up to "In `title-2`" give the `title-1` values.
+`title-2` is different throughout; "In `title-2`" gives its complete
+rules.
 
 ## On the ground
 
@@ -64,3 +68,78 @@ max(P + 1, E).
 A jump lands on frame 40 (L = 40, so E = 43). Pressing again on frame 31
 and holding gives a jump on frame 43. Pressing on frame 30 and holding
 gives no jump.
+
+## In `title-2`
+
+Everything in this section was measured on `title-2` only, with the lead
+character at the start of a game, on flat ground. A jump in `title-2`
+starts on a grounded frame **G** and takes off two frames later: the
+`jump_start` frame T is **G + 2** (`jump-arc.md`, "In `title-2`").
+Nothing about the jump is visible on G and G + 1; the player stays on the
+ground and horizontal speed follows the ground rules.
+
+### When a jump starts (`title-2`)
+
+A jump starts on frame G if all of these hold:
+
+- the player is grounded on G, and G is not the landing frame (frames of
+  a roll and of a crouch count as grounded; see below for crouches);
+- the jump input is held on G;
+- the press it belongs to (the first frame of the current unbroken hold,
+  P) was made on **G − 15 or later**;
+- that press hasn't already started a jump.
+
+For a press made on the ground, this means a jump starts on P itself,
+T = P + 2, even if the input is held for only one frame. This includes
+every frame of a roll, standing or moving.
+
+### Landing (`title-2`)
+
+There is no variable lockout as in `title-1`. With landing frame L, the
+earliest frame a jump can start is **L + 1** (so the earliest take-off is
+L + 3). This was the same for every one of 180 landings measured (heights
+from every hold length 1 to 30, standing and walking).
+
+A press made in the air starts a jump on L + 1 if it is still held on
+L + 1 and was made on L − 14 or later:
+
+| Case | Result |
+|---|---|
+| Pressed L − 14 to L, held through L + 1 | Jump starts on L + 1 (T = L + 3) |
+| Pressed L − 15 or earlier, held through L + 1 | No jump |
+| Pressed in the air (or on L), released on or before L | No jump |
+| Held continuously since the jump that took off | No jump |
+| Pressed on L + 1 or later | Jump starts on the press frame |
+
+The gravity rule in `jump-arc.md` counts held frames from G, which here
+is L + 1.
+
+### Crouching (`title-2`)
+
+Crouching is described in `ground-speed.md` ("In `title-2`"). A jump can
+start on any crouched frame, including the frames of getting down and the
+11 frames of getting up. But if a jump starts on a frame G where the
+crouch continues (exactly one of Up and Down held), and the crouch ends
+on G + 1 or G + 2 (neither or both of Up and Down held), the jump doesn't
+take off. Instead the crouch ends on that frame as usual, and:
+
+- if the jump input is held on that frame, a jump starts over with that
+  frame as the new G (take-off two frames later);
+- otherwise there is no jump, and a new press is needed.
+
+A jump started on the frame a crouch ends (the jump pressed together with
+releasing Down) takes off normally.
+
+| Inputs from G (crouched, Down held before) | Result |
+|---|---|
+| Down + jump, then Down, Down | Take-off on G + 2 |
+| Down + jump, then Up, Up | Take-off on G + 2 |
+| Down + jump, then nothing | No jump; getting up starts on G + 1 |
+| Down + jump, then Down + jump, then nothing | No jump; getting up starts on G + 2 |
+| Down + jump, then jump held | Jump starts over on G + 1, take-off on G + 3 |
+| Jump alone (Down released on G) | Take-off on G + 2 |
+
+### Not covered (`title-2`)
+
+Jumping after walking off a ledge, presses made just before landing on
+ground of a different height, jumps on slopes, and the second character.
