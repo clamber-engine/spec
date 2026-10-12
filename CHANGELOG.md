@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.11.0
+
 Coverage work; answers no `spec` issue.
 
 - Behavior: new `behavior/air-control.md`. In the air (and on the
