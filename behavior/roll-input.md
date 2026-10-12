@@ -13,7 +13,9 @@ always rolls first (see "Rolling into a run").
 ## On the ground
 
 A press on frame P while grounded starts a roll on frame P (`roll_start`
-on P), unless Down is held on frame P.
+on P), unless Down is held on frame P, or the player is standing within
+reach of an object that can be carried (then it is picked up instead; see
+`carrying.md`).
 
 This does not depend on:
 
