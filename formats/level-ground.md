@@ -66,7 +66,7 @@ A **half byte**:
 | Bits | Meaning |
 |---|---|
 | 0–5 | The half's **shape**, 0 to 63 (see "Shapes"); 0 = no ground |
-| 6 | No effect on where the ground is (see "Not covered") |
+| 6 | **Passable from below** (see "Ground passable from below"); no effect on where the ground is |
 | 7 | **Flipped**: if set, the half's shape is mirrored left to right |
 
 ## The surface in one cell
@@ -88,6 +88,33 @@ So mirroring a cell swaps its halves and mirrors each one. Flipping a
 half mirrors only that half. Mirroring a cell and flipping a half both
 apply when both are set; together they put the half back the right way
 round (but in the other half's place).
+
+## Ground passable from below
+
+A surface found in a cell is **passable from below** if bit 6 is set in
+the half byte that its shape came from in step 3: the left or right half
+as chosen after the cell's mirroring. Flipping a half doesn't change
+it, and neither does bit 15 of the cell word.
+
+A cell's **ground** in a 1-px column is the lines below its surface,
+down to and including the bottom line of its band: for a surface at
+line `S` in band `k`, lines `S` + 1 to 32`k` + 32. A surface on the
+band's bottom line (rise 0) has no ground in its cell.
+
+What this changes is in `../behavior/platforms-from-below.md`: a
+platform's top in a column is a surface that is passable from below,
+and its underside is the bottom line of the top's band. A rising player
+whose feet line would end a frame in the ground of a surface that isn't
+passable from below is stopped.
+
+On the first level every surface with open space under it was passable
+from below. Many floors were too, but not all. For ground with nothing
+under it, being passable from below changed nothing that was seen. With
+bit 6 cleared on the floors that have no open space under them, three
+runs of 1800 frames along one route through most of the level gave
+exactly the same frames as before. With bit 6 cleared everywhere, the
+same runs only differed from the first frame on which the player rose
+into a platform from below.
 
 ## Shapes
 
@@ -184,14 +211,18 @@ Column 0, band 10 holds a cell word 0x0001 (type 1), band 11 holds
 - Ground below `x` = 3, `F` = 360 (band 11): band 11 has 372, below `F`
   → 372.
 - Ground below `x` = 3, `F` = 380 (band 11): 372 again, above `F`.
+- None of these surfaces is passable from below: bit 6 is clear in all
+  four half bytes. A half byte of 0x45 would be shape 5, passable from
+  below; with type 1 = 0x45, 0x05, the surface at `x` = 3 in band 10 would
+  be passable and the one at `x` = 20 would not. Its ground at `x` = 3 is
+  lines 338 to 352.
 
 More cases, as bytes, are in `../vectors/level-ground/`.
 
 ## Not covered
 
-- What bit 6 of a half byte changes. It doesn't move the surface. On
-  the first level it is set on the platforms (which can all be passed
-  from below, `../behavior/platforms-from-below.md`) and on some ordinary floor too.
+- Whether being passable from below matters for anything other than
+  the player (walkers, carried and thrown objects).
 - What bit 15 of a cell word means.
 - The other kinds of grid: one for levels taller than 512 px, and
   another kind. Some levels may also use a second grid.
