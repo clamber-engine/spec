@@ -1,13 +1,13 @@
 # clamber-scenario v1
 id: run-jump-flat
 summary: Run right on flat ground, then a full-height jump.
-requires: flat ground, at least 320 px clear ahead, no entities within 400 px
+requires: flat ground, at least 360 px clear ahead, no entities within 400 px
 start: grounded, idle for at least 30 frames, facing right, lead character
-frames: 180
+frames: 120
 
 [inputs]
-0-179    R
-20-179   A
+0-119    R
+20-119   A
 60-79    J
 
 [metrics]
