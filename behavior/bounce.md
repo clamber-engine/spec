@@ -3,12 +3,12 @@
 Titles: `title-1`
 
 What happens to the player's motion when they bounce off an enemy, from
-the bounce until they land. Which contacts cause a bounce, and what
-happens to the enemy, are not covered here. Frames are logic frames at
-60 Hz, numbered as in a trace. `y` and `vy` are as in a trace: down is
-positive, `vy` in px per frame. Measured with the lead character on
-several bounces off ground enemies at different points in a level, with
-many patterns of jump and direction input.
+the bounce until they land. Which contacts with a walker cause a bounce
+is in `walker-contact.md`; what happens to a walker is in `walker.md`.
+Frames are logic frames at 60 Hz, numbered as in a trace. `y` and `vy`
+are as in a trace: down is positive, `vy` in px per frame. Measured with
+the lead character on several bounces off ground enemies at different
+points in a level, with many patterns of jump and direction input.
 
 ## The bounce frame
 
@@ -111,9 +111,8 @@ bounce (K = 0). Heights are above the floor at the end of each frame.
 
 ## Not covered
 
-- Which contacts cause a bounce rather than damage, including bounces
-  that happen while the player is still rising, and what happens to the
-  enemy.
+- Which contacts with other kinds of enemies cause a bounce (walkers:
+  `walker-contact.md`).
 - Facing during the frozen frames.
 - Bouncing off other kinds of objects, bounces from a roll, bouncing
   again before landing, and the other character.
