@@ -231,5 +231,7 @@ values are in `second-character.md`.
 
 For `title-2`: jumps from slopes, ceilings and the second character
 have not been measured. Falls that don't start with a jump, and jumping
-just after leaving a ledge, are in `walk-off.md` ("In `title-2`"). Horizontal motion in the air is in
+just after leaving a ledge, are in `walk-off.md` ("In `title-2`"), and
+jumping during a fall after rolling off a ledge in `rolling-off-ledges.md`
+("In `title-2`"). Horizontal motion in the air is in
 `air-control.md` and bounces in `bounce.md` (sections "In `title-2`").

@@ -281,8 +281,9 @@ listed inputs.
 
 ### Not covered in `title-2`
 
-- Falls after rolling off a ledge. Falls after walking off a ledge, and
-  jumps from near the edge, are in `walk-off.md` ("In `title-2`").
+- Falls after walking off a ledge, and jumps from near the edge, are in
+  `walk-off.md` ("In `title-2`"); falls after rolling off a ledge, and
+  jumps during them, in `rolling-off-ledges.md` ("In `title-2`").
 - The frames after the landing frame (turns that start there; rolls are
   in `roll-input.md`, "In `title-2`").
 - Walls and ceilings in the air, slopes, and the second character.
