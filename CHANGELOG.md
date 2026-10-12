@@ -4,6 +4,21 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.38.0
+
+Answers the `title-2` ground-speed part of `spec` #11 (movement
+profiles). The issue stays open for the rest of `title-2` and for
+`title-3`.
+
+- Behavior: `ground-speed.md` now covers `title-1` and `title-2`. A new
+  section "In `title-2`" gives the `title-2` targets (±2.25 walking,
+  ±3.375 running), the rule that run speed depends on the previous
+  frame's input, worked values, turns that start without delay
+  (including a 7-frame short turn), and crouching (Up alone keeps a
+  crouch; no turn for 11 frames after a crouch ends). The speed rule is
+  the same in both titles.
+- `TITLES.md`: `title-2` listed as measured for `ground-speed.md` only.
+
 ## spec-v0.37.0
 
 Answers the `title-1` part of `spec` #11 (movement profiles). The issue
