@@ -4,6 +4,15 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/ground-speed.md`. Grounded horizontal speed
+  moves toward a target (0, ±2 walking, ±3 with Action held) by one eighth
+  of the gap per frame in 1/256 px units, rounded toward zero, snapping to
+  the target when the step would be 0. Same rule for starting, stopping,
+  walk/run changes and reversing. Facing changes 4 frames into an 8-frame
+  turn. Crouching (Down) targets 0 until 10 frames after release.
+
 ## spec-v0.8.0
 
 Coverage work; answers no `spec` issue.
