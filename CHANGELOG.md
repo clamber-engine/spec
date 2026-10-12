@@ -4,6 +4,26 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.34.0
+
+Coverage work; answers no `spec` issue.
+
+- Format: `formats/level-ground.md` defines bit 6 of a half byte as
+  **passable from below** (taken from the half the shape came from, after
+  the cell's mirroring; flipping and bit 15 don't change it), and a
+  cell's **ground** in a column (the lines below its surface down to the
+  bottom of its band). Made-up example extended; "Not covered" updated.
+- Behavior: `behavior/platforms-from-below.md` now derives which ground
+  is a platform and where its underside is from the level format (the
+  bottom line of the top's band), and adds "Ground that isn't passable
+  from below": a rising player whose feet line would end a frame in
+  such ground is stopped (feet line kept, `vy` 0), with edges, trace
+  rows, a synthetic example and measurements on modified ground.
+- Vectors: `vectors/level-ground/` gains `passable.tsv`, type 37 and
+  column 36 (bit 6 in one half, plain, mirrored and with bit 15), and
+  surfaces for x 1152–1183. `N` is now 38; the "type `N` or more" cell
+  uses type 16383 so its expected surfaces are unchanged.
+
 ## spec-v0.33.0
 
 Coverage work; answers no `spec` issue.
