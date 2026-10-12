@@ -110,7 +110,9 @@ or onto lower ground take longer only by the extra flight time.
   `walker-contact.md`).
 - Being hit with two characters (losing one, and the change of lead
   character): see `losing-a-character.md`.
-- Any period of protection after a hit.
+- Protection after a hit: none applies here, since this hit ends the
+  level. Protection after a hit with two characters is in
+  `protection.md`.
 - Walls, ledges, pits and slopes met during the knock-back flight
   (measured on a slope only where it didn't change the motion, with the
   landings on the slope's floor height).
