@@ -170,8 +170,9 @@ to the end of B − 1, `y` down positive:
   below; this isn't specified. Walkers on other slopes.
 - What places act as barriers, barriers met heading right, and a walker
   placed past a barrier.
-- When a walker appears and disappears as the view moves, and whether
-  the patrol range is always centred where it appears.
+- When a walker appears and disappears as the view moves (how the view
+  moves is in `view.md`), and whether the patrol range is always centred
+  where it appears.
 - Whether other enemies freeze during the frozen frames of a bounce.
 - Other kinds of enemies, and how walkers look (poses while turning or
   falling).
