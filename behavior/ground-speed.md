@@ -305,8 +305,9 @@ All runs were by inputs, with the lead character on flat ground.
 
 - Rolls (speed, the stop after a roll, and facing on the first frame after
   a roll). The Down + Action ground action.
-- Air control, the landing frame and the frame after it, slopes, walls,
-  and the second character.
+- The frame after a landing, slopes, walls, and the second character.
+  Air control and the landing frame are in `air-control.md` ("In
+  `title-2`").
 
 ## Not covered
 
