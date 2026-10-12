@@ -106,6 +106,7 @@ reference trace.
 ## Not covered
 
 Horizontal motion in the air (see `air-control.md`), jumps from moving
-ground (jumps from 1-in-4 slopes are in `slopes.md`), jumping after
-leaving a ledge, ceilings, and bounces off enemies (see `bounce.md`). The second
-character's values are in `second-character.md`.
+ground (jumps from 1-in-4 slopes are in `slopes.md`), ceilings, and bounces off enemies (see `bounce.md`). Jumping near
+the edge of a ledge is in `walk-off.md`, jumping during a fall after
+rolling off a ledge in `rolling-off-ledges.md`. The second character's
+values are in `second-character.md`.

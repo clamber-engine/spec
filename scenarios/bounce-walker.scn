@@ -1,0 +1,14 @@
+# clamber-scenario v1
+id: bounce-walker
+summary: Stand still, then jump straight up and hold jump; land on a walker coming toward the player and bounce off it.
+requires: flat ground at least 120 px to the left and 200 px to the right of the player; one walker (behavior/walker.md) on that ground, heading left at full speed (vx -1), its x 75.828125 px to the right of the player's x when frame 0 begins; no other entities or carryable objects within 300 px
+start: grounded, idle for at least 30 frames, facing right, lead character
+frames: 140
+
+[inputs]
+20-139   J
+
+[metrics]
+bounce_height    tol 0.5
+final_x          tol 1
+curve x,y,vy from bounce for 40 tol 0.25
