@@ -7,8 +7,8 @@ Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y` and
 Measured with the lead character on gentle slopes that rise or fall
 **1 px for every 4 px** across, both uphill and downhill, moving right and
 left: walking, running, stopping, standing, jumping (standing,
-walking and running jumps, short and long holds) and rolling (from
-standing and from a run).
+walking and running jumps, short and long holds) and rolling (normal
+and fast rolls, as named in `roll-speed.md`).
 
 ## Floor height
 
@@ -30,9 +30,11 @@ While the player is grounded, on every frame:
 - So `y` changes by whole pixels on the frames where `x` crosses into a
   column of a different height, and doesn't change on other frames.
 - In a trace, `vy` is 0 on these frames, even though `y` changes, and
-  `ground` stays 1. Following a 1-in-4 slope down at up to 3 px per frame
-  (the fastest grounded speed measured, running or rolling) never made the
-  player airborne: there is no `leave_ground`.
+  `ground` stays 1. Following a 1-in-4 slope down never made the player
+  airborne at any speed measured: walking, running, and normal and fast
+  rolls, up to 1000/256 px per frame (just under 4) going downhill. There
+  is no `leave_ground`. The fastest grounded speed measured anywhere on a
+  slope was 1014/256 px per frame, in a fast roll.
 
 ## Horizontal speed
 
@@ -45,7 +47,8 @@ apply on 1-in-4 slopes exactly as on flat floor, uphill and downhill:
 - Releasing all input on a slope stops the player in the same distance
   as on flat floor.
 - A player standing still on a slope stays still. There is no sliding.
-- Roll speeds and roll lengths are the same as on flat floor.
+- Roll speeds and roll lengths are the same as on flat floor, for
+  normal and fast rolls, uphill and downhill, rolling right and left.
 
 ## Jumping from a slope
 
@@ -114,8 +117,9 @@ The player lands with `y` = 5 (not 4), `vy` 0, `ground` 1.
 
 ## Not covered
 
-- Turning around on a slope (all turns measured were on flat floor), and
-  grounded speeds above 3 px per frame on a slope.
+- Turning around on a slope (all turns measured were on flat floor).
+- Slow rolls on a slope, and grounded speeds above 1014/256 px per frame
+  on a slope.
 - Slopes steeper or shallower than 1 in 4, and where a slope meets a
   ledge, wall or ceiling.
 - Whether the 5 px landing margin is ever decided by the previous
