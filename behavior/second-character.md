@@ -165,9 +165,8 @@ T + 46 on flat ground. Columns as in `air-control.md`; moving right
   `jump-input.md` for this character.
 - Slopes, steep faces, walls, platforms from below, carrying, bouncing
   off enemies and being hurt, with the second character under control.
-- The swap itself (`S`): how the two characters change places, how long
-  it takes, and when it is allowed. The measurements above start after
-  it has finished.
+- The swap itself (`S`) is in `swap.md`. The measurements above start
+  after it has finished.
 - The first character's values when it follows the second.
 - When a turn starts while the player is moving (as for the first
   character, see `ground-speed.md`).
