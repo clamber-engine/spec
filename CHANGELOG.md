@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.8.0
+
 Coverage work; answers no `spec` issue.
 
 - Behavior: new `behavior/jump-arc.md`. A jump takes off with `vy` −7;
