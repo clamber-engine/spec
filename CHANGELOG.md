@@ -4,6 +4,26 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.17.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/carrying.md`, for picking up, carrying,
+  throwing and putting down objects. A pick-up starts on moving into an
+  object with Action held, or on an Action press while standing within
+  reach (no roll then); it lasts 15 frames, target speed 0 for the first
+  10. Carrying uses the Action-held ground targets; Down and Up have no
+  effect, and jumps take off on P + 2. Letting go of Action throws
+  (43 frames, target 0 for the first 22); the object leaves on Q + 21 at
+  16 px per frame forward and 1 px per frame down, then eases toward
+  3.5 px per frame with 0.4375 gravity capped at 8. Down held on letting
+  go on the ground puts the object down 16 px ahead (14 frames). Rules
+  for Jump and Action during a throw and for picking up again. Synthetic
+  worked examples and a "Not covered" list.
+- `roll-input.md`: an Action press within reach of a carriable object
+  picks it up instead of rolling.
+- `slopes.md` points to the new spec.
+
 ## spec-v0.16.0
 
 Coverage work; answers no `spec` issue.
