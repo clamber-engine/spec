@@ -165,7 +165,8 @@ Rows from H + 36 (the other character):
 - A hit when the other character is already at the hit spot, out of
   view, or facing away from the hit spot when its run begins.
 - Ground or walls between the other character and the hit spot.
-- Any period of protection from further damage after a hit.
+- Protection from further damage after the take-over is in
+  `protection.md`.
 - What the hit character's run does at walls, pits and the edges of the
   level, beyond following the ground and falling off ledges.
 - Hits during a roll, a bounce or while carrying an object.
