@@ -116,7 +116,7 @@ or onto lower ground take longer only by the extra flight time.
 - Walls, ledges, pits and slopes met during the knock-back flight
   (measured on a slope only where it didn't change the motion, with the
   landings on the slope's floor height).
-- Hits during a roll or a bounce, and other causes of losing a life
-  (falling out of the level).
+- Hits during a roll or a bounce. Falling out of the level is in
+  `falling-out.md`.
 - What happens after the last frame: the screen transition, where play
   resumes, and any count of remaining tries.
