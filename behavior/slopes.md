@@ -128,7 +128,7 @@ The player lands with `y` = 5 (not 4), `vy` 0, `ground` 1.
 - Crouching, and the Down + Action ground action, on slopes.
 - Walking off the end of a slope, moving or tilting floors, and enemies
   or objects on slopes.
-- Carrying objects: holding Action while moving into some objects picks
-  them up (and doesn't start a roll), which changes speed. No spec covers
-  this yet.
+- Carrying objects is in `carrying.md`. Its pick-up, carrying and throw
+  rules held on 1-in-4 slopes as measured; putting an object down on a
+  slope isn't covered.
 - The other character.
