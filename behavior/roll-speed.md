@@ -151,7 +151,8 @@ on S + 9) and from S + 10 the normal one (1.0078125 on S + 10).
 
 ## Not covered
 
-- Rolls on slopes, off ledges, into walls or enemies, and in the air.
+- Rolls off ledges, into walls or enemies, and in the air. (On 1-in-4
+  slopes rolls are as on flat floor; see `slopes.md`.)
 - Steering on D + 1 to D + 3 when the roll carries on into running
   (measured only with the input unchanged).
 - Running frames during the stop after a roll.

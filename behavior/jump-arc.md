@@ -12,7 +12,8 @@ press). **T** is the frame carrying `jump_start`.
 ## Take-off frame
 
 On T the player has not moved yet: `y` is unchanged and `ground` is still
-1, but `vy` is already **−7**.
+1, but `vy` is already **−7**. (On a slope, `y` on T follows the floor
+as on any grounded frame; see `slopes.md`.)
 
 This doesn't depend on horizontal speed (standing, walking, running), on
 whether the jump starts during a roll, or on whether it starts on landing
@@ -102,6 +103,7 @@ reference trace.
 
 ## Not covered
 
-Horizontal motion in the air (see `air-control.md`), jumps from slopes or
-moving ground, jumping after leaving a ledge, ceilings, bounces off
-enemies (see `bounce.md`), and the other character.
+Horizontal motion in the air (see `air-control.md`), jumps from moving
+ground (jumps from 1-in-4 slopes are in `slopes.md`), jumping after
+leaving a ledge, ceilings, bounces off enemies (see `bounce.md`), and the
+other character.

@@ -139,7 +139,9 @@ speed and from running speed. Shorter holds are not measured.
 - When a turn starts while the player is moving (the delay above).
 - Air control: horizontal speed while jumping or falling, and on the
   landing frame.
-- Slopes, moving platforms, and the frame before walking off a ledge
+- Moving platforms, and the frame before walking off a ledge
   (where speed and position were seen to behave differently).
 - The Down + Action ground action (roll speed is in `roll-speed.md`).
+- Slopes are in `slopes.md`: on 1-in-4 slopes these rules apply
+  unchanged.
 - Collisions with walls and entities, and the other character.

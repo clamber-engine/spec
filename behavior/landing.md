@@ -3,7 +3,8 @@
 When a falling player lands on the floor, and where they end up. Frames
 are logic frames at 60 Hz, numbered as in a trace. Heights are measured
 upward from the floor surface, in pixels. Measured on flat ground with the
-lead character. Slopes and moving platforms aren't covered yet.
+lead character. Landing on 1-in-4 slopes is in `slopes.md`; moving
+platforms aren't covered yet.
 
 ## Rule
 
