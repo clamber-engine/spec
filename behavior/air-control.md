@@ -200,7 +200,7 @@ when the step is 0), and `x` changes by exactly the new `vx`. There is no
 separate air acceleration, braking or turning rate.
 
 The same holds from T + 1 on for jumps that start during a roll. Their
-frames G to T are not covered.
+frames G to T are in `roll-speed.md` ("In `title-2`").
 
 ### Facing (`title-2`)
 
@@ -280,9 +280,8 @@ listed inputs.
 ### Not covered in `title-2`
 
 - Falls after walking or rolling off a ledge, and jumps from a ledge.
-- Frames G to T of a jump that starts during a roll. An Action press on
-  G itself.
-- The frames after the landing frame (turns and rolls that start there).
+- The frames after the landing frame (turns that start there; rolls are
+  in `roll-input.md`, "In `title-2`").
 - Walls and ceilings in the air, bounces, slopes, and the second
   character.
 

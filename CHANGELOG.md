@@ -4,6 +4,24 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers the `title-2` rolling part of `spec` #11 (movement profiles).
+The issue stays open for the rest of `title-2` and for `title-3`.
+
+- Behavior: `roll-input.md` gains "In `title-2`": when a press starts a
+  roll (on the ground, after a landing, a Jump press on the same frame
+  wins), presses remembered through a landing (L − 10 to L) and through
+  the stop (D + 4 to D + 14), the 31-frame roll, carrying on into running
+  or stopping (D to D + 14), and starting the next roll.
+- `roll-speed.md` gains "In `title-2`": roll targets 1.125, 3.375 and 4.5;
+  slow without a direction, fast after an Action hold of at least 32
+  frames released no more than 19 frames before the roll; steering (the
+  direction reverses at once, the size never changes), the stop, jumps
+  out of a roll and out of the stop, worked values.
+- `ground-speed.md` and `air-control.md`: the `title-2` text and "Not
+  covered" lists point to the new sections (first frame after a roll,
+  frames G to T of a jump out of a roll).
+- `TITLES.md`: the `title-2` row lists `roll-input.md` and `roll-speed.md`.
+
 ## spec-v0.40.0
 
 Answers the `title-2` air-control part of `spec` #11 (movement
