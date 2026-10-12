@@ -4,6 +4,20 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/roll-speed.md`. During a roll the speed moves
+  toward a roll target (slow 1, normal 3 or fast 4 px per frame, in the
+  facing direction) by the ground speed rule. Fast if Action and a
+  direction were held within the last 15 frames (14 with no direction on
+  the press), normal if a direction is held on the press, else slow.
+  Steering: holding the roll's direction makes a slow roll normal; the
+  opposite direction reverses the roll and facing at once. Speed on the
+  frames after the roll, and a fast roll always ends in a stop.
+- `roll-input.md`: fast rolls end in the stop even with Action held; the
+  slowdown after a roll is the ground speed rule. `ground-speed.md`
+  points to the new spec.
+
 ## spec-v0.11.0
 
 Coverage work; answers no `spec` issue.

@@ -61,17 +61,21 @@ A roll lasts 29 frames, S to S + 28, where S is the `roll_start` frame
 (one exception below). What happens next depends on frame **D** = S + 29:
 
 **Action held on every frame from S to D** (pressed once and never
-released): the roll carries on into running. The player is still in `roll`
-on D, D + 1 and D + 2, and `roll_end` is on D + 3. From D + 3 the player
-walks or runs normally.
+released), and the roll is not a fast roll (`roll-speed.md`): the roll
+carries on into running. The player is still in `roll` on D, D + 1 and
+D + 2, and `roll_end` is on D + 3. From D + 3 the player walks or runs
+normally (the speed on D + 3 still follows the roll; see
+`roll-speed.md`).
 
 **Otherwise** (Action not held on D, or released at any time during the
-roll, even if pressed again): `roll_end` is on D and the player comes to a
-stop:
+roll, even if pressed again, or the roll is a fast roll): `roll_end` is
+on D and the player comes to a stop:
 
 - D: horizontal speed still as in the roll;
-- D + 1 and D + 2: speed is multiplied by about 0.876 each frame;
-- D + 3 to D + 16: speed is 0, whatever direction is held;
+- D + 1 and D + 2: the speed slows toward 0 by the speed rule of
+  `ground-speed.md` (about ×0.876 per frame), whatever is held;
+- D + 3 to D + 16: speed is 0, whatever direction is held (on D + 3
+  the player still moves; see `roll-speed.md`);
 - from D + 17: normal movement.
 
 The stop is not part of the roll: while the speed is not 0 the trace
@@ -110,5 +114,5 @@ ignored.
 
 ## Not covered yet
 
-Roll speed and steering, rolls on slopes, rolls into enemies, the other
-character, and the Down + Action ground action.
+Roll speed and steering are in `roll-speed.md`. Rolls on slopes, rolls
+into enemies, the other character, and the Down + Action ground action.

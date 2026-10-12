@@ -30,7 +30,8 @@ An Action **press** starts a roll (`roll-input.md`); this spec covers
 Action that is already held, for example held through a landing or held
 on after a roll carries on into running. The rule below also holds on
 every frame of the roll in the `run-jump-flat` reference trace, where
-Right and Action are held; other rolls are not covered here.
+Right and Action are held; speed during rolls in general is in
+`roll-speed.md`.
 
 ## The speed rule
 
@@ -140,6 +141,5 @@ speed and from running speed. Shorter holds are not measured.
   landing frame.
 - Slopes, moving platforms, and the frame before walking off a ledge
   (where speed and position were seen to behave differently).
-- Roll speed apart from the case above, and the Down + Action ground
-  action.
+- The Down + Action ground action (roll speed is in `roll-speed.md`).
 - Collisions with walls and entities, and the other character.
