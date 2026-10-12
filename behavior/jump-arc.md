@@ -103,5 +103,5 @@ reference trace.
 ## Not covered
 
 Horizontal motion in the air, jumps from slopes or moving ground, jumping
-after leaving a ledge, ceilings, bounces off enemies, and the other
+after leaving a ledge, ceilings, bounces off enemies (see `bounce.md`), and the other
 character.
