@@ -64,7 +64,9 @@ Down is held (`ground-action.md`).
 ## How a roll ends
 
 A roll lasts 29 frames, S to S + 28, where S is the `roll_start` frame
-(one exception below). What happens next depends on frame **D** = S + 29:
+(one exception below; a roll that defeats a walker lasts longer and
+always carries on into running, see `rolling-into-walkers.md`). What
+happens next depends on frame **D** = S + 29:
 
 **Action held on every frame from S to D** (pressed once and never
 released), and the roll is not a fast roll (`roll-speed.md`): the roll
@@ -130,6 +132,7 @@ ignored.
 
 ## Not covered yet
 
-Roll speed and steering are in `roll-speed.md`. Rolls on slopes, rolls
-into enemies, and the other character. The Down + Action ground action
+Roll speed and steering are in `roll-speed.md`, rolls into walkers in
+`rolling-into-walkers.md`. Rolls on slopes, rolls into other enemies,
+and the other character. The Down + Action ground action
 is in `ground-action.md`.
