@@ -4,6 +4,23 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.26.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/protection.md`, for protection after a hit
+  with two characters. The character that takes over can't be hurt from
+  H to H + 149, whatever the timing of its hop; a contact that would
+  hurt has no effect on either side, and one still there at the end of
+  H + 149 hurts on H + 150. It flashes from H + 38 to H + 133 in a
+  4-frame cycle (2 drawn, 2 not drawn) with T + 1 always drawn; where
+  the cycle starts is left to the engine, and the file states what a
+  scenario may and may not check. Includes made-up worked examples,
+  trace impact (none) and a "Not covered" list.
+- `losing-a-character.md` and `knock-out.md`: their "Not covered" items
+  on protection point to the new file; `knock-out.md` states that no
+  protection applies after its hit, since it ends the level.
+
 ## spec-v0.25.0
 
 Coverage work; answers no `spec` issue.
