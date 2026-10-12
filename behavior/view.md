@@ -5,7 +5,7 @@ Titles: `title-1`
 The **view** is the part of the level shown on screen. It is 256 px wide.
 This file covers how the view moves horizontally to follow the player:
 where it aims, how it eases toward that point, and the frames on which
-it stays still. The view's vertical motion isn't covered.
+it stays still. The view's vertical motion is in `view-vertical.md`.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x` grows to
 the right. `x`, `vx` and facing are the player's values for the frame,
@@ -149,7 +149,6 @@ From frame 200 nothing changes. `D` = −17/256 px, so `D` / 32 =
 
 ## Not covered
 
-- The view's vertical motion.
 - Near the ends of a level. Within about 210 px of the left end, the
   target was seen to differ from the rule by −1, +2 or +4 px. The view
   was also seen to go past the left end. The right end, and any limits
