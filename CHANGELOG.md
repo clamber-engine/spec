@@ -4,6 +4,18 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.14.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/knock-out.md`. Taking damage with no other
+  character: no motion on the hit frame and input ignored from then on;
+  11 frozen frames with a 32-frame whole-game pause (no trace rows)
+  inside them; a knock-back flight away from the facing direction with
+  its own launch speed, gravity and fall cap, two rebounds and a stop on
+  the third landing; then lying still until the level ends. Trace fields
+  over the sequence and worked values for a hit on flat ground.
+
 ## spec-v0.13.0
 
 Coverage work; answers no `spec` issue.
