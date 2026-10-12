@@ -80,9 +80,19 @@ on D and the player comes to a stop:
 - D: horizontal speed still as in the roll;
 - D + 1 and D + 2: the speed slows toward 0 by the speed rule of
   `ground-speed.md` (about ×0.876 per frame), whatever is held;
-- D + 3 to D + 16: speed is 0, whatever direction is held (on D + 3
-  the player still moves; see `roll-speed.md`);
-- from D + 17: normal movement.
+- D + 3 to D + 17: speed is 0, whatever direction is held (on D + 3
+  the player still moves; see `roll-speed.md`). A direction held on
+  D + 17 doesn't move the player yet;
+- from D + 18: normal movement. With a direction held on D + 18 (pressed
+  then or at any earlier time), the speed on D + 18 is the first step of
+  the `ground-speed.md` rule from 0.
+
+Inputs other than a direction already act on D + 17: a roll can start
+on D + 17 (next section). Its speed stays 0 on that frame and the player
+first moves on D + 18 (`roll-speed.md`).
+
+While the speed is 0 in the stop, facing turns to a direction on the
+frame it is pressed (measured for presses on D + 14 to D + 17).
 
 The stop is not part of the roll: while the speed is not 0 the trace
 state is `walk` (or `run` if Action is held), then `idle`. A jump can start during the
@@ -114,7 +124,7 @@ then `run`. Speed keeps rising toward running speed throughout the roll.
 
 Standing still, Action is pressed on frame 10 for one frame. The roll is
 frames 10 to 38 (D = 39), `roll_end` on 39. The player slows on 40 and 41,
-stands still from 42 to 55 (`idle`), and moves normally again from 56. A second one-frame press
+stands still from 42 to 56 (`idle`), and moves normally again from 57. A second one-frame press
 on frame 37 starts the next roll on frame 56. A press on frame 36 would be
 ignored.
 

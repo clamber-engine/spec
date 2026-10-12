@@ -113,7 +113,10 @@ Two endings, as in `roll-input.md`.
 - D + 3: the player moves by one more step of the speed rule toward 0,
   but `vx` is 0 at the end of the frame. In a trace, `x` changes on this
   row although `vx` is 0.
-- D + 4 to D + 16: `vx` is 0 and the player doesn't move.
+- D + 4 to D + 17: `vx` is 0 and the player doesn't move, whatever direction
+  or Action is held.
+- D + 18: the speed rule of `ground-speed.md` applies again, starting
+  from 0.
 
 **The roll carries on into running:** D to D + 3 (the `roll_end` frame)
 all follow the roll's speed rule above. From D + 4 the ground speed rule
@@ -128,7 +131,9 @@ frame from S to D.
 `roll-input.md`, starting on D + 17 of the previous roll): on its first
 frame the speed stays 0 and the player doesn't move. From the next frame
 everything in this spec applies with that frame as the press frame.
-Measured with a direction held throughout.
+Measured with a direction held throughout. A roll started by a new press
+on D + 17 behaves the same way on its first frame; one started on D + 18
+or later moves on its press frame as usual.
 
 ## Worked values
 

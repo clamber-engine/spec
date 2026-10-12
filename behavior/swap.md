@@ -43,7 +43,7 @@ A press on Q starts a swap on Q unless one of these holds:
 4. On Q − 1 the player is in a roll, or in the stop after a roll
    (`roll-input.md`): a roll that carries on into running allows a press
    from the frame after its `roll_end`; a roll that ends in a stop
-   allows one from D + 18 (the stop lasts until D + 16).
+   allows one from D + 18 (the stop lasts until D + 17).
 5. The player is crouching. Call **C** the first frame Down is held and
    **U** the first frame it is no longer held (the last such run before
    Q, with C ≤ Q − 1). The press is refused while Q ≤ C + 22 or Q ≤ U + 9

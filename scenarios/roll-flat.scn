@@ -1,0 +1,16 @@
+# clamber-scenario v1
+id: roll-flat
+summary: Walk right on flat ground, roll with a one-frame Action press, then keep walking through the stop after the roll.
+requires: flat ground, at least 240 px clear ahead, no entities or carryable objects within 280 px
+start: grounded, idle for at least 30 frames, facing right, lead character
+frames: 100
+
+[inputs]
+0-99     R
+30       A
+
+[metrics]
+roll_distance    tol 0.5
+top_speed        tol 0.0625
+final_x          tol 1
+curve x,vx from roll_start for 40 tol 0.25
