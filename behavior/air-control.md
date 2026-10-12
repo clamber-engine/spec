@@ -282,8 +282,8 @@ listed inputs.
 - Falls after walking or rolling off a ledge, and jumps from a ledge.
 - The frames after the landing frame (turns that start there; rolls are
   in `roll-input.md`, "In `title-2`").
-- Walls and ceilings in the air, bounces, slopes, and the second
-  character.
+- Walls and ceilings in the air, slopes, and the second character.
+  Bounces are in `bounce.md` ("In `title-2`").
 
 ## Not covered
 
