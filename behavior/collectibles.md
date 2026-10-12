@@ -188,7 +188,7 @@ same frame and counts above 100 are not covered.
 
 ## Not covered
 
-- Other kinds of collectible (for example ones worth more than one).
+- Other kinds of collectible. Bunches, worth ten, are in `bunches.md`.
 - The ranges while bouncing off a walker (`bounce.md`), while being
   carried down a steep slope or a rounded ledge (`steep-faces.md`), while
   passing up or down through a platform (`platforms-from-below.md`),
