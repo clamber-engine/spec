@@ -4,6 +4,12 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.4.0
+
+- Behavior: new `behavior/jump-input.md`. Covers jump timing on the
+  ground and during a roll, a defined landing lockout (earliest jump on
+  L + 3), and buffered presses held through landing. Answers spec#8.
+
 ## spec-v0.3.0
 
 - Traces: every row has 10 fields (trailing tab when `events` is empty;
