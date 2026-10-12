@@ -27,7 +27,7 @@ rename or reuse a name, since existing traces refer to it.
 | `land` | Became grounded this frame |
 | `leave_ground` | Stopped being grounded without jumping (walked off a ledge) |
 | `roll_start` | A roll began this frame |
-| `roll_end` | A roll ended this frame |
+| `roll_end` | A roll ended this frame: the first frame after the roll, whose state is no longer `roll` |
 | `bounce` | Bounced off an entity this frame |
 | `hurt` | Took damage this frame |
 | `turn` | Facing direction changed this frame |

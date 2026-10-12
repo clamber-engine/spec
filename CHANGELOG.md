@@ -4,6 +4,13 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+- Behavior: new `behavior/landing.md`. A falling player lands on the
+  first frame its motion takes it less than 5 px above the floor, and is
+  placed on the floor with `vy` 0.
+- Scenarios: `run-jump-flat` shortened to 120 frames and asks for 360 px
+  of clear ground; first reference trace `traces/reference/run-jump-flat.trace`.
+- Vocabulary: `roll_end` goes on the first frame after the roll.
+
 ## spec-v0.5.0
 
 - Behavior: new `behavior/roll-input.md`. When an Action press starts a
