@@ -4,6 +4,24 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.22.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/losing-a-character.md`, for a hit taken while
+  the other character is with the player. On the hit frame the hit
+  character doesn't move, gets `vy` −8 and faces right; input is ignored
+  and nothing pauses. It rises and falls straight (usual gravity, or the
+  jump's lighter gravity if a held jump was in progress), lands, then
+  runs right at 4 px per frame out of view. The other character waits
+  until H + 36, then closes on the hit spot one axis at a time (gap ÷ 16,
+  at least 3), is placed half a pixel off the spot and hops with fixed
+  per-frame moves; Left/Right steer from T + 1 and jumping follows
+  `jump-input.md` from the hop's landing. Trace rows (`hurt`, then
+  `swap`), synthetic worked examples and a "Not covered" list.
+- `knock-out.md`: its "Not covered" item for two-character hits points to
+  the new file.
+
 ## spec-v0.21.0
 
 Coverage work; answers no `spec` issue.
