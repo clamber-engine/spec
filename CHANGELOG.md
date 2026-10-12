@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.13.0
+
 Coverage work; answers no `spec` issue.
 
 - Behavior: new `behavior/roll-speed.md`. During a roll the speed moves
