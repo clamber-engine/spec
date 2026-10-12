@@ -58,8 +58,8 @@ of its range before coming back. Its **facing** changes on **T + 4**.
 
 It then walks to the other end and turns there the same way, and so on.
 The pattern repeats exactly: in the measured walker, each lap took 544
-frames, and its range was 256 px wide, centred on the point where it
-first appeared.
+frames, and its range was 256 px wide, centred on its start (the point
+where it first appears, `walker-view.md`).
 
 A walker without a patrol range (the other one measured) keeps walking
 until something else turns it.
@@ -170,9 +170,9 @@ to the end of B − 1, `y` down positive:
   below; this isn't specified. Walkers on other slopes.
 - What places act as barriers, barriers met heading right, and a walker
   placed past a barrier.
-- When a walker appears and disappears as the view moves (how the view
-  moves is in `view.md`), and whether the patrol range is always centred
-  where it appears.
+- Whether the patrol range is always centred on the walker's start. When
+  a walker appears and disappears as the view moves is in
+  `walker-view.md`.
 - Whether other enemies freeze during the frozen frames of a bounce.
 - Other kinds of enemies, and how walkers look (poses while turning or
   falling).
