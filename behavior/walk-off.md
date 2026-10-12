@@ -48,6 +48,45 @@ before any landing:
 
 For n from 1 to 18 the total is 3.4375 + n/256 + 7n(n + 1)/32.
 
+## Jumping near the edge
+
+There is **no grace period** after leaving the ground. A jump press on
+frame L or on any later frame of the fall never starts a jump in the
+air. (A press made during the fall and held through landing can still
+start a jump on landing, as `jump-input.md` describes for any press made
+in the air.) In terms of `traces/METRICS.md`, `coyote_frames` is
+missing for every press on L or later.
+
+Before L, a press on a grounded frame P starts a jump on P + 1 as usual
+(`jump-input.md`), with one exception at the edge. All three ledges
+measured have a steep face at their top (`steep-faces.md`): on the last
+few grounded frames before L the player is carried down the face. A
+press on P starts **no jump** if frame P + 1 starts on a face column
+(the frames on which the player is being carried down the face). The
+press is then ignored as if it had been made in the air.
+
+So the last frame on which a press still gives a jump is the frame
+before the first frame that starts on the face. The frame on which the
+player first moves onto the face doesn't start on it (`steep-faces.md`),
+so a press on the frame before that move still jumps, and the take-off
+frame is the frame of the move.
+
+Example, walking right at about 1.9 px per frame toward a ledge whose
+face the player moves onto on frame 21, so frames 22 and later start on
+the face, and L = 23:
+
+| Press frame | Take-off | Result |
+|---|---|---|
+| 20 | 21 | Jump (take-off on the frame that moves onto the face) |
+| 21 | — | No jump (22 starts on the face) |
+| 22 | — | No jump |
+| 23 (L) or later | — | No jump in the air |
+
+Measured walking right off three ledges with presses from 3 frames
+before L to 8 frames after it. On each ledge every press whose next
+frame started on the face gave no jump, and on the two ledges where the
+press before that was measured, it gave a jump.
+
 ## Example
 
 A ledge 64 px above the floor below it. The player was grounded at the
@@ -71,5 +110,6 @@ ledge's height on the frame before L.
   the frame before L.
 - Horizontal motion during the fall: see `air-control.md`, which covers
   it from L + 1 on.
-- Jumping after walking off, rolling off a ledge, and the lead
-  character swap.
+- Ledges without a face at the top (the ground simply ending), where
+  the last-chance frame above wasn't measured. Rolling off a ledge is in
+  `rolling-off-ledges.md`. The lead character swap.

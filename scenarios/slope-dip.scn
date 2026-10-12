@@ -1,0 +1,17 @@
+# clamber-scenario v1
+id: slope-dip
+summary: Walk right down a 1-in-4 slope, tap jump on the way down, land on the flat bottom, walk up a 1-in-4 slope and on along flat ground.
+requires: floor described by columns (1 px wide), column 0 being the one containing the player's x when frame 0 begins, with x 0.26953125 px past the left edge of column 0; heights are below the player's starting floor: columns 0 to 421 at 0 px; columns 422 + 4k to 425 + 4k at k + 1 px for k = 0 to 14; columns 482 to 513 at 16 px; columns 514 + 4k to 517 + 4k at 15 - k px for k = 0 to 14; columns 574 to 650 at 0 px; no walls, ceilings, entities or carryable objects from column 0 to column 650
+start: grounded, idle for at least 30 frames, facing right, lead character
+frames: 320
+
+[inputs]
+0-319    R
+225      J
+
+[metrics]
+apex_height      tol 0.5
+airtime          tol 1
+final_x          tol 1
+final_y          tol 0.5
+curve x,y,vy from jump_start for 36 tol 0.25

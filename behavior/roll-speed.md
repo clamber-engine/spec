@@ -135,6 +135,34 @@ Measured with a direction held throughout. A roll started by a new press
 on D + 17 behaves the same way on its first frame; one started on D + 18
 or later moves on its press frame as usual.
 
+## Jumping out of a roll
+
+A jump press on a frame P of a roll (any frame from S to the last `roll`
+frame, on the ground or in the air) starts a jump on T = P + 1
+(`jump-input.md`; in the air, `rolling-off-ledges.md`) and ends the
+roll:
+
+- **P** is still a roll frame for speed: the speed rule above applies
+  with the roll's target, and steering as above.
+- From **T** on, the roll is over. On T and on every frame after it the
+  target is the one of `air-control.md` (and of `ground-speed.md` once
+  the player has landed), set by what is held on that frame: ±2, ±3 with
+  Action, 0 with no direction. The speed rule is the same, starting from
+  the roll's speed on P. Nothing keeps the roll's speed: a fast roll's
+  speed falls toward 3 (Action held) or 2 by an eighth of the gap per
+  frame, and a slow roll's rises toward the new target.
+- No stop follows and the roll doesn't carry on into running: the
+  trace's `roll_end` is on P (the state on P is no longer `roll`), and
+  after landing the player walks, runs or stands under the normal rules.
+
+Measured on flat ground from fast, normal and slow rolls with presses
+from S + 1 to S + 28, holding Right, Right and Action, nothing, or Left
+(which reverses the roll first) after S, and from normal rolls off three
+ledges (`rolling-off-ledges.md`). Example: a fast roll going right with
+`vx` 3.6953125 (946/256) on P − 1 and Right alone held from P: `vx` is
+3.73046875 (955/256) on P (roll rule toward 4), then 3.515625
+(900/256) on T and 3.328125 (852/256) on T + 1 (toward 2).
+
 ## Worked values
 
 Frame S is the press; distances are from the position at the start of S.
@@ -158,8 +186,8 @@ on S + 9) and from S + 10 the normal one (1.0078125 on S + 10).
 
 ## Not covered
 
-- Rolls off ledges, into walls or enemies other than walkers, and in
-  the air. (On 1-in-4 slopes normal and fast rolls are as on flat floor;
+- Rolls into walls or enemies other than walkers. Rolls off ledges, and
+  so in the air, are in `rolling-off-ledges.md`. (On 1-in-4 slopes normal and fast rolls are as on flat floor;
   see `slopes.md`. Rolls into walkers are in `rolling-into-walkers.md`.)
 - Steering on D + 1 to D + 3 when the roll carries on into running
   (measured only with the input unchanged).

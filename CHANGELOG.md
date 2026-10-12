@@ -4,6 +4,47 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.38.0
+
+Answers the `title-2` ground-speed part of `spec` #11 (movement
+profiles). The issue stays open for the rest of `title-2` and for
+`title-3`.
+
+- Behavior: `ground-speed.md` now covers `title-1` and `title-2`. A new
+  section "In `title-2`" gives the `title-2` targets (±2.25 walking,
+  ±3.375 running), the rule that run speed depends on the previous
+  frame's input, worked values, turns that start without delay
+  (including a 7-frame short turn), and crouching (Up alone keeps a
+  crouch; no turn for 11 frames after a crouch ends). The speed rule is
+  the same in both titles.
+- `TITLES.md`: `title-2` listed as measured for `ground-speed.md` only.
+
+## spec-v0.37.0
+
+Answers the `title-1` part of `spec` #11 (movement profiles). The issue
+stays open for `title-2` and `title-3`.
+
+- Behavior: new `behavior/rolling-off-ledges.md`. A roll carries on
+  through a fall off a ledge, with walk-off vertical motion and the
+  roll's speed rule and steering. It ends on G + 29 (D = G + 30)
+  however long it ran before, and a jump can start on any frame of the
+  fall. The file gives the jump's exact vertical motion.
+- Behavior: new `behavior/movement-summary.md`, a one-page index of the
+  movement profile with the file that defines each item. It adds no
+  new rules.
+- Behavior: `walk-off.md` gains "Jumping near the edge". There are no
+  grace frames after leaving the ground, and at a ledge with a steep
+  face at the top, a press whose next frame starts on the face gives
+  no jump.
+- Behavior: `roll-speed.md` gains "Jumping out of a roll". The press
+  frame is still a roll frame for speed. From take-off the air/ground
+  targets apply, starting from the roll's speed, and no stop follows.
+- Scenarios with reference traces: `bounce-walker` (a standing jump
+  onto a walker and a full-height bounce) and `slope-dip` (walking down
+  and up 1-in-4 slopes, a tapped jump from the slope).
+- "Not covered" cross-references updated in `jump-arc.md`,
+  `air-control.md`, `roll-input.md` and `steep-faces.md`.
+
 ## spec-v0.36.0
 
 Coverage work; answers no `spec` issue.
