@@ -12,6 +12,7 @@ the clean side.
 | `scenarios/` | Scripted input scenarios run by both sides (`FORMAT.md`) |
 | `traces/` | Trace format, vocabulary, metrics, and approved reference traces |
 | `questions/` | Clarification requests from the clean side (or use issues) |
+| `TITLES.md` | Ids for the titles of the original series that behavior and traces were measured on |
 
 Changes are proposed by research agents on a private staging repository,
 reviewed by the gatekeeper (`GATEKEEPING.md`, `REVIEW.md`), and published

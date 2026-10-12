@@ -11,6 +11,7 @@ The engine writes traces in the same format.
 # clamber-trace v1
 # scenario: run-jump-flat
 # source: reference
+# title: title-1
 frame	input	x	y	vx	vy	state	ground	facing	events
 0	R	0	0	0	0	idle	1	R	
 1	R	0.0625	0	0.0625	0	walk	1	R	
@@ -28,6 +29,17 @@ Lines starting with `#`, before the column line.
 | `# clamber-trace v1` | Required first line |
 | `# scenario: <id>` | The scenario that produced it |
 | `# source: reference` or `engine` | Who recorded it |
+| `# title: <id>` | The title the trace represents, as a title id from `../TITLES.md`. Required in reference traces; see below for engine traces |
+
+A reference trace represents exactly one title: the one it was recorded
+on. Its `# title:` line is required, appears once, and holds one id.
+
+An engine trace should have a `# title:` line naming the title whose
+measured values the run used (the preset matching that title). To compare
+a scenario, pick the engine preset for the reference trace's title. If
+both traces have a `# title:` line and the ids differ, the comparison is
+not run and is reported as a title mismatch, not as a pass or a fail. An
+engine trace without the line is compared as before.
 
 Other `# key: value` lines are allowed and ignored by the comparison
 (for example `# engine-commit:`).
@@ -76,5 +88,8 @@ harness must document how it detects this in the research repo.
 - States and events use only names from `VOCABULARY.md`. If the original
   shows something the vocabulary doesn't cover, extend the vocabulary in
   the same pull request.
+- Every reference trace has a `# title:` line.
 - One trace per scenario. If a scenario is re-recorded, the new trace
-  replaces the old one and the change is noted in `CHANGELOG.md`.
+  replaces the old one and the change is noted in `CHANGELOG.md`. How
+  one scenario gets reference traces for more than one title is not
+  specified yet; every reference trace so far is `title-1`.

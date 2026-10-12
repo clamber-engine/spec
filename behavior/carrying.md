@@ -1,5 +1,7 @@
 # Carrying objects
 
+Titles: `title-1`
+
 Picking up an object, carrying it, throwing it and putting it down: what
 the player does on each frame, and how a thrown object moves until it
 first touches something. Frames are logic frames at 60 Hz, numbered as in

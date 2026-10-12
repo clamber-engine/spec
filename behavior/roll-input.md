@@ -1,5 +1,7 @@
 # Roll input
 
+Titles: `title-1`
+
 When an Action press starts a roll, and when it doesn't. Frames are logic
 frames at 60 Hz, numbered as in a trace. "Action" and "Down" are the
 neutral inputs `A` and `D` of the scenario format. Measured on flat ground

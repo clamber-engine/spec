@@ -1,5 +1,7 @@
 # Jump input timing
 
+Titles: `title-1`
+
 When a jump press turns into a jump. Frames are logic frames at 60 Hz,
 numbered as in a trace. The **press frame** is the first frame the jump
 input is held after a frame where it was not held. The **landing frame**
