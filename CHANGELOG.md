@@ -4,6 +4,24 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.36.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/bunches.md`, for bunches (collectibles worth
+  ten). Covers a bunch's position and the area its image stays inside,
+  when one is taken (the first frame ending with the player in range),
+  offsets `I` and `D` as in `collectibles.md`, pickup ranges for the
+  first character by state (standing ranges from `T` to `T` + 5, then
+  one jump range independent of speed, and landing while standing
+  still), a taken bunch staying taken for the visit, releases on `P`,
+  `P` + 6, … `P` + 54 with each item either flying (+17 frames) or
+  counted at once near or past the picture's left or top edge (using
+  the view position from the start of the release frame), a worked
+  example of a mixed schedule, and a "Not covered" list.
+- Behavior: `behavior/collectibles.md`'s "Not covered" entry for other
+  kinds of collectible now points to `bunches.md`.
+
 ## spec-v0.35.0
 
 Coverage work; answers no `spec` issue.
