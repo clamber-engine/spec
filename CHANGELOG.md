@@ -4,6 +4,23 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.18.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/walker.md`, for the motion of the simplest
+  ground enemy. Walkers head at 1 px per frame, easing `vx` toward the
+  target by one eighth of the difference (rounded toward zero to 1/256,
+  snapping once the step would be 0); they follow flat floor and 1-in-4
+  slopes. At the end of a patrol range (level data) the target flips
+  without stopping and facing changes 4 frames later; at a barrier the
+  walker is stopped at it with `vx` 0, then speeds up the other way,
+  facing changing 5 frames after the stop. Walkers freeze on frames
+  H + 1 to H + 10 of a player knock-out (except the one that caused it).
+  A bounced-on walker is launched at `vy` −6, frozen on B + 1 and B + 2,
+  then falls with 0.4375 gravity capped at 8 through the floor and is
+  removed. Synthetic worked examples and a "Not covered" list.
+
 ## spec-v0.17.0
 
 Coverage work; answers no `spec` issue.
