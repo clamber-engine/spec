@@ -63,9 +63,10 @@ ledge's height on the frame before L.
 - What happens before L. Ground that falls away gradually (a slope, or a
   rounded edge) is followed while the player is still grounded, so on
   some ledges the player is lower than the ledge's top on the frame
-  before L. Which drops the player follows and which make them airborne
-  isn't specified yet. The rules above start from wherever the player is
-  on the frame before L.
+  before L. On steep faces, which drops the player follows and which
+  make them airborne is in `steep-faces.md`; on other ground it isn't
+  specified yet. The rules above start from wherever the player is on
+  the frame before L.
 - Horizontal motion during the fall: see `air-control.md`, which covers
   it from L + 1 on.
 - Jumping after walking off, rolling off a ledge, and the lead
