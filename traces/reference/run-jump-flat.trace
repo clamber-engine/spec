@@ -63,7 +63,7 @@ frame	input	x	y	vx	vy	state	ground	facing	events
 58	RA	135.53515625	0	3	0	run	1	R	
 59	RA	138.53515625	0	3	0	run	1	R	
 60	RJA	141.53515625	0	3	0	run	1	R	
-61	RJA	144.53515625	0	3	-7	jump	1	R	jump_start
+61	RJA	144.53515625	0	3	-7	run	1	R	jump_start
 62	RJA	147.53515625	-6.71875	3	-6.71875	jump	0	R	
 63	RJA	150.53515625	-13.15625	3	-6.4375	jump	0	R	
 64	RJA	153.53515625	-19.3125	3	-6.15625	jump	0	R	
