@@ -141,5 +141,7 @@ releasing Down) takes off normally.
 
 ### Not covered (`title-2`)
 
-Jumping after walking off a ledge, presses made just before landing on
-ground of a different height, jumps on slopes, and the second character.
+Presses made just before landing on ground of a different height, jumps
+on slopes, and the second character. Jumping after walking off a ledge,
+and on landing after such a fall (one frame later than after a jump), is
+in `walk-off.md` ("In `title-2`").

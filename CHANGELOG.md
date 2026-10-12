@@ -4,6 +4,19 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers the `title-2` walk-off part of `spec` #11 (movement profiles).
+The issue stays open for the rest of `title-2` and for `title-3`.
+
+- Behavior: `walk-off.md` gains "In `title-2`": the leave frame (3.4375
+  px), the fall (`vy` 1.4375 on L + 1, then +0.4375 per frame, cap 8),
+  landing on reaching the floor (no 5 px margin), horizontal speed and
+  facing in the fall, a crouch carried into the fall, a jump grace
+  period (presses on L − 1, L and L + 1 still jump), jumps while crouched
+  in the air, jumping on landing after a fall (earliest A + 2), evidence.
+- `jump-arc.md`, `jump-input.md`, `air-control.md`: `title-2` "Not
+  covered" lists and the Down-in-the-air note point to it.
+- `TITLES.md`: the `title-2` row lists `walk-off.md`.
+
 ## spec-v0.42.0
 
 Answers the `title-2` bouncing part of `spec` #11 (movement profiles).

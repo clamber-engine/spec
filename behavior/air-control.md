@@ -191,7 +191,9 @@ grounded. So:
   still ±3.375.
 
 Down, Up and Jump make no difference to the target in the air. On the
-ground, Down gives a target of 0; in the air it doesn't. An Action press
+ground, Down gives a target of 0; in the air it doesn't. The exception
+is a crouch carried into a fall off a ledge (`walk-off.md`, "In
+`title-2`"). An Action press
 in the air starts nothing; it only counts as Action held.
 
 Each of those frames, the speed rule of `ground-speed.md` applies
@@ -279,7 +281,8 @@ listed inputs.
 
 ### Not covered in `title-2`
 
-- Falls after walking or rolling off a ledge, and jumps from a ledge.
+- Falls after rolling off a ledge. Falls after walking off a ledge, and
+  jumps from near the edge, are in `walk-off.md` ("In `title-2`").
 - The frames after the landing frame (turns that start there; rolls are
   in `roll-input.md`, "In `title-2`").
 - Walls and ceilings in the air, slopes, and the second character.
