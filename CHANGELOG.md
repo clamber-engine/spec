@@ -4,6 +4,31 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.23.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/walker-contact.md`, for when touching a walker
+  hurts the player and when it gives a bounce. Offsets are taken from
+  whole-pixel positions (I horizontal, U vertical). A hit on frame H is
+  decided from the positions at the end of H − 1: I within a hurt range
+  that depends on the walker's kind (small or large), the player's
+  facing and the walker's heading, and U within a vertical reach for
+  the ground, early in a jump (to T + 5) or later. A bounce on frame B
+  needs the player airborne and not landing, `vy` greater than −1.25,
+  and I and U within wider bounce ranges, using the player's position
+  at the end of B and the walker's at the end of B − 1; a hit takes
+  priority. Synthetic examples and a "Not covered" list.
+- Behavior: new `behavior/second-character.md`, the second character's
+  movement when under control: the same rules as the first character
+  with its own values (walking target 2.25, running target 3.375,
+  take-off `vy` −8.3515625, held-jump gravity 0.3515625, 13 frames of
+  crouch recovery), with worked ground speeds, the jump arc,
+  `apex_height`/`airtime` per hold length and jump distances.
+- `bounce.md`, `knock-out.md`, `walker.md`, `losing-a-character.md`,
+  `ground-speed.md`, `jump-arc.md`, `air-control.md`: intros and "Not
+  covered" lists point to the new files.
+
 ## spec-v0.22.0
 
 Coverage work; answers no `spec` issue.
