@@ -4,6 +4,10 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.10.0
+
+Coverage work; answers no `spec` issue.
+
 - Behavior: new `behavior/bounce.md`. Bouncing off an enemy: after
   normal motion on the bounce frame `vy` becomes −7.125; the next two
   frames are frozen; then gravity 0.28125 while jump is held without a
