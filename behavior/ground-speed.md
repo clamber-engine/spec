@@ -143,7 +143,8 @@ speed and from running speed. Shorter holds are not measured.
   landing frame.
 - Moving platforms, and the frame before walking off a ledge
   (where speed and position were seen to behave differently).
-- The Down + Action ground action (roll speed is in `roll-speed.md`).
+- The Down + Action ground action is in `ground-action.md` (roll speed
+  is in `roll-speed.md`).
 - Slopes are in `slopes.md`: on 1-in-4 slopes these rules apply
   unchanged.
 - Collisions with walls and entities. The second character's values
