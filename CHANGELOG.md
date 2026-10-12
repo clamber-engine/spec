@@ -4,6 +4,24 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.19.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/air-walls.md`, for a jumping or falling player
+  moving sideways into higher ground. On an airborne frame whose move
+  would take `x` into another column, that column's floor is compared
+  with the feet before the vertical move: a face column higher by any
+  amount, or another column more than 8 px higher (exact to 1/256 px),
+  blocks the player (`x` drops to the whole pixel, `vx` 0, vertical
+  motion and landing unchanged, still airborne, no event). Another
+  column 8 px or less higher is stepped onto: a rising player is lifted
+  by whole pixels to that floor and then moves by `vy`; a falling player
+  lands on it at once. Synthetic worked examples, a table of measured
+  cases and a "Not covered" list.
+- `air-control.md`, `steep-faces.md`: "Not covered" entries for walls
+  and faces met in the air now point to `air-walls.md`.
+
 ## spec-v0.18.0
 
 Coverage work; answers no `spec` issue.
