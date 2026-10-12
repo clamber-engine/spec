@@ -102,6 +102,6 @@ reference trace.
 
 ## Not covered
 
-Horizontal motion in the air, jumps from slopes or moving ground, jumping
-after leaving a ledge, ceilings, bounces off enemies (see `bounce.md`), and the other
-character.
+Horizontal motion in the air (see `air-control.md`), jumps from slopes or
+moving ground, jumping after leaving a ledge, ceilings, bounces off
+enemies (see `bounce.md`), and the other character.
