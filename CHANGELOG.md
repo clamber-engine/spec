@@ -4,6 +4,19 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers the `title-2` bouncing part of `spec` #11 (movement profiles).
+The issue stays open for the rest of `title-2` and for `title-3`.
+
+- Behavior: `bounce.md` gains "In `title-2`": the bounce frame (`vy` set
+  to −8.21875 after the normal move), two frozen frames on which all
+  input is ignored (the running target on the next frame is chosen by
+  the bounce frame's input), the arc from B + 3 (the `title-2` jump arc
+  from take-off B + 2, with jump counted from B + 3), `bounce_height`
+  for each hold length (73.125 to 92 px), a worked example.
+- `jump-arc.md` and `air-control.md`: the `title-2` "Not covered" lists
+  point to it.
+- `TITLES.md`: the `title-2` row lists `bounce.md`.
+
 ## spec-v0.41.0
 
 Answers the `title-2` rolling part of `spec` #11 (movement profiles).
