@@ -4,6 +4,23 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.33.0
+
+Coverage work; answers no `spec` issue.
+
+- Format: new `formats/level-ground.md`, the first format spec, for how
+  a level's ground is stored (one kind of grid, 16 bands tall). Covers
+  level x and lines, the grid of 32 px columns stored column by column
+  as 16-bit cell words (type and mirrored flag), the type table of two
+  half bytes per type (shape and flipped flag), finding the surface in a
+  cell for a 1-px column, the shapes as families with formulas, the
+  ground below a point (the feet's band, one band up, two bands down,
+  "above the level"), a made-up example and a "Not covered" list.
+- Vectors: new `vectors/level-ground/` with a synthetic type table and
+  grid, plus the expected surfaces for every column and band and the
+  expected ground below for 12 columns and feet lines −8 to 520.
+- `formats/README.md`: lists the format files.
+
 ## spec-v0.32.0
 
 Coverage work; answers no `spec` issue.
