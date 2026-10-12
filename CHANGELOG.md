@@ -4,6 +4,12 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage work; answers no `spec` issue.
+
+- Traces: reference trace `reference/walk-off-ledge.trace` for the
+  `walk-off-ledge` scenario (scenario unchanged). Recorded on a square
+  edge 56–58 px ahead of the start with a 176 px drop to flat ground.
+
 ## spec-v0.11.0
 
 Coverage work; answers no `spec` issue.
