@@ -4,6 +4,22 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.29.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/view.md`, for how the view moves
+  horizontally to follow the player. Covers the view's position and
+  speed and the precision each is kept to. The target is the player's
+  `x` plus a lead made of a base for each facing, a facing part and a
+  speed part, with a table of values. Each frame the speed moves an
+  eighth of the way toward the gap ÷ 32 (rounding stated). The view
+  stays still on B and B + 1 of a bounce and on K and K + 1 of a roll
+  defeat. Includes two made-up worked examples and a "Not covered"
+  list.
+- `walker.md`: the "Not covered" entry on walkers appearing as the
+  view moves points to the new file.
+
 ## spec-v0.28.0
 
 Coverage work; answers no `spec` issue.
