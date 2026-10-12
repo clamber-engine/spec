@@ -242,10 +242,9 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
 - Jumping from a face, and jumps from a standstill next to a rise (on
   the press frame the player stays put as above, but the take-off frame
   was seen to move).
-- Landing on a face from the air, and the frames after such a landing.
-  Contact with faces and walls while airborne (including falls in pits
-  with steep sides), where `x` was seen to stop and `ground` to read 1
-  for single frames.
+- The frames after landing on a face from the air. Contact with faces
+  and walls while airborne is in `air-walls.md`, except falls into pits
+  that carry the player below the floor of the column they are in.
 - Moving left off the low end of a face that ends at a drop rather than
   at floor: the player was seen to leave the ground while still over the
   face's last column. (Moving right off such an end, the rule above
