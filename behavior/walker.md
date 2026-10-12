@@ -7,7 +7,8 @@ steady speed, turns around at the ends of its patrol, and is defeated by
 a bounce (`bounce.md`). This file covers how a walker moves, how it
 turns, how it moves while the player is knocked out, and what happens to
 it when the player bounces off it. Which contacts hurt the player and
-which give a bounce are not covered here.
+which give a bounce, and the sizes of walkers, are in
+`walker-contact.md`.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x` grows to
 the right; `y` and `vy` are as in a trace (down is positive). Speeds are
@@ -161,8 +162,6 @@ to the end of B − 1, `y` down positive:
 
 ## Not covered
 
-- Which contacts with a walker hurt the player and which give a bounce,
-  and the sizes of walkers.
 - Whether a walker defeated by a bounce can still hurt the player while
   it falls, and walkers defeated in other ways (rolls, thrown objects).
 - Ledges and steep faces: one walker was seen to follow a steep face

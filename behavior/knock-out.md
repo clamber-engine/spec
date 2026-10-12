@@ -3,15 +3,16 @@
 Titles: `title-1`
 
 What happens to the player when they take damage while they are the only
-character, from the hit until the level ends. Which contacts cause damage
-rather than a bounce (`bounce.md`), what happens with two characters, and
-what follows the end of the level are not covered here. Frames are logic
-frames at 60 Hz, numbered as in a trace. `x`, `y` and `vy` are as in a
-trace: down is positive, speeds in px per frame. Measured with a single
-character touching ground enemies from the side: walking or running into
-them, standing while an enemy walks into the player from in front or from
-behind, on the frame of a jump press, on the take-off frame and one frame
-into a jump, on flat ground and on a downhill slope.
+character, from the hit until the level ends. Which contacts with a
+walker cause damage rather than a bounce is in `walker-contact.md`. What
+happens with two characters, and what follows the end of the level, are
+not covered here. Frames are logic frames at 60 Hz, numbered as in a
+trace. `x`, `y` and `vy` are as in a trace: down is positive, speeds in
+px per frame. Measured with a single character touching ground enemies
+from the side: walking or running into them, standing while an enemy
+walks into the player from in front or from behind, on the frame of a
+jump press, on the take-off frame and one frame into a jump, on flat
+ground and on a downhill slope.
 
 ## The hit frame
 
@@ -105,7 +106,8 @@ or onto lower ground take longer only by the extra flight time.
 
 ## Not covered
 
-- Which contacts cause damage, and what happens to the enemy.
+- Which contacts with other kinds of enemies cause damage (walkers:
+  `walker-contact.md`).
 - Being hit with two characters (losing one, and the change of lead
   character): see `losing-a-character.md`.
 - Any period of protection after a hit.
