@@ -4,6 +4,23 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.16.0
+
+Coverage work; answers no `spec` issue.
+
+- Behavior: new `behavior/steep-faces.md`, for grounded movement at
+  ground too steep to walk on: steep faces (4 px per column) and a 64 px
+  vertical step. A move into a column of a rising face or past a step up
+  is blocked (`x` drops its fraction, `vx` 0). From `vx` 0 a direction
+  toward a rise is ignored when the column 5 ahead is 9 px or more
+  higher. On a face the target is 1.5 px per frame downhill, plus the
+  walking target if downhill is held. Drops of 8 px or less in a frame
+  are followed, and 11 px or more starts the `walk-off.md` leave frame.
+  For two frames after leaving a face onto floor, input back up the face
+  is ignored. Synthetic worked examples and a "Not covered" list.
+- `walk-off.md` points to the new spec for which drops are followed on
+  steep faces.
+
 ## spec-v0.15.0
 
 Coverage work; answers no `spec` issue.
