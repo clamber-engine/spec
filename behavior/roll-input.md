@@ -247,8 +247,8 @@ does, for three jump heights.
 ### Not covered in `title-2`
 
 - Down held with the press, and Down held during the stop.
-- Rolls off ledges, into walls or enemies, on slopes, and the second
-  character.
+- Rolls into walls or enemies, on slopes, and the second character.
+  Rolls off ledges are in `rolling-off-ledges.md` ("In `title-2`").
 
 ## Not covered yet
 

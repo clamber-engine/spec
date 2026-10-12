@@ -4,6 +4,24 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers the `title-2` rolling-off-ledges part of `spec` #11 (movement
+profiles). The issue stays open for the rest of `title-2` and for
+`title-3`.
+
+- Behavior: `rolling-off-ledges.md` gains "In `title-2`": the roll goes
+  on through the fall (roll speed and steering, L included), vertical
+  motion (no step to 1.4375 on L + 1), a hover from L + 2 to 12 frames
+  after the Action press when the player leaves within 10 frames of it,
+  the roll lengthened by 28 frames for each check (S + 28, S + 56, ...)
+  at which the player is in the air, a roll ending in the air (stop with
+  `vy` set to 1.4375 on D + 15, or carry-on), jumps during the fall and
+  during a stop in the air (which frames, horizontal speed and gravity
+  before take-off), Action in the fall (a roll on A + 2 after a stop in
+  the air), examples, evidence.
+- `roll-input.md`, `roll-speed.md`, `walk-off.md`, `air-control.md`,
+  `jump-arc.md`: `title-2` "Not covered" lists point to it.
+- `TITLES.md`: the `title-2` row lists `rolling-off-ledges.md`.
+
 ## spec-v0.43.0
 
 Answers the `title-2` walk-off part of `spec` #11 (movement profiles).

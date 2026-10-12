@@ -336,8 +336,9 @@ after all sets were recorded.
 - Ledges with a face or a slope at the top, ground that falls away
   gradually, moving platforms, and the second character.
 - Action pressed on L: a roll was seen to start there, which wasn't
-  studied. Rolling off a ledge in `title-2`. (An Action press from L + 1
-  on starts nothing and counts as Action held.)
+  studied. (An Action press from L + 1 on starts nothing and counts as
+  Action held.) Rolling off a ledge is in `rolling-off-ledges.md` ("In
+  `title-2`").
 - A crouch that ends on L itself, and Down pressed on L while a jump that
   started on the ground is still waiting for take-off.
 - Facing on L when a ground turn is still in progress there.
