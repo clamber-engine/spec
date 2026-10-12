@@ -17,6 +17,7 @@ rename or reuse a name, since existing traces refer to it.
 | `bounce` | Airborne after bouncing off an entity |
 | `hurt` | Taking damage, control suspended |
 | `swap` | Switching lead character |
+| `ground_action` | Down + Action ground action in progress (`../behavior/ground-action.md`) |
 
 ## Events
 

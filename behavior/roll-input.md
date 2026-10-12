@@ -28,11 +28,12 @@ This does not depend on:
   current motion, held or pressed on the same frame;
 - how long Action is held after the press (one frame is enough).
 
-Down held on the press frame (pressed together with Action, or held
-earlier) means **no roll**. It starts a different ground action that this
-spec doesn't define yet: the player stops (horizontal speed 0 from the
-next frame, even from a run) and doesn't move for 59 frames. Down pressed
-after a roll has started has no effect on the roll.
+With the first character under control, Down held on the press frame
+(pressed together with Action, or held earlier) means **no roll**: the
+press starts the ground action instead (`ground-action.md`). With the
+second character under control, Down makes no difference and the press
+starts a roll. Down pressed after a roll has started has no effect on the
+roll.
 
 ## In the air
 
@@ -57,7 +58,8 @@ roll on that frame, as on the ground.
 | Pressed on L + 1 or later | Roll on the press frame |
 
 Measured for five jump heights, standing and walking; the window doesn't
-change with airtime.
+change with airtime. A remembered press starts a roll on L + 1 even when
+Down is held (`ground-action.md`).
 
 ## How a roll ends
 
@@ -119,4 +121,5 @@ ignored.
 ## Not covered yet
 
 Roll speed and steering are in `roll-speed.md`. Rolls on slopes, rolls
-into enemies, the other character, and the Down + Action ground action.
+into enemies, and the other character. The Down + Action ground action
+is in `ground-action.md`.
