@@ -193,8 +193,10 @@ frame also grounded; the first grounded frame after a landing is not
 covered.
 
 As in `title-1`, an Action **press** starts a roll; this section covers
-Action that is already held. Speed on roll frames, and on the first frame
-after a roll ends, is not covered for `title-2`.
+Action that is already held. Speed during a roll and the stop after it
+are in `roll-speed.md` ("In `title-2`"). From the first frame of normal
+movement after a roll (D + 1 after a roll that carries on into running,
+D + 15 after a stop) the rules of this section apply.
 
 ### Speed rule (`title-2`)
 
@@ -259,7 +261,8 @@ without delay, whether the player is standing or moving:
 - If a crouch starts during a turn, the turn ends at once. If the crouch
   starts on T + 1 to T + 4, facing doesn't change. If it starts on T + 5
   or later, facing has already changed and stays changed.
-- The first frame after a roll is not covered.
+- After a roll, a turn starts on the first frame of normal movement
+  (D + 1 or D + 15, as above) if the opposite direction is held then.
 
 ### Crouching (`title-2`)
 
@@ -303,8 +306,8 @@ All runs were by inputs, with the lead character on flat ground.
 
 ### Not covered in `title-2`
 
-- Rolls (speed, the stop after a roll, and facing on the first frame after
-  a roll). The Down + Action ground action.
+- The Down + Action ground action. Rolls are in `roll-input.md` and
+  `roll-speed.md` ("In `title-2`").
 - The frame after a landing, slopes, walls, and the second character.
   Air control and the landing frame are in `air-control.md` ("In
   `title-2`").

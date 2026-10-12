@@ -1,11 +1,15 @@
 # Roll input
 
-Titles: `title-1`
+Titles: `title-1`, `title-2`
 
 When an Action press starts a roll, and when it doesn't. Frames are logic
 frames at 60 Hz, numbered as in a trace. "Action" and "Down" are the
 neutral inputs `A` and `D` of the scenario format. Measured on flat ground
 with the lead character.
+
+The sections below up to "In `title-2`" give the `title-1` values.
+`title-2` is different throughout; "In `title-2`" gives its complete
+values.
 
 A **press** of Action is a frame where Action is held after a frame where
 it was not held. Holding Action never starts a second roll by itself; every
@@ -130,7 +134,125 @@ stands still from 42 to 56 (`idle`), and moves normally again from 57. A second 
 on frame 37 starts the next roll on frame 56. A press on frame 36 would be
 ignored.
 
+## In `title-2`
+
+Everything in this section was measured on `title-2` only, with the lead
+character at the start of a game, on flat ground. A **press** of Action
+is, as above, a frame where Action is held after a frame where it was not
+held. Speed, size and steering during a roll are in `roll-speed.md` ("In
+`title-2`"). Reference traces for `title-2` don't exist yet, so this
+section names frames, not trace states.
+
+### On the ground (`title-2`)
+
+A press on a grounded frame P starts a roll on P (S = P), unless:
+
+- Down is held on P (the player crouches instead; not covered further);
+- Jump is also pressed on P: the jump starts and no roll does (Action
+  then counts as held, for example for air control);
+- P is during a roll or the stop after one, or on G + 1 or T of a jump
+  (`air-control.md`, "In `title-2`"). See below for presses during the
+  stop.
+
+Any speed, any direction (or none), and a press on any frame after a
+landing (from the frame after the landing frame) start a roll the same
+way. One frame of Action is enough.
+
+### In the air (`title-2`)
+
+A press in the air never starts a roll in the air. With landing frame L
+(the frame carrying `land`, as in `jump-input.md`) and a press on P ≤ L,
+a roll starts on L + 1 if both hold:
+
+- P ≥ L − 10, and
+- Action is held on every frame from P to L + 1.
+
+Otherwise nothing happens on landing. A one-frame press on L itself does
+nothing. A press on L + 1 or later starts a roll on that frame, as on the
+ground.
+
+If a jump starts on L + 1 (a Jump press on L + 1, or a Jump press made
+in the air and held into landing as in `jump-input.md`, "Landing
+(`title-2`)"), the jump wins and no roll starts.
+
+Measured for three jump heights (landing 39, 45 and 46 frames after the
+jump press); the window doesn't change with airtime.
+
+### How long a roll lasts (`title-2`)
+
+A roll lasts 31 frames, S to S + 30. What happens next depends on frame
+**D** = S + 31:
+
+- **Action held on every frame from S to D** (pressed once and never
+  released), and the roll is not a fast roll: the roll **carries on into
+  running**. D still moves at the roll's speed, and from D + 1 the player
+  walks or runs normally.
+- **Otherwise** (Action not held on D, or released at any time during the
+  roll, even if pressed again, or the roll is a fast roll): the roll ends
+  in a **stop**, D to D + 14. The player doesn't move from D + 1 to
+  D + 14 and moves normally again from D + 15. Facing doesn't change
+  from D + 1 to D + 14, and a turn toward a direction held then starts on
+  D + 15.
+- A Jump press on any frame from S + 1 to D ends the roll in a jump
+  instead (`roll-speed.md`, "Jumping out of a roll"). A Jump press during
+  the stop also starts a jump.
+
+### Starting the next roll (`title-2`)
+
+After a roll that carried on into running, a new press (on D + 2 at the
+earliest, since Action is held on D) starts a roll on that frame.
+
+Presses during a roll (S + 1 to D) are ignored. Presses during the stop
+are ignored, except that a press on P with D + 4 ≤ P ≤ D + 14, with
+Action held on every frame from P to D + 15, starts the next roll on
+D + 15. A press on D + 15 or later starts a roll on that frame.
+
+The remembered press after a landing and this one follow the same
+pattern: a press that can't start a roll yet starts one on the first
+frame it can, if that frame is at most 11 frames after the press and
+Action is held until then.
+
+| Press during the stop | Held through D + 15 | Result |
+|---|---|---|
+| D + 1 to D + 3 | either | No roll |
+| D + 4 to D + 14 | yes | Roll on D + 15 |
+| D + 4 to D + 14 | no | No roll |
+| D + 15 or later | (any) | Roll on the press frame |
+
+A roll that starts from a remembered press is like any other: it moves on
+its first frame, lasts 31 frames, and carries on into running if Action
+stays held through its D.
+
+### Worked example (`title-2`)
+
+Standing still, Action is pressed on frame 10 for one frame. The roll is
+frames 10 to 40 (D = 41). The player stops on 41 and stands still from
+42 to 55, and moves normally again from 56. A one-frame press on any
+frame from 11 to 55 is ignored. A press on 45 to 55 held through 56
+starts the next roll on 56, as does a press on 56.
+
+With Action held from frame 10 onwards instead, the roll carries on into
+running on 41: `vx` keeps rising on 41 toward the roll's target and from
+42 follows the ground rules.
+
+### Evidence (`title-2`)
+
+See `roll-speed.md` ("In `title-2`"): the same 1,217 runs and 2,143
+rolls, including 92 rolls started on D + 15 by a press during the stop
+and 220 started on L + 1 by a press in the air, with 0 mismatches.
+Bounds measured directly: a press on D + 3 held through D + 15 starts
+nothing and D + 4 does; in the air L − 11 starts nothing and L − 10
+does, for three jump heights.
+
+### Not covered in `title-2`
+
+- Down held with the press, and Down held during the stop.
+- Rolls off ledges, into walls or enemies, on slopes, and the second
+  character.
+
 ## Not covered yet
+
+This list is for `title-1`; `title-2` has its own list above.
 
 Roll speed and steering are in `roll-speed.md`, rolls into walkers in
 `rolling-into-walkers.md`, rolling off a ledge in `rolling-off-ledges.md`. Rolls on slopes, rolls into other enemies,
