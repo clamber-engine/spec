@@ -308,7 +308,8 @@ All runs were by inputs, with the lead character on flat ground.
 
 - The Down + Action ground action. Rolls are in `roll-input.md` and
   `roll-speed.md` ("In `title-2`").
-- The frame after a landing, slopes, walls, and the second character.
+- The frame after a landing, walls, and the second character. Slopes
+  are in `slopes.md` ("In `title-2`").
   Air control and the landing frame are in `air-control.md` ("In
   `title-2`").
 

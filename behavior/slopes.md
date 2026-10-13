@@ -1,6 +1,6 @@
 # Slopes
 
-Titles: `title-1`
+Titles: `title-1`, `title-2`
 
 How a player moves on sloped floor: horizontal speed, height while
 grounded, stopping, jumping off and landing on a slope, and rolling.
@@ -11,6 +11,9 @@ Measured with the lead character on gentle slopes that rise or fall
 left: walking, running, stopping, standing, jumping (standing,
 walking and running jumps, short and long holds) and rolling (normal
 and fast rolls, as named in `roll-speed.md`).
+
+The sections below up to "In `title-2`" give the `title-1` values. "In
+`title-2`" gives the `title-2` values.
 
 ## Floor height
 
@@ -117,7 +120,215 @@ becomes 5.9375 (gravity 0.4375), `x` moves to 117.5 (column 117, floor
 `y` = 5) and `y` to 2.6875, which is 2.3125 px above that column's floor.
 The player lands with `y` = 5 (not 4), `vy` 0, `ground` 1.
 
+## In `title-2`
+
+Everything in this section was measured on `title-2` only, with the lead
+character, on two slopes that rise or fall **1 px for every 2 px** across
+and on short stretches that rise or fall **1 px for every 4 px**, with
+flat floor between them. They were crossed uphill and downhill, moving
+right and left: walking, running, stopping and standing at many points,
+turning, crouching, slow, normal and fast rolls (`roll-speed.md`, "In
+`title-2`"), standing, walking and running jumps with short and long
+holds, jumps out of rolls, and random input sequences. Every input
+sequence was also played on flat floor and the two were compared frame by
+frame. Speeds are whole multiples of 1/256 px per frame, written both
+ways. A jump starts on **G** and takes off on **T = G + 2**, as in
+`jump-input.md` and `jump-arc.md` ("In `title-2`").
+
+### Floor height (`title-2`)
+
+As in `title-1`, the floor's surface has one height for each 1-px-wide
+column of `x`, always a whole number of pixels. On a 1-in-2 slope the
+height changes by **1 px every 2 columns**, on a 1-in-4 slope by **1 px
+every 4 columns**.
+
+The floor is made of **pieces** 16 columns wide. In the levels measured
+a piece starts at a level `x` that is a multiple of 16. A piece is
+either flat (all 16 columns at one height) or sloped (its columns are not
+all at one height). A slope is a run of sloped pieces. Each slope
+measured started and ended on a piece boundary. Whether a column belongs
+to a sloped piece matters for landing (below), even when that column has
+the same height as its neighbours: for example the columns at the top of
+a short rise, where a piece going up meets a piece going down, or the
+first columns of a slope that are still at the height of the flat floor
+before it.
+
+### Grounded on a slope (`title-2`)
+
+The `title-1` rule holds. While the player is grounded, on every frame
+`y` is the floor height of the column containing `x` (the column of the
+whole-pixel part of `x`), taken after the frame's horizontal move. Only
+the column matters, not the speed, direction, facing or the fraction of
+`x`. In a trace `vy` is 0 and `ground` 1 on these frames.
+
+Following a slope down never made the player airborne, on 1-in-2 slopes
+included, at any speed measured. The fastest grounded speed measured on
+a slope was **1138/256** px per frame (about 4.45) going downhill, in a
+fast roll. There is no `leave_ground` on a slope.
+
+### Horizontal speed (`title-2`)
+
+Slopes don't change horizontal motion. On 1-in-2 and 1-in-4 slopes,
+uphill and downhill, everything in `ground-speed.md`, `roll-input.md`,
+`roll-speed.md` and `air-control.md` ("In `title-2`") holds exactly as on
+flat floor:
+
+- walking and running speed (no slower uphill, no faster downhill),
+  stopping distance, turns, and crouching (getting down, crouched,
+  getting up);
+- a player standing still on a slope stays still. There is no sliding;
+- roll sizes, steering, lengths and stops, for slow, normal and fast
+  rolls, and jumps out of rolls;
+- horizontal speed in the air.
+
+On every frame up to the first one where the player is grounded on one
+floor and not on the other (a jump landing earlier or later because the
+floor is higher or lower), the slope run and the flat run had the same
+`vx`, target speed, state and facing. That includes the frames on which
+a jump starts.
+
+### Jumping from a slope (`title-2`)
+
+On G, G + 1 and T the player is still grounded, so the rule above applies
+on these frames too. `y` follows the floor under the new `x` on each of
+them, including T, as `jump-arc.md` describes for flat floor ("`y`
+unchanged").
+
+**T + 1**, the first airborne frame, starts from the **higher** of two
+heights: the player's `y` on T, and the floor height of the column
+containing `x` after T + 1's horizontal move. The player then moves by
+T + 1's `vy`, as in `jump-arc.md` ("Each frame after T"). So:
+
+- going uphill, if T + 1's move reaches a higher column, the jump starts
+  from that column's height: the player ends T + 1 up to 1 px higher than
+  they would on flat floor;
+- going downhill, the jump starts from the height on T, as on flat floor.
+
+From T + 2 the arc is the one in `jump-arc.md`: the same `vy` on every
+frame, the same gravity and the same effect of holding jump. The slope
+only changes where the jump starts and where it ends.
+
+### Landing (`title-2`)
+
+On each falling frame, after the frame's horizontal move and its gravity,
+take the column containing the new `x` and its floor height:
+
+- If the column belongs to a **flat piece**, the player lands if moving
+  by the frame's `vy` would take them to the floor or below it, as in
+  `walk-off.md` ("In `title-2`").
+- If the column belongs to a **sloped piece**, the player lands if moving
+  by `vy` would take them to **3 px above the floor** or lower.
+
+On landing, `y` becomes that column's floor height, `vy` 0, `ground` 1,
+and the row carries `land`. Landing on a sloped piece can therefore move
+the player down by up to 3 px more than `vy`. Reaching the limit exactly
+(the floor on a flat piece, 3 px above it on a sloped piece) lands, and
+falling 1/256 px short of it doesn't. When `x` crosses into a column of a
+different height on the landing frame, the new column's height is the
+one used, as in `title-1`.
+
+The 3 px applies only on sloped pieces. Falls that ended a frame within
+3 px above flat floor without reaching it didn't land on that frame,
+including on the first flat column after a slope.
+
+### Examples (`title-2`)
+
+A synthetic floor of four pieces: columns 0 to 15 flat at `y` = 0;
+columns 16 to 31 sloped, going down 1 px every 2 columns to the right
+(16 and 17 at `y` = 0, 18 and 19 at 1, ..., 30 and 31 at 7); columns 32
+to 47 sloped the same way (32 and 33 at 8, ..., 46 and 47 at 15);
+columns 48 to 63 flat at `y` = 16.
+
+**Walking down.** Walking right at 2.25 px per frame, `x` = 30.5 before
+the frame:
+
+| Frame | `x` | Column | `y` |
+|---|---|---|---|
+| 1 | 32.75 | 32 | 8 |
+| 2 | 35 | 35 | 9 |
+| 3 | 37.25 | 37 | 10 |
+| 4 | 39.5 | 39 | 11 |
+
+**Taking off.** Jump held from G. Running right (downhill) at 3.375 px
+per frame: on T, `x` = 36 and `y` = 10 (column 36), `vy` −8.21875. On
+T + 1, `vy` is −7.8671875 and `x` moves to 39.375 (column 39, floor 11).
+The higher height is the 10 of T, so `y` = 10 − 7.8671875 = 2.1328125.
+
+Running left (uphill) at −3.375 px per frame: on T, `x` = 39.375 and
+`y` = 11. On T + 1, `x` moves to 36 (column 36, floor 10). The higher
+height is the floor's 10, so `y` = 2.1328125, not 3.1328125.
+
+**Landing on a sloped piece.** Before the frame: `x` = 40.5, `y` = 4,
+`vy` 8 (the cap), moving right at 2.25. The frame moves `x` to 42.75:
+column 42, floor 13, on a sloped piece. Moving by 8 would take the player
+to 12, which is 1 px above the floor and within 3 px of it. The player
+lands with `y` = 13.
+
+**Not landing on a flat piece.** Before the frame: `x` = 50.5, `y` = 7.5,
+`vy` 8. The frame moves `x` to 52.75: column 52, floor 16, on a flat
+piece. Moving by 8 takes the player to 15.5, 0.5 px above the floor. They
+don't land on this frame. On the next frame they land with `y` = 16.
+
+### Evidence (`title-2`)
+
+2,220 runs on the slopes, each also played on flat floor, 0 mismatches:
+
+- 226,830 frames with the same `vx`, target, state, facing and `ground`
+  as on flat floor (97,047 of them on sloped pieces: 30,996 walking,
+  6,171 running, 11,401 rolling, 11,050 standing, 919 turning, 4,757
+  crouching or getting up, 1,238 before take-off, 28,523 rising or
+  falling in a jump, 1,992 landing), and the same vertical move and
+  `vy` on 72,144 airborne frames before any difference in landing;
+- `y` equal to the floor height on 173,353 grounded frames;
+- 2,820 take-offs, 540 of them with T + 1's column at a different height
+  from `y` on T;
+- 1,174 landings (561 on sloped pieces, 195 within the 3 px, 238 across a
+  step on the landing frame), and 22,325 falling frames that didn't land
+  (201 of them ending within 3 px above flat floor);
+- 525 falling frames after a landing difference.
+
+The floor heights came from the grounded frames themselves: no column was
+ever seen at two heights. The take-off and landing rules were found on
+the first 1,620 runs, which include one set of random input sequences.
+600 further runs of random input sequences were recorded afterwards and
+matched with 0 mismatches.
+
+At the limit itself: 90 falls (46 over sloped pieces, 44 over flat ones)
+were each replayed three times with the player moved, between two frames
+and without changing anything else, so that the next frame's move ended
+exactly at the limit, 1/256 px past it, or 1/256 px short of it. All 180
+falls that reached or passed the limit landed and none of the 90 that
+fell short did.
+
+Which columns have the margin: 323 falls from standing jumps across
+the site (109 ending over sloped pieces, 214 over flat ones, some of the
+flat ones on top of a raised stretch of ground) were each replayed so
+that the last move ended exactly 3 px above the floor, 2 px above it,
+1/256 px above it, or on it (and also 1 px above it for 21 of them).
+Over sloped pieces all of these landed; over flat pieces only the one
+reaching the floor did. This
+includes a 1-in-4 piece whose first columns are at the height of the flat
+piece before it (margin) and the flat pieces on both sides of it (no
+margin). It also rules out pieces 32 columns wide: the flat piece just
+after that 1-in-4 piece starts 16 columns past a multiple of 32, and it
+has no margin.
+
+### Not covered in `title-2`
+
+- Slopes of other steepness, and slopes that meet a wall, a ceiling or a
+  ledge. Walking or rolling off the end of the ground onto a slope.
+- Whether pieces could be 8 columns wide rather than 16: every 8 columns
+  of the slopes measured contain a change of height, so the two fit the
+  measurements equally. (32 is ruled out, see "Evidence".)
+- Horizontal motion on and after a landing frame that comes at a
+  different time than on flat floor (it wasn't compared).
+- Carrying objects on slopes (picking one up ended the runs), enemies on
+  slopes, bounces that land on a slope, the Down + Action ground action,
+  and the second character.
+
 ## Not covered
+
+This list is for `title-1`; `title-2` has its own list above.
 
 - Turning around on a slope (all turns measured were on flat floor).
 - Slow rolls on a slope, and grounded speeds above 1014/256 px per frame

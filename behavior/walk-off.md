@@ -333,8 +333,9 @@ after all sets were recorded.
 
 ### Not covered in `title-2`
 
-- Ledges with a face or a slope at the top, ground that falls away
-  gradually, moving platforms, and the second character.
+- Ledges with a face or a slope at the top, moving platforms, and the
+  second character. Going down 1-in-2 and 1-in-4 slopes never made the
+  player leave the ground (`slopes.md`, "In `title-2`").
 - Action pressed on L: a roll was seen to start there, which wasn't
   studied. (An Action press from L + 1 on starts nothing and counts as
   Action held.) Rolling off a ledge is in `rolling-off-ledges.md` ("In
@@ -343,8 +344,8 @@ after all sets were recorded.
   started on the ground is still waiting for take-off.
 - Facing on L when a ground turn is still in progress there.
 - Jumping on landing with Down or Up held near the landing (the crouch
-  rules of `jump-input.md` were not checked here), and landing on floor
-  that isn't flat.
+  rules of `jump-input.md` were not checked here). Landing on slopes is
+  in `slopes.md` ("In `title-2`").
 
 ## Not covered
 
