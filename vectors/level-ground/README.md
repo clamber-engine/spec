@@ -41,3 +41,38 @@ What the data exercises:
 - `ground-below.tsv`: the ground below for 12 values of `x` (in columns
   32–35) and every feet line `F` from −8 to 520. Each value is a line,
   `above` (above the level) or `none` (no ground).
+
+## Row grids
+
+Vectors for "Row grids" in the format. They use the same `types.hex`
+(`N` = 38).
+
+- `rows-grid.hex`: a row grid of 8 bands, one row per line (band 0
+  first): the 128 bytes of the row's 64 cell words, low byte first.
+- What the data exercises:
+  - Band 2, columns 0–31: column `n` holds type `n` + 1, so every shape
+    appears at every position, as in `grid.hex`. Columns 0 and 16 are
+    multiples of 16.
+  - Column 32: a mirrored cell (band 3) and a cell with bit 15 set
+    (band 4). Column 33: bit 6 (band 2), mirrored (band 3), a type of
+    `N` or more (band 4), a full cell (band 5).
+  - Column 40: full cells in bands 1 and 2, flat ground in band 5.
+    Column 41: a cell with a surface in its right half only (band 1)
+    over a full cell (band 2), and in band 4 a cell whose right half is
+    the band's top line.
+  - Columns 48 (a multiple of 16) and 49: the same ground, a full cell
+    in band 3 and flat ground in band 5, to show the skipped step 3.
+  - Column 63, band 4: flat ground, read from band 3 at level x 4064 to
+    4095.
+
+Expected output:
+
+- `rows-surfaces.tsv`: for every level x from 0 to 4095, the surface
+  line in each band 0–7, or `none`. From level x 2048 on, band 7's
+  cell would lie past the end of the grid; those are `past` (not
+  covered).
+- `rows-ground-below.tsv`: the ground below for 15 values of `x`. For
+  `x` below 2048, every feet line `F` from 1 to 192 (bands 0–5). For
+  `x` of 2048 or more, `F` from 33 to 160 (bands 1–4), so the search
+  stays inside the grid and off band 0's top line. Each value is a line
+  or `none`.

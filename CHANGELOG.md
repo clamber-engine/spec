@@ -4,6 +4,18 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (`title-1`): a second kind of level grid.
+
+- `formats/level-ground.md`: new section "Row grids". These grids are
+  stored row by row, 64 cells (2048 px) per row, and can be far taller
+  than 16 bands. Level x from 2048 reads into later rows. The ground
+  below has no "above the level" case. Step 3 is skipped (no ground) in
+  every 16th 32 px column. Checks in the game and a synthetic example.
+  The column-grid rules are unchanged; the intro names the kinds. "Not
+  covered" now names a third kind and the row-grid edge cases.
+- `vectors/level-ground/`: new `rows-grid.hex`, `rows-surfaces.tsv` and
+  `rows-ground-below.tsv`, documented in the README.
+
 ## spec-v0.52.0
 
 Part of `spec` #11 (movement profiles): walls in the air in `title-2`.

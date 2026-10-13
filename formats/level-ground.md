@@ -9,10 +9,14 @@ slopes, steep faces and platforms in `../behavior/` (`slopes.md`,
 "the ground below" in `view-vertical.md`. Other behavior
 files named below are in `../behavior/` too.
 
-This file covers one kind of grid: 16 bands tall. Most of the title's
-ground uses this kind, including the first two levels. It was checked
-against the game's own ground on the first level and the start of the
-second. The other kinds are listed under "Not covered".
+This file covers two kinds of grid. A **column grid** is 16 bands tall
+and is stored column by column. Most of the title's ground uses this
+kind, including the first two levels. It was checked against the game's
+own ground on the first level and the start of the second. A **row
+grid** is stored row by row and can be much taller. It is described in
+"Row grids" by how it differs from a column grid. A third kind is listed
+under "Not covered". Everything before "Row grids" is about column
+grids.
 
 ## Positions
 
@@ -219,13 +223,127 @@ Column 0, band 10 holds a cell word 0x0001 (type 1), band 11 holds
 
 More cases, as bytes, are in `../vectors/level-ground/`.
 
+## Row grids
+
+A row grid uses the same cell words, type table, half bytes and shapes
+as a column grid: "The type table", "Ground passable from below" and
+"Shapes" apply unchanged. What differs is how tall the grid is, how its
+cells are stored, and two steps of "The ground below a point".
+
+Positions are as in "Positions". Level y is measured from the top of the
+grid's band 0.
+
+### Bands and storage
+
+A row grid has `R` bands, band 0 at the top. `R` can be far more than
+16. The one row grid measured had 116 bands (3712 px). Band `k` holds
+lines 32`k` + 1 to 32`k` + 32, as before.
+
+Storage: the bands one after another from band 0. Each band is a **row**
+of 64 cell words, so a row covers level x 0 to 2047. Cell words are as
+in "The grid", 16 bits, low byte first. A row takes 128 bytes and the
+grid 128`R` bytes.
+
+The cell for level x column `x` in band `k` is cell word number
+64`k` + ⌊`x` / 32⌋, counted from the start of the grid. For level x of
+2048 or more this word lies in a later row. For example, the cell for
+level x 2048 to 2079 in band `k` is the first cell of band `k` + 1's
+row. The surface found there still belongs to band `k`: its line is
+32`k` + 32 − `s`, as in step 5 of "The surface in one cell". Level x
+from 2048 to 4095 was checked in the game this way.
+
+"The surface in one cell" is otherwise unchanged.
+
+### The ground below a point in a row grid
+
+For level x column `x` and a feet line `F` of 1 or more, let `k` be the
+band of `F`. `F` is not limited to the grid's bands. Steps 1 to 3 of
+"The ground below a point" apply, with two changes:
+
+- **Step 2 has no "above the level".** If band `k`'s surface is its top
+  line and band `k` − 1 has a surface in column `x`, that surface is the
+  ground below. This is true even when it is band `k` − 1's top line,
+  and even when it is line 1. If band `k` − 1 has no surface there, the
+  ground below is band `k`'s top line. Band 0's top line is not covered.
+- **Step 3 is skipped in every 16th column.** In step 3 (no surface in
+  the feet's band), if ⌊`x` / 32⌋ is a multiple of 16, there is no ground
+  below. Bands `k` + 1 and `k` + 2 are not looked at, even if they
+  have ground. These are level x 0 to 31, 512 to 543, 1024 to 1055 and
+  so on, and also 2048 to 2079 and so on, past the first row. In every
+  other column, step 3 is as before.
+
+Step 1 is unchanged. As before, nothing is found further down than two
+bands, and the surface found in the feet's band can be above `F`.
+
+The skipped step 3 shows when falling. In one of those columns, a
+player falling towards ground one or two bands below has no ground
+below until the feet line reaches the ground's band. Then step 1 finds
+the ground, so the landing itself is not changed.
+
+No half byte in the row grid measured had bit 6 set, so none of its
+ground is passable from below.
+
+### Checks
+
+The row grid measured holds nine rooms (parts of levels). In each, the
+ground where the player starts matched these rules. Runs through three
+of the rooms gave 3797 frames in the air and 1857 frames on the ground. Frames on ropes are not counted. In the air, the
+ground below matched these rules on every frame. That includes 18 frames
+in a skipped column, 3 of them with ground one or two bands below that
+was not found. On the ground, the feet line was the ground below on
+every frame.
+
+The player was also placed in the air at 4800 points, at level x 0 to
+4095 and feet lines in bands 1 to 113. The points were chosen so that
+every step of the rules came up. Where the player was still in the air
+after one frame, the ground below matched every time: 3191 points.
+Where the player landed in that frame, the landing line was the ground
+below the feet line at the end of the frame every time: 1609 points.
+In 23 of them that was one line below where the player was placed,
+because the player had been placed on a band's bottom line.
+
+The rules were also checked against the game's own way of finding the
+ground below, for every column and band of the grid, and every third
+feet line. There were no differences.
+
+### Example (synthetic)
+
+A row grid of 3 bands. Its type table has type 1 as in the column
+grid example (shape 5 in both halves: flat at rise 15) and type 3 with half
+bytes 0x01, 0x01 (shape 1 in both halves: flat at rise 31, the band's
+top line). Band 2's row holds type 1 at columns 16 and 17. Band 1's row
+holds type 3 at column 17. Every other cell word is 0. As cell words:
+number 64·2 + 16 = 144 and 145 hold 0x0001, and number 64 + 17 = 81
+holds 0x0003.
+
+- Surface at `x` = 550 (column 17), band 2: rise 15 → line 32·2 + 32 −
+  15 = 81. Band 1: line 33.
+- Ground below `x` = 550, `F` = 10 (band 0): band 0 is empty, band 1
+  has 33 → 33.
+- Ground below `x` = 520 (column 16, a multiple of 16), `F` = 10 (band
+  0): band 0 is empty, so step 3 is skipped → no ground. With `F` = 70
+  (band 2): band 2 has 81 → 81.
+- `x` = 2048 + 550 = 2598 is column 81 = 64 + 17. In band 0 it reads
+  cell word 81, the one stored at column 17 of band 1's row, and gives a
+  band-0 surface at its top line: line 1. In band 1 it reads cell word
+  145 (rise 15) → line 32 + 32 − 15 = 49.
+- Ground below `x` = 2598, `F` = 40 (band 1): 49. With `F` = 60: 49
+  again, above `F`.
+
+More cases, as bytes, are in `../vectors/level-ground/` (the `rows-`
+files).
+
 ## Not covered
 
 - Whether being passable from below matters for anything other than
   the player (walkers, carried and thrown objects).
 - What bit 15 of a cell word means.
-- The other kinds of grid: one for levels taller than 512 px, and
-  another kind. Some levels may also use a second grid.
+- The third kind of grid. Like a row grid, it is stored row by row and
+  can be tall, but its shapes are not the ones in "Shapes". Some levels
+  may also use a second grid.
+- In row grids: band 0's top line in step 2, a feet line of 0 or less,
+  and bands past the grid's last band in step 3. All the rooms measured
+  were inside the grid.
 - Where a level's grid, type table and `N` are stored, and which part
   of a grid each level uses (its left and right ends). These belong to a
   later part of the level format.
