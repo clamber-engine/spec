@@ -4,6 +4,27 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Part of `spec` #11 (movement profiles): being hurt in `title-2` with one
+character (the knock-out). The issue stays open for the rest of
+`title-2` and for `title-3`.
+
+- `behavior/knock-out.md`: new section "In `title-2`". The hit frame
+  moves as an ordinary frame, then sets `vx` −1 and `vy` −5.5 and faces
+  right (knocked left in every measured hit; all walkers measured headed
+  left). A 6-frame pause between H + 1 and H + 2 (walkers skip H + 1 and
+  move once in the pause). Flight with gravity 0.234375, cap 8, landing
+  as in `title-2` falls, sliding left at 1 px per frame after landing. A
+  hop (`vy` −2.5) on the first frame from H + 48 on the floor, then `vx`
+  loses an eighth per frame (rounded toward 0) and is 0 from P + 32. The
+  player leaves after the later of H + 189 and P + 140, and the level
+  ends. Trace fields, a worked example on flat floor, Evidence and
+  "Not covered in `title-2`". `Titles:` now reads `title-1`, `title-2`.
+- `behavior/walker-contact.md` ("In `title-2`"): the measurements were
+  made with the lead character alone, not with the other character
+  following (corrected). The hurt bullet in "Not covered in `title-2`"
+  now points to `knock-out.md`.
+- `TITLES.md`: `knock-out.md` added to the `title-2` row.
+
 ## spec-v0.49.0
 
 Answers `spec` #12: when a turn starts while the player is moving in
