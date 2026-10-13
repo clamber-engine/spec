@@ -140,8 +140,11 @@ Everything in this section was measured on `title-2` only, with the lead
 character at the start of a game, on flat ground. A **press** of Action
 is, as above, a frame where Action is held after a frame where it was not
 held. Speed, size and steering during a roll are in `roll-speed.md` ("In
-`title-2`"). Reference traces for `title-2` don't exist yet, so this
-section names frames, not trace states.
+`title-2`"). This section names frames. In traces, the roll's 31 frames
+(S to S + 30, below) have state `roll`, with `roll_start` on S; D is the
+first frame after the roll and carries `roll_end`, whether the roll ends
+in a stop or carries on into running (see
+`traces/reference/title-2/roll-flat.trace`).
 
 ### On the ground (`title-2`)
 

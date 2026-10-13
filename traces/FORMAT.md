@@ -2,8 +2,8 @@
 
 A trace records one run of a scenario, one row per logic frame. Reference
 traces come from the original game through the research harness and live
-in `reference/<scenario-id>.trace` once a gatekeeper has approved them.
-The engine writes traces in the same format.
+in `reference/` once a gatekeeper has approved them (see "Where reference
+traces live"). The engine writes traces in the same format.
 
 ## Example
 
@@ -89,7 +89,28 @@ harness must document how it detects this in the research repo.
   shows something the vocabulary doesn't cover, extend the vocabulary in
   the same pull request.
 - Every reference trace has a `# title:` line.
-- One trace per scenario. If a scenario is re-recorded, the new trace
-  replaces the old one and the change is noted in `CHANGELOG.md`. How
-  one scenario gets reference traces for more than one title is not
-  specified yet; every reference trace so far is `title-1`.
+- One reference trace per scenario and title. If a scenario is
+  re-recorded on a title, the new trace replaces the old one and the
+  change is noted in `CHANGELOG.md`.
+
+## Where reference traces live
+
+| Title | Path |
+|---|---|
+| `title-1` | `reference/<scenario-id>.trace` |
+| Any other title | `reference/<title-id>/<scenario-id>.trace`, for example `reference/title-2/roll-flat.trace` |
+
+The `title-1` paths are the ones used before other titles had traces and
+don't change. A trace's `# title:` line always names the title its path
+belongs to (`title-1` for a file directly in `reference/`). A
+scenario can have a reference trace for some titles and not others;
+`../TITLES.md` lists which traces exist for each title.
+
+To compare an engine run against a title, take the reference trace at
+that title's path. If there is none, the scenario has no reference for
+that title: the comparison is not run, and is reported as missing, not as
+a pass or a fail.
+
+The same scenario file is used for every title. The place in the
+original that a trace was recorded at fits the scenario's `requires`; it
+can be a different place for each title.
