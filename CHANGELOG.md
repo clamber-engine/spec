@@ -4,6 +4,17 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers `spec` #13 (walk-off-ledge drop).
+
+- `scenarios/walk-off-ledge.scn`: `requires` now asks for an exact drop
+  that matches each reference trace, 176 px for `title-1` and 128 px for
+  `title-2`, instead of "at least 96 px". With a smaller drop the player
+  lands inside the 30-frame curve, so even an engine that follows
+  `walk-off.md` exactly differs from the reference in `y`. Also requires
+  a plain edge with no steep face (a face carries the player down before
+  `leave_ground`, which changes the drop) and flat ground with nothing in
+  the way as far as the player walks (under 200 px past the edge).
+
 ## spec-v0.50.0
 
 Part of `spec` #11 (movement profiles): being hurt in `title-2` with one
