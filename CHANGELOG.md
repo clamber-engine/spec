@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.56.0
+
 Coverage work (`title-2`); answers no `spec` issue. Rolling into walkers.
 
 - `behavior/rolling-into-walkers.md`: new section "In `title-2`". Every
