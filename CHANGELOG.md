@@ -4,6 +4,23 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers `spec` #12: when a turn starts while the player is moving in
+`title-1`.
+
+- `behavior/ground-speed.md`: new section "Standing, walking and
+  running" (`title-1`). Outside turns the player is standing, walking
+  or running. Walking and running go through a 20-step stride cycle
+  whose speed depends on |`vx`|. Turn checks come at the end of set
+  steps, and a turn can start only then. The same checks decide when
+  the player stops walking or running, and run checks decide when
+  walking becomes running. The section also covers mode changes when
+  standing, at the end of a turn and when Action is released while
+  running, with a worked example, evidence and its own "Not covered"
+  list. "Facing and turns" now points to it: "From standing still"
+  becomes "While standing" (standing can include sliding), and the
+  delay is no longer listed as not covered.
+- `behavior/movement-summary.md`: facing row and "Not covered" updated.
+
 ## spec-v0.48.0
 
 Part of `spec` #11 (movement profiles): which `title-2` walker contacts

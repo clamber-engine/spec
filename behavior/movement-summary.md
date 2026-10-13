@@ -34,7 +34,7 @@ of 1 px in 4 don't change any of this (`slopes.md`).
 |---|---|---|
 | Starting from rest | `vx` 0.25, 0.46875, 0.66015625, … toward the target | `ground-speed.md` |
 | Running | Action held with a direction; an Action *press* starts a roll instead | `ground-speed.md`, `roll-input.md` |
-| Facing on the ground | A turn lasts 8 frames, facing changes 4 frames in; from standing it starts at once. Speed is never affected. The delay before a turn starts while moving is not specified yet | `ground-speed.md` |
+| Facing on the ground | A turn lasts 8 frames, facing changes 4 frames in; from standing it starts at once. While walking or running it starts only on a turn check of the stride cycle (0 to 7 frames' delay walking, 0 to 12 running). Speed is never affected | `ground-speed.md` |
 | Crouch (Down) | Target 0 from the second frame Down is held until 10 frames after release | `ground-speed.md` |
 | Steep faces and walls | Blocking, being carried down faces, leaving the ground on them | `steep-faces.md` |
 
@@ -93,7 +93,7 @@ same (`second-character.md`).
 
 ## Not covered
 
-What each file lists under "Not covered", and in particular: when a
-turn starts while moving, ledges without a face at the top, rolls off
-ledges other than normal rolls going right, and every title other than
-`title-1`.
+What each file lists under "Not covered", and in particular: the
+walking and running modes after landings and rolls, ledges without a
+face at the top, rolls off ledges other than normal rolls going right,
+and every title other than `title-1`.

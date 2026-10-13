@@ -118,7 +118,8 @@ changes through a **turn**, which lasts 8 frames, T to T + 7. Facing
 changes on frame **T + 4** (the row carrying the `turn` event). The turn
 has no effect on speed: the speed rule above applies on every frame of it.
 
-- **From standing still** (`vx` 0, not moving): holding the direction
+- **While standing** (a mode defined in "Standing, walking and running"
+  below; it includes standing still with `vx` 0): holding the direction
   opposite to facing starts a turn on that same frame (T = the first frame
   it is held). Holding it for one frame is enough: the turn completes and
   facing changes on T + 4 even if nothing is held afterwards, or if the
@@ -127,9 +128,160 @@ has no effect on speed: the speed rule above applies on every frame of it.
   held on T + 8, a new turn starts on T + 8. Example: walking right, Left
   held for 5 frames and then Right: facing becomes left 4 frames into the
   first turn and right again 4 frames into the second.
-- **While moving**, holding the opposite direction starts a turn after a
-  delay of 0 to 12 frames (measured). The delay depends on the player's
-  recent movement in a way this spec doesn't define yet; see "Not covered".
+- **While walking or running**, a turn can start only on frames with a
+  turn check, which come at set points of the stride cycle below. If the
+  opposite direction is held on such a frame, the turn starts on that
+  frame. Holding it on other frames does nothing and isn't remembered. In
+  practice the turn starts 0 to 7 frames after the opposite direction is
+  first held when walking, and 0 to 12 frames when running.
+
+### Standing, walking and running
+
+This section is `title-1` only. It decides when a turn can start. It has
+no effect on speed: the speed rule applies on every frame.
+
+Outside a turn, the grounded player is always in one of three **modes**:
+standing, walking or running. The mode isn't a trace column, and it isn't
+the trace's `state` (`traces/VOCABULARY.md`: `idle` means not moving
+horizontally). A standing player can still be sliding (`vx` not 0),
+for example after a turn that ends with no direction held.
+
+In this section **forward** is the direction the player faces and
+**opposite** is the other one. "A direction held" means Left or Right
+held alone. **v** is |`vx`| in 1/256 px per frame on the current frame,
+after the speed rule. The direction the player is moving in doesn't
+matter.
+
+#### The stride cycle
+
+While walking or running, the player goes through a cycle of 20
+**steps**, numbered 1 to 20. Step 1 follows step 20. A **stride counter**
+measures progress through the current step:
+
+- When walking or running starts, the cycle starts at step 1 and the
+  counter is set to 256. Nothing else happens on that frame. This applies
+  every time the mode becomes walking or running (see "Changing mode"
+  below), and also when walking starts again at a turn check.
+- On each later frame in the same mode, the counter goes down by the
+  **stride rate** for that frame's v. If the result is 0 or less, the
+  current step **ends** on that frame: 256 is added to the counter and the
+  next step begins.
+
+| Mode | Stride rate |
+|---|---|
+| Walking | ⌊v/4⌋ + ⌊v/8⌋ − 32, but at least 96 |
+| Running | ⌊v/8⌋ + ⌊v/16⌋ + ⌊v/32⌋, but at least 96 |
+
+⌊ ⌋ rounds down. Walking below v = 344 and running below v = 448, the
+rate is 96, and a step lasts 2⅔ frames. Walking at 2 px per frame
+(v = 512) the rate is 160: a step lasts 1.6 frames and the cycle 32
+frames. Running at 3 px per frame (v = 768) the rate is 168 and the cycle
+lasts 20 × 256 / 168 ≈ 30.5 frames. On flat ground v stays at or below
+768, so at most one step ends on a frame.
+
+#### When a step ends
+
+Some steps end with a **turn check**, and some walking steps with a
+**run check**. A check is made on the frame its step ends, using that
+frame's inputs and v:
+
+| Mode | Turn check at the end of steps | Run check at the end of steps |
+|---|---|---|
+| Walking | 1, 3, 6, 8, 11, 14, 16, 19 | 2, 4, 6, 9, 12, 14, 17, 20 |
+| Running | 1, 2, 4, 6, 8, 10, 12, 14, 16 | none |
+
+**Turn check while walking:**
+
+1. If the opposite direction is held, a turn starts on this frame.
+2. Otherwise, if v < 48: with no direction held, the player is standing
+   from this frame. With forward held, walking starts again at step 1
+   (counter 256).
+3. Otherwise nothing happens.
+
+**Turn check while running:**
+
+1. If the opposite direction is held, a turn starts on this frame.
+2. Otherwise, if v < 128 and no direction is held, the player is
+   standing from this frame.
+3. Otherwise nothing happens. With forward held, running carries on
+   however slow the player is.
+
+**Run check** (walking only): if Action is held and a direction is held
+(either one), running starts on this frame at step 1 (counter 256). On
+steps 6 and 14 the turn check comes first, and the run check is made
+only if the turn check changed nothing.
+
+#### Changing mode at other times
+
+- **Standing:** holding the opposite direction starts a turn on that
+  frame, at any speed. Holding forward starts walking on that frame. This
+  is walking even with Action held: running only comes through a run
+  check. With no direction held the player stays standing.
+- **End of a turn** (T + 8): if the opposite direction (to the new
+  facing) is held, a new turn starts, as above. With no direction held,
+  the player is standing. With forward held, running starts if Action is
+  held and v ≥ 512, and walking starts otherwise.
+- **Running with Action released:** walking starts at step 1 on any frame
+  on which Action isn't held, a direction is held, v < 640 and step 1 of
+  the current run has already ended (including the frame it ends). On a
+  frame with a turn check, this comes after the check, and only if the
+  check started no turn and didn't make the player stand. Before step 1
+  of the run has ended, the player keeps running.
+
+#### Example
+
+From standing still, Right held from frame 0 (speeds as in "Worked
+values"):
+
+| Frame | `vx` (1/256) | Mode | Counter after the frame | Step ended |
+|---|---|---|---|---|
+| 0 | 64 | walking starts | 256 | |
+| 1 | 120 | walking | 160 | |
+| 2 | 169 | walking | 64 | |
+| 3 | 211 | walking | 224 | 1 (turn check) |
+| 4 | 248 | walking | 128 | |
+| 5 | 281 | walking | 32 | |
+| 6 | 309 | walking | 192 | 2 (run check) |
+| 7 | 334 | walking | 96 | |
+| 8 | 356 | walking | 251 | 3 (turn check) |
+
+The rate is 96 up to frame 7 and 101 on frame 8. Left held from frame 3
+gives a turn on frame 3. Left held from frame 4 gives a turn on frame 8,
+and facing changes on frame 12. Left held from frame 9 on: the speed falls (248, 153, 70,
+−2, −65, −120, −169, −211), the rate stays 96, steps 4 and 5 end on
+frames 11 and 14 without a turn check, and step 6 ends on frame 16 with
+a turn check, so the turn starts on frame 16.
+
+#### Evidence
+
+All by inputs, with the lead character on flat ground, from standing
+still. Each run was checked from its first standing frame after its last
+landing, using only each frame's inputs and `vx`.
+
+- 603 runs, 285918 frames, 5541 turn starts, 0 mismatches in mode, turn
+  start or facing:
+  - 320 runs of random Right, Left and no-direction segments (1 to 40
+    frames), each with Action either never pressed or held from mid-air
+    through the landing. In one set of 160, runs holding Action released
+    it for good at a random frame.
+  - 123 scripted runs: reversals after walking or running and then
+    releasing for 0 to 40 frames, opposite-direction taps of 1 to 3
+    frames at 20 points of a walk, and Action released 0 to 14 frames
+    after running starts.
+  - 160 further random runs of both kinds, checked only after the rules
+    were fixed.
+- Walking from standing still and holding the opposite direction from
+  frame 1, 2, … 129 on: the turn starts on the frame these rules give
+  with `vx` from the speed rule, in all 129 cases.
+
+#### Not covered (`title-1` modes)
+
+- Which mode the player is in, and where the stride cycle starts, after
+  a landing, a roll or the stop after it, crouching, the Down + Action
+  ground action, being hit or a swap. This includes whether a turn can
+  start on the frames just after a landing.
+- Left and Right held together, Down, slopes, walls, carrying, and the
+  second character.
 
 ## Crouching
 
@@ -317,7 +469,8 @@ All runs were by inputs, with the lead character on flat ground.
 
 This list is for `title-1`; `title-2` has its own list above.
 
-- When a turn starts while the player is moving (the delay above).
+- When the walking and running modes start after landings, rolls and
+  other actions (see "Not covered (`title-1` modes)").
 - Air control: horizontal speed while jumping or falling, and on the
   landing frame.
 - Moving platforms, and the frame before walking off a ledge
