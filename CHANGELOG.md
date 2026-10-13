@@ -4,7 +4,10 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
-Coverage (`title-1`): a second kind of level grid.
+## spec-v0.53.0
+
+Coverage work (`title-1`); answers no `spec` issue. A second kind of
+level grid.
 
 - `formats/level-ground.md`: new section "Row grids". These grids are
   stored row by row, 64 cells (2048 px) per row, and can be far taller
