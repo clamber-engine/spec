@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.50.1
+
 Answers `spec` #13 (walk-off-ledge drop).
 
 - `scenarios/walk-off-ledge.scn`: `requires` now asks for an exact drop
