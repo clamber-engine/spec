@@ -4,6 +4,16 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage work (`title-1`); answers no `spec` issue. Turning around on
+1-in-4 slopes.
+
+- `behavior/slopes.md`: new section "Turning around on a slope". Turns
+  start, last and change facing as on flat floor, from standing, walking
+  and running, uphill and downhill; `y` follows the floor rule
+  throughout. Example and evidence. Removed from "Not covered".
+- `behavior/ground-speed.md`: "Not covered (`title-1` modes)" points to
+  it for 1-in-4 slopes.
+
 ## spec-v0.53.0
 
 Coverage work (`title-1`); answers no `spec` issue. A second kind of
