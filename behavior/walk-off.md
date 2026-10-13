@@ -334,7 +334,9 @@ after all sets were recorded.
 ### Not covered in `title-2`
 
 - Ledges with a face or a slope at the top, moving platforms, and the
-  second character. Going down 1-in-2 and 1-in-4 slopes never made the
+  second character. Walking onto a steep face from the floor above it,
+  and leaving the ground on one, are in `steep-faces.md` ("In
+  `title-2`"). Going down 1-in-2 and 1-in-4 slopes never made the
   player leave the ground (`slopes.md`, "In `title-2`").
 - Action pressed on L: a roll was seen to start there, which wasn't
   studied. (An Action press from L + 1 on starts nothing and counts as

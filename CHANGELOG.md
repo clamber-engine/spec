@@ -4,6 +4,27 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Part of `spec` #11 (movement profiles): steep faces in `title-2`. The
+issue stays open for the rest of `title-2` and for `title-3`.
+
+- `behavior/steep-faces.md`: new section "In `title-2`". Two faces of
+  the `title-1` shape (4 px per column), both rising to the right. Being
+  stopped by a rise is as in `title-1`. There is no "can't start" rule, so
+  a player holding toward a face repeats a 3-frame cycle (2 with Action
+  held). Face frames (a grounded frame starting in a face column): on
+  each frame after one, the target is moved 1 px per frame downhill. On
+  a face frame the speed is limited, more than 2.25 downhill becoming 2
+  and less than 0.75 downhill becoming 0.75. The player follows drops of
+  up to 8 px and leaves the ground on more (`y` + 8, `vy` 1/256, then
+  + 0.4375 per frame). Getting onto a face from the floor above: 3 px is
+  followed, 7 and 11 px leave as off a ledge. Facing downhill on face
+  frames. Examples, Evidence and "Not covered in `title-2`". `Titles:`
+  now reads `title-1`, `title-2`.
+- `TITLES.md`: `steep-faces.md` added to the `title-2` row.
+- `behavior/ground-speed.md`, `roll-input.md`, `roll-speed.md` and
+  `walk-off.md` ("Not covered in `title-2`"): point to `steep-faces.md`
+  for steep faces.
+
 ## spec-v0.50.1
 
 Answers `spec` #13 (walk-off-ledge drop).
