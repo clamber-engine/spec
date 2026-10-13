@@ -286,7 +286,8 @@ listed inputs.
   jumps during them, in `rolling-off-ledges.md` ("In `title-2`").
 - The frames after the landing frame (turns that start there; rolls are
   in `roll-input.md`, "In `title-2`").
-- Walls and ceilings in the air, and the second character. Bounces are
+- Ceilings, and the second character. Walls met in the air are in
+  `air-walls.md` ("In `title-2`"). Bounces are
   in `bounce.md` ("In `title-2`"); jumps from slopes and landing on them
   in `slopes.md` ("In `title-2`").
 

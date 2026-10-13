@@ -231,6 +231,11 @@ The 3 px applies only on sloped pieces. Falls that ended a frame within
 3 px above flat floor without reaching it didn't land on that frame,
 including on the first flat column after a slope.
 
+This was measured on 1-in-2 and 1-in-4 slopes. At a steep face the
+margin was seen to follow the column instead of the piece: 3 px on face
+columns, and 0 on 8 columns of flat floor that share a piece with the top
+of a face (`air-walls.md`, "In `title-2`").
+
 ### Examples (`title-2`)
 
 A synthetic floor of four pieces: columns 0 to 15 flat at `y` = 0;

@@ -4,6 +4,24 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Part of `spec` #11 (movement profiles): walls in the air in `title-2`.
+The issue stays open for the rest of `title-2` and for `title-3`.
+
+- `behavior/air-walls.md`: new section "In `title-2`". Only the column
+  `x + vx` moves into is compared (columns passed over are not); a face
+  column blocks from 1 px above the feet (less than 1 px doesn't), other
+  floor blocks from 5 px and is stepped onto from 1 to 4 px (`title-1`:
+  8). Rising step-onto lifts by whole pixels and keeps the fraction of
+  `y`. Landing with the 3 px margin on face columns and none elsewhere;
+  `vy` exactly 0 lands. Synthetic examples. Title-1 "Not covered" list
+  marked as `title-1` only.
+- `behavior/slopes.md` ("In `title-2`"): the 3 px landing margin follows
+  the column, not the piece, at a steep face.
+- `behavior/steep-faces.md`, `behavior/air-control.md` ("Not covered in
+  `title-2`"): point to `air-walls.md`; jumps from a face stay not
+  covered.
+- `TITLES.md`: `air-walls.md` added to the `title-2` row.
+
 ## spec-v0.51.0
 
 Part of `spec` #11 (movement profiles): steep faces in `title-2`. The
