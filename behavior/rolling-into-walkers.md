@@ -1,6 +1,6 @@
 # Rolling into walkers
 
-Titles: `title-1`
+Titles: `title-1`, `title-2`
 
 What happens when a rolling player meets a walker (`walker.md`): on which
 frames and at which offsets the walker is defeated, the pause that
@@ -253,7 +253,189 @@ Without the walker, the second roll would have ended in a stop with
 - No event in the trace vocabulary marks a defeat.
 - `roll_start` and `roll_end` are as in "The boost".
 
+## In `title-2`
+
+Everything in this section was measured on `title-2` only, with the lead
+character alone, on flat floor, on the walkers of the first level
+(`walker.md`, "In `title-2`"), each heading left at full speed when met.
+When a roll starts, how long it lasts and how it ends are in
+`roll-input.md` ("In `title-2`"), and its speed in `roll-speed.md` ("In
+`title-2`"). This section uses their names: **S** is a roll's first frame,
+its 31 **roll frames** are S to S + 30, and **D** is the frame after them.
+**K** is the frame on which a walker is defeated. The offset **I** and
+the poses are as in `walker-contact.md` ("In `title-2`"): I is the
+player's `x` at the end of the frame minus the walker's `x` at the end of
+the frame before, both rounded down to whole pixels.
+
+### Attack frames (`title-2`)
+
+A walker can be defeated only on a **roll frame**, S included. These are
+not attack frames:
+
+- D, whether the roll ends in a stop or carries on into running, and the
+  whole stop;
+- the two frozen frames after a defeat (below);
+- the frame G on which a Jump press ends a roll in a jump, and the rest
+  of that jump.
+
+### When a walker is defeated (`title-2`)
+
+On a roll frame K, a walker is defeated on K when I is within the defeat
+range (both ends included):
+
+| Player facing (at the end of K) | I |
+|---|---|
+| right | −25 to 27 |
+| left | −20 to 32 |
+
+The range facing left is the range facing right moved 5 px to the right.
+It is the same on every roll frame, for slow, normal and fast rolls and
+for the faster rolls after a defeat (below), at every speed.
+
+Contact on a roll frame never hurts the player.
+
+### Being hurt around a roll (`title-2`)
+
+- **Before the roll.** The frame before S is not special: the hurt rule
+  of `walker-contact.md` applies with the pose the player has then. S is
+  a roll frame, so a walker in the defeat range on S is defeated. Unlike
+  `title-1`, there is no hurt on S.
+- **The stop.** On D to D + 13 a walker hurts the player when I is within
+  the defeat range above (it isn't defeated). On D + 14 the standing range
+  of `walker-contact.md` applies, and the usual rules from D + 15.
+- **A roll that carries on into running**, with or without a boost
+  (below). From D the hurt rule of `walker-contact.md` applies with the
+  walking or running ranges.
+- **A jump out of a roll.** From G the hurt and bounce rules of
+  `walker-contact.md` apply with the "in the air" ranges.
+
+### The pause (`title-2`)
+
+On **K** the player moves as on any roll frame, with the roll's speed
+before the defeat.
+
+On **K + 1** and **K + 2** the player doesn't move: `x`, `vx` and facing
+stay as they were at the end of K. Every walker, the defeated one and any
+other, also doesn't move on these two frames. Inputs on K + 1 and K + 2
+are lost: a direction held only on these frames steers nothing, and a
+Jump or Action press made on them does nothing, even if the button is
+still held on K + 3 (it isn't a new press then). A direction still held
+on K + 3 counts from K + 3, as on any roll frame.
+
+### How the roll goes on (`title-2`)
+
+What happens from K + 3 depends only on whether Action is held on K
+itself (held since before, or pressed on K).
+
+**Action not held on K.** The roll goes on where it stopped: its 31 roll
+frames are counted without K + 1 and K + 2, so D = S + 33 after one
+defeat. Since Action
+wasn't held on every frame of the roll, the roll ends in a stop, D to
+D + 14, as in `roll-input.md` ("In `title-2`"), 2 frames later than
+without the defeat. Size and steering are unchanged.
+
+**Action held on K (the boost).**
+
+- The roll's size grows by **1** (256/256): slow 1.125 becomes 2.125
+  (544/256), normal 3.375 becomes 4.375 (1120/256), fast 4.5 becomes 5.5
+  (1408/256). The speed moves toward the new target from K + 3 (on K it
+  still follows the old one).
+- A **new run of 31 roll frames** starts on K + 3: K + 3 to K + 33, and
+  D = K + 34.
+- The roll always **carries on into running** on D, whatever Action does
+  after K and whatever the size: D still moves at the roll's speed and
+  from D + 1 the player walks or runs normally (`roll-input.md`).
+- Steering works on every roll frame from K + 3 on, K + 3 included,
+  as in `roll-speed.md` ("In `title-2`").
+
+A walker met during the new roll frames is defeated by the same rules,
+with the same pause; with Action held on that K, the size grows by 1
+again (normal 3.375 → 4.375 → 5.375, fast 4.5 → 5.5 → 6.5) and another
+31 roll frames start. Chains of two defeats were measured.
+
+A Jump press on a roll frame from K + 3 on ends the roll in a jump as in
+`roll-speed.md` ("Jumping out of a roll"), with the roll's size at that
+time.
+
+### The walker (`title-2`)
+
+From K the defeated walker moves as a walker bounced on
+(`walker.md`, "Being bounced on (`title-2`)") with B = K: on K it
+doesn't move, its `vx` becomes −1 if the player faces right at the end
+of K and +1 if the player faces left, and its `vy` becomes −8; it
+doesn't move on K + 1 and K + 2; from K + 3 it moves by `vx` and `vy`,
+then `vy` increases by 0.4375, up to 12. It also doesn't move on the two
+frozen frames of a later defeat in the same chain. When it is removed
+isn't specified.
+
+### Examples (`title-2`)
+
+Synthetic, from the rules above. The player stands facing right at `x`
+100 and presses Action and Right on frame 0 (S = 0, a normal roll);
+Right stays held. A walker heads left at full speed and is at `x`
+160.875 at the end of frame −1. I uses the walker's position at the end
+of the frame before.
+
+**Action on frame 0 only:**
+
+| Frame | Input | `x` | `vx` | State | Events | Notes |
+|---|---|---|---|---|---|---|
+| 0 | RA | 100.421875 | 0.421875 | roll | `roll_start` | |
+| 11 | R | 121.5234375 | 2.6796875 | roll | | I = 121 − 149 = −28: no defeat |
+| 12 | R | 124.2890625 | 2.765625 | roll | | I = 124 − 148 = −24: K |
+| 13 | R | 124.2890625 | 2.765625 | roll | | pause |
+| 14 | R | 124.2890625 | 2.765625 | roll | | pause |
+| 15 | R | 127.12890625 | 2.83984375 | roll | | size 3.375 |
+| 32 | R | 181.02734375 | 3.30859375 | roll | | the 31st roll frame |
+| 33 | R | 184.34375 | 0 | idle | `roll_end` | D = S + 33: the stop |
+
+**Action held from frame 0:** frames 0 to 14 as above (input `RA`), then
+
+| Frame | Input | `x` | `vx` | State | Events | Notes |
+|---|---|---|---|---|---|---|
+| 15 | RA | 127.25390625 | 2.96484375 | roll | | size 4.375 |
+| 16 | RA | 130.39453125 | 3.140625 | roll | | |
+| 45 | RA | 248.4921875 | 4.3359375 | roll | | K + 33 |
+| 46 | RA | 252.83203125 | 4.33984375 | run | `roll_end` | D = K + 34: carries on |
+
+### In a trace (`title-2`)
+
+- Every frame from S to the frame before D has state `roll`, including
+  K + 1 and K + 2 and the roll frames after a boost. On K + 1 and K + 2,
+  `x` and `vx` repeat the values of K.
+- `roll_start` is only on S; D carries `roll_end`. No event marks a
+  defeat or a boost.
+
+### Evidence (`title-2`)
+
+23 478 placements of a walker at chosen offsets from the player, one
+pixel apart, on every frame of slow, normal and fast rolls both ways, of
+the stop, of a roll carrying on into running, before a roll, and on the
+last frames and the D of a boosted roll: 8 586 defeats and 5 226 hurts,
+all as this section says, with no gaps in any range. By inputs, 700 runs (94 277 frames) with random approach
+distances, Action holds, releases and presses, steering, Jump and Down
+presses, both facings, and a second walker for chains (made by copying
+the first one; it walked and was defeated like a natural one): 389
+defeats (84 facing left), 144 boosts (13 of them a second boost in the
+same chain), 11 317 attack frames, 778 frozen frames, 1 696 stop frames
+and 8 031 frames of defeated walkers, with 0 mismatches. 400 of the runs
+were recorded after the rules were fixed, as a holdout.
+
+### Not covered in `title-2`
+
+- Walkers heading right, walkers not at full speed, and walkers on a
+  different floor from the player; rolls on slopes, off ledges or in the
+  air.
+- Two walkers in range on the same frame, and chains of more than two
+  defeats.
+- Whether a defeated walker can hurt the player while it falls, and when
+  it is removed.
+- Other kinds of enemies, objects other than walkers during the pause,
+  and the second character.
+
 ## Not covered
+
+This list is for `title-1`; `title-2` has its own list above.
 
 - The player facing left into the large walker.
 - Walkers that are turning, speeding up, stopped or frozen: their defeat

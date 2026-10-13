@@ -4,6 +4,23 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage work (`title-2`); answers no `spec` issue. Rolling into walkers.
+
+- `behavior/rolling-into-walkers.md`: new section "In `title-2`". Every
+  roll frame (S included) is an attack frame, with one defeat range per
+  facing at every speed and size; D, the stop and jumps are not. The stop
+  hurts over the same range. Two frozen frames after a defeat, for the
+  player and every walker, with their inputs lost. Action held on the
+  defeat frame itself boosts the roll (size + 1, 31 new roll frames from
+  K + 3, always carries on); otherwise the roll resumes and ends in a
+  stop 2 frames later. The defeated walker moves as a bounced one.
+  Examples, trace rows, evidence and its own "Not covered" list; the
+  file's `Titles:` line now lists `title-2`.
+- `behavior/walker.md`, `behavior/walker-contact.md`,
+  `behavior/roll-input.md`: their `title-2` "Not covered" lists point to
+  it.
+- `TITLES.md`: `title-2` row lists `rolling-into-walkers.md`.
+
 ## spec-v0.55.0
 
 Coverage work (`title-1`); answers no `spec` issue. Crouching on 1-in-4

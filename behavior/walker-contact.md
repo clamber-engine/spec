@@ -294,8 +294,9 @@ walkers on screen): 0 mismatches.
   (frozen, stopped or speeding up) and walkers already bounced on.
 - The exact frame of the switch from the walking or running ranges to
   the standing ranges, and from running to walking (see "Poses").
-- Contact while turning on the ground, rolling, carrying an object or
-  bouncing, and with two walkers on the same frame.
+- Contact while turning on the ground, carrying an object or bouncing,
+  and with two walkers on the same frame. Rolling, and the stop after a
+  roll, are in `rolling-into-walkers.md` ("In `title-2`").
 - Falls that don't start with a jump: they used the "in the air" ranges
   in the 12 contacts seen (11 bounces, 1 hurt), but weren't measured by
   placement.
