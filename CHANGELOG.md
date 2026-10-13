@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.49.0
+
 Answers `spec` #12: when a turn starts while the player is moving in
 `title-1`.
 
