@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.54.0
+
 Coverage work (`title-1`); answers no `spec` issue. Turning around on
 1-in-4 slopes.
 
