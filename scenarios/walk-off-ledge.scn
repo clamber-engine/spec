@@ -1,7 +1,10 @@
 # clamber-scenario v1
 id: walk-off-ledge
 summary: Walk off a ledge without jumping and fall to lower ground.
-requires: a ledge 48 to 64 px ahead, a drop of at least 96 px to flat ground below
+requires: a plain edge (no steep face, behavior/steep-faces.md) 48 to 64 px ahead; below it, flat ground exactly 176 px (title-1) or 128 px (title-2) below the ground the player starts on, flat and with nothing in the way as far as the player walks in the 120 frames (under 200 px past the edge)
+# The drop is the reference's, not a minimum: the 30-frame curve ends the
+# frame before the landing in title-1 and runs through the landing in
+# title-2, so with another drop the landing can move into or within it.
 start: grounded, idle for at least 30 frames, facing right, lead character
 frames: 120
 
