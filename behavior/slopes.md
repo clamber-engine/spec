@@ -8,7 +8,7 @@ Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y` and
 `vy` are as in a trace: down is positive, speeds in px per frame.
 Measured with the lead character on gentle slopes that rise or fall
 **1 px for every 4 px** across, both uphill and downhill, moving right and
-left: walking, running, stopping, standing, jumping (standing,
+left: walking, running, stopping, standing, turning, jumping (standing,
 walking and running jumps, short and long holds) and rolling (normal
 and fast rolls, as named in `roll-speed.md`).
 
@@ -54,6 +54,63 @@ apply on 1-in-4 slopes exactly as on flat floor, uphill and downhill:
 - A player standing still on a slope stays still. There is no sliding.
 - Roll speeds and roll lengths are the same as on flat floor, for
   normal and fast rolls, uphill and downhill, rolling right and left.
+
+## Turning around on a slope
+
+Turns on 1-in-4 slopes are the same as on flat floor. Everything in
+`ground-speed.md` "Facing and turns" and "Standing, walking and running"
+applies unchanged, uphill and downhill, facing either way:
+
+- A turn starts on the same frame as on flat floor: at once while
+  standing, and only on a turn check of the stride cycle while walking or
+  running. The stride cycle runs at the same rate as on flat floor.
+- The turn lasts 8 frames, facing changes on T + 4, and the speed rule
+  applies on every frame of it, as on flat floor.
+- It makes no difference whether the turn ends facing uphill or
+  downhill, or whether the player crosses between flat floor and slope
+  during it.
+- While grounded during a turn, `y` follows "Grounded on a slope": the
+  floor height of the column containing `x`, a whole number, with `vy` 0
+  and `ground` 1. Turning never made the player airborne.
+
+**Example.** On the synthetic floor of "Examples" below (flat to column
+99, then down 1 px every 4 columns): standing still facing right at
+`x` = 94.26953125, `y` = 0, Right held from frame 0 to 23, then Left
+held from frame 24 on. Frame 24 is a turn check, so the turn starts there
+(T = 24). Every row has `ground` 1, `vy` 0 and `state` `walk`.
+
+| Frame | Input | `x` | `y` | `vx` | `facing` | `events` |
+|---|---|---|---|---|---|---|
+| 23 | R | 128.65234375 | 8 | 1.90625 | R | |
+| 24 = T | L | 130.0703125 | 8 | 1.41796875 | R | |
+| 25 | L | 131.0625 | 8 | 0.9921875 | R | |
+| 26 | L | 131.68359375 | 8 | 0.62109375 | R | |
+| 27 | L | 131.98046875 | 8 | 0.296875 | R | |
+| 28 = T + 4 | L | 131.9921875 | 8 | 0.01171875 | L | `turn` |
+| 29 | L | 131.75390625 | 8 | −0.23828125 | L | |
+| 30 | L | 131.296875 | 8 | −0.45703125 | L | |
+| 31 = T + 7 | L | 130.6484375 | 8 | −0.6484375 | L | |
+| 32 | L | 129.83203125 | 8 | −0.81640625 | L | |
+| 33 | L | 128.87109375 | 8 | −0.9609375 | L | |
+| 34 | L | 127.78125 | 7 | −1.08984375 | L | |
+
+The same inputs from standing still on flat floor give the same `vx`,
+`facing` and `events` and the same change in `x` on every frame; only
+`y` differs, and on the slope it is the floor height of each frame's
+column (columns 128 to 131: 8; 124 to 127: 7).
+
+Measured by playing the same input sequences from standing still on
+flat floor and from 16 points on and to the left of a 1-in-4 dip (down,
+a flat bottom, up), and comparing them frame by frame: 1,745 runs,
+128,121 frames, 58,161 of them on slope columns, with no difference. 758
+turns started on slope columns: 311 from standing, 408 from walking speed
+and 39 from above walking speed; 415 ended facing downhill and 343
+uphill.
+The inputs were turns from standing, walking and running (running after
+a roll with Action held), pauses before a turn, quick alternations of
+Left and Right, and random sequences of Left, Right, Action and nothing.
+Runs of the same inputs from different points on flat floor were also
+identical to each other (190 runs).
 
 ## Jumping from a slope
 
@@ -335,7 +392,6 @@ has no margin.
 
 This list is for `title-1`; `title-2` has its own list above.
 
-- Turning around on a slope (all turns measured were on flat floor).
 - Slow rolls on a slope, and grounded speeds above 1014/256 px per frame
   on a slope.
 - Slopes steeper or shallower than 1 in 4, and where a slope meets a

@@ -280,8 +280,10 @@ landing, using only each frame's inputs and `vx`.
   a landing, a roll or the stop after it, crouching, the Down + Action
   ground action, being hit or a swap. This includes whether a turn can
   start on the frames just after a landing.
-- Left and Right held together, Down, slopes, walls, carrying, and the
-  second character.
+- Left and Right held together, Down, walls, carrying, and the second
+  character. On 1-in-4 slopes this section applies unchanged
+  (`slopes.md`, "Turning around on a slope"); other slopes are not
+  covered.
 
 ## Crouching
 
