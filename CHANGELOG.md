@@ -16,6 +16,22 @@ Coverage work (`title-1`); answers no `spec` issue. Turning around on
 - `behavior/ground-speed.md`: "Not covered (`title-1` modes)" points to
   it for 1-in-4 slopes.
 
+Coverage work (`title-1`); answers no `spec` issue. Crouching on 1-in-4
+slopes, and short crouches.
+
+- `behavior/ground-speed.md` "Crouching": a crouch lasts at least 13
+  frames (D to D + 12) even if Down is released sooner; U is the first
+  frame after the crouch, so a shorter press gives the same speeds as a
+  13-frame one. Down held again on U to U + 9 starts a new crouch with
+  target 0 on its first frame as well. Short-press example. Holds of 1 to
+  40 frames are now measured.
+- `behavior/slopes.md`: new section "Crouching on a slope". Crouches on
+  1-in-4 slopes are the same as on flat floor, uphill and downhill; no
+  sliding while crouched; `y` follows the floor rule throughout. Example
+  and evidence. Removed from "Not covered" (the Down + Action ground
+  action on slopes stays there).
+- `behavior/movement-summary.md`: crouch row updated.
+
 ## spec-v0.53.0
 
 Coverage work (`title-1`); answers no `spec` issue. A second kind of

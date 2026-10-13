@@ -291,23 +291,40 @@ This section is `title-1` only; `title-2` crouching is different (see
 "In `title-2`").
 
 Holding Down while grounded (without an Action press on that frame; see
-`roll-input.md`) makes the player crouch:
+`roll-input.md`) makes the player crouch. Call the first frame Down is
+held **D**:
 
-- On the first frame Down is held, the target speed is still the one in
-  the table above.
-- From the next frame, and for as long as Down is held, the target is 0
-  whatever else is held, so the player slows down under the speed rule and
-  can't start moving.
-- When Down is released on frame U, the target stays 0 on frames U to
-  U + 9. From U + 10 the target is the normal one again.
+- On D, the target speed is still the one in the table above.
+- The crouch lasts as long as Down is held, and **at least 13 frames**,
+  D to D + 12, even if Down is released sooner. On every crouch frame
+  after D the target is 0 whatever else is held, so the player slows
+  down under the speed rule and can't start moving.
+- Call the first frame after the crouch **U**: the frame Down is
+  released, or D + 13 if Down was released before that. The target stays
+  0 on frames U to U + 9. From U + 10 the target is the normal one again.
+- Down held again on any frame from U to U + 9 starts a new crouch with
+  that frame as its D, except that the target is 0 on that D as well.
+  The new crouch again lasts at least 13 frames and is followed by its
+  own U to U + 9.
 
 Example: walking at +2 with Right held, Down held on frames 40 to 69 and
 Right on throughout. `vx` is 2 on frame 40, 1.75 on 41, 1.53125 on 42, and
 keeps falling while Down is held and after it is released, to 0.02734375
 on 76 and 0 on 77. It stays 0 to frame 79 and is 0.25 again on frame 80.
 
-Measured with Down held for 30 and 40 frames, from rest, from walking
-speed and from running speed. Shorter holds are not measured.
+Example of a short press: walking right with Right held throughout and
+Down held only on frame 30. Frame 30 is D: `vx` still rises, to
+500/256. The crouch lasts to frame 42 (D + 12) and `vx` falls
+under the target 0 (438/256 on frame 31, 384/256 on 32, … 104/256 on
+42). U is frame 43 (D + 13): the target stays 0 to frame 52, and from
+frame 53 the player speeds up again. A press of 5 frames (30 to 34)
+gives exactly the same speeds.
+
+Measured on flat floor and on 1-in-4 slopes with Down held for 1 to 40
+frames, from rest, from walking speed and from running speed, with Right,
+Left or neither held, with turns, and with Down pressed again 0 to
+12 frames after U: 5,713 runs, every frame as above (742 times Down was
+pressed again between U and U + 9). Crouching on slopes is in `slopes.md`.
 
 ## In `title-2`
 

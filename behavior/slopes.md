@@ -8,8 +8,8 @@ Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y` and
 `vy` are as in a trace: down is positive, speeds in px per frame.
 Measured with the lead character on gentle slopes that rise or fall
 **1 px for every 4 px** across, both uphill and downhill, moving right and
-left: walking, running, stopping, standing, turning, jumping (standing,
-walking and running jumps, short and long holds) and rolling (normal
+left: walking, running, stopping, standing, turning, crouching, jumping
+(standing, walking and running jumps, short and long holds) and rolling (normal
 and fast rolls, as named in `roll-speed.md`).
 
 The sections below up to "In `title-2`" give the `title-1` values. "In
@@ -111,6 +111,66 @@ a roll with Action held), pauses before a turn, quick alternations of
 Left and Right, and random sequences of Left, Right, Action and nothing.
 Runs of the same inputs from different points on flat floor were also
 identical to each other (190 runs).
+
+## Crouching on a slope
+
+Crouching on 1-in-4 slopes is the same as on flat floor. Everything in
+`ground-speed.md` "Crouching" applies unchanged, uphill and downhill,
+facing and moving either way: the target on D, the crouch of at least 13
+frames with target 0, the target 0 on U to U + 9, and Down pressed again
+during U to U + 9.
+
+- A player crouching while standing still on a slope stays where it is:
+  `vx` stays 0 and the player doesn't slide.
+- A player that crouches while moving slows down under the speed rule
+  exactly as on flat floor, and the slope doesn't change the speeds.
+- While grounded during a crouch and the frames after it, `y` follows
+  "Grounded on a slope": the floor height of the column containing `x`,
+  a whole number, with `vy` 0 and `ground` 1. Crouching never made the
+  player airborne.
+
+**Example.** On the synthetic floor of "Examples" below (flat to column
+99, then down 1 px every 4 columns): standing still facing right at
+`x` = 94.26953125, `y` = 0, Right held from frame 0 on, and Down held as
+well on frames 20 to 24. The crouch lasts to frame 32 although Down is
+released on frame 25. Every row has `ground` 1 and `vy` 0.
+
+| Frame | Input | `x` | `y` | `vx` |
+|---|---|---|---|---|
+| 19 | R | 121.1015625 | 6 | 1.8515625 |
+| 20 = D | D+R | 122.96875 | 6 | 1.8671875 |
+| 21 | D+R | 124.60546875 | 7 | 1.63671875 |
+| 22 | D+R | 126.0390625 | 7 | 1.43359375 |
+| 23 | D+R | 127.296875 | 7 | 1.2578125 |
+| 24 | D+R | 128.3984375 | 8 | 1.1015625 |
+| 25 | R | 129.36328125 | 8 | 0.96484375 |
+| 26 | R | 130.2109375 | 8 | 0.84765625 |
+| 31 | R | 133.125 | 9 | 0.44140625 |
+| 32 = D + 12 | R | 133.51171875 | 9 | 0.38671875 |
+| 33 = U = D + 13 | R | 133.8515625 | 9 | 0.33984375 |
+| 34 | R | 134.15234375 | 9 | 0.30078125 |
+| 41 | R | 135.48046875 | 9 | 0.12890625 |
+| 42 = U + 9 | R | 135.59375 | 9 | 0.11328125 |
+| 43 = U + 10 | R | 135.94140625 | 9 | 0.34765625 |
+| 44 | R | 136.4921875 | 10 | 0.55078125 |
+| 45 | R | 137.22265625 | 10 | 0.73046875 |
+
+The same inputs from standing still on flat floor give the same `vx` and
+the same change in `x` on every frame; only `y` differs, and on the slope
+it is the floor height of each frame's column.
+
+Measured by playing the same input sequences from standing still on
+flat floor and from 16 points on and to the left of a 1-in-4 dip (down,
+a flat bottom, up), and comparing them frame by frame: 6,194 runs,
+393,588 frames, 178,281 of them on slope columns, with no difference.
+2,902 crouches started on slope columns: 928 from standing still, 1,789
+from walking speed and 185 from above walking speed (running after a
+roll). The inputs were Down held for 1 to 40 frames from standing,
+walking and running, with Right, Left or neither held during and after
+it, turns into and out of a crouch, Down pressed again just after a
+crouch, and random sequences of Left, Right, Down, Action held and
+nothing. Runs of the same inputs from different points on flat floor
+were also identical to each other (679 runs).
 
 ## Jumping from a slope
 
@@ -399,7 +459,7 @@ This list is for `title-1`; `title-2` has its own list above.
 - Whether the 5 px landing margin is ever decided by the previous
   column's floor (landings measured here were placed on the new column's
   floor in every case; none fell exactly between the two rules).
-- Crouching, and the Down + Action ground action, on slopes.
+- The Down + Action ground action on slopes.
 - Walking off the end of a slope, moving or tilting floors, and enemies
   or objects on slopes.
 - Carrying objects is in `carrying.md`. Its pick-up, carrying and throw
