@@ -4,6 +4,24 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Part of `spec` #11 (movement profiles): which `title-2` walker contacts
+hurt and which bounce.
+
+- `behavior/walker-contact.md`: new section "In `title-2`". Offsets use
+  the player's position after its move on the frame and the walker's
+  position from the frame before; the hurt or bounce happens on that
+  same frame. Horizontal and vertical ranges per pose (standing,
+  crouching, walking, running, in the air, which includes the start of a
+  jump and the landing frames), the same ranges for hurts and bounces.
+  On the ground a contact hurts. In the air it bounces when `vy` after
+  the frame's gravity is at least −1.25 and the player is at most 10 px
+  below the walker, otherwise it hurts. Synthetic examples, own Evidence
+  and "Not covered in `title-2`" lists. `Titles:` now reads `title-1`,
+  `title-2`.
+- `behavior/bounce.md` ("Not covered in `title-2`"): walker contacts now
+  point to `walker-contact.md`.
+- `TITLES.md`: `walker-contact.md` added to the `title-2` row.
+
 ## spec-v0.47.0
 
 Part of `spec` #11 (movement profiles): walkers in `title-2`. The issue
