@@ -155,7 +155,7 @@ every frame, take-off on frame T:
 ## In `title-2`
 
 Everything in this section was measured on `title-2` only, with the lead
-character (the other character following it), on the walkers of the
+character alone (the other character hadn't joined yet), on the walkers of the
 first level. They all have the same size, so `title-2` has one kind of
 walker here. Every walker measured was heading left; walkers heading
 right are not covered. `y` and `vy` are as in a trace (down is
@@ -299,8 +299,8 @@ walkers on screen): 0 mismatches.
 - Falls that don't start with a jump: they used the "in the air" ranges
   in the 12 contacts seen (11 bounces, 1 hurt), but weren't measured by
   placement.
-- The second character, other kinds of enemies, and what happens in a
-  hurt.
+- The second character and other kinds of enemies. What happens in a
+  hurt with one character is in `knock-out.md` ("In `title-2`").
 
 ## Not covered
 

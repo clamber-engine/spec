@@ -1,6 +1,6 @@
 # Knocked out (hit with no other character)
 
-Titles: `title-1`
+Titles: `title-1`, `title-2`
 
 What happens to the player when they take damage while they are the only
 character, from the hit until the level ends. Which contacts with a
@@ -104,7 +104,170 @@ Mirror image when facing left. On flat ground the sequence takes 226
 rows from H to the last frame, plus the 32-frame pause; hits in the air
 or onto lower ground take longer only by the extra flight time.
 
+## In `title-2`
+
+Everything in this section was measured on `title-2` only, with the lead
+character alone (the other character hadn't joined yet), touched by the
+walkers of the first level (`walker-contact.md`, "In `title-2`"): while
+standing (facing toward the walker and away from it), turning, walking
+and running into it, on the frames G and G + 1 of a jump, rising just
+after take-off, and on the landing frame, with the walker on the
+player's right (in front or behind) and on their left, on flat and on
+uneven floor, with many patterns of input from the hit on. Every walker
+measured was heading left. Speeds are whole multiples of 1/256 px per
+frame, written both ways. **H** is the hit frame, as above. The landing
+rule (reaching the floor or going below it lands, with no margin) and
+the floor are as in `walk-off.md` ("Falling (`title-2`)") and
+`slopes.md` ("In `title-2`"); the gravity of the knock-back is its own.
+
+### The hit frame (`title-2`)
+
+1. On H the player first moves exactly as they would have on that frame
+   without the hit: the same horizontal move, and the same vertical move
+   or floor height.
+2. Then `vx` is set to **−1** (−256/256) and `vy` to **−5.5**
+   (−1408/256), and the player faces **right**.
+
+In every measured hit the player was then knocked to the **left** and
+faced right, whichever way they faced before and whichever side the
+walker touched them from. Since every walker measured was heading left,
+whether a walker heading right knocks the player the other way isn't
+known.
+
+From H on, all input is ignored until the level ends, and the player
+faces right on every frame.
+
+### The pause (`title-2`)
+
+Between **H + 1** and **H + 2** the game runs no logic frames for **6**
+frames at 60 Hz (7 in 5 of 104 measured hits). The player doesn't move
+during them. A trace has no rows for them, so in a trace H + 2 directly
+follows H + 1. An engine that runs in real time shows the screen of
+H + 1 for 6 extra frames.
+
+Walkers don't pause in the same way: each walker moves on H, doesn't
+move on H + 1, makes one move during the pause, and moves on every frame
+from H + 2. So by H + 2 each walker has moved as far as if there had been
+no pause and no stop.
+
+### Knock-back flight (`title-2`)
+
+From **H + 1**, on each frame:
+
+1. The player moves horizontally by `vx` (−1).
+2. In the air, `vy` increases by **0.234375** (60/256), but never above
+   **8**, and the player moves vertically by the new `vy`. On H + 1, if
+   the player was on the ground on H, the move starts from the higher of
+   their `y` on H and the floor height under their new `x`, as on the
+   first airborne frame of a jump (`slopes.md`, "Jumping from a slope
+   (`title-2`)"). On flat floor that is their `y` on H.
+3. The `title-2` landing rule applies. After landing, the player stays on
+   the ground and keeps moving left by 1 px per frame, `y` following the
+   floor, until the hop.
+
+Hit standing on flat floor, the player rises 61.8125 px (highest on
+H + 23) and lands on **H + 46**, 46 px to the left.
+
+### The hop (`title-2`)
+
+Call **P** the first frame from **H + 48** on which the player is on the
+floor: H + 48 itself if they landed earlier, otherwise the frame on which
+they land. P starts like any other frame of the flight, and at its end
+`vy` is set to **−2.5** (−640/256). From **P + 1**, on each frame:
+
+1. `vx` moves toward 0 by **one eighth** of itself, rounded toward 0 (in
+   256ths: 256 becomes 224, then 196, 172, 151, 133, …). When one eighth
+   of `vx` rounds to 0, `vx` becomes 0 instead. `vx` is −7/256 on
+   P + 31 and 0 from **P + 32** on.
+2. The player moves horizontally by the new `vx`, on the ground and in
+   the air.
+3. Vertically as in the flight (step 2 above, with P in place of H: P + 1
+   starts from the higher of their `y` on P and the floor under their new
+   `x`). After the hop lands, the player stays on the ground, `y`
+   following the floor.
+
+From P + 32 the player doesn't move. On flat floor the hop rises
+12.109375 px (highest on P + 10) and lands on **P + 21**, and the player
+comes to rest 7.24609375 px left of where they were on P.
+
+### Leaving the level (`title-2`)
+
+The player is in the level up to the **later** of **H + 189** and
+**P + 140**, and is gone on the frame after it. Then the level ends: no
+more frames of the level run. With an early landing (P = H + 48 or
+H + 49), the last frame is H + 189; with P = H + 50 it is H + 190; and
+so on.
+
+### In a trace (`title-2`)
+
+- State `hurt` on every row from H to the last frame with the player.
+  There is no row for the frame on which the player is gone.
+- H: event `hurt`, and `turn` if the player faced left on H − 1. `vx`
+  −1 and `vy` −5.5 (the values set there); `ground` 1 if the player is
+  on the ground after step 1 of the hit frame, else 0.
+- In the air: `ground` 0; `vx` and `vy` are the speeds applied on that
+  frame.
+- A landing row: `y` on the floor, `ground` 1, event `land`, and `vy` 0,
+  unless it is P.
+- P: `vy` −2.5 (the value set there, like the speed shown on a bounce
+  frame in `bounce.md`), `ground` 1, and event `land` if the player
+  lands on P.
+- Other rows on the ground: `vy` 0, `ground` 1, `vx` as applied.
+- No other events (`leave_ground`, `jump_start`, `turn`, …) occur after
+  H.
+
+### Example (`title-2`)
+
+Hit standing on flat floor (P = H + 48). `x` and `y` relative to the
+position on H:
+
+| Frame | `x` | `y` | `vx` | `vy` | Note |
+|---|---|---|---|---|---|
+| H | 0 | 0 | −1 | −5.5 | 6-frame pause between H + 1 and H + 2 |
+| H + 1 | −1 | −5.265625 | −1 | −5.265625 | |
+| H + 2 | −2 | −10.296875 | −1 | −5.03125 | |
+| H + 23 | −23 | −61.8125 | −1 | −0.109375 | highest point |
+| H + 46 | −46 | 0 | −1 | 0 | lands |
+| H + 47 | −47 | 0 | −1 | 0 | |
+| H + 48 | −48 | 0 | −1 | −2.5 | P |
+| H + 49 | −48.875 | −2.265625 | −0.875 | −2.265625 | |
+| H + 50 | −49.640625 | −4.296875 | −0.765625 | −2.03125 | |
+| H + 58 | −53.22265625 | −12.109375 | −0.2734375 | −0.15625 | highest point |
+| H + 69 | −54.79296875 | 0 | −0.07421875 | 0 | lands |
+| H + 79 | −55.24609375 | 0 | −0.02734375 | 0 | last move |
+| H + 80 | −55.24609375 | 0 | 0 | 0 | |
+| H + 189 | −55.24609375 | 0 | 0 | 0 | last frame |
+
+### Evidence (`title-2`)
+
+104 hits, each followed until the level ended: 44 at one walker (9
+standing, turning and walking cases, 27 around jumps, 1 with the walker
+on the player's left, 7 with input held or pressed after H), 42 walking
+and running at two walkers on uneven ground later in the level, and 18
+in which the player was moved up partway through the flight (by 4 to 96
+px, without changing anything else) so that they landed, and P came,
+later (P from H + 48 to H + 59). On 19,711 frames from H + 1 to the frame
+the player is gone, the flight, the slide, the hop, the landings, facing
+and the frame the player leaves match this section with 0 mismatches,
+including 2 frames at the cap of 8. For 86 of the hits, the same run was
+repeated with the walkers moved out of the way: the position on H was
+the same as in that run every time. Input after H (directions held,
+jump, Action, Down and Up, held or tapped) changed nothing.
+
+### Not covered in `title-2`
+
+- Walkers heading right, other kinds of enemies, and hits during a roll,
+  a bounce or while carrying an object.
+- Being hit with two characters (losing one, and the change of lead
+  character), and the second character.
+- Still being in the air on H + 48 was measured only with landings on the
+  floor below the hit (no walls, ledges or pits met in the flight).
+- Protection after a hit: none applies, since this hit ends the level.
+- What happens after the level ends.
+
 ## Not covered
+
+This list is for `title-1`; `title-2` has its own list above.
 
 - Which contacts with other kinds of enemies cause damage (walkers:
   `walker-contact.md`).
