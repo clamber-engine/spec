@@ -4,8 +4,11 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.48.0
+
 Part of `spec` #11 (movement profiles): which `title-2` walker contacts
-hurt and which bounce.
+hurt and which bounce. The issue stays open for the rest of `title-2`
+and for `title-3`.
 
 - `behavior/walker-contact.md`: new section "In `title-2`". Offsets use
   the player's position after its move on the frame and the walker's
