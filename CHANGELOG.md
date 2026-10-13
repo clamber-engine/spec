@@ -4,6 +4,22 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Part of `spec` #11 (movement profiles): reference traces for `title-2`.
+The issue stays open for the rest of `title-2` and for `title-3`.
+
+- `traces/FORMAT.md`: new section "Where reference traces live".
+  `title-1` traces stay at `reference/<scenario-id>.trace`; traces for
+  other titles go in `reference/<title-id>/<scenario-id>.trace`. One
+  reference trace per scenario and title. Comparing against a title with
+  no trace for that scenario is reported as missing, not as a pass or a
+  fail. The format stays v1 and no existing path changes.
+- Traces: new `reference/title-2/roll-flat.trace` and
+  `reference/title-2/walk-off-ledge.trace`. There are no `title-2` traces
+  yet for `run-jump-flat`, `bounce-walker` and `slope-dip`.
+- `TITLES.md`: the `title-2` row lists its reference traces.
+- `behavior/roll-input.md` ("In `title-2`"): which frames of a roll have
+  the trace state `roll`, and where `roll_start` and `roll_end` go.
+
 ## spec-v0.45.0
 
 Answers the `title-2` slopes part of `spec` #11 (movement profiles).
