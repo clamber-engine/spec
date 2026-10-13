@@ -1,6 +1,6 @@
 # Walls in the air
 
-Titles: `title-1`
+Titles: `title-1`, `title-2`
 
 What happens when a player who is jumping or falling moves sideways into
 ground that is higher than their feet: being stopped by it, being lifted
@@ -23,6 +23,10 @@ two vertical steps of 64 px rising to the left; steep faces of 4 px per
 column rising to the right and to the left; and a 3-px rise to the right
 at the top of a face. Where the rules below came from controlled frames
 only, that is said.
+
+The sections below up to "In `title-2`" give the `title-1` rules. "In
+`title-2`" gives the `title-2` rules, which differ in the limits, the
+lift, which columns are looked at and the landing.
 
 ## When the rules apply
 
@@ -151,7 +155,164 @@ face rises from column 200 (`y` = −1, −5, −9, … for columns 200, 201,
 | 6 | 202.71875 | −28.25 | 120 | −940 | 0 | |
 | 7 | 203.37890625 | −31.640625 | 169 | −868 | 0 | Column 203 (`y` −13) is below the feet |
 
+## In `title-2`
+
+Everything in this section was measured on `title-2` only, with the lead
+character, against two steep faces of 4 px per column that rise to the
+right (one 64 px tall, one 96 px tall, each a run of face columns as in
+`steep-faces.md`) and the 3-px rise from the top of each face onto the
+floor beyond it, which is not a face column. Measured by inputs alone
+(624 runs: jumps and falls toward and along the faces, walking and
+running, with jump held for different lengths, and random inputs) and in
+controlled single frames (about 280 000), with enemies kept away. Speeds
+are whole multiples of 1/256 px per frame and are written both ways.
+Columns, face columns and "higher" are as in `steep-faces.md`. **F** is
+the floor `y` of a column, always a whole number.
+
+### When the rules apply (`title-2`)
+
+As in `title-1`: on every frame that starts with the player airborne in a
+jump or a fall, after the frame's new `vx` (`air-control.md`, "In
+`title-2`") and new `vy` (`jump-arc.md`, `walk-off.md`, "In `title-2`")
+are worked out. Take the column `x + vx` would move into.
+
+- If it is the **same column** as before the frame, nothing in this
+  section applies.
+- Otherwise **only that column** is compared with the player's feet.
+  Columns passed over on the way are not looked at: at running speed a
+  frame can cross two or three columns, and a face column 1 px above the
+  feet that was passed over in this way didn't block.
+
+Let **U** = ⌊`y`⌋ − F, with `y` taken **before** the frame's vertical
+move and ⌊`y`⌋ meaning `y` rounded down to a whole number (for example
+⌊−26.3⌋ = −27). U counts the whole pixels by which that column's floor
+is above the player's feet: because F is a whole number, U ≥ *k* exactly
+when `y` − F ≥ *k*.
+
+| The new column is | U | Result |
+|---|---|---|
+| a face column | 1 or more | **Blocked** |
+| a face column | 0 or less (less than 1 px above the feet, or not above) | Unaffected |
+| not a face column | 5 or more | **Blocked** |
+| not a face column | 1 to 4 | **Stepped onto** |
+| not a face column | 0 or less | Unaffected |
+
+So in `title-2`, unlike `title-1`, a face column less than 1 px above the
+feet doesn't block, and the limit for other columns is **4 px**, not 8.
+
+### Blocked (`title-2`)
+
+As in `title-1`: `x` is set to the left edge of the column the player was
+in (the fraction is dropped), `vx` becomes **0**, `y` moves by the
+frame's `vy` as usual, and the player lands on this frame if the landing
+rule (below) lands them on their own column. Facing follows the input as
+in `air-control.md` ("In `title-2`"), the jump's gravity is unchanged and
+no event is added. From the next frame `vx` starts again from 0.
+
+### Stepped onto (`title-2`)
+
+`x` and `vx` are not affected (the player moves into the new column).
+
+- If the frame's `vy` (after its gravity) is **0 or more**, the player
+  lands on this frame on the new column's floor: `y` = F, `vy` 0,
+  `ground` 1, `land` in the row.
+- If `vy` is negative (rising), the whole-pixel part of `y` becomes F and
+  its fraction is kept; then `y` moves by `vy`. So the player is lifted
+  by exactly U whole pixels and, before the move, the feet are still the
+  fraction of a pixel below the new floor. (In `title-1` the lift is the
+  smallest one that brings the feet level with the floor or above it.)
+  The player stays airborne.
+
+### Landing (`title-2`)
+
+On frames that are not stepped onto, the player lands if the frame's
+`vy` is **0 or more** and moving by it takes the feet to:
+
+- the floor or below it, on a column that is not a face column (as in
+  `walk-off.md`, "In `title-2`");
+- **3 px above the floor** or lower, on a face column (the margin of
+  sloped pieces in `slopes.md`, "In `title-2`").
+
+The column is the player's own column after the frame's horizontal move
+(the column they were in, if blocked). On landing, `y` = F, `vy` 0,
+`ground` 1 and the row carries `land`. A frame with `vy` exactly 0 that
+reaches the limit lands; in `title-1` it never does.
+
+The floor at the top of the 96-px face shares a 16-column piece with the
+top 8 face columns, but on those floor columns the margin was **0**, not
+3: falls that ended a frame 0 to 3 px above that floor without reaching
+it stayed airborne (controlled frames only). The margin followed the
+column, not the piece. `slopes.md` ("In `title-2`") measured the piece
+rule on 1-in-2 and 1-in-4 slopes only.
+
+### Measured cases (`title-2`)
+
+| Rise | Direction of move | Seen by inputs | Seen in controlled frames |
+|---|---|---|---|
+| Steep face, 4 px per column, 64 px and 96 px | right | blocked (304 frames, 66 of them landing frames); 240 landings on face columns | blocked at 1 px and more; less than 1 px enters; landings on face columns with the 3 px margin |
+| 3-px rise onto floor beyond a face | right | stepped onto, rising and falling | stepped onto, rising and falling |
+| Floor beyond a face, reached across 2 or 3 columns in one frame, 1 to 16 px above the feet | right | — | stepped onto up to 4 px, blocked from 5 px |
+
+The limits are exact: in steps of 1/256 px, a face column exactly 1 px
+above the feet blocked and one 255/256 px above didn't, and other floor
+exactly 4 255/256 px above the feet was stepped onto while 5 px blocked,
+rising and falling. Horizontal speed, the fraction of `x` and `vy` from
+about −4 to +4.5 px per frame (and exactly 0) made no difference. No
+rise to the left, and no rise taller than 3 px other than faces, was
+available.
+
+### Examples (`title-2`)
+
+Synthetic floor, `y` down-positive: `y` = 0 for columns up to 199; a face
+rises to the right over columns 200 to 215 (`y` = −1, −5, −9, …, −61);
+floor at `y` = −64 from column 216 on (not face columns: 3 px above
+column 215).
+
+**Jumping into the face.** Right held, jump held from the start (gravity
+0.3515625 while rising), airborne at `x` = 194.5, `y` = −3.25,
+`vx` = 512/256, `vy` = −1450/256 before frame 1:
+
+| Frame | `x` | `y` | `vx` (1/256) | `vy` (1/256) | `ground` | Note |
+|---|---|---|---|---|---|---|
+| 3 | 200.671875 | −18.1328125 | 533 | −1180 | 0 | Column 200 (−1) is below the feet |
+| 4 | 202.7734375 | −22.390625 | 538 | −1090 | 0 | |
+| 5 | 204.890625 | −26.296875 | 542 | −1000 | 0 | |
+| 6 | 204 | −29.8515625 | 0 | −910 | 0 | Blocked: column 207 (−29) is 2.703125 px above the feet (U 2) |
+| 7 | 204.28125 | −33.0546875 | 72 | −820 | 0 | Same column |
+| 8 | 204.80859375 | −35.90625 | 135 | −730 | 0 | Same column |
+| 9 | 205.55078125 | −38.40625 | 190 | −640 | 0 | Column 205 (−21) is below the feet |
+
+**Blocked and landed on a face column.** Right held, jump not held,
+`x` = 201.75, `y` = −7.5, `vx` = 200/256, `vy` = 300/256 before the
+frame. Column 202 (−9) is 1.5 px above the feet: blocked, `x` = 201,
+`vx` 0. The feet move to −5.890625, within 3 px of column 201's floor
+(−5), a face column: the player lands with `y` = −5.
+
+**Onto the floor beyond the face in one running frame.** Right held,
+`x` = 213.5, `vx` = 768/256 (the frame's `vx` is 744/256, so `x + vx`
+is in column 216, passing over face columns 214 and 215):
+
+| Before the frame: `y`, `vy` (1/256) | U | Result |
+|---|---|---|
+| −60.5, 300 | 3 | Stepped onto, falling: lands, `x` = 216.40625, `y` = −64 |
+| −59.125, 300 | 4 | Stepped onto, falling: lands, `y` = −64 |
+| −58.5, 300 | 5 | Blocked: `x` = 213, `vx` 0, `y` = −56.890625; still airborne, 3.890625 px above column 213's floor (−53), a face column |
+| −60.25, −600 | 3 | Stepped onto, rising: `y` = −64 + 0.75, then −488/256: `y` = −65.15625, `x` = 216.40625, `vx` 744 |
+
+### Not covered in `title-2`
+
+- Rises to the left, vertical steps, and floor that is not a face column
+  more than 3 px above the column next to it (the 4 px limit was
+  measured only by crossing several columns in one frame).
+- The first two airborne frames of a jump that takes off from a face
+  column: the face's pull and limits (`steep-faces.md`, "In `title-2`")
+  were seen to carry into them.
+- Rolls, bounces, knock-outs, carrying and the second character meeting a
+  wall in the air; ceilings; entities and moving platforms as walls.
+
 ## Not covered
+
+This list is for `title-1`; `title-2` has its own list above.
 
 - Ceilings, and anything above the player's head. Platforms passed from
   below are in `platforms-from-below.md`.

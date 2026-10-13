@@ -511,9 +511,9 @@ frames were seen during turns, with the result the blocking rule gives.
   column, and vertical steps.
 - Action held or rolling on a face. Rolls and runs that reach the face
   from the top floor were seen to leave the ground there, as above.
-- Jumps from a face, and the frames of a jump or fall that meet a face
-  (walls in the air, `air-walls.md`), apart from the landings on a face
-  above.
+- Jumps from a face (the face's pull and limits were seen to carry into
+  the first two airborne frames). Jumps and falls that meet a face are in
+  `air-walls.md` ("In `title-2`").
 - Longer falls after leaving a face than the four measured, which landed
   on the floor at the foot within 11 frames.
 - The second character, enemies and moving platforms.
