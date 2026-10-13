@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.51.0
+
 Part of `spec` #11 (movement profiles): steep faces in `title-2`. The
 issue stays open for the rest of `title-2` and for `title-3`.
 
