@@ -23,7 +23,7 @@ the release; until then, a title id stands for that one release.
 | Id | Behavior files | Reference traces |
 |---|---|---|
 | `title-1` | All files in `behavior/` | All traces directly in `traces/reference/` |
-| `title-2` | `ground-speed.md`, `jump-arc.md`, `jump-input.md`, `air-control.md`, `roll-input.md`, `roll-speed.md`, `bounce.md`, `walk-off.md`, `rolling-off-ledges.md`, `slopes.md` (sections "In `title-2`") | `traces/reference/title-2/`: `roll-flat`, `walk-off-ledge` |
+| `title-2` | `ground-speed.md`, `jump-arc.md`, `jump-input.md`, `air-control.md`, `roll-input.md`, `roll-speed.md`, `bounce.md`, `walk-off.md`, `rolling-off-ledges.md`, `slopes.md`, `walker-contact.md` (sections "In `title-2`") | `traces/reference/title-2/`: `roll-flat`, `walk-off-ledge` |
 
 `title-3` hasn't been measured yet.
 

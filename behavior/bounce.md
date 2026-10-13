@@ -256,9 +256,8 @@ in the table was measured.
 
 ### Not covered in `title-2`
 
-- Which contacts with which enemies cause a bounce rather than a hit.
-  Every measured contact while the player was rising hurt the player
-  instead.
+- Which contacts with other kinds of enemies cause a bounce rather than
+  a hurt (walkers: `walker-contact.md`, "In `title-2`").
 - The landing frame and the frames after it (the measured landings were
   not on flat ground). Jumping on landing after a bounce.
 - Bounces from a roll, bouncing again before landing, bouncing while
