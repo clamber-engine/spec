@@ -1,6 +1,6 @@
 # Steep faces and walls
 
-Titles: `title-1`
+Titles: `title-1`, `title-2`
 
 What happens when a grounded player meets ground that rises or falls too
 steeply to walk on: being stopped by it, not being able to start walking
@@ -262,3 +262,259 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
 - How a trace's `state` names frames on a face (the vocabulary has no
   name for being carried down a face).
 - Entities, moving platforms and the other character.
+
+## In `title-2`
+
+Everything in this section was measured on `title-2` only, with the lead
+character alone and no enemies nearby. Two steep faces were measured, both
+rising to the right: one **64 px** high (16 face columns, with flat floor
+at its foot and at its top) and one **96 px** high (24 face columns, flat
+floor at its foot). The player walked, ran, rolled, turned, stopped and
+started again against both faces from the left. They went down the 64 px
+face to the left from the floor at its top, walking, coasting with
+nothing held and holding the uphill direction. There were also random
+sequences of Left, Right and nothing on and around both faces. Speeds
+are whole multiples of 1/256 px per frame, written both ways. "The
+speed rule" is the one of `ground-speed.md` ("In `title-2`"): the
+target is chosen from the frame's input, and the gap is divided by 8,
+rounded toward zero, or the target itself is taken when that is 0.
+
+### Faces (`title-2`)
+
+Columns, steep faces, face columns, rising and falling are as defined
+above in "Columns, faces and steps". Both measured faces have the
+`title-1` shape. Each face column is exactly 4 px higher than the one
+below it. The lowest face column is 1 px above the floor at the foot,
+and the highest face column is 3 px below the floor at the top.
+
+### Stopped by a rise (`title-2`)
+
+The `title-1` rule ("Stopped by a rise") holds unchanged. On a grounded
+frame the player is **blocked** if the move would take `x` into a
+different column that is a face column of a face rising in the direction
+of the move. Then:
+
+- `x` is set to the left edge of the column the player was in before the
+  frame, a whole number;
+- `vx` becomes **0**;
+- the player stays grounded on the floor they were on.
+
+A face column only 1 px above the player's floor blocks, as in
+`title-1`. This held at every speed measured: starting from rest,
+walking, running, turning, rolling (the roll goes on and is blocked again)
+and on the first frame after landing on a face. The move that is tested
+uses the speed from the speed rule, before the limits of "Speed on a
+face" below.
+
+### Starting toward a rise (`title-2`)
+
+`title-1`'s rule "Can't start toward a rise" does **not** apply. A player
+with `vx` 0 who holds toward a rise starts moving as on flat floor and is
+blocked again as soon as a move would cross into the face column. So a
+player holding toward a face repeats a short cycle at its foot. After a
+block at whole-pixel `x`:
+
+| Held | Frames of the cycle | `x` on those frames | `vx` (1/256) |
+|---|---|---|---|
+| The direction of the rise | 3 | `x`, `x` + 0.28125, `x` + 0.80859375 | 0, 72, 135 |
+| That direction and Action | 2 | `x`, `x` + 0.421875 | 0, 108 |
+
+The frame after the last one in the table is blocked again and starts the
+cycle over. Releasing the direction and pressing it again starts the same
+cycle from rest. The cycle held for as long as the direction was held,
+up to 80 frames in the measurements.
+
+### Face frames (`title-2`)
+
+A **face frame** is a frame that starts with the player grounded (the
+frame right after a landing included) and `x` in a face column. The
+rules below are written for the measured faces, which fall to the left,
+so "downhill" is to the left there.
+
+### Speed on a face (`title-2`)
+
+1. **Pull.** On every frame that **follows** a face frame, the target of
+   the speed rule is moved **1 px per frame (256/256) downhill**. This
+   applies whatever is held, whether or not the frame is itself a face
+   frame, and also if the player has just left the ground. Then the speed
+   rule applies as usual. The first face frame on a face therefore uses
+   the normal target, and the first frame after the last face frame
+   still has the pull.
+
+   | Held (Action not held) | Target with the pull |
+   |---|---|
+   | Nothing | 1 downhill (256/256) |
+   | The downhill direction | 3.25 downhill (832/256) |
+   | The uphill direction | 1.25 uphill (320/256) |
+
+2. **Limits.** On a face frame, after the speed rule and after the
+   blocking test above:
+   - a speed of more than **2.25** px per frame downhill (576/256) becomes
+     exactly **2** downhill (512/256);
+   - a speed of less than **0.75** downhill (192/256), including 0 and any
+     uphill speed, becomes exactly **0.75** downhill (192/256).
+
+   Then `x` changes by the new `vx`.
+
+So a player can't stand still on a face or walk up it:
+
+- **Holding downhill**, `vx` settles into alternating **2** and
+  **2.15625** (512/256 and 552/256): from 2, the pull gives 2.15625; from
+  2.15625, the speed rule gives more than 2.25, which the limit turns
+  into 2.
+- **Holding nothing**, `vx` moves toward 1 downhill by the speed rule and
+  reaches it exactly, from either side.
+- **Holding uphill**, `vx` drops by the speed rule toward 1.25 uphill and
+  is held at 0.75 downhill by the limit.
+
+### Following a face down, or leaving it (`title-2`)
+
+On a face frame, after the horizontal move, compare the floor of the new
+column with the floor of the column before the frame:
+
+- **8 px lower or less** (at most two face columns crossed, or onto the
+  floor at the foot, 1 or 5 px lower): the player stays grounded and `y`
+  becomes the new column's floor.
+- **More than 8 px lower** (9 and 12 px were measured): the player leaves
+  the ground. On this frame (L) `y` moves down by **exactly 8 px**, not
+  by 3.4375 as in `walk-off.md`, and `vy` ends at **0.00390625** (1/256).
+  From L + 1 `vy` increases by **0.4375** (112/256) each frame, so it is
+  113/256 after L + 1 (not 368/256 as after a walk-off in `title-2`). The
+  player moves down by the new `vy`. Horizontal speed follows
+  `air-control.md` ("In `title-2`"), with the pull on L + 1 because L was
+  a face frame. The player lands by the `title-2` landing rule of
+  `walk-off.md`.
+
+Because the alternation of 2 and 2.15625 lowers the fraction of `x` by
+0.15625 every two frames, a player holding downhill sooner or later
+crosses three columns in one frame on a long enough face, and leaves the
+ground there. All four departures from a face that were measured
+happened this way. Three crossed three face columns (12 px). One went
+from the third face column from the bottom onto the floor at the foot
+(9 px).
+
+### Getting onto a face from above (`title-2`)
+
+The frame that moves the player from the floor at the top onto the face
+isn't a face frame. Whether the player stays grounded on it depends on how
+far below the top floor the new column is:
+
+- a move that ends in the **highest face column** (3 px below the top
+  floor) keeps the player grounded on it, and the next frame is a face
+  frame;
+- a move that ends in a lower face column (7 or 11 px below) makes the
+  player leave the ground as when walking off a ledge (`walk-off.md`, "In
+  `title-2`": frame L moves down 3.4375 px).
+
+Drops of 4 to 6 px from ordinary floor weren't measured. Walking at the
+top speed of 2.25 px per frame, whether the move ends in the highest face
+column depends on the fraction of `x`. Running (Action held), 20 of 21
+measured moves skipped it and left the ground.
+
+### Facing (`title-2`)
+
+On face frames the player faces downhill. A player facing uphill turns
+round on that frame, without the turn of `ground-speed.md` ("In
+`title-2`"). The one exception measured is the first frame
+after landing on a face: facing doesn't change on it, and the player turns
+on the next frame (seen in 3 landings). Holding the uphill direction on a
+face never turned the player uphill.
+
+### Examples (`title-2`)
+
+Synthetic floor, `y` down-positive: `y` = 0 for columns up to 199. A face
+rises to the right over columns 200 to 215 (`y` = −1, −5, −9, …, −61,
+that is −1 − 4k for column 200 + k). Flat floor at `y` = −64 from column
+216.
+
+**Walking into the face.** Right held, `x` = 193.5 and `vx` = 576/256
+before frame 1:
+
+| Frame | `x` | `vx` (1/256) | Note |
+|---|---|---|---|
+| 1 | 195.75 | 576 | |
+| 2 | 198 | 576 | |
+| 3 | 198 | 0 | Blocked: 200.25 is in face column 200 |
+| 4 | 198.28125 | 72 | Starts again from rest |
+| 5 | 198.80859375 | 135 | |
+| 6 | 199.55078125 | 190 | Still column 199 |
+| 7 | 199 | 0 | Blocked |
+| 8 | 199.28125 | 72 | |
+| 9 | 199.80859375 | 135 | |
+| 10 | 199 | 0 | Blocked, and so on every 3 frames |
+
+**Running into the face.** Right and Action held, `x` = 192.25 and
+`vx` = 864/256 before frame 1: `x` 195.625 and 199 on frames 1 and 2, then
+blocked at 199 on frame 3, 199.421875 (`vx` 108) on frame 4, blocked on
+frame 5, and so on every 2 frames.
+
+**Coasting down.** Nothing held, `x` = 217.5 (on the top floor), `vx` =
+−320/256 before frame 1:
+
+| Frame | `x` | `y` | `vx` (1/256) | Note |
+|---|---|---|---|---|
+| 1 | 216.40625 | −64 | −280 | |
+| 2 | 215.44921875 | −61 | −245 | Onto the highest face column (3 px) |
+| 3 | 214.609375 | −57 | −215 | Face frame, normal target 0 |
+| 4 | 213.75 | −53 | −220 | Pull: target −256 |
+| 5 | 212.875 | −49 | −224 | |
+| 6 | 211.984375 | −45 | −228 | |
+| 7 | 211.08203125 | −45 | −231 | Same column |
+| 18 | 200.6796875 | −1 | −248 | |
+| 19 | 199.70703125 | 0 | −249 | Onto the floor at the foot |
+| 20 | 198.70703125 | 0 | −256 | Pull once more: gap 7 ÷ 8 is 0, so the target |
+| 21 | 197.83203125 | 0 | −224 | Normal target 0 |
+
+**Walking down, then holding uphill.** Left held for frames 1 to 4, then
+Right; `x` = 219.75 (top floor) and `vx` = −576/256 before frame 1:
+
+| Frame | `x` | `y` | `vx` (1/256) | Note |
+|---|---|---|---|---|
+| 1 | 217.5 | −64 | −576 | |
+| 2 | 215.25 | −61 | −576 | Onto the highest face column |
+| 3 | 213 | −53 | −576 | Face frame: normal target, 8 px down, followed |
+| 4 | 211 | −45 | −512 | Pull: −608, limited to −512 |
+| 5 | 209.40625 | −37 | −408 | Right held: target +320 |
+| 6 | 208.16796875 | −33 | −317 | |
+| 7 | 207.23828125 | −29 | −238 | |
+| 8 | 206.48828125 | −25 | −192 | −169 limited to −192 |
+| 9 to 17 | … | | −192 | Down the face at 0.75 px per frame |
+| 17 | 199.73828125 | 0 | −192 | Onto the floor at the foot |
+| 18 | 199.23828125 | 0 | −128 | Pull once more: target +320 |
+| 19 | 199.08203125 | 0 | −40 | |
+| 20 | 199.2265625 | 0 | 37 | |
+| 21 | 199.6328125 | 0 | 104 | |
+| 22 | 199 | 0 | 0 | Blocked: back at the foot |
+
+If Left had stayed held, frame 5 would have moved 2.15625 px from
+`x` = 211 to 208.84375, three columns and 12 px down, and the player
+would have left the ground there, 8 px lower (−37).
+
+### Evidence (`title-2`)
+
+527 runs (70 312 frames) at the two faces. 30 813 frames that started
+grounded inside the mapped floor were checked frame by frame against the
+rules above (`x`, `vx`, `y` and whether grounded), with 0 differences.
+That is 3 250 blocked frames, 1 650 face frames, 161 frames after a face
+frame that weren't face frames, 34 departures from the ground and 25 718
+frames on ordinary floor near the faces. Among the face frames, 364 met
+the upper limit and 339 the lower one. 120 of the runs were random input
+recorded after the rules were first written. On first check they showed
+2 differences, both corrected in the rules above: the blocking test comes
+before the limits, and it applies on the first frame after a landing.
+Frames in a turn weren't checked frame by frame. More than 300 blocked
+frames were seen during turns, with the result the blocking rule gives.
+
+### Not covered in `title-2`
+
+- Faces that rise to the left, faces steeper or less steep than 4 px per
+  column, and vertical steps.
+- Action held or rolling on a face. Rolls and runs that reach the face
+  from the top floor were seen to leave the ground there, as above.
+- Jumps from a face, and the frames of a jump or fall that meet a face
+  (walls in the air, `air-walls.md`), apart from the landings on a face
+  above.
+- Longer falls after leaving a face than the four measured, which landed
+  on the floor at the foot within 11 frames.
+- The second character, enemies and moving platforms.
+- How a trace's `state` names face frames.
