@@ -4,6 +4,22 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers the `title-2` slopes part of `spec` #11 (movement profiles).
+The issue stays open for the rest of `title-2` and for `title-3`.
+
+- Behavior: `slopes.md` gains "In `title-2`": floor height on 1-in-2 and
+  1-in-4 slopes, floor pieces 16 columns wide (flat or sloped), height
+  while grounded (as in `title-1`; going downhill never leaves the
+  ground), horizontal motion unchanged from flat floor (walking, running,
+  stopping, standing, turns, crouching, rolls, air), the first airborne
+  frame of a jump starting from the higher of `y` on T and the floor
+  under the new `x`, landing (on the floor on flat pieces, from 3 px
+  above it on sloped pieces), examples, evidence.
+- `ground-speed.md`, `jump-input.md`, `jump-arc.md`, `air-control.md`,
+  `roll-input.md`, `roll-speed.md`, `walk-off.md`: `title-2` "Not
+  covered" lists point to it.
+- `TITLES.md`: the `title-2` row lists `slopes.md`.
+
 ## spec-v0.44.0
 
 Answers the `title-2` rolling-off-ledges part of `spec` #11 (movement

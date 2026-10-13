@@ -211,8 +211,9 @@ From T + 25, `vy` grows by 0.4375 per frame and reaches the cap on T + 42.
 T + 44 is the landing frame: moving by 8 would take the player 2.875 px
 below the floor, so they land and are placed on it.
 
-The landing frame's `vy`, landing on ground that isn't flat, and the
-landing rules in `landing.md` were not measured for `title-2`.
+The landing frame's `vy` and the landing rules in `landing.md` were not
+measured for `title-2`. Landing on slopes is in `slopes.md` ("In
+`title-2`").
 
 ### Example (`title-2`)
 
@@ -229,8 +230,8 @@ the edge of a ledge is in `walk-off.md`, jumping during a fall after
 rolling off a ledge in `rolling-off-ledges.md`. The second character's
 values are in `second-character.md`.
 
-For `title-2`: jumps from slopes, ceilings and the second character
-have not been measured. Falls that don't start with a jump, and jumping
+For `title-2`: ceilings and the second character have not been
+measured. Jumps from slopes are in `slopes.md` ("In `title-2`"). Falls that don't start with a jump, and jumping
 just after leaving a ledge, are in `walk-off.md` ("In `title-2`"), and
 jumping during a fall after rolling off a ledge in `rolling-off-ledges.md`
 ("In `title-2`"). Horizontal motion in the air is in

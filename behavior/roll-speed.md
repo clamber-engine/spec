@@ -355,8 +355,9 @@ Down held were left out.
 
 ### Not covered in `title-2`
 
-- Rolls into walls or enemies, and rolls on slopes. Rolls off ledges
-  are in `rolling-off-ledges.md` ("In `title-2`").
+- Rolls into walls or enemies. Rolls off ledges are in
+  `rolling-off-ledges.md` ("In `title-2`"), rolls on slopes in
+  `slopes.md` ("In `title-2`").
 - Down held on the press frame (no roll starts; the player crouches) is
   seen but its details aren't covered.
 - The second character.
