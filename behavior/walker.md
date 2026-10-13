@@ -289,9 +289,9 @@ floor, 1-in-4 slopes and a 1-in-2 slope.
 ### Not covered in `title-2`
 
 - Turning: patrol ranges and barriers. No measured walker turned.
-- What the walker does while the player is hit, and walkers defeated in
-  other ways (rolls, thrown objects). Walkers were also seen to stop for
-  two frames when the player rolled into another walker.
+- What the walker does while the player is hit, and walkers defeated by
+  thrown objects. Rolls, including the two frames other walkers stop
+  for, are in `rolling-into-walkers.md` ("In `title-2`").
 - Walkers bounced on before reaching full speed (every measured one was
   at full speed heading left on B): whether their `vx` is still set to
   exactly ±1.

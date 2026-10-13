@@ -250,8 +250,9 @@ does, for three jump heights.
 ### Not covered in `title-2`
 
 - Down held with the press, and Down held during the stop.
-- Rolls into walls other than steep faces, rolls into enemies, and the
-  second character. Rolls off ledges are in `rolling-off-ledges.md` ("In
+- Rolls into walls other than steep faces, rolls into enemies other than
+  walkers (walkers are in `rolling-into-walkers.md`, "In `title-2`"), and
+  the second character. Rolls off ledges are in `rolling-off-ledges.md` ("In
   `title-2`"), rolls on slopes in `slopes.md` ("In `title-2`"), rolls
   blocked by a steep face in `steep-faces.md` ("In `title-2`").
 
