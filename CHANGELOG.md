@@ -4,6 +4,18 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Part of `spec` #11 (movement profiles): walkers in `title-2`. The issue
+stays open for the rest of `title-2` and for `title-3`.
+
+- `behavior/walker.md`: new section "In `title-2`". Walking (moves by
+  the previous speed, then speeds up by about 5/64 of the difference;
+  full speed 49 frames from rest), staying on the floor, being bounced on
+  (doesn't move on B; heads the opposite way to the player's facing, `vy`
+  −8, gravity 0.4375 capped at 12) and other walkers freezing on the
+  player's two frozen frames. The existing "Not covered" list is marked
+  as `title-1` only.
+- `TITLES.md`: `walker.md` added to the `title-2` row.
+
 ## spec-v0.46.0
 
 Part of `spec` #11 (movement profiles): reference traces for `title-2`.
