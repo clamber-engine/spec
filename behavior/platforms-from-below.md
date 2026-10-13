@@ -6,7 +6,8 @@ What happens when a player who is jumping meets ground that is above
 them: a platform with open space under it. The player is never stopped
 by anything above their head. They rise into the platform from below,
 pass up through it, and are lifted onto its top or fall back down
-through it. Frames are logic frames at 60 Hz, numbered as in a trace.
+through it. Also what happens when a grounded player walks under a
+platform ("Walking under a platform"). Frames are logic frames at 60 Hz, numbered as in a trace.
 `x`, `y`, `vx` and `vy` are as in a trace: right and down are positive,
 speeds in px per frame. Speeds are whole multiples of 1/256 px per frame
 and are written both ways, as in `ground-speed.md`. "Left", "Right" and
@@ -53,7 +54,8 @@ new `vx` (`air-control.md`) and new `vy` (`jump-arc.md`, `walk-off.md`)
 are worked out. The rules below replace the use of a platform column's
 top as "the floor" in `air-walls.md` and `landing.md` where they say so.
 Everywhere else those files apply unchanged, with a platform column's
-top as its floor.
+top as its floor. "Walking under a platform" is the exception: it is
+about frames that start with the player grounded.
 
 ## Inside a platform
 
@@ -168,6 +170,89 @@ the player stays at the same feet line and `vy` is 0, and they fall from
 there. Their head is not what is stopped: it is above the feet, inside
 the ground, as it would be in the layer of a platform.
 
+## Walking under a platform
+
+This section is about a **grounded** player (standing, walking,
+running or rolling) on a floor with a platform above it, on every frame
+that starts with the player grounded. The rules of `steep-faces.md` and
+`ground-speed.md` apply as usual. This section says which surface they
+treat as the floor of each column.
+
+For a grounded player the floor of a column is **the ground below** at
+the player's feet line, in that column (`../formats/level-ground.md`,
+"The ground below a point"). For a platform above the floor, that gives
+two cases.
+
+**The floor isn't the top line of its band.** Then the platform's
+underside is 2 px or more above the feet, and the platform doesn't count
+for the grounded player at all. They stand, walk, run and roll under it
+exactly as if it weren't there, at every height measured, with square
+or sloped ends.
+
+**The floor is the top line of its band, and the band above has a
+surface in the column.** Then that surface, the top of a platform, is
+the floor of the column. The platform's underside is the bottom line of
+the band above, so it is exactly **1 px above the feet**, and its top is
+1 to 32 px above the feet. This holds in every column of the platform,
+not only at its ends. Moving into a platform column from the floor
+beneath:
+
+| The new column's top, above the feet | What happens |
+|---|---|
+| 8 px or less, and the column is a face column rising in the direction of the move | **Blocked**, as in `steep-faces.md` ("Stopped by a rise") |
+| 8 px or less, not a face column | **Stepped onto**: as in `steep-faces.md` ("Following a face down"), the player stays grounded and `y` becomes the top. From there they are on the platform as on any floor |
+| More than 8 px, a face column or not | The player **falls through the floor** (below) |
+
+So a square end 4 or 8 px high is walked up, and a sloped end (a face of
+4 px per column) blocks the player as a steep face does, at its first
+column, 1 px above the feet. A player who moves fast enough to skip the
+low columns of a sloped end, into a column more than 8 px up, falls
+through. A single 4 px step is not a face (`steep-faces.md`, "Columns,
+faces and steps").
+
+Rolls follow the same table: a roll is blocked by a face column 8 px up
+or less (the roll goes on in place, with `vx` 0), steps onto a square end 4 or
+8 px high, and falls through at more than 8 px.
+
+"Can't start toward a rise" (`steep-faces.md`) also uses the platform's
+top as the floor of the column 5 ahead. A top 8 px or more above the
+feet there stops the player from starting, and one 4 px above doesn't.
+
+Walking off the far end of the platform's top, back to the floor 4 or
+8 px lower, is following the floor down as in `steep-faces.md`.
+
+### Falling through the floor
+
+On the frame on which the player moves into a platform column whose top
+is more than 8 px above the feet (frame **L**), `x` moves as usual, and
+the player leaves the ground and starts to fall from the floor they were
+on:
+
+- On **L** the player moves down by **3.4375 px**, and `vy` ends at
+  3.4375 (880/256).
+- On each later frame, `vy` increases by **0.4375** (112/256), never
+  above 8, and the player moves down by the new `vy`.
+
+The floor the player was walking on is above them from L on, so it never
+catches them. In every measured layout there was no ground lower down,
+and the player fell out of the level (`falling-out.md`). Landing on
+ground further down wasn't measured.
+
+A roll that falls through within its first 9 frames moves differently
+(S is the roll's first frame, as in `roll-input.md`):
+
+| Frame L | Vertical motion |
+|---|---|
+| S | On L, down 3.4375 px. On S + 1 to S + 8, down 1/256 px each frame (`vy` 1/256). From S + 9, `vy` increases by 0.4375 per frame from 1/256 |
+| S + 1 to S + 7 | On L to L + 9 (10 frames), down 1/256 px each frame. From L + 10, `vy` increases by 0.4375 per frame from 1/256 |
+| S + 8 | On L, down 1/256 px. From L + 1, `vy` increases by 0.4375 per frame from 1/256 |
+| S + 9 or later, and every frame that isn't a roll | As above: 3.4375 on L, then 0.4375 more per frame |
+
+While falling through, `x` keeps moving as before L: walking and running
+players with the direction held kept their speed, and rolls went on by
+the rules of `roll-speed.md`. Other inputs while falling through aren't
+covered.
+
 ## What the trace shows
 
 Rising into, through and out of a platform adds nothing to the trace.
@@ -177,6 +262,12 @@ beneath after falling back, is an ordinary landing row with `land`.
 Being stopped by ground that isn't passable from below adds no event
 either: the row has `vy` 0, `ground` 0 and state `jump` or `fall` as
 usual.
+
+Walking under a platform without touching it adds nothing to the trace.
+Stepping onto a platform's top is an ordinary grounded row (`ground` 1)
+whose `y` is the top. Falling through the floor: from L on the player is
+airborne (`ground` 0, state `fall`, or `roll` while the roll lasts), and
+L carries `leave_ground`. `vy` is as in "Falling through the floor".
 
 ## Measured cases
 
@@ -205,6 +296,30 @@ column and on the flat part). In 301 runs the first frame that differed
 from the unchanged platform was a stop by the rule above; the other runs
 never reached the platform's band and didn't differ at all. Every
 controlled frame matched the rule.
+
+Walking under a platform was measured on the first level's opening
+floor with the ground changed: a flat floor and, over it, a platform
+128 px wide with its top in the band above the floor's band, passable
+from below. Nothing else was changed. The lead character walked, ran,
+rolled (from walking, from rest and into a run), coasted to a stop and
+started from rest toward both ends, from both sides: 9 640 runs, about
+1 550 000 frames. Each run was compared with the same run on the same
+floor without the platform.
+
+| Floor in its band | Underside above the feet | Tops above the feet | Ends | Result |
+|---|---|---|---|---|
+| Not the top line (4 heights) | 5, 9, 17 and 25 px | 8 to 56 px (8 heights each) | square, and faces rising to 15 and 31 px above the underside | Every run the same as without the platform |
+| Top line | 1 px | 4, 8, 12, 16, 20, 24, 28 and 32 px | square | 4 and 8 px stepped onto; 12 px and more fall through |
+| Top line | 1 px | 16 and 32 px | faces of 4 px per column, 4 and 8 columns long | Blocked at the face; fall through where a move reached a column more than 8 px up |
+
+Every grounded frame near the platform was checked against the rules of
+"Walking under a platform", `steep-faces.md` and the ground below: about
+1 209 000 frames following the floor or a top, 622 blocked frames,
+1 483 frames that started a fall through the floor (132 of them in a
+roll's first 9 frames) and 44 437 frames that started from rest with a
+direction held, with 0 differences. Runs whose start was placed inside
+the platform's end cell were left out. Rolls from rest reached the
+platform on every frame from S to S + 28.
 
 ## Examples
 
@@ -297,16 +412,47 @@ platform, but its cells are not passable from below. `x` = 200.5,
 
 The player goes on falling and lands on the floor at `y` = 0.
 
+**Walking under a platform, floor at the top of its band.** Floor at
+`y` = 0 for columns 100 to 299. Level y is `y` + 353, so the floor is
+line 353, the top line of band 11. A platform has its tops in band 10
+over columns 200 to 263: at `y` = −4 (a square end, 4 px up), or at
+`y` = −12 (12 px up). Its underside is line 352, `y` = −1. Walking right
+at a steady 512/256 with Right held, `x` = 195.25 before frame 1:
+
+| Frame | `x` | `y`, top at −4 | `y`, top at −12 | `vy` (1/256), top at −12 | `ground`, top at −12 | Note |
+|---|---|---|---|---|---|---|
+| 1 | 197.25 | 0 | 0 | 0 | 1 | |
+| 2 | 199.25 | 0 | 0 | 0 | 1 | |
+| 3 | 201.25 | −4 | 3.4375 | 880 | 0 | Column 201: stepped onto at −4; at −12, falls through (L) |
+| 4 | 203.25 | −4 | 7.3125 | 992 | 0 | |
+| 5 | 205.25 | −4 | 11.625 | 1104 | 0 | |
+| 6 | 207.25 | −4 | 16.375 | 1216 | 0 | Falling on, below the floor |
+
+If the floor is 4 px lower instead, at line 357 (`y` = 4 in the frame
+above), it isn't the top line of its band, and the underside is 5 px
+above the feet. The player walks on under the platform at `y` = 4 with
+either top, as if it weren't there.
+
 ## Not covered
 
+- Walking under a platform: ground lower down that a player falling
+  through the floor could land on; other inputs while falling through;
+  tops found in the band above that aren't passable from below (they were seen to give the same
+  first frame of a fall through the floor, and then differ); and a floor
+  under a platform 2 bands up or more. Sloped ends with runs of 2 or 3
+  face columns. A player already standing on the floor under a
+  platform's top in the band above (not reachable by walking).
+- Ground that isn't passable from below over a floor whose top line
+  isn't the top of its band (a low ceiling): seen to make a difference
+  for a grounded player, not measured further.
 - Ground that isn't passable from below, in play: none was found on the
   first level. Also a rising frame that would take the feet past the
   whole of such ground at once (to its surface or above), and a player
   whose feet are already in such ground at the start of a frame.
 - Platforms whose band has ground right under it in the band below
-  (ground thicker than one band).
-- Platforms with square ends (not faces), platforms thinner than 15 px,
-  and platforms whose ends slope at other rates.
+  (ground thicker than one band), in jumps and for a grounded player.
+- In jumps: platforms with square ends (not faces), platforms thinner
+  than 15 px, and platforms whose ends slope at other rates.
 - Moving sideways out of a platform's columns while inside, and a
   take-off from a floor that is itself in a platform's layer.
 - Getting down through a platform from its top.

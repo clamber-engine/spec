@@ -29,7 +29,13 @@ player's column" is the column containing `x` (its whole-pixel part).
 - A **steep face** is a run of adjacent columns where each column's
   floor is exactly **4 px** higher than the one before it. A **face
   column** is a column whose floor differs by exactly 4 px from a
-  neighbouring column's floor.
+  neighbouring column's floor, on a face of at least two such steps in
+  a row. A single 4 px step between two stretches of other floor is not
+  a face, and its columns are not face columns: it was walked up as in
+  "Following a face down, or leaving it" (measured on a platform's top,
+  `platforms-from-below.md`, "Walking under a platform"). The shortest
+  faces measured had 4 columns; faces of 2 steps (3 columns) are not
+  covered.
 - A face **rises** in the direction its floor goes up and **falls**
   (is downhill) in the other.
 - At its ends a face joins the neighbouring floor by a smaller step: its
@@ -66,7 +72,10 @@ A blocked frame:
 
 Even a face column only 1 px above the player's floor blocks: the floor
 height of the new column is not what counts, only that it belongs to a
-rising face. Columns in front of a face are walked over normally right up
+rising face. The one exception measured is a platform's top
+more than 8 px above the feet, taken as the floor from the band above:
+the player falls through the floor instead (`platforms-from-below.md`,
+"Walking under a platform"). Columns in front of a face are walked over normally right up
 to its first column.
 
 Measured at walking and running speed, and at the low speeds of starting
@@ -82,11 +91,14 @@ Action press starts a roll, `roll-input.md`):
 
 1. Take the column **5 columns ahead** of the player's column in the held
    direction.
-2. If that column's floor is **9 px or more** higher than the floor of
+2. If that column's floor is **8 px or more** higher than the floor of
    the player's column, the player doesn't start moving: `vx` stays 0
    and `x` doesn't change.
 3. If it is 5 px higher or less (or lower), the player starts moving as
-   usual (`ground-speed.md`). Differences of 6 to 8 px weren't measured.
+   usual (`ground-speed.md`). Differences of 6 and 7 px weren't
+   measured. (8 px was measured with a platform's top as the floor 5
+   columns ahead, `platforms-from-below.md`; the larger differences at
+   faces and steps.)
 
 This holds on every frame it applies, however long the direction is held
 and however often it is released and pressed again. It is why a player
@@ -151,8 +163,12 @@ the column before the frame:
 - **8 px lower or less**: the player stays grounded and `y` becomes the
   new column's floor height. `ground` stays 1 and, as on any grounded
   frame, `vy` in a trace is 0. A new column 1 px higher (as at the end
-  of a face, or on a gentle slope) is followed the same way; higher
-  floor ahead is either blocked (above) or not covered.
+  of a face, or on a gentle slope) is followed the same way, and so is a
+  column 4 or 8 px higher that isn't a face column (measured on a
+  platform's top, `platforms-from-below.md`). Other higher floor ahead
+  is blocked (above), makes the player fall through the floor (a
+  platform's top more than 8 px up, `platforms-from-below.md`), or is
+  not covered.
 - **11 px lower or more**, or **no floor** in the new column: the player
   leaves the ground. This frame is the leave frame **L** of
   `walk-off.md`: `y` moves down by exactly 3.4375 px whatever the floor
@@ -480,7 +496,7 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
 - Vertical steps of other heights, steps up of 9 to 63 px in general,
   faces steeper or less steep than 4 px per column, and a vertical step
   rising to the right.
-- Differences of 6 to 8 px in the "can't start" rule.
+- Differences of 6 and 7 px in the "can't start" rule.
 - How a trace's `state` names frames on a face (the vocabulary has no
   name for being carried down a face).
 - Entities, moving platforms and the other character.
