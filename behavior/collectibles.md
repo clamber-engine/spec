@@ -1,6 +1,6 @@
 # Single collectibles
 
-Titles: `title-1`
+Titles: `title-1`, `title-2`
 
 A **single collectible** is a small item placed in a level that the
 player takes by touching it. Each one taken adds one to the
@@ -186,7 +186,177 @@ When the count goes up from 99, it becomes 0 instead, and on the same
 frame the number of lives goes up by one. Two counts arriving on the
 same frame and counts above 100 are not covered.
 
+## In `title-2`
+
+Everything in this section was measured on `title-2` only, on the first
+level, with the lead character alone (the other character hadn't joined
+yet). `x`, `y` and `vy` are as in a trace (`y` grows downward). The jump
+frames G and L are as in `jump-input.md` and `jump-arc.md` ("In
+`title-2`"), the roll frames S and D as in `roll-speed.md` ("In
+`title-2`"), and turns and the crouch frame U as in `ground-speed.md`
+("Turns (`title-2`)", "Crouching (`title-2`)").
+
+### A collectible's position (`title-2`)
+
+As in `title-1`, a single collectible is drawn as a 16 × 16 px image and
+doesn't move. Its position (`xc`, `yc`) is the level `x` of the image's
+leftmost column plus 8, and the level `y` of its top row plus 8. Level
+positions use the same units as the player's `x` and `y`: a player
+standing still on the ground has `y` whole, and the lowest row drawn for
+the player is at level `y` − 1. All collectibles measured had their
+images at level positions that are multiples of 8 px.
+
+### When a collectible is taken (`title-2`)
+
+A collectible is taken on frame `n` when, **at the end of frame `n`**,
+after the player has moved on that frame:
+
+1. it hasn't been taken already, and
+2. the player's offsets from it (below) are inside the ranges for the
+   player's pose on `n` (see "Poses (`title-2`)" and "Ranges
+   (`title-2`)").
+
+So, as in `title-1`, a collectible is taken on the first frame that ends
+with the player in range. A taken collectible is no longer drawn.
+
+### Offsets (`title-2`)
+
+Round the player's position down to whole pixels: `X` = `x` rounded
+down, and `Y` = `y` rounded down (the whole-pixel part of `y`, since `y`
+grows downward). Then
+
+- **`I`** = `X` − `xc` when facing right, `xc` − `X` when facing left
+  (how far the player is past the collectible in the facing direction);
+- **`D`** = `Y` − `yc` (how many px the player's position is below the
+  collectible's; negative when it is above).
+
+On the ground `y` is whole, so `D` is the same as in `title-1`. In the
+air, where `y` has a fraction, `D` is one less than the `title-1`
+formula (which rounds up) would give.
+
+### Poses (`title-2`)
+
+The ranges depend on the player's **pose on frame `n`**, the pose the
+player has at the end of `n`:
+
+- **In the air**: from the frame G on which a jump starts (G and G + 1
+  count, although the player is still on the ground) to the jump's
+  landing frame, and then for 17 more frames (landing frame + 17). If a
+  direction and Action are held through the landing, so that the player
+  runs on, it ends at landing frame + 8 instead (as in
+  `walker-contact.md`).
+- **In the air, after walking off a ledge**: with the leave frame L and
+  the landing frame A named as in `walk-off.md` ("In `title-2`"), from
+  L + 1 to A + 18. On L itself the walking ranges still apply.
+- After a jump's landing, Down, Action or Jump during the frames after
+  landing starts a crouch, roll or jump at once, and that pose applies
+  from its first frame. A direction alone (walking on) doesn't end them,
+  after a jump or a walk-off.
+- **Rolling**: S to D + 13. That is the roll's 31 frames, D, and, when
+  the roll ends in a stop, the stop's first 13 frames (D + 1 to D + 13).
+  The standing ranges apply from D + 14, one frame before the stop ends.
+  When the roll carries on into running with Action held, the running
+  ranges apply from D.
+- **Turning**: the frames of a turn, T to T + 7 (short turns weren't
+  measured).
+- **Crouching**: from the frame a crouch starts to U + 10.
+- **Running**, **walking** and **standing**: as in `walker-contact.md`
+  ("Poses (`title-2`)"), including while slowing down. The ranges switch
+  from walking to standing, and from running to walking, at the same
+  points as there.
+
+### Ranges (`title-2`)
+
+A collectible is in range when `I` and `D` are both within the ranges
+for the pose (ends included). The same ranges hold facing left and
+facing right, because `I` is measured in the facing direction.
+
+| Pose | `I` | `D` |
+|---|---|---|
+| Standing | −16 to 16 | −4 to 41 |
+| Walking | −18 to 14 | −4 to 41 |
+| Running | −21 to 15 | −1 to 37 |
+| Turning | −14 to 14 | −4 to 38 |
+| Rolling | −18 to 13 | −4 to 36 |
+| Crouching | −16 to 16 | −6 to 27 |
+| In the air | −19 to 15 | −5 to 33 |
+
+Unlike `title-1`, the ranges in the air don't change with the time since
+take-off or with `vy`. One range applies from G to the end of the
+frames after landing, for held and released jumps, standing and moving
+jumps, and for falls. The ranges don't depend on speed: walking at its first
+frame and at full speed, and running at any speed, gave the same ranges.
+
+Example (synthetic, positions made up): a player standing still facing
+right at `x` = 1000.5, `y` = 200, and a collectible at (`xc`, `yc`) =
+(1010, 184). Then `X` = 1000, `I` = −10 and `D` = 16, so the
+collectible is taken on the first frame. Facing left, `I` = 10 and it
+is taken as well. A collectible at (1022, 184) gives `I` = −22 facing
+right: out of range standing, walking, rolling or turning, and still out
+of range running (from −21). At (1018, 184), `I` = −18: out of range
+standing (from −16), in range walking or rolling (from −18) and running
+(from −21).
+
+### The count (`title-2`)
+
+Call `P` the frame on which a collectible is taken. The collectible
+count goes up by one on `P` + 33. When it goes up from 99, it becomes 0
+instead, and the number of lives goes up by one on the same frame.
+
+This held for every pickup measured, with the image's leftmost column
+from 5 px left of the picture's left edge to 246 px right of it (the
+picture is 256 px wide). So, unlike `title-1`, a collectible whose image
+is partly off the left edge of the picture still counts, at least down
+to 5 px off. No pickup was refused because of the collectible's place in
+the picture, within that span. Places further out weren't reached: in
+these measurements the player was always at least 16 px inside the
+picture's left and right edges.
+
+### Evidence (`title-2`)
+
+- Placement: the player's pose came from inputs (standing, walking from
+  its first frame, running, turning, rolls ending in a stop and carrying
+  on into running, crouching down, crouched and getting up, jumps held,
+  released after 3 and 8 frames, and with a direction held, the landing
+  frames, falls after walking off a ledge). Then a collectible was put at
+  every whole-pixel offset in a grid of 69 `I` × 103 `D` values around
+  the player, and one frame was run. About 3.4 million placements, both
+  facings for standing, walking, running, rolling and jumps. On every
+  frame measured, the taken offsets filled the range for the pose
+  exactly, with nothing taken outside it.
+- The count: 567 pickups at different places in the picture, by moving
+  the player and the collectible together, and pickups by walking into
+  collectibles. Every one counted on `P` + 33. The rollover was checked
+  from 99.
+- Falls after walking off a ledge: from the 13th frame in the air on,
+  the whole range was measured, through the frames after landing. On earlier
+  frames of the fall only part of the range, or none of it, could be
+  measured, because collectibles placed that high weren't drawn in that
+  part of the level. What was measured there matched the range.
+- Natural play: about 148 000 frames of play by inputs along one route
+  through the first level and 250 variations of it with jumps, rolls,
+  crouches, turns and stops added at random. There were 431 pickups in
+  the poses covered here, and each came on the frame the rules give,
+  with no other frame predicted. Another 54 happened in states listed
+  under "Not covered in `title-2`" and weren't checked.
+
+### Not covered in `title-2`
+
+- The view window: places in the picture outside the span above, and
+  collectibles above or below the picture.
+- Going up or down the stair-like steps of a level.
+- The exact frames of the switches from walking or running to standing
+  and from running to walking (as in `walker-contact.md`), and turns
+  started during the frames after landing.
+- Bouncing off a walker and being hit or knocked out (the 54 unchecked
+  pickups in natural play happened in these), carrying, the second
+  character, and other kinds of collectible.
+- Two counts arriving on the same frame, and whether taken collectibles
+  stay taken when the level is played again.
+
 ## Not covered
+
+This list is for `title-1`; `title-2` has its own list above.
 
 - Other kinds of collectible. Bunches, worth ten, are in `bunches.md`;
   letters are in `letters.md`.
