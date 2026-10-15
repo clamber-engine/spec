@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.58.0
+
 Answers https://github.com/clamber-engine/spec/issues/16 (in part).
 
 - `formats/graphics.md`: new. Colours, palette rows and sets, tiles,
