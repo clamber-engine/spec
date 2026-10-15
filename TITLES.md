@@ -17,6 +17,7 @@ Each measured title was measured on one release, which runs at 60 Hz.
 Differences between releases of the same title (revisions, regions) are
 not covered. If a difference is found, the spec will add a way to name
 the release; until then, a title id stands for that one release.
+`formats/rom-image.md` identifies that release's image by its hash.
 
 ## What has been measured
 
