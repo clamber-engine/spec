@@ -4,6 +4,15 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers https://github.com/clamber-engine/spec/issues/17 (in part).
+
+- `formats/placements.md`: new. The placement list: 8-byte entries
+  (class, level x, height above the bottom edge, reference), the end
+  entry, order, classes 1, 2, 5 (groups) and 8, group members, and when
+  placed objects appear (the window of `behavior/walker-view.md`, for
+  every placed object). Vectors: `vectors/placements/`.
+- `formats/README.md`: lists it. `behavior/walker-view.md`: points to it.
+
 ## spec-v0.57.0
 
 Answers https://github.com/clamber-engine/spec/issues/15 (in part).

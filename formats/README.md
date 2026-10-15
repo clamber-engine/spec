@@ -12,3 +12,6 @@ Every decoder spec needs synthetic vectors in `../vectors/`.
 - `rom-image.md`: recognizing a supported image file (copier headers,
   size, hash) and turning locations (bank number and address) into
   positions in the image. Vectors: `../vectors/rom-image/`.
+- `placements.md`: a level's placement list: entries, classes, groups,
+  positions, and when the objects placed appear. Vectors:
+  `../vectors/placements/`.
