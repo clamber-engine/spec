@@ -1,0 +1,45 @@
+# tile 0
+0 1 2 3 4 5 6 7
+8 9 a b c d e f
+0 1 2 3 4 5 6 7
+8 9 a b c d e f
+0 1 2 3 4 5 6 7
+8 9 a b c d e f
+0 1 2 3 4 5 6 7
+8 9 a b c d e f
+# tile 1
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+# tile 2
+f f f f f f f f
+f f f f f f f f
+f f f f f f f f
+f f f f f f f f
+f f f f f f f f
+f f f f f f f f
+f f f f f f f f
+f f f f f f f f
+# tile 3
+d e 8 c 1 5 a 0
+5 c a 5 3 0 f d
+1 6 b 2 8 4 c 1
+2 3 6 d f 2 a 6
+4 c 7 4 2 4 5 a
+3 e c c c 5 d f
+f 6 0 5 6 5 6 8
+6 f a 6 3 8 e c
+# two-plane tile
+2 1 0 1 3 0 3 1
+3 0 1 0 3 0 0 3
+3 1 0 1 1 2 3 2
+2 2 2 2 0 0 2 0
+0 3 3 2 3 3 0 2
+0 0 3 0 2 3 1 0
+2 3 3 2 3 2 2 1
+1 3 1 3 2 2 1 0
