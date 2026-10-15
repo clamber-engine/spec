@@ -1,0 +1,7 @@
+sample	blocks	left_over	last_block	looping	loop_block	first_pass	loop_samples
+0	22	1	21	no	-	352	-
+1	6	0	5	no	-	96	-
+2	3	1	2	yes	0	48	48
+3	5	0	4	yes	2	80	48
+4	4	2	2	yes	1	48	32
+5	1	0	0	no	-	16	-

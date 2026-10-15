@@ -26,3 +26,8 @@ locator table by the data kind's name.
 - `sprites.md`: pictures of characters and other moving things: the
   frame table, short and full frames, pieces, sheets, mirroring, where
   a frame is drawn, and sprite palettes. Vectors: `../vectors/sprites/`.
+- `locators.md`: where each kind of data starts in each supported
+  image.
+- `sound.md`: samples (sample table, records, blocks, decoding, loops),
+  which samples each song has (shared list, sample sets), and where each
+  song's data is. Vectors: `../vectors/sound/`.

@@ -4,6 +4,21 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers https://github.com/clamber-engine/spec/issues/20 (in part).
+
+- `formats/sound.md`: new. Samples: the sample table, sample records
+  (loop offset, length, 9-byte blocks with shift, filter, loop and end
+  flags), decoding steps into outputs, first and loop passes (outputs
+  carry on across the loop), and turning a sample into audio with an
+  exact loop point (with the two `title-1` samples whose loop passes
+  differ). Which samples a song has (shared list and the song's sample
+  set; the first level plays song 0 with set 0), and song blocks (length,
+  base address, data). What song data means is not covered yet.
+- `formats/locators.md`: new, with the `title-1` rows for the sound
+  tables.
+- `formats/README.md`: lists both.
+- `vectors/sound/`: new.
+
 ## spec-v0.61.0
 
 Answers https://github.com/clamber-engine/spec/issues/19 (in part).
