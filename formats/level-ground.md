@@ -51,10 +51,10 @@ A **cell word**:
 |---|---|
 | 0–13 | The cell's **type**, a number from 0 to 16383 |
 | 14 | **Mirrored**: if set, the cell's ground is mirrored left to right |
-| 15 | No effect on the ground |
+| 15 | No effect on the ground (it flips the cell's picture top to bottom, `graphics.md`) |
 
 A cell word of 0 is an empty cell with no ground. Types are shared with
-the cells' pictures (not covered here), so a grid uses more types than
+the cells' pictures (`graphics.md`), so a grid uses more types than
 have ground. A grid comes with a **type table** of `N` entries for types
 0 to `N` − 1. A cell whose type is `N` or more has no ground.
 
@@ -337,7 +337,6 @@ files).
 
 - Whether being passable from below matters for anything other than
   the player (walkers, carried and thrown objects).
-- What bit 15 of a cell word means.
 - The third kind of grid. Like a row grid, it is stored row by row and
   can be tall, but its shapes are not the ones in "Shapes". Some levels
   may also use a second grid.
@@ -348,5 +347,5 @@ files).
   of a grid each level uses (its left and right ends). These belong to a
   later part of the level format.
 - Level x outside the grid.
-- Cell pictures, and anything other than ground (walkers, objects,
-  limits of the view).
+- Anything other than ground and cell pictures (walkers, objects,
+  limits of the view). Cell pictures are in `graphics.md`.

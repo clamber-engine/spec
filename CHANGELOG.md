@@ -4,6 +4,17 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers https://github.com/clamber-engine/spec/issues/16 (in part).
+
+- `formats/graphics.md`: new. Colours, palette rows and sets, tiles,
+  packed tile data (pair table and four commands), tile entries, cell
+  pictures (types share the ground's cell words; bits 14 and 15 mirror
+  the picture), the grid picture, the ground and far layers of the
+  first level, and their drawing order. Vectors: `vectors/graphics/`.
+- `formats/level-ground.md`: bit 15 of a cell word and cell pictures now
+  point to it.
+- `formats/README.md`: lists it.
+
 ## spec-v0.57.0
 
 Answers https://github.com/clamber-engine/spec/issues/15 (in part).
