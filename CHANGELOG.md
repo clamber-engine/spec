@@ -4,8 +4,15 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
-Answers https://github.com/clamber-engine/spec/issues/18 (in part).
+## spec-v0.60.0
 
+Answers https://github.com/clamber-engine/spec/issues/21 and
+https://github.com/clamber-engine/spec/issues/18 (in part).
+
+- `REVIEW.md`: director decision (spec #21). Format specs may give where
+  each kind of data starts in a supported image, in `formats/locators.md`
+  only, under the rules for locator tables. `formats/README.md` points
+  to it.
 - `formats/sprites.md`: new. The frame table, short and full frames
   (header, piece positions, tile runs), the frame's sheet, large and
   small pieces, pictures, mirroring, where a frame's picture is drawn
