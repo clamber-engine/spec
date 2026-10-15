@@ -4,6 +4,14 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers https://github.com/clamber-engine/spec/issues/15 (in part).
+
+- `formats/rom-image.md`: new. The supported `title-1` release (size and
+  SHA-256), copier headers, the identification outcomes, and locations
+  (bank number and address) mapped to image positions. Vectors:
+  `vectors/rom-image/`.
+- `formats/README.md`, `TITLES.md`: point to it.
+
 ## spec-v0.56.0
 
 Coverage work (`title-2`); answers no `spec` issue. Rolling into walkers.
