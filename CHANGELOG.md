@@ -4,6 +4,14 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers https://github.com/clamber-engine/spec/issues/19 (in part).
+
+- `behavior/letters.md`: new. The first level's four letters: a
+  letter's position, when one is taken (the offsets and pickup ranges of
+  bunches), the set of letters taken, one more life for all four, and
+  when and where the letter row is drawn.
+- `behavior/collectibles.md`: "Not covered" points to it.
+
 ## spec-v0.60.0
 
 Answers https://github.com/clamber-engine/spec/issues/21 and
