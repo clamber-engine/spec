@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.59.0
+
 Answers https://github.com/clamber-engine/spec/issues/17 (in part).
 
 - `formats/placements.md`: new. The placement list: 8-byte entries
