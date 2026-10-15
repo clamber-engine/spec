@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.57.0
+
 Answers https://github.com/clamber-engine/spec/issues/15 (in part).
 
 - `formats/rom-image.md`: new. The supported `title-1` release (size and
