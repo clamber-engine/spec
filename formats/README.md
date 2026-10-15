@@ -23,3 +23,6 @@ locator table by the data kind's name.
 - `placements.md`: a level's placement list: entries, classes, groups,
   positions, and when the objects placed appear. Vectors:
   `../vectors/placements/`.
+- `sprites.md`: pictures of characters and other moving things: the
+  frame table, short and full frames, pieces, sheets, mirroring, where
+  a frame is drawn, and sprite palettes. Vectors: `../vectors/sprites/`.

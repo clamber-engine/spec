@@ -37,11 +37,10 @@ The view is 224 px tall. Vertically it has:
 ## The player's feet line
 
 The **feet line** `F` is the player's level y rounded up to a whole px.
-The player's level y is placed so that, for a player standing on the
-ground, `F` is one more than the level y of the lowest pixel row drawn
-for the player. A player standing still with the view settled has its
-lowest drawn row 159 px below the picture's top row (row 159, counting
-the top row as 0).
+The player's pictures are drawn with their frame's origin on the feet
+line (`../formats/sprites.md`). A player standing still with the view
+settled has its feet line 160 px below the picture's top row (row 160,
+counting the top row as 0).
 
 ## The ground used
 

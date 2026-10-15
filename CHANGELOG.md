@@ -4,6 +4,18 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers https://github.com/clamber-engine/spec/issues/18 (in part).
+
+- `formats/sprites.md`: new. The frame table, short and full frames
+  (header, piece positions, tile runs), the frame's sheet, large and
+  small pieces, pictures, mirroring, where a frame's picture is drawn
+  for an object, and sprite palettes. Vectors: `vectors/sprites/`.
+- `formats/README.md`: lists it.
+- `behavior/view-vertical.md`: the feet line is where the player's
+  pictures are placed (`formats/sprites.md`); the standing player's
+  feet line is 160 px below the picture's top row (was: lowest drawn
+  row 159).
+
 ## spec-v0.59.0
 
 Answers https://github.com/clamber-engine/spec/issues/17 (in part).
