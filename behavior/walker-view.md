@@ -138,8 +138,8 @@ ahead of a view standing at 1500. Its start is far outside the window
 
 - Other objects and other kinds of enemies.
 - Walkers whose start is in the window when the level begins.
-- How a group is removed, how groups are placed, and whether a group can
-  come back.
+- How a group is removed and whether a group can come back. How walkers
+  and groups are placed is in `../formats/placements.md`.
 - Walkers far above or below the view. Levels that scroll mostly
   vertically.
 - When a defeated walker leaves the level while falling (`walker.md`

@@ -15,3 +15,6 @@ Every decoder spec needs synthetic vectors in `../vectors/`.
 - `graphics.md`: the first level's background pictures: colours and
   palette rows, tiles, packed tile data, tile entries, cell pictures,
   and the two layers made from the grid. Vectors: `../vectors/graphics/`.
+- `placements.md`: a level's placement list: entries, classes, groups,
+  positions, and when the objects placed appear. Vectors:
+  `../vectors/placements/`.
