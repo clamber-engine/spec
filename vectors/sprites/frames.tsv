@@ -1,0 +1,5 @@
+frame	form	L	S1	T1	S2	T2	N1	D2	N2	length
+5	short	1	2	4	1	9	-	-	-	13
+35	full	2	3	4	1	20	7	16	5	404
+36	full	0	3	0	0	0	3	0	0	110
+37	full	9	14	34	0	0	48	48	2	1654
