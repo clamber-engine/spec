@@ -54,9 +54,9 @@ frame `n`**, after the player has moved on that frame:
    player's state on frame `n` (see "Pickup ranges").
 
 So a letter is taken on the first frame that ends with the player in
-range. Call this frame `P`. The offsets and ranges are those of bunches
-(`bunches.md`), with the letter's position in place of the bunch's.
-Landing was not measured for letters.
+range. Call this frame `P`. The offsets are those of bunches
+(`bunches.md`), with the letter's position in place of the bunch's; the
+ranges are below. Landing was not measured for letters.
 
 From `P` on, the letter is no longer in the level. It never comes back
 during the visit to the level: in one case the player was moved about
@@ -83,11 +83,16 @@ letter with `X − xl` from −15 to 21. Facing left, it takes one with
 ## Pickup ranges
 
 A letter is in range when `I` and `D` are both within the ranges for
-the player's state (ends included). They are the ranges of bunches.
+the player's state (ends included). For the states that `bunches.md`
+covers, they are the ranges of bunches. The Down + Action ground action
+(`ground-action.md`) was measured for letters only: it has the standing
+ranges. `bunches.md` makes no claim about it, and this file makes none
+about bunches.
 
 | State | `I` | `D` |
 |---|---|---|
-| Standing, walking, running, Down + Action ground action | −15 to 21 | −8 to 40 |
+| Standing, walking, running | −15 to 21 | −8 to 40 |
+| Down + Action ground action (letters only, see above) | −15 to 21 | −8 to 40 |
 | Crouching (Down held on the ground) | −18 to 12 | −12 to 31 |
 | Rolling | −13 to 21 | −4 to 38 |
 | Jumping, from the take-off frame `T` to `T` + 5 | −15 to 21 | −8 to 40 |
