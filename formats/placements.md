@@ -126,7 +126,8 @@ members are looked up by their own references.
 
 | Kind | The object | Behavior |
 |---|---|---|
-| `small-walker` | A small walker | `walker.md`, `walker-contact.md`, `walker-view.md` |
+| `small-walker` | A small walker | `walker.md`, `walker-contact.md`, `walker-view.md`, `riding-walkers.md` |
+| `medium-walker` | A medium walker | `walker.md`, `riding-walkers.md` |
 | `large-walker` | A large walker | as for `small-walker` |
 | `thrower` | A thrower | `thrower.md`, `ground-action-enemies.md` |
 | `ball` | A ball placed in the level, not thrown (moving when it appears) | `thrower.md`, `ball-contact.md` |
@@ -157,8 +158,9 @@ its own reference, and placed a tyre there.
 ### In the first level
 
 17 of the first level's 37 references have a kind fingerprint row. They
-are used by 30 of its entries (counting group members): 11 small
-walkers (all three group members among them), 3 large walkers, the
+are used by 30 of its entries (counting group members): 5 small
+walkers (all three group members among them), 6 medium walkers, 3 large
+walkers, the
 thrower, a ball, 4 bunches, the four letters (one each), a barrel, 2
 holders, the animal crate, the restart barrel and the end marker. The other references place things that
 have no behavior file yet (for example scenery and signs), or that were

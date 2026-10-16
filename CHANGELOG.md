@@ -211,6 +211,26 @@ and a correction (`title-2` steep faces). Answers `spec` issue #30.
   or less below.
 - `behavior/slopes.md`, "In `title-2`": point to the new rule.
 
+Coverage (`title-1`). Answers no open `spec` issue.
+
+- `behavior/riding-walkers.md` (new): the ridden animal and walkers on
+  flat floor. The attack range (by walker kind and facing, mirrored for
+  the rider's facing; attack heights 25, 38, 51); the automatic charge
+  (shown from the frame the walker comes into range, counted from the
+  next); throws from C + 2 of any charge (rider `vy` −6, the next frame
+  counts as on the floor for a jump; small and medium walkers thrown with
+  twice the rider's `vx` and `vy` −6, then falling through the floor);
+  being knocked off (ranges and heights by kind, decided from the end of
+  H − 1, on the floor for two frames or low enough); the knock-off frame,
+  15 frozen frames, the flight with `air-control.md` steering and the
+  jump's gravity rule; the animal running off at 6 then 4; examples; not
+  covered.
+- New kind `medium-walker`: two fingerprint rows in
+  `formats/locators.md` that said `small-walker` now say
+  `medium-walker` (these walkers are taller, with different ranges);
+  `formats/placements.md` kind table and first-level counts updated;
+  `behavior/walker-contact.md` says it doesn't cover them.
+
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.
