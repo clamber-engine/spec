@@ -373,4 +373,4 @@ This list is for `title-1`; `title-2` has its own list above.
 - Steering on D + 1 to D + 3 when the roll carries on into running
   (measured only with the input unchanged).
 - Running frames during the stop after a roll.
-- The other character.
+- The second character's rolls are in `second-character.md` ("Rolls").
