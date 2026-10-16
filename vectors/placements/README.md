@@ -33,3 +33,33 @@ What the data exercises:
   frame on which each object appears and its `V`, or `never` within
   frames 0–299. Class 8 places nothing. Entry 6 is left out: when an
   entry that is out of order appears is not covered.
+
+## Kinds
+
+Vectors for "Kinds" in `../../formats/placements.md`.
+
+### Input
+
+- The **image**: 3 bank blocks (196 608 bytes), not stored. The byte at
+  position `p` (0 to 196 607) is (37`p` + ⌊`p` / 2048⌋) mod 256. Its
+  SHA-256 is
+  `a6ba56c90978aa11c57f493b12e84636df5e08f726485164e53537cc69aaa433`.
+- `kinds-rows.tsv`: made-up kind fingerprint rows for this image, as a
+  `locators.md` section would list them.
+- References to look up: `8100`, `9000`, `9010`, `ffe0` and `4000`.
+
+What the data exercises:
+
+- Rows made from bank blocks 0, 1 and 2, and two rows with the same
+  kind.
+- Reference `ffe0`: in block 1 its 64 bytes run on into block 2; in
+  block 2 they would run past the end of the image, so block 2 gives no
+  fingerprint.
+- Reference `4000` matches no row.
+
+### Expected output
+
+- `kinds-candidates.tsv`: every candidate fingerprint, one line per
+  reference and bank block, or `none`.
+- `kinds.tsv`: for each reference, the block whose candidate matched a
+  row and the row's kind, or `-` and `none`.

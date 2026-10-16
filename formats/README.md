@@ -23,7 +23,8 @@ fingerprints" in `../REVIEW.md`).
   palette rows, tiles, packed tile data, tile entries, cell pictures,
   and the two layers made from the grid. Vectors: `../vectors/graphics/`.
 - `placements.md`: a level's placement list: entries, classes, groups,
-  positions, and when the objects placed appear. Vectors:
+  kinds of objects (by fingerprint), positions, and when the objects
+  placed appear. Vectors:
   `../vectors/placements/`.
 - `sprites.md`: pictures of characters and other moving things: the
   frame table, short and full frames, pieces, sheets, mirroring, where

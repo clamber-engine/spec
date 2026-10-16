@@ -224,8 +224,6 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   falling.
 - Walls and faces in a ball's way (none was met).
 - Throwers facing right, other timetables, and throwers in other levels.
-- How a level's placements mark a thrower or a placed ball
-  (`../formats/placements.md` doesn't give kinds of objects).
 - Whether a placed ball comes back after it is removed, and what a
   placed ball's speeds come from.
 - How the thrower and the balls are drawn.
