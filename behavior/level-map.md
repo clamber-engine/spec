@@ -8,10 +8,9 @@ direction makes it **walk** along a path to another stop. This file says
 how a walk moves, frame by frame, when a direction starts one, and where
 the lead stands when the map appears.
 
-Where the stops and paths are, which directions take which path, and
-which paths are open come from the map's data and the player's progress.
-They are not covered here yet; a later format file will give them in the
-terms used below.
+Where the stops and paths are and which directions take which path come
+from the map's data: `../formats/level-map.md`. Which paths are open
+comes from the player's progress, which is not covered yet.
 
 Frames are logic frames at 60 Hz. The map has occasional lag frames
 ("Pages"); they aren't counted.
@@ -160,10 +159,11 @@ For example, with the page change on frame 39 and the walk's last frame
 ## When the map appears
 
 When the map appears (at the start, or after leaving a level), the lead
-stands at the point of its stop with both fractions 0. This point can
-differ from the end of a path into that stop, so the first leg of a walk
-can differ depending on whether the lead has just arrived or the map has
-just appeared. In either case it starts from where the lead stands.
+stands at its stop's appearance point (`../formats/level-map.md`), 8 px
+to the right of the end of a path into that stop, with both fractions 0.
+So the first leg of a walk can differ depending on whether the lead has
+just arrived or the map has just appeared. In either case it starts
+from where the lead stands.
 
 The map fades in. No walk can start before 64 frames after the first
 frame of the fade-in (measured when coming back to the map after
@@ -176,8 +176,8 @@ is not covered.
 
 ## Not covered
 
-- Where the stops and points are, which directions take which path, and
-  which paths are open (the map's format, and progress).
+- Which paths are open (progress). Where the stops and points are and
+  which directions take which path are in `../formats/level-map.md`.
 - The second character on the map, and the figures' animation.
 - Buttons other than the directions at a stop (entering a level, other
   menus), and when the walk after a first finish starts.

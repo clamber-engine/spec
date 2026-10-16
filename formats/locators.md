@@ -32,6 +32,8 @@ SHA-256 of the image:
 | Level graphics: the first level's picture table | `graphics.md` | `d9` | `a3c0` |
 | Sprite frames: the frame table | `sprites.md` | `fb` | `cc9c` |
 | Placements: the first level's placement list | `placements.md` | `fd` | `95dc` |
+| Level map: point tables | `level-map.md` | `fc` | `f47b` |
+| Level map: corner records | `level-map.md` | `c0` | `d13c` |
 
 ### Kind fingerprints: placement references
 
