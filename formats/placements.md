@@ -136,6 +136,7 @@ members are looked up by their own references.
 | `holder` | An object that can be carried and holds the missing character | `carrying.md`, `holder-breaking.md` |
 | `end-marker` | The level's end marker | `level-end.md` |
 | `animal-crate` | A crate holding an animal | `animal-crate.md` |
+| `restart-barrel` | The restart barrel | `restart-barrel.md` |
 | `stinger` | A stinger (flying enemy) | `stinger.md` |
 
 The behavior files are in `../behavior/`. A row gives the kind only:
@@ -151,18 +152,19 @@ use; where the other levels' placement lists are is not covered yet.
 
 ### In the first level
 
-16 of the first level's 37 references have a kind fingerprint row. They
-are used by 29 of its entries (counting group members): 11 small
+17 of the first level's 37 references have a kind fingerprint row. They
+are used by 30 of its entries (counting group members): 11 small
 walkers (all three group members among them), 3 large walkers, the
 thrower, a ball, 4 bunches, the four letters (one each), a barrel, 2
-holders, the animal crate and the end marker. The other references place things that
+holders, the animal crate, the restart barrel and the end marker. The other references place things that
 have no behavior file yet (for example scenery and signs), or that were
 not seen.
 
-Checked in the game: every object seen from these 29 entries, in the
-runs in "When placed objects appear" and, for the end marker, in those
-of `../behavior/level-end.md` and, for the animal crate, of
-`../behavior/animal-crate.md`, was of the row's kind. Each of the 16
+Checked in the game: every object seen from these 30 entries, in the
+runs in "When placed objects appear" and, for the end marker, the
+restart barrel and the animal crate, in those of `../behavior/level-end.md`,
+`../behavior/restart-barrel.md` and `../behavior/animal-crate.md`, was of
+the row's kind. Each of the 17
 references was also given, in a copy of the image, to one class 1 entry
 near the level's start in place of its own reference. Each time an
 object of the row's kind appeared there; with three of the letters'

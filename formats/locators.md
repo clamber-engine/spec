@@ -42,6 +42,7 @@ names" table.
 |---|---|
 | `064bbe75bd3abfab4b38a24ad7b839fc30bdfc417023fd381ada77694e617ded` | `stinger` |
 | `0e1f45ccf4bc6e7a48005c73ce0003f0a0d0205fbb063ade26b4f1fe83877da0` | `stinger` |
+| `12ddb2c3b0a218c0ccb5c1798e7094b5a2b61d21d2361da03b6f6286fa191e0a` | `restart-barrel` |
 | `15ac2312a3f8d89089ee4c658cf1bee3df8b12254e7ebe4d7646b35028b932d6` | `letter-1` |
 | `15e5d66f8306cbb5fc446248adeed6c91374c587a91b124a466964d3c2afd580` | `stinger` |
 | `180898553bcc5b68269a895a68e20ed50a90d35c3a70a22caadff48695fbdd43` | `holder` |
