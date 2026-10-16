@@ -4,6 +4,17 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (`title-1`). Answers no open `spec` issue.
+
+- `behavior/second-character.md`: new section "Rolls": the second
+  character's rolls last 24 frames (25 when started on D + 17), sizes
+  1.125, 3.375 and 4.5, a slow roll steered in its direction goes toward
+  3, carrying on lasts to D + 6 (`roll_end`) and the next roll then
+  starts no earlier than D + 7; the single-running-frame exception
+  differs; facing in the stop; worked values. "Not covered" updated.
+- `behavior/roll-input.md`, `behavior/roll-speed.md`,
+  `behavior/movement-summary.md`: point to it.
+
 ## spec-v0.74.0
 
 Coverage (first level, `title-1`). Answers no open `spec` issue.

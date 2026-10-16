@@ -7,7 +7,8 @@ How the **second character** (the one that joins later; see
 the character under control. It follows the same rules as the first
 character, with its own values. This file lists what differs and gives
 the second character's numbers; the rules themselves are in
-`ground-speed.md`, `jump-arc.md`, `air-control.md` and `landing.md`.
+`ground-speed.md`, `jump-arc.md`, `air-control.md`, `landing.md`, and
+for rolls `roll-input.md` and `roll-speed.md`.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y`, `vx`
 and `vy` are as in a trace: right and down are positive, speeds in px per
@@ -156,10 +157,109 @@ T + 46 on flat ground. Columns as in `air-control.md`; moving right
 | Running at +3.375, Right and Action | Right and Action | 155.25 | 3.375 |
 | Running at +3.375, Right and Action | Right | 110.6328125 | 2.25 |
 
+## Rolls
+
+The rules of `roll-input.md` and `roll-speed.md` apply to the second
+character with the differences below. They use those files' names: S is
+the `roll_start` frame and D is the frame after the roll's last frame.
+
+Measured on flat ground with the second character under control after a
+swap, the first character following: 166 runs of up to 189 frames, 190
+rolls (most going left, 11 runs with rolls going right), covering
+presses from standing, walking, sliding, speeding up and running, no
+direction, either one, both, Up, Down and Action held on and after S,
+steering both ways, the fast-roll windows on both sides of their
+bounds, carrying on into running, the next roll after a stop (presses
+on every frame from D − 6 to D + 21) and after carrying on (D to
+D + 11), presses in
+the air before and after landing, and jumps out of a roll. On every roll
+frame and every frame of the stop or the carry-on, `vx` and the movement
+match the rules below, and every start and end frame matches.
+
+| Value | First character | Second character |
+|---|---|---|
+| Roll length | 29 frames (D = S + 29) | **24 frames** (D = S + 24) |
+| A roll that starts on D + 17 of the previous roll | 30 frames | **25 frames** |
+| Slow roll size | 1 (256/256) | **1.125** (288/256) |
+| Normal roll size | 3 (768/256) | **3.375** (864/256) |
+| Fast roll size | 4 (1024/256) | **4.5** (1152/256) |
+| Size of a slow roll after steering in its direction | 3 (768/256) | **3** (768/256), the same; not 3.375 |
+| Carrying on into running: still `roll` on | D, D + 1, D + 2 | **D to D + 5** |
+| Carrying on: `roll_end` | D + 3 | **D + 6** |
+| Next roll after carrying on, press on P ≥ D + 2 | max(P, D + 4) | **max(P, D + 7)** |
+| Down held on the press frame | the ground action | a roll (`roll-input.md`) |
+
+In detail:
+
+- **Length.** A roll that starts on D + 17 of the previous roll lasts 25
+  frames whether it starts from a remembered press or from a new press
+  on D + 17 (on its first frame the speed stays 0, as for the first
+  character). A press on D + 18 or later starts a 24-frame roll.
+- **Carrying on.** The roll's speed rule applies from D to D + 6 (the
+  `roll_end` frame); the ground rule of `ground-speed.md` applies from
+  D + 7. Example: Action alone held through a slow roll, `vx` is
+  1.09375 (280/256) on D + 6, then 0.95703125 on D + 7 (slowing toward 0,
+  no direction held). Running frames on D + 6 don't count toward a fast
+  next roll, as `roll_end` frames never do.
+- **Steering.** A slow roll steered in its direction moves toward 3
+  (768/256) from that frame on: the first character's normal size, not
+  this character's. Normal and fast rolls keep their sizes. Reversing is
+  as for the first character (the size doesn't change on that frame).
+- **Running recently**, the windows of `roll-speed.md` are the same:
+  a running frame on or after S − 15 (Left or Right held on S) or
+  S − 14 (neither). The measured exception differs: if the only running
+  frame is a single one that starts from standing still, a press with
+  neither Left nor Right held on S gives a slow roll at every gap
+  measured (1 to 14 frames), **even when Left or Right was held on
+  frames between them** (measured with the direction held on the frame
+  before S only and on every frame between, gaps 3 and 10). With Left or
+  Right held on S the roll is fast within the window (gaps 1 to 14), and
+  two running frames in a row follow the window rule.
+- **Facing in the stop** turns to a direction on the frame it is
+  pressed, for presses on D + 1, D + 3, D + 6, D + 14, D + 16 and D + 17,
+  while the stop's speeds stay as in `roll-speed.md`. A direction pressed
+  on D + 18 starts a normal ground turn.
+- **Jumping out of a roll** is as in `roll-speed.md`, with this
+  character's targets after take-off (±2.25, ±3.375 with Action, 0) and
+  its own jump (`vy` −8.3515625 on the take-off frame). Measured with
+  presses on S + 1, S + 5, S + 12, S + 22, S + 23 and D.
+
+Everything else is as for the first character: when a press starts a
+roll on the ground and in the air (a press on P ≥ L − 6 held through
+L + 1 starts a roll on L + 1, measured for one jump height), the size and
+direction on S, the speed rule, the stop after a roll (D + 1 and D + 2
+toward 0, D + 3 moves with `vx` 0 at the end of the frame, still to
+D + 17, moving again from D + 18), the remembered press (D − 2 to
+D + 16 starts the next roll on D + 17, earlier presses are ignored), and
+a fast roll always ending in a stop.
+
+Worked values, moving right (frame S is the press; distances from the
+position at the start of S):
+
+| Before S | Held on S, then | Size | `vx` on S, S + 1, S + 2 | `vx` on D | Distance S to D | Distance S to D + 3 (stop) |
+|---|---|---|---|---|---|---|
+| Standing | Action; nothing | slow | 0.140625, 0.26171875, 0.3671875 | 1.0703125 | 20.28125 | 22.7578125 |
+| Standing | Action and Right; Right | normal | 0.421875, 0.7890625, 1.109375 | 3.2421875 | 61.31640625 | 68.82421875 |
+| Walking right at +2.25 | Action and Right; Right | normal | 2.390625, 2.51171875, 2.6171875 | 3.3203125 | 76.53125 | 84.20703125 |
+| Running right; Action released one frame (`vx` 3.234375) | Action and Right; Right | fast | 3.390625, 3.52734375, 3.6484375 | 4.44140625 | 103.703125 | 113.97265625 |
+
+Reversing: walking right at +2.25, Action and Right on S, then Left
+held. `vx` is 2.390625 on S, then 1.671875, 1.04296875, 0.4921875,
+0.01171875 on S + 1 to S + 4, first negative on S + 5 (−0.41015625), and
+−3.12890625 on D; the player ends 39.625 px left of the start of S on D.
+
+Steering a slow roll: standing, Action alone on S, Right from S + 10.
+`vx` is 0.8203125 on S + 9 and 1.08984375 on S + 10 (toward 3), and
+2.6953125 on D.
+
 ## Not covered
 
-- Rolls (start, speed, steering, length) and the Down + Action ground
-  action of the second character.
+- Rolls on slopes, off ledges, into walls or enemies; steering during
+  D to D + 6 of a carry-on with a changed input; running frames during
+  the stop; presses in the air for other jump heights. This character
+  has no Down + Action ground action (`roll-input.md`).
+- What the first character does while following a rolling second
+  character.
 - Falls that don't start with a jump (walking off a ledge), jumping on
   landing from a press made in the air, and the landing lockout of
   `jump-input.md` for this character.

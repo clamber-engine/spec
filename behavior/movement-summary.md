@@ -78,8 +78,10 @@ of 1 px in 4 don't change any of this (`slopes.md`).
 ## Second character
 
 Walking 2.25, running 3.375, take-off `vy` −8.3515625, held-jump gravity
-0.3515625, and 13 frames of crouch after release. Everything else is the
-same (`second-character.md`).
+0.3515625, and 13 frames of crouch after release. Rolls last 24 frames
+with sizes 1.125, 3.375 and 4.5 (a steered slow roll goes toward 3), and
+carry on into running until D + 6. Everything else is the same
+(`second-character.md`).
 
 ## Scenarios with reference traces
 
