@@ -246,6 +246,22 @@ and a correction (`title-2` steep faces). Answers `spec` issue #30.
   or less below.
 - `behavior/slopes.md`, "In `title-2`": point to the new rule.
 
+Importer: sound (`title-1`), in part for spec#20
+(https://github.com/clamber-engine/spec/issues/20). Builds on
+`formats/voice-output.md` (spec-staging #89) and `formats/voices.md`
+(spec-staging #87).
+
+- `formats/echo.md` (new): the echo memory (512 × delay entries, 4 in
+  `title-1`, all 0 when the sound starts), the position and history,
+  per output: echo input from the voices with echo on, the value taken
+  (halved), the filter over the last 8 (first seven parts wrapped,
+  the last on its own, limited, rounded to even), writing with feedback,
+  the echo part and the output with it, limited; when handed values
+  count (within three outputs, exact output not covered); what
+  `title-1` songs hand (the first level's song hands no echo volume).
+- `vectors/echo/` (new): 9 made-up cases with every output, computed
+  with the weights of `voice-output.md`.
+
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.
