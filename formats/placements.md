@@ -137,6 +137,7 @@ members are looked up by their own references.
 | `end-marker` | The level's end marker | `level-end.md` |
 | `animal-crate` | A crate holding an animal | `animal-crate.md` |
 | `stinger` | A stinger (flying enemy) | `stinger.md` |
+| `tyre` | A tyre that throws the player up | `tyre.md` |
 
 The behavior files are in `../behavior/`. A row gives the kind only:
 the settings of the object (for example a walker's heading) are not
@@ -146,8 +147,11 @@ The `holder` reference is the one reference seen to make two objects
 appear (see "When placed objects appear"). The holder is one of them;
 what the second one is, is not covered.
 
-The `stinger` rows are for references that the first level doesn't
-use; where the other levels' placement lists are is not covered yet.
+The `stinger` and `tyre` rows are for references that the first level
+doesn't use; where the other levels' placement lists are is not covered
+yet. Each of the three `tyre` references was given, in a copy of the
+image, to one class 1 entry near the first level's start in place of
+its own reference, and placed a tyre there.
 
 ### In the first level
 

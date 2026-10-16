@@ -4,6 +4,24 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (`title-1`). Answers no open `spec` issue.
+
+- `behavior/tyre.md` (new): tyres. A tyre stays where placed; touching by
+  I/U ranges against its top T (16 at rest); being caught after the
+  player's move (on the ground and not taking off, or moving down and
+  less than 16 px below the standing height), lifted to T + 2 with the
+  fraction kept; the squash (T per frame, any touch puts the player back
+  on top); walking off the top (8 px, then a shorter leave frame); the
+  throw on C + 15 (`vy` −6, one frame with nothing changing, then 0.4375
+  whatever the input; no catching for 8 frames); the wobble after it (T
+  per frame, held while touched without a catch); the tyre jump (−10 on
+  the press frame, 0.3125 while held, apex table; on the press frame
+  after arriving on the ground, from C + 2 after arriving from the air,
+  with a 9-frame window for presses made in the air); frozen frames;
+  worked values; not covered.
+- `formats/placements.md`: kind name `tyre`.
+- `formats/locators.md`: 3 kind fingerprint rows for `tyre`.
+
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.
