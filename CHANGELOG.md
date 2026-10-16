@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.65.0
+
 Answers https://github.com/clamber-engine/spec/issues/19 (in part).
 
 - `behavior/level-end.md`: new. Finishing a level (`title-1`): the end
