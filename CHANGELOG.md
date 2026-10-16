@@ -4,6 +4,22 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers https://github.com/clamber-engine/spec/issues/19 (in part).
+
+- `behavior/thrower.md`: new (`title-1`). A thrower sits still where it
+  is placed, appears and is removed by the walker window, and throws a
+  ball up, right and left on a fixed 173-frame timetable from the frame
+  it appears (up on +2, right on +33, left on +144), whatever the player
+  does. A ball starts 8 px above the thrower at 7 px per frame upward
+  and 3.125 px per frame sideways or none; it falls at 0.4375 px per
+  frame per frame up to 8, bounces back up at 5 px per frame on a floor
+  within reach, then ignores floors until it is more than 47 px below
+  that floor; it is removed once outside the window (31 px left of and
+  above the picture, 32 px right of and below it), but not on a frame
+  on which it bounced or stopped ignoring floors. Balls placed directly
+  in a level. Synthetic example; "Not covered" lists contacts with the
+  player and others.
+
 ## spec-v0.67.0
 
 Answers https://github.com/clamber-engine/spec/issues/19 (in part).
