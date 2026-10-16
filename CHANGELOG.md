@@ -4,6 +4,14 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers https://github.com/clamber-engine/spec/issues/28.
+
+- `behavior/falling-out.md`: the fall-out frame Z moves with the input
+  held on Z, as any falling frame: directions on Z set Z's target speed,
+  `vx`, facing and `x` by `air-control.md`. Jump, Action, Up, Down and
+  the swap press on Z do nothing, as on Z − 1. Input is ignored from
+  Z + 1 on (was "from Z on"). Example added.
+
 ## spec-v0.70.0
 
 Answers https://github.com/clamber-engine/spec/issues/26.
