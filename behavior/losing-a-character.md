@@ -15,7 +15,8 @@ Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y` and
 and positions are whole multiples of 1/256 px.
 
 The **first character** is the one under control when a game begins;
-the **second character** is the one that joins later. Measured with the
+the **second character** is the one that joins later (how it joins, and
+how the other character follows, is in `following.md`). Measured with the
 first character as the hit character and the second following it, hit by ground enemies from the
 side: walking or running into them, standing facing toward and away from
 an enemy that walks into the player from the right or from the left,

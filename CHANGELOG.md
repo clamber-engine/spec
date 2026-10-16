@@ -4,6 +4,18 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers https://github.com/clamber-engine/spec/issues/22 (in part).
+
+- `behavior/following.md`: new. How the other character follows the
+  lead (`title-1`): the trail of the lead's whole-pixel positions, how
+  the follower steps along it and waits, when it rests and where (28 px
+  behind the lead), how it walks to its rest spot and back onto the
+  trail, its facing, and the pause frames. How the missing character
+  joins from the object that holds it (the 32-frame flight, the lead
+  standing still meanwhile). Which characters are there, and which one
+  leads, when a level begins again.
+- `behavior/swap.md`, `behavior/losing-a-character.md`: point to it.
+
 ## spec-v0.62.0
 
 Answers https://github.com/clamber-engine/spec/issues/20 (in part).

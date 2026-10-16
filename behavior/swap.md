@@ -205,4 +205,5 @@ usual and the swap starts on the next row with `y` unchanged.
 - A press on the exact frame the other character lands from a jump of
   its own, when it is still within 7 px above the floor (it is left in
   the air and the player's target is that height).
-- How the other character follows the player before and after a swap.
+- How the other character follows the player outside a swap is in
+  `following.md`.
