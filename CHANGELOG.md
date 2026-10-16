@@ -4,6 +4,19 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers https://github.com/clamber-engine/spec/issues/19 (in part).
+
+- `behavior/thrown-objects.md`: new section "Hitting walkers"
+  (`title-1`). A thrown object defeats a walker when the walker is within
+  a range of offsets that depends on the walker's size and facing and
+  the object's direction, larger (25 px further back, 33 px higher) for
+  the first 16 frames out of the hands; the object and the player carry
+  on unaffected; the walker is knocked back the way the object came at
+  4 px per frame, easing toward 2, and falls from 6 px per frame upward
+  with no frozen frames; a patrol turn can still happen on the frame
+  after the hit. Synthetic example; "Not covered" updated.
+- `behavior/walker.md`: "Not covered" points to it.
+
 ## spec-v0.66.0
 
 Answers https://github.com/clamber-engine/spec/issues/19 (in part).
