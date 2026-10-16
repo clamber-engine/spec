@@ -8,7 +8,7 @@ thrown up, lands and runs out of the level, and the **other character**
 takes its place and becomes the one under control. Being hit with no
 other character is in `knock-out.md`. Which contacts with a walker cause
 damage rather than a bounce is in `walker-contact.md` (measured with one
-character).
+character), and when a thrower's ball does in `ball-contact.md`.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y` and
 `vy` are as in a trace: down is positive, speeds in px per frame. Speeds
