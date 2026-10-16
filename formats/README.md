@@ -31,3 +31,7 @@ locator table by the data kind's name.
 - `sound.md`: samples (sample table, records, blocks, decoding, loops),
   which samples each song has (shared list, sample sets), and where each
   song's data is. Vectors: `../vectors/sound/`.
+- `songs.md`: what song data says: the header, steps and beats (period
+  and tempo), tracks of notes, rests and commands, lengths, the pitch of
+  a note, the three effects, song-wide settings, and what each voice is
+  handed and when. Vectors: `../vectors/songs/`.

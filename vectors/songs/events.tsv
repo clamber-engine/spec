@@ -1,0 +1,1353 @@
+step	voice	event	values
+1	-	period	60
+3	-	period	100
+3	0	note	4096 3 100 80 143 224
+3	1	note	2734 9 60 60 142 209
+3	2	note	3649 11 40 50 138 243
+3	2	echo	on
+3	3	note	1626 2 50 50 143 242
+3	4	note	6502 7 30 35 143 244
+3	5	release	
+3	5	pitch	0
+3	6	note	4096 10 25 25 143 246
+3	7	release	
+3	-	main-volume	100 90
+3	-	echo-volume	20 25
+3	-	echo-feedback	48
+3	-	echo-filter	127 0 0 0 0 0 0 0
+3	-	noise-rate	0
+3	-	echo-writing	on
+3	-	beat	
+4	1	pitch	2744
+5	-	beat	
+6	1	pitch	2754
+7	-	beat	
+8	1	pitch	2744
+9	0	release	
+9	3	release	
+9	-	beat	
+10	1	pitch	2734
+11	0	release	
+11	0	pitch	0
+11	3	note	2048 2 50 50 143 242
+11	4	release	
+11	-	beat	
+12	1	pitch	2724
+13	3	note	2170 2 50 50 143 242
+13	4	note	7298 7 30 35 143 244
+13	-	beat	
+14	1	pitch	2714
+15	0	release	
+15	3	release	
+15	3	pitch	0
+15	-	beat	
+16	1	pitch	2724
+18	0	note	4340 3 100 80 143 224
+18	1	pitch	2734
+18	2	release	
+18	3	note	2170 2 50 50 143 242
+18	-	beat	
+20	0	note	4598 3 100 80 143 224
+20	1	pitch	2744
+20	2	note	3649 11 40 50 138 243
+20	2	echo	off
+20	3	release	
+20	3	pitch	0
+20	-	beat	
+22	0	note	4871 3 100 80 143 224
+22	1	pitch	2754
+22	3	note	2048 2 50 50 143 242
+22	-	beat	
+24	0	release	
+24	1	pitch	2744
+24	3	note	2170 2 50 50 143 242
+24	-	beat	
+26	0	note	4598 3 100 80 143 224
+26	1	pitch	2734
+26	3	release	
+26	3	pitch	0
+26	4	release	
+26	-	beat	
+28	1	pitch	2724
+28	3	note	2170 2 50 50 143 242
+28	4	note	6502 7 30 35 143 244
+28	-	beat	
+30	0	release	
+30	1	pitch	2714
+30	3	release	
+30	3	pitch	0
+30	-	beat	
+32	0	note	4340 3 100 80 143 224
+32	1	pitch	2724
+32	3	note	1933 2 50 50 143 242
+32	-	beat	
+34	1	pitch	2734
+35	2	release	
+35	3	release	
+35	-	beat	
+36	1	pitch	2744
+37	0	release	
+37	2	note	3649 11 40 50 138 243
+37	2	noise	on
+37	3	release	
+37	4	release	
+37	-	noise-rate	26
+37	-	echo-writing	on
+37	-	beat	
+38	1	pitch	2754
+39	0	note	575 3 100 80 143 224
+39	4	note	7298 7 30 35 143 244
+39	-	beat	
+40	1	pitch	2744
+41	-	beat	
+42	1	pitch	2734
+43	0	release	
+43	-	beat	
+44	1	pitch	2724
+45	0	note	4176 3 100 80 143 224
+45	-	beat	
+46	1	pitch	2714
+47	2	release	
+47	-	beat	
+48	1	pitch	2724
+50	0	release	
+50	1	pitch	2734
+50	2	note	3649 11 40 50 138 243
+50	2	noise	off
+50	-	beat	
+52	0	note	4016 3 100 80 143 224
+52	1	release	
+52	1	pitch	2744
+52	4	release	
+52	-	beat	
+54	1	note	3069 9 60 60 142 209
+54	4	note	6502 7 30 35 143 244
+54	-	beat	
+55	1	pitch	3079
+56	0	release	
+56	-	beat	
+57	1	pitch	3089
+58	0	note	4096 3 100 80 143 224
+58	-	beat	
+59	1	pitch	3079
+60	2	release	
+60	-	beat	
+61	1	pitch	3069
+62	0	release	
+62	2	note	3866 11 40 50 138 243
+62	4	release	
+62	-	beat	
+63	1	pitch	3059
+64	0	note	4096 3 100 80 143 224
+64	4	note	7298 7 30 35 143 244
+64	-	beat	
+65	1	pitch	3049
+67	0	note	4340 3 100 80 143 224
+67	1	pitch	3059
+67	-	beat	
+69	1	pitch	3069
+69	-	beat	
+71	0	release	
+71	1	pitch	3079
+71	-	beat	
+73	0	note	5161 3 100 80 143 224
+73	1	pitch	3089
+73	-	beat	
+75	0	release	
+75	1	pitch	3079
+75	-	beat	
+77	0	note	5468 3 100 80 143 224
+77	1	release	
+77	1	pitch	3069
+77	2	release	
+77	4	release	
+77	-	beat	
+79	0	release	
+79	1	note	2734 9 60 60 142 209
+79	2	note	3866 11 40 50 138 243
+79	4	note	6502 7 30 35 143 244
+79	-	beat	
+82	0	release	
+82	0	pitch	0
+82	-	beat	
+84	0	release	
+84	-	beat	
+86	0	note	5793 3 100 80 143 224
+86	-	beat	
+88	4	release	
+88	-	beat	
+90	0	release	
+90	1	release	
+90	4	note	7298 7 30 35 143 244
+90	-	beat	
+92	0	note	6137 3 100 80 143 224
+92	1	note	2734 9 60 60 142 209
+92	-	beat	
+94	2	release	
+94	-	beat	
+96	0	release	
+96	2	release	
+96	2	pitch	0
+96	2	volume	72 73
+96	2	envelope	140 178
+96	-	beat	
+97	1	pitch	2742
+98	1	pitch	2734
+99	0	note	0 3 100 80 143 224
+99	1	pitch	2726
+99	2	release	
+99	-	beat	
+100	1	pitch	2718
+101	0	release	
+101	1	pitch	2726
+101	2	release	
+101	2	volume	9 10
+101	2	envelope	11 12
+101	-	beat	
+102	1	pitch	2734
+103	0	note	0 3 100 80 143 224
+103	1	pitch	2742
+103	4	release	
+103	-	beat	
+104	1	pitch	2734
+105	0	release	
+105	1	pitch	2726
+105	4	note	6502 7 30 35 143 244
+105	-	beat	
+106	1	pitch	2718
+107	0	note	515 3 100 80 143 224
+107	1	pitch	2726
+107	-	beat	
+108	1	pitch	2734
+109	0	release	
+109	1	pitch	2742
+109	-	beat	
+110	1	pitch	2734
+111	0	note	165 3 100 80 143 224
+111	1	pitch	2726
+111	-	beat	
+112	1	pitch	2718
+113	1	pitch	2726
+114	0	release	
+114	1	pitch	2734
+114	4	release	
+114	-	beat	
+115	1	pitch	2742
+116	0	note	2734 3 100 80 143 224
+116	1	pitch	2734
+116	4	note	7298 7 30 35 143 244
+116	-	beat	
+117	1	pitch	2726
+117	-	beat	
+118	1	pitch	2718
+119	1	pitch	2726
+119	-	beat	
+120	1	pitch	2734
+120	-	beat	
+121	1	pitch	2742
+121	-	beat	
+122	0	release	
+122	1	pitch	2734
+122	-	beat	
+123	1	pitch	2726
+124	0	note	3866 3 100 80 143 224
+124	1	pitch	2718
+124	4	release	
+124	-	beat	
+125	0	release	
+125	1	pitch	2726
+125	4	note	6502 7 30 35 143 244
+125	-	beat	
+126	0	note	2896 3 100 80 143 224
+126	1	release	
+126	1	pitch	2734
+126	-	beat	
+127	1	pitch	2742
+128	0	note	3866 3 100 80 143 224
+128	1	release	
+128	1	pitch	2734
+128	-	beat	
+129	0	release	
+129	1	pitch	2726
+129	-	beat	
+130	0	note	2896 3 100 80 143 224
+130	1	pitch	2718
+130	4	release	
+130	-	beat	
+131	0	note	3866 3 100 80 143 224
+131	1	release	
+131	1	pitch	2726
+131	4	note	7298 7 30 35 143 244
+131	-	beat	
+132	1	pitch	2734
+133	0	release	
+133	1	release	
+133	1	pitch	0
+133	-	beat	
+134	0	note	2896 3 100 80 143 224
+134	-	beat	
+135	0	note	3251 3 100 80 143 224
+135	-	beat	
+136	0	release	
+136	1	release	
+136	-	beat	
+138	0	release	
+138	1	release	
+138	1	pitch	2742
+138	-	beat	
+139	1	pitch	2734
+139	4	release	
+139	-	beat	
+140	1	pitch	2726
+140	4	note	6502 7 30 35 143 244
+140	-	beat	
+141	1	pitch	2718
+142	1	pitch	2726
+142	-	beat	
+143	1	pitch	2734
+143	-	beat	
+144	1	release	
+144	1	pitch	2742
+144	-	beat	
+145	1	note	2896 9 60 60 142 209
+145	4	release	
+145	-	beat	
+147	1	pitch	2904
+147	4	note	7298 7 30 35 143 244
+147	-	beat	
+148	1	pitch	2896
+148	-	beat	
+149	1	pitch	2888
+149	-	beat	
+150	1	pitch	2880
+151	1	pitch	2888
+151	-	beat	
+152	1	pitch	2896
+152	-	beat	
+153	1	pitch	2904
+153	-	beat	
+154	1	pitch	2896
+154	4	release	
+154	-	beat	
+155	1	pitch	2888
+156	1	pitch	2880
+156	4	note	6502 7 30 35 143 244
+156	-	beat	
+157	1	release	
+157	1	pitch	2888
+157	-	beat	
+158	1	note	2048 9 60 60 142 209
+158	-	beat	
+159	1	pitch	2008
+160	-	beat	
+161	1	pitch	1968
+161	4	release	
+161	-	beat	
+162	4	note	7298 7 30 35 143 244
+162	-	beat	
+163	1	pitch	2008
+163	-	beat	
+165	1	pitch	2048
+165	-	beat	
+166	-	beat	
+167	1	pitch	2088
+167	-	beat	
+168	-	beat	
+169	1	pitch	2128
+170	4	release	
+170	-	beat	
+171	4	note	6502 7 30 35 143 244
+171	-	beat	
+172	-	beat	
+174	-	beat	
+175	-	beat	
+176	4	release	
+176	-	beat	
+177	1	release	
+177	4	note	7298 7 30 35 143 244
+177	-	beat	
+179	1	note	2048 9 60 60 142 209
+179	-	beat	
+180	-	beat	
+181	1	pitch	2078
+181	-	beat	
+182	1	pitch	2048
+183	1	pitch	2018
+183	-	beat	
+184	1	pitch	1988
+184	-	beat	
+185	1	pitch	1958
+185	4	release	
+185	-	beat	
+186	4	note	6502 7 30 35 143 244
+186	-	beat	
+188	-	beat	
+189	-	beat	
+190	-	beat	
+192	4	release	
+192	-	beat	
+193	1	release	
+193	4	note	7298 7 30 35 143 244
+193	-	beat	
+194	1	note	2048 9 60 60 142 209
+194	-	beat	
+195	1	pitch	2098
+195	-	beat	
+197	1	pitch	2148
+197	-	beat	
+198	-	beat	
+199	1	pitch	2198
+199	-	beat	
+200	4	release	
+200	-	beat	
+201	1	pitch	2148
+202	4	note	6502 7 30 35 143 244
+202	-	beat	
+203	1	pitch	2098
+203	-	beat	
+204	-	beat	
+205	1	pitch	2048
+206	-	beat	
+207	4	release	
+207	-	beat	
+208	4	note	7298 7 30 35 143 244
+208	-	beat	
+209	-	beat	
+211	1	release	
+211	-	beat	
+212	1	note	2028 9 60 60 142 209
+212	-	beat	
+213	1	pitch	2008
+213	-	beat	
+214	1	pitch	2028
+215	1	pitch	2048
+215	-	beat	
+216	4	release	
+216	-	beat	
+217	4	note	6502 7 30 35 143 244
+217	-	beat	
+218	-	beat	
+220	-	beat	
+221	1	release	
+221	-	beat	
+222	1	note	2048 9 60 60 142 209
+222	4	release	
+222	-	beat	
+224	4	note	7298 7 30 35 143 244
+224	-	beat	
+225	-	beat	
+226	-	beat	
+227	-	beat	
+229	1	release	
+229	-	beat	
+230	1	note	2048 9 60 60 142 209
+230	-	beat	
+231	4	release	
+231	-	beat	
+232	4	note	6502 7 30 35 143 244
+232	-	beat	
+234	1	release	
+234	-	beat	
+235	1	note	2436 9 60 60 142 209
+235	-	beat	
+236	-	beat	
+238	4	release	
+238	-	beat	
+239	1	volume	66 66
+239	4	note	7298 7 30 35 143 244
+239	-	beat	
+240	-	beat	
+241	1	volume	72 72
+241	-	beat	
+243	1	volume	66 66
+243	-	beat	
+244	-	beat	
+245	1	volume	60 60
+245	-	beat	
+247	1	volume	54 54
+247	4	release	
+247	-	beat	
+248	4	note	6502 7 30 35 143 244
+248	-	beat	
+249	1	volume	48 48
+249	-	beat	
+250	-	beat	
+251	1	volume	54 54
+252	-	beat	
+253	1	volume	60 60
+253	4	release	
+253	-	beat	
+254	4	note	7298 7 30 35 143 244
+254	-	beat	
+255	1	volume	66 66
+256	-	beat	
+257	1	volume	72 72
+257	-	beat	
+258	-	beat	
+259	1	release	
+259	1	volume	66 66
+259	-	beat	
+261	1	note	2436 9 30 20 142 209
+261	-	beat	
+262	4	release	
+262	-	beat	
+263	4	note	6502 7 30 35 143 244
+263	-	beat	
+264	-	beat	
+265	1	volume	66 66
+266	-	beat	
+267	1	volume	72 72
+267	-	beat	
+268	4	release	
+268	-	beat	
+269	1	volume	66 66
+270	4	note	7298 7 30 35 143 244
+270	-	beat	
+271	1	volume	60 60
+271	-	beat	
+272	-	beat	
+273	1	volume	54 54
+273	-	beat	
+275	1	volume	48 48
+275	-	beat	
+276	-	beat	
+277	1	volume	54 54
+277	4	release	
+277	-	beat	
+279	1	volume	60 60
+279	4	note	6502 7 30 35 143 244
+279	-	beat	
+280	1	release	
+280	-	beat	
+281	1	note	2436 9 60 60 142 209
+281	-	beat	
+282	-	beat	
+284	4	release	
+284	-	beat	
+285	1	release	
+285	4	note	7298 7 30 35 143 244
+285	-	beat	
+286	1	release	
+286	-	beat	
+288	-	beat	
+289	-	beat	
+290	-	beat	
+291	-	beat	
+293	4	release	
+293	-	beat	
+294	4	note	6502 7 30 35 143 244
+294	-	beat	
+295	-	beat	
+296	-	beat	
+298	-	beat	
+299	4	release	
+299	-	beat	
+300	4	note	7298 7 30 35 143 244
+300	-	beat	
+302	-	beat	
+303	5	release	
+303	-	beat	
+304	5	release	
+304	5	pitch	0
+304	-	beat	
+305	-	beat	
+307	-	beat	
+308	4	release	
+308	-	beat	
+309	4	note	6502 7 30 35 143 244
+309	-	beat	
+311	-	beat	
+312	-	beat	
+313	-	beat	
+314	4	release	
+314	-	beat	
+316	4	note	7298 7 30 35 143 244
+316	-	beat	
+317	-	beat	
+318	-	beat	
+320	-	beat	
+321	-	beat	
+322	-	beat	
+323	4	release	
+323	-	beat	
+325	4	note	6502 7 30 35 143 244
+325	-	beat	
+326	-	beat	
+327	-	beat	
+328	-	beat	
+330	4	release	
+330	-	beat	
+331	4	note	7298 7 30 35 143 244
+331	-	beat	
+332	-	beat	
+334	-	beat	
+335	-	beat	
+336	-	beat	
+337	-	beat	
+339	4	release	
+339	-	beat	
+340	4	note	6502 7 30 35 143 244
+340	-	beat	
+341	-	beat	
+343	-	beat	
+344	-	beat	
+345	4	release	
+345	-	beat	
+346	4	note	7298 7 30 35 143 244
+346	-	beat	
+348	-	beat	
+349	-	beat	
+350	-	beat	
+352	-	beat	
+353	-	beat	
+354	4	release	
+354	-	beat	
+355	4	note	6502 7 30 35 143 244
+355	-	beat	
+357	-	beat	
+358	-	beat	
+359	-	beat	
+360	4	release	
+360	-	beat	
+362	4	note	7298 7 30 35 143 244
+362	-	beat	
+363	-	beat	
+364	-	beat	
+366	-	beat	
+367	-	beat	
+368	-	beat	
+369	4	release	
+369	-	beat	
+371	4	note	6502 7 30 35 143 244
+371	-	beat	
+372	-	beat	
+373	-	beat	
+375	6	release	
+375	-	beat	
+376	4	release	
+376	6	release	
+376	6	pitch	0
+376	-	beat	
+377	4	note	7298 7 30 35 143 244
+377	6	note	4340 10 25 25 143 246
+377	-	beat	
+378	-	beat	
+380	-	beat	
+381	-	beat	
+382	-	beat	
+384	-	beat	
+385	4	release	
+385	-	beat	
+386	4	note	6502 7 30 35 143 244
+386	-	beat	
+387	-	beat	
+389	-	beat	
+390	-	beat	
+391	4	release	
+391	-	beat	
+392	4	note	7298 7 30 35 143 244
+392	-	beat	
+394	-	beat	
+395	-	beat	
+396	-	beat	
+398	-	beat	
+399	-	beat	
+400	4	release	
+400	-	beat	
+401	4	note	6502 7 30 35 143 244
+401	-	beat	
+403	-	beat	
+404	-	beat	
+405	-	beat	
+407	4	release	
+407	-	beat	
+408	4	note	7298 7 30 35 143 244
+408	-	beat	
+409	-	beat	
+410	-	beat	
+412	-	beat	
+413	-	beat	
+414	-	beat	
+416	4	release	
+416	-	beat	
+417	4	note	6502 7 30 35 143 244
+417	-	beat	
+418	-	beat	
+419	-	beat	
+421	-	beat	
+422	4	release	
+422	-	beat	
+423	4	note	7298 7 30 35 143 244
+423	-	beat	
+424	-	beat	
+426	-	beat	
+427	-	beat	
+428	-	beat	
+430	-	beat	
+431	4	release	
+431	5	release	
+431	-	beat	
+432	4	note	6502 7 30 35 143 244
+432	5	note	4871 8 20 20 143 245
+432	-	beat	
+433	-	main-volume	97 87
+433	-	echo-volume	17 22
+433	-	beat	
+435	-	main-volume	94 84
+435	-	echo-volume	14 19
+435	-	beat	
+436	-	main-volume	91 81
+436	-	echo-volume	11 16
+436	-	beat	
+437	4	release	
+437	-	main-volume	88 78
+437	-	echo-volume	8 13
+437	-	beat	
+439	4	note	7298 7 30 35 143 244
+439	-	main-volume	85 75
+439	-	echo-volume	5 10
+439	-	beat	
+440	-	main-volume	82 72
+440	-	echo-volume	2 7
+440	-	beat	
+441	-	main-volume	79 69
+441	-	echo-volume	0 4
+441	-	beat	
+442	-	main-volume	76 66
+442	-	echo-volume	0 1
+442	-	beat	
+444	-	main-volume	73 63
+444	-	echo-volume	0 0
+444	-	beat	
+445	-	main-volume	70 60
+445	-	echo-volume	0 0
+445	-	beat	
+446	4	release	
+446	-	main-volume	67 57
+446	-	echo-volume	0 0
+446	-	beat	
+448	4	note	6502 7 30 35 143 244
+448	-	main-volume	64 54
+448	-	echo-volume	0 0
+448	-	beat	
+449	-	main-volume	61 51
+449	-	echo-volume	0 0
+449	-	beat	
+450	-	main-volume	58 48
+450	-	echo-volume	0 0
+450	-	beat	
+451	-	main-volume	55 45
+451	-	echo-volume	0 0
+451	-	beat	
+453	4	release	
+453	-	main-volume	52 42
+453	-	echo-volume	0 0
+453	-	beat	
+454	4	note	7298 7 30 35 143 244
+454	-	main-volume	49 39
+454	-	echo-volume	0 0
+454	-	beat	
+455	-	main-volume	46 36
+455	-	echo-volume	0 0
+455	-	beat	
+456	-	main-volume	43 33
+456	-	echo-volume	0 0
+456	-	beat	
+458	-	main-volume	40 30
+458	-	echo-volume	0 0
+458	-	beat	
+459	-	main-volume	37 27
+459	-	echo-volume	0 0
+459	-	beat	
+460	-	main-volume	34 24
+460	-	echo-volume	0 0
+460	-	beat	
+462	4	release	
+462	-	main-volume	31 21
+462	-	echo-volume	0 0
+462	-	beat	
+463	4	note	6502 7 30 35 143 244
+463	-	main-volume	28 18
+463	-	echo-volume	0 0
+463	-	beat	
+464	-	main-volume	25 15
+464	-	echo-volume	0 0
+464	-	beat	
+465	-	main-volume	22 12
+465	-	echo-volume	0 0
+465	-	beat	
+467	-	main-volume	19 9
+467	-	echo-volume	0 0
+467	-	beat	
+468	4	release	
+468	-	main-volume	16 6
+468	-	echo-volume	0 0
+468	-	beat	
+469	4	note	7298 7 30 35 143 244
+469	-	main-volume	13 3
+469	-	echo-volume	0 0
+469	-	beat	
+471	-	main-volume	10 0
+471	-	echo-volume	0 0
+471	-	beat	
+472	-	main-volume	7 0
+472	-	echo-volume	0 0
+472	-	beat	
+473	-	main-volume	4 0
+473	-	echo-volume	0 0
+473	-	beat	
+474	-	main-volume	1 0
+474	-	echo-volume	0 0
+474	-	beat	
+476	-	main-volume	0 0
+476	-	echo-volume	0 0
+476	-	beat	
+477	4	release	
+477	-	main-volume	0 0
+477	-	echo-volume	0 0
+477	-	beat	
+478	4	note	6502 7 30 35 143 244
+478	-	main-volume	0 0
+478	-	echo-volume	0 0
+478	-	beat	
+480	-	main-volume	0 0
+480	-	echo-volume	0 0
+480	-	beat	
+481	-	main-volume	0 0
+481	-	echo-volume	0 0
+481	-	beat	
+482	-	main-volume	0 0
+482	-	echo-volume	0 0
+482	-	beat	
+483	4	release	
+483	-	main-volume	0 0
+483	-	echo-volume	0 0
+483	-	beat	
+485	4	note	7298 7 30 35 143 244
+485	-	main-volume	0 0
+485	-	echo-volume	0 0
+485	-	beat	
+486	-	main-volume	0 0
+486	-	echo-volume	0 0
+486	-	beat	
+487	-	main-volume	0 0
+487	-	echo-volume	0 0
+487	-	beat	
+488	-	main-volume	0 0
+488	-	echo-volume	0 0
+488	-	beat	
+490	-	main-volume	0 0
+490	-	echo-volume	0 0
+490	-	beat	
+491	-	main-volume	0 0
+491	-	echo-volume	0 0
+491	-	beat	
+492	4	release	
+492	-	main-volume	0 0
+492	-	echo-volume	0 0
+492	-	beat	
+494	4	note	6502 7 30 35 143 244
+494	-	main-volume	0 0
+494	-	echo-volume	0 0
+494	-	beat	
+495	5	release	
+495	-	main-volume	0 0
+495	-	echo-volume	0 0
+495	-	beat	
+496	5	release	
+496	-	main-volume	0 0
+496	-	echo-volume	0 0
+496	-	beat	
+497	-	main-volume	0 0
+497	-	echo-volume	0 0
+497	-	beat	
+499	4	release	
+499	-	main-volume	0 0
+499	-	echo-volume	0 0
+499	-	beat	
+500	4	note	7298 7 30 35 143 244
+500	-	main-volume	0 0
+500	-	echo-volume	0 0
+500	-	beat	
+501	-	main-volume	0 0
+501	-	echo-volume	0 0
+501	-	beat	
+503	-	main-volume	0 0
+503	-	echo-volume	0 0
+503	-	beat	
+504	-	main-volume	0 0
+504	-	echo-volume	0 0
+504	-	beat	
+505	-	main-volume	0 0
+505	-	echo-volume	0 0
+505	-	beat	
+506	-	main-volume	0 0
+506	-	echo-volume	0 0
+506	-	beat	
+508	4	release	
+508	-	main-volume	0 0
+508	-	echo-volume	0 0
+508	-	beat	
+509	4	note	6502 7 30 35 143 244
+509	-	main-volume	0 0
+509	-	echo-volume	0 0
+509	-	beat	
+510	-	main-volume	0 0
+510	-	echo-volume	0 0
+510	-	beat	
+512	-	main-volume	0 0
+512	-	echo-volume	0 0
+512	-	beat	
+513	-	main-volume	0 0
+513	-	echo-volume	0 0
+513	-	beat	
+514	4	release	
+514	-	main-volume	0 0
+514	-	echo-volume	0 0
+514	-	beat	
+515	4	note	7298 7 30 35 143 244
+515	-	main-volume	0 0
+515	-	echo-volume	0 0
+515	-	beat	
+517	-	main-volume	0 0
+517	-	echo-volume	0 0
+517	-	beat	
+518	-	main-volume	0 0
+518	-	echo-volume	0 0
+518	-	beat	
+519	-	main-volume	0 0
+519	-	echo-volume	0 0
+519	-	beat	
+520	-	main-volume	0 0
+520	-	echo-volume	0 0
+520	-	beat	
+522	-	main-volume	0 0
+522	-	echo-volume	0 0
+522	-	beat	
+523	4	release	
+523	-	main-volume	0 0
+523	-	echo-volume	0 0
+523	-	beat	
+524	4	note	6502 7 30 35 143 244
+524	-	main-volume	0 0
+524	-	echo-volume	0 0
+524	-	beat	
+526	-	main-volume	0 0
+526	-	echo-volume	0 0
+526	-	beat	
+527	-	main-volume	0 0
+527	-	echo-volume	0 0
+527	-	beat	
+528	-	main-volume	0 0
+528	-	echo-volume	0 0
+528	-	beat	
+529	4	release	
+529	-	main-volume	0 0
+529	-	echo-volume	0 0
+529	-	beat	
+531	4	note	7298 7 30 35 143 244
+531	-	main-volume	0 0
+531	-	echo-volume	0 0
+531	-	beat	
+532	-	main-volume	0 0
+532	-	echo-volume	0 0
+532	-	beat	
+533	-	main-volume	0 0
+533	-	echo-volume	0 0
+533	-	beat	
+535	-	main-volume	0 0
+535	-	echo-volume	0 0
+535	-	beat	
+536	-	main-volume	0 0
+536	-	echo-volume	0 0
+536	-	beat	
+537	-	main-volume	0 0
+537	-	echo-volume	0 0
+537	-	beat	
+538	4	release	
+538	-	main-volume	0 0
+538	-	echo-volume	0 0
+538	-	beat	
+540	4	note	6502 7 30 35 143 244
+540	-	main-volume	0 0
+540	-	echo-volume	0 0
+540	-	beat	
+541	-	main-volume	0 0
+541	-	echo-volume	0 0
+541	-	beat	
+542	-	beat	
+544	-	beat	
+545	4	release	
+545	-	beat	
+546	4	note	7298 7 30 35 143 244
+546	-	beat	
+547	-	beat	
+549	-	beat	
+550	-	beat	
+551	-	beat	
+552	-	beat	
+554	4	release	
+554	-	beat	
+555	4	note	6502 7 30 35 143 244
+555	-	beat	
+556	-	beat	
+558	-	beat	
+559	-	beat	
+560	4	release	
+560	-	beat	
+561	4	note	7298 7 30 35 143 244
+561	-	beat	
+563	-	beat	
+564	-	beat	
+565	-	beat	
+567	-	beat	
+568	-	beat	
+569	4	release	
+569	-	beat	
+570	4	note	6502 7 30 35 143 244
+570	-	beat	
+572	-	beat	
+573	-	beat	
+574	-	beat	
+576	4	release	
+576	-	beat	
+577	4	note	7298 7 30 35 143 244
+577	-	beat	
+578	-	beat	
+579	-	beat	
+581	-	beat	
+582	-	beat	
+583	-	beat	
+584	4	release	
+584	-	beat	
+586	4	note	6502 7 30 35 143 244
+586	-	beat	
+587	-	beat	
+588	-	beat	
+590	-	beat	
+591	4	release	
+591	-	beat	
+592	4	note	7298 7 30 35 143 244
+592	-	beat	
+593	-	beat	
+595	-	beat	
+596	-	beat	
+597	-	beat	
+599	-	beat	
+600	4	release	
+600	-	beat	
+601	4	note	6502 7 30 35 143 244
+601	-	beat	
+602	-	beat	
+604	-	beat	
+605	-	beat	
+606	4	release	
+606	-	beat	
+608	4	note	7298 7 30 35 143 244
+608	-	beat	
+609	-	beat	
+610	-	beat	
+611	-	beat	
+613	-	beat	
+614	-	beat	
+615	4	release	
+615	-	beat	
+616	4	note	6502 7 30 35 143 244
+616	-	beat	
+618	-	beat	
+619	-	beat	
+620	-	beat	
+622	4	release	
+622	-	beat	
+623	4	note	7298 7 30 35 143 244
+623	-	beat	
+624	-	beat	
+625	-	beat	
+627	-	beat	
+628	-	beat	
+629	-	beat	
+631	4	release	
+631	-	beat	
+632	4	note	6502 7 30 35 143 244
+632	-	beat	
+633	-	beat	
+634	-	beat	
+636	-	beat	
+637	4	release	
+637	-	beat	
+638	4	note	7298 7 30 35 143 244
+638	-	beat	
+640	-	beat	
+641	-	beat	
+642	-	beat	
+643	-	beat	
+645	-	beat	
+646	4	release	
+646	-	beat	
+647	4	note	6502 7 30 35 143 244
+647	-	beat	
+648	-	beat	
+650	-	beat	
+651	-	beat	
+652	4	release	
+652	-	beat	
+654	4	note	7298 7 30 35 143 244
+654	-	beat	
+655	-	beat	
+656	-	beat	
+657	-	beat	
+659	-	beat	
+660	-	beat	
+661	4	release	
+661	-	beat	
+663	4	note	6502 7 30 35 143 244
+663	-	beat	
+664	-	beat	
+665	-	beat	
+666	-	beat	
+668	4	release	
+668	-	beat	
+669	4	note	7298 7 30 35 143 244
+669	-	beat	
+670	-	beat	
+672	-	beat	
+673	-	beat	
+674	-	beat	
+675	-	beat	
+677	4	release	
+677	-	beat	
+678	4	note	6502 7 30 35 143 244
+678	-	beat	
+679	-	beat	
+680	-	beat	
+682	-	beat	
+683	4	release	
+683	-	beat	
+684	4	note	7298 7 30 35 143 244
+684	-	beat	
+686	-	beat	
+687	-	beat	
+688	-	beat	
+689	-	beat	
+691	-	beat	
+692	4	release	
+692	-	beat	
+693	4	note	6502 7 30 35 143 244
+693	-	beat	
+695	-	beat	
+696	-	beat	
+697	-	beat	
+698	4	release	
+698	-	beat	
+700	4	note	7298 7 30 35 143 244
+700	-	beat	
+701	-	beat	
+702	-	beat	
+704	-	beat	
+705	6	release	
+705	-	beat	
+706	6	release	
+706	-	beat	
+707	4	release	
+707	-	beat	
+709	4	note	6502 7 30 35 143 244
+709	-	beat	
+710	-	beat	
+711	-	beat	
+712	-	beat	
+714	4	release	
+714	-	beat	
+715	4	note	7298 7 30 35 143 244
+715	-	beat	
+716	-	beat	
+718	-	beat	
+719	-	beat	
+720	-	beat	
+721	-	beat	
+723	4	release	
+723	-	beat	
+724	4	note	6502 7 30 35 143 244
+724	-	beat	
+725	-	beat	
+727	-	beat	
+728	-	beat	
+729	4	release	
+729	-	beat	
+730	4	note	7298 7 30 35 143 244
+730	-	beat	
+732	-	beat	
+733	-	beat	
+734	-	beat	
+736	-	beat	
+737	-	beat	
+738	4	release	
+738	-	beat	
+739	4	note	6502 7 30 35 143 244
+739	-	beat	
+741	-	beat	
+742	-	beat	
+743	-	beat	
+744	4	release	
+744	-	beat	
+746	4	note	7298 7 30 35 143 244
+746	-	beat	
+747	-	beat	
+748	-	beat	
+750	-	beat	
+751	-	beat	
+752	-	beat	
+753	4	release	
+753	-	beat	
+755	4	note	6502 7 30 35 143 244
+755	-	beat	
+756	-	beat	
+757	-	beat	
+759	-	beat	
+760	4	release	
+760	-	beat	
+761	4	note	7298 7 30 35 143 244
+761	-	beat	
+762	-	beat	
+764	-	beat	
+765	-	beat	
+766	-	beat	
+768	-	beat	
+769	4	release	
+769	-	beat	
+770	4	note	6502 7 30 35 143 244
+770	-	beat	
+771	-	beat	
+773	-	beat	
+774	-	beat	
+775	4	release	
+775	-	beat	
+776	4	note	7298 7 30 35 143 244
+776	-	beat	
+778	-	beat	
+779	-	beat	
+780	-	beat	
+782	-	beat	
+783	-	beat	
+784	4	release	
+784	-	beat	
+785	4	note	6502 7 30 35 143 244
+785	-	beat	
+787	-	beat	
+788	-	beat	
+789	-	beat	
+791	4	release	
+791	-	beat	
+792	4	note	7298 7 30 35 143 244
+792	-	beat	
+793	-	beat	
+794	-	beat	
+796	-	beat	
+797	-	beat	
+798	-	beat	
+800	4	release	
+800	-	beat	
+801	4	note	6502 7 30 35 143 244
+801	-	beat	
+802	-	beat	
+803	-	beat	
+805	-	beat	
+806	4	release	
+806	-	beat	
+807	4	note	7298 7 30 35 143 244
+807	-	beat	
+808	-	beat	
+810	-	beat	
+811	-	beat	
+812	-	beat	
+814	-	beat	
+815	4	release	
+815	-	beat	
+816	4	note	6502 7 30 35 143 244
+816	-	beat	
+817	-	beat	
+819	-	beat	
+820	-	beat	
+821	4	release	
+821	-	beat	
+823	4	note	7298 7 30 35 143 244
+823	-	beat	
+824	-	beat	
+825	-	beat	
+826	-	beat	
+828	-	beat	
+829	-	beat	
+830	4	release	
+830	-	beat	
+832	4	note	6502 7 30 35 143 244
+832	-	beat	
+833	-	beat	
+834	-	beat	
+835	-	beat	
+837	4	release	
+837	-	beat	
+838	4	note	7298 7 30 35 143 244
+838	-	beat	
+839	-	beat	
+840	-	beat	
+842	-	beat	
+843	-	beat	
+844	-	beat	
+846	4	release	
+846	-	beat	
+847	4	note	6502 7 30 35 143 244
+847	-	beat	
+848	-	beat	
+849	-	beat	
+851	-	beat	
+852	4	release	
+852	-	beat	
+853	4	note	7298 7 30 35 143 244
+853	-	beat	
+855	-	beat	
+856	-	beat	
+857	-	beat	
+858	-	beat	
+860	-	beat	
+861	4	release	
+861	-	beat	
+862	4	note	6502 7 30 35 143 244
+862	-	beat	
+864	-	beat	
+865	-	beat	
+866	-	beat	
+867	4	release	
+867	-	beat	
+869	4	note	7298 7 30 35 143 244
+869	-	beat	
+870	-	beat	
+871	-	beat	
+872	-	beat	
+874	-	beat	
+875	-	beat	
+876	4	release	
+876	-	beat	
+878	4	note	6502 7 30 35 143 244
+878	-	beat	
+879	-	beat	
+880	-	beat	
+881	-	beat	
+883	4	release	
+883	-	beat	
+884	4	note	7298 7 30 35 143 244
+884	-	beat	
+885	-	beat	
+887	-	beat	
+888	-	beat	
+889	-	beat	
+890	-	beat	
+892	4	release	
+892	-	beat	
+893	4	note	6502 7 30 35 143 244
+893	-	beat	
+894	-	beat	
+896	-	beat	
+897	-	beat	
+898	4	release	
+898	-	beat	
+899	4	note	7298 7 30 35 143 244
+899	-	beat	
