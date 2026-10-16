@@ -211,8 +211,10 @@ end they were not: in all six saved positions with the view's left
 edge at level x 4 774 to 5 120, the colours of rows 1 to 7 were
 different and mostly darker, and in two of the six they were different
 from the other four. Those colours were not found in the image
-as palette rows. How they come about is not covered (see "Not
-covered"); the palette set is the level's colours before that change.
+as palette rows: they are the dimming (`../behavior/dimming.md`), which
+changes every colour of rows 1 to 7 step by step from the palette set's
+colours near the level's right end. The palette set is the level's
+colours before the dimming.
 
 ## Example (synthetic)
 
@@ -255,10 +257,8 @@ More cases, as bytes, are in `../vectors/graphics/`.
 
 ## Not covered
 
-- The colours near the first level's right end (see "The first
-  level's data"): where along the level and on which frame they start
-  to change, how each colour changes and for how long, and whether
-  sprite palettes change too.
+- Sprite colours during the dimming near the first level's right end
+  (`../behavior/dimming.md`).
 - Where other levels' packed tile data, palette sets and picture
   tables start in an image.
 - How the far layer moves with the view, including different rates for
