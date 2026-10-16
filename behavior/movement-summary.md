@@ -82,7 +82,9 @@ kind of target rule for `vx` with targets ±2 and one thirty-second of
 the gap per frame (from rest to 2 takes 106 frames), facing follows
 Left or Right at once, and a Jump press sets `vy` to −2 (−2.5 with Up,
 −1 with Down). `vy` then grows by 12/256 per frame up to a sinking
-limit of 1.25 (2 while Down is held).
+limit of 1.25 (2 while Down is held). A move across that would end 4 px
+or more in the ground is a wall; 1 to 3 px is a step up, or a push down
+under a ceiling. Rising into a ceiling stops the rise.
 
 ## Second character
 

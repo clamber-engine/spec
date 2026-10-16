@@ -19,8 +19,11 @@ Coverage (`title-1`). Answers no open `spec` issue.
   toward zero, the target when that is 0); facing follows Left or Right
   at once; a Jump press sets `vy` to −2, −2.5 with Up or −1 with Down;
   `vy` grows by 12/256 per frame up to 1.25, or 2 while Down is held;
-  landing on, resting on and leaving the floor; worked values. Walls,
-  ceilings and the second character not covered.
+  landing on, resting on and leaving the floor; walls (a move that
+  would end 4 px or more in the ground), steps and ceiling pushes (1 to
+  3 px), ceiling bumps, the level's left end; facing doesn't change on a
+  frame stopped by a wall or the left end; worked values. The second
+  character not covered.
 - `behavior/movement-summary.md`: new section "Swimming".
 
 ## spec-v0.74.0
