@@ -4,6 +4,19 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (level map, `title-1`). Answers no open `spec` issue.
+
+- `behavior/level-map.md` (new): walking on the level map. Map
+  positions with fractions, paths as lists of points, legs at
+  (end − start) / 64 px per frame per axis, each axis arriving on its
+  own (moving toward smaller values: put back to the end's whole pixel,
+  fraction kept), fractions carried from walk to walk; a worked example;
+  standing frames, the remembered press (new presses only, 31 frames),
+  the direction as the first of Right, Left, Up, Down among held and
+  remembered buttons (no fallback); 256 px pages, no walk before 64
+  frames after a page change or the map's fade-in; where the lead
+  stands when the map appears. Map format and progress not covered.
+
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.
