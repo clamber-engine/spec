@@ -1,0 +1,225 @@
+# Ground action meeting enemies
+
+Titles: `title-1`
+
+What happens when the first character's Down + Action **ground action**
+(`ground-action.md`) meets an enemy: on which frames of the action and at
+which offsets a walker is knocked out, the pause that follows and how it
+lengthens the action, what happens to the walker, when the player can be
+hurt during the action, the view on those frames, and the thrower. How
+the action starts, moves and ends without enemies is in
+`ground-action.md`; which contacts hurt a player outside the action is in
+`walker-contact.md`.
+
+Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y`, `vx`
+and `vy` are as in a trace: right and down are positive, in px and px per
+frame. This spec uses the names of `ground-action.md`: **P** is the
+action's press frame and **E** the first frame after it. **K** is a frame
+on which something is knocked out. The offset **I** is as in
+`walker-contact.md`: the player's `x` minus the walker's `x`, both rounded
+down to whole pixels. The player's **facing** is as in a trace; during
+the action it doesn't change and can differ from the action's direction
+(`ground-action.md`, "Direction").
+
+Measured with the first character alone, on flat floor, on the two kinds
+of walker of `walker-contact.md` and on the thrower (`thrower.md`). See
+"Evidence".
+
+## Action frames
+
+Number the frames of the action **t** = 0, 1, 2, … from P, **without
+counting pause frames** (below). The action lasts from t = 0 to t = 58,
+as in `ground-action.md`; E is the first frame after the frame with
+t = 58. With no pause, E = P + 59. Each pause adds 2 frames:
+E = P + 59 + 2 × (number of pauses during the action). The speed rule of
+`ground-action.md` applies on every frame that has a t, and a Jump press
+ends the action as described there.
+
+## Attack frames
+
+The frames with **t = 17, t = 25 and t = 31** are the action's **attack
+frames**. They are the same for direction −1, 0 and +1, and whichever
+way the player faces. Things are knocked out only on attack frames.
+
+With no pause, the attack frames are P + 17, P + 25 and P + 31. A pause
+moves the later ones 2 frames later: after a knock-out on P + 17, they
+are P + 27 and P + 33.
+
+## When a walker is knocked out
+
+On an attack frame K, a walker walking at full speed (1 px per frame,
+`walker.md`) on the same floor or slope as the player is knocked out on K
+when, with both positions **at the end of K** (after both have moved on
+K), I is within the knock-out range:
+
+| Walker | Player facing | Walker heading left | Walker heading right |
+|---|---|---|---|
+| small | right | −62 to 10 | −63 to 9 |
+| small | left | −9 to 63 | −10 to 62 |
+| large | right | −65 to 13 | −66 to 12 |
+| large | left | −12 to 66 | −13 to 65 |
+
+Both ends are included. The ranges facing left are those facing right
+mirrored (I becomes −I and the two headings swap). The large walker's
+ranges are the small walker's widened by 3 px on each side, as for its
+hurt range (`walker-contact.md`). The range reaches far ahead of the
+player (where it faces) and only a little behind.
+
+The ranges are the same on all three attack frames and for every
+direction, including direction 0: a player who doesn't move knocks out a
+walker that walks into the range. A walker knocked out is never also
+hurting the player on that frame.
+
+## Being hurt during the action
+
+The hurt rule of `walker-contact.md` applies before, during and after
+the action: the player is hurt on frame H when the conditions hold at the
+end of H − 1, using the hurt ranges of a player on the ground (standing,
+walking or running) in `walker-contact.md`. During the action this
+means:
+
+- **Before it starts.** If the conditions hold at the end of P − 1, the
+  player is hurt on P and no action starts.
+- **On frames that aren't attack frames,** a walker hurts the player as
+  usual.
+- **On an attack frame,** a walker within the knock-out range at the end
+  of the frame is knocked out instead. A walker within the hurt range but
+  outside the knock-out range at the end of an attack frame hurts the
+  player on the next frame (for example a small walker heading left with
+  the player facing right, I from 11 to 24), unless that frame is a
+  pause frame (below).
+- **After a pause** that starts on K, the player is not hurt on K + 1,
+  K + 2 or K + 3, whatever is in the hurt range at the end of K, K + 1 or
+  K + 2. The earliest hurt is on K + 4, when the conditions hold at the
+  end of K + 3.
+
+## The pause
+
+When anything is knocked out on K (a walker, the thrower, or one of the
+other things in "Not covered"), **K + 1** and **K + 2** are **pause
+frames**:
+
+- The player's `x` and `vx` stay as they were at the end of K. The
+  player stays in the action, and t doesn't advance.
+- The knocked-out walker doesn't move, and neither do other walkers.
+- On K + 3, t is one more than on K, and the speed rule of
+  `ground-action.md` continues from the `vx` of K.
+
+Knock-outs on two different attack frames of one action make two
+pauses (E = P + 63).
+
+## The view
+
+On K and on K + 1, the view does nothing, horizontally (`view.md`) and
+vertically (`view-vertical.md`): the target, the position and the
+easing state keep their values from the frame before, as on the frame of
+a roll defeat and the frame after it. The view continues from K + 2.
+
+## The walker
+
+From K, a knocked-out walker moves as a walker bounced on (`walker.md`,
+"Being bounced on") with B = K, except that it also doesn't move on any
+later pause frame:
+
+- on K it moves horizontally by its `vx` as usual but not vertically,
+  and its `vy` becomes −6;
+- on K + 1 and K + 2 it doesn't move;
+- from K + 3, on each frame that isn't a pause frame, its `vy` increases
+  by 7/16, up to 8, and it moves by its `vy` and by the `vx` it had on K.
+
+It doesn't land and is removed once out of view. In the runs measured it
+last moved between K + 34 and K + 41; when it is removed isn't specified.
+
+## The thrower
+
+The thrower (`thrower.md`) is knocked out too. With the player standing
+on the thrower's ledge facing it, with direction 0, and I (the player's
+`x` minus the thrower's, rounded down) from −51 (the left end of the
+ledge) to −37, the thrower was knocked out on the action's first attack
+frame (t = 17) every time, with the same pause. Closer than that the
+thrower hurt the player before the action started.
+
+From K the thrower moves like a knocked-out walker but with `vy` −5 and
+`vx` 0: it doesn't move on K, K + 1 and K + 2, then from K + 3 its `vy`
+increases by 7/16 per frame and it moves by it.
+
+## Example
+
+Synthetic, from the rules above. The player stands facing right at `x`
+100 and presses Down and Action on frame 0 with no direction held
+(P = 0, direction 0). A small walker heads left at full speed on the same
+floor and is at `x` 180.25 at the end of frame −1. "Walker `y`" is
+relative to its floor (up is negative).
+
+| Frame | t | Player `x` | Walker `x` | Walker `vy` | Walker `y` | State | Notes |
+|---|---|---|---|---|---|---|---|
+| 0 | 0 | 100 | 179.25 | 0 | 0 | `ground_action` | P |
+| 16 | 16 | 100 | 163.25 | 0 | 0 | `ground_action` | I = −63, not an attack frame |
+| 17 | 17 | 100 | 162.25 | −6 | 0 | `ground_action` | attack frame, I = −62: K |
+| 18 | 17 | 100 | 162.25 | −6 | 0 | `ground_action` | pause |
+| 19 | 17 | 100 | 162.25 | −6 | 0 | `ground_action` | pause |
+| 20 | 18 | 100 | 161.25 | −5.5625 | −5.5625 | `ground_action` | K + 3 |
+| 21 | 19 | 100 | 160.25 | −5.125 | −10.6875 | `ground_action` | |
+| 27 | 25 | 100 | 154.25 | −2.5 | −32.25 | `ground_action` | attack frame |
+| 33 | 31 | 100 | 148.25 | 0.125 | −38.0625 | `ground_action` | attack frame |
+| 60 | 58 | 100 | | | | `ground_action` | last frame of the action |
+| 61 | | 100 | | | | `idle` | E = P + 61 |
+
+Without the walker, the action would have ended with E on frame 59.
+
+## In a trace
+
+- Pause frames have state `ground_action` and repeat `x` and `vx` of K.
+- The action has 59 frames of state `ground_action` plus 2 for each
+  pause; E maps as in `ground-action.md`.
+- No event in the trace vocabulary marks a knock-out.
+
+## Evidence
+
+- **Placement.** The player was put at chosen offsets from a walker, one
+  pixel apart, on every frame from P − 1 to P + 66 (small walker) or
+  P + 41 (large walker), for each facing and each direction (−1, 0, +1),
+  with the walker heading left and right: 180 336 placements on the small
+  walker (4 212 knock-outs, 34 860 hurts) and 65 092 on the large walker
+  (4 226 knock-outs, 24 540 hurts), all with the same attack frames and
+  ranges in every combination, and no gaps. The large walker was
+  measured on a flat stretch 68 px long: facing left with the walker
+  heading left, offsets above 59 couldn't be placed, and the far end of
+  66 in the table follows the 3 px widening that every other end shows.
+- **By inputs alone.** 399 runs (133 937 frames) at three places (the
+  small walker heading left and heading right, the large walker heading
+  left on a slope and a flat stretch), with the press on many frames,
+  direction −1, 0 and +1, facing either way, and a second action after
+  the first: 397 actions, 156 knock-outs (118 on t = 17, 24 on t = 25,
+  14 on t = 31), 410 pause frames, 186 hurts and 6 283 frames of
+  knocked-out walkers. On every frame, the knock-out frames, the pause,
+  the action's length, `x` and `vx` during the action, the hurts and the
+  walkers' motion matched the rules above, with 0 mismatches. In all 156
+  knock-outs the view did nothing on K and K + 1 and moved again on
+  K + 2.
+- **Hurts after a pause** were measured by placement during pauses
+  caused by one of the other struck things in "Not covered": a walker
+  put in the hurt range at the end of K, K + 1 or K + 2 (243 placements)
+  never hurt the player before K + 4.
+- **The thrower:** 28 placements on its ledge, one pixel apart (15
+  knock-outs, 13 hurts before the action).
+
+## Not covered
+
+- Two things knocked out on the same attack frame (one pause or two).
+- Walkers that are turning, speeding up, stopped or frozen, walkers on a
+  different floor from the player, and the action on slopes or at a
+  ledge (`ground-action.md`).
+- Inputs on the pause frames (a Jump press, for example).
+- Whether a knocked-out walker can hurt the player while it falls, and
+  when it is removed.
+- The thrower: other offsets, the player facing away, whether it can be
+  knocked out from below its ledge, what happens to its throws, and
+  balls (`thrower.md`).
+- Other kinds of enemies, and objects such as carried or thrown objects.
+- Other things the action strikes. Some placed things that can't be seen
+  are struck on attack frames too, and give the same pause; in one of
+  them a bunch (`bunches.md`) appeared. Which things these are, their
+  ranges, and how a level's placements mark them aren't specified.
+- How a pause affects the view's shake (`view-vertical.md`).
+- The other character, when present, during the pause.

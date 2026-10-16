@@ -447,5 +447,5 @@ This list is for `title-1`; `title-2` has its own list above.
 - Being hurt in a stop that a defeat has lengthened.
 - Whether other enemies and objects move during the pause, and whether a
   defeated walker can hurt the player while it falls.
-- Other kinds of enemies, the Down + Action ground action meeting a
-  walker (see `ground-action.md`), and the second character.
+- Other kinds of enemies and the second character. The Down + Action
+  ground action meeting a walker is in `ground-action-enemies.md`.

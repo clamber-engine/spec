@@ -100,8 +100,9 @@ already bouncing. It continues normally from **B + 2**, using that
 frame's `x` (the player is still frozen on B + 2).
 
 The same applies on the frame of a roll defeat (**K**,
-`rolling-into-walkers.md`) and on **K + 1**. The view continues from
-**K + 2**.
+`rolling-into-walkers.md`) and on **K + 1**, and on the frame of a
+knock-out during the ground action (**K**, `ground-action-enemies.md`)
+and on **K + 1**. The view continues from **K + 2**.
 
 ## Examples
 

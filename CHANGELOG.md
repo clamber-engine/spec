@@ -4,6 +4,27 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers https://github.com/clamber-engine/spec/issues/24.
+
+- `behavior/ground-action-enemies.md`: new (`title-1`). The ground
+  action knocks out walkers only on its attack frames, the 18th, 26th
+  and 32nd frames of the action counted without pauses, with any
+  direction including 0. A walker is knocked out when the offset at the
+  end of the frame is within a range that reaches 62 px ahead of the
+  player and 10 px behind (small walker; 3 px more each side for the
+  large walker). Each knock-out pauses the player and every walker for
+  two frames and makes the action 2 frames longer. The walker then moves
+  as a bounced-on walker, and the view stays still on the knock-out frame
+  and the next. The player is hurt during the action by the usual hurt
+  rule, except by a walker it knocks out, and not on the 3 frames after
+  a pause starts. The thrower is knocked out the same way and rises at
+  5 px per frame. Synthetic example; "Not covered" lists the rest.
+- `behavior/ground-action.md`: "Enemies" now points to the new file; the
+  action lasts 2 frames longer per pause.
+- `behavior/view.md`, `behavior/view-vertical.md`: the view stays still
+  on the frame of a ground-action knock-out and the next.
+- `behavior/rolling-into-walkers.md`, `behavior/thrower.md`: pointers.
+
 ## spec-v0.68.0
 
 Answers https://github.com/clamber-engine/spec/issues/19 (in part).

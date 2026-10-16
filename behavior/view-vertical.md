@@ -170,8 +170,11 @@ pattern exactly.
 On the frame of a bounce off an enemy (**B**, `bounce.md`) and on
 **B + 1**, the vertical motion also does nothing: the target, `V` and
 `Q` keep their values from the frame before. It continues from **B + 2**.
-This was seen on 6 bounces. Roll defeats (`view.md`) weren't measured
-for the vertical motion.
+This was seen on 6 bounces. The same applies on the frame of a
+knock-out during the ground action (**K**, `ground-action-enemies.md`)
+and on **K + 1**; it continues from **K + 2** (156 knock-outs, in 63 of
+which the view moved again on K + 2). Roll defeats (`view.md`) weren't
+measured for the vertical motion.
 
 ## Examples
 
@@ -255,8 +258,8 @@ settled at `F` = 300 (`V` = 140.5, `Q` = 0). `P` is from 64 to 207 and
   through).
 - Which point under the player the ground below is taken at, near the
   edge of a floor or on slopes.
-- Hits during the ground action. In one run that started next to an
-  object, the shake started on P + 36 and started again 24 frames
-  later, and the view moved an extra 2/256 px per frame from P to
-  P + 32.
+- How a knock-out during the ground action (`ground-action-enemies.md`)
+  affects the shake. In one run that started next to an object, the
+  shake started on P + 36 and started again 24 frames later, and the
+  view moved an extra 2/256 px per frame from P to P + 32.
 - Layers that move at other rates than the ground.

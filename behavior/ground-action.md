@@ -55,7 +55,7 @@ The action is in progress on frames P to P + 58 (59 frames). Call
 **E** = P + 59 the first frame after it.
 
 A Jump press ends it earlier (see "Inputs during the action"). Knocking
-out an enemy makes it longer (see "Enemies").
+out an enemy makes it 2 frames longer each time (see "Enemies").
 
 ## Direction
 
@@ -157,19 +157,20 @@ action's speed), then 2.7109375 on P + 21, the take-off frame, where
 
 ## Enemies
 
-During the action with direction ±1, the player was seen to knock out a
-ground enemy it ran into. At that moment the player stops for two
-frames: on both, `x` and `vx` are the same as on the frame before. The
-action then continues where it left off and lasts 2 frames longer
-(61 frames, E = P + 61). In a run that knocked out two enemies it lasted
-63 frames. Which entities can be knocked out this way, and the contact
-rules, aren't specified (see "Not covered").
+The action knocks out walkers and the thrower, with any direction
+including 0, on three of its frames; the player can be hurt on the
+others. Each knock-out pauses the action for two frames, on which `x`
+and `vx` stay as they were, and so makes it 2 frames longer:
+E = P + 59 + 2 × (number of pauses). Which frames, the offsets, the
+pause, the hurt rule during the action and what happens to the enemy
+are in `ground-action-enemies.md`.
 
 ## Trace rows
 
 Frames P to P + 58 have state `ground_action` (`../traces/VOCABULARY.md`),
-`ground` 1 and `vy` 0. There is no event on P. E, and a Jump press frame
-Q ending the action early, are not `ground_action`: they map by the
+`ground` 1 and `vy` 0 (2 more frames for each pause after a knock-out,
+`ground-action-enemies.md`). There is no event on P. E, and a Jump
+press frame Q ending the action early, are not `ground_action`: they map by the
 normal grounded rules (`idle` if `vx` is 0, else `walk` or `run` by
 whether Action is held). Example rows, walking right with Right held,
 Down and Action pressed on frame 30 and held to 33 (rows 32 to 87
@@ -190,8 +191,8 @@ frame	input	x	y	vx	vy	state	ground	facing	events
 - Ledges: the player was seen to keep moving off the edge of a floor,
   the action ending on reaching it. Steps up or down, walls, and slopes
   during the action.
-- Which entities the action knocks out or affects, with or without
-  moving, and the contact rules; hits taken during the action.
+- Enemies and hits taken during the action are in
+  `ground-action-enemies.md`, with their own "Not covered" list.
 - An Action press with Down held during a roll or the stop after a roll.
 - Jump, Down and Action all pressed on the same frame from standing: a
   jump starts, but later than a plain jump press. The timing isn't
