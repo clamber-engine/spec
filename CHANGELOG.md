@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.71.1
+
 Answers https://github.com/clamber-engine/spec/issues/28.
 
 - `behavior/falling-out.md`: the fall-out frame Z moves with the input
