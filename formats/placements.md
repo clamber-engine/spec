@@ -135,6 +135,7 @@ members are looked up by their own references.
 | `barrel` | An object that can be carried and holds nothing | `carrying.md`, `thrown-objects.md` |
 | `holder` | An object that can be carried and holds the missing character | `carrying.md`, `holder-breaking.md` |
 | `end-marker` | The level's end marker | `level-end.md` |
+| `stinger` | A stinger (flying enemy) | `stinger.md` |
 
 The behavior files are in `../behavior/`. A row gives the kind only:
 the settings of the object (for example a walker's heading) are not
@@ -143,6 +144,9 @@ given by it.
 The `holder` reference is the one reference seen to make two objects
 appear (see "When placed objects appear"). The holder is one of them;
 what the second one is, is not covered.
+
+The `stinger` rows are for references that the first level doesn't
+use; where the other levels' placement lists are is not covered yet.
 
 ### In the first level
 

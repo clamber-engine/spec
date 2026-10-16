@@ -6,6 +6,17 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 Coverage (`title-1`). Answers no open `spec` issue.
 
+- `behavior/stinger.md` (new): stingers, a flying enemy. Moving (per
+  axis: past a turning point (start ± reach) put half a pixel inside it
+  and the target speed changes sign; speed moves 1/32 of the gap to the
+  target, horizontal before the move and vertical after it; floors don't
+  stop it); appearing and removal by the walkers' window rule, coming
+  back afresh; touching the player (I/A ranges per pose, the balls'
+  ranges widened, facing left from 5 − high end to 5 − low end; never a
+  bounce); still from H + 1 to H + 10 after a hit; worked values; not
+  covered.
+- `formats/placements.md`: kind name `stinger`.
+- `formats/locators.md`: 14 kind fingerprint rows for `stinger`.
 - `behavior/second-character.md`: new section "Rolls": the second
   character's rolls last 24 frames (25 when started on D + 17), sizes
   1.125, 3.375 and 4.5, a slow roll steered in its direction goes toward
