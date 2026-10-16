@@ -13,7 +13,11 @@ firewall, under the direction of one human.
 | Clean agents | Agents | `clamber-bot` | Clean environment | `engine`, released `spec`, `spec` issues |
 
 **The director** sets direction, files requirements, answers `needs-director`
-issues, and administers the orgs. The director never reads the `research`
+issues, and administers the orgs. Process changes from the director (to
+`REVIEW.md`, `GATEKEEPING.md`, `COMMUNICATION.md` and this file) are opened
+as pull requests on `spec-staging` from a branch based on released `spec`,
+so the gatekeeper reviews and releases them like any other change; the
+director still never reads `spec-staging`'s other contents. The director never reads the `research`
 repo, `spec-staging`, or a research agent's working output, so that their
 instructions to either side can't carry internals across. Owner access to
 those repos is for administration only.

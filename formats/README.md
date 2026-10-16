@@ -7,7 +7,9 @@ needs synthetic vectors in `../vectors/`.
 Where each kind of data starts in a supported image goes in
 `locators.md` and nowhere else, under the rules in `../REVIEW.md`
 ("The one exception: locator tables"). Other format specs refer to the
-locator table by the data kind's name.
+locator table by the data kind's name. Fingerprint tables that tell
+object kinds apart also go in `locators.md` ("The second exception: kind
+fingerprints" in `../REVIEW.md`).
 
 ## Files
 

@@ -37,3 +37,25 @@ without knowing where it starts, so a format spec may include a
 
 When reviewing a locator table, check each row against these rules; a
 row that fails any of them fails the change.
+
+## The second exception: kind fingerprints
+
+Director decision (spec #23, revised after the gatekeeper's review in
+#25 and #27). Where an image's data identifies what kind of object
+something is only through a reference into the original program, the
+importer tells kinds apart by **fingerprint**, and no value from the
+original program crosses the firewall:
+
+- A format spec states, in its own words, that the reference leads to
+  part of the original program, and how the importer turns the reference
+  into a position in the image (using `rom-image.md`).
+- It defines the fingerprint exactly: how many bytes the importer reads
+  at that position and which hash it computes over them.
+- `formats/locators.md`, in the section for each supported image, may
+  then list **fingerprint → engine-neutral kind** rows (kinds from the
+  behavior specs, for example `walker`, `barrel`).
+- The spec contains hashes only. Never the reference values themselves,
+  never bytes from the image, never what the program does there, no
+  labels or names from any disassembly, no original object names.
+
+A row or description that fails any of these rules fails the change.
