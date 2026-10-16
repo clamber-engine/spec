@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.69.0
+
 Answers https://github.com/clamber-engine/spec/issues/24.
 
 - `behavior/ground-action-enemies.md`: new (`title-1`). The ground
