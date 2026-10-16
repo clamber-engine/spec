@@ -75,6 +75,15 @@ of 1 px in 4 don't change any of this (`slopes.md`).
 | Height | `bounce_height` 54.5 px without Jump, up to 86.71875 px with Jump held from the third frame after the bounce for 25 frames or more | `bounce.md` |
 | Which contacts bounce | Walkers: `walker-contact.md` | `walker-contact.md` |
 
+## Swimming
+
+In underwater levels the player swims instead (`swimming.md`): the same
+kind of target rule for `vx` with targets ±2 and one thirty-second of
+the gap per frame (from rest to 2 takes 106 frames), facing follows
+Left or Right at once, and a Jump press sets `vy` to −2 (−2.5 with Up,
+−1 with Down). `vy` then grows by 12/256 per frame up to a sinking
+limit of 1.25 (2 while Down is held).
+
 ## Second character
 
 Walking 2.25, running 3.375, take-off `vy` −8.3515625, held-jump gravity

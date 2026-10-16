@@ -14,6 +14,14 @@ Coverage (`title-1`). Answers no open `spec` issue.
   differs; facing in the stop; worked values. "Not covered" updated.
 - `behavior/roll-input.md`, `behavior/roll-speed.md`,
   `behavior/movement-summary.md`: point to it.
+- `behavior/swimming.md` (new): swimming in underwater levels. Target
+  speed ±2 or 0 with steps of one thirty-second of the gap (rounded
+  toward zero, the target when that is 0); facing follows Left or Right
+  at once; a Jump press sets `vy` to −2, −2.5 with Up or −1 with Down;
+  `vy` grows by 12/256 per frame up to 1.25, or 2 while Down is held;
+  landing on, resting on and leaving the floor; worked values. Walls,
+  ceilings and the second character not covered.
+- `behavior/movement-summary.md`: new section "Swimming".
 
 ## spec-v0.74.0
 
