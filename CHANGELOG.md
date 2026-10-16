@@ -4,6 +4,19 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (`title-1`). Answers no open `spec` issue.
+
+- `behavior/riding.md` (new): riding the animal on flat floor (after
+  mounting, `animal-crate.md`). Target speeds 2, and 3.5 with Action
+  held; the speed rule with a 32nd of the gap, or an 8th on steered
+  frames (after a jump, until it lands, or through a charge started in
+  the jump); turns at any speed; jumps (when a press starts one, presses
+  remembered for 11 frames, 5 crouch frames, take-off on P + 5 with
+  `vy` −7, `jump-arc.md` gravity, 8 landing frames); the Action charge
+  (hop with `vy` −4 on C + 10, charge end from the first frame on the
+  floor from C + 28, 12 frames, then a settling frame); Jump and Action
+  together; examples; not covered.
+
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.
