@@ -4,6 +4,17 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers https://github.com/clamber-engine/spec/issues/19 (in part).
+
+- `behavior/level-end.md`: new. Finishing a level (`title-1`): the end
+  marker placed by the level's placement list, when the lead passes it
+  (Right held, on the ground, at or right of it, feet within 4 px of
+  it), the walk-out that follows (2 px per frame, rising 1/8 px per
+  frame, through the scenery, inputs ignored, the view still), the
+  other character following, and the fade to black that starts once
+  the lead is 240 px right of the picture's left edge and ends the
+  level 28 frames later.
+
 ## spec-v0.64.0
 
 Answers https://github.com/clamber-engine/spec/issues/20 (in part).
