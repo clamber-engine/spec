@@ -4,7 +4,18 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
-Coverage (first level, `title-1`).
+## spec-v0.71.0
+
+Answers https://github.com/clamber-engine/spec/issues/23. Coverage
+(first level, `title-1`).
+
+- `REVIEW.md`: new section "The second exception: kind fingerprints"
+  (director decision, spec #23). Object kinds may be told apart by a
+  SHA-256 fingerprint over at least 32 bytes that can't be inverted,
+  listed as fingerprint → engine-neutral kind rows in
+  `formats/locators.md`. No reference values or bytes are published.
+- `GOVERNANCE.md`: director process changes reach the spec as pull
+  requests on `spec-staging`. `formats/README.md`: pointer.
 
 - `behavior/ball-contact.md`: new (`title-1`). When a thrower's ball
   hurts the player: with the positions at the end of frame F, after the
