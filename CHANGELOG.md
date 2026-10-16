@@ -4,6 +4,21 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (first level, `title-1`). Answers no open `spec` issue.
+
+- `behavior/animal-crate.md` (new): the animal crate and its animal.
+  Breaking the crate (falling onto it, not rolling; ranges of `I` by
+  facing and of `D` after the frame's move); the player bounces off it
+  as in `bounce.md`; the animal comes out 18 frames later and hops for
+  four frames; mounting (falling from a jump or a bounce, ranges taken
+  from where the player would have been without the animal; snapped by
+  whole pixels onto the animal, 22 still frames, riding from the 23rd);
+  example; not covered (riding itself among them).
+- `formats/placements.md`, `formats/locators.md`: kind `animal-crate`
+  and its kind fingerprint row (16 of the first level's 37 references
+  now have one).
+- `behavior/bounce.md`: points to it.
+
 ## spec-v0.75.0
 
 Answers https://github.com/clamber-engine/spec/issues/31.

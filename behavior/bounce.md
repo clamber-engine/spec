@@ -270,8 +270,9 @@ This list is for `title-1`; `title-2` has its own list above.
 - Which contacts with other kinds of enemies cause a bounce (walkers:
   `walker-contact.md`).
 - Facing during the frozen frames.
-- Bouncing off other kinds of objects, bounces from a roll, bouncing
-  again before landing, and the other character.
+- Bouncing off other kinds of objects (the animal crate is in
+  `animal-crate.md`), bounces from a roll, bouncing again before
+  landing, and the other character.
 - Jumping on the landing frame after a bounce.
 - Falls long enough after a bounce for `vy` to reach 8 weren't measured
   (the largest seen was 7.75); the cap is taken to be the same as for
