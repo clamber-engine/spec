@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.70.0
+
 Answers https://github.com/clamber-engine/spec/issues/26.
 
 - `behavior/holder-breaking.md`: new (`title-1`). When an object holding
