@@ -4,6 +4,23 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (first level, `title-1`). Answers no open `spec` issue.
+
+- `formats/locators.md`: `title-1` rows for the first level's grid and
+  type table (`level-ground.md`), packed tile data, palette set and
+  picture table (`graphics.md`), its placement list (`placements.md`),
+  and the frame table (`sprites.md`).
+- `formats/level-ground.md`: new section "The first level's data": the
+  grid's 1 310 columns, the first level in columns 0 to 183, and
+  `N` = 234. "Not covered" updated.
+- `formats/graphics.md`: "The first level's data" points to the rows and
+  corrects the colours: rows 1 to 7 hold the palette set's colours over
+  most of the level but other, darker colours near its right end (view
+  at level x 4 774 and more), not stored as palette rows; not covered.
+  "Not covered" updated.
+- `formats/sprites.md`, `formats/placements.md`: point to the rows;
+  "Not covered" updated.
+
 ## spec-v0.72.0
 
 Coverage (first level, `title-1`), using the kind fingerprints of

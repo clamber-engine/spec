@@ -24,6 +24,13 @@ SHA-256 of the image:
 | Sound: shared sample list | `sound.md` | `ca` | `b24a` |
 | Sound: sample-set table | `sound.md` | `ca` | `b212` |
 | Sound: song table | `sound.md` | `ca` | `b15e` |
+| Level ground: the first level's grid | `level-ground.md` | `d9` | `0000` |
+| Level ground: the first level's type table | `level-ground.md` | `d9` | `ed00` |
+| Level graphics: the first level's packed tile data | `graphics.md` | `d5` | `8fc0` |
+| Level graphics: the first level's palette set | `graphics.md` | `f9` | `a1dc` |
+| Level graphics: the first level's picture table | `graphics.md` | `d9` | `a3c0` |
+| Sprite frames: the frame table | `sprites.md` | `fb` | `cc9c` |
+| Placements: the first level's placement list | `placements.md` | `fd` | `95dc` |
 
 ### Kind fingerprints: placement references
 

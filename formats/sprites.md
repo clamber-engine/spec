@@ -24,9 +24,10 @@ frame `k` and is 4 bytes, at bytes 4`k` to 4`k` + 3 of the table:
 | 2 | Bank number of the frame |
 | 3 | **Order adjustment**: see "Not covered" |
 
-The bank number and address are a location, turned into a position in
-the image as in `rom-image.md`. Entry 0 is all zero: frame 0 means no
-picture.
+Where the frame table starts in the image is in `locators.md`. The bank
+number and address in an entry are a location, turned into a position
+in the image as in `rom-image.md`. Entry 0 is all zero: frame 0 means
+no picture.
 
 In `title-1` the table has frames 1 to 2 748; the entries after them
 are zero. The order adjustment is 0 in 2 734 entries and 4 in 14.
@@ -198,8 +199,8 @@ as stored and mirrored, and a sprite palette.
 
 ## Not covered
 
-- Where the frame table, the frames and the sprite palettes are in the
-  image (as for the other format specs, see `rom-image.md`).
+- Where the sprite palettes are in the image, and which one each object
+  uses. (The frame table is in `locators.md`; it locates the frames.)
 - Which frames each kind of object shows and when (animation sequences
   and their timing), which palette each uses, and which objects are
   mirrored top–bottom.
