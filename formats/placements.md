@@ -39,6 +39,9 @@ entry's `h` and walked off along the floor from there.
 
 ## Storage
 
+Where the first level's placement list starts in the image is in
+`locators.md`.
+
 A placement list is a run of **entries** of 8 bytes each. An entry is
 four 16-bit words, each stored low byte first:
 
@@ -222,8 +225,8 @@ the kinds a reader looks up from it: see its `README.md`.
 
 ## Not covered
 
-- Where a level's placement list is in the image (as for the other
-  format specs, see `rom-image.md`).
+- Where the placement lists of levels other than the first are in the
+  image.
 - What a definition holds, and the kinds of the references without a
   kind fingerprint row. An object's settings (a walker's heading and
   patrol, whether it takes a first step on its first frame, a placed

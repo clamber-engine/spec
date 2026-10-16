@@ -333,6 +333,16 @@ holds 0x0003.
 More cases, as bytes, are in `../vectors/level-ground/` (the `rows-`
 files).
 
+## The first level's data
+
+Where the first level's grid and type table start in the image is in
+`locators.md`. Both are column-grid data as above:
+
+- The grid is 1 310 columns. The first level uses columns 0 to 183
+  (level x 0 to 5 887); the columns after them hold other levels'
+  ground.
+- The type table has `N` = 234 types.
+
 ## Not covered
 
 - Whether being passable from below matters for anything other than
@@ -343,9 +353,9 @@ files).
 - In row grids: band 0's top line in step 2, a feet line of 0 or less,
   and bands past the grid's last band in step 3. All the rooms measured
   were inside the grid.
-- Where a level's grid, type table and `N` are stored, and which part
-  of a grid each level uses (its left and right ends). These belong to a
-  later part of the level format.
+- Where the grids, type tables and `N` of levels other than the first
+  are stored, which part of a grid each of them uses, and the first
+  level's left and right ends within its 184 columns.
 - Level x outside the grid.
 - Anything other than ground and cell pictures (walkers, objects,
   limits of the view). Cell pictures are in `graphics.md`.

@@ -189,18 +189,30 @@ first level only the ground layer has raised tiles.
 
 ## The first level's data
 
-For the first level the importer needs:
+For the first level the importer needs the following. Where each one
+starts in the image is in `locators.md` (the grid's row is listed under
+`level-ground.md`).
 
 - the packed tile data (874 tiles once unpacked),
 - one palette set of 8 rows; the layers only use rows 1 to 7 apart from
   type 0's empty picture,
 - the picture table (types 0 to 512),
-- the grid (184 columns, `level-ground.md`).
+- the grid (its first 184 columns, `level-ground.md`).
 
-None of them changed while the first level was played: no tile and no
-colour of palette rows 1 to 7 changed in 5 388 frames of play from eight
-places in the level. Changes came only with the picture going dark
-(fades, and moving to another area), which is not covered.
+No tile changed while the first level was played: none in 5 388 frames
+of play from eight places in the level. Changes came only with the
+picture going dark (fades, and moving to another area), which is not
+covered.
+
+The colours of rows 1 to 7 were the palette set's colours in the same
+5 388 frames, and in every one of 56 saved positions in the level with
+the view's left edge at level x 4 585 or less. Near the level's right
+end they were not: in all six saved positions with the view's left
+edge at level x 4 774 to 5 120, the colours of rows 1 to 7 were
+different and mostly darker, and in two of the six they were different
+from the other four. Those colours were not found in the image
+as palette rows. How they come about is not covered (see "Not
+covered"); the palette set is the level's colours before that change.
 
 ## Example (synthetic)
 
@@ -243,9 +255,12 @@ More cases, as bytes, are in `../vectors/graphics/`.
 
 ## Not covered
 
-- Where the packed tile data, the palette set, the picture table and
-  the grid start in an image (see `rom-image.md`); their structure is
-  as above.
+- The colours near the first level's right end (see "The first
+  level's data"): where along the level and on which frame they start
+  to change, how each colour changes and for how long, and whether
+  sprite palettes change too.
+- Where other levels' packed tile data, palette sets and picture
+  tables start in an image.
 - How the far layer moves with the view, including different rates for
   different rows of the picture.
 - Colours on screen that are not the palette colours: the far layer
