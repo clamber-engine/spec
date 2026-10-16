@@ -281,7 +281,10 @@ the column matters, not the speed, direction, facing or the fraction of
 Following a slope down never made the player airborne, on 1-in-2 slopes
 included, at any speed measured. The fastest grounded speed measured on
 a slope was **1138/256** px per frame (about 4.45) going downhill, in a
-fast roll. There is no `leave_ground` on a slope.
+fast roll. There is no `leave_ground` on a slope. Steps down where
+pieces meet, and how far down the floor is followed from slopes of any
+steepness, are in `steep-faces.md` ("Following the floor down
+(`title-2`)").
 
 ### Horizontal speed (`title-2`)
 
@@ -437,8 +440,10 @@ has no margin.
 
 ### Not covered in `title-2`
 
-- Slopes of other steepness, and slopes that meet a wall, a ceiling or a
-  ledge. Walking or rolling off the end of the ground onto a slope.
+- Slopes of other steepness, apart from how far down their floor is
+  followed (`steep-faces.md`, "Following the floor down (`title-2`)"),
+  and slopes that meet a wall, a ceiling or a ledge. Walking or rolling
+  off the end of the ground onto a slope.
 - Whether pieces could be 8 columns wide rather than 16: every 8 columns
   of the slopes measured contain a change of height, so the two fit the
   measurements equally. (32 is ruled out, see "Evidence".)

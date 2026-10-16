@@ -4,6 +4,27 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers `spec` issue #30 (`title-2`).
+
+- `behavior/steep-faces.md`, "In `title-2`": the face limits are
+  corrected. They come before the blocking test, and keep downhill
+  speeds of 0.75 to 2.25 px per frame and any speed whose remainder
+  modulo 256/256 is 0 or 193/256 to 255/256. Others become 2 downhill
+  (576/256 or more downhill) or 0.75 downhill, every uphill speed
+  included. New "Blocked face frames": a blocked face frame ends with `x`
+  at the column edge and `vx` 0, and needs a kept uphill speed (seen on
+  the first frame after a landing). Face columns are the columns of
+  steep-face pieces; a lone 4 px step makes none. "Getting onto a face
+  from above" becomes "Following the floor down": each piece's steepness
+  gives a reach (3 px flat, 1-in-4, 1-in-2; 4 for 2-in-3; 5 for 1-in-1;
+  6 for 2-in-1; 8 for a steep face). The floor is followed down by up to
+  the reach, plus 3 px onto a sloped piece; otherwise L moves reach +
+  0.4375. Examples, evidence and "Not covered" updated.
+- `behavior/walk-off.md`, "In `title-2`": leaving at a step down; on
+  L + 1 `vy` is 113/256 instead of 368/256 when the floor is 2.5625 px
+  or less below.
+- `behavior/slopes.md`, "In `title-2`": point to the new rule.
+
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.

@@ -230,7 +230,10 @@ On L the player moves down by 3 px plus one frame of gravity. That makes
 position relative to the edge, their speed and their direction. The one
 exception is a jump that has started but hasn't taken off yet on L (see
 "Jumping near the edge"). If that jump has the lighter gravity on L, the
-move is **3.3515625 px** (3 + 0.3515625, 858/256).
+move is **3.3515625 px** (3 + 0.3515625, 858/256). Leaving the ground at
+a step down rather than a ledge moves the same 3.4375 px from flat floor
+and gentle slopes, and more from steeper slopes (`steep-faces.md`,
+"Following the floor down (`title-2`)").
 
 At the end of L, `vy` is **0.00390625** (1/256), as in `title-1`.
 
@@ -240,7 +243,13 @@ Unless the player is crouching on L (next section) or a jump starts:
 
 - On **L + 1**, `vy` becomes **1.4375** (1 + 0.4375, 368/256) and the
   player moves down by that. This is a step up from 1/256, not an increase
-  of 0.4375 as in `title-1`.
+  of 0.4375 as in `title-1`. The exception is a small step down
+  (`steep-faces.md`, "Following the floor down (`title-2`)"). There, the
+  floor of the column the player is in after L + 1's move may be close
+  below the feet as they were after L. When it was 0.5625, 1.5625 or
+  2.5625 px below, `vy` only increased by 0.4375, to 113/256, and the
+  player moved down by that. From 3.5625 px below on it was 368/256 as
+  usual. Distances in between weren't measured.
 - On each later frame, `vy` increases by **0.4375** (112/256), but never
   above **8**, and the player moves down by the new `vy`.
 
@@ -439,9 +448,10 @@ after all sets were recorded.
 
 - Ledges with a face or a slope at the top, moving platforms, and the
   second character. Walking onto a steep face from the floor above it,
-  and leaving the ground on one, are in `steep-faces.md` ("In
-  `title-2`"). Going down 1-in-2 and 1-in-4 slopes never made the
-  player leave the ground (`slopes.md`, "In `title-2`").
+  leaving the ground on one, and steps down between pieces of floor are
+  in `steep-faces.md` ("In `title-2`"). Going down 1-in-2 and 1-in-4
+  slopes never made the player leave the ground (`slopes.md`, "In
+  `title-2`").
 - Action pressed on L: a roll was seen to start there, which wasn't
   studied. (An Action press from L + 1 on starts nothing and counts as
   Action held.) Rolling off a ledge is in `rolling-off-ledges.md` ("In

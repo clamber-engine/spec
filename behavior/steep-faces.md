@@ -273,7 +273,12 @@ floor at its foot). The player walked, ran, rolled, turned, stopped and
 started again against both faces from the left. They went down the 64 px
 face to the left from the floor at its top, walking, coasting with
 nothing held and holding the uphill direction. There were also random
-sequences of Left, Right and nothing on and around both faces. Speeds
+sequences of Left, Right and nothing on and around both faces. Landings
+on the 64 px face and every speed on its face frames were also measured
+one frame at a time, from positions and speeds set before the frame.
+Steps down from floor that isn't a face (3 to 10 px, between pieces of
+every steepness) were measured on test floors that the levels don't
+have, built next to the 64 px face, moving right and moving left. Speeds
 are whole multiples of 1/256 px per frame, written both ways. "The
 speed rule" is the one of `ground-speed.md` ("In `title-2`"): the
 target is chosen from the frame's input, and the gap is divided by 8,
@@ -286,6 +291,16 @@ above in "Columns, faces and steps". Both measured faces have the
 `title-1` shape. Each face column is exactly 4 px higher than the one
 below it. The lowest face column is 1 px above the floor at the foot,
 and the highest face column is 3 px below the floor at the top.
+
+In `title-2` the floor is made of pieces 16 columns wide, each flat or
+sloped (`slopes.md`, "In `title-2`"). The columns of a face are the
+columns of **steep-face pieces**: pieces whose floor changes by 4 px from
+each column to the next. On the measured faces these are exactly the
+columns that the definition above names. A single 4 px step between
+pieces of other kinds doesn't make face columns. A 4 px step down onto a
+1-in-4 or 1-in-2 slope was followed (see "Following the floor down"
+below). On the next frame the limits of "Speed on a face" didn't apply,
+and on the frame after that there was no pull (1,755 frames).
 
 ### Stopped by a rise (`title-2`)
 
@@ -302,9 +317,10 @@ of the move. Then:
 A face column only 1 px above the player's floor blocks, as in
 `title-1`. This held at every speed measured: starting from rest,
 walking, running, turning, rolling (the roll goes on and is blocked again)
-and on the first frame after landing on a face. The move that is tested
-uses the speed from the speed rule, before the limits of "Speed on a
-face" below.
+and on the first frame after landing on a face. On a face frame the move
+that is tested uses the speed **after** the limits of "Speed on a face"
+below. On any other frame it uses the speed from the speed rule. See
+"Blocked face frames" below.
 
 ### Starting toward a rise (`title-2`)
 
@@ -347,14 +363,45 @@ so "downhill" is to the left there.
    | The downhill direction | 3.25 downhill (832/256) |
    | The uphill direction | 1.25 uphill (320/256) |
 
-2. **Limits.** On a face frame, after the speed rule and after the
-   blocking test above:
-   - a speed of more than **2.25** px per frame downhill (576/256) becomes
-     exactly **2** downhill (512/256);
-   - a speed of less than **0.75** downhill (192/256), including 0 and any
-     uphill speed, becomes exactly **0.75** downhill (192/256).
+2. **Limits.** On a face frame, after the speed rule and before the
+   blocking test above, the speed is limited. Write it as `s` in 1/256 px
+   per frame, negative downhill as on the measured faces (they fall to the
+   left). Let `r` be the remainder of `s` divided by 256, from 0 to 255.
+   For example, `r` is 216 for −40, 192 for −64 and 44 for 300.
+   - If `s` is from −575 to −192 (at least 0.75 px per frame downhill and
+     less than 2.25), it is kept.
+   - Otherwise, if `r` is 0 or from 193 to 255, it is kept.
+   - Otherwise it becomes **2** downhill (−512) if `s` is −576 or less,
+     and **0.75** downhill (−192) if not. Every uphill speed that isn't
+     kept becomes 0.75 downhill.
 
-   Then `x` changes by the new `vx`.
+   Then comes the blocking test, with this speed. If the frame isn't
+   blocked, `x` changes by the new `vx`.
+
+   | `s` (1/256 px per frame) | After the limits |
+   |---|---|
+   | −1154 to −1088 | −512 |
+   | −1087 to −1024 | kept |
+   | −1023 to −832 | −512 |
+   | −831 to −768 | kept |
+   | −767 to −576 | −512 |
+   | −575 to −192 | kept |
+   | −191 to −64 | −192 |
+   | −63 to 0 | kept |
+   | 1 to 192 | −192 |
+   | 193 to 256 | kept |
+   | 257 to 448 | −192 |
+   | 449 to 512 | kept |
+   | 513 to 704 | −192 |
+   | 769 to 960 | −192 |
+   | 1025 to 1090 | −192 |
+
+   These are all the speeds measured. In pixels, a speed is kept when it
+   is 0.75 to 2.25 downhill (2.25 itself excluded), or when the part of it
+   above the whole number below it is 0 or more than 0.75. So downhill
+   speeds of less than 0.25 px per frame are kept, and so are uphill
+   speeds such as 0.8 or 1.9. Speeds whose fraction is 0.75 exactly, like
+   0.25 downhill (−64) or 0.75 uphill (192), are limited.
 
 So a player can't stand still on a face or walk up it:
 
@@ -366,6 +413,39 @@ So a player can't stand still on a face or walk up it:
   reaches it exactly, from either side.
 - **Holding uphill**, `vx` drops by the speed rule toward 1.25 uphill and
   is held at 0.75 downhill by the limit.
+
+None of these settled speeds falls in a kept band. A slow or uphill
+speed that is kept comes from what happened before the face frame, such
+as a landing.
+
+On a face built for the step measurements that falls to the right,
+downhill speeds of 19/256 to 448/256 behaved in the same way with the
+directions swapped: kept up to 62/256, 192/256 from 68 to 190, kept from
+196 on.
+
+### Blocked face frames (`title-2`)
+
+A face frame is blocked only when the speed left by the limits still
+takes `x` into a higher face column. Every uphill speed that the limits
+don't keep becomes 0.75 downhill, so a blocked face frame needs an
+uphill speed that is kept: one whose fraction of a pixel is more than
+0.75, or a whole number of pixels. On the measured faces this happened
+only on the first frame after landing on the face while moving uphill.
+The speed on that frame comes from the speed rule applied to the
+speed at landing, without the pull (the landing frame started in the
+air).
+
+A blocked face frame ends like any other blocked frame. `x` is set to the
+left edge of the column the player was in before the frame and `vx`
+becomes 0. The limits are not applied again and `x` doesn't move further,
+so the player is still on that frame. The next frame is a face frame
+from `vx` 0, with the pull. Holding the uphill direction, that gives a
+target of 1.25 uphill and a speed of 40/256, which the limits turn into
+0.75 downhill.
+
+When the limits turn the speed downhill on the first frame after a
+landing, the frame isn't blocked. The player moves 0.75 px downhill on
+it, and follows the face down if the new column is lower.
 
 ### Following a face down, or leaving it (`title-2`)
 
@@ -393,23 +473,64 @@ happened this way. Three crossed three face columns (12 px). One went
 from the third face column from the bottom onto the floor at the foot
 (9 px).
 
-### Getting onto a face from above (`title-2`)
+For staying grounded, this is the rule of "Following the floor down"
+below with the reach of a steep face (8 px). Onto other face columns
+that rule would allow 11 px, but the floors of face columns differ by
+multiples of 4 px, so 8 is the most that is followed. On leaving, `y`
+moves down by exactly 8 px, as above, not 8.4375.
 
-The frame that moves the player from the floor at the top onto the face
-isn't a face frame. Whether the player stays grounded on it depends on how
-far below the top floor the new column is:
+### Following the floor down (`title-2`)
 
-- a move that ends in the **highest face column** (3 px below the top
-  floor) keeps the player grounded on it, and the next frame is a face
-  frame;
-- a move that ends in a lower face column (7 or 11 px below) makes the
-  player leave the ground as when walking off a ledge (`walk-off.md`, "In
-  `title-2`": frame L moves down 3.4375 px).
+On a grounded frame that isn't a face frame, the floor of the column
+after the horizontal move is compared with the floor the player stood on
+before the frame. The **drop** is how much lower the new floor is. A
+higher floor ahead is followed or blocked as above. For a drop, each
+piece of floor has a **reach** that goes with its steepness:
 
-Drops of 4 to 6 px from ordinary floor weren't measured. Walking at the
-top speed of 2.25 px per frame, whether the move ends in the highest face
-column depends on the fraction of `x`. Running (Action held), 20 of 21
-measured moves skipped it and left the ground.
+| Piece | Its floor changes by | Reach |
+|---|---|---|
+| Flat | 0 | 3 px |
+| 1-in-4 slope | 1 px every 4 columns | 3 px |
+| 1-in-2 slope | 1 px every 2 columns | 3 px |
+| 2-in-3 slope | 2 px every 3 columns | 4 px |
+| 1-in-1 slope | 1 px every column | 5 px |
+| 2-in-1 slope | 2 px every column | 6 px |
+| Steep face | 4 px every column | 8 px |
+
+The player stays grounded, with `y` the new column's floor, if the drop
+is at most:
+
+- the reach of the piece they stood on, when the new column is on a
+  **flat** piece;
+- that reach plus **3 px**, when the new column is on a **sloped** piece
+  of any steepness, a steep face included.
+
+Otherwise they leave the ground. On this frame (L) `y` moves down by the
+reach of the piece they stood on, plus one frame of gravity: reach +
+0.4375 px. That is 3.4375 from flat floor and from 1-in-4 and 1-in-2
+slopes, as in `walk-off.md`. It is 4.4375 from 2-in-3 slopes, 5.4375
+from 1-in-1 slopes and 6.4375 from 2-in-1 slopes. `vy` ends at 1/256, and
+the fall goes on as in `walk-off.md` ("In `title-2`"). From flat floor
+and gentle slopes, a 4 px step down onto a flat piece is therefore fallen
+off, while a step of up to 6 px onto a slope or a face is walked down.
+
+Only the floor the player stood on and the floor of the new column
+count. The columns crossed in between, the speed, the direction and the
+fraction of `x` don't. From every steepness in the table, steps onto
+flat floor and onto slopes were measured. For each, a drop of the limit
+was followed and a drop 1 px larger left the ground, so every reach is
+exact. For the steep face that is "Following a face down" above.
+
+Getting onto a face from above follows the same rule. The frame that
+moves the player from the floor at the top onto the face isn't a face
+frame. The top floor is flat, and the highest face column is 3 px below
+it and on a sloped piece. So a move that ends there keeps the player
+grounded, and the next frame is a face frame. A move that ends in a
+lower face column (7 or 11 px below) leaves the ground, with frame L
+moving down 3.4375 px. Walking at the top speed of 2.25 px per frame,
+whether the move ends in the highest face column depends on the
+fraction of `x`. Running (Action held), 20 of 21 measured moves skipped
+it and left the ground.
 
 ### Facing (`title-2`)
 
@@ -490,6 +611,37 @@ If Left had stayed held, frame 5 would have moved 2.15625 px from
 `x` = 211 to 208.84375, three columns and 12 px down, and the player
 would have left the ground there, 8 px lower (−37).
 
+**Landing on the face moving uphill.** Same floor. Two landings, each
+followed by a frame with Right held (target 2.25, no pull on the first
+frame after a landing):
+
+| End of the landing frame | Next frame: speed rule | After the limits | Result |
+|---|---|---|---|
+| `x` = 206.21875, `y` = −25, `vx` 184/256 | 233/256 (`r` 233) | kept | 206.21875 + 0.91015625 is in column 207 (−29, higher): blocked. `x` = 206, `vx` 0 |
+| `x` = 206.65625, `y` = −25, `vx` 296/256 | 331/256 (`r` 75) | −192 | `x` = 205.90625, column 205 (`y` −21, 4 px lower, followed) |
+
+After the blocked frame, Right still held: the pull makes the target
+320/256, the speed rule gives 40/256, the limits make it −192, and `x`
+is 205.25 with `y` −21.
+
+**Steps down from flat floor** (synthetic, `y` down-positive). Flat
+floor at `y` = 0 up to column 111. From column 112 there is a flat piece
+4 px lower (`y` = 4). Walking right (Right held) with `x` = 110.37109375
+and `vx` = 457/256 before frame 1:
+
+| Frame | `x` | `y` | `vy` (1/256) | `ground` | Note |
+|---|---|---|---|---|---|
+| 1 | 112.2109375 | 3.4375 | 1 | 0 | Drop 4 onto a flat piece: more than the reach 3. Leaves (L) |
+| 2 | 114.1015625 | 3.87890625 | 113 | 0 | Floor 0.5625 px below: no 368 step (`walk-off.md`) |
+| 3 | 116.03515625 | 4 | 0 | 1 | Lands |
+
+With a piece 8 px lower instead (`y` = 8 from column 112): L as above,
+then `y` 4.875 (`vy` 368/256), 6.75 (480/256), and a landing on 8 on
+frame 4. With a 1-in-4 slope from column 112 whose first columns are
+4 px lower, or with a 2-in-3 slope whose first column is 6 px lower,
+frame 1 keeps the player grounded on the new column's floor instead
+(drop at most 3 + 3).
+
 ### Evidence (`title-2`)
 
 527 runs (70 312 frames) at the two faces. 30 813 frames that started
@@ -500,15 +652,55 @@ frame that weren't face frames, 34 departures from the ground and 25 718
 frames on ordinary floor near the faces. Among the face frames, 364 met
 the upper limit and 339 the lower one. 120 of the runs were random input
 recorded after the rules were first written. On first check they showed
-2 differences, both corrected in the rules above: the blocking test comes
-before the limits, and it applies on the first frame after a landing.
+2 differences. Both were corrected at the time: the blocking test was
+put before the limits (revised below), and it applies on the first frame
+after a landing.
 Frames in a turn weren't checked frame by frame. More than 300 blocked
 frames were seen during turns, with the result the blocking rule gives.
+
+The limits and the order of limits and blocking were then measured
+directly, and the rules above were corrected. The earlier version said
+the block test came before the limits and that every uphill speed became
+0.75 downhill. Frames set one at a time:
+
+- 43,218 face frames following a face frame, holding nothing, Right or
+  Left, at every speed from −1154/256 to +1090/256: 0 differences.
+- 77,660 first frames after a landing on the face: 5,532 landings from
+  0.25 to 4.5 px above the floor, and two sweeps of 36,064 over the
+  speed at landing, holding Right or nothing: 0 differences. 1,390 of
+  them were blocked, 46,426 limited and 29,844 kept.
+
+Checked frame by frame from inputs alone, with the corrected rules:
+
+- the 527 runs above (30,813 frames): 0 differences;
+- 624 runs of jumps and falls onto both faces, recorded for
+  `air-walls.md` (34,187 grounded frames, among them the frames after
+  the landings): 2 differences, both rolls (not covered). The earlier
+  rules gave 95 differences on these frames.
+
+For "Following the floor down", 44 test floors were built next to the
+64 px face, with steps of 3 to 10 px between pieces of every steepness
+in the table. Each was scanned for its floor heights. From a real stand
+on the upper column, the player was given speeds of 16/256 to 1040/256
+at 16 fractions of `x` (90,816 frames, crossing 1 to 4 columns): 0
+differences in `y`, `ground` and `vy`. Fifteen walking runs over 5 of
+the steps, and 720 frames at the real top of the 64 px face (3, 7 and
+11 px), agreed.
 
 ### Not covered in `title-2`
 
 - Faces that rise to the left, faces steeper or less steep than 4 px per
-  column, and vertical steps.
+  column, and vertical steps. On a face that falls to the right, only
+  downhill speeds from 19/256 to 448/256 were seen (above), and only on
+  test floors.
+- Steps of 6 px onto a steep face (no test floor had one), and steps
+  onto or from columns of flat floor that share a piece with sloped
+  columns, like the 8 flat columns at the top of the 96 px face
+  (`slopes.md`, "In `title-2`").
+- Horizontal motion on slopes steeper than 1-in-2 (`slopes.md`).
+- Facing on the frames after a landing on a face (see "Facing" above:
+  those landings were blocked; other landings were seen to turn the
+  player on their first frame or later).
 - Action held or rolling on a face. Rolls and runs that reach the face
   from the top floor were seen to leave the ground there, as above.
 - Jumps from a face (the face's pull and limits were seen to carry into
