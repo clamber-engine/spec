@@ -65,7 +65,7 @@ position).
 | 1 | One object. `r` is the address of the object's **definition** |
 | 2 | One object, as for class 1 |
 | 5 | A **group** of objects. `r` locates the group's members |
-| 8 | No object. Not covered |
+| 8 | No object. The first level's one class 8 entry starts the dimming (`../behavior/dimming.md`) |
 
 Other classes are used by other levels' lists and are not covered.
 
@@ -180,6 +180,9 @@ at the start of the frame.
 - **Class 5.** All members appear together, on the first frame on which
   the group entry is in the window, even members whose own `x` is still
   outside it.
+- **Class 8.** Nothing appears. For the first level's class 8 entry,
+  the first frame on which it is in the window is the dimming's frame T
+  (`../behavior/dimming.md`).
 
 An object appears at its entry's position: level x `x` and level y
 `Yb` − `h` (192 of the 230 appearances exactly). Some objects move on
@@ -233,8 +236,9 @@ the kinds a reader looks up from it: see its `README.md`.
   ball's speeds) also belong to the definition and are not covered.
 - What class 2 changes compared with class 1: in the runs measured,
   class 2 objects appeared and started like class 1 objects.
-- Class 8 entries (no object appeared for the one in the first level)
-  and the classes used only in other levels.
+- What class 8 entries do other than the first level's (which starts
+  the dimming), what a class 8 entry's `h` and reference mean, and the
+  classes used only in other levels.
 - When objects other than walkers are removed, and whether they come
   back.
 - Entries far above or below the view, and when the entry that is out

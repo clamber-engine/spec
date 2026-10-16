@@ -4,6 +4,19 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (first level, `title-1`). Answers no open `spec` issue.
+
+- `behavior/dimming.md` (new): near the first level's right end the
+  background's colours change in 32 steps, one every 8 frames, started
+  by the level's class 8 entry entering the window; step 1 on the first
+  step frame from T + 4 (cycle placement not specified); the colour of
+  every background colour at each step, from its palette set value.
+  Sprite colours not covered.
+- `formats/placements.md`: class 8 in the first level starts the
+  dimming; "When placed objects appear" and "Not covered" updated.
+- `formats/graphics.md`: the darker colours near the first level's end
+  are the dimming; "Not covered" updated.
+
 ## spec-v0.73.0
 
 Coverage (first level, `title-1`). Answers no open `spec` issue.
