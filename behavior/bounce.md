@@ -244,6 +244,11 @@ On B + 42, moving by 8 would take the player below the floor, so B + 42
 is the landing frame (see "Not covered in `title-2`" for the landing
 itself).
 
+Scenario `bounce-walker` holds jump from frame 20 to the end, so K is
+23 or more: in its `title-2` reference trace B is frame 64, 13.125 px
+above the floor, the top of the arc is 92 px above B, and the player
+lands on frame 112.
+
 ### Evidence (`title-2`)
 
 268 bounces (252 followed to the landing), from standing, walking and
