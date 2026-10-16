@@ -4,6 +4,26 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Importer: sound (`title-1`), in part for spec#20
+(https://github.com/clamber-engine/spec/issues/20). Uses the level from
+`formats/voices.md` (spec-staging #87).
+
+- `formats/voice-output.md` (new): how the voices become the console's
+  audio output: a note's points and position (position 0 on the 7th
+  output after the start's check, then up by the pitch mod 16 384 on
+  each output), blending four points with weights from a formula (a
+  windowed bell; the console's own weights are described, not copied,
+  per the director's decision on spec#31,
+  https://github.com/clamber-engine/spec/issues/31; they differ by at
+  most 3), the voice's sound from the level of two outputs
+  before, what is heard around a start, when blocks are taken (the loop
+  block of the sample the voice has then; a one-shot sample ends when
+  its last block is taken, so that block is never heard), volumes,
+  mixing with limits and main volume; when handed values count (within
+  three outputs, exact output not covered). Echo and noise not covered.
+- `vectors/voice-output/` (new): 11 made-up cases with every output,
+  computed with the formula's weights.
+
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.
