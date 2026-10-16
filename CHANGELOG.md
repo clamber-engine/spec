@@ -4,6 +4,21 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (first level, `title-1`), using the kind fingerprints of
+spec #23.
+
+- `formats/placements.md`: new section "Kinds". Which kind of object a
+  class 1 or class 2 entry places, told by fingerprint: for each bank
+  block, the SHA-256 of the 64 image bytes at the reference's position
+  in that block, looked up in the image's rows. Kind names
+  `small-walker`, `large-walker`, `thrower`, `ball`, `bunch`,
+  `letter-1` to `letter-4`, `barrel`, `holder`, `end-marker`. 15 of the
+  first level's 37 references (28 entries) have rows. "Not covered"
+  updated. New vectors `vectors/placements/kinds-*.tsv`.
+- `formats/locators.md`: `title-1` kind fingerprint rows for placement
+  references.
+- `behavior/thrower.md`: "Not covered" item answered.
+
 ## spec-v0.71.1
 
 Answers https://github.com/clamber-engine/spec/issues/28.

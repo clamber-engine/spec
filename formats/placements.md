@@ -73,8 +73,15 @@ the same settings (for example a walker's heading and whether it waits a
 frame before its first step, `../behavior/walker-view.md`). Different
 references can place objects of the same kind with different settings.
 The first level's list uses 36 different references in its class 1 and
-2 entries. Where definitions are stored, what they hold and which kind
-of object each one places are not covered.
+2 entries, and its group's members use one more. The kind is told by the
+reference alone: the same reference given to an entry somewhere else
+places the same kind of object there (checked for the references in
+"In the first level" below).
+
+A class 1 or class 2 reference leads to part of the original program.
+This spec doesn't describe what is there. The importer tells which kind
+of object an entry places by **fingerprint** (`../REVIEW.md`, "The
+second exception: kind fingerprints"), as in "Kinds" below.
 
 ### Groups
 
@@ -87,6 +94,72 @@ they are all zero.
 The members' positions are their own entries' `x` and `h`. In the first
 level's group, the members are class 1 entries and the group entry's
 `x` and `h` are its first member's.
+
+## Kinds
+
+### The fingerprint of a reference
+
+For a reference `r` and each bank block `n` of the image (`rom-image.md`,
+"Banks and locations"; 0 to 63 in a 4 MiB image), take the position
+
+    p = 65 536 n + r
+
+and the 64 image bytes at positions `p` to `p` + 63. These bytes may run
+on past the end of bank block `n` into the next one. If `p` + 63 is past
+the end of the image, block `n` gives no fingerprint. The **candidate
+fingerprint** for block `n` is the SHA-256 of those 64 bytes, written as
+64 lowercase hexadecimal digits.
+
+`locators.md` lists, in each supported image's section, **kind
+fingerprint** rows: a fingerprint and the kind it stands for. If one of
+`r`'s candidate fingerprints is in that image's rows, the entry places an
+object of that row's kind. In a supported image, at most one candidate
+matches a row. If none does, the kind is not covered.
+
+Class 5 and class 8 references are not looked up this way. A group's
+members are looked up by their own references.
+
+### Kind names
+
+| Kind | The object | Behavior |
+|---|---|---|
+| `small-walker` | A small walker | `walker.md`, `walker-contact.md`, `walker-view.md` |
+| `large-walker` | A large walker | as for `small-walker` |
+| `thrower` | A thrower | `thrower.md`, `ground-action-enemies.md` |
+| `ball` | A ball placed in the level, not thrown (moving when it appears) | `thrower.md`, `ball-contact.md` |
+| `bunch` | A bunch | `bunches.md` |
+| `letter-1` to `letter-4` | The letter with that number | `letters.md` |
+| `barrel` | An object that can be carried and holds nothing | `carrying.md`, `thrown-objects.md` |
+| `holder` | An object that can be carried and holds the missing character | `carrying.md`, `holder-breaking.md` |
+| `end-marker` | The level's end marker | `level-end.md` |
+
+The behavior files are in `../behavior/`. A row gives the kind only:
+the settings of the object (for example a walker's heading) are not
+given by it.
+
+The `holder` reference is the one reference seen to make two objects
+appear (see "When placed objects appear"). The holder is one of them;
+what the second one is, is not covered.
+
+### In the first level
+
+15 of the first level's 37 references have a kind fingerprint row. They
+are used by 28 of its entries (counting group members): 11 small
+walkers (all three group members among them), 3 large walkers, the
+thrower, a ball, 4 bunches, the four letters (one each), a barrel, 2
+holders and the end marker. The other references place things that
+have no behavior file yet (for example scenery and signs), or that were
+not seen.
+
+Checked in the game: every object seen from these 28 entries, in the
+runs in "When placed objects appear" and, for the end marker, in those
+of `../behavior/level-end.md`, was of the row's kind. Each of the 15
+references was also given, in a copy of the image, to one class 1 entry
+near the level's start in place of its own reference. Each time an
+object of the row's kind appeared there; with three of the letters'
+references (letters 1, 3 and 4), taking the object there took the
+letter with that number. A class 2 reference given to a class 1 entry
+placed the same kind as in its own class 2 entry.
 
 ## When placed objects appear
 
@@ -144,16 +217,17 @@ third entry both appear on the first frame that starts with `V` ≥ 612.
 ## Vectors
 
 `../vectors/placements/` holds a made-up bank fragment and the entries a
-reader gets from it: see its `README.md`.
+reader gets from it, and a made-up image with kind fingerprint rows and
+the kinds a reader looks up from it: see its `README.md`.
 
 ## Not covered
 
 - Where a level's placement list is in the image (as for the other
   format specs, see `rom-image.md`).
-- What a definition holds and which kind of object (walker, container,
-  and so on) each reference places. Some objects take a first step on
-  their first frame and others don't, and some start away from their
-  entry's position; this belongs to the definition.
+- What a definition holds, and the kinds of the references without a
+  kind fingerprint row. An object's settings (a walker's heading and
+  patrol, whether it takes a first step on its first frame, a placed
+  ball's speeds) also belong to the definition and are not covered.
 - What class 2 changes compared with class 1: in the runs measured,
   class 2 objects appeared and started like class 1 objects.
 - Class 8 entries (no object appeared for the one in the first level)
