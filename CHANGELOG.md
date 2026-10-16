@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.64.0
+
 Answers https://github.com/clamber-engine/spec/issues/20 (in part).
 
 - `formats/songs.md`: new. What song data says (`title-1`, all 27
