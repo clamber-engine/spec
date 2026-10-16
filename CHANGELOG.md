@@ -4,6 +4,13 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (`title-2`). Answers no open `spec` issue.
+
+- Traces: new `reference/title-2/run-jump-flat.trace`. `title-2` still
+  has no traces for `bounce-walker` and `slope-dip`.
+- `TITLES.md`: the `title-2` row lists it.
+- `behavior/jump-arc.md` ("Example (`title-2`)"): points to that trace.
+
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.

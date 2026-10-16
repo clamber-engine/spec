@@ -222,6 +222,10 @@ Standing, jump pressed on frame 10 and held for 20 frames (frames 10 to
 on, 0.4375. `apex_height` is 90.578125 and `airtime` 43; the player lands
 on frame 55.
 
+Scenario `run-jump-flat` holds jump for the same 20 frames while running
+(G = 60, T = 62), and its `title-2` reference trace has the same arc: it
+lands on frame 105.
+
 ## Not covered
 
 Horizontal motion in the air (see `air-control.md`), jumps from moving
