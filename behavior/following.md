@@ -163,7 +163,10 @@ and nothing is added to the trail.
 
 An object that holds the missing character (`carrying.md`) frees it
 when it breaks: a thrown one breaks when it first touches the ground, a
-wall or an enemy. Call **S** the frame on which it breaks.
+wall, a barrier or an enemy, or leaves the picture
+(`holder-breaking.md`, which also says where it is then). Call **S** the
+frame on which it breaks. From S + 1 to S + 33 walkers and the thrower
+don't move either (`holder-breaking.md`).
 
 - If both characters are already there, nobody comes out.
 - Otherwise the missing character joins, whichever it is: also the

@@ -4,6 +4,25 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers https://github.com/clamber-engine/spec/issues/26.
+
+- `behavior/holder-breaking.md`: new (`title-1`). When an object holding
+  the missing character breaks (frame S) and where it is then. Thrown, it
+  moves as an object holding nothing and breaks: against a wall (also a
+  move passing a face column), with its `x` unchanged but its vertical
+  move done; at a barrier the same way; on its first touch of the floor
+  (always falling at least 1 px per frame then), at `y` = `F`; outside
+  the picture window of `thrower.md` instead of being removed; on a
+  walker by the ranges of `thrown-objects.md`; on the thrower and its
+  balls by measured ranges. Never on the lead. During a throw it breaks
+  on a walker on Q + 1 to Q + 20; carried, put down or lying on the floor
+  it doesn't break; carried through a barrier it falls away and nobody
+  joins. Walkers and the thrower don't move from S + 1 to S + 33; a hit
+  walker's next step is on S + 34, a hit thrower rises from S + 35.
+  Examples; "Not covered" lists the rest.
+- `behavior/following.md`, `behavior/thrown-objects.md`,
+  `behavior/carrying.md`: pointers.
+
 ## spec-v0.69.0
 
 Answers https://github.com/clamber-engine/spec/issues/24.

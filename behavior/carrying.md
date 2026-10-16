@@ -231,8 +231,9 @@ player's position on the frame before G:
   held, and carrying into walls or enemies.
 - What a thrown object does when it first touches a character. Bouncing,
   rolling and breaking against walls for an object that holds nothing
-  are in `thrown-objects.md`; an object that holds the missing character
-  breaks on its first touch (`following.md`). When some objects break
+  are in `thrown-objects.md`; when an object that holds the missing
+  character breaks, also while carried or during a throw, is in
+  `holder-breaking.md`. When some objects break
   the game was seen to stop the player for about half a second; this
   isn't specified.
 - Putting down on slopes or near walls (on a slope the object was seen to
