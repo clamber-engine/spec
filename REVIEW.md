@@ -50,12 +50,24 @@ original program crosses the firewall:
   part of the original program, and how the importer turns the reference
   into a position in the image (using `rom-image.md`).
 - It defines the fingerprint exactly: how many bytes the importer reads
-  at that position and which hash it computes over them.
+  at that position and which hash it computes over them. The hash is
+  **SHA-256**, written out in full (64 hexadecimal digits), over **at
+  least 32 bytes**, so that the input can't be recovered by trying every
+  possibility. A fingerprint whose input could be reconstructed from the
+  spec, the vectors or other fingerprint rows (for example because the
+  span is mostly predictable) is not allowed.
 - `formats/locators.md`, in the section for each supported image, may
   then list **fingerprint → engine-neutral kind** rows (kinds from the
   behavior specs, for example `walker`, `barrel`).
 - The spec contains hashes only. Never the reference values themselves,
   never bytes from the image, never what the program does there, no
   labels or names from any disassembly, no original object names.
+
+- Rows are only for kinds whose fingerprints are distinct in the
+  supported image.
+- Relation to the locator exception above: this exception publishes no
+  locations at all and no bytes. The bytes the importer hashes may be part
+  of the original program rather than data; they are used only as hash
+  input on the player's machine and never appear in the spec.
 
 A row or description that fails any of these rules fails the change.
