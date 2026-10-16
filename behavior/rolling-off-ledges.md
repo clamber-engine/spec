@@ -17,28 +17,54 @@ the frame after its last roll frame (`roll-input.md`, `roll-speed.md`).
 `leave_ground`). **G** is the landing frame (the row carrying `land`).
 
 Measured with the lead character, rolling right off three ledges of
-different heights (falls of 16 to 40 airborne frames), from normal rolls
-started standing or walking with Right held, Action tapped or held, at
-several distances from the edge.
+different heights with a steep face at the top (`steep-faces.md`; falls
+of 16 to 40 airborne frames), from normal rolls started standing or
+walking with Right held, Action tapped or held, at several distances
+from the edge; and rolling right and left off both ends of a raised
+stretch of ground 176 px above flat floor where the ground simply ends,
+with no face (falls of 30 airborne frames, made shorter or longer by
+moving the player down or up partway through the fall without changing
+anything else). On that stretch the rolls were slow, normal and fast,
+started standing, walking or right after running, with Action tapped or
+held and with many distances from the edge and patterns of steering.
 
 ## The fall
 
 The roll doesn't end when the player leaves the ground. On every frame
 from L until landing the state is still `roll`, with `ground` 0.
 
-- **Vertical motion** is that of a walk-off fall, unchanged
-  (`walk-off.md`): on L the player moves down by 3.4375 px and `vy` ends
-  at 0.00390625; then `vy` increases by 0.4375 per frame up to 8, and the
-  landing rule of `landing.md` applies.
+- **Vertical motion** is that of a walk-off fall (`walk-off.md`) when
+  the player leaves the ground 9 or more frames after S (L ≥ S + 9): on
+  L the player moves down by 3.4375 px and `vy` ends at 0.00390625; then
+  `vy` increases by 0.4375 per frame up to 8, and the landing rule of
+  `landing.md` applies.
+- **Hover.** When L is S + 8 or earlier, the player first hangs in the
+  air for a few frames. On a hover frame the player moves down by
+  0.00390625 px (1/256) and `vy` ends at 0.00390625. Which frames hover
+  depends only on L − S:
+
+  | L | Frame L | Hover frames after L |
+  |---|---|---|
+  | S | Moves down 3.4375 px, `vy` 0.00390625 | L + 1 to L + 8 |
+  | S + 1 to S + 7 | Hover frame | L + 1 to L + 9 |
+  | S + 8 | Hover frame | none |
+  | S + 9 or later | Moves down 3.4375 px, `vy` 0.00390625 | none |
+
+  After the last hover frame (or after L when there are none), `vy`
+  increases by 0.4375 per frame up to 8, starting from 0.00390625, and
+  the landing rule of `landing.md` applies. The hover is the same on
+  the ledges with a face and on the one without.
 - **Horizontal speed** keeps following the roll's speed rule
-  (`roll-speed.md`) on every frame from L + 1, with the roll's target
-  (3 px per frame for a normal roll) and steering: holding the direction
-  opposite to the roll reverses it, in the air as on the ground. The air
-  control targets of `air-control.md` don't apply while the roll lasts;
-  holding Action or a direction in the roll's direction changes nothing.
-- Frame L itself is not covered (the ledges measured have a steep face
-  at the top, where the speed was seen to rise above the roll's target
-  on L).
+  (`roll-speed.md`) with the roll's target (1, 3 or 4 px per frame for a
+  slow, normal or fast roll) and steering: holding the direction
+  opposite to the roll reverses it, in the air as on the ground, and a
+  slow roll becomes normal when its own direction is held, as on the
+  ground. The air control targets of `air-control.md` don't apply while
+  the roll lasts; holding Action, or a direction in the roll's direction
+  in a normal or fast roll, changes nothing. Where the ground simply
+  ends, this holds on L too. On the ledges with a face, frame L isn't
+  covered (the speed was seen to rise above the roll's target on L,
+  while the player was carried down the face).
 
 ## When the roll ends
 
@@ -46,11 +72,19 @@ However long the roll went on before L and however long the fall is,
 the roll ends as if it had started on the frame after landing:
 
 - The roll's last frame is **G + 29**, and **D = G + 30**.
-- The roll can't end in the air: a fall longer than a whole roll (40
-  airborne frames was measured) still ends this way.
+- **Except** when the player lands exactly 30 frames after leaving the
+  ground (**G = L + 30**): then **D = G**. The landing frame is already
+  the first frame after the roll, and the roll's last frame is G − 1,
+  in the air. A fall one frame shorter or longer (G = L + 29 or
+  G = L + 31) ends at G + 30 as above. This is the same with and without
+  a hover, and on the ledges with a face and without.
+- Apart from that exception the roll can't end in the air: a fall
+  longer than a whole roll (up to 50 airborne frames were measured)
+  still ends at G + 30.
 - From D everything in `roll-input.md` and `roll-speed.md` applies with
   this D: if Action was held on every frame from S to D the roll carries
-  on into running; otherwise it ends in a stop.
+  on into running (not after a fast roll, which always ends in a stop);
+  otherwise it ends in a stop.
 
 Example: standing about 30 px in front of a ledge with Right held,
 Action pressed on frame 0 and held. The player leaves the ground on
@@ -59,6 +93,85 @@ frame 17 and lands on frame 33. Frames 0 to 62 are all `roll`
 throughout, the roll carries on into running (`roll_end` on D + 3 = 66).
 With Action tapped on frame 0 instead, `roll_end` is on 63 and the stop
 follows.
+
+Example where the ground simply ends, 176 px above the floor below:
+standing 56 px from the edge, Right held, Action tapped on frame 0
+(S = 0). The player leaves the ground on frame 25 (L = S + 25, no hover)
+and lands on frame 55, 30 frames later, so D = 55: the stop starts on
+the landing frame. Had the fall been one frame longer, the roll would
+have gone on along the floor to G + 29.
+
+Example of a hover: walking right, Right held, Action tapped 7 frames
+before the player leaves the ground (L = S + 7). Below the ledge's
+ground, after each frame:
+
+| Frame | Below the ledge (px) | `vy` |
+|---|---|---|
+| L | 0.00390625 | 0.00390625 |
+| L + 9 | 0.0390625 | 0.00390625 |
+| L + 10 | 0.48046875 | 0.44140625 |
+| L + 11 | 1.359375 | 0.87890625 |
+
+The player lands 40 frames after L, so D = G + 30.
+
+## Stopping before a ledge
+
+Where the ground simply ends, a roll that is moving slowly stops before
+the edge instead of rolling off. A roll frame on the ground (S to D − 1)
+is a **stopped frame** when both hold at its start:
+
+- `|vx|` is at most 1.05859375 (271/256). At 1.0625 (272/256) or more
+  the frame moves as usual.
+- There is no ground 15 px ahead: in the column floor(x) + 15 when the
+  roll goes right, floor(x) − 15 when it goes left (x at the start of
+  the frame). The floor 176 px below doesn't count as ground there. At
+  the top of a pit whose edge is a short face, a face column 15 px
+  below the player's feet did count as ground (the roll moved on), and
+  the first column with no ground at all, one further, stopped it.
+  Depths in between weren't measured.
+
+On a stopped frame `vx` becomes 0 and the player doesn't move. A roll
+going away from the edge has ground ahead, so it has no stopped frames
+(rolls away from both edges, started up to 20 px from them, were
+checked).
+
+**Pushing off.** If `vx` is 0 at the start of such a frame, the frame is
+S + 1 or later, and exactly one of Left or Right is held, in the roll's
+direction, then instead `vx` becomes 2 (512/256) in the roll's direction
+and the player moves by it. From the next frame the roll's speed rule
+applies again, with the target of a **normal** roll (3), whatever the
+roll's size was: a pushed slow or fast roll goes on as a normal roll.
+The roll usually goes off the edge a few frames later.
+
+The roll's other rules don't change: it still lasts to D = S + 29 and
+then stops or carries on into running as in `roll-input.md` (with `vx`
+0 when it was stopped). So:
+
+- A roll started standing within 15 px of the edge, facing it, doesn't
+  move at all unless the direction toward the edge is held from S + 1.
+- A slow roll heading for the edge from farther away stops when its
+  column comes within 15 px of the end of the ground, since its speed
+  is close to 1. Slow rolls go off a ledge only if they reach those last
+  15 px faster than 1.0625, for example right after walking.
+- Normal and fast rolls are faster than that and roll off as usual,
+  unless they start slowly within those 15 px (a normal roll started
+  from standing starts each of its first four frames slower than
+  1.0625).
+
+Examples, rolling right toward an edge whose last column with ground is
+E − 1 (so E is the first column without):
+
+- Standing with floor(x) = E − 10, Action alone on S: every frame from
+  S to D − 1 is stopped; the stop after the roll starts on D = S + 29
+  with the player where they started.
+- The same place, Right and Action on S and Right held after: S is
+  stopped (`vx` 0), on S + 1 `vx` is 2, then 2.125, 2.234375, 2.328125,
+  …, toward 3; the player leaves the ground on S + 5.
+- Walking right, then Right released and Action pressed alone about
+  42 px from the edge: the slow roll's `vx` is 1.51953125 on S and falls
+  toward 1, and the first frame that starts with floor(x) = E − 15, S + 24
+  (`vx` 1.0390625 at its start), is stopped. The player stays there
+  until D.
 
 ## Jumping during the fall
 
@@ -100,10 +213,29 @@ Jump pressed on P and held 12 frames (P to P + 11):
 On P + 12 Jump is no longer held, so from there `vy` increases by
 0.4375 per frame.
 
+### Evidence (where the ground simply ends)
+
+3,082 runs by inputs at the stretch of ground without a face, 1,040 of
+them rolling off (725 normal, 39 fast and 14 slow rolls going right;
+223, 29 and 10 going left), match this file with 0 mismatches: roll
+speed on 80,428 roll frames (L included), vertical moves on 13,952
+airborne frames (3,486 of them hover frames), the end of 773 rolls after
+landing (102 of them after falls of exactly 30 frames), 622 rolls that
+stayed on the ground, and 10,434 frames that met the conditions of
+"Stopping before a ledge" (10,047 stopped, 387 pushed off). Without the
+G = L + 30 exception, all 102 of those would be wrong. Frames after a
+roll hit a wall or reached another ledge on the floor below were left
+out, as were 12 runs where moving the player put them below the floor.
+On two of the ledges with a face, 612 runs with falls of 26 to 45
+frames made by moving the player match the hover and vertical rules on
+2,100 airborne frames (882 hover frames) and the end rule on 159 rolls
+(7 of them after falls of exactly 30 frames).
+
 ## Trace
 
 The fall frames of a roll are `roll` with `ground` 0; `leave_ground` is
-on L. When a jump starts in the fall, `roll_end` is on P (its state is
+on L. Stopped frames before a ledge are `roll` with `vx` 0. When a
+jump starts in the fall, `roll_end` is on P (its state is
 `fall`) and `jump_start` on T (state `jump`, or as on the ground if T
 lands).
 
@@ -339,9 +471,18 @@ held and landings away from the flat floor were left out (see below).
 
 This list is for `title-1`; `title-2` has its own list above.
 
-- Frame L's horizontal speed and the frames just before it (the ledges
-  measured all have a face at the top).
-- Fast and slow rolls off ledges, rolling off to the left, rolls that
-  start in the stop after an earlier roll, and the second character.
+- Frame L's horizontal speed on ledges with a face at the top, and the
+  frames just before it there.
+- Slow rolls toward the ledges with a long face at the top, and how
+  far below the player missing ground counts as missing (between 15
+  and 176 px).
+- Stopped frames while both Left and Right, or the opposite direction,
+  are held; and whether carry-on frames (D to D + 3) can be stopped.
+- How long a roll lasts when it is pushed off and still on the ground
+  at S + 29 (not seen: pushed rolls always went off the edge first).
+- Rolls that start in the stop after an earlier roll, and the second
+  character.
 - Rolls that hit a wall or an enemy during the fall or after landing.
-- Ledges without a face at the top.
+- Jumps pressed during a hover (the jumps above were all measured
+  without one).
+- Ledges of other heights where the ground simply ends.

@@ -15,6 +15,20 @@ Coverage (`title-1`). Answers no open `spec` issue.
 - `behavior/roll-input.md`, `behavior/roll-speed.md`,
   `behavior/movement-summary.md`: point to it.
 
+Coverage (`title-1`). Answers no open `spec` issue.
+
+- `behavior/rolling-off-ledges.md`: rolls off a ledge where the ground
+  simply ends, both directions, slow, normal and fast: speed on L
+  follows the roll; a hover when L is S + 8 or earlier (table by
+  L − S); the roll ends on landing when the fall lasts exactly 30
+  frames (D = G), otherwise D = G + 30 as before; new section
+  "Stopping before a ledge": roll frames on the ground starting with
+  `|vx|` ≤ 271/256 and no ground 15 px ahead are stopped, with a push
+  of 2 px per frame from standstill when the roll's direction is held
+  (the roll then goes on as a normal roll); examples, evidence, "Not
+  covered" updated.
+- `behavior/roll-speed.md`, `behavior/movement-summary.md`: point to it.
+
 ## spec-v0.74.0
 
 Coverage (first level, `title-1`). Answers no open `spec` issue.

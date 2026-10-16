@@ -29,6 +29,9 @@ the new speed. What is held doesn't change the target the way it does on
 the ground: the roll target has a **direction** and a **size**, set as
 below.
 
+Near the end of the ground, a slow-moving roll can stop instead
+(`rolling-off-ledges.md`, "Stopping before a ledge").
+
 The roll target is direction × size, where the size is one of:
 
 | Size | Name |
