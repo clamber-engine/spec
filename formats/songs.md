@@ -20,7 +20,7 @@ to 255 are −128 to −1).
 |---|---|
 | 0–15 | Track addresses for channels 0 to 7, 2 bytes each |
 | 16 | Starting **tempo** `T` |
-| 17 | A second tempo, used by sound effects; not covered |
+| 17 | The **effect tempo**, used by sound effects (`sound-effects.md`) |
 
 The rest of the song data holds the tracks; tracks may jump into and
 call each other's data, and may start anywhere after the header.
@@ -52,8 +52,9 @@ higher-numbered channel's value is the one that holds.
 
 ## Channels and voices
 
-There are 8 channels. Channel `i` plays its track on **voice** `i`. A
-voice plays one sample at a time. At a note it is handed:
+There are 8 channels. Channel `i` plays its track on **voice** `i`
+(while a sound effect has taken the voice, the channel hands it nothing:
+`sound-effects.md`). A voice plays one sample at a time. At a note it is handed:
 
 - the **sample** (a sample number as in `sound.md`);
 - the **pitch** `p`: the voice plays its sample at `p` / 4096 sample
@@ -360,9 +361,6 @@ beats are steps 2, 4, 6, … (the other channels' tracks end at once):
   volume, echo (feedback, filter, volume, delay, echo writing) and noise
   sound, and pitches of 16 384 and over (reached only by song 5's notes
   above 92).
-- Sound effects: header byte 17, the sounds themselves, and how they
-  take voices from a song (in the first level, even standing still,
-  they do).
 - What the game does with songs: when it starts, stops or changes them,
   what it plays before a song starts, the branch value it sets, a mono
   sound option, and the first step's timing.

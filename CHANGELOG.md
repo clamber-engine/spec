@@ -15,6 +15,24 @@ Coverage (`title-1`). Answers no open `spec` issue.
 - `behavior/roll-input.md`, `behavior/roll-speed.md`,
   `behavior/movement-summary.md`: point to it.
 
+Importer: sound (`title-1`), in part for spec#20
+(https://github.com/clamber-engine/spec/issues/20). Builds on
+`formats/songs.md`.
+
+- `formats/sound-effects.md` (new): the effect block (laid out like a
+  song block) and its table (119 effects in `title-1`), the effect tempo
+  (song header byte 17; 160, or 128 in song 15), effect slots, starting
+  an effect (what is reset and what is kept), the order of channels and
+  slots in a step, what a music channel does while its voice is taken,
+  the end of an effect (release, noise off, echo from the channel's
+  echo flag), song starts, and the voices the game uses (4 to 7).
+- `formats/songs.md`: header byte 17 is the effect tempo; channels hand
+  a taken voice nothing; "Not covered" updated.
+- `formats/locators.md`: row "Sound: sound-effect block".
+- `formats/README.md`: lists it.
+- `vectors/sound-effects/` (new): a made-up song and 6 made-up effects,
+  16 starts, and the events of 700 steps.
+
 ## spec-v0.74.0
 
 Coverage (first level, `title-1`). Answers no open `spec` issue.

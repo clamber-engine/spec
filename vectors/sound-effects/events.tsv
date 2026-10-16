@@ -1,0 +1,3053 @@
+step	voice	event	values
+1	-	period	60
+2	-	effect-beat	
+3	-	period	100
+3	0	note	4096 3 100 80 143 224
+3	1	note	6502 4 70 70 142 209
+3	1	echo	on
+3	2	note	3251 5 60 90 143 242
+3	2	echo	off
+3	3	note	2734 6 50 50 143 243
+3	4	note	5161 7 80 40 143 244
+3	4	echo	on
+3	5	note	2018 8 90 90 143 245
+3	6	note	2436 9 40 60 143 246
+3	7	note	1534 10 30 30 143 247
+3	-	beat	
+3	-	effect-beat	
+4	-	effect-beat	
+5	1	pitch	6514
+5	5	pitch	1988
+6	1	pitch	6502
+6	-	beat	
+6	-	effect-beat	
+7	1	pitch	6490
+7	2	volume	66 96
+7	5	pitch	2018
+7	-	effect-beat	
+8	1	pitch	6478
+8	4	release	
+8	-	beat	
+8	-	effect-beat	
+9	1	pitch	6490
+9	2	volume	72 102
+9	5	pitch	2048
+9	-	effect-beat	
+10	1	pitch	6502
+11	0	release	
+11	1	pitch	6514
+11	2	volume	66 96
+11	4	release	
+11	4	pitch	0
+11	5	pitch	2078
+11	-	beat	
+11	-	effect-beat	
+12	1	pitch	6502
+12	-	effect-beat	
+13	0	note	4871 3 100 80 143 224
+13	1	pitch	6490
+13	2	volume	60 90
+13	4	release	
+13	-	beat	
+13	-	effect-beat	
+14	1	pitch	6478
+15	1	pitch	6490
+15	2	volume	54 84
+15	-	effect-beat	
+16	1	pitch	6502
+16	3	release	
+16	4	note	5793 7 80 40 143 244
+16	-	beat	
+16	-	effect-beat	
+17	1	pitch	6514
+17	2	volume	48 78
+17	-	effect-beat	
+18	1	pitch	6502
+18	3	note	3069 6 50 50 143 243
+18	4	release	
+18	4	pitch	0
+18	7	release	
+18	-	beat	
+18	-	effect-beat	
+19	1	pitch	6490
+19	2	volume	54 84
+20	1	pitch	6478
+20	4	start	1
+20	4	echo	off
+20	4	noise	off
+20	-	effect-beat	
+21	0	release	
+21	1	release	
+21	1	pitch	6490
+21	2	volume	60 90
+21	4	release	
+21	7	note	1534 10 30 30 143 247
+21	-	beat	
+21	-	effect-beat	
+22	1	pitch	6502
+22	4	note	8192 2 120 110 143 224
+22	-	effect-beat	
+23	1	pitch	6514
+23	2	volume	66 96
+24	0	note	4096 3 100 80 143 224
+24	1	note	7298 4 70 70 142 209
+24	4	release	
+24	-	beat	
+24	-	effect-beat	
+25	2	volume	72 102
+25	3	start	4
+25	3	echo	off
+25	3	noise	off
+25	4	note	9742 2 120 110 143 224
+25	-	effect-beat	
+26	1	pitch	7310
+26	3	release	
+26	4	release	
+26	5	release	
+26	-	beat	
+26	-	effect-beat	
+27	1	pitch	7298
+27	2	volume	66 96
+27	3	note	2734 5 70 100 143 228
+27	4	release	
+27	4	echo	on
+27	4	noise	off
+27	-	effect-beat	
+28	1	pitch	7286
+29	1	pitch	7274
+29	2	volume	60 90
+29	4	release	
+29	4	pitch	0
+29	5	note	2018 8 90 90 143 245
+29	-	beat	
+29	-	effect-beat	
+30	1	pitch	7286
+30	3	release	
+30	-	effect-beat	
+31	0	release	
+31	1	pitch	7298
+31	2	release	
+31	2	volume	54 84
+31	3	release	
+31	3	pitch	0
+31	4	release	
+31	5	pitch	1988
+31	-	beat	
+31	-	effect-beat	
+32	1	pitch	7310
+32	3	release	
+32	-	effect-beat	
+33	1	pitch	7298
+33	2	volume	48 78
+33	5	pitch	2018
+34	0	note	4871 3 100 80 143 224
+34	1	release	
+34	1	pitch	7286
+34	2	release	
+34	2	pitch	0
+34	3	note	2734 5 70 100 143 228
+34	4	note	5793 7 80 40 143 244
+34	-	beat	
+34	-	effect-beat	
+35	1	pitch	7274
+35	2	volume	54 84
+35	5	pitch	2048
+35	-	effect-beat	
+36	1	note	6502 4 70 70 142 209
+36	3	release	
+36	4	release	
+36	4	pitch	0
+36	7	release	
+36	-	beat	
+36	-	effect-beat	
+37	2	volume	60 90
+37	5	pitch	2078
+38	1	pitch	6514
+38	3	release	
+38	3	pitch	0
+38	-	effect-beat	
+39	1	pitch	6502
+39	2	release	
+39	2	volume	66 96
+39	3	release	
+39	4	note	5161 7 80 40 143 244
+39	7	note	1534 10 30 30 143 247
+39	-	beat	
+39	-	effect-beat	
+40	1	pitch	6490
+40	3	note	2734 5 70 100 143 228
+40	5	start	2
+40	5	echo	off
+40	5	noise	off
+40	-	effect-beat	
+41	0	release	
+41	1	pitch	6478
+41	2	note	3251 5 66 96 143 242
+41	5	release	
+41	-	beat	
+41	-	effect-beat	
+42	1	pitch	6490
+43	1	pitch	6502
+43	3	release	
+43	5	note	5530 3 90 60 142 226
+43	-	effect-beat	
+44	0	note	4096 3 100 80 143 224
+44	1	pitch	6514
+44	3	release	
+44	3	pitch	0
+44	4	release	
+44	5	pitch	5521
+44	-	beat	
+44	-	effect-beat	
+45	1	pitch	6502
+45	2	volume	66 96
+45	3	release	
+45	5	pitch	5512
+45	-	effect-beat	
+46	1	pitch	6490
+46	5	pitch	5503
+47	1	pitch	6478
+47	2	volume	72 102
+47	3	note	2734 5 70 100 143 228
+47	4	release	
+47	4	pitch	0
+47	5	pitch	5512
+47	-	beat	
+47	-	effect-beat	
+48	1	pitch	6490
+48	5	pitch	5521
+48	-	effect-beat	
+49	1	pitch	6502
+49	2	volume	66 96
+49	3	release	
+49	4	release	
+49	5	release	
+49	5	pitch	5530
+49	-	beat	
+49	-	effect-beat	
+50	1	pitch	6514
+50	3	release	
+50	3	pitch	0
+50	5	note	6936 3 90 60 142 226
+50	-	effect-beat	
+51	1	pitch	6502
+51	2	volume	60 90
+51	5	pitch	6956
+52	0	release	
+52	1	pitch	6490
+52	3	release	
+52	4	note	5793 7 80 40 143 244
+52	5	pitch	6976
+52	-	beat	
+52	-	effect-beat	
+53	1	pitch	6478
+53	2	volume	54 84
+53	3	note	2734 5 70 100 143 228
+53	5	pitch	6996
+53	-	effect-beat	
+54	0	note	4871 3 100 80 143 224
+54	1	release	
+54	1	pitch	6490
+54	4	release	
+54	4	pitch	0
+54	7	release	
+54	-	beat	
+54	-	effect-beat	
+55	1	pitch	6502
+55	2	volume	48 78
+56	1	pitch	6514
+56	3	release	
+56	5	release	
+56	-	effect-beat	
+57	1	note	7298 4 70 70 142 209
+57	2	volume	54 84
+57	3	release	
+57	3	pitch	0
+57	4	note	5161 7 80 40 143 244
+57	5	note	2760 3 90 60 142 226
+57	7	note	1534 10 30 30 143 247
+57	-	beat	
+57	-	effect-beat	
+58	3	release	
+58	5	note	3098 3 90 60 142 226
+58	-	effect-beat	
+59	1	pitch	7310
+59	2	volume	60 90
+59	3	note	2734 5 70 100 143 228
+59	5	release	
+59	-	beat	
+59	-	effect-beat	
+60	1	pitch	7298
+60	6	start	3
+60	6	echo	off
+60	6	noise	off
+61	1	pitch	7286
+61	2	volume	66 96
+61	5	note	2760 3 90 60 142 226
+61	6	release	
+61	-	effect-beat	
+62	0	release	
+62	1	pitch	7274
+62	3	release	
+62	4	release	
+62	5	note	3098 3 90 60 142 226
+62	6	note	4096 4 100 100 143 227
+62	6	noise	on
+62	-	noise-rate	20
+62	-	echo-writing	off
+62	-	beat	
+62	-	effect-beat	
+63	1	pitch	7286
+63	2	volume	72 102
+63	3	release	
+63	3	pitch	0
+63	5	release	
+63	-	effect-beat	
+64	0	note	4096 3 100 80 143 224
+64	1	pitch	7298
+64	3	release	
+64	4	release	
+64	4	pitch	0
+64	5	note	3684 3 90 60 142 226
+64	-	beat	
+64	-	effect-beat	
+65	1	pitch	7310
+65	2	volume	66 96
+66	1	pitch	7298
+66	3	note	2734 5 70 100 143 228
+66	6	release	
+66	-	effect-beat	
+67	1	release	
+67	1	pitch	7286
+67	2	volume	60 90
+67	4	release	
+67	5	release	
+67	6	note	4871 4 100 100 143 227
+67	6	echo	on
+67	6	noise	off
+67	-	beat	
+67	-	effect-beat	
+68	1	pitch	7274
+68	3	release	
+68	5	note	3903 3 90 60 142 226
+68	-	effect-beat	
+69	1	pitch	7286
+69	2	volume	54 84
+70	1	note	6502 4 70 70 142 209
+70	2	release	
+70	3	release	
+70	3	pitch	0
+70	4	note	5793 7 80 40 143 244
+70	6	release	
+70	6	start	4
+70	6	echo	off
+70	6	noise	off
+70	-	beat	
+70	-	effect-beat	
+71	2	volume	48 78
+71	3	release	
+71	5	release	
+71	6	release	
+71	-	effect-beat	
+72	0	release	
+72	1	pitch	6514
+72	2	release	
+72	2	pitch	0
+72	3	note	2734 5 70 100 143 228
+72	4	release	
+72	4	pitch	0
+72	5	release	
+72	5	pitch	0
+72	6	note	2734 5 70 100 143 228
+72	7	release	
+72	-	beat	
+72	-	effect-beat	
+73	1	pitch	6502
+73	2	volume	54 84
+73	-	effect-beat	
+74	1	pitch	6490
+75	0	note	4871 3 100 80 143 224
+75	1	pitch	6478
+75	2	volume	60 90
+75	3	release	
+75	4	note	5161 7 80 40 143 244
+75	5	release	
+75	6	release	
+75	7	note	1534 10 30 30 143 247
+75	-	beat	
+75	-	effect-beat	
+76	1	pitch	6490
+76	3	release	
+76	3	pitch	0
+76	5	note	4136 3 90 60 142 226
+76	6	release	
+76	6	pitch	0
+76	-	effect-beat	
+77	1	pitch	6502
+77	2	release	
+77	2	volume	66 96
+77	3	release	
+77	6	release	
+77	-	beat	
+77	-	effect-beat	
+78	1	pitch	6514
+79	1	pitch	6502
+79	2	volume	72 102
+79	3	note	2734 5 70 100 143 228
+79	6	note	2734 5 70 100 143 228
+79	-	effect-beat	
+80	1	pitch	6490
+80	2	note	3251 5 72 102 143 242
+80	4	release	
+80	5	release	
+80	6	echo	on
+80	-	beat	
+80	-	effect-beat	
+81	1	pitch	6478
+81	3	release	
+81	5	note	4382 3 90 60 142 226
+81	6	release	
+81	-	effect-beat	
+82	0	release	
+82	1	pitch	6490
+82	3	release	
+82	3	pitch	0
+82	4	release	
+82	4	pitch	0
+82	5	note	4382 3 90 60 142 226
+82	6	release	
+82	6	pitch	0
+82	-	beat	
+82	-	effect-beat	
+83	1	pitch	6502
+83	5	pitch	4357
+84	1	pitch	6514
+84	2	volume	66 96
+84	3	release	
+84	5	pitch	4332
+84	6	release	
+84	-	effect-beat	
+85	0	note	4096 3 100 80 143 224
+85	1	pitch	6502
+85	3	note	2734 5 70 100 143 228
+85	4	release	
+85	5	pitch	4307
+85	6	note	2734 5 70 100 143 228
+85	-	beat	
+85	-	effect-beat	
+86	1	pitch	6490
+86	2	volume	72 102
+86	-	effect-beat	
+87	1	pitch	6478
+88	1	release	
+88	1	pitch	6490
+88	2	volume	66 96
+88	3	release	
+88	4	note	5793 7 80 40 143 244
+88	6	release	
+88	-	beat	
+88	-	effect-beat	
+89	1	pitch	6502
+89	3	release	
+89	3	pitch	0
+89	5	release	
+89	6	release	
+89	6	pitch	0
+89	-	effect-beat	
+90	1	note	7298 4 70 70 142 209
+90	1	start	4
+90	1	echo	off
+90	1	noise	off
+90	2	volume	60 90
+90	3	release	
+90	4	release	
+90	4	pitch	0
+90	5	release	
+90	5	echo	off
+90	5	noise	off
+90	6	release	
+90	7	release	
+90	-	beat	
+90	-	effect-beat	
+91	1	release	
+91	3	note	2734 5 70 100 143 228
+91	6	note	2734 5 70 100 143 228
+91	-	effect-beat	
+92	2	volume	54 84
+93	0	release	
+93	1	note	2734 5 70 100 143 228
+93	4	note	5161 7 80 40 143 244
+93	7	note	1534 10 30 30 143 247
+93	-	beat	
+93	-	effect-beat	
+94	2	volume	48 78
+94	3	release	
+94	6	release	
+94	-	effect-beat	
+95	0	note	4871 3 100 80 143 224
+95	1	release	
+95	3	release	
+95	3	pitch	0
+95	6	release	
+95	6	pitch	0
+95	-	beat	
+95	-	effect-beat	
+96	1	release	
+96	1	pitch	0
+96	2	volume	54 84
+96	3	release	
+96	6	release	
+96	-	effect-beat	
+98	1	release	
+98	2	volume	60 90
+98	3	note	2734 5 70 100 143 228
+98	4	release	
+98	6	note	2734 5 70 100 143 228
+98	-	beat	
+98	-	effect-beat	
+99	1	note	2734 5 70 100 143 228
+99	-	effect-beat	
+100	2	volume	66 96
+100	3	release	
+100	4	release	
+100	4	pitch	0
+100	6	release	
+100	-	beat	
+100	-	effect-beat	
+102	1	release	
+102	2	volume	72 102
+102	3	release	
+102	3	pitch	0
+102	6	release	
+102	6	pitch	0
+102	-	effect-beat	
+103	0	release	
+103	1	release	
+103	1	pitch	0
+103	3	release	
+103	4	release	
+103	5	release	
+103	6	release	
+103	-	beat	
+103	-	effect-beat	
+104	1	release	
+104	2	volume	66 96
+104	3	note	2734 5 70 100 143 228
+104	6	note	2734 5 70 100 143 228
+104	-	effect-beat	
+105	0	note	4096 3 100 80 143 224
+105	1	note	2734 5 70 100 143 228
+105	4	note	5793 7 80 40 143 244
+105	5	note	2018 8 90 90 143 245
+105	-	beat	
+105	-	effect-beat	
+106	2	volume	60 90
+107	3	release	
+107	5	pitch	1988
+107	6	release	
+107	-	effect-beat	
+108	1	release	
+108	2	release	
+108	2	volume	54 84
+108	3	release	
+108	3	pitch	0
+108	4	release	
+108	4	pitch	0
+108	6	release	
+108	6	pitch	0
+108	7	release	
+108	-	beat	
+108	-	effect-beat	
+109	1	release	
+109	1	pitch	0
+109	3	release	
+109	5	pitch	2018
+109	6	release	
+109	-	effect-beat	
+110	2	volume	48 78
+111	1	release	
+111	2	release	
+111	2	pitch	0
+111	3	note	2734 5 70 100 143 228
+111	4	note	5161 7 80 40 143 244
+111	5	pitch	2048
+111	6	note	2734 5 70 100 143 228
+111	7	note	1534 10 30 30 143 247
+111	-	beat	
+111	-	effect-beat	
+112	1	note	2734 5 70 100 143 228
+112	2	volume	54 84
+112	-	effect-beat	
+113	0	release	
+113	3	release	
+113	5	pitch	2078
+113	6	release	
+113	-	beat	
+113	-	effect-beat	
+114	1	release	
+114	2	volume	60 90
+114	3	release	
+114	3	pitch	0
+114	6	release	
+114	6	pitch	0
+114	-	effect-beat	
+116	0	note	4871 3 100 80 143 224
+116	1	release	
+116	1	pitch	0
+116	2	release	
+116	2	volume	66 96
+116	3	release	
+116	4	release	
+116	6	release	
+116	-	beat	
+116	-	effect-beat	
+117	1	release	
+117	3	note	2734 5 70 100 143 228
+117	6	note	2734 5 70 100 143 228
+117	-	effect-beat	
+118	1	note	2734 5 70 100 143 228
+118	2	note	3251 5 66 96 143 242
+118	4	release	
+118	4	pitch	0
+118	-	beat	
+118	-	effect-beat	
+120	3	release	
+120	6	release	
+120	-	effect-beat	
+121	1	release	
+121	3	release	
+121	3	pitch	0
+121	4	release	
+121	6	release	
+121	6	pitch	0
+121	-	beat	
+121	-	effect-beat	
+122	1	release	
+122	1	pitch	0
+122	2	volume	66 96
+122	3	release	
+122	6	release	
+122	-	effect-beat	
+123	0	release	
+123	1	release	
+123	3	note	2734 5 70 100 143 228
+123	4	note	5793 7 80 40 143 244
+123	6	note	2734 5 70 100 143 228
+123	-	beat	
+123	-	effect-beat	
+124	2	volume	72 102
+125	1	note	2734 5 70 100 143 228
+125	-	effect-beat	
+126	0	note	4096 3 100 80 143 224
+126	2	volume	66 96
+126	3	release	
+126	4	release	
+126	4	pitch	0
+126	6	release	
+126	7	release	
+126	-	beat	
+126	-	effect-beat	
+127	1	release	
+127	3	release	
+127	3	pitch	0
+127	6	release	
+127	6	pitch	0
+127	-	effect-beat	
+128	1	release	
+128	1	pitch	0
+128	2	volume	60 90
+128	3	release	
+128	4	note	5161 7 80 40 143 244
+128	5	release	
+128	6	release	
+128	7	note	1534 10 30 30 143 247
+128	-	beat	
+128	-	effect-beat	
+130	1	release	
+130	2	volume	54 84
+130	3	note	2734 5 70 100 143 228
+130	6	note	2734 5 70 100 143 228
+130	-	effect-beat	
+131	1	note	2734 5 70 100 143 228
+131	5	note	2018 8 90 90 143 245
+131	-	beat	
+131	-	effect-beat	
+132	2	volume	48 78
+132	3	release	
+132	6	release	
+132	-	effect-beat	
+133	5	pitch	1988
+134	0	release	
+134	1	release	
+134	2	volume	54 84
+134	3	release	
+134	3	pitch	0
+134	4	release	
+134	6	release	
+134	6	pitch	0
+134	-	beat	
+134	-	effect-beat	
+135	1	release	
+135	1	pitch	0
+135	3	release	
+135	5	pitch	2018
+135	6	release	
+135	-	effect-beat	
+136	0	note	4871 3 100 80 143 224
+136	1	release	
+136	2	volume	60 90
+136	3	note	2734 5 70 100 143 228
+136	4	release	
+136	4	pitch	0
+136	6	note	2734 5 70 100 143 228
+136	-	beat	
+136	-	effect-beat	
+137	1	note	2734 5 70 100 143 228
+137	5	pitch	2048
+137	-	effect-beat	
+138	2	volume	66 96
+139	3	release	
+139	4	release	
+139	5	pitch	2078
+139	6	release	
+139	-	beat	
+139	-	effect-beat	
+140	1	release	
+140	2	volume	72 102
+140	3	release	
+140	3	pitch	0
+140	6	release	
+140	6	pitch	0
+140	-	effect-beat	
+141	1	release	
+141	1	pitch	0
+141	3	release	
+141	4	note	5793 7 80 40 143 244
+141	6	release	
+141	-	beat	
+141	-	effect-beat	
+142	2	volume	66 96
+143	1	release	
+143	3	note	2734 5 70 100 143 228
+143	6	note	2734 5 70 100 143 228
+143	-	effect-beat	
+144	0	release	
+144	1	note	2734 5 70 100 143 228
+144	2	volume	60 90
+144	4	release	
+144	4	pitch	0
+144	7	release	
+144	-	beat	
+144	-	effect-beat	
+145	3	release	
+145	6	release	
+145	-	effect-beat	
+146	0	note	4096 3 100 80 143 224
+146	1	release	
+146	2	release	
+146	2	volume	54 84
+146	3	release	
+146	3	pitch	0
+146	4	note	5161 7 80 40 143 244
+146	6	release	
+146	6	pitch	0
+146	7	note	1534 10 30 30 143 247
+146	-	beat	
+146	-	effect-beat	
+148	1	release	
+148	1	pitch	0
+148	2	volume	48 78
+148	3	release	
+148	6	release	
+148	-	effect-beat	
+149	1	release	
+149	2	release	
+149	2	pitch	0
+149	3	note	2734 5 70 100 143 228
+149	6	note	2734 5 70 100 143 228
+149	-	beat	
+149	-	effect-beat	
+150	1	note	2734 5 70 100 143 228
+150	1	start	1
+150	1	echo	off
+150	1	noise	off
+150	2	volume	54 84
+150	-	effect-beat	
+152	1	release	
+152	2	volume	60 90
+152	3	release	
+152	4	release	
+152	6	release	
+152	-	beat	
+152	-	effect-beat	
+153	1	note	8192 2 120 110 143 224
+153	3	release	
+153	3	pitch	0
+153	6	release	
+153	6	pitch	0
+153	-	effect-beat	
+154	0	release	
+154	1	release	
+154	2	release	
+154	2	volume	66 96
+154	3	release	
+154	4	release	
+154	4	pitch	0
+154	5	release	
+154	6	release	
+154	-	beat	
+154	-	effect-beat	
+155	1	note	9742 2 120 110 143 224
+155	2	start	4
+155	2	echo	off
+155	2	noise	off
+155	3	note	2734 5 70 100 143 228
+155	6	note	2734 5 70 100 143 228
+155	-	effect-beat	
+157	0	note	4871 3 100 80 143 224
+157	1	release	
+157	2	release	
+157	4	release	
+157	5	note	2018 8 90 90 143 245
+157	6	echo	off
+157	-	beat	
+157	-	effect-beat	
+158	1	release	
+158	1	echo	on
+158	1	noise	off
+158	2	note	2734 5 70 100 143 228
+158	3	release	
+158	6	release	
+158	-	effect-beat	
+159	1	pitch	7298
+159	3	release	
+159	3	pitch	0
+159	4	note	5793 7 80 40 143 244
+159	5	pitch	1988
+159	6	release	
+159	6	pitch	0
+159	-	beat	
+159	-	effect-beat	
+160	1	pitch	7286
+160	2	release	
+160	3	release	
+160	6	release	
+160	-	effect-beat	
+161	1	pitch	7274
+161	5	pitch	2018
+162	1	pitch	7286
+162	2	release	
+162	2	pitch	0
+162	3	note	2734 5 70 100 143 228
+162	4	release	
+162	4	pitch	0
+162	6	note	2734 5 70 100 143 228
+162	7	release	
+162	-	beat	
+162	-	effect-beat	
+163	1	pitch	7298
+163	2	release	
+163	5	pitch	2048
+163	-	effect-beat	
+164	0	release	
+164	1	pitch	7310
+164	2	note	2734 5 70 100 143 228
+164	3	release	
+164	4	note	5161 7 80 40 143 244
+164	6	release	
+164	7	note	1534 10 30 30 143 247
+164	-	beat	
+164	-	effect-beat	
+165	1	pitch	7298
+165	5	pitch	2078
+166	1	pitch	7286
+166	3	release	
+166	3	pitch	0
+166	6	release	
+166	6	pitch	0
+166	-	effect-beat	
+167	0	note	4096 3 100 80 143 224
+167	1	release	
+167	1	pitch	7274
+167	2	release	
+167	3	release	
+167	6	release	
+167	-	beat	
+167	-	effect-beat	
+168	1	pitch	7286
+168	2	release	
+168	2	pitch	0
+168	3	note	2734 5 70 100 143 228
+168	6	note	2734 5 70 100 143 228
+168	-	effect-beat	
+169	1	note	6502 4 70 70 142 209
+169	2	release	
+169	4	release	
+169	-	beat	
+169	-	effect-beat	
+170	6	start	0
+170	6	echo	off
+170	6	noise	off
+171	1	pitch	6514
+171	2	note	2734 5 70 100 143 228
+171	3	release	
+171	6	release	
+171	-	effect-beat	
+172	1	pitch	6502
+172	3	release	
+172	3	pitch	0
+172	4	release	
+172	4	pitch	0
+172	6	release	
+172	6	echo	off
+172	6	noise	off
+172	-	beat	
+172	-	effect-beat	
+173	1	pitch	6490
+173	2	release	
+173	3	release	
+173	-	effect-beat	
+174	1	pitch	6478
+175	0	release	
+175	1	pitch	6490
+175	2	release	
+175	2	pitch	0
+175	3	note	2734 5 70 100 143 228
+175	4	release	
+175	-	beat	
+175	-	effect-beat	
+176	1	pitch	6502
+176	2	release	
+176	-	effect-beat	
+177	0	note	4871 3 100 80 143 224
+177	1	pitch	6514
+177	2	note	2734 5 70 100 143 228
+177	3	release	
+177	4	note	5793 7 80 40 143 244
+177	-	beat	
+177	-	effect-beat	
+178	1	pitch	6502
+178	3	release	
+178	3	pitch	0
+178	-	effect-beat	
+179	1	pitch	6490
+180	1	pitch	6478
+180	2	release	
+180	3	release	
+180	4	release	
+180	4	pitch	0
+180	5	release	
+180	7	release	
+180	-	beat	
+180	-	effect-beat	
+181	1	pitch	6490
+181	2	release	
+181	2	pitch	0
+181	3	note	2734 5 70 100 143 228
+181	-	effect-beat	
+182	1	pitch	6502
+182	2	release	
+182	4	note	5161 7 80 40 143 244
+182	5	note	2018 8 90 90 143 245
+182	7	note	1534 10 30 30 143 247
+182	-	beat	
+182	-	effect-beat	
+183	1	pitch	6514
+184	1	pitch	6502
+184	2	note	2734 5 70 100 143 228
+184	3	release	
+184	5	pitch	1988
+184	-	effect-beat	
+185	0	release	
+185	1	pitch	6490
+185	3	release	
+185	3	pitch	0
+185	-	beat	
+185	-	effect-beat	
+186	1	pitch	6478
+186	2	release	
+186	3	release	
+186	5	pitch	2018
+186	-	effect-beat	
+187	0	note	4096 3 100 80 143 224
+187	1	release	
+187	1	pitch	6490
+187	2	release	
+187	2	pitch	0
+187	3	note	2734 5 70 100 143 228
+187	4	release	
+187	-	beat	
+187	-	effect-beat	
+188	1	pitch	6502
+188	5	pitch	2048
+189	1	pitch	6514
+189	2	release	
+189	-	effect-beat	
+190	1	note	7298 4 70 70 142 209
+190	2	note	2734 5 70 100 143 228
+190	3	release	
+190	4	release	
+190	4	pitch	0
+190	5	pitch	2078
+190	-	beat	
+190	-	effect-beat	
+191	3	release	
+191	3	pitch	0
+191	-	effect-beat	
+192	1	pitch	7310
+192	2	release	
+192	3	release	
+192	4	release	
+192	-	beat	
+192	-	effect-beat	
+193	1	pitch	7298
+194	1	pitch	7286
+194	2	release	
+194	2	pitch	0
+194	3	note	2734 5 70 100 143 228
+194	-	effect-beat	
+195	0	release	
+195	1	pitch	7274
+195	2	release	
+195	4	note	5793 7 80 40 143 244
+195	-	beat	
+195	-	effect-beat	
+196	1	pitch	7286
+196	2	note	2734 5 70 100 143 228
+196	3	release	
+196	-	effect-beat	
+197	1	pitch	7298
+198	0	note	4871 3 100 80 143 224
+198	1	pitch	7310
+198	3	release	
+198	3	pitch	0
+198	4	release	
+198	4	pitch	0
+198	7	release	
+198	-	beat	
+198	-	effect-beat	
+199	1	pitch	7298
+199	2	release	
+199	3	release	
+199	-	effect-beat	
+200	1	release	
+200	1	pitch	7286
+200	2	release	
+200	2	pitch	0
+200	3	note	2734 5 70 100 143 228
+200	3	start	5
+200	3	echo	off
+200	3	noise	off
+200	4	note	5161 7 80 40 143 244
+200	7	note	1534 10 30 30 143 247
+200	-	beat	
+200	-	effect-beat	
+201	1	pitch	7274
+201	2	release	
+201	3	release	
+201	-	effect-beat	
+202	1	pitch	7286
+203	1	note	6502 4 70 70 142 209
+203	2	note	2734 5 70 100 143 228
+203	3	note	3251 6 50 50 143 229
+203	-	beat	
+203	-	effect-beat	
+204	3	volume	58 58
+204	-	effect-beat	
+205	0	release	
+205	1	pitch	6514
+205	2	release	
+205	3	volume	50 50
+205	4	release	
+205	5	release	
+205	-	beat	
+205	-	effect-beat	
+206	1	pitch	6502
+206	3	volume	42 42
+207	1	pitch	6490
+207	2	release	
+207	2	pitch	0
+207	3	pitch	3261
+207	3	volume	34 34
+207	-	effect-beat	
+208	0	note	4096 3 100 80 143 224
+208	1	pitch	6478
+208	2	release	
+208	3	volume	42 42
+208	4	release	
+208	4	pitch	0
+208	5	note	2018 8 90 90 143 245
+208	-	beat	
+208	-	effect-beat	
+209	1	pitch	6490
+209	2	note	2734 5 70 100 143 228
+209	3	pitch	3251
+209	3	volume	50 50
+209	-	effect-beat	
+210	0	start	1
+210	0	echo	off
+210	0	noise	off
+210	1	pitch	6502
+210	3	volume	58 58
+210	4	release	
+210	5	pitch	1988
+210	-	beat	
+210	-	effect-beat	
+211	1	pitch	6514
+211	3	pitch	3241
+211	3	volume	50 50
+212	0	release	
+212	1	pitch	6502
+212	2	release	
+212	3	volume	42 42
+212	5	pitch	2018
+212	-	effect-beat	
+213	0	note	8192 2 120 110 143 224
+213	1	pitch	6490
+213	2	release	
+213	2	pitch	0
+213	3	pitch	3251
+213	3	volume	34 34
+213	4	note	5793 7 80 40 143 244
+213	-	beat	
+213	-	effect-beat	
+214	0	release	
+214	1	pitch	6478
+214	2	release	
+214	3	volume	42 42
+214	5	pitch	2048
+214	-	effect-beat	
+215	1	pitch	6490
+215	3	pitch	3261
+215	3	volume	50 50
+216	0	note	9742 2 120 110 143 224
+216	1	pitch	6502
+216	2	note	2734 5 70 100 143 228
+216	3	volume	58 58
+216	4	release	
+216	4	pitch	0
+216	5	pitch	2078
+216	7	release	
+216	-	beat	
+216	-	effect-beat	
+217	0	release	
+217	1	pitch	6514
+217	3	release	
+217	3	pitch	3251
+217	3	volume	50 50
+217	-	effect-beat	
+218	0	release	
+218	0	echo	off
+218	0	noise	off
+218	1	pitch	6502
+218	2	release	
+218	3	release	
+218	3	echo	off
+218	3	noise	off
+218	4	note	5161 7 80 40 143 244
+218	7	note	1534 10 30 30 143 247
+218	-	beat	
+218	-	effect-beat	
+219	1	pitch	6490
+219	2	release	
+219	2	pitch	0
+219	-	effect-beat	
+220	1	pitch	6478
+221	1	release	
+221	1	pitch	6490
+221	2	release	
+221	-	beat	
+221	-	effect-beat	
+222	1	pitch	6502
+222	2	note	2734 5 70 100 143 228
+222	-	effect-beat	
+223	1	note	7298 4 70 70 142 209
+223	4	release	
+223	-	beat	
+223	-	effect-beat	
+224	2	release	
+224	-	effect-beat	
+225	1	pitch	7310
+226	0	release	
+226	1	pitch	7298
+226	2	release	
+226	2	pitch	0
+226	4	release	
+226	4	pitch	0
+226	-	beat	
+226	-	effect-beat	
+227	1	pitch	7286
+227	2	release	
+227	-	effect-beat	
+228	0	note	4096 3 100 80 143 224
+228	1	pitch	7274
+228	2	note	2734 5 70 100 143 228
+228	4	release	
+228	-	beat	
+228	-	effect-beat	
+229	1	pitch	7286
+230	1	pitch	7298
+230	-	effect-beat	
+231	1	pitch	7310
+231	2	release	
+231	4	note	5793 7 80 40 143 244
+231	5	release	
+231	6	release	
+231	-	beat	
+231	-	effect-beat	
+232	1	pitch	7298
+232	2	release	
+232	2	pitch	0
+232	-	effect-beat	
+233	1	release	
+233	1	pitch	7286
+233	2	release	
+233	4	release	
+233	4	pitch	0
+233	5	note	2018 8 90 90 143 245
+233	6	note	2734 9 40 60 143 246
+233	6	echo	on
+233	7	release	
+233	-	beat	
+233	-	effect-beat	
+234	1	pitch	7274
+235	1	pitch	7286
+235	2	note	2734 5 70 100 143 228
+235	5	pitch	1988
+235	-	effect-beat	
+236	0	release	
+236	1	note	6502 4 70 70 142 209
+236	4	note	5161 7 80 40 143 244
+236	7	note	1534 10 30 30 143 247
+236	-	beat	
+236	-	effect-beat	
+237	2	release	
+237	5	pitch	2018
+237	-	effect-beat	
+238	1	pitch	6514
+239	0	note	4871 3 100 80 143 224
+239	1	pitch	6502
+239	2	release	
+239	2	pitch	0
+239	5	pitch	2048
+239	-	beat	
+239	-	effect-beat	
+240	1	pitch	6490
+240	2	release	
+240	-	effect-beat	
+241	1	pitch	6478
+241	2	note	2734 5 70 100 143 228
+241	4	release	
+241	5	pitch	2078
+241	-	beat	
+241	-	effect-beat	
+242	1	pitch	6490
+242	-	effect-beat	
+243	1	pitch	6502
+244	1	pitch	6514
+244	2	release	
+244	4	release	
+244	4	pitch	0
+244	-	beat	
+244	-	effect-beat	
+245	1	pitch	6502
+245	2	release	
+245	2	pitch	0
+245	-	effect-beat	
+246	0	release	
+246	1	pitch	6490
+246	2	release	
+246	4	release	
+246	-	beat	
+246	-	effect-beat	
+247	1	pitch	6478
+248	1	pitch	6490
+248	2	note	2734 5 70 100 143 228
+248	-	effect-beat	
+249	0	note	4096 3 100 80 143 224
+249	1	pitch	6502
+249	4	note	5793 7 80 40 143 244
+249	-	beat	
+249	-	effect-beat	
+250	1	pitch	6514
+250	2	release	
+250	-	effect-beat	
+251	1	pitch	6502
+251	2	release	
+251	2	pitch	0
+251	4	release	
+251	4	pitch	0
+251	7	release	
+251	-	beat	
+251	-	effect-beat	
+252	1	pitch	6490
+253	1	pitch	6478
+253	2	release	
+253	-	effect-beat	
+254	1	release	
+254	1	pitch	6490
+254	2	note	2734 5 70 100 143 228
+254	4	note	5161 7 80 40 143 244
+254	7	note	1534 10 30 30 143 247
+254	-	beat	
+254	-	effect-beat	
+255	1	pitch	6502
+255	-	effect-beat	
+256	0	release	
+256	1	note	7298 4 70 70 142 209
+256	2	release	
+256	5	release	
+256	-	beat	
+256	-	effect-beat	
+258	1	pitch	7310
+258	2	release	
+258	2	pitch	0
+258	-	effect-beat	
+259	0	note	4871 3 100 80 143 224
+259	1	pitch	7298
+259	2	release	
+259	4	release	
+259	5	note	2018 8 90 90 143 245
+259	-	beat	
+259	-	effect-beat	
+260	1	pitch	7286
+260	2	note	2734 5 70 100 143 228
+260	-	effect-beat	
+261	1	pitch	7274
+261	5	pitch	1988
+262	1	pitch	7286
+262	4	release	
+262	4	pitch	0
+262	-	beat	
+262	-	effect-beat	
+263	1	pitch	7298
+263	2	release	
+263	5	pitch	2018
+263	-	effect-beat	
+264	1	pitch	7310
+264	2	release	
+264	2	pitch	0
+264	4	release	
+264	-	beat	
+264	-	effect-beat	
+265	1	pitch	7298
+265	2	release	
+265	5	pitch	2048
+265	-	effect-beat	
+266	1	pitch	7286
+267	0	release	
+267	1	release	
+267	1	pitch	7274
+267	2	note	2734 5 70 100 143 228
+267	4	note	5793 7 80 40 143 244
+267	5	pitch	2078
+267	-	beat	
+267	-	effect-beat	
+268	1	pitch	7286
+268	-	effect-beat	
+269	0	note	4096 3 100 80 143 224
+269	1	note	6502 4 70 70 142 209
+269	2	release	
+269	4	release	
+269	4	pitch	0
+269	7	release	
+269	-	beat	
+269	-	effect-beat	
+271	1	pitch	6514
+271	2	release	
+271	2	pitch	0
+271	-	effect-beat	
+272	1	pitch	6502
+272	2	release	
+272	4	note	5161 7 80 40 143 244
+272	7	note	1534 10 30 30 143 247
+272	-	beat	
+272	-	effect-beat	
+273	1	pitch	6490
+273	2	note	2734 5 70 100 143 228
+273	-	effect-beat	
+274	1	pitch	6478
+274	-	beat	
+274	-	effect-beat	
+275	1	pitch	6490
+276	1	pitch	6502
+276	2	release	
+276	-	effect-beat	
+277	0	release	
+277	1	pitch	6514
+277	2	release	
+277	2	pitch	0
+277	4	release	
+277	-	beat	
+277	-	effect-beat	
+278	1	pitch	6502
+278	2	release	
+278	-	effect-beat	
+279	1	pitch	6490
+280	0	note	4871 3 100 80 143 224
+280	1	pitch	6478
+280	2	note	2734 5 70 100 143 228
+280	4	release	
+280	4	pitch	0
+280	-	beat	
+280	-	effect-beat	
+281	1	pitch	6490
+281	-	effect-beat	
+282	1	pitch	6502
+282	2	release	
+282	4	release	
+282	5	release	
+282	6	release	
+282	-	beat	
+282	-	effect-beat	
+283	1	pitch	6514
+283	2	release	
+283	2	pitch	0
+283	-	effect-beat	
+284	1	pitch	6502
+285	1	pitch	6490
+285	2	release	
+285	4	note	5793 7 80 40 143 244
+285	5	note	2018 8 90 90 143 245
+285	6	note	2734 9 40 60 143 246
+285	-	beat	
+285	-	effect-beat	
+286	1	pitch	6478
+286	2	note	2734 5 70 100 143 228
+286	-	effect-beat	
+287	0	release	
+287	1	release	
+287	1	pitch	6490
+287	4	release	
+287	4	pitch	0
+287	5	pitch	1988
+287	7	release	
+287	-	beat	
+287	-	effect-beat	
+288	1	pitch	6502
+288	2	release	
+288	-	effect-beat	
+289	1	pitch	6514
+289	5	pitch	2018
+290	0	note	4096 3 100 80 143 224
+290	1	note	7298 4 70 70 142 209
+290	2	release	
+290	2	pitch	0
+290	4	note	5161 7 80 40 143 244
+290	7	note	1534 10 30 30 143 247
+290	-	beat	
+290	-	effect-beat	
+291	2	release	
+291	5	pitch	2048
+291	-	effect-beat	
+292	1	pitch	7310
+292	2	note	2734 5 70 100 143 228
+292	-	beat	
+292	-	effect-beat	
+293	1	pitch	7298
+293	5	pitch	2078
+294	1	pitch	7286
+294	-	effect-beat	
+295	1	pitch	7274
+295	2	release	
+295	4	release	
+295	-	beat	
+295	-	effect-beat	
+296	1	pitch	7286
+296	2	release	
+296	2	pitch	0
+296	-	effect-beat	
+297	0	release	
+297	1	pitch	7298
+297	2	release	
+297	4	release	
+297	4	pitch	0
+297	-	beat	
+297	-	effect-beat	
+298	1	pitch	7310
+299	1	pitch	7298
+299	2	note	2734 5 70 100 143 228
+299	-	effect-beat	
+300	0	note	4871 3 100 80 143 224
+300	1	release	
+300	1	pitch	7286
+300	2	start	0
+300	2	echo	off
+300	2	noise	off
+300	4	release	
+300	-	beat	
+300	-	effect-beat	
+301	1	pitch	7274
+301	2	release	
+301	-	effect-beat	
+302	1	pitch	7286
+303	1	note	6502 4 70 70 142 209
+303	2	release	
+303	2	echo	off
+303	2	noise	off
+303	4	note	5793 7 80 40 143 244
+303	-	beat	
+303	-	effect-beat	
+304	2	volume	60 90
+304	-	effect-beat	
+305	1	pitch	6514
+305	4	release	
+305	4	pitch	0
+305	7	release	
+305	-	beat	
+305	-	effect-beat	
+306	1	pitch	6502
+306	2	volume	54 84
+306	-	effect-beat	
+307	1	pitch	6490
+308	0	release	
+308	1	pitch	6478
+308	2	release	
+308	2	volume	48 78
+308	4	note	5161 7 80 40 143 244
+308	5	release	
+308	7	note	1534 10 30 30 143 247
+308	-	beat	
+308	-	effect-beat	
+309	1	pitch	6490
+309	-	effect-beat	
+310	0	note	4096 3 100 80 143 224
+310	1	pitch	6502
+310	2	note	3251 5 48 78 143 242
+310	5	note	2018 8 90 90 143 245
+310	-	beat	
+310	-	effect-beat	
+311	1	pitch	6514
+312	1	pitch	6502
+312	5	pitch	1988
+312	-	effect-beat	
+313	1	pitch	6490
+313	4	release	
+313	-	beat	
+313	-	effect-beat	
+314	1	pitch	6478
+314	2	volume	66 96
+314	5	pitch	2018
+314	-	effect-beat	
+315	1	pitch	6490
+315	4	release	
+315	4	pitch	0
+315	-	beat	
+315	-	effect-beat	
+316	1	pitch	6502
+316	2	volume	72 102
+316	5	pitch	2048
+317	1	pitch	6514
+317	-	effect-beat	
+318	0	release	
+318	1	pitch	6502
+318	2	volume	66 96
+318	4	release	
+318	5	pitch	2078
+318	-	beat	
+318	-	effect-beat	
+319	1	pitch	6490
+319	-	effect-beat	
+320	0	note	4871 3 100 80 143 224
+320	1	release	
+320	1	pitch	6478
+320	2	volume	60 90
+320	4	note	5793 7 80 40 143 244
+320	-	beat	
+320	-	effect-beat	
+321	1	pitch	6490
+322	1	pitch	6502
+322	2	volume	54 84
+322	-	effect-beat	
+323	1	note	7298 4 70 70 142 209
+323	4	release	
+323	4	pitch	0
+323	7	release	
+323	-	beat	
+323	-	effect-beat	
+324	2	volume	48 78
+324	-	effect-beat	
+325	1	pitch	7310
+326	1	pitch	7298
+326	2	volume	54 84
+326	4	note	5161 7 80 40 143 244
+326	7	note	1534 10 30 30 143 247
+326	-	beat	
+326	-	effect-beat	
+327	1	pitch	7286
+327	-	effect-beat	
+328	0	release	
+328	1	pitch	7274
+328	2	volume	60 90
+328	-	beat	
+328	-	effect-beat	
+329	1	pitch	7286
+329	-	effect-beat	
+330	1	pitch	7298
+330	2	volume	66 96
+331	0	note	4096 3 100 80 143 224
+331	1	pitch	7310
+331	4	release	
+331	-	beat	
+331	-	effect-beat	
+332	1	pitch	7298
+332	2	volume	72 102
+332	-	effect-beat	
+333	1	release	
+333	1	pitch	7286
+333	4	release	
+333	4	pitch	0
+333	5	release	
+333	6	release	
+333	-	beat	
+333	-	effect-beat	
+334	1	pitch	7274
+334	2	volume	66 96
+335	1	pitch	7286
+335	-	effect-beat	
+336	1	note	6502 4 70 70 142 209
+336	2	volume	60 90
+336	4	release	
+336	5	note	2018 8 90 90 143 245
+336	6	note	2734 9 40 60 143 246
+336	-	beat	
+336	-	effect-beat	
+337	-	effect-beat	
+338	0	release	
+338	1	pitch	6514
+338	2	release	
+338	2	volume	54 84
+338	4	note	5793 7 80 40 143 244
+338	5	pitch	1988
+338	-	beat	
+338	-	effect-beat	
+339	1	pitch	6502
+340	1	pitch	6490
+340	2	volume	48 78
+340	5	pitch	2018
+340	-	effect-beat	
+341	0	note	4871 3 100 80 143 224
+341	1	pitch	6478
+341	2	release	
+341	2	pitch	0
+341	4	release	
+341	4	pitch	0
+341	7	release	
+341	-	beat	
+341	-	effect-beat	
+342	1	pitch	6490
+342	2	volume	54 84
+342	5	pitch	2048
+342	-	effect-beat	
+343	1	pitch	6502
+344	1	pitch	6514
+344	2	volume	60 90
+344	4	note	5161 7 80 40 143 244
+344	5	pitch	2078
+344	7	note	1534 10 30 30 143 247
+344	-	beat	
+344	-	effect-beat	
+345	1	pitch	6502
+345	-	effect-beat	
+346	1	pitch	6490
+346	2	release	
+346	2	volume	66 96
+346	-	beat	
+346	-	effect-beat	
+347	1	pitch	6478
+347	-	effect-beat	
+348	1	pitch	6490
+348	2	volume	72 102
+349	0	release	
+349	1	pitch	6502
+349	2	note	3251 5 72 102 143 242
+349	4	release	
+349	-	beat	
+349	-	effect-beat	
+350	1	pitch	6514
+350	-	effect-beat	
+351	0	note	4096 3 100 80 143 224
+351	1	pitch	6502
+351	4	release	
+351	4	pitch	0
+351	-	beat	
+351	-	effect-beat	
+352	1	pitch	6490
+352	-	effect-beat	
+353	1	pitch	6478
+353	2	volume	66 96
+354	1	release	
+354	1	pitch	6490
+354	4	release	
+354	-	beat	
+354	-	effect-beat	
+355	1	pitch	6502
+355	2	volume	72 102
+355	-	effect-beat	
+356	1	note	7298 4 70 70 142 209
+356	4	note	5793 7 80 40 143 244
+356	-	beat	
+356	-	effect-beat	
+357	2	volume	66 96
+358	1	pitch	7310
+358	-	effect-beat	
+359	0	release	
+359	1	pitch	7298
+359	2	volume	60 90
+359	4	release	
+359	4	pitch	0
+359	5	release	
+359	7	release	
+359	-	beat	
+359	-	effect-beat	
+360	1	pitch	7286
+360	-	effect-beat	
+361	0	note	4871 3 100 80 143 224
+361	1	pitch	7274
+361	2	volume	54 84
+361	4	note	5161 7 80 40 143 244
+361	5	note	2018 8 90 90 143 245
+361	7	note	1534 10 30 30 143 247
+361	-	beat	
+361	-	effect-beat	
+362	1	pitch	7286
+363	1	pitch	7298
+363	2	volume	48 78
+363	5	pitch	1988
+363	-	effect-beat	
+364	1	pitch	7310
+364	-	beat	
+364	-	effect-beat	
+365	1	pitch	7298
+365	2	volume	54 84
+365	5	pitch	2018
+365	-	effect-beat	
+366	1	pitch	7286
+367	1	release	
+367	1	pitch	7274
+367	2	volume	60 90
+367	4	release	
+367	5	pitch	2048
+367	-	beat	
+367	-	effect-beat	
+368	1	pitch	7286
+368	-	effect-beat	
+369	0	release	
+369	1	note	6502 4 70 70 142 209
+369	2	volume	66 96
+369	4	release	
+369	4	pitch	0
+369	5	pitch	2078
+369	-	beat	
+369	-	effect-beat	
+370	-	effect-beat	
+371	1	pitch	6514
+371	2	volume	72 102
+372	0	note	4096 3 100 80 143 224
+372	1	pitch	6502
+372	4	release	
+372	-	beat	
+372	-	effect-beat	
+373	1	pitch	6490
+373	2	volume	66 96
+373	-	effect-beat	
+374	1	pitch	6478
+374	4	note	5793 7 80 40 143 244
+374	-	beat	
+374	-	effect-beat	
+375	1	pitch	6490
+375	2	volume	60 90
+376	1	pitch	6502
+376	-	effect-beat	
+377	1	pitch	6514
+377	2	release	
+377	2	volume	54 84
+377	4	release	
+377	4	pitch	0
+377	7	release	
+377	-	beat	
+377	-	effect-beat	
+378	1	pitch	6502
+378	-	effect-beat	
+379	0	release	
+379	1	pitch	6490
+379	2	release	
+379	2	pitch	0
+379	2	volume	48 78
+379	4	note	5161 7 80 40 143 244
+379	7	note	1534 10 30 30 143 247
+379	-	beat	
+379	-	effect-beat	
+380	1	pitch	6478
+381	1	pitch	6490
+381	2	volume	54 84
+381	-	effect-beat	
+382	0	note	4871 3 100 80 143 224
+382	1	pitch	6502
+382	-	beat	
+382	-	effect-beat	
+383	1	pitch	6514
+383	2	volume	60 90
+383	-	effect-beat	
+384	1	pitch	6502
+384	2	release	
+384	4	release	
+384	5	release	
+384	6	release	
+384	-	beat	
+384	-	effect-beat	
+385	1	pitch	6490
+385	2	volume	66 96
+386	1	pitch	6478
+386	-	effect-beat	
+387	1	release	
+387	1	pitch	6490
+387	2	note	3251 5 66 96 143 242
+387	4	release	
+387	4	pitch	0
+387	5	note	2018 8 90 90 143 245
+387	6	note	2734 9 40 60 143 246
+387	-	beat	
+387	-	effect-beat	
+388	1	pitch	6502
+388	-	effect-beat	
+389	1	pitch	6514
+389	5	pitch	1988
+390	0	release	
+390	1	note	7298 4 70 70 142 209
+390	4	release	
+390	-	beat	
+390	-	effect-beat	
+391	2	volume	66 96
+391	5	pitch	2018
+391	-	effect-beat	
+392	0	note	4096 3 100 80 143 224
+392	1	pitch	7310
+392	4	note	5793 7 80 40 143 244
+392	-	beat	
+392	-	effect-beat	
+393	1	pitch	7298
+393	2	volume	72 102
+393	5	pitch	2048
+393	-	effect-beat	
+394	1	pitch	7286
+395	1	pitch	7274
+395	2	volume	66 96
+395	4	release	
+395	4	pitch	0
+395	5	pitch	2078
+395	7	release	
+395	-	beat	
+395	-	effect-beat	
+396	1	pitch	7286
+396	-	effect-beat	
+397	1	pitch	7298
+397	2	volume	60 90
+397	4	note	5161 7 80 40 143 244
+397	7	note	1534 10 30 30 143 247
+397	-	beat	
+397	-	effect-beat	
+398	1	pitch	7310
+399	1	pitch	7298
+399	2	volume	54 84
+399	-	effect-beat	
+400	0	release	
+400	1	release	
+400	1	pitch	7286
+400	7	start	3
+400	7	echo	off
+400	7	noise	off
+400	-	beat	
+400	-	effect-beat	
+401	1	pitch	7274
+401	2	volume	48 78
+401	7	release	
+401	-	effect-beat	
+402	0	note	4871 3 100 80 143 224
+402	1	note	6502 4 70 70 142 209
+402	4	release	
+402	7	note	4096 4 100 100 143 227
+402	7	noise	on
+402	-	noise-rate	20
+402	-	echo-writing	off
+402	-	beat	
+402	-	effect-beat	
+403	2	volume	54 84
+404	1	pitch	6514
+404	-	effect-beat	
+405	1	pitch	6502
+405	2	volume	60 90
+405	4	release	
+405	4	pitch	0
+405	-	beat	
+405	-	effect-beat	
+406	1	pitch	6490
+406	7	release	
+406	-	effect-beat	
+407	1	pitch	6478
+407	2	volume	66 96
+408	1	pitch	6490
+408	4	release	
+408	7	note	4871 4 100 100 143 227
+408	7	echo	on
+408	7	noise	off
+408	-	beat	
+408	-	effect-beat	
+409	1	pitch	6502
+409	2	volume	72 102
+409	-	effect-beat	
+410	0	release	
+410	1	pitch	6514
+410	4	note	5793 7 80 40 143 244
+410	5	release	
+410	7	release	
+410	-	beat	
+410	-	effect-beat	
+411	1	pitch	6502
+411	2	volume	66 96
+411	7	note	5161 4 100 100 143 227
+411	7	echo	off
+411	-	effect-beat	
+412	1	pitch	6490
+413	0	note	4096 3 100 80 143 224
+413	1	pitch	6478
+413	2	volume	60 90
+413	4	release	
+413	4	pitch	0
+413	5	note	2018 8 90 90 143 245
+413	7	release	
+413	-	beat	
+413	-	effect-beat	
+414	1	pitch	6490
+414	7	note	5468 4 100 100 143 227
+414	7	echo	on
+414	-	effect-beat	
+415	1	pitch	6502
+415	2	release	
+415	2	volume	54 84
+415	4	note	5161 7 80 40 143 244
+415	5	pitch	1988
+415	7	release	
+415	-	beat	
+415	-	effect-beat	
+416	1	pitch	6514
+416	7	release	
+416	7	echo	off
+416	7	noise	off
+416	-	effect-beat	
+417	1	pitch	6502
+417	2	volume	48 78
+417	5	pitch	2018
+418	1	pitch	6490
+418	2	release	
+418	2	pitch	0
+418	-	beat	
+418	-	effect-beat	
+419	1	pitch	6478
+419	2	volume	54 84
+419	5	pitch	2048
+419	-	effect-beat	
+420	0	release	
+420	1	release	
+420	1	pitch	6490
+420	4	release	
+420	-	beat	
+420	-	effect-beat	
+421	1	pitch	6502
+421	2	volume	60 90
+421	5	pitch	2078
+422	1	pitch	6514
+422	-	effect-beat	
+423	0	note	4871 3 100 80 143 224
+423	1	note	7298 4 70 70 142 209
+423	2	release	
+423	2	volume	66 96
+423	4	release	
+423	4	pitch	0
+423	-	beat	
+423	-	effect-beat	
+424	-	effect-beat	
+425	1	pitch	7310
+425	2	note	3251 5 66 96 143 242
+425	4	release	
+425	-	beat	
+425	-	effect-beat	
+426	1	pitch	7298
+427	1	pitch	7286
+427	-	effect-beat	
+428	1	pitch	7274
+428	4	note	5793 7 80 40 143 244
+428	-	beat	
+428	-	effect-beat	
+429	1	pitch	7286
+429	2	volume	66 96
+429	-	effect-beat	
+430	1	pitch	7298
+431	0	release	
+431	1	pitch	7310
+431	2	volume	72 102
+431	4	release	
+431	4	pitch	0
+431	7	release	
+431	-	beat	
+431	-	effect-beat	
+432	1	pitch	7298
+432	-	effect-beat	
+433	0	note	4096 3 100 80 143 224
+433	1	release	
+433	1	pitch	7286
+433	2	volume	66 96
+433	4	note	5161 7 80 40 143 244
+433	7	note	1534 10 30 30 143 247
+433	-	beat	
+433	-	effect-beat	
+434	1	pitch	7274
+434	-	effect-beat	
+435	1	pitch	7286
+435	2	volume	60 90
+436	1	note	6502 4 70 70 142 209
+436	5	release	
+436	6	release	
+436	-	beat	
+436	-	effect-beat	
+437	2	volume	54 84
+437	-	effect-beat	
+438	1	pitch	6514
+438	4	release	
+438	5	note	2018 8 90 90 143 245
+438	6	note	2734 9 40 60 143 246
+438	-	beat	
+438	-	effect-beat	
+439	1	pitch	6502
+439	2	volume	48 78
+440	1	pitch	6490
+440	5	pitch	1988
+440	-	effect-beat	
+441	0	release	
+441	1	pitch	6478
+441	2	volume	54 84
+441	4	release	
+441	4	pitch	0
+441	-	beat	
+441	-	effect-beat	
+442	1	pitch	6490
+442	5	pitch	2018
+442	-	effect-beat	
+443	0	note	4871 3 100 80 143 224
+443	1	pitch	6502
+443	2	volume	60 90
+443	4	release	
+443	-	beat	
+443	-	effect-beat	
+444	1	pitch	6514
+444	5	pitch	2048
+445	1	pitch	6502
+445	2	volume	66 96
+445	-	effect-beat	
+446	1	pitch	6490
+446	4	note	5793 7 80 40 143 244
+446	5	pitch	2078
+446	-	beat	
+446	-	effect-beat	
+447	1	pitch	6478
+447	2	volume	72 102
+447	-	effect-beat	
+448	1	pitch	6490
+448	4	release	
+448	4	pitch	0
+448	7	release	
+448	-	beat	
+448	-	effect-beat	
+449	1	pitch	6502
+449	2	volume	66 96
+450	1	pitch	6514
+450	4	start	2
+450	4	echo	off
+450	4	noise	off
+450	-	effect-beat	
+451	0	release	
+451	1	pitch	6502
+451	2	volume	60 90
+451	4	release	
+451	7	note	1534 10 30 30 143 247
+451	-	beat	
+451	-	effect-beat	
+452	1	pitch	6490
+452	4	note	5530 3 90 60 142 226
+452	4	start	1
+452	4	echo	off
+452	4	noise	off
+452	-	effect-beat	
+453	1	pitch	6478
+453	2	volume	54 84
+454	0	note	4096 3 100 80 143 224
+454	1	release	
+454	1	pitch	6490
+454	2	release	
+454	4	release	
+454	-	beat	
+454	-	effect-beat	
+455	1	pitch	6502
+455	2	volume	48 78
+455	4	note	8192 2 120 110 143 224
+455	-	effect-beat	
+456	1	note	7298 4 70 70 142 209
+456	2	release	
+456	2	pitch	0
+456	4	release	
+456	-	beat	
+456	-	effect-beat	
+457	2	volume	54 84
+457	4	note	9742 2 120 110 143 224
+457	-	effect-beat	
+458	1	pitch	7310
+459	1	pitch	7298
+459	2	volume	60 90
+459	4	release	
+459	-	beat	
+459	-	effect-beat	
+460	1	pitch	7286
+460	4	release	
+460	4	echo	on
+460	4	noise	off
+460	-	effect-beat	
+461	0	release	
+461	1	pitch	7274
+461	2	release	
+461	2	volume	66 96
+461	4	release	
+461	5	release	
+461	-	beat	
+461	-	effect-beat	
+462	1	pitch	7286
+463	1	pitch	7298
+463	2	volume	72 102
+463	-	effect-beat	
+464	0	note	4871 3 100 80 143 224
+464	1	pitch	7310
+464	2	note	3251 5 72 102 143 242
+464	4	note	5793 7 80 40 143 244
+464	5	note	2018 8 90 90 143 245
+464	-	beat	
+464	-	effect-beat	
+465	1	pitch	7298
+465	-	effect-beat	
+466	1	release	
+466	1	pitch	7286
+466	4	release	
+466	4	pitch	0
+466	5	pitch	1988
+466	7	release	
+466	-	beat	
+466	-	effect-beat	
+467	1	pitch	7274
+468	1	pitch	7286
+468	2	volume	66 96
+468	5	pitch	2018
+468	-	effect-beat	
+469	1	note	6502 4 70 70 142 209
+469	4	note	5161 7 80 40 143 244
+469	7	note	1534 10 30 30 143 247
+469	-	beat	
+469	-	effect-beat	
+470	2	volume	72 102
+470	5	pitch	2048
+470	-	effect-beat	
+471	1	pitch	6514
+472	0	release	
+472	1	pitch	6502
+472	2	volume	66 96
+472	5	pitch	2078
+472	-	beat	
+472	-	effect-beat	
+473	1	pitch	6490
+473	-	effect-beat	
+474	0	note	4096 3 100 80 143 224
+474	1	pitch	6478
+474	2	volume	60 90
+474	4	release	
+474	-	beat	
+474	-	effect-beat	
+475	1	pitch	6490
+475	-	effect-beat	
+476	1	pitch	6502
+476	2	volume	54 84
+477	1	pitch	6514
+477	4	release	
+477	4	pitch	0
+477	-	beat	
+477	-	effect-beat	
+478	1	pitch	6502
+478	2	volume	48 78
+478	-	effect-beat	
+479	1	pitch	6490
+479	4	release	
+479	-	beat	
+479	-	effect-beat	
+480	1	pitch	6478
+480	2	volume	54 84
+480	-	effect-beat	
+481	1	pitch	6490
+482	0	release	
+482	1	pitch	6502
+482	2	volume	60 90
+482	4	note	5793 7 80 40 143 244
+482	-	beat	
+482	-	effect-beat	
+483	1	pitch	6514
+483	-	effect-beat	
+484	0	note	4871 3 100 80 143 224
+484	1	pitch	6502
+484	2	volume	66 96
+484	4	release	
+484	4	pitch	0
+484	7	release	
+484	-	beat	
+484	-	effect-beat	
+485	1	pitch	6490
+486	1	pitch	6478
+486	2	volume	72 102
+486	-	effect-beat	
+487	1	release	
+487	1	pitch	6490
+487	4	note	5161 7 80 40 143 244
+487	5	release	
+487	6	release	
+487	7	note	1534 10 30 30 143 247
+487	-	beat	
+487	-	effect-beat	
+488	1	pitch	6502
+488	2	volume	66 96
+488	-	effect-beat	
+489	1	note	7298 4 70 70 142 209
+489	5	note	2018 8 90 90 143 245
+489	6	note	2734 9 40 60 143 246
+489	-	beat	
+489	-	effect-beat	
+490	2	volume	60 90
+491	1	pitch	7310
+491	5	pitch	1988
+491	-	effect-beat	
+492	0	release	
+492	1	pitch	7298
+492	2	release	
+492	2	volume	54 84
+492	4	release	
+492	-	beat	
+492	-	effect-beat	
+493	1	pitch	7286
+493	5	pitch	2018
+493	-	effect-beat	
+494	1	pitch	7274
+494	2	volume	48 78
+495	0	note	4096 3 100 80 143 224
+495	1	pitch	7286
+495	2	release	
+495	2	pitch	0
+495	4	release	
+495	4	pitch	0
+495	5	pitch	2048
+495	-	beat	
+495	-	effect-beat	
+496	1	pitch	7298
+496	2	volume	54 84
+496	-	effect-beat	
+497	1	pitch	7310
+497	4	release	
+497	5	pitch	2078
+497	-	beat	
+497	-	effect-beat	
+498	1	pitch	7298
+498	2	volume	60 90
+498	-	effect-beat	
+499	1	pitch	7286
+500	1	release	
+500	1	pitch	7274
+500	2	release	
+500	2	volume	66 96
+500	4	note	5793 7 80 40 143 244
+500	-	beat	
+500	-	effect-beat	
+501	1	pitch	7286
+501	-	effect-beat	
+502	0	release	
+502	1	note	6502 4 70 70 142 209
+502	2	note	3251 5 66 96 143 242
+502	4	release	
+502	4	pitch	0
+502	7	release	
+502	-	beat	
+502	-	effect-beat	
+504	1	pitch	6514
+504	-	effect-beat	
+505	0	note	4871 3 100 80 143 224
+505	1	pitch	6502
+505	4	note	5161 7 80 40 143 244
+505	7	note	1534 10 30 30 143 247
+505	-	beat	
+505	-	effect-beat	
+506	1	pitch	6490
+506	2	volume	66 96
+506	-	effect-beat	
+507	1	pitch	6478
+507	-	beat	
+507	-	effect-beat	
+508	1	pitch	6490
+508	2	volume	72 102
+509	1	pitch	6502
+509	-	effect-beat	
+510	1	pitch	6514
+510	2	volume	66 96
+510	4	release	
+510	-	beat	
+510	-	effect-beat	
+511	1	pitch	6502
+511	-	effect-beat	
+512	0	release	
+512	1	pitch	6490
+512	2	volume	60 90
+512	4	release	
+512	4	pitch	0
+512	5	release	
+512	-	beat	
+512	-	effect-beat	
+513	1	pitch	6478
+514	1	pitch	6490
+514	2	volume	54 84
+514	-	effect-beat	
+515	0	note	4096 3 100 80 143 224
+515	1	pitch	6502
+515	4	release	
+515	5	note	2018 8 90 90 143 245
+515	-	beat	
+515	-	effect-beat	
+516	1	pitch	6514
+516	2	volume	48 78
+516	-	effect-beat	
+517	1	pitch	6502
+517	5	pitch	1988
+518	1	pitch	6490
+518	2	volume	54 84
+518	4	note	5793 7 80 40 143 244
+518	-	beat	
+518	-	effect-beat	
+519	1	pitch	6478
+519	5	pitch	2018
+519	-	effect-beat	
+520	1	release	
+520	1	pitch	6490
+520	2	volume	60 90
+520	4	release	
+520	4	pitch	0
+520	5	start	5
+520	5	echo	off
+520	5	noise	off
+520	7	release	
+520	-	beat	
+520	-	effect-beat	
+521	1	pitch	6502
+521	5	release	
+521	-	effect-beat	
+522	1	pitch	6514
+522	2	volume	66 96
+523	0	release	
+523	1	note	7298 4 70 70 142 209
+523	4	note	5161 7 80 40 143 244
+523	5	note	3251 6 50 50 143 229
+523	7	note	1534 10 30 30 143 247
+523	-	beat	
+523	-	effect-beat	
+524	2	volume	72 102
+524	5	volume	58 58
+524	-	effect-beat	
+525	0	note	4871 3 100 80 143 224
+525	1	pitch	7310
+525	5	volume	50 50
+525	-	beat	
+525	-	effect-beat	
+526	1	pitch	7298
+526	2	volume	66 96
+526	5	volume	42 42
+527	1	pitch	7286
+527	5	pitch	3261
+527	5	volume	34 34
+527	-	effect-beat	
+528	1	pitch	7274
+528	2	volume	60 90
+528	4	release	
+528	5	volume	42 42
+528	-	beat	
+528	-	effect-beat	
+529	1	pitch	7286
+529	5	pitch	3251
+529	5	volume	50 50
+529	-	effect-beat	
+530	1	pitch	7298
+530	2	release	
+530	2	volume	54 84
+530	4	release	
+530	4	pitch	0
+530	5	volume	58 58
+530	-	beat	
+530	-	effect-beat	
+531	1	pitch	7310
+531	5	pitch	3241
+531	5	volume	50 50
+532	1	pitch	7298
+532	2	volume	48 78
+532	5	volume	42 42
+532	-	effect-beat	
+533	0	release	
+533	1	release	
+533	1	pitch	7286
+533	2	release	
+533	2	pitch	0
+533	4	release	
+533	5	pitch	3251
+533	5	volume	34 34
+533	-	beat	
+533	-	effect-beat	
+534	1	pitch	7274
+534	2	volume	54 84
+534	5	volume	42 42
+534	-	effect-beat	
+535	1	pitch	7286
+535	5	pitch	3261
+535	5	volume	50 50
+536	0	note	4096 3 100 80 143 224
+536	1	note	6502 4 70 70 142 209
+536	2	volume	60 90
+536	4	note	5793 7 80 40 143 244
+536	5	volume	58 58
+536	-	beat	
+536	-	effect-beat	
+537	5	release	
+537	5	pitch	3251
+537	5	volume	50 50
+537	-	effect-beat	
+538	1	pitch	6514
+538	2	release	
+538	2	volume	66 96
+538	4	release	
+538	4	pitch	0
+538	5	release	
+538	5	echo	off
+538	5	noise	off
+538	6	release	
+538	7	release	
+538	-	beat	
+538	-	effect-beat	
+539	1	pitch	6502
+539	-	effect-beat	
+540	1	pitch	6490
+540	2	volume	72 102
+541	1	pitch	6478
+541	2	note	3251 5 72 102 143 242
+541	4	note	5161 7 80 40 143 244
+541	5	note	2018 8 90 90 143 245
+541	6	note	2734 9 40 60 143 246
+541	7	note	1534 10 30 30 143 247
+541	-	beat	
+541	-	effect-beat	
+542	1	pitch	6490
+542	-	effect-beat	
+543	0	release	
+543	1	pitch	6502
+543	5	pitch	1988
+543	-	beat	
+543	-	effect-beat	
+544	1	pitch	6514
+544	-	effect-beat	
+545	1	pitch	6502
+545	2	volume	66 96
+545	5	pitch	2018
+546	0	note	4871 3 100 80 143 224
+546	1	pitch	6490
+546	4	release	
+546	-	beat	
+546	-	effect-beat	
+547	1	pitch	6478
+547	2	volume	72 102
+547	5	pitch	2048
+547	-	effect-beat	
+548	1	pitch	6490
+548	4	release	
+548	4	pitch	0
+548	-	beat	
+548	-	effect-beat	
+549	1	pitch	6502
+549	2	volume	66 96
+549	5	pitch	2078
+550	1	pitch	6514
+550	-	effect-beat	
+551	1	pitch	6502
+551	2	volume	60 90
+551	4	release	
+551	-	beat	
+551	-	effect-beat	
+552	1	pitch	6490
+552	-	effect-beat	
+553	0	release	
+553	1	release	
+553	1	pitch	6478
+553	2	volume	54 84
+553	4	note	5793 7 80 40 143 244
+553	-	beat	
+553	-	effect-beat	
+554	1	pitch	6490
+555	1	pitch	6502
+555	2	volume	48 78
+555	-	effect-beat	
+556	0	note	4096 3 100 80 143 224
+556	1	note	7298 4 70 70 142 209
+556	4	release	
+556	4	pitch	0
+556	7	release	
+556	-	beat	
+556	-	effect-beat	
+557	2	volume	54 84
+557	-	effect-beat	
+558	1	pitch	7310
+559	1	pitch	7298
+559	2	volume	60 90
+559	4	note	5161 7 80 40 143 244
+559	7	note	1534 10 30 30 143 247
+559	-	beat	
+559	-	effect-beat	
+560	1	pitch	7286
+560	-	effect-beat	
+561	1	pitch	7274
+561	2	volume	66 96
+561	-	beat	
+561	-	effect-beat	
+562	1	pitch	7286
+562	-	effect-beat	
+563	1	pitch	7298
+563	2	volume	72 102
+564	0	release	
+564	1	pitch	7310
+564	4	release	
+564	5	release	
+564	-	beat	
+564	-	effect-beat	
+565	1	pitch	7298
+565	2	volume	66 96
+565	-	effect-beat	
+566	0	note	4871 3 100 80 143 224
+566	1	release	
+566	1	pitch	7286
+566	4	release	
+566	4	pitch	0
+566	5	note	2018 8 90 90 143 245
+566	-	beat	
+566	-	effect-beat	
+567	1	pitch	7274
+567	2	volume	60 90
+568	1	pitch	7286
+568	5	pitch	1988
+568	-	effect-beat	
+569	1	note	6502 4 70 70 142 209
+569	2	release	
+569	2	volume	54 84
+569	4	release	
+569	-	beat	
+569	-	effect-beat	
+570	5	pitch	2018
+570	-	effect-beat	
+571	1	pitch	6514
+571	2	release	
+571	2	pitch	0
+571	2	volume	48 78
+571	4	note	5793 7 80 40 143 244
+571	-	beat	
+571	-	effect-beat	
+572	1	pitch	6502
+572	5	pitch	2048
+573	1	pitch	6490
+573	2	volume	54 84
+573	-	effect-beat	
+574	0	release	
+574	1	pitch	6478
+574	4	release	
+574	4	pitch	0
+574	5	pitch	2078
+574	7	release	
+574	-	beat	
+574	-	effect-beat	
+575	1	pitch	6490
+575	2	volume	60 90
+575	-	effect-beat	
+576	0	note	4096 3 100 80 143 224
+576	1	pitch	6502
+576	2	release	
+576	4	note	5161 7 80 40 143 244
+576	7	note	1534 10 30 30 143 247
+576	-	beat	
+576	-	effect-beat	
+577	1	pitch	6514
+577	2	volume	66 96
+578	1	pitch	6502
+578	-	effect-beat	
+579	1	pitch	6490
+579	2	note	3251 5 66 96 143 242
+579	-	beat	
+579	-	effect-beat	
+580	1	pitch	6478
+580	-	effect-beat	
+581	1	pitch	6490
+582	1	pitch	6502
+582	4	release	
+582	-	beat	
+582	-	effect-beat	
+583	1	pitch	6514
+583	2	volume	66 96
+583	-	effect-beat	
+584	0	release	
+584	1	pitch	6502
+584	4	release	
+584	4	pitch	0
+584	-	beat	
+584	-	effect-beat	
+585	1	pitch	6490
+585	2	volume	72 102
+585	-	effect-beat	
+586	1	pitch	6478
+587	0	note	4871 3 100 80 143 224
+587	1	release	
+587	1	pitch	6490
+587	2	volume	66 96
+587	4	release	
+587	-	beat	
+587	-	effect-beat	
+588	1	pitch	6502
+588	-	effect-beat	
+589	1	note	7298 4 70 70 142 209
+589	2	volume	60 90
+589	4	note	5793 7 80 40 143 244
+589	5	release	
+589	6	release	
+589	-	beat	
+589	-	effect-beat	
+591	1	pitch	7310
+591	2	volume	54 84
+591	-	effect-beat	
+592	1	pitch	7298
+592	4	release	
+592	4	pitch	0
+592	5	note	2018 8 90 90 143 245
+592	6	note	2734 9 40 60 143 246
+592	7	release	
+592	-	beat	
+592	-	effect-beat	
+593	1	pitch	7286
+593	2	volume	48 78
+593	-	effect-beat	
+594	0	release	
+594	1	pitch	7274
+594	4	note	5161 7 80 40 143 244
+594	5	pitch	1988
+594	7	note	1534 10 30 30 143 247
+594	-	beat	
+594	-	effect-beat	
+595	1	pitch	7286
+595	2	volume	54 84
+596	1	pitch	7298
+596	5	pitch	2018
+596	-	effect-beat	
+597	0	note	4096 3 100 80 143 224
+597	1	pitch	7310
+597	2	volume	60 90
+597	-	beat	
+597	-	effect-beat	
+598	1	pitch	7298
+598	5	pitch	2048
+598	-	effect-beat	
+599	1	pitch	7286
+599	2	volume	66 96
+600	1	release	
+600	1	pitch	7274
+600	4	release	
+600	5	pitch	2078
+600	-	beat	
+600	-	effect-beat	
+601	1	pitch	7286
+601	2	volume	72 102
+601	-	effect-beat	
+602	1	note	6502 4 70 70 142 209
+602	4	release	
+602	4	pitch	0
+602	-	beat	
+602	-	effect-beat	
+603	2	volume	66 96
+603	-	effect-beat	
+604	1	pitch	6514
+605	0	release	
+605	1	pitch	6502
+605	2	volume	60 90
+605	4	release	
+605	-	beat	
+605	-	effect-beat	
+606	1	pitch	6490
+606	-	effect-beat	
+607	0	note	4871 3 100 80 143 224
+607	1	pitch	6478
+607	2	release	
+607	2	volume	54 84
+607	4	note	5793 7 80 40 143 244
+607	-	beat	
+607	-	effect-beat	
+608	1	pitch	6490
+608	-	effect-beat	
+609	1	pitch	6502
+609	2	volume	48 78
+610	1	pitch	6514
+610	2	release	
+610	2	pitch	0
+610	4	release	
+610	4	pitch	0
+610	7	release	
+610	-	beat	
+610	-	effect-beat	
+611	1	pitch	6502
+611	2	volume	54 84
+611	-	effect-beat	
+612	1	pitch	6490
+612	4	note	5161 7 80 40 143 244
+612	7	note	1534 10 30 30 143 247
+612	-	beat	
+612	-	effect-beat	
+613	1	pitch	6478
+613	2	volume	60 90
+614	1	pitch	6490
+614	-	effect-beat	
+615	0	release	
+615	1	pitch	6502
+615	2	release	
+615	2	volume	66 96
+615	5	release	
+615	-	beat	
+615	-	effect-beat	
+616	1	pitch	6514
+616	-	effect-beat	
+617	0	note	4096 3 100 80 143 224
+617	1	pitch	6502
+617	2	note	3251 5 66 96 143 242
+617	4	release	
+617	5	note	2018 8 90 90 143 245
+617	-	beat	
+617	-	effect-beat	
+618	1	pitch	6490
+619	1	pitch	6478
+619	5	pitch	1988
+619	-	effect-beat	
+620	1	release	
+620	1	pitch	6490
+620	4	release	
+620	4	pitch	0
+620	-	beat	
+620	-	effect-beat	
+621	1	pitch	6502
+621	2	volume	66 96
+621	5	pitch	2018
+621	-	effect-beat	
+622	1	pitch	6514
+623	1	note	7298 4 70 70 142 209
+623	2	volume	72 102
+623	4	release	
+623	5	pitch	2048
+623	-	beat	
+623	-	effect-beat	
+624	-	effect-beat	
+625	0	release	
+625	1	pitch	7310
+625	2	volume	66 96
+625	4	note	5793 7 80 40 143 244
+625	5	pitch	2078
+625	-	beat	
+625	-	effect-beat	
+626	1	pitch	7298
+626	-	effect-beat	
+627	1	pitch	7286
+627	2	volume	60 90
+628	0	note	4871 3 100 80 143 224
+628	1	pitch	7274
+628	4	release	
+628	4	pitch	0
+628	7	release	
+628	-	beat	
+628	-	effect-beat	
+629	1	pitch	7286
+629	2	volume	54 84
+629	-	effect-beat	
+630	1	pitch	7298
+630	4	note	5161 7 80 40 143 244
+630	7	note	1534 10 30 30 143 247
+630	-	beat	
+630	-	effect-beat	
+631	1	pitch	7310
+631	2	volume	48 78
+632	1	pitch	7298
+632	-	effect-beat	
+633	1	release	
+633	1	pitch	7286
+633	2	volume	54 84
+633	-	beat	
+633	-	effect-beat	
+634	1	pitch	7274
+634	-	effect-beat	
+635	0	release	
+635	1	note	6502 4 70 70 142 209
+635	2	volume	60 90
+635	4	release	
+635	-	beat	
+635	-	effect-beat	
+637	1	pitch	6514
+637	2	volume	66 96
+637	-	effect-beat	
+638	0	note	4096 3 100 80 143 224
+638	1	pitch	6502
+638	4	release	
+638	4	pitch	0
+638	-	beat	
+638	-	effect-beat	
+639	1	pitch	6490
+639	2	volume	72 102
+639	-	effect-beat	
+640	1	pitch	6478
+640	4	release	
+640	5	release	
+640	6	release	
+640	-	beat	
+640	-	effect-beat	
+641	1	pitch	6490
+641	2	volume	66 96
+642	1	pitch	6502
+642	-	effect-beat	
+643	1	pitch	6514
+643	2	volume	60 90
+643	4	note	5793 7 80 40 143 244
+643	5	note	2018 8 90 90 143 245
+643	6	note	2734 9 40 60 143 246
+643	-	beat	
+643	-	effect-beat	
+644	1	pitch	6502
+644	-	effect-beat	
+645	1	pitch	6490
+645	2	volume	54 84
+645	5	pitch	1988
+646	0	release	
+646	1	pitch	6478
+646	2	release	
+646	4	release	
+646	4	pitch	0
+646	7	release	
+646	-	beat	
+646	-	effect-beat	
+647	1	pitch	6490
+647	2	volume	48 78
+647	5	pitch	2018
+647	-	effect-beat	
+648	0	note	4871 3 100 80 143 224
+648	1	pitch	6502
+648	2	release	
+648	2	pitch	0
+648	4	note	5161 7 80 40 143 244
+648	7	note	1534 10 30 30 143 247
+648	-	beat	
+648	-	effect-beat	
+649	1	pitch	6514
+649	2	volume	54 84
+649	5	pitch	2048
+649	-	effect-beat	
+650	1	pitch	6502
+651	1	pitch	6490
+651	2	volume	60 90
+651	5	pitch	2078
+651	-	beat	
+651	-	effect-beat	
+652	1	pitch	6478
+652	-	effect-beat	
+653	1	release	
+653	1	pitch	6490
+653	2	release	
+653	2	volume	66 96
+653	4	release	
+653	-	beat	
+653	-	effect-beat	
+654	1	pitch	6502
+655	1	pitch	6514
+655	2	volume	72 102
+655	-	effect-beat	
+656	0	release	
+656	1	note	7298 4 70 70 142 209
+656	2	note	3251 5 72 102 143 242
+656	4	release	
+656	4	pitch	0
+656	-	beat	
+656	-	effect-beat	
+657	-	effect-beat	
+658	0	note	4096 3 100 80 143 224
+658	1	pitch	7310
+658	4	release	
+658	-	beat	
+658	-	effect-beat	
+659	1	pitch	7298
+660	1	pitch	7286
+660	2	volume	66 96
+660	-	effect-beat	
+661	1	pitch	7274
+661	4	note	5793 7 80 40 143 244
+661	-	beat	
+661	-	effect-beat	
+662	1	pitch	7286
+662	2	volume	72 102
+662	-	effect-beat	
+663	1	pitch	7298
+664	1	pitch	7310
+664	2	volume	66 96
+664	4	release	
+664	4	pitch	0
+664	7	release	
+664	-	beat	
+664	-	effect-beat	
+665	1	pitch	7298
+665	-	effect-beat	
+666	0	release	
+666	1	release	
+666	1	pitch	7286
+666	2	volume	60 90
+666	4	note	5161 7 80 40 143 244
+666	5	release	
+666	7	note	1534 10 30 30 143 247
+666	-	beat	
+666	-	effect-beat	
+667	1	pitch	7274
+667	-	effect-beat	
+668	1	pitch	7286
+668	2	volume	54 84
+669	0	note	4871 3 100 80 143 224
+669	1	note	6502 4 70 70 142 209
+669	5	note	2018 8 90 90 143 245
+669	-	beat	
+669	-	effect-beat	
+670	2	volume	48 78
+670	-	effect-beat	
+671	1	pitch	6514
+671	4	release	
+671	5	pitch	1988
+671	-	beat	
+671	-	effect-beat	
+672	1	pitch	6502
+672	2	volume	54 84
+672	-	effect-beat	
+673	1	pitch	6490
+673	5	pitch	2018
+674	1	pitch	6478
+674	2	volume	60 90
+674	4	release	
+674	4	pitch	0
+674	-	beat	
+674	-	effect-beat	
+675	1	pitch	6490
+675	5	pitch	2048
+675	-	effect-beat	
+676	0	release	
+676	1	pitch	6502
+676	2	volume	66 96
+676	4	release	
+676	-	beat	
+676	-	effect-beat	
+677	1	pitch	6514
+677	5	pitch	2078
+678	1	pitch	6502
+678	2	volume	72 102
+678	-	effect-beat	
+679	0	note	4096 3 100 80 143 224
+679	1	pitch	6490
+679	4	note	5793 7 80 40 143 244
+679	-	beat	
+679	-	effect-beat	
+680	1	pitch	6478
+680	2	volume	66 96
+680	-	effect-beat	
+681	1	pitch	6490
+681	4	release	
+681	4	pitch	0
+681	7	release	
+681	-	beat	
+681	-	effect-beat	
+682	1	pitch	6502
+682	2	volume	60 90
+683	1	pitch	6514
+683	-	effect-beat	
+684	1	pitch	6502
+684	2	release	
+684	2	volume	54 84
+684	4	note	5161 7 80 40 143 244
+684	7	note	1534 10 30 30 143 247
+684	-	beat	
+684	-	effect-beat	
+685	1	pitch	6490
+685	-	effect-beat	
+686	1	pitch	6478
+686	2	volume	48 78
+687	0	release	
+687	1	release	
+687	1	pitch	6490
+687	2	release	
+687	2	pitch	0
+687	-	beat	
+687	-	effect-beat	
+688	1	pitch	6502
+688	2	volume	54 84
+688	-	effect-beat	
+689	0	note	4871 3 100 80 143 224
+689	1	note	7298 4 70 70 142 209
+689	4	release	
+689	-	beat	
+689	-	effect-beat	
+690	2	volume	60 90
+690	-	effect-beat	
+691	1	pitch	7310
+692	1	pitch	7298
+692	2	release	
+692	2	volume	66 96
+692	4	release	
+692	4	pitch	0
+692	5	release	
+692	6	release	
+692	-	beat	
+692	-	effect-beat	
+693	1	pitch	7286
+693	-	effect-beat	
+694	1	pitch	7274
+694	2	note	3251 5 66 96 143 242
+694	4	release	
+694	5	note	2018 8 90 90 143 245
+694	6	note	2734 9 40 60 143 246
+694	-	beat	
+694	-	effect-beat	
+695	1	pitch	7286
+696	1	pitch	7298
+696	5	pitch	1988
+696	-	effect-beat	
+697	0	release	
+697	1	pitch	7310
+697	4	note	5793 7 80 40 143 244
+697	-	beat	
+697	-	effect-beat	
+698	1	pitch	7298
+698	2	volume	66 96
+698	5	pitch	2018
+698	-	effect-beat	
+699	0	note	4096 3 100 80 143 224
+699	1	release	
+699	1	pitch	7286
+699	4	release	
+699	4	pitch	0
+699	7	release	
+699	-	beat	
+699	-	effect-beat	
+700	1	pitch	7274
+700	2	volume	72 102
+700	5	pitch	2048
