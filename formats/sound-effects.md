@@ -54,8 +54,8 @@ vibrato, volume sweep) change things on every step, as a channel's do.
 No command changes the effect tempo: the tempo commands (11, 12) change
 the song's tempo, and no `title-1` effect uses them.
 
-In `title-1` every song has effect tempo 160 except song 15, which has
-128.
+In `title-1` the songs do not all have the same effect tempo: one song's
+is lower than the rest.
 
 ## Starting an effect
 
@@ -196,7 +196,7 @@ length 2, command 0. It is started on voice 4 after step 20.
     1 to 40 frames apart (924 of the 952 pairs of effect and voice;
     all 952 over all runs);
   - 7 runs with other songs in the first level (songs 1, 5, 9, 11, 12,
-    15 and 23, including the one with effect tempo 128);
+    15 and 23, including the one with the lower effect tempo);
   - 11 runs of play with the game starting its own effects;
   - 4 runs of the made-up song and effects in
     `../vectors/sound-effects/`, moved to suit the game, with effects 0

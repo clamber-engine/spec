@@ -21,7 +21,7 @@ Importer: sound (`title-1`), in part for spec#20
 
 - `formats/sound-effects.md` (new): the effect block (laid out like a
   song block) and its table (119 effects in `title-1`), the effect tempo
-  (song header byte 17; 160, or 128 in song 15), effect slots, starting
+  (song header byte 17), effect slots, starting
   an effect (what is reset and what is kept), the order of channels and
   slots in a step, what a music channel does while its voice is taken,
   the end of an effect (release, noise off, echo from the channel's
