@@ -4,6 +4,22 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (first level, `title-1`).
+
+- `behavior/ball-contact.md`: new (`title-1`). When a thrower's ball
+  hurts the player: with the positions at the end of frame F, after the
+  ball's move, the offsets I (across) and A (ball above the player) in
+  the range for the player's pose on F hurt on F + 1, never on a frame
+  the ball bounces or stops ignoring floors. Ranges for the upright,
+  airborne, rolling, crouching and fidget poses, facing right and left.
+  The ball turns in a 24-step cycle that moves its reach by 2 px across
+  and up; the step before the frame counts. Which pose the player has
+  when, as measured. The ball is unaffected, contact never bounces the
+  player, only the character under control is hurt, protection holds.
+  Examples; "Not covered" lists the rest.
+- `behavior/thrower.md`, `behavior/knock-out.md`,
+  `behavior/losing-a-character.md`: pointers.
+
 ## spec-v0.70.0
 
 Answers https://github.com/clamber-engine/spec/issues/26.
