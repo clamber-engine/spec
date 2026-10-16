@@ -59,7 +59,7 @@ What the cases exercise:
   note with no echo), then on with another echo volume, feedback and
   filter.
 - `delay-4`: echo delay 4 (2 048 outputs), as in `title-1`, with a
-  made-up filter of the shape `title-1` songs use.
+  made-up filter whose first seven parts wrap (four times).
 
 ## Expected output
 

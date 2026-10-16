@@ -67,8 +67,8 @@ So `c0` goes with the oldest value in the history and `c7` with the one
 just taken: a filter whose only value that isn't 0 is `c0` delays the
 echo by 7 more outputs. Since every history value is from −16 384 to
 16 383, the sum of `p0` to `p6` can only wrap when `c0` to `c6`, taken
-without their signs, add up to 128 or more (as with 127, 10, 1, 1, 1,
-1, 1, a shape `title-1` songs use, on a loud memory). The echo is heard
+without their signs, add up to 128 or more (as with 96, 0, 36, 0, 12,
+0, 0, on a loud memory). The echo is heard
 even with echo writing off (whatever the memory holds comes round again
 unchanged), and the memory is written even with echo volume 0.
 
@@ -85,7 +85,8 @@ output after that.)
 - The echo delay is 4 and the memory starts all 0 (above).
 - Commands 21 to 24 of `songs.md` hand the feedback and echo volume
   (turning echo writing on), echo on and off for a voice, and the 8
-  filter values `c0` to `c7` in that order.
+  filter values `c0` to `c7` in that order. Some songs hand filters
+  with which the sum of the first seven parts can wrap.
 - When a song starts its echo volume and feedback are 0 and echo
   writing is off (`songs.md`). The first level's song never hands an
   echo volume, so no echo is heard in it and its memory stays all 0.
