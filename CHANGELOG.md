@@ -4,6 +4,18 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers https://github.com/clamber-engine/spec/issues/19 (in part).
+
+- `behavior/thrown-objects.md`: new. A thrown object that holds nothing
+  (`title-1`), after the flight in `carrying.md`: touching the floor
+  (moving down and less than 5 px above it), bouncing at half the
+  speed while it falls at 1 px per frame or more, then rolling on at
+  3.5 px per frame along the floor, breaking when it moves into a face
+  of solid ground higher than itself (the player isn't held up),
+  removal once 385 px or more right of the view as for walkers, and not
+  coming back.
+- `behavior/carrying.md`: "The object" and "Not covered" point to it.
+
 ## spec-v0.65.0
 
 Answers https://github.com/clamber-engine/spec/issues/19 (in part).

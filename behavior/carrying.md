@@ -144,7 +144,7 @@ From Q + 22 on, each frame, until the object first touches something:
 3. The object moves by the new `vx` and `vy`.
 
 What happens when it touches the floor, a wall or a character depends
-on the object (see "Not covered").
+on the object: see `thrown-objects.md` and "Not covered".
 
 ## Putting down
 
@@ -229,10 +229,12 @@ player's position on the frame before G:
   actions (turning, crouching, landing, being hit).
 - Where the object is drawn or how it collides with anything while it is
   held, and carrying into walls or enemies.
-- What a thrown object does when it first touches the floor, a wall or a
-  character: this depends on the object. Some bounce and roll on, some
-  break. When some objects break the game was seen to stop the player for
-  about half a second; this isn't specified.
+- What a thrown object does when it first touches a character. Bouncing,
+  rolling and breaking against walls for an object that holds nothing
+  are in `thrown-objects.md`; an object that holds the missing character
+  breaks on its first touch (`following.md`). When some objects break
+  the game was seen to stop the player for about half a second; this
+  isn't specified.
 - Putting down on slopes or near walls (on a slope the object was seen to
   end up elsewhere than the rule above), and putting down in the air.
 - Jump or Action on Q + 13 of a put-down.
