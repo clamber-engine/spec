@@ -49,6 +49,7 @@ of 1 px in 4 don't change any of this (`slopes.md`).
 | Standing, walking, running jumps | Same vertical motion; horizontal by the one rule above | `jump-arc.md`, `air-control.md` |
 | Jump distances | 85.5 px standing with Right, 98 px walking, 147 px running (held to landing) | `air-control.md` |
 | Landing | A falling frame that ends less than 5 px above the floor lands on it | `landing.md` |
+| Modes after landing | No turns for 7 frames, facing follows the input; Action and a direction held run from the frame after landing; otherwise walking or standing from the 7th frame after landing | `ground-speed.md` |
 | Jump after landing | Earliest on the third frame after the landing frame; a press made in the air shortly before, and held, is remembered until then | `jump-input.md` |
 | Walking off a ledge | Moves down 3.4375 px on the first airborne frame, then gravity 0.4375 up to 8 | `walk-off.md` |
 | Jumping after leaving a ledge | Where the ground simply ends, a press on the first airborne frame still jumps (take-off on the next frame); no later press does. At a ledge with a face at the top, the last chance is the frame before the player starts down the face | `walk-off.md` |
@@ -62,6 +63,7 @@ of 1 px in 4 don't change any of this (`slopes.md`).
 | Length | 29 frames; about 69 px from standing and 83 px from walking for a normal roll | `roll-input.md`, `roll-speed.md` |
 | Extending | Action held throughout carries a normal or slow roll on into running; otherwise a stop of 17 frames follows | `roll-input.md`, `roll-speed.md` |
 | Steering | Holding the opposite direction reverses the roll at once | `roll-speed.md` |
+| After the roll | Standing after a stop; walking (not running) after carrying on, whatever is held | `ground-speed.md` |
 | Jumping out | A jump can start on any roll frame; from take-off the normal targets apply, starting from the roll's speed; no stop follows | `roll-speed.md` |
 | Off a ledge | The roll continues through the fall at roll speed and lasts until 29 frames after landing (it ends on landing after a fall of exactly 30 frames); a roll leaving within 8 frames of its start hovers first; a jump can start on any frame of that fall | `rolling-off-ledges.md` |
 | Before a ledge | A roll slower than 1.0625 px per frame stops when the ground ends within 15 px ahead | `rolling-off-ledges.md` |
@@ -107,6 +109,5 @@ carry on into running until D + 6. Everything else is the same
 
 ## Not covered
 
-What each file lists under "Not covered", and in particular: the
-walking and running modes after landings and rolls, and every title
-other than `title-1`.
+What each file lists under "Not covered", and in particular: every
+title other than `title-1`.

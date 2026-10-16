@@ -4,6 +4,22 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (`title-1`). Answers no open `spec` issue.
+
+- `behavior/ground-speed.md`: new sections "After a landing" and "After
+  a roll" under "Standing, walking and running". After a jump lands on
+  L, frames L to L + 6 are in no mode: no turns, facing follows the
+  input as in the air; running starts on L + 1 with Action and one
+  direction held (no roll starting); otherwise on L + 7 running,
+  walking or standing by what is held. The original sometimes runs on
+  L and starts the mode on L + 9 or L + 10, by the hidden timing of the
+  landing lockout; the spec defines L + 1 and L + 7, with tolerances.
+  After a roll's stop the player is standing on D + 17; after carrying
+  on, walking starts on D + 3 at step 1, whatever is held. Example,
+  evidence; "Not covered" updated.
+- `behavior/jump-input.md`: points to it.
+- `behavior/movement-summary.md`: rows for both; "Not covered" updated.
+
 ## spec-v0.77.0
 
 Coverage (`title-1`). Answers no open `spec` issue.
