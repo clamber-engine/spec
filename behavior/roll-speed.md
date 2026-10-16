@@ -329,7 +329,25 @@ at the start of S. Every roll below ends in a stop.
 | Standing, facing right | Action; nothing | slow | 0.140625, 0.26171875, 0.3671875 | 1.09375 | 26.78515625 | 27.8828125 |
 | Standing, facing right | Action and Right; Right | normal | 0.421875, 0.7890625, 1.109375 | 3.30859375 | 81.02734375 | 84.34375 |
 | Walking right at 2.25 | Action and Right; Right | normal | 2.390625, 2.51171875, 2.6171875 | 3.34375 | 96.53515625 | 99.8828125 |
-| Running right (Action held 66 frames), then Right alone for one frame (`vx` 3.15625) | Action and Right; Right | fast | 3.32421875, 3.46875, 3.59765625 | 4.46484375 | 129.953125 | 134.421875 |
+| Running right after a long Action hold (see below), then Right alone for one frame (`vx` 3.15625) | Action and Right; Right | fast | 3.32421875, 3.46875, 3.59765625 | 4.46484375 | 129.953125 | 134.421875 |
+
+The fast row starts from standing, facing right, with frame 0 the first
+frame of input. Action alone is held on frames 0 to 45: a slow roll on
+frames 0 to 30 that carries on (D = 31; Action held throughout, see
+"When the roll ends"), then the ground rules with no direction, so `vx` falls toward 0
+(0.1796875, 46/256, on frame 45). Action and Right are held on frames 46
+to 65: the target is 2.25 on frame 46 (the first frame with a direction)
+and 3.375 from frame 47, so `vx` is 0.4375 on frame 46 and
+3.12890625 (801/256) on frame 65, still short of 3.375. Right alone is
+held on frame 66: the target is still 3.375 (Action and a direction were
+held on frame 65), so `vx` becomes 3.15625 (808/256). S is frame 67.
+Action's last hold before the press on S is frames P = 0 to Q = 65
+(66 frames) and S − (Q + 1) = 1, so the roll is fast (see "Size").
+
+Holding Action and Right from frame 0 instead starts a normal roll on
+frames 0 to 30 that carries on into running; `vx` is 3.375 from frame 40,
+stays 3.375 on frame 66 (Right alone), and the fast roll from S = 67 has
+`vx` 3.515625, 3.63671875, 3.7421875 on S, S + 1, S + 2.
 
 Reversing: walking right at 2.25, Action and Right on S, then Left held.
 On S the target is +3.375 (`vx` 2.390625, facing right); on S + 1 facing
