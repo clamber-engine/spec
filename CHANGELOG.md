@@ -4,6 +4,20 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (`title-1`). Answers no open `spec` issue.
+
+- `behavior/walk-off.md`: new section "Ledges without a face": the
+  player is grounded exactly while their column has ground (nothing
+  slows, stops or lowers them before the end); L is the first frame
+  ending with the player's column past the end; `vx` on L follows the
+  speed rule; a Jump press on L still starts a jump (T = L + 1, moving
+  down 3 + g on L and 1/256 + g on T), a press on L − 1 takes off on
+  L, presses from L + 1 do nothing (`coyote_frames` 1); examples,
+  evidence. "Jumping near the edge" now says it is for ledges with a
+  face; "Not covered" updated.
+- `behavior/jump-input.md`, `behavior/air-control.md`,
+  `behavior/movement-summary.md`: point to it.
+
 ## spec-v0.76.0
 
 Coverage (first level, `title-1`). Answers no open `spec` issue.

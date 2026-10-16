@@ -18,6 +18,11 @@ A press on frame P while grounded starts a jump on frame P + 1
 (`jump_start` on P + 1). This includes every frame of a roll, standing or
 moving: rolling never delays or blocks a jump.
 
+What counts is being grounded at the end of frame P − 1. So where the
+ground simply ends, a press on the first airborne frame of a walk-off
+still starts a jump; at a ledge with a steep face it doesn't
+(`walk-off.md`, "Jumping near the edge" and "Ledges without a face").
+
 ## Landing lockout
 
 After landing, there is a short time when a jump can't start. Call the

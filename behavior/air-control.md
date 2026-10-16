@@ -307,5 +307,7 @@ This list is for `title-1`; `title-2` has its own list above.
   from below are in `platforms-from-below.md`.
 - The second character: its values are in `second-character.md`.
 - Speed on frame L of a walk-off fall and on the grounded frames just
-  before it (on rounded edges the speed was seen to rise above the
-  target there).
+  before it at ledges with a face or a rounded edge (on rounded edges
+  the speed was seen to rise above the target there). Where the ground
+  simply ends, L follows the speed rule (`walk-off.md`, "Ledges without
+  a face").
