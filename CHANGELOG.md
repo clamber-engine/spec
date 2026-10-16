@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.63.0
+
 Answers https://github.com/clamber-engine/spec/issues/22 (in part).
 
 - `behavior/following.md`: new. How the other character follows the
