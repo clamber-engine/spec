@@ -530,9 +530,7 @@ level x 256 and its top line (line 1) is at level y 257:
 - line `L` is level y `L` + 256, so a surface at line `L` is one that a
   player stands on with its feet at level y `L` + 256.
 
-The player's position is given in the same level positions: on the
-first level, the player starts at level x 304, standing on the surface
-at level y 465 (grid px column 48, line 209).
+The player's position is given in the same level positions.
 
 ### The map and the grid (`title-2`)
 
