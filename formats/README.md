@@ -13,8 +13,9 @@ fingerprints" in `../REVIEW.md`).
 
 ## Files
 
-- `level-ground.md`: a level's ground: the grid (column grids and row
-  grids), cell types, shapes, and the ground below a point. Vectors:
+- `level-ground.md`: a level's ground: the grid (column grids, row
+  grids and ceiling grids), cell types, shapes, and the ground below a
+  point. Vectors:
   `../vectors/level-ground/`.
 - `rom-image.md`: recognizing a supported image file (copier headers,
   size, hash) and turning locations (bank number and address) into
