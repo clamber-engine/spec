@@ -4,6 +4,22 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers https://github.com/clamber-engine/spec/issues/20 (in part).
+
+- `formats/songs.md`: new. What song data says (`title-1`, all 27
+  songs): the header (track addresses, tempo), steps (4 × period audio
+  outputs) and beats (tempo sum), reading a track on beats (wait,
+  release one beat before the next item), one-byte, two-byte and fixed
+  lengths, the pitch of each note number, fine tuning and transposition,
+  rests, commands 0 to 48 (samples, volume, envelope settings, jumps,
+  calls, branch, tempo, period, echo and noise settings, presets, fade),
+  the pitch slide, vibrato and volume sweep with their exact step
+  timing, and song-wide settings at the start. How a voice makes sound
+  from its settings is not covered yet.
+- `formats/sound.md`: points to it; the rate a sample plays at is its
+  pitch.
+- `formats/README.md`: lists it.
+
 ## spec-v0.63.0
 
 Answers https://github.com/clamber-engine/spec/issues/22 (in part).

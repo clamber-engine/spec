@@ -5,8 +5,8 @@ Titles: `title-1`
 How the recorded sounds that music and sound effects are made from
 (**samples**) are stored and turned into audio, which samples are there
 while each song plays, and where each song's data is stored. What a
-song's data says (notes, instruments, timing, loops) is not covered yet;
-see "Not covered". Vectors: `../vectors/sound/`.
+song's data says (tracks, notes, timing, loops, and what each voice is
+handed) is in `songs.md`. Vectors: `../vectors/sound/`.
 
 Where the tables below start in a supported image is in `locators.md`,
 under the names given here. Locations are as in `rom-image.md`; all
@@ -105,7 +105,7 @@ first pass, and from other loop passes.
 ### Turning a sample into audio with a loop point
 
 One output is one audio sample point. The rate at which a song plays a
-sample is not covered here.
+sample is its pitch (`songs.md`).
 
 - One-shot: the first pass.
 - Looping: the first pass, with the loop starting at output 16 × (loop
@@ -178,9 +178,8 @@ frames of play.
 
 ## Not covered
 
-- What song data means: channels, notes, instruments (which sample,
-  pitch, envelope, volume), timing, repeats and the song's loop.
-- The rate at which a sample is played, and how instruments change it.
+- What song data means: see `songs.md`, which also lists what of it
+  is not covered yet (how a voice makes sound from its settings).
 - Sound effects: which sounds the first level plays, when, and how they
   are stored.
 - Effects applied to the mixed sound (echo and others).
