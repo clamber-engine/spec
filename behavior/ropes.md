@@ -43,8 +43,8 @@ A rope has:
   `w_left` and `w_right` (whole px).
 
 Both ropes measured had a rope speed of 0.1875 (48/256) and swing limits
-of 3 px each way. Their bottom ends were at level `y` 368 and 256. Where
-these values come from in the level data is not covered.
+of 3 px each way. Where a rope's position, bottom end, speed and limits
+come from in the level data is not covered.
 
 On every frame, in this order:
 
