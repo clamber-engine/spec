@@ -4,6 +4,22 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (`title-1`). Answers no open `spec` issue.
+
+- `behavior/ropes.md` (new): ropes. The rope's sway (target flips past
+  centre ± swing limit, speed moves 1/32 of the gap per frame); catching
+  from a jump (feet line no more than 24 px below the rope's end, within
+  12 px, or 4 px at speed 0.25 or more; the rope last held is skipped
+  until out of reach for a frame); holding (whole px of the rope's `x`,
+  climbing targets 1.5 up / 2.5 down, 2.5 / 3.5 with Action, Jump alone
+  counts as Up, an eighth of the gap per frame, held down to 41 px below
+  the view's top); turning (8 frames, facing on the 5th, remembered rope
+  direction turns on a catch); jumping off (Jump press with a direction,
+  `vy` −6.125 plus the climb step from Up/Down, run memory, air targets
+  ±3); sliding off the end (24 px below it; fall with gravity 0.4375,
+  facing kept); worked values; not covered.
+- `behavior/movement-summary.md`: new section "Ropes".
+
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.
