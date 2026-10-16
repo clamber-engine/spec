@@ -14,7 +14,11 @@ runs). The player went in by walking off the gap's edge and then
 stopping, turning back or pressing buttons while falling, or by jumping
 into it with or without turning back. Separately, the fall was started
 at 2560 chosen heights and downward speeds in the gap to find the exact
-limit.
+limit. For the input on Z, one input was held only on Z, only on Z − 1,
+only on Z − 2, only on Z + 1, on Z − 1 and Z, or from Z on, in 144
+falls (and the same falls with nothing extra held): walking off the
+edge alone and with the second character following, and jumping in
+alone.
 
 ## The level's bottom
 
@@ -35,9 +39,17 @@ Call **Z** the first frame that ends with the player's level y
 **greater than `Yb` + 48**, after the player has moved on that frame.
 Ending exactly at `Yb` + 48 is not enough; `Yb` + 48 + 1/256 is.
 
-- On Z the player moves as on any falling frame. With `vy` at 8, the
-  player's level y on Z is from `Yb` + 48 + 1/256 to `Yb` + 56.
-- From Z on, all input is ignored until the level ends.
+- On Z the player moves as on any falling frame, with the input held on
+  Z. With `vy` at 8, the player's level y on Z is from `Yb` + 48 + 1/256
+  to `Yb` + 56.
+- Directions held on Z count: Z's target speed, `vx` and facing follow
+  Z's input by `air-control.md`, and `x` on Z changes by Z's new `vx`.
+  So with Right held on Z after a frame with nothing held, `vx` and `x`
+  on Z (and on every frame after it) differ from nothing held on Z.
+- Jump, Action, Up, Down and the swap press on Z do nothing, the same as
+  the same press on Z − 1 or Z − 2 in a fall: no jump starts, no swap
+  happens (`swap.md`) and nothing else about the player changes.
+- From Z + 1 on, all input is ignored until the level ends.
 - From Z + 1 on, the player stays out of sight below the picture until
   the level ends. (On every measured fall the player was already below
   the picture on Z.)
@@ -65,7 +77,7 @@ into the gap after the lead and fell out of sight too.
 
 ## In a trace
 
-- Z is an ordinary `fall` row.
+- Z is an ordinary `fall` row, moved with Z's input.
 - Z + 1 to Z + 96: `x` and `y` as on Z, `vx` 0, `vy` 0, `ground` 0, state
   `fall`, no events. The vocabulary has no state for these frames yet;
   `fall` is used until it does.
@@ -77,8 +89,13 @@ A player falls with `vy` at 8 in a level whose `Yb` is 400. Frame 300
 ends at level y 396.5, above the bottom edge. Frame 301 ends at 404.5,
 below the edge, and nothing happens. Frames 302 to 306 end at 412.5 to
 444.5. Frame 307 ends at 452.5, greater than `Yb` + 48 = 448: Z is
-frame 307. Input is ignored from frame 307, and frame 403 (Z + 96) is
-the last frame of the level.
+frame 307. Frame 307 still moves with its own input, input is ignored
+from frame 308, and frame 403 (Z + 96) is the last frame of the level.
+
+If frame 306 ends with `vx` at 0 and Right is held on frame 307 only,
+the target is +2, so `vx` on 307 is 0 + 512/8 = +64/256 = +0.25 and
+`x` on 307 is `x` on 306 + 0.25. Frames 308 to 403 keep that `x`.
+Holding Right from frame 308 on instead changes nothing.
 
 Had frame 306 ended at exactly 448, Z would have been frame 307 at 456,
 not frame 306.
