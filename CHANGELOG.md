@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.66.0
+
 Answers https://github.com/clamber-engine/spec/issues/19 (in part).
 
 - `behavior/thrown-objects.md`: new. A thrown object that holds nothing
