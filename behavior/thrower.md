@@ -1,0 +1,229 @@
+# Throwers and their balls
+
+Titles: `title-1`
+
+A **thrower** is an enemy that sits in one place, high up, and throws
+**balls** on a fixed timetable: one to the left, one straight up and one
+to the right. A ball flies, bounces on floors, drops through them after
+a bounce, and is removed once it is outside the picture. This file
+covers where a thrower is, when it throws, and how a ball moves until
+it is gone. What happens when a ball or a thrower touches the player, or
+an object the player throws, is not covered here.
+
+Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y`,
+`vx` and `vy` are as in a trace: right and down are positive, speeds in
+px per frame. `y` is a level y as in `view-vertical.md`. Speeds are
+whole multiples of 1/256 px per frame and are written both ways, as in
+`ground-speed.md`. Columns are as in `steep-faces.md`: 1 px wide, and
+an object's column is the one containing its `x`. A column can have
+several **floors** at different heights (for example ground with
+platforms above it, `../formats/level-ground.md`); "higher" means higher
+on screen (smaller `y`).
+
+Measured on the first level, which has one thrower, with the lead
+character alone, standing at different places near the thrower, walking
+under it and past it on both sides, walking away until it was removed
+and coming back from both sides, and walking and jumping at random: 203
+throws, 236 ball flights and 12 442 ball frames, all checked against
+the rules below with no mismatch; 20 times the thrower appeared or was
+removed. Separately, about 90 controlled runs in which a ball's
+position or speeds were set after a bounce, to find the limits below.
+
+## The thrower
+
+A level places a thrower at a position `P` = (`xt`, `yt`). The thrower
+never moves from `P`.
+
+It appears and is removed exactly as a walker whose start is `P`
+(`walker-view.md`): it appears on the first frame whose `V` puts `xt` in
+the window (−31 ≤ `xt` − `V` ≤ 288), and is removed on the first frame
+on which `xt` − `V` ≤ −128 or `xt` − `V` ≥ 385. Measured: appearing at
+`xt` − `V` = 287 and 288 with the view moving right, and from −31 to
+−29 with it moving left (never at −32); removed at 386 and at −129.
+After being removed it appears again by the same rule, and starts its
+timetable again.
+
+## When it throws
+
+Let `A` be the frame the thrower appeared. It throws on these frames,
+for every whole `n` ≥ 0:
+
+| Frame | Ball |
+|---|---|
+| `A` + 2 + 173`n` | straight up |
+| `A` + 33 + 173`n` | to the right |
+| `A` + 144 + 173`n` | to the left |
+
+So after appearing it throws up, then right 31 frames later, then
+nothing for 111 frames, then left, up and right 31 frames apart, and so
+on every 173 frames. Where the player is or what the player does makes
+no difference. The timetable goes on while the thrower is outside the
+window but not yet removed, and a throw due on the frame the thrower is
+removed still happens (seen once).
+
+The thrower measured was drawn facing left. Whether a thrower facing
+the other way throws in a mirrored order isn't covered.
+
+## A thrown ball
+
+A ball thrown on frame `T` starts at (`xt`, `yt` − 8), 8 px above the
+thrower's position, with:
+
+| Ball | `vx` | `vy` |
+|---|---|---|
+| to the left | −3.125 (−800/256) | −7 (−1792/256) |
+| straight up | 0 | −7 (−1792/256) |
+| to the right | +3.125 (+800/256) | −7 (−1792/256) |
+
+It isn't ignoring floors (below). On `T` itself the ball is **either**
+
+- at its start, with these speeds; it then makes its first move on
+  `T` + 1, and isn't removed on `T` even if its start is outside the
+  window below; **or**
+- already one frame on: it has made one frame of moves ("Each frame")
+  from its start on `T`, with that frame's checks, including being
+  removed.
+
+Both were seen for every direction (left 36 at the start and 32 one
+frame on, up 22 and 63, right 26 and 51), on the same frames of the
+timetable. Which of the two happens on a given throw isn't covered. Four
+throws made while the thrower was outside the window but not yet
+removed (`xt` − `V` from 304 to 308) were never seen at all, which is
+what happens when the ball is one frame on and removed on `T`.
+
+## Each frame
+
+Every frame after the ball appears, in this order:
+
+1. The new `vy` is `vy` + **0.4375** (112/256), but never above **8**
+   (2048/256).
+2. `x` moves by `vx`. Nothing ever changes `vx`.
+3. The ball moves vertically, as in "Ignoring floors" if it is ignoring
+   floors, or else as in "Bouncing".
+4. **Leaving the picture**: unless the ball bounced on this frame or
+   stopped ignoring floors on it, it is removed if it is now outside
+   the window (below).
+
+## Bouncing
+
+While the ball isn't ignoring floors:
+
+1. Take the new `y` = `y` + new `vy`.
+2. Its **floor** `F` is the highest floor in the column of its new `x`
+   that is no more than **8 px above** its `y` at the start of the
+   frame (before this frame's move): the floor with the smallest level
+   y among those with level y ≥ `y` − 8. If there is none, it simply
+   moves.
+3. It **touches** the floor if the new `vy` is above 0 (moving down)
+   and the new `y` is more than `F` − 5 (less than 5 px above the
+   floor, or anywhere below it). Otherwise it simply moves to the new
+   `y`.
+4. When it touches, it **bounces**: its `y` becomes `F` exactly, its
+   `vy` becomes **−5** (−1280/256) however fast it was falling, and it
+   starts **ignoring floors**, remembering `F` as its **bounce floor**
+   `G`.
+
+Measured limits: with the ball moving down onto a floor, a new `y`
+4.9375 px above the floor touched and 5 px above didn't; a ball whose
+`y` at the start of the frame was 8 px below a floor came back up onto
+it, and 8.5 px below didn't. With the start of the frame in one column
+that had no floor within reach and the new `x` in a column that had,
+it bounced on the new column's floor.
+
+## Ignoring floors
+
+While the ball is ignoring floors, it moves to the new `y` = `y` + new
+`vy` and passes through every floor, including the one it bounced on
+and lower ones close below it (one 7 px below was passed). It stops
+ignoring floors on the frame its new `y` is more than **47 px below**
+its bounce floor: `y` > `G` + 47. From the next frame on, floors count
+again. Measured: stopped at 47.0625 px below, still ignoring at exactly 47
+px and at 46.9375 px below. It is the distance that counts, not the time: with
+the ball's speed changed after the bounce, the number of frames until
+it stopped ignoring changed and the distance didn't.
+
+So a ball bounces once on each floor it reaches, rising 26.125 px
+and falling back through it, and lands next on a floor more than 47 px
+lower. A ball that bounces on a ledge drops through it to the ground
+below.
+
+## Leaving the picture
+
+Let `V` be the view's horizontal position rounded down (as in
+`walker-view.md`), `W` the view's vertical position rounded down (the
+level y of the picture's top row, `view-vertical.md`), both **as they
+were at the start of the frame**, `X` the ball's new `x` rounded down
+and `Y` its new `y` rounded **up**. The ball is in the window while
+
+    −31 ≤ X − V ≤ 288   and   −31 ≤ Y − W ≤ 256
+
+that is, from 31 px left of and above the picture to 32 px right of and
+below it (the picture is 256 by 224 px). A ball outside the window at
+the end of a frame is removed on that frame, except on a frame on which
+it bounced or stopped ignoring floors: then it stays, and is removed on
+the next frame if it is still outside. Measured: kept at `X` − `V` =
+288 and removed at 289, kept at −31 and removed at −32, kept at
+`Y` − `W` = 256 and removed at 257 (with `W` from 187 to 230), kept at
+−31 and removed at −32; kept on a frame that ended ignoring at
+`Y` − `W` = 257 and on a bounce at `X` − `V` = 294, removed on the
+frame after each. With the view moving, the start-of-frame position
+fits every removal, and the end-of-frame position doesn't.
+
+A removed ball doesn't come back.
+
+## Balls placed in a level
+
+A level can also place a ball directly. It appears on the first frame
+whose `V` puts its placed `x` in the walker window (`walker-view.md`;
+measured with the view moving right only), already one frame on: on its appearance frame it has made one frame of moves
+from its placed position with its starting speeds. It isn't ignoring
+floors, and from then on it moves as above. The one on the first level
+started with `vx` −1.171875 (−300/256) and `vy` −3 (−768/256); it was
+seen appearing 6 times, always one frame on. Which speeds a placement
+gives isn't covered.
+
+## Example
+
+A thrower is at (1000, 300). In column 1000 there are floors at y 301,
+331 and 381. On `T` = `A` + 2 it throws straight up, and the ball is at
+its start on `T`. The view keeps the ball in the window. `x` stays 1000.
+
+| Frame | `y` | `vy` | |
+|---|---|---|---|
+| `T` | 292 | −7 (−1792/256) | at the start |
+| `T` + 1 | 285.4375 | −6.5625 | |
+| `T` + 15 | 239.5 | −0.4375 | highest point |
+| `T` + 16 | 239.5 | 0 | |
+| `T` + 31 | 292 | +6.5625 | |
+| `T` + 32 | 301 | −5 (−1280/256) | new `y` 299 is less than 5 px above floor 301: bounce, `G` = 301 |
+| `T` + 33 | 296.4375 | −4.5625 | ignoring floors |
+| `T` + 43 | 274.875 | −0.1875 | highest point after the bounce, 26.125 px above `G` |
+| `T` + 54 | 301.6875 | +4.625 | passes floor 301 |
+| `T` + 59 | 331.375 | +6.8125 | passes floor 331 |
+| `T` + 61 | 346.3125 | +7.6875 | 45.3125 below `G`: still ignoring |
+| `T` + 62 | 354.3125 | +8 | 53.3125 below `G`: stops ignoring |
+| `T` + 63 | 362.3125 | +8 | |
+| `T` + 64 | 370.3125 | +8 | floor 381 in reach, new `y` 10.6875 above it: no touch |
+| `T` + 65 | 381 | −5 | new `y` 378.3125 is 2.6875 above floor 381: bounce, `G` = 381 |
+
+Floor 331 never counted: the ball passed it while ignoring floors.
+
+## Not covered
+
+- Balls or the thrower touching the player (balls were seen to knock
+  the player out), the player bouncing on or rolling into the thrower,
+  thrown objects (`thrown-objects.md`) meeting a ball or the thrower,
+  and balls meeting walkers.
+- How balls and the thrower move while the player is knocked out (balls
+  were seen to stop for several frames).
+- A ball moving up into a floor from below while not ignoring floors
+  (it was seen to jump several px at the floor). This doesn't happen in
+  the first level: balls start above the ledge and only bounce while
+  falling.
+- Walls and faces in a ball's way (none was met).
+- Throwers facing right, other timetables, and throwers in other levels.
+- How a level's placements mark a thrower or a placed ball
+  (`../formats/placements.md` doesn't give kinds of objects).
+- Whether a placed ball comes back after it is removed, and what a
+  placed ball's speeds come from.
+- How the thrower and the balls are drawn.
