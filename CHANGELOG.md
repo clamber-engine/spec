@@ -4,8 +4,10 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.72.0
+
 Coverage (first level, `title-1`), using the kind fingerprints of
-spec #23.
+spec #23. Answers no open `spec` issue.
 
 - `formats/placements.md`: new section "Kinds". Which kind of object a
   class 1 or class 2 entry places, told by fingerprint: for each bank
