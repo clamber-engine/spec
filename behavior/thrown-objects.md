@@ -7,8 +7,8 @@ thrown until it is gone: how it bounces on the floor, how it then rolls,
 how it breaks against a wall, what happens when it hits a walker, and
 when it is removed after leaving the picture. `carrying.md` covers the throw itself and the flight up to the
 first touch; this file carries on from there. An object that holds the
-missing character breaks the first time it touches anything
-(`following.md`, "Joining") and is not covered here.
+missing character moves the same way until it breaks; when it breaks is
+in `holder-breaking.md`.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y`,
 `vx` and `vy` are as in a trace: right and down are positive, speeds in
@@ -344,5 +344,4 @@ again. Speeds in 1/256 px per frame.
 - How the pieces of a broken object move and are drawn, and how the
   object is drawn while bouncing and rolling.
 - Removal on the left of the picture, and `X` − `V` of 383 and 384.
-- Objects thrown by the second character, and the object holding the
-  missing character after it touches something.
+- Objects thrown by the second character.
