@@ -308,8 +308,8 @@ This list is for `title-1`; `title-2` has its own list above.
 
 
 - Whether a walker defeated by a bounce can still hurt the player while
-  it falls, and walkers defeated in other ways (thrown objects; rolls
-  are in `rolling-into-walkers.md`).
+  it falls. Walkers defeated in other ways are in `thrown-objects.md`
+  ("Hitting walkers") and `rolling-into-walkers.md`.
 - Ledges and steep faces: one walker was seen to follow a steep face
   down and fall off its end without turning, then land on the floor
   below; this isn't specified. Walkers on other slopes.

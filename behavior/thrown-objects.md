@@ -4,8 +4,8 @@ Titles: `title-1`
 
 What a thrown object that holds nothing does from the moment it is
 thrown until it is gone: how it bounces on the floor, how it then rolls,
-how it breaks against a wall, and when it is removed after leaving the
-picture. `carrying.md` covers the throw itself and the flight up to the
+how it breaks against a wall, what happens when it hits a walker, and
+when it is removed after leaving the picture. `carrying.md` covers the throw itself and the flight up to the
 first touch; this file carries on from there. An object that holds the
 missing character breaks the first time it touches anything
 (`following.md`, "Joining") and is not covered here.
@@ -30,7 +30,7 @@ frames of thrown objects in all, ending in 62 breaks against walls and
 object's height, position or speeds were set just before it reached
 flat floor or a face, to find the limits below. The floor there was
 flat, slopes of 1 px per 4 columns rising and falling, and faces of 4 px
-per column.
+per column. Hitting walkers was measured separately (see that section).
 
 ## Each frame
 
@@ -46,6 +46,10 @@ From Q + 22 on, every frame, in this order:
    rolling as in "Rolling".
 5. **Leaving the picture**: if it is now far enough outside the picture
    (below), it is removed.
+
+Walkers move on the same frame by their own rules. With both at their
+positions at the end of the frame, the object can **hit a walker**
+("Hitting walkers"); that changes nothing in the object's own motion.
 
 ## In the air
 
@@ -129,6 +133,150 @@ removed on the left wasn't seen. A removed object didn't come back
 while its starting place stayed near the picture (the only case
 measured).
 
+## Hitting walkers
+
+The object defeats walkers (`walker.md`, sizes as in
+`walker-contact.md`) that it touches, and flies or rolls on as if they
+weren't there.
+
+Measured on the first level with the lead character alone, after
+moving one ordinary object in the level's placement list so that it
+rests near a walker (nothing else changed): one copy with the object
+on the opening flat ahead of the first small walker, one with it inside
+the patrol of the two large walkers (on flat floor and 1-in-4 slopes).
+440 throws by inputs alone (standing, after walking, turning, running
+and jumping, at every few frames as the walker came nearer, toward
+walkers heading both ways, and from both sides), 417 hits, and 10 856
+frames on which a walking walker and the thrown object were both
+there, checked against the rules below with one mismatch (two walkers
+in range on the same frame, "Not covered"); 10 897 frames of hit walkers checked against "The
+walker", 0 mismatches; and about 17 000 controlled single frames in
+which the object's position or speeds were set next to a walker just
+before a frame, to find the limits.
+
+### When a walker is hit
+
+Let **t** be the number of frames since the object left the hands: t =
+1 on Q + 22. Let **I** be the object's `x` minus the walker's `x`, both
+rounded down to whole pixels, and **U** how many pixels the object's `y`
+is above the walker's (the walker's `y` minus the object's `y`), both at
+the end of the frame. The walker is hit on a frame when it is walking
+(not already hit) and
+
+- I is within the range in the table below for that t, and
+- U is less than the height limit below for that t.
+
+| Walker | Walker facing | Object moving | t from 1 to 16 | t of 17 or more |
+|---|---|---|---|---|
+| small | left | right | −48 to 28 | −23 to 27 |
+| small | left | left | −29 to 47 | −28 to 22 |
+| small | right | left | −28 to 48 | −27 to 23 |
+| small | right | right | not measured | not measured |
+| large | left | right | −51 to 31 | −26 to 30 |
+| large | right | right | −50 to 32 | −25 to 31 |
+| large | either | left | not measured | not measured |
+
+Both ends are included. The height limits are:
+
+| Walker | t from 1 to 16 | t of 17 or more |
+|---|---|---|
+| small | U less than 63 | U less than 30 |
+| large | U less than 89 | U less than 56 |
+
+So for its first 16 frames out of the hands (Q + 22 to Q + 37) the
+object hits over a much larger area, reaching 25 px further back toward
+where it came from, 1 px further ahead and 33 px higher; from Q + 38 on it hits over the
+smaller area whether it is in the air, rising or falling, bouncing or
+rolling. The ranges don't depend on the object's speed or on whether it
+is rising or falling (measured with speeds from 3.5 to 14 px per frame).
+
+Patterns in the measured rows: a large walker's ranges are a small
+walker's widened by 3 px on each side (as for its other ranges in
+`walker-contact.md`); a walker facing right has its ranges 1 px further
+right than facing left; and for an object moving left the ranges are
+those for an object moving right turned around (−27 to 23 from −23 to
+27, and so on) and then moved 1 px left.
+
+The walker's facing is the one of `walker.md`: while it turns at the
+end of a patrol, its facing changes on T + 4, and hits on the frames
+in between followed the facing it had (17 hits and about 830 frames
+without a hit, all as the rules say).
+
+The limits were measured with the walker walking at full speed. Hits
+were seen with the object up to 12 px lower than the walker (U down to
+−12, on slopes); lower than that wasn't seen.
+
+One object can hit several walkers, each on its own frame (seen with
+both large walkers in 67 throws).
+
+### What else happens on a hit
+
+- The object goes on exactly as it would have without the walker:
+  same speeds, bounces, rolling and breaking.
+- The player isn't held up: walking, jumping, rolling and throwing go
+  on exactly as they would have without the walker (compared frame by
+  frame with the walker kept away), and no frame is paused.
+
+### The walker
+
+Call **K** the frame on which a walker is hit and **d** the direction
+the object is moving on K (+1 right, −1 left). The walker is knocked the
+other way, back toward where the object came from:
+
+1. On **K** it walks as usual (`walker.md`: speed rule, move, its `y` on
+   the floor). Then its `vx` becomes **−4 × d** (4 px per frame), and
+   from now on it heads the way it is knocked (−d).
+2. On **K + 1**, as on a walking frame, the turn at the end of a patrol
+   (`walker.md`) can still happen: if it is now heading left with `x`
+   rounded down less than L, or right with `x` rounded down greater
+   than R, its heading changes to the other way. Then `vx` takes one
+   step of the speed rule toward **2 px per frame** in its heading
+   (−1024/256 to −960/256 when heading left at −4), it moves by `vx`,
+   its `y` becomes the floor's at its new `x`, and its `vy` becomes
+   **−6**. (A walker's heading turned here was seen on 3 hits of a large
+   walker just past the end of its patrol: from −4, `vx` stepped toward
+   +2, to −832/256.)
+3. From **K + 2**, every frame: `vx` takes one more step of the speed
+   rule toward 2 px per frame in the same heading, `vy` increases by
+   **0.4375** (7/16) but never above **8**, and it moves by both. It
+   doesn't turn again and doesn't land: it falls through the floor.
+
+There are no frozen frames (unlike a bounce, `walker.md`). On frame
+K + 1 + n (n ≥ 1, before `vy` reaches 8), its `y` is
+−6 × n + 0.4375 × n(n + 1) / 2 relative to its `y` on K + 1, as for a
+bounced walker one frame earlier.
+
+It is then removed. Small walkers on flat floor last moved on K + 40,
+95 px below the floor they had been walking on; large walkers on slopes
+and flat floor last moved between K + 38 and K + 42, 79 to 112 px below
+their floor on K. A walker hit while it was well left of the picture
+(its `x` rounded down minus `V`, as in "Leaving the picture", −38 or
+less on K + 1) last moved on K + 1; from −35 on it fell as above. When
+exactly it is removed isn't specified.
+
+### Example
+
+Computed from the rules above: the throw of "Example" below (thrown
+right from standing, `x` and `y` from the object's position on Q + 21,
+flat floor at `y` = 54), with a small walker heading left at full speed
+(facing left) on the same floor, at `x` = 160.25 on Q + 21. Speeds in
+1/256 px per frame.
+
+| Frame | Object `x` | Object `y` | Walker `x` | Walker `y` | Walker `vx` | Walker `vy` | I | U | |
+|---|---|---|---|---|---|---|---|---|---|
+| Q + 30 | 92.71875 | 28.6875 | 151.25 | 54 | −256 | 0 | −59 | 25.3125 | |
+| Q + 31 | 99.515625 | 34.0625 | 150.25 | 54 | −256 | 0 | −51 | 19.9375 | t = 10: −51 is outside −48 to 28 |
+| Q + 32 | 105.90234375 | 39.875 | 149.25 | 54 | −1024 | 0 | −44 | 14.125 | K: hit |
+| Q + 33 | 111.9296875 | 46.125 | 145.5 | 54 | −960 | −1536 | | | K + 1 |
+| Q + 34 | 117.64453125 | 54 | 141.96875 | 48.4375 | −904 | −1424 | | | the object bounces as before |
+| Q + 35 | 123.0859375 | 51.3125 | 138.62890625 | 43.3125 | −855 | −1312 | | | |
+
+Had the walker started 40 px further right (`x` = 200.25), the larger
+area would have ended before they met: on Q + 37 (t = 16) I is −51,
+outside −48 to 28; on Q + 38 (t = 17) it is −45, outside −23 to 27; the
+walker is hit on Q + 43 with I = −18 and U = 8.4375, the object in the
+air after its first bounce.
+
 ## Other objects
 
 A thrown object rolls past an object holding the missing character
@@ -164,9 +312,23 @@ again. Speeds in 1/256 px per frame.
 
 ## Not covered
 
-- Hitting a character or a walker (a thrown object was seen to defeat a
-  walker, with the game holding the player still for about half a
-  second), and other enemies.
+- Hitting a character or other enemies. Walkers: a small walker facing
+  right hit by an object moving right, and large walkers hit by an
+  object moving left (the patterns under "When a walker is hit" would
+  give −47 to 29 and −22 to 28 for the first, but this wasn't
+  measured); the object more than 12 px below the walker; walkers that
+  are still speeding up, outside the picture, or not on the floor; and
+  two walkers in range on the same frame (seen once: only one of them
+  was hit, and the other one, out of range on the next frame, wasn't).
+- When exactly a hit walker is removed, and whether it comes back.
+- How a hit is drawn (something appears where the walker was hit) and
+  how the hit walker is drawn while it falls.
+- A walker walking into an object that the player is carrying (seen to
+  defeat the walker; the object was gone).
+- Places that stop walkers (`walker.md`, "Turning at a barrier"): near
+  the one measured, a thrown object moving left was seen to break with
+  no wall there, and a carried object was knocked out of the player's
+  hands.
 - Being in the air over a slope: rising over floor that rises under it,
   the object was sometimes lifted 1 or 2 px higher than the rule above
   gives (all 158 such frames were above slopes; none on flat floor).
