@@ -89,6 +89,16 @@ limit of 1.25 (2 while Down is held). A move across that would end 4 px
 or more in the ground is a wall; 1 to 3 px is a step up, or a push down
 under a ceiling. Rising into a ceiling stops the rise.
 
+## Ropes
+
+| Subject | Summary | File |
+|---|---|---|
+| Catching | From a jump only, when the feet line is no more than 24 px below the rope's end and the player is within 12 px of it (4 px when moving at 0.25 or more); not the rope just left until out of its reach for a frame | `ropes.md` |
+| Climbing | Targets up 1.5, down 2.5 (2.5 and 3.5 with Action), speed moves an eighth of the way per frame; no higher than 41 px below the view's top | `ropes.md` |
+| Turning | Holding the direction faced swings round the rope in 8 frames, facing changes on the 5th | `ropes.md` |
+| Jumping off | Jump pressed with Left or Right: `vy` −6.125 (more with Up, less with Down), then a jump with air targets ±3 | `ropes.md` |
+| The end | With the feet line more than 24 px below the rope's end the player lets go and falls, facing kept | `ropes.md` |
+
 ## Second character
 
 Walking 2.25, running 3.375, take-off `vy` −8.3515625, held-jump gravity
