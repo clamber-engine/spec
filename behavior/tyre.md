@@ -15,6 +15,8 @@ rolling and jumping on, onto, under and past it (about 140 000 frames,
 1 150 catches, 470 throws), and with scripted inputs one frame apart for
 the limits. Three placement references place a tyre
 (`../formats/placements.md`, kind `tyre`); all three behaved the same.
+One more reference places a tyre that doesn't squash ("The stiff
+tyre").
 
 ## The tyre
 
@@ -330,9 +332,65 @@ fraction (the height above the tyre's position, not rounded).
 The next throw is on L + 40, from U = 6.75, and the player is caught
 after it on L + 66 (see "Throws with no input").
 
+## The stiff tyre
+
+A **stiff tyre** (kind `stiff-tyre` in `../formats/placements.md`) is a
+tyre that never squashes or wobbles. Everything above holds for it,
+with these differences:
+
+- Its top T is **15** on every frame: at rest, on the frames after a
+  catch (C + 1 to C + 14) and on every frame after a throw. A player
+  standing on it has U = 17. A player who stood on the top through
+  C + 14 moves 8 px down on L, as on the other tyre, and is thrown from
+  U = 9.
+- Rule 1 under "The tyre": I is from **−24 to 24** when facing right, or
+  from **−26 to 22** when facing left (both ends included). Rule 2 is
+  unchanged (U from T − 67 to T + 2, with T = 15).
+- The throw on L needs U from **−51 to 18** (both ends included) instead
+  of −54 to 15. The I range is the one above.
+
+The rest is the same: being caught (with T = 15, so a player falling
+past its side is caught when U is at least 2), the put-back on C + 1 to
+C + 14, walking off the top, the throw frame L = C + 15 and the throw's
+arc, the 8 frames after a throw on which it catches no one, the tyre
+jump and when it can start, and the frozen frames. Since T never
+changes, the wobble has no effect.
+
+### Throws with no input from a stiff tyre
+
+A player thrown with no input from a stiff tyre on flat ground, at
+U = 9 + f (f as under "Throws with no input" above), is at U = 21.75 + f
+on L + 25, so is never caught there. They are caught on **L + 26**, and
+U becomes 17 + the fraction of (f + 0.8125). Every cycle is therefore
+**41 frames**. For a player who walked onto it at a whole-pixel height,
+f on the throws goes 0, 0.8125, 0.625, 0.4375, 0.25, 0.0625, 0.875, and
+so on (0.8125 added each time, keeping only the fraction).
+
+### Measurements of the stiff tyre
+
+Measured as for the other tyre, with the first character alone, on a
+stiff tyre on flat ground and on one placed 50 px above it: 72 runs of
+random walking, running, rolling and jumping (about 105 000 frames,
+about 800 catches, 378 throws), compared frame by frame with the rules
+above with no difference in the player's height, the catches, the tops
+and the throws; the four ends of the I ranges, with the player standing
+still next to the tyre; and 15 throws in a row with no input, all as
+above. Of the tyre jumps in the random runs, 229 started on the frame
+given by "When a tyre jump can start". The others were cases that
+section leaves to the original's timing (arrivals from the air: 22 one
+to three frames later, 2 five or six frames later, both after arriving
+at the top of a jump's arc, and 10 none), Jump presses during a roll on
+the top (3 gave no take-off; in one run two later presses also gave
+none), a Jump press together with Action while slowing down from a run
+on the top (no tyre jump), and a press on the frame of an arrival from
+the air that gave a tyre jump on the next frame (C + 1).
+
 ## Not covered
 
 - The second character, and two characters on one tyre.
+- For the stiff tyre: a Jump press together with Action on the top, and
+  a press on the frame of an arrival from the air (one case each in
+  "Measurements of the stiff tyre"); the stiff tyre in other areas.
 - A fourth reference that places an upside-down tyre (no kind row).
 - Other objects (walkers, thrown objects) touching a tyre.
 - Jump presses during a roll on the top: 60 of 62 measured gave a tyre
