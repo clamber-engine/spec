@@ -18,20 +18,24 @@ different kinds at several points of a level, by inputs alone (about
 21 000 frames near a walker, 668 hits and bounces, walking, standing,
 jumping and falling onto them, facing toward and away from them), and by
 placing the player at chosen offsets from a walker in poses reached by
-inputs, one pixel apart, to find the exact limits.
+inputs, one pixel apart, to find the exact limits. The medium walker and
+the fidget pose were measured the same way (see "Evidence for the medium
+walker and the fidget pose").
 
 ## Kinds of walker
 
-Two kinds of walker were measured. They move the same way (`walker.md`)
-but differ in size:
+Three kinds of walker were measured. They move the same way
+(`walker.md`) but differ in size:
 
 - the **small walker**,
+- the **medium walker**: its reach at the top is 13 px higher than the
+  small walker's, and its horizontal ranges are its own (tables below);
+  unlike the other two kinds, they move 10 px with the walker's heading,
 - the **large walker**: its ranges below are those of the small walker
   widened by 3 px on each side and raised by 26 px at the top.
 
-A third kind, the **medium walker** (`riding-walkers.md`), is taller and
-has different ranges against the ridden animal; its contact with a player
-on foot is not covered here.
+How an importer tells the kinds apart is in `../formats/placements.md`
+("Kinds").
 
 ## Offsets
 
@@ -65,11 +69,12 @@ H − 1**, both of these hold:
      other vertical limit was seen.
    - **jumping, early**: from the take-off frame T (the frame carrying
      `jump_start`, `jump-arc.md`) up to T + 5: U at most **11**
-     (small walker) or **37** (large walker).
+     (small walker), **24** (medium walker) or **37** (large walker).
    - **jumping, later**: from T + 6 on: U at most **16** (large walker).
-     A small walker never hurts a player in this state for U from −4 up
-     (lower U wasn't measured), so on flat ground a jump that is past
-     T + 5 when it reaches a small walker isn't hurt by it.
+     A small walker never hurts a player in this state for U from −4 up,
+     and a medium walker never for U from 0 up (lower U wasn't measured),
+     so on flat ground a jump that is past T + 5 when it reaches a small
+     or medium walker isn't hurt by it.
 
 So a hit is always decided one frame ahead: the frame on which the
 player first overlaps the walker is an ordinary frame, and the player is
@@ -85,12 +90,30 @@ Hurt ranges for I (both ends included):
 |---|---|---|---|
 | small | right | −19 to 24 | −18 to 25 |
 | small | left | −25 to 18 | −24 to 19 |
+| medium | right | −26 to 22 | −16 to 32 |
+| medium | left | −32 to 16 | −22 to 26 |
 | large | right | −22 to 27 | −21 to 28 |
 | large | left | −28 to 21 | −27 to 22 |
 
 The ranges were the same standing, walking and in the air (measured on
-both ends for the small walker, and at the low end for the large walker
-in the air).
+both ends for the small and medium walkers, and at the low end for the
+large walker in the air), except in the fidget pose.
+
+**Fidget pose.** A player who stands still long enough takes the fidget
+pose (`ball-contact.md`, "Which pose the player has": for 180 frames,
+and again every 457 frames while the player keeps standing). The pose counts at the end of
+H − 1, like the positions. In the fidget pose the hurt range for I
+shifts:
+
+- facing right: the low end is 10 px higher and the high end 3 px
+  higher;
+- facing left: the low end is 3 px lower and the high end 10 px lower.
+
+For example, a player facing right in the fidget pose is hurt by a small
+walker heading left for I from −9 to 27, and by a medium walker heading
+right for I from −6 to 35. Measured for the small and medium walkers,
+both facings and both headings; the large walker in the fidget pose
+wasn't measured.
 
 ## Bouncing
 
@@ -106,8 +129,8 @@ hold:
 3. **I** is within the bounce range below, using the player's position
    at the end of B and the walker's position at the end of **B − 1**
    (before its own move on B);
-4. **U**, from the same two positions, is at most **24** (small walker)
-   or **50** (large walker).
+4. **U**, from the same two positions, is at most **24** (small walker),
+   **37** (medium walker) or **50** (large walker).
 
 There is no lower limit in the cases measured: on the walker's own floor
 the landing rule (`landing.md`) comes first, so a player who would end B
@@ -119,6 +142,8 @@ Bounce ranges for I (both ends included):
 |---|---|---|---|
 | small | right | −21 to 34 | −20 to 35 |
 | small | left | −35 to 20 | −34 to 21 |
+| medium | right | −28 to 32 | −18 to 42 |
+| medium | left | −42 to 18 | −32 to 28 |
 | large | right | −24 to 37 | −23 to 38 |
 | large | left | −38 to 23 | −37 to 24 |
 
@@ -155,6 +180,37 @@ every frame, take-off on frame T:
 |---|---|---|
 | T + 5 | 30 | hurt (early reach: at most 37) |
 | T + 6 | 30 | hurt only if U ≤ 16 (later reach): not hurt |
+
+A player facing right stands still at `x` 120.25 on the floor of a
+medium walker heading right that comes up from behind:
+
+| Frame | Player pose | Walker `x` | I | Notes |
+|---|---|---|---|---|
+| 1 | standing | 86.5 | 120 − 86 = 34 | outside −16 to 32 |
+| 2 | standing | 87.5 | 120 − 87 = 33 | outside |
+| 3 | standing | 88.5 | 120 − 88 = 32 | inside: hurt on the next frame |
+
+If the player is in the fidget pose instead, the range is −6 to 35 and
+frame 1 (I = 34) is already inside: the player is hurt on frame 2.
+
+## Evidence for the medium walker and the fidget pose
+
+A medium walker put in the place of the first small walker of the first
+level, on flat floor, with the first character alone:
+
+- placements of the player at chosen offsets, one pixel apart, in poses
+  reached by inputs (standing facing either way, rising and falling in
+  a jump, with both walker headings; heights up to 90 px above the
+  walker; rising speeds 1/256 apart at the bounce limit), and the same
+  for the fidget pose with small and medium walkers: about 8 000
+  placements, all as this file says; a small walker in the same place
+  gave the small walker's ranges above;
+- by inputs alone (standing, walking, running, jumps of every length
+  toward, over and away from the walker, turning to face it, waiting
+  for it to come back from behind, standing until the fidget pose):
+  27 645 frames near a medium walker with 507 hurts and 328 bounces,
+  and 14 009 frames near a small walker with 209 hurts and 109 bounces;
+  128 of the hurts were in the fidget pose. 0 mismatches.
 
 ## In `title-2`
 
@@ -315,10 +371,11 @@ This list is for `title-1`; `title-2` has its own list above.
   stopped at a barrier, frozen) and walkers already bounced on.
 - Contact while crouching, carrying, after a bounce, or being knocked
   back. Rolls into walkers are in `rolling-into-walkers.md`.
+- The large walker against a player in the fidget pose.
 - Falls without a jump (walking or rolling off a ledge): the player's
   vertical reach was seen to differ from that of a jump.
 - Walkers above the player (U below −6 on the ground, below −4 in the
   air), and the lower end of the vertical reach in the air.
 - The other character, and hits while two characters are present.
-- Other kinds of enemies, and how to tell the two kinds of walker apart
-  other than by these sizes.
+- Other kinds of enemies. The medium walker on slopes (its contact was
+  measured on flat floor only).

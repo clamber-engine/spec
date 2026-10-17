@@ -127,7 +127,7 @@ members are looked up by their own references.
 | Kind | The object | Behavior |
 |---|---|---|
 | `small-walker` | A small walker | `walker.md`, `walker-contact.md`, `walker-view.md`, `riding-walkers.md` |
-| `medium-walker` | A medium walker | `walker.md`, `riding-walkers.md` |
+| `medium-walker` | A medium walker | `walker.md`, `walker-contact.md`, `riding-walkers.md` |
 | `large-walker` | A large walker | as for `small-walker` |
 | `thrower` | A thrower | `thrower.md`, `ground-action-enemies.md` |
 | `ball` | A ball placed in the level, not thrown (moving when it appears) | `thrower.md`, `ball-contact.md` |
