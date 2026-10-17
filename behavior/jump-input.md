@@ -26,23 +26,89 @@ still starts a jump; at a ledge with a steep face it doesn't
 ## Landing lockout
 
 After landing, there is a short time when a jump can't start. Call the
-earliest frame a jump can start after landing frame L **E**.
+earliest frame a jump can start after landing frame L **E**. For a
+landing after a jump, E = **M + 2**, where M is the landing's **switch
+frame** below. M is L or later (up to L + 6 in the measurements below),
+so E is L + 2 or later. Jumps started from a roll are an exception (see
+the end of this section).
 
-In the original, E is L + 2, L + 3 or L + 4. Which one depends on timing
-inside the game that isn't visible to a player and can't be predicted from
-inputs, positions, velocities or trace events. Jumps with the same inputs
-and airtime differ, and so do identical jumps landing on ground of
-different shape.
+### The switch frame M
 
-The spec therefore defines **E = L + 3**, the value seen most often in
-measurements. An engine implements exactly this. The same timing
-decides when walking, running or standing starts after a landing
-(`ground-speed.md`, "After a landing").
+Let T be the frame carrying the jump's `jump_start` (`jump-arc.md`).
 
-Reference comparisons: in the original, a `jump_start` that follows a
-`land` without an earlier chance to jump may come one frame earlier or
-later than an engine following this spec. Scenarios that measure such a
-jump should allow ±1 frame on it, and on any frame count measured from it.
+Let **A**, the **approach frame**, be the first frame from **T + 20** on
+at whose end there is floor within reach below the player. In level y
+(`view-vertical.md`), with the feet line F (the player's level y rounded
+up to a whole px) and the floor `Y` of the column containing `x`: the
+floor is within reach when it is at or below the feet and at most
+**71 px** below them (0 ≤ `Y` − F ≤ 71), and its 32 px band is at most 2
+more than the band of F, as in `view-vertical.md` ("The ground used"). A
+player on the floor always has floor within reach, so A is never later
+than the first frame from T + 20 on which the player is on the floor. A
+doesn't depend on whether the player is still rising.
+
+From A on there are seven **stage frames**:
+
+- if A = T + 20: A, A + 2, A + 4, A + 6, A + 8, A + 11 and A + 15;
+- if A is later than T + 20: A, A + 1, A + 3, A + 5, A + 7, A + 10 and
+  A + 14.
+
+Then:
+
+- If L < A (the player landed before the approach frame): M = A + 4.
+- Otherwise let **n** be the number of stage frames that are L or
+  earlier (1 to 7):
+
+  | n | M |
+  |---|---|
+  | 7 | L |
+  | 6 | L + 1 |
+  | 5 or 4 | L + 2 |
+  | 3 or 2 | L + 3 |
+  | 1 | L + 4 |
+
+So a high jump that comes down onto lower or level ground usually has
+M = L or L + 1, and a jump that lands on higher ground soon after its
+top has a later M.
+
+Examples: standing jumps on flat ground (the take-off floor is the
+landing floor), Jump pressed on T − 1:
+
+| Jump held | A | L | n | M | E |
+|---|---|---|---|---|---|
+| 1 frame | T + 20 | T + 31 | 6 | L + 1 | L + 3 |
+| 10 frames | T + 20 | T + 36 | 7 | L | L + 2 |
+| 14 frames | T + 24 | T + 38 | 7 | L | L + 2 |
+| 20 frames | T + 29 | T + 41 | 6 | L + 1 | L + 3 |
+
+With Jump held 14 frames, the feet are 73 px above the floor at the end
+of T + 23 and 71 px at the end of T + 24, so A = T + 24 and the second
+list of stage frames applies: L = A + 14 is the seventh. With Jump held
+1 frame, the player is within reach already at T + 20, and L = A + 11 is
+the sixth stage frame of the first list.
+
+The same switch frame decides when walking, running or standing starts
+after a landing (`ground-speed.md`, "After a landing").
+
+Measured on `title-1` with the lead character: 826 landings after
+standing, walking and running jumps (Jump held 1 to 30 frames, Action on
+or off, some after walking back first): 730 on flat floor and 96 on
+slopes, on floors from 82 px below to 80 px above the take-off floor,
+including sites with steep faces (landings on face columns, or with A
+ending on one, left out). L ranged from 2 frames before A to 23 frames after it. M matched
+on all 826, and E (Jump pressed on L − 1 and held) on all 819 where it
+was measured. 238 of these landings were recorded after the rule was
+fixed. The window of "Pressing before landing" was checked to count
+back from E with E from L + 2 to L + 8.
+
+### Landings this doesn't cover
+
+For a landing after a jump that started from a roll, after a fall that
+didn't start with a jump (walking or rolling off a ledge), or after a
+bounce, the spec defines **E = L + 3** (M = L + 1) unless another file
+defines M for that landing. In the original E varies on these landings
+too. Reference comparisons on them should allow ±1 frame on the
+`jump_start` and on frame counts measured from it.
 
 ## Pressing before landing (buffered jump)
 
@@ -56,8 +122,7 @@ With press frame P before landing, a jump starts on frame E if both hold:
 
 Otherwise no jump starts on landing. A new press is needed.
 
-In the original this window counts back from the actual earliest frame,
-whatever its value, so it holds unchanged with E as defined above.
+The window counts back from E, whatever M is.
 
 | Case | Result |
 |---|---|
@@ -72,9 +137,9 @@ max(P + 1, E).
 
 ## Worked example
 
-A jump lands on frame 40 (L = 40, so E = 43). Pressing again on frame 31
-and holding gives a jump on frame 43. Pressing on frame 30 and holding
-gives no jump.
+A jump lands on frame 40 with M = L + 1 (L = 40, so E = 43). Pressing
+again on frame 31 and holding gives a jump on frame 43. Pressing on
+frame 30 and holding gives no jump.
 
 ## In `title-2`
 
