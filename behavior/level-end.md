@@ -129,8 +129,9 @@ The **brightness** of the whole picture is on a scale from 15 (full) to
 down by 1 every second frame: frames `F0` + 2`j` and `F0` + 2`j` + 1
 have brightness 14 − `j`. It reaches 0 on `F0` + 28.
 
-`F0` + 28 is the last frame of the level. What comes after it is not
-covered.
+`F0` + 28 is the last frame of the level. The level map follows
+(`level-map.md`, "After finishing a level"). Who is there when a level
+begins again is in `following.md`.
 
 The lead's rise stops on `F0`: its height on `F0` is that of `F0` − 1.
 
@@ -164,9 +165,6 @@ last frame came 61 frames after `T`.
 
 - How to tell that a placed object is the end marker (see
   `../formats/placements.md`), and other levels.
-- What comes after the last frame: the time until the next screen and
-  what it is (`following.md` covers who is there when a level begins
-  again).
 - Passing the marker with Left and Right both held, with Down held, on
   the take-off frame of a jump, while carrying an object, while being
   hit or bouncing off an enemy, and with the second character leading.

@@ -5,8 +5,9 @@ Titles: `title-1`
 Between levels the player chooses where to go on a **level map**. The
 lead character (the **lead**) stands at a **stop** (a level or another place on the map); a
 direction makes it **walk** along a path to another stop. This file says
-how a walk moves, frame by frame, when a direction starts one, and where
-the lead stands when the map appears.
+how a walk moves, frame by frame, when a direction starts one, where
+the lead stands when the map appears, and what happens on the map after
+a level is finished.
 
 Where the stops and paths are and which directions take which path come
 from the map's data: `../formats/level-map.md`. Which paths are open
@@ -169,10 +170,131 @@ The map fades in. No walk can start before 64 frames after the first
 frame of the fade-in (measured when coming back to the map after
 leaving a level, with a direction held all the time).
 
-After a level is finished for the first time, the lead walks without any
-input along the path that finishing opened, by the rules above,
-starting from the stop's point with fractions 0. When this walk starts
-is not covered.
+After a level is finished, the lead walks on to the next stop without
+any input, by the rules above, starting from the appearance point with
+fractions 0. When that walk starts, and what can stop or replace it, is
+in "After finishing a level".
+
+## After finishing a level
+
+What follows the last frame of a finished level (`level-end.md`).
+Measured on the first level, finished for the first time and again.
+
+In this section frames are counted at 60 Hz from the map's first frame,
+frame 0, and none are left out: the lag frames on the map and the still
+frames below are counted too.
+
+### Up to the map
+
+After the level's last frame the screen stays black. The map's first
+frame came 49 frames after the level's last frame on a first finish, and
+52 or 53 frames after it when the level had been finished before. Those
+frames are part of no trace.
+
+On frame 0 the lead stands at the finished level's stop, at its
+appearance point, with both fractions 0 ("When the map appears"). The
+map fades in: its brightness (on the scale of `level-end.md`, 15 full, 0
+black) is `j` on frames 2`j` and 2`j` + 1, for `j` from 0 to 15, and
+stays 15 from frame 32 on.
+
+### Still frames
+
+The first time a level is finished, frames 163 to 212 are **still**:
+the picture doesn't change and nothing on the map happens. That is 50
+frames. When the level had been finished before, there are no still
+frames.
+
+### The gate
+
+Call **`G`** the first frame on which a walk can start:
+
+| The level | `G` |
+|---|---|
+| finished for the first time | 242 (192 frames that aren't still, then the 50 still ones) |
+| finished before | 64 |
+
+No walk starts before `G`, whatever is held or pressed, and nothing
+pressed before `G` is remembered on `G` or after it (see below).
+
+### The given direction
+
+On frame `G` the remembered press ("The remembered press") becomes the
+direction of the path from the finished level's stop to the next
+level's stop, as if that direction had been newly pressed on `G`. It
+replaces whatever was pressed on `G` itself, and it lasts, like any
+remembered press, for frame `G` and the next 30 frames, unless a later
+new press replaces it. For the first level, the next level's stop is
+the stop that its first finish opens a path to; which direction that is
+comes from the map's data (`../formats/level-map.md`, "Neighbours").
+
+From `G` on, the frames are standing frames and the rules of "The
+direction" apply. So:
+
+- With nothing held, the walk starts on `G`.
+- A direction held on `G` that comes before the given one in the order
+  Right, Left, Up, Down and has no path blocks it. When that direction
+  is released on frame `G` + `k`, the walk starts on that frame if `k`
+  is 30 or less. Released later, the given direction has been forgotten
+  and the lead stays at the stop.
+- A new press of any button from `G` + 1 on replaces the given
+  direction, as for any remembered press.
+
+### Entering the level again
+
+From `G` + 1 on, while the lead still stands at the finished level's
+stop, a new press (held on this frame, not on the previous one) of
+Jump, Action or Pause makes the lead enter that level again, instead of
+any walk. This holds even when a
+direction with a path is pressed or held on the same frame. Swap does
+not enter: it only replaces the remembered press. On `G` a new press of
+Jump, Action or Pause does nothing (the given direction replaces it),
+and a button that is kept held from before is not a new press.
+
+On the frame `P` of the entering press the map starts fading out: its
+brightness is 15 − `j` on frames `P` + 2`j` and `P` + 2`j` + 1, for `j`
+from 0 to 14, and the picture is black from `P` + 30. The level then
+begins again (`level-start.md`); the time until its first frame is not
+covered.
+
+### Example
+
+Made up from the measured rules. The level is finished for the first
+time, so `G` = 242, and the given direction is Down. Right is held from
+frame 220 to frame 250 and has no path from the stop.
+
+| Frame | Held | What happens |
+|---|---|---|
+| 0 to 31 | | fade-in |
+| 163 to 212 | | still |
+| 220 to 241 | Right | nothing: before `G` |
+| 242 = `G` | Right | Down is given; Right comes first and has no path: nothing |
+| 243 to 250 | Right | nothing |
+| 251 | | Down is still remembered (`G` + 9 ≤ `G` + 30): the walk starts |
+
+If Right were held up to frame 271 instead, the walk would start on 272
+(`G` + 30). Held up to 272, it would be released on 273 = `G` + 31,
+when Down has been forgotten, and the lead would stay at the stop. If
+Jump were newly pressed on frame 245, the lead would enter the level on
+245 and the map would be black from 275.
+
+### Measurements
+
+- 1 073 runs, every one following these rules (0 mismatches). With
+  random inputs on the map (1 to 5 times a direction, Jump, Action,
+  Pause, Swap or a direction with one of them, held 1 to 60 frames,
+  starting between 20 frames before frame 0 and 330 frames after it):
+  400 with the first finish, 100 with two characters at the first
+  finish, and 400 with the level counting as finished before. Then 168
+  runs, half of each finish, with Right held from `G` − 30 to `G` + 40
+  and a one-frame press of one button on `G` − 2 to `G` + 3 or `G` + 28
+  to `G` + 35, and 5 more around `G`.
+- Of those, 895 walks started and 100 entries; in the other 78 the lead
+  stayed at the stop.
+- One run finished the level a second time after entering it again
+  from the map: the same timings as the runs counting the level as
+  finished before (`G` = 64, no still frames, 52 frames from the
+  level's last frame to the map).
+- Two characters at the finish changed none of the timings.
 
 ## Not covered
 
@@ -180,6 +302,10 @@ is not covered.
   which directions take which path are in `../formats/level-map.md`.
 - The second character on the map, and the figures' animation.
 - Buttons other than the directions at a stop (entering a level, other
-  menus), and when the walk after a first finish starts.
+  menus), except at a finished level's stop after the finish ("Entering
+  the level again").
+- After finishing a level other than the first: which direction is
+  given, and the timings. What the still frames are for (the picture
+  just stops).
 - Opposite directions held together.
 - Other titles.
