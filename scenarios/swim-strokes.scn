@@ -1,0 +1,21 @@
+# clamber-scenario v1
+id: swim-strokes
+summary: Swim right from a sinking start with a plain stroke, an Up stroke and a Down stroke, let go to slow down, then swim back left.
+requires: underwater (behavior/swimming.md), open water: no ground, ceiling or wall within 24 px to the left, right or below the player's point or 40 px above it, anywhere along the path (which reaches 176 px right of the start, 82 px above it and 25 px below it); the level's left end at least 40 px to the left; no entities or other objects within 300 px of the player at any time
+start: swimming in open water, sinking at the limit (vy 1.25) with vx 0, facing right, nothing held on the frame before frame 0, lead character
+frames: 160
+
+[inputs]
+0-99     R
+20       J
+50-51    U
+50       J
+70-99    D
+85       J
+130-159  L
+
+[metrics]
+top_speed        tol 0.0625
+final_x          tol 1
+final_y          tol 1
+curve x,y,vx,vy from stroke for 60 tol 0.25
