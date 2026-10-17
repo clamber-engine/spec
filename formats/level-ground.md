@@ -14,9 +14,10 @@ and is stored column by column. Most of the title's ground uses this
 kind, including the first two levels. It was checked against the game's
 own ground on the first level and the start of the second. A **row
 grid** is stored row by row and can be much taller. It is described in
-"Row grids" by how it differs from a column grid. A third kind is listed
-under "Not covered". Everything before "Row grids" is about column
-grids.
+"Row grids" by how it differs from a column grid. A **ceiling grid** is
+stored like a row grid but has its own shapes, some of them ceilings.
+It is described in "Ceiling grids" by how it differs from a row grid.
+Everything before "Row grids" is about column grids.
 
 ## Positions
 
@@ -333,6 +334,155 @@ holds 0x0003.
 More cases, as bytes, are in `../vectors/level-ground/` (the `rows-`
 files).
 
+## Ceiling grids
+
+The levels where the player swims use a third kind of grid, a
+**ceiling grid**. It is stored like a row grid, but its shape numbers are
+its own and half of them are ceilings. Some cells have ground above a
+line instead of below it. "The ground below a point" changes to match.
+
+What is the same as in a row grid: "Bands and storage" (64 cell words
+per row, the cell for level x 2048 or more lies in a later row), the
+cell word, the type table, mirroring and flipping, and steps 1 to 3 of
+"The surface in one cell". Positions are as in "Row grids". The one
+ceiling grid measured had 391 bands (12 512 px). No half byte in it had
+bit 6 set.
+
+### Halves in a ceiling grid
+
+Take the half byte and the position `c` as in steps 1 to 3 of "The
+surface in one cell". Let `n` be the half's shape number, bits 0–5 of the
+half byte. The half is one of three kinds:
+
+- **Empty**: the cell word is 0, its type is `N` or more, or `n` is 0.
+- A **floor half**: `n` is 1 to 31. It may have a surface, as in a column
+  grid.
+- A **ceiling half**: `n` is 32 to 63. It always has a **ceiling value**
+  `u`, a whole number of 31 or less. `u` can be below 0.
+
+Floor shapes `n` from 1 to 30 give a value `v` at position `c`:
+
+| `n` | Slope | `v` at position `c` |
+|---|---|---|
+| 1–4 | flat | 31 − 8(`n` − 1) |
+| 5–12 | 1 px per 4 px | ⌊`c` / 4⌋ + 4(`n` − 5) |
+| 13–16 | 1 px per 2 px | ⌊`c` / 2⌋ + 8(`n` − 13) |
+| 17–21 | 1 px per px | `c` + 8(`n` − 18) |
+| 22–26 | 4 px per px | 4`c` + 16(`n` − 25) |
+| 27 | 4 px per px, then flat | the smaller of 4`c` − 16 and 15 |
+| 28 | flat, then 4 px per px | the larger of 4`c` − 16 and 15 |
+| 29 | flat | 31 |
+| 30 | flat | 15 |
+
+Shapes 0 and 31 have no `v`.
+
+- **Floor half**, shape `n`: if `n` has no `v`, or `v` < 0, the half has no
+  surface. Otherwise its rise is `v`, or 31 if `v` > 31. The surface is
+  at line 32`k` + 32 − rise, as in a column grid.
+- **Ceiling half**, shape `n`: take floor shape `n` − 32 at the same
+  position. If it has a `v` of 1 or more, then `u` = 31 − `v`, with `v` not
+  limited to 31. Otherwise `u` = 31. The half's **ceiling line** in band
+  `k` is 32`k` + 32 − `u`. `u` = 0 gives the band's bottom line. A `u` below
+  0 gives a line below the band.
+
+So ceiling shape 32 + `m` is floor shape `m` turned upside down. Floor
+shape 3 is flat at rise 15. Ceiling shape 35 is `u` = 16 everywhere, with
+its ceiling line on line 32`k` + 16. Ceiling shapes 32 and 63 are `u` = 31
+everywhere. Ceiling shape 33 is `u` = 0 everywhere. Ceiling shape 53 is
+`u` = 7 − `c`, which is below 0 from position 8 on.
+
+How a ceiling acts on a swimming player is not covered. This file only
+gives the ground below a point.
+
+### The ground below a point in a ceiling grid
+
+For level x column `x` and a feet line `F` of 1 or more, let `k` be the
+band of `F`. Look at the half that column `x` uses in band `k`. That is
+the **feet's half**.
+
+1. **A ceiling at the feet.** If the feet's half is a ceiling half with
+   `u` of 1 or more, its ceiling line is the ground below.
+2. **A floor at the feet.** If the feet's half is a floor half with a
+   surface below band `k`'s top line, that surface is the ground below.
+   Either way it can be above `F`.
+3. **A floor at the top of the band.** If the feet's half is a floor
+   half whose surface is band `k`'s top line (rise 31), look at band
+   `k` − 1:
+   - a ceiling half: the ground below is its ceiling line minus 32, 32
+     lines above the ceiling line;
+   - a floor half with a surface: that surface, even on its band's top
+     line;
+   - otherwise (empty, or a floor half without a surface): band `k`'s
+     top line.
+   Nothing is ever "above the level", and band 0's top line is not
+   covered, as in a row grid.
+4. **Nothing at the feet.** If none of these applies, the feet's band
+   has nothing. The feet's half is empty, a floor half without a surface,
+   or a ceiling half with `u` of 0 or less. Look at band `k` + 1:
+   - If exactly one of the feet's half and band `k` + 1's half is a
+     ceiling half, then: if band `k` + 1's half is empty or has shape
+     32, the ground below is band `k`'s bottom line, 32`k` + 32.
+     Otherwise there is no ground.
+   - Otherwise, if band `k` + 1's half is a floor half with a surface, or
+     a ceiling half with `u` of 0 or more, that line is the ground below.
+   - Otherwise, the same goes for band `k` + 2, whatever kind the feet's
+     half is: a surface, or a ceiling line with `u` of 0 or more, is the
+     ground below. If it has neither, there is no ground.
+
+Unlike a row grid, no column skips step 4. As before, nothing is
+found further down than two bands.
+
+In step 4, a ceiling half with `u` below 0 is like a floor half without a
+surface: it has nothing, but it still counts as a ceiling half when the
+kinds are compared. In step 3 it gives a line from its `u` all the same.
+
+### Checks
+
+The player was placed in the water, standing still, at 3793 points in one
+level and 3783 in another, at level x 0 to 4095 and feet lines in bands
+2 to 388. The points were chosen so that every case in the steps above
+that the level's ground has came up, most of them 150 times. After one
+frame, the ground below matched these rules at the point where the player was
+placed or where the player ended the frame, every time.
+
+The grid's own types do not use every shape. They were replaced by
+made-up half bytes, every shape number and flipped or not, in four
+copies of the game. 8247 more points, at least 14 for every case of the
+rules, and every shape number at the feet: 8238 matched. In the other
+9, the feet were on a ceiling line or 1 px below one. In those, the
+value matched the ground below a point 1 to 3 px above the feet. That
+is the swimming player's reaction to the ceiling, which is not
+covered.
+
+The ground where the player starts matched in all nine of the rooms that
+use this grid. The rules were also checked against the game's own way of
+finding the ground below, for every column and every seventh feet line
+of the grid, with its own types and with the four made-up type tables.
+That is about 7.2 million values each, with no differences.
+
+### Example (synthetic)
+
+A ceiling grid of 3 bands. Its type table has type 1 with half bytes
+0x03, 0x03 (floor shape 3: flat at rise 15), type 2 with 0x23, 0x23
+(ceiling shape 35: `u` = 16) and type 3 with 0x21, 0x21 (ceiling shape
+33: `u` = 0). Band 1's row holds type 2 at column 0 and type 3 at column
+1. Band 2's row holds type 1 at column 0. Every other cell word is 0.
+
+- `x` = 5, `F` = 40 (band 1): ceiling with `u` = 16 → ceiling line 32 +
+  32 − 16 = 48. With `F` = 60: 48 again, above `F`.
+- `x` = 5, `F` = 70 (band 2): floor at rise 15 → line 81.
+- `x` = 5, `F` = 10 (band 0): band 0 is empty and band 1 is a ceiling
+  half of shape 35 → no ground, even though band 2 has a floor.
+- `x` = 37 (column 1), `F` = 40 (band 1): a ceiling with `u` = 0, so
+  nothing at the feet. Band 2 is empty → band 1's bottom line, 64.
+- `x` = 37, `F` = 10: band 1 is a ceiling half of shape 33 → no ground.
+- `x` = 2048 + 5 = 2053, `F` = 8 (band 0): this reads cell word 64, the
+  first cell of band 1's row, a ceiling with `u` = 16 → line 0 + 32 −
+  16 = 16.
+
+More cases, as bytes, are in `../vectors/level-ground/` (the
+`ceiling-` files).
+
 ## The first level's data
 
 Where the first level's grid and type table start in the image is in
@@ -347,9 +497,12 @@ Where the first level's grid and type table start in the image is in
 
 - Whether being passable from below matters for anything other than
   the player (walkers, carried and thrown objects).
-- The third kind of grid. Like a row grid, it is stored row by row and
-  can be tall, but its shapes are not the ones in "Shapes". Some levels
-  may also use a second grid.
+- Some levels may also use a second grid.
+- In ceiling grids: what ceilings do to a swimming player, and from
+  which point near the feet a swimming player's ground below is taken
+  when the player moves or meets a ceiling during a frame. Band 0's top
+  line in step 3 and bands past the grid's last band, as for row grids.
+  Bit 6, which no half byte in the grid measured has.
 - In row grids: band 0's top line in step 2, a feet line of 0 or less,
   and bands past the grid's last band in step 3. All the rooms measured
   were inside the grid.

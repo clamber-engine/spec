@@ -62,6 +62,20 @@ Coverage (`title-1`). Answers no open `spec` issue.
   covered" updated.
 - `behavior/roll-speed.md`, `behavior/movement-summary.md`: point to it.
 
+Coverage (`title-1`). Answers no open `spec` issue.
+
+- `formats/level-ground.md`: new section "Ceiling grids", the third kind
+  of grid (the levels where the player swims): stored like a row grid;
+  its own floor shapes 1–30 (table) and ceiling shapes 32–63 (floor
+  shape `n` − 32 upside down, ceiling value `u` = 31 − `v`, can be below
+  0); the ground below a point in four steps (a ceiling at the feet, a
+  floor at the feet, a floor at the top of the band with a ceiling,
+  floor or nothing above, nothing at the feet with the kinds of the
+  band below compared); no skipped columns, nothing "above the level";
+  checks, example. Vectors `ceiling-*` in `vectors/level-ground/`.
+  "Not covered" updated; the intro and `formats/README.md` name the
+  third kind.
+
 ## spec-v0.74.0
 
 Coverage (first level, `title-1`). Answers no open `spec` issue.

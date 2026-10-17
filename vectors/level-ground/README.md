@@ -76,3 +76,39 @@ Expected output:
   `x` of 2048 or more, `F` from 33 to 160 (bands 1–4), so the search
   stays inside the grid and off band 0's top line. Each value is a line
   or `none`.
+
+## Ceiling grids
+
+Vectors for "Ceiling grids" in the format. They have their own type
+table.
+
+- `ceiling-types.hex`: the type table, as `types.hex`. `N` = 41.
+  Types 1–32 have shape 2(`t` − 1) in the left half and 2(`t` − 1) + 1
+  in the right half, so every shape number from 0 to 63 appears. Types
+  33–40 have flipped halves, halves of both kinds in one type, and
+  shapes 31, 32 and 63.
+- `ceiling-grid.hex`: a ceiling grid of 10 bands, as `rows-grid.hex`.
+- What the data exercises:
+  - Band 2, columns 0–31: column `n` holds type `n` + 1, so every shape
+    number appears at every position.
+  - Column 32: a mirrored cell (band 3), a cell with bit 15 set (band
+    4) and a type of `N` or more (band 5). Column 33: a mirrored cell
+    of a flipped type (band 3) and a type with ceiling shape 32 (band
+    4).
+  - Columns 34–63: made-up ground, mirrored or not, in which every case
+    of "The ground below a point in a ceiling grid" comes up. That
+    includes ceilings with `u` below 0 at the feet, in band `k` + 1 and
+    in band `k` − 1. Column 63 has a ceiling with `u` = 0 over a ceiling
+    with `u` below 0 over an empty cell.
+
+Expected output:
+
+- `ceiling-cells.tsv`: for every level x from 0 to 2047 and each band
+  0–9, what the half gives: `empty`, `floor:none` (a floor half without
+  a surface), `floor:L` (a surface at line `L`) or `ceiling:L` (a
+  ceiling line `L`, which is below the band when `u` < 0).
+- `ceiling-ground-below.tsv`: the ground below for 142 values of `x`:
+  120 in columns 34–63 and 22 of 2048 or more. For `x` below 2048,
+  every feet line `F` from 33 to 256 (bands 1–7). For `x` of 2048 or
+  more, `F` from 33 to 224 (bands 1–6), so the search stays inside the
+  grid and off band 0's top line. Each value is a line or `none`.
