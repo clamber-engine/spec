@@ -170,9 +170,10 @@ The picture fades in from black from frame 4 on.
 ## What is there again after a knock-out
 
 When play resumes after a knock-out, what happened in the level before
-is partly kept. All of this was measured in the first level with the
-first character leading and alone, knocked out by a walker (one life
-lost), without an exit taken before (`exits.md` has what an exit keeps).
+is partly kept. All of this was measured in the first level, knocked
+out by a walker (one life lost), without an exit taken before
+(`exits.md` has what an exit keeps), with the first character leading
+and alone except where "Holders, and who leads" below says otherwise.
 
 Kept as it was at the knock-out, wherever play resumes:
 
@@ -214,13 +215,41 @@ visit:
 - a **hidden barrel** (kind `hidden-barrel`, `hidden-objects.md`) set
   off, with its barrel left where it came to rest: the barrel is not
   there, the hidden object is, and a long fall onto it sets it off again
-  and releases a barrel again.
+  and releases a barrel again;
+- a **small walker** (kind `small-walker`) bounced on;
+- the **barrel** picked up and put down unbroken somewhere else: it is
+  at its entry's place again, and nothing is where it was put down;
+- a **holder** (kind `holder`, `holder-breaking.md`) picked up and put
+  down unbroken somewhere else: it is at its entry's place again, still
+  holding the missing character, and nothing is where it was put down;
+- a **holder** broken: see "Holders, and who leads" below.
+
+**Holders, and who leads.** A holder broken before the knock-out frees
+the missing character, so both characters are there; with both there,
+the first hit loses only one of them (`following.md`), and the knock-out
+comes when the one left is hit. After the resume, at the level's start
+or at the restart point:
+
+- the character that was leading when the knock-out came leads, alone;
+  this is the one that was following before the first of the two hits,
+  whichever of the two that was (with a swap, `swap.md`, before the
+  hits, it is the first character);
+- the other character is missing again, and both holders are at their
+  entries' places, the broken one included;
+- breaking a holder again frees the missing character, which then
+  follows the lead as before (`holder-breaking.md`, `following.md`).
+
+With the first character alone throughout (no holder broken), it leads
+alone after the resume, and breaking a holder frees the second
+character, as on a first visit.
 
 **After resuming at the restart point**, the same is true of every kind
 in the list above except the letters (above): a bunch, the figure, the
 barrel, the animal crate, the hidden bunch, a medium walker, the large
 walkers, the thrower, the `extra-life-3` items and the hidden barrel are
-there again, whether their places are left or right of the restart point.
+there again, whether their places are left or right of the restart point;
+so are a small walker, the barrel and a holder put down elsewhere (at
+their entries' places) and a holder broken.
 Where it was measured (a bunch, the figure, the `extra-life-3` items, the
 animal crate and the hidden barrel), taking, breaking or setting them off
 again gives what it gave the first time. This was measured with each of
@@ -237,7 +266,15 @@ added after the first runs (large walkers, the thrower, `extra-life-3`,
 `hidden-barrel`) and the resumes at the restart point other than for
 bunches and letters were measured in 28 more runs, 14 sets each with a
 control (the restart point reached in both for the restart-point sets),
-judged in 118 checks the same way, none different.
+judged in 118 checks the same way, none different. The holders, the
+put-down barrel and holder and the small walker were measured in 24 more
+runs, 12 sets each with a control (both holders broken once each, with
+and without a swap before the knock-out, and each set also after
+reaching the restart point), judged in 138 checks the same way plus who
+led and which character was missing after the resume and after breaking
+the holder again, none different. With both characters there the lead
+was walked into the walkers, so these runs could take bunches on the
+way; the count after the resume was the count at the knock-out.
 
 ## Example
 
@@ -278,12 +315,15 @@ the barrel is touched on the third, the upright range starting at −24.
   being hit or knocked out, swapping, or during the Down + Action
   ground action.
 - After a knock-out ("What is there again after a knock-out"): kinds
-  not listed there (among them holders, tyres, small walkers and
-  `hidden-metal-barrel`), objects that had been moved (put down
-  elsewhere, carried, thrown), extra-life items of kinds
+  not listed there (among them tyres and `hidden-metal-barrel`), objects
+  moved in other ways (carried at the knock-out, thrown without
+  breaking, put down in other places), extra-life items of kinds
   `rising-extra-life-1` and `rising-extra-life-2` after resuming at the
-  restart point, the single collectibles, two characters, and a fall-out
-  instead of a knock-out.
+  restart point, the single collectibles, a knock-out with both
+  characters there in other ways than after breaking a holder (for
+  example both there at the level's start), where the missing character
+  is when both holders are broken, and a fall-out instead of a
+  knock-out.
 - Ways of leaving the level other than finishing it, a knock-out or a
   fall-out, and what happens to the restart point when another level is
   played before this one is entered again, or when no tries are left.
