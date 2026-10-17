@@ -76,7 +76,7 @@ of 1 px in 4 don't change any of this (`slopes.md`).
 | Bounce speed | `vy` −7.125 on the bounce frame, whatever it was before | `bounce.md` |
 | Freeze | The player and every other object don't move on the two frames after the bounce | `bounce.md` |
 | Height | `bounce_height` 54.5 px without Jump, up to 86.71875 px with Jump held from the third frame after the bounce for 25 frames or more | `bounce.md` |
-| Which contacts bounce | Walkers: `walker-contact.md` | `walker-contact.md` |
+| Which contacts bounce | Walkers: `walker-contact.md`; the thrower: `thrower-contact.md` | `walker-contact.md`, `thrower-contact.md` |
 
 ## Swimming
 

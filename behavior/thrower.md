@@ -7,9 +7,10 @@ A **thrower** is an enemy that sits in one place, high up, and throws
 to the right. A ball flies, bounces on floors, drops through them after
 a bounce, and is removed once it is outside the picture. This file
 covers where a thrower is, when it throws, and how a ball moves until
-it is gone. When a ball hurts the player is in `ball-contact.md`. What
-happens when the thrower touches the player, or an object the player
-throws, is not covered here.
+it is gone. When a ball hurts the player is in `ball-contact.md`, and
+when the thrower itself hurts the player or gives a bounce, and what a
+bounce does to it, in `thrower-contact.md`. What happens when an object
+the player throws meets the thrower is not covered here.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y`,
 `vx` and `vy` are as in a trace: right and down are positive, speeds in
@@ -211,11 +212,11 @@ Floor 331 never counted: the ball passed it while ignoring floors.
 
 ## Not covered
 
-- The thrower touching the player (balls touching the player are in
-  `ball-contact.md`), the player bouncing on or rolling into the thrower
-  (the ground action knocks it out, `ground-action-enemies.md`),
-  thrown objects (`thrown-objects.md`) meeting a ball or the thrower,
-  and balls meeting walkers.
+- The player rolling into the thrower (the thrower touching the player
+  and bouncing on it are in `thrower-contact.md`, balls touching the
+  player in `ball-contact.md`, and the ground action knocks it out,
+  `ground-action-enemies.md`), thrown objects (`thrown-objects.md`)
+  meeting a ball or the thrower, and balls meeting walkers.
 - How balls and the thrower move while the player is knocked out (balls
   were seen to stop for several frames).
 - A ball moving up into a floor from below while not ignoring floors
