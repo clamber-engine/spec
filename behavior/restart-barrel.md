@@ -106,7 +106,8 @@ The flash rises 0.5 px every frame.
 
 A level with a restart barrel has a **restart point** (`xr`, `yr`). In
 the first level the restart point is the barrel's position:
-`xr` = `xb`, `yr` = `yb`.
+`xr` = `xb`, `yr` = `yb`. The level's data gives it as the first
+level's restart record (`../formats/level-start.md`).
 
 The restart point belongs to the level, not to the barrel. In a copy of
 the image in which an entry near the level's start was given the
@@ -192,8 +193,8 @@ the barrel is touched on the third, the upright range starting at −24.
 ## Not covered
 
 - Other levels, and how to tell where a level's restart point is, or
-  that a level has one, from the level's data (`../formats/`). In the
-  first level the restart point is the barrel's position.
+  that a level has one, from the level's data. For the first level,
+  `../formats/level-start.md` gives it.
 - The second character: whether a following character touches the
   barrel, and where each character is when play resumes with both.
 - A barrel out of the picture: in the measurements the barrel, moved
