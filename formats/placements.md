@@ -23,6 +23,9 @@ seen: 230 appearances during the runs, plus the objects already there on
 the level's first frame. Of the other six, one places no object (class
 8) and five are past the furthest point the runs reached.
 
+Lists with sections (the underwater levels' lists, "Lists with
+sections" below) were measured separately, as described there.
+
 ## Positions
 
 Positions are **level x** and **level y** in whole px, as in
@@ -66,6 +69,8 @@ position).
 | 2 | One object, as for class 1 |
 | 5 | A **group** of objects. `r` locates the group's members |
 | 8 | No object. The first level's one class 8 entry starts the dimming (`../behavior/dimming.md`) |
+| 9 | No object. Only ever the first entry of a list: the list has **sections**, and `r` locates its **section table** ("Lists with sections") |
+| 15 | One object, as for class 1, that also has to be inside a vertical window to appear ("When placed objects appear") |
 
 Other classes are used by other levels' lists and are not covered.
 
@@ -81,10 +86,14 @@ reference alone: the same reference given to an entry somewhere else
 places the same kind of object there (checked for the references in
 "In the first level" below).
 
-A class 1 or class 2 reference leads to part of the original program.
-This spec doesn't describe what is there. The importer tells which kind
-of object an entry places by **fingerprint** (`../REVIEW.md`, "The
-second exception: kind fingerprints"), as in "Kinds" below.
+A class 1, class 2 or class 15 reference leads to part of the original
+program. This spec doesn't describe what is there. The importer tells
+which kind of object an entry places by **fingerprint** (`../REVIEW.md`,
+"The second exception: kind fingerprints"), as in "Kinds" below. Class
+15 references are of the same sort as class 1 references: the kind rows
+match them in the same way, and every object seen from a class 15 entry
+whose reference has a `bunch` or `letter-1` to `letter-4` row was a
+bunch or that letter.
 
 ### Groups
 
@@ -97,6 +106,54 @@ they are all zero.
 The members' positions are their own entries' `x` and `h`. In the first
 level's group, the members are class 1 entries and the group entry's
 `x` and `h` are its first member's.
+
+### Lists with sections
+
+A list whose first entry has class 9 is divided into **sections**. In
+`title-1` the four underwater levels' lists (`../behavior/swimming.md`)
+are like this, and so is one more list, which six small areas that are
+not underwater share (the **shared list** below). How the view's path
+decides which entries place objects is in "In a list with sections"
+below.
+
+The entries are numbered from 0 in stored order: the class 9 entry is
+entry 0. A **section** is a run of entries, given by the numbers of its
+first and its last entry. The class 9 entry's `x` and `h` are 0 in every
+such list, and its reference `r` is the address of the list's **section
+table**, at the location in the same bank as the placement list
+(`rom-image.md`, "Banks and locations").
+
+The section table is a run of **records** of 8 bytes each, up to a
+record whose first two bytes are both 0. That record is not part of the
+table, and its other six bytes mean nothing. A record is:
+
+| Bytes | Name | Meaning |
+|---|---|---|
+| 0 | `a1` | Number of the first entry of the record's **first section** |
+| 1 | `a2` | Number of the last entry of its first section |
+| 2–3 | `x` | The record's **point**: level x (16 bits, low byte first) |
+| 4–5 | `h` | The point's height above the bottom edge, as an entry's `h`: level y = `Yb` − `h` |
+| 6 | `b1` | Number of the first entry of the record's **second section** |
+| 7 | `b2` | Number of the last entry of its second section |
+
+Records are numbered from 0. Each record's second section is the next
+record's first section, so a table of `n` records describes `n` + 1
+sections, one after another in the list: record 0's first section, then
+each record's second section. A record's point marks where its two
+sections meet.
+
+In the four underwater lists:
+
+- There are 2 or 4 records, and their heights `h` increase from one
+  record to the next.
+- The first section starts at entry 1, each section starts with the
+  entry after the previous section's last one, and the last section runs
+  to the end of the list. Its last number is either the list's last
+  entry or the entry of zeros that ends the list. A reader stops at the
+  end of the list either way.
+- Within a section the entries are in order of `x`, except for one
+  entry, which comes after an entry with a larger `x`.
+- The classes used are 9 (entry 0 only), 15 (most entries), 1, 2 and 5.
 
 ## Kinds
 
@@ -194,11 +251,26 @@ The window and the view position `V` are as in
     −31 ≤ x − V ≤ 288
 
 with `V` the view's position, rounded down to a whole pixel, as it was
-at the start of the frame.
+at the start of the frame. While `V` is less than 32, the window is the
+one for `V` = 32: an entry is in the window when 1 ≤ `x` ≤ 320. (Seen
+in the underwater runs below: 379 appearances of entries with
+`x` − `V` > 288 while `V` was less than 32.)
+
+Class 15 entries also have to be in the **vertical window**:
+
+    −31 ≤ y − U ≤ 256
+
+with `y` = `Yb` − `h` the entry's level y and `U` the view's vertical
+position (`../behavior/view-vertical.md`: the level y of the picture's
+top row), rounded down to a whole pixel, as it was at the start of the
+frame.
 
 - **Class 1 and class 2.** The object appears on the first frame on
   which its entry is in the window. On the level's first frame, the
   objects of all entries already in the window are there.
+- **Class 15.** The object appears on the first frame on which its
+  entry is in the window and in the vertical window.
+- **Class 9.** Nothing appears.
 - **Class 5.** All members appear together, on the first frame on which
   the group entry is in the window, even members whose own `x` is still
   outside it.
@@ -226,6 +298,169 @@ two objects at the same position).
 How a walker is removed, comes back, or stays away once defeated is in
 `../behavior/walker-view.md`. For the other objects it is not covered.
 
+### In a list with sections
+
+In a list with sections ("Lists with sections" above), only the entries
+of the sections that are **open** can place objects, and an entry's
+object appears only under the conditions given here. Everything in this
+section uses `V` and `U` as they were at the start of the frame, rounded
+down to whole pixels, with `V` less than 32 counting as 32.
+
+A record's point (`x`, `y`) is **in the window** when it is in both the
+window and the vertical window of a class 15 entry:
+
+    −31 ≤ x − V ≤ 288   and   −31 ≤ y − U ≤ 256
+
+Otherwise it is **past** the left edge (`x` − `V` < −31), the right edge
+(`x` − `V` > 288), the top edge (`y` − `U` < −31) or the bottom edge
+(`y` − `U` > 256). A point past a side edge and the top or bottom edge
+at once counts as past the side edge.
+
+#### Open sections
+
+Which sections are open depends on the path the view has taken, not only
+on where it is. An engine keeps two things for this: the **home**
+section, and at most one **crossing** record.
+
+The home section is always open. With a table of `n` records and `k`
+from 0 to `n`, it is record `k`'s first section (when `k` < `n`), which
+is the same as record `k` − 1's second section (when `k` > 0). Records
+`k` − 1 and `k`, those of them that exist, are the home section's
+**neighbour records**.
+
+When the area begins, `k` is the number of records, counted from
+record 0, whose point is not above the view's top row (`y` ≥ `U`);
+counting stops at the first record whose point is above it. No record is
+crossing.
+
+Each frame, before any object appears:
+
+- **A crossing starts** on a frame on which no record is crossing and a
+  neighbour record's point is in the window. That record is the
+  crossing record (record `k` − 1 if both points are in the window). Its
+  **far** section, the one of its two sections that isn't home, is open
+  from this frame on.
+- **A crossing ends** on the first frame on which the crossing record's
+  point is not in the window. Its far section is no longer open, unless
+  it becomes home:
+  - if the point is past the left or the bottom edge (the view has gone
+    right or up past the point) and the home section is the record's
+    first section, the record's second section becomes home (`k` goes up
+    by 1);
+  - if the point is past the right or the top edge and the home section
+    is the record's second section, its first section becomes home (`k`
+    goes down by 1);
+  - otherwise the home section stays as it was.
+- On other frames, nothing changes.
+
+So while a record's point is in the window, the entries on both sides of
+it can appear, and the edge the view leaves the point by decides which
+side stays open.
+
+#### When an entry appears
+
+An entry is **left of the window** when `x` − `V` < −31 (for a group
+entry, its own `x`). For each open section, on each frame:
+
+- The section's **lead** is the entry after the last entry of the
+  section that is left of the window, or the section's first entry if
+  none is. If the section's last entry is left of the window, nothing in
+  the section appears on that frame.
+- An entry is **clear** when it is a class 9 entry, a class 1, 2 or 15
+  entry in the window, or a group entry whose objects are there or whose
+  first member is not right of the window and last member (the last in
+  the members' list) not left of it.
+- An entry of the section **comes up** when it and every entry stored
+  between the lead and it are clear, its object (for a group entry, the
+  group's objects) is not there, and, for class 15, it is also in the
+  vertical window.
+
+Entries that come up appear, all members of a group together, with two
+exceptions:
+
+1. **The home section waits** on a frame on which an entry of the far
+   section appears: nothing in the home section appears on that frame.
+2. **Class 2 entries** outside the vertical window don't appear ("Class
+   1 and class 2 entries in these lists").
+
+An entry's object (for a group, its objects) is **there** from the frame
+it appears until it is removed. Once it has been removed, the entry can
+appear again.
+
+Some consequences:
+
+- An entry stored after one with a larger `x` doesn't appear while that
+  entry is right of the window, even when it is in the window itself. In
+  the underwater list that has one, the two appeared on the same frame.
+- An entry stored before one with a smaller `x` doesn't appear while
+  that entry is left of the window. In the underwater lists this doesn't
+  happen; in the shared list it does (see "Checks").
+
+#### Class 1 and class 2 entries in these lists
+
+Class 1 and class 2 entries need only the window, not the vertical
+window, to come up, so they can come up when the entry is far above or
+below the view. What then happens depends on the object, and is not
+covered as a rule. In the runs:
+
+- Class 2 entries that came up outside the vertical window didn't
+  appear: at the end of the frame there was no object (79 256 times),
+  except once, when the player was level with the entry. Inside the
+  vertical window, they appeared (79 times). These objects are not
+  drawn.
+- The entries of one class 1 reference (one entry in each of two of the
+  lists) did the same: no object at the end of the frame 1 353 times
+  outside the vertical window, and 17 appearances, all inside it.
+- One other class 1 entry, coming up outside the vertical window,
+  appeared and was gone on the next frame, then came up again: its
+  object was there on every second frame (3 731 appearances).
+
+#### Example
+
+A made-up list (in `../vectors/placements/`, see "Vectors") with three
+sections: entries 1–6, 7–10 and 11–14, and two records. Record 0 joins
+the first two sections at a point at level x 960, level y 724. Record 1
+joins the last two at level x 60, level y 324. The view starts at
+`V` = 0, `U` = 760 and moves right along the bottom, then up:
+
+| Frame | `V` | `U` | What happens |
+|---|---|---|---|
+| 188 | 700 | 754 | Record 0's point comes into the window (`y` − `U` = −30): a crossing starts. Entries 7–10 can appear as well as 1–6 |
+| 228 | 700 | 674 | Entry 9 (far section, level y 644) appears. Entry 6 (home section, also level y 644) would too, but the home section waits |
+| 229 | 700 | 672 | Entry 6 appears |
+| 332 | 700 | 466 | The point is past the bottom edge (`y` − `U` = 258): the crossing ends, entries 7–10 become the home section, and 1–6 can no longer appear |
+
+#### Checks
+
+- Every underwater area: 8 areas, two for each of the four lists,
+  starting at different points. 3 runs each of up to 40 000 frames,
+  with the player moved through the open water along random routes so
+  that the view followed, and kept from being hurt. On some frames of
+  one run per area the player was moved by up to the whole level in one
+  frame. 780 444 frames in all; the view's path changed the home section
+  120 times and started 168 crossings. Removals were taken from the
+  game. There were 5 751 appearances, 1 824 of them from class 15
+  entries and 98 of groups, and the home section waited on 511 frames.
+  The entries that appeared matched these rules on every frame but 41:
+  the class 2 entry that appeared once outside the vertical window, and
+  the 40 frames given under "Not covered" (a group entry just before the
+  lead).
+- Letting the home section also wait on frames on which a far-section
+  entry is clear but doesn't appear (class 2 outside the vertical
+  window) changed what appeared on none of these frames.
+- Starting the area: each of the 8 areas was entered from the map; the
+  home section the rule gives was the game's in all 8, and no record's
+  point was in the window. Every record's point was at least 256 px
+  above or below the view's top row.
+- Kinds: in four of the areas, the objects from class 15 entries with a
+  `bunch` or letter row were all of that kind (11 appearances).
+- The shared list: three of its areas, 66 294 frames, run the same way
+  until the player left the area. No section changed. One class
+  2 entry appeared once outside the vertical window, and nothing else
+  differed. In this list some entries are stored before entries with a
+  smaller `x`: taking the lead as the first entry that isn't left of the
+  window instead would have been wrong on 98 frames.
+
 ## Example
 
 A list with three entries (the trailing entry of zeros not shown), with
@@ -246,7 +481,9 @@ third entry both appear on the first frame that starts with `V` ≥ 612.
 
 `../vectors/placements/` holds a made-up bank fragment and the entries a
 reader gets from it, and a made-up image with kind fingerprint rows and
-the kinds a reader looks up from it: see its `README.md`.
+the kinds a reader looks up from it. It also holds a made-up list with
+sections, its section table, a view path, and the entries that appear
+on each frame: see its `README.md`.
 
 ## Not covered
 
@@ -256,15 +493,42 @@ the kinds a reader looks up from it: see its `README.md`.
   kind fingerprint row. An object's settings (a walker's heading and
   patrol, whether it takes a first step on its first frame, a placed
   ball's speeds) also belong to the definition and are not covered.
-- What class 2 changes compared with class 1: in the runs measured,
-  class 2 objects appeared and started like class 1 objects.
+- What class 2 changes compared with class 1: in the first level's runs,
+  class 2 objects appeared and started like class 1 objects. In the
+  lists with sections, class 2 entries didn't appear outside the vertical
+  window (see "Class 1 and class 2 entries in these lists"). Whether that
+  comes from class 2 or from the kind of object, and what those objects
+  do, is not covered.
+- Which class 1 kinds don't appear, or are gone again, outside the
+  vertical window, as in "Class 1 and class 2 entries in these lists".
 - What class 8 entries do other than the first level's (which starts
-  the dimming), what a class 8 entry's `h` and reference mean, and the
-  classes used only in other levels.
+  the dimming), what a class 8 entry's `h` and reference mean, and
+  classes other than 1, 2, 5, 8, 9 and 15.
 - When objects other than walkers are removed, and whether they come
   back.
-- Entries far above or below the view, and when the entry that is out
-  of order appears (it is past the furthest point the runs reached).
+- Entries far above or below the view in lists without sections, and
+  when the first level's entry that is out of order appears (it is past
+  the furthest point the runs reached).
+- Whether the rules of "When an entry appears" (leads, clear entries)
+  also hold for lists without sections, taken as one section
+  covering the whole list. They were only measured on lists with
+  sections.
+- In lists with sections: whether entries stored after an open
+  section's last entry can appear with it (in the runs, none did); what happens
+  when an object can't appear because too many objects are already
+  there; a record's point exactly
+  on the view's top row when the area begins, and a record's point in
+  the window on the area's first frame (neither happened in the runs);
+  and the shared list beyond the checks above (no section changed in its
+  runs).
+- In lists with sections, when the entry just before a section's lead
+  is a group entry: on some such frames the section's appearances came
+  later than "When an entry appears" gives, and the group's objects
+  sometimes appeared again after being removed while its entry was left
+  of the window and its members still reached into it. In the runs this
+  happened on 40 frames in 4 of the 8 areas: on 24, entries of the
+  section appeared one frame later than the rules give; on 16, the
+  group's objects appeared where the rules give nothing.
 - Groups in other levels: their members can be of other classes, and the
   group entry's position isn't always its first member's.
 - The characters' starting position, the level's left and right ends,
