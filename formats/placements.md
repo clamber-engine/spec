@@ -196,6 +196,7 @@ members are looked up by their own references.
 | `holder` | An object that can be carried and holds the missing character | `carrying.md`, `holder-breaking.md` |
 | `end-marker` | An end marker: the level's end, or the way out of the first level's room | `level-end.md` |
 | `entrance` | The place the characters come out of when the level begins | `level-start.md` |
+| `wall-return-entrance` | The place the lead comes out of when play comes back to the level from the area behind its first wall exit | `wall-exits.md` ("Coming back from the first wall exit's area") |
 | `exit` | An exit that takes the lead out of the area | `exits.md` |
 | `wall-exit` | An exit hidden in a wall, opened by a thrown object | `wall-exits.md` |
 | `animal-crate` | A crate holding an animal | `animal-crate.md` |
@@ -228,13 +229,13 @@ its own reference, and placed a tyre there.
 
 ### In the first level
 
-34 of the first level's 37 references have a kind fingerprint row. They
-are used by 64 of its entries (counting group members): 5 small
+35 of the first level's 37 references have a kind fingerprint row. They
+are used by 65 of its entries (counting group members): 5 small
 walkers (all three group members among them), 6 medium walkers, 3 large
 walkers, the
 thrower, a ball, 4 bunches, the four letters (one each), a figure, a barrel, 2
 holders, the animal crate, the restart barrel, the end marker, the
-entrance, 2 exits, 2 wall exits (two references, one each),
+entrance, the wall-return entrance, 2 exits, 2 wall exits (two references, one each),
 15 hidden bunches, a hidden barrel, a hidden metal barrel, 2 signs
 (two references, one sign each), 2 critters (one reference) and 5
 extra-life items (two `rising-extra-life-1`, one `rising-extra-life-2`
@@ -277,7 +278,9 @@ class 1 entry near the level's start, placed a stiff tyre there that
 caught and threw the player as `../behavior/tyre.md` ("The stiff tyre")
 says. The `left-launch-barrel` reference, given to a class 1 entry near
 the level's start, placed a launch barrel there that caught the player
-and shot them to the left as `../behavior/launch-barrel.md` says.
+and shot them to the left as `../behavior/launch-barrel.md` says. The
+`wall-return-entrance` row was checked as in `../behavior/wall-exits.md`
+("Coming back from the first wall exit's area").
 
 ### In the first level's room
 

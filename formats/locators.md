@@ -36,6 +36,7 @@ SHA-256 of the image:
 | Level start: the first level's restart record | `level-start.md` | `fc` | `bfb4` |
 | Level start: the first level's scene-return record | `level-start.md` | `fc` | `c09c` |
 | Level start: the first level's room-return record | `level-start.md` | `fc` | `bf58` |
+| Level start: the first level's wall-return record | `level-start.md` | `fc` | `bf40` |
 | View limits: the first level's record | `view-limits.md` | `fc` | `957a` |
 | Level ground: the first level's room's grid | `level-ground.md` | `e3` | `0000` |
 | Level ground: the first level's room's type table | `level-ground.md` | `d6` | `0000` |
@@ -86,6 +87,7 @@ names" table.
 | `4c90ae328510dac24fa35424acdaa6b793fcbebfa288220cce41179f518d9978` | `tyre` |
 | `4cb625b24ccb2edc0d7487e5ff9aa9de2cd5409110383d64bfa5ff1a97a22170` | `large-walker` |
 | `558635a3657029cd26bc9e52c8c3a2d79fe81ebbad040fff194828098afe61a5` | `left-launch-barrel` |
+| `5624aa1b5f08527d0ddab7f1d5fc72f4fc0559b083ce1cd80be4baf05eac1997` | `wall-return-entrance` |
 | `5fae0c706628b184dc3d2db99a589d70ce53d54750e685369dd03f73f71e7f06` | `stinger` |
 | `68ec177ef637f9d79142cd826f4de8d5b14836aa0067cee144d2c606eeaf9c52` | `letter-3` |
 | `705fd77a10893864d58f32885b437d1e741c3b935279dd4648a7c2282548d067` | `barrel` |
