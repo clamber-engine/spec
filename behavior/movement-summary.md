@@ -63,7 +63,8 @@ of 1 px in 4 don't change any of this (`slopes.md`).
 | Extending | Action held throughout carries a normal or slow roll on into running; otherwise a stop of 17 frames follows | `roll-input.md`, `roll-speed.md` |
 | Steering | Holding the opposite direction reverses the roll at once | `roll-speed.md` |
 | Jumping out | A jump can start on any roll frame; from take-off the normal targets apply, starting from the roll's speed; no stop follows | `roll-speed.md` |
-| Off a ledge | The roll continues through the fall at roll speed and lasts until 29 frames after landing; a jump can start on any frame of that fall | `rolling-off-ledges.md` |
+| Off a ledge | The roll continues through the fall at roll speed and lasts until 29 frames after landing (it ends on landing after a fall of exactly 30 frames); a roll leaving within 8 frames of its start hovers first; a jump can start on any frame of that fall | `rolling-off-ledges.md` |
+| Before a ledge | A roll slower than 1.0625 px per frame stops when the ground ends within 15 px ahead | `rolling-off-ledges.md` |
 | Into walkers | Defeats them; the roll carries on and speeds up | `rolling-into-walkers.md` |
 
 ## Bouncing off enemies
@@ -96,6 +97,5 @@ carry on into running until D + 6. Everything else is the same
 ## Not covered
 
 What each file lists under "Not covered", and in particular: the
-walking and running modes after landings and rolls, ledges without a
-face at the top, rolls off ledges other than normal rolls going right,
-and every title other than `title-1`.
+walking and running modes after landings and rolls, walking off
+ledges without a face at the top, and every title other than `title-1`.
