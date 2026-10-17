@@ -226,7 +226,11 @@ Still gone: a **bunch** taken (`bunches.md`), a **letter** taken, the
 `rising-extra-life-2` and `extra-life-3`, `extra-lives.md`), and a
 **hidden bunch** (kind `hidden-bunch`, `hidden-objects.md`) once
 struck, together with the
-bunch it released, whether that bunch was taken or not. The **animal
+bunch it released, whether that bunch was taken or not. A hidden object
+of a falling kind (kinds `hidden-barrel` and `hidden-metal-barrel`) once
+set off is still gone in the same way, together with the barrel or metal
+barrel it released if that was left where it came to rest: after coming
+back, a fall onto its place from 170 px above releases nothing. The **animal
 crate** (kind `animal-crate`, `animal-crate.md`) once broken is also
 still gone, and so is the animal that came out of it if it was left
 there and not mounted: neither the crate, its broken pieces nor the
@@ -564,6 +568,23 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   riding. Neither an animal nor the crate's boards were at the crate's
   place or along the animal's run, after either exit or without one.
   59 checks in all, none different.
+- **Coming back, hidden objects set off by a fall.** 10 runs with the
+  lead alone and the small walkers taken out of the level, for each of
+  the first level's two falling kinds: one run through each exit in
+  which the lead was put 170 px above the hidden object, with no speed
+  and no input, so that it fell, landed on it and set it off, and the
+  item came to rest and was left there; a control for each exit that did
+  nothing before leaving; and one run without an exit (the lead going
+  far left for 120 frames, then back). After coming back, each run put
+  the lead 170 px above the hidden object's place again in the same way.
+  The count, the lives, the set of letters and the restart point were
+  the same on coming back as on leaving in all 8 exit runs, and the lead
+  was never hurt. In the runs that had set it off, neither the hidden
+  object nor its item was there after coming back, and the second fall
+  released nothing. In the controls the hidden object was there, and
+  the fall released the item, which came to rest where it had in the
+  other runs before leaving. The runs without an exit found neither the
+  hidden object nor its item either. 74 checks in all, none different.
 
 ## Not covered
 
@@ -582,7 +603,8 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   covered.
 - What else is kept when play comes back to the level after the scene
   or the room: tyres moved, the
-  hidden objects set off by a fall and their items,
+  item of a falling kind picked up, carried or thrown before the
+  exit,
   an animal left after being mounted other than by a knock-off by a
   walker, a thrower bounced on
   or rolled into, objects of kinds the spec doesn't
