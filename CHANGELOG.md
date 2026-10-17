@@ -2,6 +2,30 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.104.0
+
+Level start in `title-1`: start records and the first level's entrance
+(new format and behavior specs).
+
+Answers part of clamber-engine/spec#17 (the characters' start). The
+rest of spec#17 is not covered yet, so it stays open.
+
+- New `formats/level-start.md`: the start record (two 16-bit words,
+  level x and height above `Yb`), the first level's start and restart
+  records, and checks. Synthetic vectors in `vectors/level-start/`.
+- New `behavior/level-start.md`: the characters stay hidden at the
+  start point until the entrance bursts (frame 41) and throws them out
+  (T = 51) at +2.375 / −2.375 px per frame for 14 frames, then gravity
+  0.4375 up to 8. Inputs are ignored through T + 38, and from T + 39 to
+  the landing the speed moves toward the input's target by gap ÷ 32.
+  The second character is one frame behind. Also covers the picture's
+  fade-in, a synthetic example, evidence and Not covered.
+- New kind `entrance`: a fingerprint row in `formats/locators.md`, plus
+  the kind table and counts in `formats/placements.md`. Two new locator
+  rows for the start and restart records.
+- Pointers in `formats/placements.md`, `behavior/restart-barrel.md`,
+  `behavior/following.md` and `formats/README.md`.
+
 ## spec-v0.103.0
 
 Rolls on, onto and into steep faces in `title-1` (coverage).
