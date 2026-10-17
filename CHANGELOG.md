@@ -2,6 +2,31 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.128.0
+
+Single collectibles in the level data, and more of what comes back after
+an exit.
+
+Part of clamber-engine/spec#17 (the first level's layout) and part of
+clamber-engine/spec#19 (the first level's entities). Both issues stay
+open for the parts not covered yet.
+
+- `formats/collectibles.md` (new): where a level's single collectibles
+  are: the group list of 4-byte records, the shared shape table and its
+  cell bits, and the items a group places; the first level's counts;
+  synthetic example, checks and Not covered. Vectors:
+  `vectors/collectibles/` (new). `formats/locators.md`: two rows (the
+  first level's group list and the shape table). Pointers in
+  `behavior/collectibles.md`, `formats/placements.md` and
+  `formats/README.md`.
+- `behavior/exits.md`, "Coming back to the level": the figure count is
+  kept; a taken figure, taken `rising-extra-life-1` and
+  `rising-extra-life-2` items, a struck `hidden-bunch` and its bunch,
+  and a broken `animal-crate` with its unmounted animal stay gone; a
+  `medium-walker` bounced on and a `barrel` broken against a wall are
+  there again. New checks "Coming back, more kinds" and "Coming back,
+  barrel and crate"; Not covered narrowed.
+
 ## spec-v0.127.0
 
 Entries far above or below the view, and the barrel that shoots down.
