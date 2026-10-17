@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.76.0
+
 Coverage (first level, `title-1`). Answers no open `spec` issue.
 
 - `behavior/animal-crate.md` (new): the animal crate and its animal.
