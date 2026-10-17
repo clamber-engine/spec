@@ -4,6 +4,16 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Answers `spec` issue #29 (`title-2`).
+
+- `behavior/roll-speed.md`, "Worked values (`title-2`)": the fast row's
+  lead-in is spelled out (Action alone on frames 0 to 45, a slow roll
+  that carries on and slows toward 0; Action and Right on frames 46 to
+  65, `vx` 3.12890625 on frame 65; Right alone on frame 66, `vx`
+  3.15625; S = 67). Added the contrast case with Action and Right held
+  from frame 0 (`vx` 3.375 from frame 40; fast roll from 3.375). No rule
+  changes.
+
 ## spec-v0.78.0
 
 Coverage (`title-1`). Answers no open `spec` issue.
