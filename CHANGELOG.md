@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.87.0
+
+Trace vocabulary for swimming.
+
+Answers `spec` #34.
+
+- `traces/VOCABULARY.md`: new state `swim` (swimming underwater: in open
+  water, at a wall or on the floor) and new event `stroke` (a swimming
+  stroke began this frame).
+- `behavior/swimming.md`: new "In a trace" section: the state on every
+  swimming frame, when `ground` is 1, `vy` on resting and leaving frames,
+  which events appear while swimming and which never do, and a synthetic
+  example. A new trace check under "Checks", and an updated "Not
+  covered" list.
+
 ## spec-v0.86.0
 
 Coverage: falls without a jump, and the airborne pose against walkers
