@@ -72,8 +72,11 @@ from a view-limit record. In the room `A` and `B` are both 0:
   0 on every frame. The room's picture is a screen picture
   (`../formats/graphics.md`, "Screen pictures").
 - "The player at the ends" holds with `A` = 0: a player moving left is
-  stopped on a frame that starts with ⌊`x0`⌋ less than 18. On the
-  right, the room's exit is reached first (`exits.md`, "Not covered").
+  stopped on a frame that starts with ⌊`x0`⌋ less than 18, and with
+  `B` = 0 a player moving right is stopped on a frame that starts with
+  ⌊`x0`⌋ 238 or more. The room's end marker (`level-end.md`, "In the
+  first level's room") is left of that point, so a player there on the
+  ground with Right held passes it.
 
 ## In the first level's scene
 
@@ -149,7 +152,10 @@ than 82) `vx` is 0 and `x` stays 81.25.
   of random input in the room, mostly toward the left (walking,
   running, jumps, rolls, Down): 19 184 frames, of which 14 815 started
   with ⌊`x0`⌋ less than 18. On every one of them `vx` was not below 0,
-  and when it was 0, `x` didn't change.
+  and when it was 0, `x` didn't change. In the 500 runs of
+  `level-end.md` ("Checks in the room"), mostly toward the right,
+  3 687 frames before the marker was passed started with ⌊`x0`⌋ 238 or
+  more; the player moved right on none of them.
 - **The scene.** In a run through the scene with the lead alone and one
   with two characters (397 frames each), `E` was the scene's `A` and the
   picture's top row its `top` on every frame. Each of the 1 979 times a
@@ -171,7 +177,6 @@ than 82) `vx` is 0 and `x` stays 81.25.
 - Whether the player's vertical motion changes on a stopped frame.
 - Other levels, and kinds of area other than the first level's room
   that don't take their limits from a view-limit record
-  (`../formats/view-limits.md`, "Not covered"). The right end of the
-  room.
+  (`../formats/view-limits.md`, "Not covered").
 - How the player's speed changes on the frames after a stop, beyond
   what the usual rules give from `vx` = 0.

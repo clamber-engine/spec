@@ -96,6 +96,7 @@ names" table.
 | `96815bf167d1e7ae0187cf583b5e9cd05af19646c808ad1b8abb2fe09ad30e52` | `stinger` |
 | `a18b370140438f25f467370655a5c802ccd40f07be7e5296c81570fd169a9add` | `medium-walker` |
 | `a3917b33a073e05c714b57e8b4ca93dc514015f068d5d3ae7c8e89e64d7bcf08` | `stinger` |
+| `a589d75d56211618a7b72120ff23715bf7dbfce7afe68a106e75170cc54be675` | `end-marker` |
 | `b0b7540b3c061784c8c319b69b0c7db7ed9c67a84d094cefd7b05fa52dcbe7a4` | `small-walker` |
 | `bc061647de9b607ad9eb002282563c85bb821236cf557781087f987a0ba862aa` | `small-walker` |
 | `c8337d0771ac9e0feb76d90747123b32fba93ad3fe8fc5db12cd8a1a647b5910` | `medium-walker` |
