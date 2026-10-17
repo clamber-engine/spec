@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.132.0
+
+Holders moved or carried before an exit.
+
+Part of clamber-engine/spec#17 (the first level's layout). The issue
+stays open for the parts not covered yet.
+
+- `behavior/exits.md`, "Coming back to the level": a `holder` picked up
+  and put down unbroken elsewhere, or still carried when the exit takes
+  over, is at its place again after coming back through either exit,
+  still holding the missing character; nothing is where it was put
+  down. A carried holder is still in the level as the walk-out begins,
+  doesn't break, and isn't in the scene or the room. New check "Coming
+  back, holders moved"; Not covered narrowed.
+
 ## spec-v0.131.0
 
 The thrower and the holders after an exit, and other objects on a
