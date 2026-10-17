@@ -50,3 +50,7 @@ fingerprints" in `../REVIEW.md`).
   starts and releases: the shared count, rates, checks, attack, decay,
   sustain and release, and the fixed level. Vectors:
   `../vectors/voices/`.
+- `voice-output.md`: how the voices become the audio output: a note's
+  position, blending sample points with bell-shaped weights, level and
+  volumes, taking blocks (loops, one-shot ends), and mixing. Vectors:
+  `../vectors/voice-output/`.
