@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.138.0
+
+More of what is there again after a knock-out, and resuming at the
+restart point.
+
+Part of clamber-engine/spec#17 (the first level's layout). The issue
+stays open for the parts not covered yet.
+
+- `behavior/restart-barrel.md`, "What is there again after a
+  knock-out": the list of objects there again after a knock-out now
+  includes large walkers bounced on, the thrower knocked out by the
+  ground action, `extra-life-3` items taken (their lives are given
+  again) and a `hidden-barrel` set off. New paragraph: after resuming at
+  the restart point, every listed kind except the letters is there
+  again, on either side of the restart point. More measured runs; Not
+  covered narrowed. `behavior/extra-lives.md` Not covered updated to
+  match. (spec#17)
+
 ## spec-v0.137.0
 
 The first level's room-return entrance, the thrower and placed ball
