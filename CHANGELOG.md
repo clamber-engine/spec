@@ -2,6 +2,29 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.140.0
+
+Holders and who leads after a knock-out, more kinds there again, and the
+placed ball after a level-start resume.
+
+Part of clamber-engine/spec#17 (the first level's layout) and
+clamber-engine/spec#19 (the first level's remaining entities). Both
+issues stay open for the parts not covered yet.
+
+- `behavior/restart-barrel.md`, "What is there again after a
+  knock-out": the list now includes a small walker bounced on, the
+  barrel and a holder put down unbroken elsewhere (back at their
+  entries' places) and a broken holder. New paragraph "Holders, and who
+  leads": after the resume, at the level's start or the restart point,
+  the character that was leading at the knock-out leads alone, the other
+  is missing again and both holders are back. More measured runs; Not
+  covered narrowed. `behavior/following.md`, "When a level begins
+  again": new row and a pointer to the new paragraph. (spec#17)
+- `behavior/thrower.md`, "Balls placed in a level": after a knock-out
+  before the restart point is reached, the placed ball appears again
+  when the view comes to it, as after an exit. Not covered narrowed.
+  (spec#19)
+
 ## spec-v0.139.0
 
 The knocked-out thrower.
