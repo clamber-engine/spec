@@ -17,10 +17,12 @@ The sections below up to "In `title-2`" give the `title-1` rule.
 "In `title-2`" gives the `title-2` rule, which works differently.
 
 This was measured with the first character leading, alone, on the first
-level. It was measured at least 256 px from the level's left end, while
+level, including next to the level's left end, while
 the player stood, walked, ran, turned, jumped, fell, rolled, used the
 Down + Action ground action, bounced off walkers, and picked up and
-carried objects. The view was measured over about 31 000 frames.
+carried objects. The view was measured over about 39 000 frames. Where
+the view starts when the level or another area begins is in "When an
+area begins", measured over another 43 500 frames.
 
 ## The view's state
 
@@ -51,7 +53,12 @@ On each frame the view aims at a **target** position:
 3. **Speed part:** ⌈16 × vx⌉ + ⌈8 × vx⌉, with `vx` signed and both
    values rounded up (toward +∞).
 
-Some values of `lead`:
+**Near the left end:** when ⌊`x`⌋ is less than 128 minus the speed
+part, `lead` is 1 px less than this sum. This only happens close to the
+level's left end: for a player standing still, at `x` below 128; for a
+player running right at 3 px per frame (speed part 72), below 56.
+
+Some values of `lead`, away from the left end:
 
 | `vx` (px per frame) | facing right | facing left |
 |---|---|---|
@@ -109,6 +116,57 @@ The same applies on the frame of a roll defeat (**K**,
 knock-out during the ground action (**K**, `ground-action-enemies.md`)
 and on **K + 1**. The view continues from **K + 2**.
 
+## When an area begins
+
+Frames here are numbered from the area's first logic frame, frame 0, as
+in `level-start.md` (the level's start), `restart-barrel.md` (resuming
+at the restart point) and `exits.md` ("Walking in"). `x` is the lead's
+`x`; with two characters, nothing about the view changes. `A` and `B`
+are the level's view limits (`level-ends.md`).
+
+**Frame 0.** Let `w` = ⌊`x`⌋ on frame 0. Let `t` = `w` − 80 if `w` is
+from 0 to 127, and `w` − 79 otherwise. Then `V` is `t` kept from `A` to
+`B`, plus 1/2 px, and `S` = 0. The player's speed and facing play no
+part. So a level that begins with the lead at `x` = 1000 has `V` =
+921.5 on frame 0, and one that begins with the lead at `x` = 24 has
+`V` = `A` + 1/2 if `A` is 0.
+
+From frame 1 the view follows the rules above ("Following the target"),
+except as given below. Two things change on some of these frames:
+
+- the **base and facing part** of `lead` together can have another
+  value, −79 or −127, the same for both facings and whatever `vx` is
+  (the speed part and "Near the left end" still apply);
+- on **fast frames**, steps 3 and 4 of "Following the target" change.
+  On the `k`-th fast frame in a row:
+  3. `S` ← `S` + (`D` / 32 − `S`) / 2, rounded down to a multiple of
+     1/8192 px per frame (halfway, instead of an eighth of the way).
+  4. `V` ← `V` + `m` × `S`, rounded toward zero to a multiple of
+     1/256 px, with `m` = 1 for `k` from 1 to 4, 2 for `k` from 5 to 10,
+     4 for `k` from 11 to 14, and 8 from `k` = 15 on.
+
+**The level's start** (`level-start.md`, the frames T = 51 and the
+landing frame, called `G` here). This also applies when the first level
+begins again from the room-return record (`exits.md`).
+
+| Frames | The view |
+|---|---|
+| 1 to T | Base and facing part −79. |
+| T + 1 to T + 5 | Base and facing part −127. |
+| T + 6 to `G` | Base and facing part −127, and fast frames: `k` = 1 on T + 6. With T = 51: `m` = 1 on frames 57 to 60, 2 on 61 to 66, 4 on 67 to 70, and 8 from 71 to `G`. |
+| `G` + 1 on | The usual rules. |
+
+**Walking in** (`exits.md`, "Walking in"): on frames 1 to 26 `V` and `S`
+don't change. Frame 27 is a usual frame except that the base and facing part are
+−79, and from
+frame 28 on the usual rules apply. This was measured walking back into
+the first level after the scene. In the room and the scene the picture
+doesn't move (`level-ends.md`), whatever the view's position, so it is
+not covered there.
+
+**Resuming at the restart point** (`restart-barrel.md`): the usual
+rules from frame 1, also while the player is inside the barrel.
+
 ## Examples
 
 Synthetic, computed from the rules above. The view starts settled on a
@@ -152,6 +210,53 @@ from frame 1.
 From frame 200 nothing changes. `D` = −17/256 px, so `D` / 32 =
 −17/8192, and `D` / 32 − `S` = 7/8192. An eighth of that rounds down to
 0. `S` = −24/8192 rounds toward zero to 0 px.
+
+**(c)** A level starts with the entrance (`level-start.md`) at `xs` =
+100, with `A` = 0 and `B` = 5000. Nothing is held. The lead faces right
+throughout and is still in the air on frame 80.
+
+| Frame | `x` | `vx` | target | `V` | `S` |
+|---|---|---|---|---|---|
+| 0 | 100 | 0 | | 20.5 | 0 |
+| 1 | 100 | 0 | 20 | 20.5 | −16/8192 |
+| 2 | 100 | 0 | 20 | 20.5 | −30/8192 |
+| 50 | 100 | 0 | 20 | 20.13671875 | −50/8192 |
+| 51 (T) | 100 | 2.375 | 78 | 20.35546875 | 1807/8192 |
+| 52 | 102.375 | 2.375 | 32.375 | 20.59375 | 1965/8192 |
+| 56 | 111.875 | 2.375 | 41.875 | 21.84375 | 3019/8192 |
+| 57 | 114.25 | 2.375 | 44.25 | 22.375 | 4377/8192 |
+| 58 | 116.625 | 2.375 | 46.625 | 23.01953125 | 5292/8192 |
+| 60 | 121.375 | 2.375 | 51.375 | 24.5390625 | 6522/8192 |
+| 61 | 123.75 | 2.375 | 53.75 | 26.24609375 | 7000/8192 |
+| 66 | 135.625 | 2.375 | 65.625 | 35.65625 | 8039/8192 |
+| 67 | 138 | 2.375 | 68 | 39.63671875 | 8159/8192 |
+| 70 | 145.125 | 2.375 | 75.125 | 50.953125 | 7430/8192 |
+| 71 | 147.5 | 2.375 | 77.5 | 57.8984375 | 7113/8192 |
+| 80 | 168.875 | 2.375 | 98.875 | 92.01953125 | 2489/8192 |
+
+Frame 0: `w` = 100 is below 128, so `t` = 20 and `V` = 20.5. Frame 1:
+base and facing part −79, speed part 0, and ⌊`x`⌋ = 100 is below 128,
+so `lead` = −79 + 0 − 1 = −80 and the target is 20. Frame 51: the speed
+part is 38 + 19 = 57 and 100 is not below 128 − 57 = 71, so `lead` =
+−79 + 57 = −22. Frame 52: base and facing part −127, `lead` = −70. Frame 57 is the
+first fast frame: `D` = 44.25 − 21.84375 = 22.40625, `D` / 32 =
+5736/8192, `S` = 3019 + (5736 − 3019) / 2 = 4377/8192 (rounded down),
+and `V` moves by 4377/8192, rounded toward zero to 136/256. Frame 61 is
+the fifth: `V` moves by 2 × 7000/8192, rounded to 437/256.
+
+**(d)** Walking into a level (`exits.md`, "Walking in") from a start
+record point at `xs` = 300, with `A` = 0, `d` = +1, and nothing held. On frame 0 the lead is at `x` = 220 (`exits.md`), so `V` = 220 −
+79 + 0.5 = 141.5.
+
+| Frame | `x` | `vx` | target | `V` | `S` |
+|---|---|---|---|---|---|
+| 0 | 220 | 3 | | 141.5 | 0 |
+| 1 to 26 | 223 to 298 | 3 | | 141.5 | 0 |
+| 27 | 304 | 3 | 297 | 142.10546875 | 4976/8192 |
+| 28 | 306.625 | 2.625 | 313.625 | 143.3046875 | 9842/8192 |
+
+Frame 27: base and facing part −79 and speed part 72, so `lead` = −7.
+Frame 28: base −71, facing part 15, speed part 63, `lead` = 7.
 
 ## In `title-2`
 
@@ -335,15 +440,21 @@ with the previous frame's `x`, 18,323.
 
 This list is for `title-1`; `title-2` has its own list above.
 
-- Near the ends of a level. Within about 210 px of the left end, the
-  target was seen to differ from the rule by −1, +2 or +4 px. Near the
-  first level's left end the view also stops moving altogether once the
-  player has walked past the exit there (`exits.md`, "Leaving the
-  area"). The view's position going past the
-  level's limits, and the picture staying within them, are in
-  `level-ends.md`.
-- Where the view starts when a level begins, and after the player falls
-  out of a level.
+- Near the first level's left end the view stops moving altogether
+  once the player has walked past the exit there (`exits.md`, "Leaving
+  the area"). The view's position going past the level's limits, and
+  the picture staying within them, are in `level-ends.md`.
+- The view while the player falls out of a level. The view of other
+  levels, and of areas other than the first level, when they begin
+  ("When an area begins" was measured for the first level, its restart
+  point and walking back into it after the scene); the view's position
+  in the first level's room and scene.
+- Input held or pressed on frame 1 of a resume (`restart-barrel.md`,
+  "Not covered"): with Right held from frame 0, the facing part kept a
+  value from the player's move on frame 1 on later frames.
+- Faster view moves: in the measured runs the view never moved by more
+  than 7 px in a frame (the fastest were fast frames of the level's
+  start).
 - While the player is knocked out (`knock-out.md`), loses a character
   (`losing-a-character.md`), throws an object, or falls into a pit. In
   all of these the target was seen to stop following the rule.

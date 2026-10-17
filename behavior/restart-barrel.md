@@ -160,7 +160,10 @@ Holding Right from frame 2, 3, 50, 60, 62 or 63 on made the player
 start walking on frame 63, as if Right had been pressed on 63. Holding Jump
 from frame 64 on made the player jump on the frame after landing.
 
-On frame 0 the view's position `V` is `xr` − 79.
+On frame 0 the view's position `V` is `xr` − 78.5, so the picture's
+left edge is `xr` − 79 (for `xr` of 128 or more, away from the level's
+ends; `view.md`, "When an area begins"). From frame 1 the view follows
+the usual rules of `view.md`.
 
 The picture fades in from black from frame 4 on.
 
@@ -183,7 +186,7 @@ level is entered again. Nothing is held.
 | 69 | 403.6875 | 3.0625 | |
 | 70 | 409 | 0 | Lands: 407.1875 would be 1.8125 px above the floor (`landing.md`) |
 
-`x` stays 1000 throughout, and `V` is 921 on frame 0.
+`x` stays 1000 throughout, and `V` is 921.5 on frame 0.
 
 Touching: a barrel at `xb` = 1000, `yb` = 400, with the player walking
 right at 2 px per frame on a floor at level y 409 (`D` = −9). Frames
@@ -210,7 +213,7 @@ the barrel is touched on the third, the upright range starting at −24.
   the player in the jump's action), and the player then stayed where it
   was inside the barrel until frame 62.
 - Facing left when knocked out, and the facing on resuming then.
-- The view after frame 0 of a resume, the fade-in, the sounds, how the
+- The fade-in, the sounds, how the
   pieces and the flash are drawn, where they start, when they are
   removed, and whether they touch anything.
 - On which frame the picture first shows the broken barrel after it is

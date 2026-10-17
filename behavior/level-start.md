@@ -108,6 +108,9 @@ steps 3 frames apart: after frame `f` the brightness is ⌊`f` / 3⌋
 fifteenths of full, up to 15 (full from frame 45). Which picture first
 shows each step is not covered.
 
+Where the view is from frame 0 and how it moves through the entrance
+are in `view.md` ("When an area begins").
+
 ## Example
 
 The start point is at `xs` = 100, `ys` = 300, and the floor below is
@@ -161,7 +164,5 @@ frames of 4 runs.
   removed.
 - What a trace shows on frames 0 to T − 1 and during the throw (states
   and events).
-- Where the view starts and how it moves while the characters are
-  hidden.
 - Inputs pressed before frame 0 (on the level map or while the level
   loads).
