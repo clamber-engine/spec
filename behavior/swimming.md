@@ -403,8 +403,8 @@ fields are as at the top of this file.
 
 In open water, swimming works as in `title-1` (the sections above) except
 for the target speeds, the Up stroke, the sinking limit with Down, and
-facing. Walls, ceilings, the floor and the level's ends were not measured
-in `title-2` ("Not covered in `title-2`").
+facing. Walls, floors, ceilings and the sides of the screen have their own
+rules in `title-2` ("Walls, floors and ceilings (`title-2`)").
 
 ### Horizontal speed (`title-2`)
 
@@ -485,6 +485,111 @@ A stroke on S itself, or on a frame up to 30 frames before S (all that
 was measured), changes nothing:
 facing changes on S + 5 and a new turn can start from S + 12. A new turn
 started on N is an ordinary turn (its own S is N).
+
+### Walls, floors and ceilings (`title-2`)
+
+Measured in the same level, where the ground is a row grid. The
+player's **point** is the whole-pixel part of the position, (⌊`x`⌋,
+⌊`y`⌋), with ⌊`y`⌋ as the feet's level y. **G** is the level y of the
+ground below a point in that grid (`../formats/level-ground.md`, "Row
+grids (`title-2`)"). It can be above the point: then the point is **in
+the ground** by ⌊`y`⌋ − G px. With no ground below, the point is not in
+the ground.
+
+After the new `vx` and `vy` (the sections above), in this order:
+
+1. **Across.** Take the point the move would reach, (⌊`x` + `vx`⌋,
+   ⌊`y`⌋), the `y` from before the frame, and let U = ⌊`y`⌋ − G there.
+   This is done on every frame, also when ⌊`x` + `vx`⌋ is the column the
+   player is already in. Columns passed over on the way aren't looked at.
+   - **U 0 or less**, or no ground below: `x` changes by `vx`.
+   - **U 1 to 4: a step.** `x` changes by `vx`, and the whole-pixel part
+     of `y` becomes G. The fraction of `y` is kept, so the player is
+     lifted by exactly U px.
+   - **U 5 or more: a wall.** `x` becomes ⌊`x`⌋ (the fraction is
+     dropped) and `vx` becomes 0. `y` is not changed by this step.
+2. **Up and down.** `y` changes by `vy`, from the `y` after step 1. Take
+   G below the new point, at the `x` after step 1.
+   - **`vy` 0 or more** (sinking). The player **lands** if there is
+     ground below and ⌊`y`⌋ ≥ G, or ⌊`y`⌋ ≥ G − 3 when the surface found
+     is in a sloped half (a half whose surface is not at one height
+     across its 16 columns). Landing sets `y` = G exactly (the fraction
+     becomes 0) and `vy` = 0, and the player is on the floor (`ground` 1
+     in a trace). Otherwise, if the player was on the floor at the end
+     of the frame before, `vy` becomes 1/256.
+   - **`vy` below 0** (rising). If the new point is in the ground, and the
+     surface found is not passable from below (bit 14 of its half word),
+     that is a **ceiling bump**: the whole-pixel part of `y` goes back to
+     what it was before this move, the fraction of the moved `y` is kept,
+     and `vy` becomes 0. Ground that is passable from below doesn't stop
+     a rising player.
+3. **Held on screen.** Let **L** be ⌊`V`⌋, the left edge of the picture
+   (`view.md`, "The view's state (`title-2`)"). If ⌊`x`⌋ is less than
+   L + 16 it becomes L + 16; if it is more than L + 240 it becomes
+   L + 240. In both cases the fraction of `x` and `vx` are kept, and this
+   is not a wall. So the player is kept at least 16 px inside each side of
+   the 256-px-wide picture.
+
+Notes:
+
+- On a wall frame `vy` goes on as usual, so a player can sink or rise
+  along a wall. From the next frame `vx` starts again from 0 by the rule
+  of "Horizontal speed (`title-2`)".
+- A step while sinking always lands on the same frame: after the lift
+  ⌊`y`⌋ is G, and moving down keeps ⌊`y`⌋ at G or more. A step while
+  rising lifts the player and the rise goes on.
+- Ceilings stop only rising. Moving across into ground at the feet is a
+  step or a wall, by U as in step 1. Unlike `title-1`, nothing pushes
+  the player down.
+- **Resting.** On the floor with no stroke, sinking adds 12/256 to `vy`,
+  the move takes `y` 12/256 below the surface, and the player lands
+  again: `y` = G and `vy` 0 on every such frame. Unlike `title-1`, the
+  fraction of `y` is 0 while resting. A stroke from the floor works as
+  in open water (rising frames never land).
+- **Leaving without a stroke** (the floor drops away): on the first
+  frame off the floor the player moves down by the `vy` of that frame
+  (12/256 from rest) and `vy` is then 1/256; sinking goes on from there
+  (13/256, 25/256, …), as in `title-1`.
+- A player in the ground at the start of a frame (seen in controlled
+  frames) is handled by step 1 as well: in its own column, in by 1 to 4
+  px lifts the player and 5 or more is a wall.
+
+Differences from `title-1` ("Moving"): the step limit is 4 px, not 3; a
+wall drops the fraction of `x`; landing drops the fraction of `y` and has
+a 3 px margin on sloped halves; there is no push down under a ceiling;
+and instead of a fixed left end the player is held on screen.
+
+### Example (synthetic, `title-2`)
+
+Made-up ground; `vx` and `vy` are the frame's new speeds, after
+"Horizontal speed (`title-2`)" and "Strokes and sinking (`title-2`)".
+
+- **Wall.** `x` = 100.25, `y` = 200, `vx` = 384/256, `vy` = 0. Column
+  101 has G = 192: U = 8, a wall. `x` = 100, `vx` = 0, `y` = 200.
+- **Step.** `x` = 100.25, `y` = 200.5, `vx` = 384/256, `vy` = 0. Column
+  101 has G = 197: U = 3, a step to `y` = 197.5 with `x` = 101.75. Then
+  the feet are 0 px from G, so the player lands: `y` = 197, `vy` 0,
+  `ground` 1.
+- **Step while rising.** As above but `vy` = −512/256: lifted to 197.5,
+  then `y` = 195.5, `vy` stays −512/256, not on the floor.
+- **Landing on a flat half.** G = 200. `y` = 199.75 with `vy` = 128/256
+  ends at 200.25: ⌊`y`⌋ = 200 ≥ G, so the player lands with `y` = 200.
+  From `y` = 199.25 the move ends at 199.75: ⌊`y`⌋ = 199, not landed,
+  `vy` stays 128/256.
+- **Landing on a sloped half.** G = 200 in a sloped half. `y` = 196.75
+  with `vy` = 128/256 ends at 197.25: ⌊`y`⌋ = 197 ≥ G − 3, so the player
+  lands with `y` = 200.
+- **Leaving the floor.** Resting at `y` = 200 on G = 200 with `x` =
+  100.25, `vx` = 384/256, `vy` = 12/256; column 101 has no ground below.
+  `x` = 101.75, `y` = 200.046875 (200 + 12/256), not on the floor, `vy`
+  = 1/256.
+- **Bump.** `y` = 210.25, `vy` = −384/256. The move ends at 208.75. At
+  ⌊`y`⌋ = 208 the point is in the ground (G = 150, ground from 150 down
+  to 209). ⌊`y`⌋ goes back to 210: `y` = 210.75, `vy` 0. If that ground
+  is passable from below, `y` = 208.75 and `vy` stays −384/256.
+- **Held on screen.** L = 256, `x` = 272.75, `vx` = −384/256, no ground
+  near. The move reaches 271.25. ⌊`x`⌋ = 271 < 272, so `x` = 272.25 and
+  `vx` stays −384/256.
 
 ### Worked values (`title-2`)
 
@@ -584,7 +689,8 @@ there the trace is the same.
   and facing. 3 626 frames with the player on the floor or against a
   wall were left out. Of the other 60 374, 55 447 were equal in every
   field. The rest were all ceilings and walls stopping or pushing the
-  player (4 926 frames, not covered here) and 1 frame on which a turn
+  player (4 926 frames, covered by "Walls, floors and ceilings
+  (`title-2`)" and the checks of it below) and 1 frame on which a turn
   started late just after the player had been against a wall. On 24
   frames facing wasn't compared, because a second stroke had come
   during the same turn.
@@ -594,12 +700,40 @@ there the trace is the same.
   turn, two strokes in one turn): every change of facing on the frame
   given here.
 - The worked values above, and 180 frames around them: all equal.
+- Walls, floors and ceilings, by random input as in the first check from
+  five points in the level (four in open water near walls, floors and
+  ceilings, and the level's start on the floor), 16 runs of 3 000 frames
+  from each: 240 000 frames, every frame compared, contact included:
+  `x`, `y`, `vx`, `vy` and whether the player was on the floor or
+  against a wall. All were equal. They held 8 708 wall frames, 7 421
+  ceiling bumps, 2 392 landing or resting frames, 25 steps, 10 frames
+  leaving the floor without a stroke and 16 220 frames held on screen
+  (10 943 on the right, 5 277 on the left). Facing differed on 28
+  frames, all turns starting late near a wall (not covered).
+- Walls, floors and ceilings in controlled single frames: the player put
+  in open water next to one made-up cell of the level's grid, with its
+  speeds set, for one frame. Across (U from −4 to 14 px, moving right and
+  left, into flat, full and sloped halves): 4 000 frames. Landing (the
+  move ending from 4 px below to 6 px above the surface, on flat, sloped
+  and passable halves): 4 000. Rising into a full cell, a half-height
+  cell and two kinds of passable cell: 4 000, with 671 bumps; the 683
+  rises into passable cells all went on. Resting and leaving the floor,
+  with and without a stroke: 2 000. All equal. As controls, a step
+  limit of 3 or 5 px, or a margin of 0 or 4 px on sloped halves, each
+  gave 19 to 58 differences in 1 000 of these frames.
 
 ### Not covered in `title-2`
 
-- Walls, ceilings, the floor (landing, resting, leaving it) and the
-  level's ends. A turn doesn't start while the player is against a wall;
-  the details aren't covered.
+- Moving across into ground that is passable from below: whether it
+  stops the player depended on the half's shape and the direction of the
+  move. Steep faces (none in the level measured), and the level's own
+  ends.
+- Whether the hold on screen (step 3 of "Walls, floors and ceilings
+  (`title-2`)") uses the picture of the frame itself or of the frame
+  before: on every frame on which the player was held, the picture
+  didn't move. Whether the player is held on screen out of water too.
+- A turn doesn't start while the player is against a wall; the details
+  aren't covered.
 - Which levels and areas start the player swimming, and whether the
   player swims everywhere in them. Only one level was measured.
 - A second stroke during the same turn.
