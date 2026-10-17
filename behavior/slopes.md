@@ -391,6 +391,22 @@ lands with `y` = 13.
 piece. Moving by 8 takes the player to 15.5, 0.5 px above the floor. They
 don't land on this frame. On the next frame they land with `y` = 16.
 
+Scenario `slope-dip` taps jump on frame 225 while walking right at 2.25
+px per frame. Its summary describes `title-1`, where the tap comes on
+the way down and the landing is on the flat bottom. `title-2` differs on
+both: in its reference trace the player is already on the flat bottom by
+then, so `jump_start` (T) is frame 227, 16 px below the start floor, and
+the landing is past the slope up, at the start floor's height. The top
+of the arc is 73.125 px above the bottom. On frame 261 the player ends
+4.125 px above the floor under them (column 573, 1 px below the start
+floor), more than 3 px, so they don't land. They land on frame 262 in
+column 576, at the height of the start floor. The walk then goes on to
+`x` 704, past column 650, the last one the scenario's `requires`
+describes. The floor where the trace was recorded stays flat at the
+start floor's height up to column 905. To match this trace's `final_x`
+and `final_y`, a `title-2` test level built from `requires` continues
+the floor at 0 px, with nothing above it, to at least column 704.
+
 ### Evidence (`title-2`)
 
 2,220 runs on the slopes, each also played on flat floor, 0 mismatches:
