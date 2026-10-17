@@ -1,0 +1,7 @@
+map width 448
+map height 320
+left 32
+right 416
+top 32
+bottom 288
+layout 7

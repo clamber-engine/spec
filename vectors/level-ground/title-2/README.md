@@ -47,3 +47,52 @@ What the data exercises (grid columns; grid column `n` is map column
   and 30 px into grid columns 32–35) and every feet level y from 240 to
   780 (feet lines −16 to 524). Each value is a level y, `above` (above
   the level) or `none` (no ground).
+
+## Row grids, the first cell and shapes 63 to 79
+
+Vectors for "Areas and layouts", "Row grids", "The grid's first cell"
+and "Shapes 63 to 79" (all "`title-2`") in the format. All made up, as
+above.
+
+### Input
+
+- `rows-types.hex`: the type table, one type per line (type 0 first),
+  four bytes each as in `types.hex`. `N` = 23.
+- `rows-map.hex`: the unpacked map, one map row per line (map row 0
+  first): the 28 bytes of the row's 14 cell words, low byte first. 10
+  map rows.
+- `rows-area.txt`: the area record's values: map width and height in px,
+  the rectangle's left, right, top and bottom edges, and the layout (7).
+  The rectangle is map columns 1 to 12 and map rows 1 to 8, so the grid
+  has 12 columns (level x 256 to 639) and 8 bands. Every cell of the map
+  around it holds type 19 (a full cell); none of it is part of the grid
+  and it must not show up in the results.
+
+What the data exercises (grid columns `n` and bands `k`):
+
+- Types 1–9 have shape 63 + 2(`t` − 1) in the left half word and 64 +
+  2(`t` − 1) in the right one (type 9's right half word is 0), so every
+  shape from 63 to 79 appears at every position. Types 10–18 are the
+  same with bit 15 set in both half words (flipped). Columns 1–9 hold
+  types 1–9 in band 2, the same mirrored in band 3, types 10–18 in band
+  4, and types 10–18 mirrored in band 5.
+- Column 0: a full cell in band 0 (the grid's first cell, which has no
+  ground), a full cell in band 1 and flat ground in band 4.
+- Column 10: a surface at band 1's top line over a full cell in band 2,
+  and a slope in band 5. Column 11: a slope in band 0, a full cell with
+  bit 15 set in the cell word in band 3, and a type of `N` or more in
+  band 6.
+- Band 7 is full in every column, so no search looks below the grid,
+  and no search looks above band 0.
+
+### Expected output
+
+- `rows-grid.hex`: the area's grid, one band per line (band 0 first): the
+  24 bytes of its 12 cell words, low byte first.
+- `rows-surfaces.tsv`: for every level x from 256 to 639 and each band
+  0–7, the level y of the surface in that band (line + 256) or `none`,
+  for a lookup whose feet line is at each height `h` = 0 to 31 in its
+  band (columns `h0` to `h31`).
+- `rows-ground-below.tsv`: the ground below for 48 values of level x (2,
+  13, 18 and 29 px into each grid column) and every feet level y from
+  257 to 512 (feet lines 1 to 256). Each value is a level y or `none`.
