@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.110.0
+
+What is kept when play comes back to the first level in `title-1`.
+
+Answers part of clamber-engine/spec#17. The rest is not covered yet, so
+it stays open.
+
+- `behavior/exits.md`: new "Coming back to the level": after the scene
+  or the room, the collectible count, the lives, the set of letters
+  taken and whether the restart point was reached are kept as on
+  leaving; bunches, letters and the restart barrel once taken or
+  touched stay gone; single collectibles taken before and a small
+  walker bounced on before are there again. Checks and Not covered
+  updated (other kinds of object, two characters, bunches and letters
+  after a knock-out).
+
 ## spec-v0.109.0
 
 The count display and the level map after a finish in `title-1`.
