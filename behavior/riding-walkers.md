@@ -45,8 +45,8 @@ Three kinds of walker were measured. They walk the same way
 (`walker.md`) but differ in size:
 
 - the **small walker** (as in `walker-contact.md`),
-- the **medium walker**: 13 px taller than the small walker, with
-  different horizontal ranges,
+- the **medium walker** (as in `walker-contact.md`): 13 px taller than
+  the small walker, with different horizontal ranges,
 - the **large walker** (as in `walker-contact.md`): 26 px taller than the
   small walker, and 3 px wider on each side.
 
@@ -260,5 +260,3 @@ Here the walker walks under the falling player, who bounces off it
   the animal, the animal at walls or leaving the view).
 - The large walker's horizontal motion after a throw.
 - Other enemies and objects; the second character.
-- The medium walker on foot (`walker-contact.md` covers the small and
-  large walkers only).
