@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.120.0
+
+Stored order in lists without sections, and the spec's license.
+
+Answers clamber-engine/spec#43. Part of clamber-engine/spec#17; that
+issue stays open for the parts not covered yet.
+
+- `LICENSE` (new): the spec is dedicated to the public domain under
+  CC0 1.0 Universal (unmodified legal code). `README.md`: new License
+  section. `GOVERNANCE.md`: new Contributions section, saying
+  contributions are made under CC0 1.0.
+- `formats/placements.md`: new section "Stored order". In a list
+  without sections, the "When an entry appears" rules hold with the
+  whole list as one open section, so an entry stored after one with a
+  larger `x` waits for that entry. Class 8 entries in the window now
+  count as clear. The example gains an entry stored out of order, with
+  its first entry moved to fit the window rule. Checks, and an updated
+  Not covered list (the "too many objects" limit now applies to any
+  list).
+- `vectors/placements/`: `appear.tsv` now includes the out-of-order
+  entry; README updated.
+
 ## spec-v0.119.0
 
 When the first level's placed objects are removed.
