@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.90.0
+
+Coverage: placement lists with sections, and placement class 15.
+
+Answers no `spec` issue.
+
+- `formats/placements.md`: classes 9 and 15 in the class table; class 15
+  references are matched by kind fingerprint like class 1's. New "Lists
+  with sections": a class 9 first entry locates a section table whose
+  8-byte records divide the list into sections and join each pair at a
+  point, with the structure seen in the underwater lists and one shared
+  list. "When placed objects appear": the window while `V` is less than
+  32, and the class 15 vertical window. New "In a list with sections":
+  which sections are open (the home section, a crossing record, the edge
+  the view leaves by), when an entry appears (lead, clear entries, the
+  home section waiting), what was seen of class 1 and class 2 entries
+  outside the vertical window, an example, Checks and "Not covered"
+  updates.
+- `vectors/placements/`: a made-up list with sections, its records, a
+  view path, and the entries that appear on each frame.
+
 ## spec-v0.89.0
 
 Which areas the player swims in.
