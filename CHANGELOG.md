@@ -2,9 +2,43 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
-## Unreleased
+## spec-v0.80.0
 
-Answers `spec` issue #30 (`title-2`).
+New specs and traces (`title-1` level map; `title-2` reference traces),
+and a correction (`title-2` steep faces). Answers `spec` issue #30.
+
+- `behavior/level-map.md` (new): walking on the level map. Map
+  positions with fractions, paths as lists of points, legs at
+  (end − start) / 64 px per frame per axis, each axis arriving on its
+  own (moving toward smaller values: put back to the end's whole pixel,
+  fraction kept), fractions carried from walk to walk; a worked example;
+  standing frames, the remembered press (new presses only, 31 frames),
+  the direction as the first of Right, Left, Up, Down among held and
+  remembered buttons (no fallback); 256 px pages, no walk before 64
+  frames after a page change or the map's fade-in; where the lead
+  stands when the map appears. Progress not covered.
+- `formats/level-map.md` (new): the level map's format. Point ids
+  (corner ids 112–143, the rest stops), seven 256-byte point tables
+  (page, `x` on the page, `h`, and each stop's neighbour for Right,
+  Left, Up and Down), the appearance point 8 px right of a stop's
+  position, corner records (two destination/next pairs each, `K` = 4 in
+  `title-1`), and the route of a walk (first corner by its record
+  naming the start, then next points toward the destination); example,
+  measurements, not covered. Vectors: `vectors/level-map/` (new).
+  `behavior/level-map.md` points to it. `formats/locators.md`: two
+  `title-1` rows; `formats/README.md` lists it.
+- Traces: new `reference/title-2/run-jump-flat.trace`,
+  `reference/title-2/bounce-walker.trace` and
+  `reference/title-2/slope-dip.trace`. `title-2` now has a trace for
+  every scenario. `TITLES.md`: the `title-2` row lists them.
+- `behavior/jump-arc.md` ("Example (`title-2`)"), `behavior/bounce.md`
+  ("Example (`title-2`)") and `behavior/slopes.md` ("Examples
+  (`title-2`)"): point to them. `slopes.md` notes that the `slope-dip`
+  summary describes `title-1`, and how far a `title-2` test level
+  continues the floor.
+- `behavior/bounce.md` ("In `title-2`"): the landing frame's row is
+  grounded with `land`, as in `title-1` (it said the state stays `bounce`
+  on that frame); "Not covered" notes the trace's landing.
 
 - `behavior/steep-faces.md`, "In `title-2`": the face limits are
   corrected. They come before the blocking test, and keep downhill
