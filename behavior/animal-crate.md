@@ -195,8 +195,9 @@ begins on the 23rd frame after the mount, with `y` = 400.
 - Breaking the crate while bouncing off an enemy, carrying an object,
   being hit, swapping, or during the Down + Action ground action; and
   objects thrown at the crate or the animal.
-- What happens to the crate and the animal when they leave the view and
-  come back.
+- What happens to the animal when it leaves the view and comes back. The
+  crate is removed and comes back as in `../formats/placements.md`
+  ("When placed objects are removed").
 - How the flash, the smoke and the broken crate are drawn, where they
   are, and when they are removed; the sounds.
 - The trace state of the player while mounting.
