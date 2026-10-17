@@ -119,11 +119,9 @@ than 82) `vx` is 0 and `x` stays 81.25.
   own left end), knock-outs, the other character, and the walk-out at
   the level's end (`level-end.md`), in which the lead goes past the
   point where the right end would stop it.
-- The first level's left end has an object that, once the player
-  touches it or goes left of it, makes the player walk off the left end
-  of the level by itself, and the player leaves the level. What it does, and
-  how it is told apart from other objects, is not covered. It also
-  stops the view (`view.md`, "Not covered").
+- The walk-out through an exit (`exits.md`), which the left end doesn't
+  stop. The first level's left end has one: a player walking toward the
+  end there is taken over by it before reaching the stop.
 - Whether the player's vertical motion changes on a stopped frame.
 - Other levels, and kinds of area that don't take their limits from a
   view-limit record (`../formats/view-limits.md`, "Not covered").

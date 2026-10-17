@@ -46,6 +46,7 @@ names" table.
 | Fingerprint | Kind |
 |---|---|
 | `064bbe75bd3abfab4b38a24ad7b839fc30bdfc417023fd381ada77694e617ded` | `stinger` |
+| `0d36c9a5953a166b2bbfafe60fc65cbe1abd9b66392a33c650daaeb3db1b9fe8` | `exit` |
 | `0e1f45ccf4bc6e7a48005c73ce0003f0a0d0205fbb063ade26b4f1fe83877da0` | `stinger` |
 | `12ddb2c3b0a218c0ccb5c1798e7094b5a2b61d21d2361da03b6f6286fa191e0a` | `restart-barrel` |
 | `15ac2312a3f8d89089ee4c658cf1bee3df8b12254e7ebe4d7646b35028b932d6` | `letter-1` |
@@ -77,6 +78,7 @@ names" table.
 | `b0b7540b3c061784c8c319b69b0c7db7ed9c67a84d094cefd7b05fa52dcbe7a4` | `small-walker` |
 | `bc061647de9b607ad9eb002282563c85bb821236cf557781087f987a0ba862aa` | `small-walker` |
 | `c8337d0771ac9e0feb76d90747123b32fba93ad3fe8fc5db12cd8a1a647b5910` | `medium-walker` |
+| `ca241289eec0b66d060f41c4a59b57f87638faf55b0b2b7aa6082d5dafed37af` | `exit` |
 | `cc9382a3b49fbd2580834652575cf6c0fb7129761622b5cf7261081c549f25e6` | `hidden-metal-barrel` |
 | `d95f1da6f034e0484756a23152ad6c3ecdc3bf418860bc083e55a33ef6cf6abc` | `stinger` |
 | `e2e5bad069370a387793f29708000e57f265a85fa38b598be9d019dec4259cc9` | `end-marker` |
