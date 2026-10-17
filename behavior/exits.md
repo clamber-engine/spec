@@ -309,11 +309,18 @@ There again, as when the level begins:
   first level, each bounced on before leaving. Without an exit, a large
   walker bounced on was not there again when the lead went far away and
   came back within the same visit (one run);
-- the **thrower** (kind `thrower`, `thrower.md`) knocked out by the
-  ground action before (`ground-action-enemies.md`, "The thrower"): it
-  is there again when the view comes to its place, as the level places
-  it. Without an exit, the thrower knocked out was not there again when
-  the lead went far away and came back within the same visit (one run);
+- the **thrower** (kind `thrower`, `thrower.md`) knocked out before,
+  by the ground action (`ground-action-enemies.md`, "The thrower"), by
+  a bounce (`thrower-contact.md`) or by a roll (`thrower-contact.md`,
+  "Rolling into the thrower"): it is there again when the view comes to
+  its place, as the level places it. Without an exit, the thrower
+  knocked out in any of these ways was not there again when the lead
+  went far away and came back within the same visit (one run each);
+- the **ball** the level places (`thrower.md`, "Balls placed in a
+  level") after it appeared and was removed before: it appears again
+  when the view comes to its place, at the same position and one frame
+  on, as when the level begins. Without an exit it doesn't come back
+  (`thrower.md`);
 - a **barrel** (kind `barrel`, `carrying.md`) picked up, thrown and
   broken against a wall before (`thrown-objects.md`, "Breaking against a
   wall"): it is at its place again when the view comes there, standing
@@ -546,6 +553,30 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   thrower was there again after both exits, as in the controls. In the
   run without an exit (the lead going far left for 120 frames, then
   back) it was not there. 29 checks in all, none different.
+- **Coming back, the thrower bounced on or rolled into, and the placed
+  ball.** 13 more runs with the lead alone. For the thrower, 2 runs
+  through each exit and 2 without an exit: the lead held still 30 px
+  above the thrower and let fall onto it, so that it bounced and the
+  thrower was knocked out; or the lead on the thrower's ledge, 45 px
+  left of it, rolling right into it; and a control for each exit that
+  did nothing before leaving. The balls were taken out of the level in
+  these, so that they couldn't hurt the lead, and after coming back
+  each run went to the thrower's place. For the placed ball, with the
+  thrower taken out of the level so that it threw nothing: one run
+  through each exit and one without an exit in which the lead went
+  near the ball's place, the ball appeared and was removed ("Leaving
+  the picture") about a second later, before the lead left; and a
+  control for each exit in which the view never came to the ball before
+  leaving. After coming back, each went near the ball's place again
+  and watched for 600 frames. The count, the lives, the set of letters
+  and the restart point were the same on coming back as on leaving in
+  all 10 exit runs, and the lead wasn't hurt before leaving in any of
+  the 13. The thrower was knocked out in all 6 runs that bounced on it
+  or rolled into it, was there again after both exits, as in the
+  controls, and wasn't there in the 2 runs without an exit. The ball
+  appeared again after both exits, at the same position as in the
+  controls and as before leaving; in the run without an exit it didn't
+  appear. 89 checks in all, none different.
 - **Coming back, the holders.** 8 more runs, each starting with the
   lead alone: for each of the first level's two holders, one run through
   each exit and one without an exit in which the lead picked the holder
@@ -697,8 +728,7 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
 - What else is kept when play comes back to the level after the scene
   or the room: tyres moved,
   an animal left after being mounted other than by a knock-off by a
-  walker, a thrower bounced on
-  or rolled into, objects of kinds the spec doesn't
+  walker, objects of kinds the spec doesn't
   name, and objects other than a barrel or a holder carried through the
   exit. Whether a broken barrel
   ever comes back during the same visit without an exit (it didn't in

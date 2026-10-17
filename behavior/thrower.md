@@ -185,7 +185,8 @@ seen appearing 11 times, always one frame on and always at the same
 position. Which speeds a placement gives isn't covered.
 
 A placed ball appears only once. After it is removed it doesn't come
-back, however the view moves, until play resumes after a knock-out:
+back, however the view moves, until play resumes after a knock-out or
+comes back to the level after an exit:
 
 - In the first level, after the ball had been removed, its entry left
   the window and came back into it 23 times, and no ball appeared. 20
@@ -202,6 +203,10 @@ back, however the view moves, until play resumes after a knock-out:
   9 times, always on the first frame whose `V` put `x` in the window,
   one frame on and at the same position as before. After 2 other
   resumes the view didn't get that far.
+- After leaving the level by either exit and coming back
+  (`exits.md`, "Coming back to the level"), the ball appeared again when
+  the view came to it, one frame on and at the same position as before,
+  whether or not it had appeared and been removed before leaving.
 
 ## Example
 
@@ -245,6 +250,5 @@ Floor 331 never counted: the ball passed it while ignoring floors.
 - Walls and faces in a ball's way (none was met).
 - Throwers facing right, other timetables, and throwers in other levels.
 - What a placed ball's speeds come from. Whether it comes back after
-  play begins again at the level's start (without the restart point),
-  or after leaving the level by an exit and coming back.
+  play begins again at the level's start (without the restart point).
 - How the thrower and the balls are drawn.
