@@ -61,8 +61,11 @@ ranges are below. Landing was not measured for letters.
 From `P` on, the letter is no longer in the level. It never comes back
 during the visit to the level: in one case the player was moved about
 500 px past a taken letter's place and back, and it did not come back
-(an untaken letter did, in the same case). Whether it is there when the
-level is played again is not covered.
+(an untaken letter did, in the same case). After a knock-out it is there
+again only when play resumes at the level's start (`restart-barrel.md`,
+"What is there again after a knock-out"); after an exit it stays taken
+(`exits.md`, "Coming back to the level"). After finishing the level, not
+covered.
 
 ### Offsets
 
@@ -132,8 +135,11 @@ shown, and the number of lives shown goes up by one. See "The ending"
 below; the life itself counts from the frame the fourth letter joins the
 set. The set of letters taken is empty again from then on.
 
-Whether the set of letters taken survives losing a life, leaving the
-level or entering another level is not covered.
+After a knock-out the set is emptied when play resumes at the level's
+start and kept when it resumes at the restart point (`restart-barrel.md`,
+"What is there again after a knock-out"); an exit keeps it (`exits.md`,
+"Coming back to the level"). Whether it survives finishing the level or
+entering another level is not covered.
 
 ## The letter row
 

@@ -167,6 +167,58 @@ the usual rules of `view.md`.
 
 The picture fades in from black from frame 4 on.
 
+## What is there again after a knock-out
+
+When play resumes after a knock-out, what happened in the level before
+is partly kept. All of this was measured in the first level with the
+first character leading and alone, knocked out by a walker (one life
+lost), without an exit taken before (`exits.md` has what an exit keeps).
+
+Kept as it was at the knock-out, wherever play resumes:
+
+- the collectible count (`collectibles.md`, `count-display.md`);
+- the figure count (`figure.md`);
+- whether the restart point has been reached ("The restart point").
+
+**The set of letters taken** (`letters.md`) depends on where play
+resumes:
+
+- **At the level's start** (the restart point not reached): the set is
+  empty, and every letter is in the level again. Taking them again
+  builds the set up again as in `letters.md`.
+- **At the restart point**: the set is kept as it was at the knock-out,
+  including letters taken after the restart point was reached, and the
+  letters in it stay gone, whether their places are left or right of
+  the restart point. The letters not in it are there.
+
+In the level again after resuming at the level's start, as on a first
+visit:
+
+- a **bunch** taken (`bunches.md`);
+- a **letter** taken (above);
+- an **extra-life item** taken (kinds `rising-extra-life-1` and
+  `rising-extra-life-2`, `extra-lives.md`): taking it again gives its
+  lives again;
+- the **figure** taken: taking it again adds one to the figure count
+  again;
+- a **hidden bunch** (kind `hidden-bunch`, `hidden-objects.md`) struck
+  by the ground action, with its bunch taken;
+- the **barrel** broken (`thrown-objects.md`), at its entry;
+- the **animal crate** broken (`animal-crate.md`): it is there, and
+  bouncing on it brings the animal out again;
+- a **medium walker** (kind `medium-walker`) bounced on.
+
+After resuming at the restart point, a bunch taken left of the restart
+point was there again (and gave its collectibles again), while the
+letter taken near it stayed gone (above).
+
+Measured: 27 runs with a knock-out, each set of taken objects paired
+with a control run that took nothing before its knock-out, judged in 151
+checks, none different (8 more runs looked at the objects' places too
+soon after moving there and were repeated): the lives one fewer, the count and figure
+count unchanged, the set of letters as above, the objects seen at their
+places after the resume, and what taking them again gave.
+
 ## Example
 
 The restart point is at `xr` = 1000, `yr` = 400, over a floor at level
@@ -205,6 +257,10 @@ the barrel is touched on the third, the upright range starting at −24.
 - Touching the barrel while bouncing off an enemy, carrying an object,
   being hit or knocked out, swapping, or during the Down + Action
   ground action.
+- After a knock-out: other kinds of object, objects other than bunches
+  and letters after resuming at the restart point, the single
+  collectibles, two characters, and a fall-out instead of a knock-out
+  ("What is there again after a knock-out").
 - Ways of leaving the level other than finishing it, a knock-out or a
   fall-out, and what happens to the restart point when another level is
   played before this one is entered again, or when no tries are left.

@@ -272,9 +272,11 @@ and is not drawn from frame 321 on.
   runs (to 100 to 102); what is then shown and kept is not covered.
 - Going away past the window's left edge; whether an item that went
   away is there when the level is played again (after a knock-out, or
-  coming back after an exit); and whether an item taken is there again
-  after a knock-out. An item taken before an exit stays gone after
-  coming back (`exits.md`, "Coming back to the level").
+  coming back after an exit); and whether an `extra-life-3` item taken is
+  there again after a knock-out. A rising item taken is there again after
+  a knock-out (`restart-barrel.md`, "What is there again after a
+  knock-out"); an item taken before an exit stays gone after coming back
+  (`exits.md`, "Coming back to the level").
 - Rising items reaching exactly level y 0; rising items while the game
   is paused or during a knock-out.
 - How an item is drawn, how the taken item's image flies to the lives
