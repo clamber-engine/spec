@@ -2,6 +2,34 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.83.0
+
+New specs (the echo, hidden objects) and three new object kinds.
+
+In part for spec#20 (sound for the first level, `title-1`). spec#20 stays
+open.
+
+- `formats/echo.md` (new): the echo memory and its position, the filter
+  over the 8-value history, feedback, the echo volume and how the echo
+  is mixed into each output. When handed values take effect. In
+  `title-1`: which song commands hand which values. Worked example,
+  measurements and what isn't covered.
+- `vectors/echo/` (new): 9 made-up cases with every output.
+- `formats/README.md`: entry for `echo.md`.
+
+Coverage (`title-1`). Answers no open `spec` issue.
+
+- `behavior/hidden-objects.md` (new): placed objects that aren't drawn.
+  One kind is struck by the ground action, two are set off by a long
+  fall onto them. Covers the ranges, the pause, the released item's arc
+  and what it becomes (a bunch, a barrel or a metal barrel), with an
+  example, evidence and what isn't covered.
+- New kinds `hidden-bunch`, `hidden-barrel` and `hidden-metal-barrel`,
+  with fingerprint rows in `formats/locators.md`. `formats/placements.md`
+  has the kind table and the updated first-level counts. Pointers were
+  added in `behavior/ground-action-enemies.md`, `behavior/bounce.md` and
+  `behavior/bunches.md`.
+
 ## spec-v0.82.0
 
 New specs (`title-2` nibble packing and level ground, riding the animal
