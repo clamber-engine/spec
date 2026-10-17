@@ -231,11 +231,11 @@ Floor 331 never counted: the ball passed it while ignoring floors.
 
 ## Not covered
 
-- The player rolling into the thrower (the thrower touching the player
-  and bouncing on it are in `thrower-contact.md`, balls touching the
-  player in `ball-contact.md`, and the ground action knocks it out,
-  `ground-action-enemies.md`), thrown objects (`thrown-objects.md`)
-  meeting a ball or the thrower, and balls meeting walkers.
+- Thrown objects (`thrown-objects.md`) meeting a ball or the thrower,
+  and balls meeting walkers. The thrower touching the player, bouncing
+  on it and rolling into it are in `thrower-contact.md`, balls touching
+  the player in `ball-contact.md`, and the ground action knocks it out,
+  `ground-action-enemies.md`.
 - How balls and the thrower move while the player is knocked out (balls
   were seen to stop for several frames).
 - A ball moving up into a floor from below while not ignoring floors
