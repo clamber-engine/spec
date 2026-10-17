@@ -509,8 +509,10 @@ Where the first level's grid and type table start in the image is in
   and bands past the grid's last band in step 3. All the rooms measured
   were inside the grid.
 - Where the grids, type tables and `N` of levels other than the first
-  are stored, which part of a grid each of them uses, and the first
-  level's left and right ends within its 184 columns.
+  are stored, and which part of a grid each of them uses. How far left
+  and right the picture and the player can go is given by the level's
+  view limits (`view-limits.md`, `../behavior/level-ends.md`), not by
+  the grid.
 - Level x outside the grid.
 - Anything other than ground and cell pictures (walkers, objects,
   limits of the view). Cell pictures are in `graphics.md`.

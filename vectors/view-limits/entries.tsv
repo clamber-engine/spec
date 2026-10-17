@@ -1,0 +1,11 @@
+address	entry	start	top	bottom	rate
+4000	0	16	32	160	usual
+4000	1	768	48	176	quick
+4000	2	2248	0	264	usual
+4020	0	0	100	100	quick
+4030	0	2100	120	200	usual
+4030	1	2222	90	210	usual
+4030	2	3000	140	140	quick
+4030	3	32767	0	1	usual
+4058	0	500	16	64	usual
+4058	1	501	20	70	quick

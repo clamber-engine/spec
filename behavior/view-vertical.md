@@ -111,8 +111,8 @@ Then `T` ← max(`T`, top), and then `T` ← min(`T`, bottom). Every entry
 seen had top less than bottom.
 
 On the first level the limits change at several places along the level,
-and both rates occur. How the limits are stored belongs to the level
-format (not yet specified).
+and both rates occur. The entries are stored in the level's view-limit
+record (`../formats/view-limits.md`).
 
 With the limits, the target matched on all but 81 of the 76 396 frames
 (see "Not covered"). On 3660 of them, case 2 of "The target" applied.

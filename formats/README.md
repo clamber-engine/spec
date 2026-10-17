@@ -37,6 +37,9 @@ fingerprints" in `../REVIEW.md`).
 - `level-start.md`: where the characters are when a level begins, and
   a level's restart point (start records). Vectors:
   `../vectors/level-start/`.
+- `view-limits.md`: a level's view-limit record: the left and right
+  limits of the picture and the player, and the vertical limit
+  entries. Vectors: `../vectors/view-limits/`.
 - `locators.md`: where each kind of data starts in each supported
   image.
 - `sound.md`: samples (sample table, records, blocks, decoding, loops),
