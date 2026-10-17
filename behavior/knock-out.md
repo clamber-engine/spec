@@ -5,7 +5,8 @@ Titles: `title-1`, `title-2`
 What happens to the player when they take damage while they are the only
 character, from the hit until the level ends. Which contacts with a
 walker cause damage rather than a bounce is in `walker-contact.md`, and
-when a thrower's ball does in `ball-contact.md`. What
+when a thrower's ball or the thrower does in `ball-contact.md` and
+`thrower-contact.md`. What
 happens with two characters, and what follows the end of the level, are
 not covered here. Frames are logic frames at 60 Hz, numbered as in a
 trace. `x`, `y` and `vy` are as in a trace: down is positive, speeds in
