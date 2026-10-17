@@ -71,3 +71,12 @@ original program crosses the firewall:
   input on the player's machine and never appear in the spec.
 
 A row or description that fails any of these rules fails the change.
+
+## Hardware behaviour: describe, don't copy
+
+Director decision (spec #31). Constant tables or other data measured from
+the console's own hardware (not from the game image) are **not**
+transcribed into the spec. A spec describes what the hardware does in
+words (shape, number of points, precision, how a result is used) so the
+engine can compute an equivalent from a formula; small differences in
+the result are acceptable. A change that transcribes such a table fails.
