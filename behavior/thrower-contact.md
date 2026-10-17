@@ -4,8 +4,9 @@ Titles: `title-1`
 
 When contact between the player and a thrower (`thrower.md`) hurts the
 player (`knock-out.md`, `losing-a-character.md`) and when it gives a
-bounce (`bounce.md`), and what a bounce does to the thrower. Balls
-touching the player are in `ball-contact.md`.
+bounce (`bounce.md`), what a bounce does to the thrower, and what
+happens when a rolling player meets it. Balls touching the player are in
+`ball-contact.md`.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x` grows to
 the right. Measured on the first level's thrower with the first
@@ -133,6 +134,88 @@ three of the frames its timetable would have thrown on).
 In the random runs it never hurt the player or gave a bounce after it
 was knocked out.
 
+## Rolling into the thrower
+
+A rolling player defeats the thrower the way a roll defeats a walker
+(`rolling-into-walkers.md`), with the thrower's own range. This section
+uses that spec's names: **S** is a roll's `roll_start` frame, **D** =
+S + 29, **K** the frame on which the thrower is defeated, and the
+**attack frames** are the same: every frame of a roll up to the last
+frame before `roll_end` (D, D + 1 and D + 2 included when the roll
+carries on into running), and D to D + 7 when it ends in a stop. A roll
+that has been reversed (`roll-speed.md`) counts like any other.
+
+### When the thrower is defeated
+
+On an attack frame K the thrower is defeated when I, from the player's
+position **at the end of K**, is within (both ends included):
+
+| Player facing (at the end of K) | I |
+|---|---|
+| right | −24 to 33 |
+| left | −32 to 25 |
+
+The range facing left is the range facing right turned around, as in
+"Being hurt". It is the same on every attack frame, for slow, normal and
+fast rolls, with Action held or released, after a reversal, and on the
+frame before a throw. The player was on the thrower's ledge (U = −1); a
+player rolling on the floor under the ledge, about 80 px below it,
+neither defeats the thrower nor is hurt by it.
+
+On S itself the thrower is also defeated when I from the player's
+position at the end of S − 1 is within the range. This shows only when
+the player moves a pixel or more on S, as in a fast roll pressed while
+running: facing right and moving right 2.33 px on S, the thrower was
+defeated for I at the end of S − 1 from −26 to 33 (I at the end of S
+from −24 to 35).
+
+### Being hurt around a roll
+
+As for walkers (`rolling-into-walkers.md`, "Being hurt around a roll"),
+with the thrower's hurt rule ("Being hurt") in place of the walker's:
+
+- if the hurt conditions hold at the end of S − 1, the player is hurt on
+  S even though Action is pressed on S, and no roll starts;
+- the player is never hurt by the thrower on an attack frame;
+- after a roll that carries on into running, the earliest hurt is on the
+  frame after `roll_end`;
+- after a roll that ends in a stop, on D + 8 to D + 11 the thrower
+  neither is defeated nor hurts the player; the earliest hurt is on
+  D + 12, with the upright range. The frame before a throw still
+  doesn't hurt.
+
+### After the defeat
+
+The player's pause on K + 1 and K + 2, how the roll goes on, the boost
+and the speeds are exactly as after defeating a walker
+(`rolling-into-walkers.md`, "The pause", "How the roll goes on" and
+"Speed on roll frames").
+
+The thrower is knocked out as by a bounce ("What a bounce does to the
+thrower", with K in place of B): it doesn't move on K, K + 1 and K + 2,
+then from K + 3 its `vy` (−5 on K) increases by 7/16 per frame, up to 8,
+and it moves by it, with `vx` 0. It throws no more balls (measured for
+300 frames after K, past six of the frames its timetable would have
+thrown on).
+
+### Example
+
+Synthetic. The thrower is at `x` 1000 on its ledge. The player rolls
+right facing right at `vx` 3 (a normal roll at full speed); positions
+are at the end of each frame.
+
+| Frame | `x` | I | Notes |
+|---|---|---|---|
+| K − 1 | 974.5 | −26 | outside −24 to 33 |
+| K | 977.5 | −23 | the thrower is defeated |
+| K + 1 | 977.5 | −23 | pause |
+| K + 2 | 977.5 | −23 | pause |
+| K + 3 | 980.5 | −20 | the roll goes on (Action not held: `vx` stays 3) |
+
+A fast roll pressed with the player facing right at `x` 1033.5 at the
+end of S − 1 (I = 33) and moving 2.33 px on S defeats the thrower on S,
+though I at the end of S is 35.
+
 ## Examples
 
 Synthetic. The thrower is at `x` 1000, its position 300 px above a
@@ -205,12 +288,36 @@ frame (bounce):
 Random runs: the counts are above. Three frames in the hurt range were
 frames before a throw; none was hurt.
 
+Rolling into the thrower:
+
+- placements on its ledge, one pixel apart, I from −47 to 47 at the
+  start of the frame: facing right and left, slow, normal and fast
+  rolls, Action held throughout and pressed only on S, every frame from
+  S − 2 to S + 48 (the roll, the frames that end it, the stop or the
+  running after it); rolls reversed on S + 1 and S + 5, including one
+  started with the thrower behind the player; and rolls on the floor
+  under the ledge: 73 941 placements, each followed for two frames. Every
+  set filled the ranges above with no gaps; 24 600 defeats on the frame
+  itself, 1 042 on the next frame (the player moved into the range),
+  9 600 hurts, none on an attack frame or on D + 8 to D + 11;
+- by inputs alone, from two states with the player standing on the
+  ledge left of the thrower, reached by inputs, every ball removed: 400
+  runs (53 597 frames) with random approaches (standing, walking,
+  running), slow, normal and fast rolls, Action held, released and
+  pressed again, reversals, Jump and Down presses; each run checked
+  until the player left the ledge's floor. 321 defeats (21 facing left
+  after a reversal), 235 boosts (175 on K + 3), 45 hurts in runs without
+  a defeat: every defeat frame, pause, boost, speed and the thrower's
+  motion as described, 0 mismatches.
+
 ## Not covered
 
-- Rolling, crouching, the fidget pose and the Down + Action ground
-  action on the thrower's ledge (the ground action is in
-  `ground-action-enemies.md`). Rolling along the ledge through the
-  thrower's place was seen not to hurt.
+- Crouching, the fidget pose and the Down + Action ground action on the
+  thrower's ledge (the ground action is in `ground-action-enemies.md`).
+- Rolling: defeats in the stop and on the frames that end a roll were
+  measured by placements only (on the ledge, a roll reaches the thrower
+  before then); rolls in the air near the thrower (rolling off the
+  ledge's ends happens outside the ranges); two defeats in one roll.
 - The upright pose in the air other than in the first frames of a jump,
   and the closing and landing pictures of the airborne pose
   (`walker-contact.md`, "Poses") in the air near the thrower.
