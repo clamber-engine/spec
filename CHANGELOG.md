@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.113.0
+
+The level map in `title-1`: kinds of stops, how a new game begins, and
+which paths are open.
+
+Answers clamber-engine/spec#40.
+
+- `formats/level-map.md`: new "Kinds of stops" (level stops, link
+  points and three kinds of places by id; the first level's stop; where
+  a press at each link point moves the lead), "A new game" (the start
+  point and its link point) and "Progress" (paths open per direction of
+  travel; the paths open at a new game, and the path the first level's
+  first finish opens). Measurements and Not covered updated.
+- `behavior/level-map.md`: new "Pressing at a stop" (what Jump, Action
+  or Pause does at each kind of stop; presses before the standing frames
+  aren't remembered) and "A new game" (frame by frame from the map's
+  first frame to entering the first level, with an example and
+  measurements). After the first finish the given direction is Down.
+  Not covered updated.
+
 ## spec-v0.112.0
 
 The data of the first level's room in `title-1`.
