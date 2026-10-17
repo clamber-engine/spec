@@ -212,9 +212,12 @@ The characters that are there, and which one leads, carry over:
 | The level is finished with both characters | first leading; second leading | both, the same one leading |
 | Both fall out of the level (`falling-out.md`) | first leading | both, the first leading |
 | The only character left is knocked out (`knock-out.md`) | the second character, after the first was lost | the second character only |
+| The only character left is knocked out | the first character, after the second was lost (a swap first) | the first character only |
 
 When both are there, both appear where play starts, and the one that
-leads is under control.
+leads is under control. After a knock-out the other character is missing
+again, and a holder frees it again (`restart-barrel.md`, "Holders, and
+who leads").
 
 ## Example (made-up numbers)
 
