@@ -222,9 +222,10 @@ Kept as it was when the area was left:
 
 Still gone: a **bunch** taken (`bunches.md`), a **letter** taken, the
 **restart barrel** once touched, the **figure** taken (`figure.md`), an
-**extra-life item** taken (kinds `rising-extra-life-1` and
-`rising-extra-life-2`, `extra-lives.md`), and a **hidden bunch** (kind
-`hidden-bunch`, `hidden-objects.md`) once struck, together with the
+**extra-life item** taken (kinds `rising-extra-life-1`,
+`rising-extra-life-2` and `extra-life-3`, `extra-lives.md`), and a
+**hidden bunch** (kind `hidden-bunch`, `hidden-objects.md`) once
+struck, together with the
 bunch it released, whether that bunch was taken or not. The **animal
 crate** (kind `animal-crate`, `animal-crate.md`) once broken is also
 still gone, and so is the animal that came out of it if it was left
@@ -240,6 +241,11 @@ places, and nothing is taken or struck there again: the count, the
 lives, the figure count and the set of letters don't change. For these
 objects, "the rest of the visit to the level" in those files goes on
 through the scene and the room.
+This held for both `extra-life-3` items of the first level, taken
+together before leaving: after either exit neither was there when the
+view came back to their places, and holding the lead on their places
+gave no lives. Not taken before the exit, both were there after either
+exit and gave 3 lives each.
 
 There again, as when the level begins:
 
@@ -579,7 +585,7 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   hidden objects set off by a fall and their items,
   an animal left after being mounted other than by a knock-off by a
   walker, a thrower bounced on
-  or rolled into, the `extra-life-3` items, objects of kinds the spec doesn't
+  or rolled into, objects of kinds the spec doesn't
   name, and objects other than a barrel or a holder carried through the
   exit. How a barrel or a holder carried into the exit moves during the
   walk-out. Whether a broken barrel
