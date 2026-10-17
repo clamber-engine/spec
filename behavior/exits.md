@@ -197,9 +197,10 @@ The scene's data is in `../formats/graphics.md`,
 `../formats/level-ground.md`, `../formats/placements.md` and
 `../formats/view-limits.md` ("The first level's scene"), its start
 record in `../formats/level-start.md` ("the scene's start record"), and
-its view in `level-ends.md` ("In the first level's scene"). What the
-scene's placed objects are, and the pictures the characters show in
-the scene, are not covered.
+its view in `level-ends.md` ("In the first level's scene"). Of the
+scene's placed objects, one is the room's end marker and one a sign
+(`signs.md`, "The scene's sign"); what the third is, and the pictures
+the characters show in the scene, are not covered.
 
 ## Coming back to the level
 
@@ -416,8 +417,8 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   the object (its definition, `../formats/placements.md`), and how an
   area is entered (walking in, and which way, or as a level begins) is
   given above only for the first level's areas.
-- The kinds of the scene's placed objects and the pictures the
-  characters show in the scene ("The scene"). The room's
+- The kind of the scene's class 2 entry that isn't the end marker, and
+  the pictures the characters show in the scene ("The scene"). The room's
   data is in `../formats/graphics.md`, `../formats/level-ground.md`,
   `../formats/placements.md` and `../formats/level-start.md` ("The
   first level's room" or "the room's start record"), and its view in

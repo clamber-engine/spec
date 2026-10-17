@@ -14,11 +14,13 @@ the right. Horizontal positions are level positions as in `view.md`.
 Vertical positions are **level y** as in `view-vertical.md`.
 
 The first level holds two signs, near its end, with different pictures
-(one shows an arrow, the other a word). Both are of the one kind `sign`;
-the picture belongs to the reference, and how a sign is drawn is not
+(one shows an arrow, the other a word). The first level's scene
+(`exits.md`, "The scene") holds a third, with a picture of its own (a
+board with words on it). All three are of the one kind `sign`; the
+picture belongs to the reference, and how a sign is drawn is not
 covered. Measured with the first character leading and alone, using the
 level's own signs and, in a copy of the image, copies of each of the
-two placed near the level's start (see "Checks").
+three placed near the level's start (see "Checks").
 
 ## A sign's position
 
@@ -74,6 +76,22 @@ were the same on every frame. In particular:
 In the pictures checked (the lead standing at each of the two signs),
 the sign was drawn over the lead where they overlapped.
 
+## The scene's sign
+
+The scene's placement list (`../formats/placements.md`, "In the first
+level's scene") places its sign with its class 1 entry. In the scene the
+picture doesn't move and every entry is in the window
+(`level-ends.md`, "In the first level's scene"), so the sign is there,
+at its entry's position, from the scene's frame 1 to its last frame
+(frames numbered as in `exits.md`, "Walking in"), and isn't there on
+frame 0. It never moves and is never removed there. The lead walks in
+from the right and stops right of the sign (`exits.md`, "The scene"),
+so the lead never reaches it.
+
+Placed in the first level, the same reference places a sign that does
+everything above: it appears and is removed at the same distances, and
+it changes nothing in play.
+
 ## Checks
 
 Each check compared two copies of the image, the same but for one
@@ -102,6 +120,19 @@ until play stopped (a knock-out's fade ends a run).
   appearances (14 from the right, 7 from the left) and 20 removals (11
   on the right, 9 on the left). On every frame the sign was there
   exactly when the rules above say.
+- **The scene's sign.** The same lead, walker and thrown-object checks
+  as above, with a copy of the scene's sign placed near the level's
+  start (the lead and the thrown object) and on the small walker's floor
+  (walkers): 54 459, 22 888 and 27 253 frames, with 10 923 frames with
+  the lead near the sign, 3 802 with a walker within 24 px, and the
+  barrel passing the sign in all 30 runs. Differences: 0. Appearing and
+  removal, walking, running and jumping away from and back to the copy
+  in both directions: 14 runs, 7 352 frames, 18 appearances (15 from
+  the right, 3 from the left) and 15 removals (4 on the right, 11 on
+  the left), each exactly when the rules above say. In the scene
+  itself, in a run with the lead alone and one with two characters (397
+  frames each), the sign was at its entry's position on every frame
+  from frame 1 on.
 
 ## Not covered
 
