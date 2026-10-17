@@ -4,29 +4,6 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
-Coverage (level map, `title-1`). Answers no open `spec` issue.
-
-- `behavior/level-map.md` (new): walking on the level map. Map
-  positions with fractions, paths as lists of points, legs at
-  (end − start) / 64 px per frame per axis, each axis arriving on its
-  own (moving toward smaller values: put back to the end's whole pixel,
-  fraction kept), fractions carried from walk to walk; a worked example;
-  standing frames, the remembered press (new presses only, 31 frames),
-  the direction as the first of Right, Left, Up, Down among held and
-  remembered buttons (no fallback); 256 px pages, no walk before 64
-  frames after a page change or the map's fade-in; where the lead
-  stands when the map appears. Map format and progress not covered.
-- `formats/level-map.md` (new): the level map's format. Point ids
-  (corner ids 112–143, the rest stops), seven 256-byte point tables
-  (page, `x` on the page, `h`, and each stop's neighbour for Right,
-  Left, Up and Down), the appearance point 8 px right of a stop's
-  position, corner records (two destination/next pairs each, `K` = 4 in
-  `title-1`), and the route of a walk (first corner by its record
-  naming the start, then next points toward the destination); example,
-  measurements, not covered. Vectors: `vectors/level-map/` (new).
-  `behavior/level-map.md` points to it (appearance point, not covered).
-  `formats/locators.md`: two `title-1` rows; `formats/README.md`.
-
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.
