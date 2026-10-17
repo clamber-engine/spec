@@ -73,10 +73,14 @@ frame (the row carrying `jump_start`).
 
 1. A press on P **counts** only if frame P starts with the player
    grounded and not on the face. A press on a frame that starts on the
-   face or in the air does nothing: no jump, and the fall is the same as
-   without it. (A press made during the fall and held through landing can
-   still start a jump on landing, as `jump-input.md` describes for any
-   press made in the air.)
+   face or in the air doesn't count: no jump on P + 1, and the fall is
+   the same as without it. (A press made during the fall and held through
+   landing can still start a jump on landing, as `jump-input.md`
+   describes for any press made in the air. So can a press on a frame
+   that starts on the face, if Jump is held until the player is on other
+   floor and the take-off comes at most 12 frames after the press:
+   `steep-faces.md`, "Jumping on or next to a face", measured with the
+   lead character.)
 2. A press that counts sets the **jump gravity** g(f) for the frames
    after it: the lighter jump gravity (`jump-arc.md`; 0.28125 for the
    lead character) on frame f if Jump has been held on every frame from
@@ -91,8 +95,9 @@ frame (the row carrying `jump_start`).
    the jump (a take-off on the frame that moves onto the face is carried
    onto it; a take-off on L or later moves down as in rule 2), then `vy`
    becomes the take-off value, and the jump follows `jump-arc.md` with
-   g(f) from rule 2. If P + 1 starts on the face there is no jump, but
-   rule 2 still applies to the fall.
+   g(f) from rule 2. If P + 1 starts on the face there is no jump on
+   P + 1, but rule 2 still applies to the fall (and the press can still
+   take off later under the condition in rule 1).
 
 So when the player is carried down the face, there is **no grace
 period** after leaving the ground: L starts on the face, and no press on
