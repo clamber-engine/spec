@@ -283,6 +283,9 @@ A thrown object rolls past an object holding the missing character
 without either one being affected (seen in every run that rolled past
 one).
 
+A thrown object moving right opens a closed wall exit that it comes
+near (`wall-exits.md`, "Opening"), without being affected itself.
+
 ## Example
 
 All values are computed from the rules above. Thrown to the right while
