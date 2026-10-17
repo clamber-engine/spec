@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.129.0
+
+The first level's scene's sign, and moved barrels after an exit.
+
+Part of clamber-engine/spec#17 (the first level's layout) and part of
+clamber-engine/spec#19 (the first level's entities). Both issues stay
+open for the parts not covered yet.
+
+- `behavior/signs.md`: new section "The scene's sign": the scene's
+  class 1 entry is a `sign`, there at its entry's position from the
+  scene's frame 1 on, never moving or removed; placed in the first level
+  it behaves as the other signs. New checks bullet.
+  `formats/locators.md`: one kind fingerprint row (`sign`).
+  `formats/placements.md` ("In the first level's scene") and
+  `behavior/exits.md` ("The scene", Not covered) narrowed to the
+  remaining class 2 entry.
+- `behavior/exits.md`, "Coming back to the level": a `barrel` put down
+  unbroken elsewhere, or still carried when the exit takes over, is at
+  its place again after coming back (the carried barrel is not in the
+  scene or the room). New checks "Coming back, moved barrels"; Not
+  covered narrowed.
+
 ## spec-v0.128.0
 
 Single collectibles in the level data, and more of what comes back after
