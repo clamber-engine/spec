@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.100.0
+
+Walking off a ledge with the second character, and jump presses at
+ledges with a steep face, in `title-1` (coverage).
+
+- `behavior/walk-off.md`: "Jumping near the edge" restated as three
+  rules for both characters. A press counts only if its frame starts
+  grounded and not on the face. A press that counts sets the jump
+  gravity for the fall, including L, even if it gives no jump. It jumps
+  on the next frame unless that frame starts on the face. At running
+  speed the player can pass the face without a frame starting on it, and
+  then presses on L − 1 and L still jump (`coyote_frames` 1). Also an
+  updated example, evidence for both characters, a pointer in "Falling"
+  and an updated "Not covered".
+- `behavior/second-character.md`: new section "Walking off a ledge" with
+  this character's values, walking and running examples and evidence.
+  "Not covered" updated.
+- `behavior/jump-input.md`: the pointer to faced ledges now says when a
+  press on L doesn't jump.
+
 ## spec-v0.99.0
 
 The mode after falls and bounces in `title-1`.
