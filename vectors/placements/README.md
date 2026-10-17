@@ -87,27 +87,26 @@ What the data exercises:
   are not zero.
 - Class 15 entries that wait for the vertical window, class 1 entries
   that don't, and a group.
-- A record that starts being watched, the other section's objects
-  appearing, and the current section changing as the view goes up past
-  a point; later, coming back down past a point, and the side edge
-  deciding when the view jumps past a side edge and the bottom edge in
-  one frame.
-- A frame on which the other section makes an object, so that a current
-  section entry waits one frame (frames 228 and 229).
+- A crossing that starts, the far section's entries appearing, and the
+  home section changing as the view goes up past a point; later, coming
+  back down past a point, and the side edge deciding when the view jumps
+  past a side edge and the bottom edge in one frame.
+- A frame on which a far section entry appears, so that a home section
+  entry waits one frame (frames 228 and 229).
 - Entry 14 is stored after entry 13, which has a larger `x`: it can't
   appear before entry 13 is in the window (frame 813).
 - `V` less than 32 (frames 0–9 and others).
 - No record's point is in the window on frame 0.
+- Not exercised: holding (no object is removed, so the group stays
+  clear), and class 2 entries.
 
 ### Expected output
 
 - `sections-records.tsv`: the section table's records (`index` from 0)
   with `level_y` = 1024 − `h`.
-- `sections-frames.tsv`: for each frame, after the frame's step: the
-  current section (first–last entry), the watched record (or `-`), its
-  other section (or `-`), the current section's reading start, and the
-  entries whose objects appear on that frame (a group is listed by its
-  entry's number, and all its members appear with it), or `-`.
+- `sections-frames.tsv`: for each frame, the entries whose objects
+  appear on that frame (a group is listed by its entry's number, and all
+  its members appear with it), or `-`.
 - `sections-appear.tsv`: for each entry of class 1, 5 or 15, the frame
   on which its object (or the group's objects) appears and the `V` and
   `U` of that frame, or `never`.
