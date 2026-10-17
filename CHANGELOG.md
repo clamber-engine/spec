@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.88.0
+
+Coverage: a swimming scenario with a `title-1` reference trace.
+
+Answers no `spec` issue.
+
+- `scenarios/swim-strokes.scn` (new): 160 frames in open water from a
+  sinking start, with a plain, an Up and a Down stroke, sinking with and
+  without Down, speeding up, slowing down and turning.
+- `traces/reference/swim-strokes.trace` (new): the `title-1` reference.
+- `behavior/movement-summary.md`: the new scenario in "Scenarios with
+  reference traces".
+- `behavior/swimming.md`: "In a trace" points to the scenario.
+
 ## spec-v0.87.0
 
 Trace vocabulary for swimming.
