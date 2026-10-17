@@ -202,6 +202,7 @@ members are looked up by their own references.
 | `stinger` | A stinger (flying enemy) | `stinger.md` |
 | `tyre` | A tyre that throws the player up | `tyre.md` |
 | `sign` | A sign (scenery that nothing touches) | `signs.md` |
+| `critter` | A small flying creature (scenery that nothing touches) | `critter.md` |
 | `hidden-bunch` | A hidden object that the ground action strikes, releasing a bunch | `hidden-objects.md` |
 | `hidden-barrel` | A hidden object set off by a long fall onto it, releasing a `barrel` | `hidden-objects.md` |
 | `hidden-metal-barrel` | A hidden object set off by a long fall onto it, releasing a metal barrel | `hidden-objects.md` |
@@ -222,16 +223,17 @@ its own reference, and placed a tyre there.
 
 ### In the first level
 
-26 of the first level's 37 references have a kind fingerprint row. They
-are used by 53 of its entries (counting group members): 5 small
+27 of the first level's 37 references have a kind fingerprint row. They
+are used by 55 of its entries (counting group members): 5 small
 walkers (all three group members among them), 6 medium walkers, 3 large
 walkers, the
 thrower, a ball, 4 bunches, the four letters (one each), a figure, a barrel, 2
 holders, the animal crate, the restart barrel, the end marker, the
 entrance, 2 exits,
-15 hidden bunches, a hidden barrel, a hidden metal barrel and 2 signs
-(two references, one sign each). The other references place things
-that have no behavior file yet (for example other scenery), or that
+15 hidden bunches, a hidden barrel, a hidden metal barrel, 2 signs
+(two references, one sign each) and 2 critters (one reference). The
+other references place things that have no behavior file yet (for
+example other scenery), or that
 were not seen.
 
 Checked in the game: every object seen from these 30 entries, in the
@@ -254,6 +256,9 @@ reference, given to a class 1 entry near the level's start, placed a
 figure that was taken and counted as `../behavior/figure.md` says. Each of
 the two `sign` references, given to a class 1 entry near the level's
 start, placed a sign there that behaved as `../behavior/signs.md` says.
+The `critter` reference, given to a class 1 entry near the level's
+start, placed a critter there that appeared and flew as
+`../behavior/critter.md` says.
 
 ### In the first level's room
 
@@ -330,18 +335,17 @@ from it: up to 1 px in the other appearances (a walker's first step is
 1/8 px), and in one more, not counted in the 230, 1.2 px to the left and
 2.6 px higher.
 
-The objects of one reference were the exception. They move about
-rather than stand, and both entries with that reference had their
-object away from the entry's position when it appeared: 90 px to the
-left at the same height (there on the level's first frame), and 46 px
-to the left and 59 px higher (appearing on the frame its entry entered
-the window).
+The objects of one reference were the exception: critters, which fly
+about and appear at the top of the picture rather than at their entry
+(`../behavior/critter.md`, "Appearing").
 
 One entry can make more than one object appear (seen with one reference:
 two objects at the same position).
 
 How a walker is removed, comes back, or stays away once defeated is in
-`../behavior/walker-view.md`. For the other objects it is not covered.
+`../behavior/walker-view.md`, and how a critter is removed and comes
+back in `../behavior/critter.md`. For the other objects it is not
+covered.
 
 ### In a list with sections
 
