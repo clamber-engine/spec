@@ -91,14 +91,19 @@ near the top right:
 
 | Frame | Lives number at y |
 |---|---|
-| up to `S` + 8 | not drawn |
-| `S` + 9 to `S` + 13 | −8, −4, 0, 4, 8 |
+| up to `S` + 7 | not drawn |
+| `S` + 8 to `S` + 13 | −12, −8, −4, 0, 4, 8 |
 | `S` + 14 to `S` + 146 | 10 |
-| `S` + 147 to `S` + 150 | 6, 2, −2, −6 |
-| `S` + 151 on | not drawn |
+| `S` + 147 to `S` + 152 | 6, 2, −2, −6, −10, −14 |
+| `S` + 153 on | not drawn |
 
 This was measured with 5 lives before the new one, for `S` 33 frames
-after the pickup and 1 frame after it; both gave the table above.
+after the pickup and 1 frame after it; both gave the table above. On `S` + 8,
+`S` + 151 and `S` + 152 the number is partly above the picture's top
+edge, and only its lowest rows are drawn.
+
+The lives display after all four letters are taken is in `letters.md`,
+"The ending".
 
 ## Example
 
@@ -136,8 +141,8 @@ frame 342; it isn't shown from frame 343.
 - Collectibles that are taken but never counted (`collectibles.md`,
   "When the count goes up"), and items released by hidden objects (when
   they start).
-- Letters (`letters.md` has the letter row) and the lives display after
-  all four letters.
+- Letters (`letters.md` has the letter row and the lives display after
+  all four letters).
 - The displays from the hit of a knock-out on, while falling out of the
   level (the count display was seen to be shown again then with no
   pickup), during the end of a level, and in other areas.
