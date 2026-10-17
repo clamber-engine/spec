@@ -539,6 +539,7 @@ on each frame: see its `README.md`.
   group entry's position isn't always its first member's.
 - The level's exit at its end, other than the end marker
   (`../behavior/level-end.md`), and the other areas entered from the
-  level: which area an `exit` leads to (`../behavior/exits.md`, "Not
-  covered"). Where the characters start is in `level-start.md`, and
+  level, other than the first level's room and scene: which area an
+  `exit` leads to (`../behavior/exits.md`, "Where the first level's exits
+  lead" and "Not covered"). Where the characters start is in `level-start.md`, and
   the view's limits are in `view-limits.md`, not in the placement list.

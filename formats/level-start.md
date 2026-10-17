@@ -33,6 +33,23 @@ the first level `Yb` is 512.
   point, the record's point is the restart point (`xr`, `yr`) of
   `../behavior/restart-barrel.md`.
 
+`locators.md` also gives two records for coming back to the first level
+from the areas its exits lead to (`../behavior/exits.md`, "Where the
+first level's exits lead"). Both points are in the first level, with
+`Yb` = 512:
+
+- **The scene-return record.** After the scene that the floor exit leads
+  to, the characters walk into the first level from the left, starting
+  from this record's point as in `../behavior/exits.md` ("Walking in").
+- **The room-return record.** After the room that the upper exit leads
+  to, the first level begins as from the level map
+  (`../behavior/level-start.md`), with this record's point in place of
+  the start record's. In the supported image it holds the same point as
+  the start record, but it is a record of its own: in a copy of the
+  image with only the room-return record moved (to `x` 64, `h` 330),
+  coming back from the room began at the moved point, and entering the
+  level from the map still began at the start record's point.
+
 In the first level, the start record's point is also the position of
 the level's `entrance` entry (`placements.md`, "Kinds"), and the
 restart record's point is the position of its `restart-barrel` entry.
@@ -72,5 +89,6 @@ records at given addresses and the points a reader gets from them.
   data.
 - Whether a level can make the characters face left on its first frame
   (they faced right in every run).
-- Other areas entered from a level (rooms), and where play is when
-  coming back from them.
+- Other areas entered from a level (the first level's room and scene),
+  and where their own start records are. Where play is when coming back
+  to levels other than the first.

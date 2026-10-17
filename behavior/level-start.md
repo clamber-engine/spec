@@ -7,7 +7,9 @@ hidden at the level's start point, inside the level's **entrance**, which
 bursts and throws them out. Where the start point is comes from the
 level's data (`../formats/level-start.md`). Which characters are there,
 and which one leads, is in `following.md` ("When a level begins again").
-Resuming at a restart point is in `restart-barrel.md`.
+Resuming at a restart point is in `restart-barrel.md`. Coming back to
+the first level from its room begins in the same way, at another record's
+point (`exits.md`, "Where the first level's exits lead").
 
 Frames are logic frames at 60 Hz, numbered as in a trace: frame 0 is the
 level's first frame. Horizontal positions are level x as in `view.md`;
