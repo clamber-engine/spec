@@ -186,6 +186,9 @@ When the count goes up from 99, it becomes 0 instead, and on the same
 frame the number of lives goes up by one. Two counts arriving on the
 same frame and counts above 100 are not covered.
 
+What the picture shows of the count, and of the new life, is in
+`count-display.md`.
+
 ## In `title-2`
 
 Everything in this section was measured on `title-2` only, on the first

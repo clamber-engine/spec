@@ -134,6 +134,9 @@ Each item adds one as in `collectibles.md`, including the change from
 99 to 0 that gives one more life. The count going up past 99 from a
 bunch was not measured.
 
+The count display (`count-display.md`) is shown from the frame the bunch
+is taken.
+
 ## Not covered
 
 - The second character, leading or following, touching a bunch.
