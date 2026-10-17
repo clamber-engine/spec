@@ -195,7 +195,8 @@ members are looked up by their own references.
 | `barrel` | An object that can be carried and holds nothing | `carrying.md`, `thrown-objects.md` |
 | `holder` | An object that can be carried and holds the missing character | `carrying.md`, `holder-breaking.md` |
 | `end-marker` | An end marker: the level's end, or the way out of the first level's room | `level-end.md` |
-| `entrance` | The place the characters come out of when the level begins | `level-start.md` |
+| `entrance` | The place the characters come out of when the level begins from the level map | `level-start.md` |
+| `room-return-entrance` | The place the characters come out of when play comes back to the level from its room | `level-start.md` ("Coming back from the room") |
 | `wall-return-entrance` | The place the lead comes out of when play comes back to the level from the area behind its first wall exit | `wall-exits.md` ("Coming back from the first wall exit's area") |
 | `exit` | An exit that takes the lead out of the area | `exits.md` |
 | `wall-exit` | An exit hidden in a wall, opened by a thrown object | `wall-exits.md` |
@@ -230,21 +231,18 @@ its own reference, and placed a tyre there.
 
 ### In the first level
 
-36 of the first level's 37 references have a kind fingerprint row. They
-are used by 66 of its entries (counting group members): 5 small
+37 of the first level's 37 references have a kind fingerprint row. They
+are used by 67 of its entries (counting group members): 5 small
 walkers (all three group members among them), 6 medium walkers, 3 large
 walkers, the
 thrower, a ball, 4 bunches, the four letters (one each), a figure, a barrel, 2
 holders, the animal crate, the restart barrel, the end marker, the
-entrance, the wall-return entrance, 2 exits, 2 wall exits (two references, one each),
+entrance, the room-return entrance, the wall-return entrance, 2 exits, 2 wall exits (two references, one each),
 15 hidden bunches, a hidden barrel, a hidden metal barrel, 2 signs
 (two references, one sign each), 2 critters (one reference) and 5
 extra-life items (two `rising-extra-life-1`, one `rising-extra-life-2`
 and two `extra-life-3`), a stiff tyre and two launch barrels (one of
-each kind). The
-other references place things that have no behavior file yet (for
-example other scenery), or that
-were not seen.
+each kind). Every reference the level uses has a row.
 
 Checked in the game: every object seen from these 30 entries, in the
 runs in "When placed objects appear" and, for the end marker, the
@@ -288,6 +286,8 @@ launch barrel there that caught the player, shot them down and broke as
 `../behavior/launch-barrel.md` says; its own entry was checked as in
 `../behavior/wall-exits.md` ("Coming back from the second wall exit's
 area").
+The `room-return-entrance` row was checked as in
+`../behavior/level-start.md` ("Coming back from the room").
 
 ### In the first level's room
 
@@ -833,7 +833,8 @@ runs, 32 220 frames. On every frame each object was there exactly when
   `y` − `U` less than −31 (on the frame with −32 for the one at 132),
   with the entry in the window throughout. The one at 168 stayed.
 - The entrance: in copies of the image in which the other entry at the
-  start point was given a `sign`'s reference, the lead walked until
+  start point (the `room-return-entrance`) was given a `sign`'s
+  reference, the lead walked until
   the view was 500 and 1 000 px right of the start and came back. The
   entrance didn't appear again; the sign appeared each time the view
   came back over its entry. With a `bunch`'s reference given to the

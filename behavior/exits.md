@@ -168,7 +168,9 @@ the logic frame after `F` + 30.
   After it, play goes on in the first level, which begins exactly as it
   does from the level map
   (`level-start.md`), at the first level's **room-return record**
-  (`../formats/level-start.md`) instead of its start record.
+  (`../formats/level-start.md`) instead of its start record, and out of
+  the level's `room-return-entrance` instead of its `entrance`
+  (`level-start.md`, "Coming back from the room").
 
 Coming back from the room was checked frame by frame against the level's
 own start: the lead's position, speed, state and facing were the same
