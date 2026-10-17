@@ -2,6 +2,31 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.116.0
+
+Where the view starts when an area begins, and critters, in `title-1`.
+
+Answers part of clamber-engine/spec#17 and part of clamber-engine/spec#19.
+The rest of each is not covered yet, so both stay open.
+
+- `behavior/view.md`: the target is 1 px less near the level's left
+  end. New "When an area begins" (the view on frame 0; the level's
+  start, also from the room-return record, with fast frames; walking
+  in; resuming at the restart point; two synthetic examples). Not
+  covered updated.
+- `behavior/restart-barrel.md`: the view on frame 0 of a resume is
+  1/2 px further right than stated before; the example is corrected.
+- `behavior/exits.md`, `behavior/level-start.md`: pointers to the new
+  view section; Not covered updated.
+- New `behavior/critter.md`: the critter (scenery), when and where it
+  appears, when it is removed, and that it has no effect on play;
+  checks.
+- `formats/placements.md`: new `critter` kind; the first level's
+  references with kind rows updated; the appearing exception and
+  removal now point to `critter.md`.
+- `formats/locators.md`: one `critter` kind fingerprint row for
+  `title-1`.
+
 ## spec-v0.115.0
 
 How the first level's room is left, and signs, in `title-1`.
