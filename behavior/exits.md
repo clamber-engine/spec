@@ -213,17 +213,23 @@ Kept as it was when the area was left:
 - the collectible count (`collectibles.md`, `count-display.md`) and the
   lives;
 - the set of letters taken (`letters.md`);
+- the figure count (`figure.md`);
 - whether the level's restart point has been reached
   (`restart-barrel.md`): after coming back, a knock-out resumes at the
   restart point if the barrel was touched before the exit took over, and
   play begins at the level's start if it wasn't.
 
-Still gone: a **bunch** taken (`bunches.md`), a **letter** taken, and
-the **restart barrel** once touched stay gone after coming back. They
-don't appear when the view comes back over their places, and nothing is
-taken there again: the count and the set of letters don't change. For
-these objects, "the rest of the visit to the level" in those files goes
-on through the scene and the room.
+Still gone: a **bunch** taken (`bunches.md`), a **letter** taken, the
+**restart barrel** once touched, the **figure** taken (`figure.md`), an
+**extra-life item** taken (kinds `rising-extra-life-1` and
+`rising-extra-life-2`, `extra-lives.md`), and a **hidden bunch** (kind
+`hidden-bunch`, `hidden-objects.md`) once struck, together with the
+bunch it released, whether that bunch was taken or not. They stay gone
+after coming back. They don't appear when the view comes back over their
+places, and nothing is taken or struck there again: the count, the
+lives, the figure count and the set of letters don't change. For these
+objects, "the rest of the visit to the level" in those files goes on
+through the scene and the room.
 
 There again, as when the level begins:
 
@@ -232,7 +238,9 @@ There again, as when the level begins:
   again. For them, coming back starts a new visit to the level;
 - a **small walker** (kind `small-walker`) bounced on before
   (`walker.md`, "Being bounced on"): it is there again when the view
-  comes to its place, walking as the level places it.
+  comes to its place, walking as the level places it;
+- a **medium walker** (kind `medium-walker`) bounced on before: it is
+  there again in the same way.
 
 Other kinds of object are not covered (see "Not covered").
 
@@ -338,6 +346,21 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   knock-out afterwards resumed at the restart point only in the runs
   that had touched it. The small walker was there again after both
   exits. 88 checks in all, none different.
+- **Coming back, more kinds.** 26 more runs with the lead alone, 13
+  through each exit, in five sets: two hidden bunches on different
+  floors, each struck by the ground action and its bunch either left
+  where it landed or taken; the two rising extra-life items; the figure
+  (with the thrower and its balls taken out of the level for these runs,
+  so that the lead wasn't hurt); one medium walker bounced on. Each set
+  had a control that did nothing before leaving. After coming back, each
+  run struck, took or went to the same objects again. The count, the
+  lives, the figure count, the set of letters and the restart point were
+  the same on coming back as on leaving in all 26. The runs that had
+  struck a hidden bunch got nothing from it again; each control got its
+  bunch. The runs that had taken the extra-life items or the figure got
+  no lives or figure again; the controls got 3 lives and one figure. The
+  medium walker, gone after the bounce, was there again after both
+  exits, as in its control. 146 checks in all, none different.
 
 ## Not covered
 
@@ -355,10 +378,11 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   room's placed objects other than the tyre and the end marker are not
   covered.
 - What else is kept when play comes back to the level after the scene
-  or the room: barrels, holders and tyres moved or broken, the items of
-  hidden objects, the animal crate, walkers other than the small walker,
-  throwers, objects of kinds the spec doesn't name, and an object
-  carried through the exit. Coming back with two characters (the runs
+  or the room: barrels, holders and tyres moved or broken, the hidden
+  objects set off by a fall and their items, the animal crate and its
+  animal, the large walker, throwers, the `extra-life-3` items, objects
+  of kinds the spec doesn't name, and an object carried through the
+  exit. Coming back with two characters (the runs
   in "Coming back to the level" had the lead alone).
 - Whether bunches and letters taken before a knock-out are there when
   play resumes (`restart-barrel.md`).
