@@ -203,6 +203,16 @@ comes back to the level after an exit:
   9 times, always on the first frame whose `V` put `x` in the window,
   one frame on and at the same position as before. After 2 other
   resumes the view didn't get that far.
+- After a knock-out before the restart point was reached, play resumed
+  at the level's start (`restart-barrel.md`, "Resuming"), and the ball
+  appeared again when the view came to it, one frame on and at the same
+  position as before: 4 times, after the lead was moved next to the
+  ball's entry. It did so whether the ball had appeared and been removed
+  before the knock-out (2 times), was still there when the knock-out
+  came (1), or had never appeared (1); when it had appeared before, it
+  appeared again after the same number of frames from the move, and
+  went on as before. Without a knock-out, the same moves away and back
+  brought no ball.
 - After leaving the level by either exit and coming back
   (`exits.md`, "Coming back to the level"), the ball appeared again when
   the view came to it, one frame on and at the same position as before,
@@ -249,6 +259,5 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   falling.
 - Walls and faces in a ball's way (none was met).
 - Throwers facing right, other timetables, and throwers in other levels.
-- What a placed ball's speeds come from. Whether it comes back after
-  play begins again at the level's start (without the restart point).
+- What a placed ball's speeds come from.
 - How the thrower and the balls are drawn.
