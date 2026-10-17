@@ -6,8 +6,8 @@ The first level holds four **letters**, numbered 1 to 4 by their place
 in the word they spell. The player takes a letter by touching it. Each
 letter taken is shown in a **letter row** at the top of the picture,
 and taking all four gives one more life. This file covers when a letter is
-taken, the letters taken so far, the reward, and when the letter row is
-shown.
+taken, the letters taken so far, the reward, when the letter row is
+shown, and what it shows after the fourth letter.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x` grows to
 the right. Horizontal positions are level positions as in `view.md`.
@@ -123,15 +123,14 @@ neither is the exact frame.
 ## All four letters
 
 On the frame the fourth letter joins the set, the player gets **one
-more life**. The order the letters were taken in doesn't matter (letter
-4 last and letter 1 last both measured).
+more life**. The order the letters were taken in doesn't matter (each of
+the four letters was measured as the last one taken).
 
-After that, the letter row shows a sequence (not covered in detail):
-the four letters blink, then move one at a time to the right, to where
-the number of lives is shown, and the number of lives shown goes up by
-one about 194 frames after `P` (the life itself counts from the frame
-the fourth letter joins the set). The set of letters taken is empty
-again from then on.
+After that, the letter row shows the **ending**: the four letters blink,
+then move one at a time to the right, to where the number of lives is
+shown, and the number of lives shown goes up by one. See "The ending"
+below; the life itself counts from the frame the fourth letter joins the
+set. The set of letters taken is empty again from then on.
 
 Whether the set of letters taken survives losing a life, leaving the
 level or entering another level is not covered.
@@ -149,8 +148,8 @@ one drawn from the state at the end of frame `n`, shown once frame `n`
 is over. A row "at y `t`" has the top row of its images at y `t`; parts
 above the picture's top edge aren't drawn.
 
-When a letter is taken on frame `P` (not the fourth; see "All four
-letters"):
+When a letter is taken on frame `P` (for the fourth letter, only up to
+the frame it joins the set; see "The ending"):
 
 1. **The copy.** From the picture made on `P` on, a copy of the letter
    is drawn starting about where the letter was and moving toward its
@@ -180,6 +179,102 @@ and (108, 12) from frame 110. Letter 3's copy reaches (132, 12) around
 frame 128. All three stay there until frame 221, and nothing of the row
 is drawn from frame 228.
 
+## The ending
+
+`J` is the frame the fourth letter joins the set (the copy of the letter
+taken last has reached its slot; "The letters taken"). Up to `J` the
+row is as in "The letter row" for the fourth letter too: on `J` all four
+letters are in their slots at y 12. From `J` + 1 on, the row doesn't
+slide out; this section gives what it shows instead.
+
+### The four letters
+
+The letter taken last is **one frame late**: everything below happens
+to it one frame later than to the other three. For letter `k`, let
+`n` = `f` − `J` on frame `f` (`f` − `J` − 1 for the late letter), and let
+its **slot place** be (84 + 24 × (`k` − 1), 12), its slot in the row.
+
+| `n` | Letter `k` is |
+|---|---|
+| 0 | at its slot place |
+| 1 to 8, 17 to 24, 33 to 40, 49 to 56 | not drawn |
+| 9 to 16, 25 to 32, 41 to 48 | at its slot place |
+| 57 to `M` − 1 | at its slot place |
+| from `M` = 67 + 24 × (`k` − 1) | moving right, then gone |
+
+So the not-late letters blink: off for 8 frames, on for 8, four times,
+and then stay on.
+
+**Moving.** The letter's horizontal position `x` starts at its slot
+place's x (84, 108, 132 or 156). On each frame from `M` on, `x` moves
+right by an eighth of the distance left to 192, but by at least ½ px;
+if less than ½ px would then be left, `x` is 192 instead. The letter
+is drawn with its top-left pixel at (`x` rounded down, 12). On the
+frame after the one on which `x` is 192, it isn't drawn any more.
+
+A not-late letter starts moving on `J` + 67, `J` + 91, `J` + 115 or
+`J` + 139 (letters 1 to 4), is at 192 on `J` + 98, `J` + 120, `J` + 142
+or `J` + 162, and is not drawn from the next frame. Letter 1, for
+example, is drawn at x 97, 109, 119, 128, 136, 143, 149, 154, 159, 163,
+167, 170, 172, 175, 177, 179, 180, 182, 183, 184, 185, 186, 186, 187,
+188, 188, 189, 189, 190, 190, 191 and 192 on `J` + 67 to `J` + 98.
+
+### The lives display
+
+`G` is the first frame on which letter 4 is gone: `J` + 163, or `J` +
+164 when letter 4 was taken last.
+
+The **lives display** shows the number of lives near the top right,
+with the same digits as the count display (`count-display.md`, "What the
+count display shows"): one digit (1 to 9) at x 220, two digits (10 to
+99) at x 215 (tens) and x 225 (units). An image is drawn to its left;
+that image and how it moves are not covered. It shows the number of
+lives before the new life up to `G` − 1, and the new number from `G` on.
+
+| Frame | Lives number at y |
+|---|---|
+| `J` to `J` + 6 | not drawn |
+| `J` + 7 to `J` + 12 | −12, −8, −4, 0, 4, 8 |
+| `J` + 13 to `G` + 121 | 10 |
+| `G` + 122 to `G` + 127 | 6, 2, −2, −6, −10, −14 |
+| `G` + 128 on | not drawn |
+
+With 99 lives before the new life, the number shown stayed 99, also from
+`G` on.
+
+### Example
+
+With letters 1, 2 and 4 already taken and 5 lives, the player takes
+letter 3, which joins the set on frame 531 (`J`), and the player has 6 lives
+from frame 531. Letter 3 is the late one. Letters 1, 2 and 4 are not
+drawn on frames 532 to 539, 548 to 555, 564 to 571 and 580 to 587;
+letter 3 on 533 to 540, 549 to 556, 565 to 572 and 581 to 588. The
+lives display comes in from the top with 5 at y −12 on frame 538 and is
+at y 10 from 544. Letter 1 moves from frame 598 and is gone from 630,
+letter 2 moves from 622 and is gone from 652, letter 3 moves from 647
+and is gone from 675, and letter 4 moves from 670 and is gone from 694
+(`G`). The lives display shows 6 from frame 694, leaves at y 6 on frame
+816 and is not drawn from 822.
+
+### Checks
+
+Each of the four letters was taken last, at its place in the level,
+with the other three already in the set; for each, with the view in
+three places before it was taken (the letter joined the set 18 to 36
+frames after it was taken), with no input or with Right, Left, Jump,
+Right + Action or Down held from `J` on, and with 1, 5 or 8 lives
+before: 216 runs. On every frame from `J` to `J` + 300, where each
+letter was drawn, whether and where the lives number was drawn, the
+frame its number changed, and the frame the lives went up were as
+above: 50 583 frames, 0 different. In 78 of the runs the player was
+hit and knocked out, or fell out of the level, 16 to 274 frames after
+`J`; those runs were compared up to the frame before. The frames with
+the lives number partly above the picture's top edge (y −12, −10 and
+−14), the blinking, the late letter and the first frame of a move were
+also checked in the picture itself in one run. 10 and 99 lives after
+the new life (9 and 98 before) gave the two-digit places, and 99 before
+gave 99 shown throughout.
+
 ## Not covered
 
 - The second character, leading or following.
@@ -187,5 +282,11 @@ is drawn from frame 228.
   frames from `L`, the frame carrying `land`, on), turning and the frame
   after a turn, and the stop after a roll.
 - Taking a letter while the row is still shown for another one.
+- The ending while the player is knocked out, leaves the level or
+  finishes it, or while another lives display (`count-display.md`) is
+  shown, and what the extra life with 99 lives does.
+- In one setup, with the player rolling from the pickup on, the lives
+  display came in 2 frames later than above (y −12 on `J` + 9); why is
+  not covered.
 - How a letter and the row's images are drawn; the copy's exact path.
 - Other levels, and whether every level has four letters.
