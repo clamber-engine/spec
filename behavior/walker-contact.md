@@ -29,6 +29,10 @@ but differ in size:
 - the **large walker**: its ranges below are those of the small walker
   widened by 3 px on each side and raised by 26 px at the top.
 
+A third kind, the **medium walker** (`riding-walkers.md`), is taller and
+has different ranges against the ridden animal; its contact with a player
+on foot is not covered here.
+
 ## Offsets
 
 Contact is decided from whole-pixel positions. Round each position down:
