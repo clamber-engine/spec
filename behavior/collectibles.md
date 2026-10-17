@@ -7,7 +7,9 @@ player takes by touching it. Each one taken adds one to the
 **collectible count**. When the count reaches 100, it starts again from
 0 and the player gets one more life. This file covers when a single
 collectible is taken, which ones can be taken depending on the view, and
-when the count goes up. Other kinds of collectible are not covered.
+when the count goes up. Bunches are in `bunches.md`, letters in
+`letters.md` and figures in `figure.md`; other kinds of collectible are
+not covered.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x` grows to
 the right. `vy` is as in a trace: down is positive, in px per frame.
@@ -362,7 +364,8 @@ picture's left and right edges.
 This list is for `title-1`; `title-2` has its own list above.
 
 - Other kinds of collectible. Bunches, worth ten, are in `bunches.md`;
-  letters are in `letters.md`.
+  letters are in `letters.md`; figures, which add to their own count,
+  are in `figure.md`.
 - The ranges while bouncing off a walker (`bounce.md`), while being
   carried down a steep slope or a rounded ledge (`steep-faces.md`), while
   passing up or down through a platform (`platforms-from-below.md`),
