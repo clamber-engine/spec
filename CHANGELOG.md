@@ -2,6 +2,41 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.82.0
+
+New specs (`title-2` nibble packing and level ground, riding the animal
+into walkers) and a new walker kind. Answers no open `spec` issue.
+
+Coverage (`title-2`). Answers no open `spec` issue.
+
+- `formats/nibble-packing.md` (new): how `title-2` packs its level maps:
+  a header (run bytes, single bytes, a pair, stored pairs), then a nibble
+  stream read high nibble first, with 16 commands (literals, runs, header
+  bytes and pairs, copies from four kinds of distance, repeats). Worked
+  example.
+- `vectors/nibble-packing/` (new): 7 synthetic blocks.
+- `formats/level-ground.md`: new section "In `title-2`": positions, the
+  packed map columns, the type table (passable-from-below and flipped
+  bits), shapes as in `title-1`, the ground below, a synthetic example,
+  checks, the first level's data and what isn't covered.
+  Vectors: `vectors/level-ground/title-2/`.
+- `formats/rom-image.md`: `title-2`'s image added to the supported
+  releases.
+- `formats/locators.md`: new `title-2` section with the first level's
+  packed map and type table.
+
+Coverage (`title-1`). Answers no open `spec` issue.
+
+- `behavior/riding-walkers.md` (new): the ridden animal and walkers on
+  flat floor: attack range and heights by walker kind and facing, the
+  automatic charge, throws (rider and walker), knock-off ranges and
+  heights, the knock-off itself (frozen frames, flight, the animal
+  running off), examples and what isn't covered.
+- New walker kind `medium-walker`: two fingerprint rows that said
+  `small-walker` now say `medium-walker`. `formats/placements.md` kind
+  table and first-level counts updated; `behavior/walker-contact.md`
+  says it doesn't cover medium walkers.
+
 ## spec-v0.81.0
 
 New specs (`title-1` voice output, ropes, tyres, restart barrel, riding
