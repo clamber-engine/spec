@@ -229,8 +229,16 @@ struck, together with the
 bunch it released, whether that bunch was taken or not. A hidden object
 of a falling kind (kinds `hidden-barrel` and `hidden-metal-barrel`) once
 set off is still gone in the same way, together with the barrel or metal
-barrel it released if that was left where it came to rest: after coming
-back, a fall onto its place from 170 px above releases nothing. The **animal
+barrel it released, whatever was done with that item before the exit
+took over: left where it came to rest, picked up and put down somewhere
+else, thrown, or still carried. After coming back the item is neither
+where it came to rest nor where it was put down, and a fall onto the
+hidden object's place from 170 px above releases nothing. Still carried
+when the exit takes over, the item is still there, in the level, as the
+walk-out begins, as for a barrel below; it is not in the scene or the
+room, and the lead carries nothing when the next area begins. Without
+an exit, an item put down somewhere else was gone too once the lead had
+gone far away and come back within the same visit. The **animal
 crate** (kind `animal-crate`, `animal-crate.md`) once broken is also
 still gone, and so is the animal that came out of it if it was left
 there and not mounted: neither the crate, its broken pieces nor the
@@ -585,6 +593,26 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   the fall released the item, which came to rest where it had in the
   other runs before leaving. The runs without an exit found neither the
   hidden object nor its item either. 74 checks in all, none different.
+- **Coming back, the item of a falling kind moved.** 16 runs with the
+  lead alone and the small walkers taken out of the level, 8 for each of
+  the first level's two falling kinds. Each run set the hidden object off
+  as in the runs above, then the lead walked into the item from its right
+  with Action held and picked it up. Then, before leaving: put down with
+  Down on the release, at rest on the floor beside the lead 30 frames
+  later; still carried, with Action held while walking left
+  into the exit; or thrown left at once, after which it was gone from the
+  level within 200 frames. One run of each through each exit, and one
+  run without an exit for put down and for thrown (the lead going far
+  left for 120 frames, then back). The count, the lives, the set of
+  letters and the restart point were the same on coming back as on
+  leaving in all 12 exit runs, and the lead was never hurt. A carried
+  item was still there on 19 to 37 frames of the walk-out and on no frame
+  of the scene or the room, and the lead wasn't carrying on frame 0 of
+  the next area. After coming back, and in the runs without an exit
+  after the lead came back, neither the item nor the hidden object was at
+  the hidden object's place, at the item's rest place or at the put-down
+  place, and a fall onto the hidden object's place from 170 px above
+  released nothing. 138 checks in all, none different.
 
 ## Not covered
 
@@ -602,9 +630,7 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   room's placed objects other than the tyre and the end marker are not
   covered.
 - What else is kept when play comes back to the level after the scene
-  or the room: tyres moved, the
-  item of a falling kind picked up, carried or thrown before the
-  exit,
+  or the room: tyres moved,
   an animal left after being mounted other than by a knock-off by a
   walker, a thrower bounced on
   or rolled into, objects of kinds the spec doesn't
