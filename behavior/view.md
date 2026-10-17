@@ -28,8 +28,10 @@ The view has:
 
 - a **position** `V`: the level `x` of the left edge of the picture,
   kept to 1/256 px. The picture is drawn with its left edge at `V`
-  rounded down to a whole pixel. The ground layer moves exactly with
-  it. Background layers that move at other rates aren't covered.
+  rounded down to a whole pixel, kept within the level's left and right
+  limits (`level-ends.md`, "The picture's left edge"). The ground layer
+  moves exactly with it. Background layers that move at other rates
+  aren't covered.
 - a **speed** `S` in px per frame, kept to 1/8192 px per frame.
 
 ## The target
@@ -334,9 +336,12 @@ with the previous frame's `x`, 18,323.
 This list is for `title-1`; `title-2` has its own list above.
 
 - Near the ends of a level. Within about 210 px of the left end, the
-  target was seen to differ from the rule by −1, +2 or +4 px. The view
-  was also seen to go past the left end. The right end, and any limits
-  on the view, weren't measured.
+  target was seen to differ from the rule by −1, +2 or +4 px. Near the
+  first level's left end the view also stops moving altogether once the
+  player is left of the object there that leads out of the level
+  (`level-ends.md`, "Not covered"). The view's position going past the
+  level's limits, and the picture staying within them, are in
+  `level-ends.md`.
 - Where the view starts when a level begins, and after the player falls
   out of a level.
 - While the player is knocked out (`knock-out.md`), loses a character

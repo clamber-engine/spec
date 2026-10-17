@@ -34,6 +34,7 @@ SHA-256 of the image:
 | Placements: the first level's placement list | `placements.md` | `fd` | `95dc` |
 | Level start: the first level's start record | `level-start.md` | `fc` | `bf78` |
 | Level start: the first level's restart record | `level-start.md` | `fc` | `bfb4` |
+| View limits: the first level's record | `view-limits.md` | `fc` | `957a` |
 | Level map: point tables | `level-map.md` | `fc` | `f47b` |
 | Level map: corner records | `level-map.md` | `c0` | `d13c` |
 

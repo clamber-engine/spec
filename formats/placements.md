@@ -535,6 +535,7 @@ on each frame: see its `README.md`.
   group's objects appeared where the rules give nothing.
 - Groups in other levels: their members can be of other classes, and the
   group entry's position isn't always its first member's.
-- The level's left and right ends, the view's limits, the level's exit,
-  and other areas entered from the level. Where the characters start is
-  in `level-start.md`, not in the placement list.
+- The level's exit, the object at the first level's left end
+  (`../behavior/level-ends.md`, "Not covered"), and other areas entered
+  from the level. Where the characters start is in `level-start.md`, and
+  the view's limits are in `view-limits.md`, not in the placement list.
