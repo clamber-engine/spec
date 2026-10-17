@@ -20,7 +20,8 @@ complete `title-2` values.
 
 On T the player has not moved yet: `y` is unchanged and `ground` is still
 1, but `vy` is already **−7**. (On a slope, `y` on T follows the floor
-as on any grounded frame; see `slopes.md`.)
+as on any grounded frame; see `slopes.md`. Next to steep faces and
+rises, see `steep-faces.md`, "Jumping on or next to a face".)
 
 This doesn't depend on horizontal speed (standing, walking, running), on
 whether the jump starts during a roll, or on whether it starts on landing

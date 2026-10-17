@@ -23,6 +23,10 @@ ground simply ends, a press on the first airborne frame of a walk-off
 still starts a jump; at a ledge with a steep face it doesn't if the
 player was carried down the face just before leaving it
 (`walk-off.md`, "Jumping near the edge" and "Ledges without a face").
+On a steep face in general, a press on a frame that starts on the face,
+or whose next frame does, doesn't take off on P + 1; held, it can take
+off later, once the player is on other floor (`steep-faces.md`,
+"Jumping on or next to a face").
 
 ## Landing lockout
 

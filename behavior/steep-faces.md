@@ -5,7 +5,8 @@ Titles: `title-1`, `title-2`
 What happens when a grounded player meets ground that rises or falls too
 steeply to walk on: being stopped by it, not being able to start walking
 toward it from a standstill, being carried down a steep face, leaving
-the ground on one, and (in `title-1`) landing on or next to one. Frames are logic frames at 60 Hz, numbered as in a
+the ground on one, and (in `title-1`) landing on or next to one and
+jumping on or next to one. Frames are logic frames at 60 Hz, numbered as in a
 trace. `x`, `y` and `vx` are as in a trace: right and down are positive,
 speeds in px per frame. Speeds are whole multiples of 1/256 px per frame
 and are written both ways, as in `ground-speed.md`. "Left", "Right" and
@@ -17,8 +18,9 @@ fall to the right and to the left, and against faces that rise to the
 right and to the left) and against one vertical step up, going left.
 Landings after jumps and after falls from a face were measured
 separately ("Landing on or next to a face", with its own evidence).
-Jumps from these surfaces and rolls on or against them are not covered
-(see the end).
+Jumps on a face and in front of a rise are in "Jumping on or next to a
+face", also measured separately. Rolls on or against these surfaces are
+not covered (see the end).
 
 ## Columns, faces and steps
 
@@ -53,7 +55,8 @@ more than 2 px higher.
 
 ## Stopped by a rise
 
-On a grounded frame (walking, running or standing; not a roll), after
+On a grounded frame (walking, running or standing, and a jump's
+take-off frame; not a roll), after
 the speed for the frame is worked out (`ground-speed.md`, or the face
 rule below), the player is **blocked** if the move would take `x` into a
 different column that is either:
@@ -113,7 +116,8 @@ stopped by the blocking rule above, so they can end up closer to the rise
 than they could have started from.
 
 The rule doesn't apply on the frames after a landing up to and including
-the switch frame M ("Landing on or next to a face" below).
+the switch frame M ("Landing on or next to a face" below), nor on a
+jump's take-off frame ("Jumping on or next to a face").
 
 Measured standing at every 1/16 px across the boundary in front of a
 face rising to the right, a face rising to the left and a vertical step
@@ -404,6 +408,171 @@ and a plain landing. The four others fell into the drop, below the
 floor. The push rule matched on every frame of the runs that wasn't
 part of a roll, or a jump's press frame or T: 589 883 frames.
 
+## Jumping on or next to a face
+
+How a jump press works on a face and in front of a rise. **P** is the
+press frame and **T** the take-off frame, the row carrying `jump_start`
+(`jump-input.md`, `jump-arc.md`). As in `walk-off.md`, a frame **starts
+on the face** if the frame before it ended with the player on the floor
+on a face column, being carried down the face. The frame that moves the
+player onto a face from other floor doesn't start on it.
+
+### The press frame
+
+P is a frame on the floor like any other: every rule above applies to
+it. A player standing in front of a rise with a direction held toward it
+stays put on P ("Can't start toward a rise"), a move into a rising face
+column on P is blocked, and on a face the player is carried down it on P
+as usual.
+
+### When the jump takes off
+
+A press on P that starts on the floor takes off on **P + 1**, as in
+`jump-input.md`, unless P is a **carried press**: P starts on the face,
+or P + 1 does. So a press on the frame that moves the player onto a
+falling face, or on any frame while they are carried down it, doesn't
+take off on P + 1. The one exception measured: on the frame that moves
+the player onto a face from other floor with only the face's uphill
+direction held (Left on a face that falls to the right, Right on one
+that falls to the left), the next frame doesn't count as starting on
+the face for this rule, and a press on that frame takes off on P + 1.
+
+A carried press works like a press made in the air (`jump-input.md`,
+"Pressing before landing"): it is remembered only while Jump stays held,
+for a limited time.
+
+- Let **Q** be the first frame after P that starts with the player on
+  the floor on a column that isn't a face column. Walking or coasting
+  off the low end of a face, Q is the first frame that starts beyond the
+  face's last column. If the player leaves the ground on the face and
+  lands on other floor, Q is the frame after the landing frame
+  (Q = L + 1, so T = L + 2).
+- If Jump is held on every frame from P to Q, the jump takes off on
+  **T = Q + 1**, provided that is at most 12 frames after the press
+  (T ≤ P + 12, the same window as a press made in the air).
+- Otherwise no jump starts. A new press is needed.
+
+Until T the press changes nothing: the frames from P to Q move exactly
+as they would without it (the face rules above, and for a fall from the
+face the rules of `walk-off.md`, including the gravity rule there for a
+press that counted). Q is an ordinary frame on the floor; "Leaving a
+face onto floor" applies to it as usual.
+
+### The take-off frame
+
+On T the player is still on the floor, `ground` is 1 and `vy` becomes
+−7 (`jump-arc.md`). Horizontally T is a frame of the jump
+(`air-control.md`), next to faces as well:
+
+- The target speed is the one for the held input, from the speed at the
+  end of P (or Q): with Right held from a standstill, `vx` is 0.25 on T.
+- "Can't start toward a rise" doesn't apply on T, even when `vx` is 0
+  before it. So a player who stood still on P in front of a rise moves
+  on T.
+- "Stopped by a rise" does apply: if the move on T would take `x` into a
+  face column that rises in the direction of the move, `x` is set to the
+  left edge of the column the player was in and `vx` becomes 0, as on
+  any frame on the floor.
+- No 1.5 px per frame is added on a face, and "Leaving a face onto floor"
+  doesn't apply on T: after a carried press, a held direction pointing
+  back up the face counts normally on T, though it was ignored on Q.
+  If T itself starts on a face column (after the exception above), a
+  held uphill direction is ignored on T, as in "Speed on a face".
+- `y` follows the floor of the new column, as on any frame on the floor:
+  moving onto a face column on T, the player is placed on it (falls of
+  3, 4 and 7 px and a rise of 1 px were measured on T). The take-off
+  then starts from there on T + 1.
+
+From T + 1 the jump follows `jump-arc.md` and `air-control.md`, with the
+lighter gravity counted from P (Jump has been held since P). Contact
+with faces and walls in the air is in `air-walls.md`.
+
+### Examples (jumps)
+
+Synthetic floors, as in "Examples" below. `y` is down-positive.
+
+**A press while carried down a face.** Flat floor at `y` = 0 for
+columns up to 299, a face falling to the right on columns 300 to 311
+(`y` = 2, 6, …, 46) and flat floor at `y` = 47 from column 312. Nothing
+held, `x` = 299 and `vx` = 1 (256/256) before frame 1; Jump pressed on
+frame 4 and held:
+
+| Frame | Column before the frame | `x` | `y` | `vx` (1/256) | Note |
+|---|---|---|---|---|---|
+| 3 | 300 | 301.49609375 | 6 | 219 | Carried down the face |
+| 4 | 301 | 302.4296875 | 10 | 239 | P: starts on the face, no take-off on 5 |
+| 5 | 302 | 303.43359375 | 14 | 257 | Still carried, as without the press |
+| 12 | 310 | 311.78515625 | 46 | 332 | |
+| 13 | 311 | 313.10546875 | 47 | 338 | Off the face's low end: 1 px drop, followed |
+| 14 | 313 | 314.26171875 | 47 | 296 | Q: first frame starting off the face; normal target 0 |
+| 15 | 314 | 315.2734375 | 47 | 259 | T = Q + 1 = P + 11: `jump_start`, `vy` −7 |
+| 16 | 315 | 316.16015625 | 40.28125 | 227 | In the air: `vy` −6.71875 |
+
+With the press on frame 2 instead (the frame that moves onto the face,
+so frame 3 starts on it), Q is still frame 14 and Q + 1 = 15 = P + 13:
+too late, and no jump starts. Frames 2 to 17 are the same as without the
+press.
+
+**Standing in front of a rise** (the rise of "Examples" below: flat
+floor at `y` = 0 up to column 199, a face rising to the right from
+column 200). Right and Jump pressed together on frame 1:
+
+| Start `x` | Frame 1 (P) | Frame 2 (T) |
+|---|---|---|
+| 199 | Stays at 199, `vx` 0 (column 204 is 17 px higher) | `x` 199.25, `vx` 64/256, `y` 0, `vy` −7 |
+| 199.875 | Stays at 199.875, `vx` 0 | The move to 200.125 is into face column 200: blocked, `x` 199, `vx` 0, `vy` −7 |
+
+### Evidence (jumps)
+
+Measured with the lead character on the faces of "Evidence (landings)"
+and on a longer face (32 columns) falling to the right, by inputs from
+the floor near each face, and with the player placed on the floor in
+front of a rise:
+
+- standing in front of a face rising to the right, at every 1/16 px over
+  8 px (128 starts), with five press variants (Right with Jump, Jump
+  then Right, Right and Action with Jump, Jump alone, one frame of Right
+  first): 640 presses;
+- walking toward the same rise from 40 starts, pressing after 14 to 22
+  frames, with Right or with Right and Action: 720 presses;
+- coasting, walking left, or holding Right while moving left, onto a
+  face falling to the left from its top, presses 0 to 11 frames later
+  with nothing, Left, Right, or Left and Action held: 1 728 cases;
+- walking or coasting onto a face falling to the right at the top of a
+  pit: 576 cases;
+- coasting down the 32-column face, Jump held 3, 13, 30 or 60 frames:
+  1 152 cases;
+- jumping onto and over the face rising to the right, pressing 0 to 8
+  frames after the landing: 1 080 cases.
+
+Of 4 468 presses on frames that started on the floor (presses in the
+air, during a roll, presses after a landing on flat floor, which fall in
+the landing lockout of `jump-input.md`, and frames where `ground` read 1
+against a wall in the air left out), 1 236 were carried presses: 307
+took off on Q + 1, from Q + 1 = P + 2 to P + 12 (56 of them after a fall
+from the face), and 929 gave no jump (Jump released before Q, or
+Q + 1 later than P + 12: 164 held through Q with Q + 1 from P + 13 to
+P + 29). The other 3 232 presses took off on P + 1. The take-off frame
+matched the rule for every press. Counting a press as carried only when
+P itself ends on a face column, or dropping the uphill exception, gives
+27 and 28 wrong take-offs; a window of 11 or 13 frames gives 64 and 12;
+taking off on P + 1 for every press gives 1 236.
+
+On every one of the 5 540 take-off frames recorded, `x` and `vx` matched
+the target rule and the blocking rule above (194 blocked), and `y`
+matched the floor of the new column. On the 144 presses in front of the
+rise where "Can't start toward a rise" applied on P, the player stayed
+put on P and moved on T.
+
+The face rules of this file were rechecked on the frames on the floor
+from each press on, on the face falling to the left and the one at the
+top of the pit (38 230 frames checked for speed): every frame matched except frames that check doesn't model
+("Leaving a face onto floor", frames L + 1 to M after a landing, rolls)
+and the case under "Not covered" of moving left off a face's low end at a
+drop. The leave frames of falls from a face moved down 3.4375 px after a
+press that started on the face (476) and 3.28125 px after one that
+counted and was still held (122), as in `walk-off.md`.
+
 ## Examples
 
 Synthetic floors. `y` is down-positive, as in a trace.
@@ -468,11 +637,12 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
 
 - Rolls on, onto or into faces and walls, and Action held on a face
   (with or without a direction).
-- Jumping from a face, and jumps from a standstill next to a rise (on
-  the press frame the player stays put as above, but the take-off frame
-  was seen to move). One case is measured: walking down the face at the
-  top of a ledge, a press whose next frame starts on the face gives no
-  jump (`walk-off.md`).
+- Jump presses during a roll on or onto a face: some took off on the
+  next frame and some didn't. Presses with the second character on a
+  face. A take-off frame that would cross two or more face columns, or
+  drop 8 px or more (falls of 3, 4 and 7 px were measured on T). The
+  uphill exception in "When the jump takes off" was measured on one face
+  (falling to the left, 16 presses).
 - Landings on or next to a face after anything other than a jump or a
   fall from a face (rolls, bounces, falls from ledges without a face,
   jumps that start in the air), and jumps that take off from a face.
