@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.133.0
+
+Riding the animal into an exit.
+
+Part of clamber-engine/spec#17 (the first level's layout). The issue
+stays open for the parts not covered yet.
+
+- `behavior/exits.md`, "Coming back to the level": a lead riding the
+  animal keeps it through the exit. The walk-out is ridden and the same
+  frame for frame as on foot; in the scene and the room the lead is on
+  foot and the animal isn't there. Back in the level the lead rides from
+  frame 0, the walk-in (after the scene) or the level start (after the
+  room) is unchanged up to the hand-over, and the speed then follows
+  `riding.md`. No second animal is at the crate's place. New check
+  "Riding into the exit"; Not covered narrowed.
+
 ## spec-v0.132.0
 
 Holders moved or carried before an exit.
