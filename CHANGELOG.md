@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.135.0
+
+More of what stays gone after coming back through an exit, and whether
+placed balls come back.
+
+Part of clamber-engine/spec#17 (the first level's layout) and
+clamber-engine/spec#19 (the first level's remaining entities). Both
+issues stay open for the parts not covered yet.
+
+- `behavior/exits.md`, "Coming back to the level": the extra-life-3
+  items once taken stay gone after coming back (`extra-lives.md`
+  pointers updated); hidden objects set off by a fall stay gone; and the
+  item a falling kind released stays gone whatever was done with it
+  before the exit (left at rest, put down elsewhere, thrown or still
+  carried; a carried item isn't in the scene or the room). New checks;
+  Not covered narrowed. (spec#17)
+- `behavior/thrower.md`, "Balls placed in a level": a placed ball
+  appears only once and doesn't come back however the view moves, until
+  play resumes after a knock-out, when it appears again by the same
+  rule at the same position. Not covered narrowed. (spec#19)
+
 ## spec-v0.134.0
 
 The animal after a knock-off, objects carried far from their entry, and
