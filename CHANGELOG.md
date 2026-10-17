@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.121.0
+
+Exits in walls.
+
+Part of clamber-engine/spec#19 (the first level's entities). The issue
+stays open for the parts not covered yet.
+
+- New `behavior/wall-exits.md` (`title-1`): kind `wall-exit`, a closed
+  exit leading right, hidden at the foot of a rise. It is opened only
+  by a thrown barrel moving right, with hit ranges for early and late
+  frames out of the hands, opening on the hit frame or the next. Once
+  open it takes over like `exits.md` turned around (each reach 2 px
+  shorter), followed by the walk-out through the ground, the fade and
+  the last frame in the area. Synthetic example, checks and Not covered.
+- `formats/placements.md`: the new kind name, the first level's updated
+  counts, and the swap check.
+- `formats/locators.md`: two kind fingerprint rows.
+- `behavior/exits.md`, `behavior/thrown-objects.md`: pointers to the new
+  file.
+
 ## spec-v0.120.0
 
 Stored order in lists without sections, and the spec's license.
