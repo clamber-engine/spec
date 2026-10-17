@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.97.0
+
+Coverage: swimming in `title-2` against walls, floors and ceilings.
+
+Answers no `spec` issue.
+
+- `behavior/swimming.md`: new section "Walls, floors and ceilings
+  (`title-2`)" with synthetic examples. It covers moving across, landing,
+  resting, leaving the floor, ceiling bumps (ground passable from below
+  doesn't stop a rise) and the hold that keeps the swimmer 16 px inside
+  each side of the picture. Also new checks with negative controls, and
+  updates to the intro, the open-water check and "Not covered in
+  `title-2`".
+- `formats/level-ground.md`: the "Passable from below (`title-2`)" note
+  now points to the swimming rule.
+
 ## spec-v0.96.0
 
 Coverage: `title-2` level ground beyond the first level.
