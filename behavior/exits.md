@@ -247,6 +247,11 @@ There again, as when the level begins:
   comes to its place, walking as the level places it;
 - a **medium walker** (kind `medium-walker`) bounced on before: it is
   there again in the same way;
+- a **large walker** (kind `large-walker`) bounced on before: it is
+  there again in the same way. This held for both large walkers of the
+  first level, each bounced on before leaving. Without an exit, a large
+  walker bounced on was not there again when the lead went far away and
+  came back within the same visit (one run);
 - a **barrel** (kind `barrel`, `carrying.md`) picked up, thrown and
   broken against a wall before (`thrown-objects.md`, "Breaking against a
   wall"): it is at its place again when the view comes there, standing
@@ -409,6 +414,18 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   an exit (the lead going far enough away for the barrel to be removed,
   then back) also found the barrel at its place again, as in
   `../formats/placements.md` ("Objects put down elsewhere"). 45 checks in all, none different.
+- **Coming back, large walkers.** 5 more runs with the lead alone, 2
+  through each exit and one without an exit: the lead standing in the
+  path of the first large walker until it came near and then bounced on
+  it, then bounced on the second as soon as it came into view, so that
+  both were gone without the lead being hurt; and a control for each
+  exit that did nothing before leaving. After coming back, each run went
+  to both walkers' places. The count, the lives, the set of letters and
+  the restart point were the same on coming back as on leaving in all 4
+  exit runs. Both large walkers were there again after both exits, as in
+  the controls. In the run without an exit (the lead going far left for
+  120 frames, then back) neither was there. 29 checks in all, none
+  different.
 
 ## Not covered
 
@@ -428,7 +445,7 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
 - What else is kept when play comes back to the level after the scene
   or the room: holders and tyres
   moved or broken, the hidden objects set off by a fall and their items,
-  an animal mounted or ridden away from its crate, the large walker,
+  an animal mounted or ridden away from its crate,
   throwers, the `extra-life-3` items, objects of kinds the spec doesn't
   name, and objects other than the barrel carried through the exit. How
   a barrel carried into the exit moves during the walk-out. Whether a broken barrel
