@@ -410,11 +410,76 @@ class 1 entry with a larger `x`.
   level and the run went on): 273 816 logic frames, 2 536 appearances.
   The rules above gave every frame's appearances except on 58 frames:
   8 frames on which the group appeared while its entry was left of the
-  window, and 50 on which an entry appeared late while many objects
-  were there. Both are under "Not covered". Taking each entry by its
+  window (under "Not covered"), and 50 on which an entry appeared late
+  while many objects were there (see "How many objects can be there"
+  below). Taking each entry by its
   own `x` alone (the bullets above without "Stored order") was also
   wrong on 42 more frames: the frames on which the end marker's entry
   was in the window but held back, in the 6 runs that reached it.
+
+### How many objects can be there
+
+Two limits can keep an entry that comes up ("Stored order" above, "When
+an entry appears" below) from appearing. They count what is there at
+the **start** of the frame, not including the two characters:
+
+- **Places.** There are 12 places. Each placed object takes one while it
+  is there, whatever its class, and so do some objects that other
+  objects make: the balls a `thrower` throws (`../behavior/thrower.md`)
+  and the animal from an `animal-crate` (`../behavior/animal-crate.md`)
+  were among them.
+- **Pictures.** There are 11 pictures. A class 1 entry's object takes
+  one from the frame it appears until the frame it is gone; class 2
+  entries' objects take none. Short-lived objects that some events
+  make take them too: the flash and each of the four pieces when the
+  restart barrel bursts (`../behavior/restart-barrel.md`) took one each.
+
+On each frame, the entries that come up are taken in stored order. Each
+takes a free place, and a class 1 entry also a free picture. An entry
+for which none is left doesn't appear on that frame, and the entries
+stored after it still can. It comes up again on the following frames
+while the rules above say so, and appears on the first of them that
+starts with what it needs free. A place or picture given up on a frame
+(the object removed, taken, broken or defeated) is free from the next
+frame on, not on that frame.
+
+In the first level's runs ("Checks" below), the pictures were all taken
+on 406 of 140 594 frames, and an entry that came up waited twice: both
+times the `large-walker` entry, coming in from the left just after the
+restart barrel had burst near it, and both times it appeared on the
+frame after the flash went.
+
+**Example (synthetic).** Frame F starts with 11 places and 10 pictures
+taken. Entries A (class 1), B (class 2) and C (class 1), stored in that
+order, come up on F. A takes the last place and the last picture and
+appears; B and C don't. Also on F, the player takes a `bunch`. Frame
+F + 1 starts with one place and one picture free; B and C come up
+again. B takes the place and appears; C waits again, as it needs a
+place too.
+
+**Checks.** In the first level:
+
+- Copies of the image with 14 class 1 entries near the level's start
+  (between the left-end exit and the first walkers) replaced by a dense
+  row: `bunch` entries 6 px apart, by turns on the floor and high
+  enough to need a jump; the same with the last two entries class 2;
+  the same 20 px apart; and `sign` entries 6 px apart on the floor. Six
+  runs each from the level's start with the random inputs of the
+  stored-order runs above: 24 runs, 57 317 frames, 1 086 appearances.
+  Entries that came up and didn't appear did so on 5 489 frames, and 58
+  appearances came late; the rules above gave every frame's
+  appearances. In the copy with two class 2 entries, a class 2 entry
+  appeared while a class 1 entry stored before it waited for a picture,
+  and the other waited for a place. Controls: with 10 pictures, 90
+  frames were wrong; with 12, 4 411; with a picture free on the frame it
+  is given up, 46; with a waiting entry holding back the entries stored
+  after it, 7.
+- The whole list: 28 random runs as in "Stored order" (140 594 frames,
+  1 402 appearances), with the number of pictures the short-lived
+  objects took read from the measurements. The rules above gave every
+  frame's appearances except 5 frames on which the group appeared while
+  its entry was left of the window ("Not covered"). Stored order alone
+  was wrong on 8 more: the late appearances.
 
 ### In a list with sections
 
@@ -809,12 +874,17 @@ on each frame: see its `README.md`.
 - What a removed object that had been moved does (other than thrown
   objects, `../behavior/thrown-objects.md`).
 - Entries far above or below the view in lists without sections.
-- In any list: what happens when an object can't appear because too
-  many objects are already there. In the first level's runs an entry
-  sometimes appeared late, while many objects were there, on the frame
-  after another object went away (50 frames in 7 runs, up to 20 px of
-  view late, for example just after the restart barrel had been broken
-  and its pieces were still flying).
+- How many objects can be there ("How many objects can be there"):
+  which short-lived objects take pictures, and for how long (in the
+  first level's runs some kept theirs for a while after they were gone,
+  and a short-lived object that came after such a one sometimes held
+  two), and which objects made by other objects take places,
+  beyond those named there, and how many places a group entry takes
+  besides its members' (in the runs it sometimes took one more, not
+  always while its members were there). What happens when a group's
+  members, or an object that another object makes, find no place or
+  picture free. The limits were measured only in the first level's
+  list, not in lists with sections.
 - In lists with sections: whether entries stored after an open
   section's last entry can appear with it (in the runs, none did); a
   record's point exactly
