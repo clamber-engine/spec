@@ -209,7 +209,9 @@ visit:
   bouncing on it brings the animal out again;
 - a **medium walker** (kind `medium-walker`) bounced on;
 - the **large walkers** (kind `large-walker`) bounced on;
-- the **thrower** (`thrower.md`) knocked out by the ground action;
+- the **thrower** (`thrower.md`) knocked out by the ground action
+  (`ground-action-enemies.md`), by a bounce (`thrower-contact.md`) or by
+  a roll (`thrower-contact.md`, "Rolling into the thrower");
 - the two **extra-life items** of kind `extra-life-3` taken: taking them
   again gives their lives again;
 - a **hidden barrel** (kind `hidden-barrel`, `hidden-objects.md`) set
@@ -285,6 +287,10 @@ were measured in 8 more runs, 4 sets each with a control (each also
 after reaching the restart point), judged in 44 checks the same way plus
 the object being in the hands on the frame before the hit, none
 different.
+The thrower knocked out by a bounce or a roll was measured in 8 more
+runs, 4 sets (a bounce and a roll, each resuming at the level's start
+and at the restart point) each with a control in which the thrower
+wasn't knocked out: it was seen at its place after the resume in all 8.
 
 ## Example
 

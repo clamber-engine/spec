@@ -242,7 +242,10 @@ there, falling through its ledge and every floor below it.
   far enough for a thrower that hasn't been knocked out to be removed,
   and back until `xt` was in the window again, nothing appeared at its
   place. A thrower that hadn't been knocked out appeared again, by the
-  rule in `thrower.md`.
+  rule in `thrower.md`. It is there again, though, after the player is
+  knocked out (`restart-barrel.md`, "What is there again after a
+  knock-out") or leaves the level and comes back (`exits.md`, "Coming
+  back to the level").
 
 For example, with the view still and `yt` − `W` = 100, `Y` − `W` is 250
 at the end of K + 44 and 258 on K + 45, the frame on which it is
@@ -361,7 +364,12 @@ The knocked-out thrower, knocked out by a bounce:
   left, 38 on its right, 2 of those also below it);
 - coming back: 3 runs, the view moved away right and left and back
   (removed below, on the left and on the right of the picture); the
-  same 3 without the knock-out as the control.
+  same 3 without the knock-out as the control;
+- after the player's knock-out: 4 runs, knocked out by a bounce or a
+  roll, then the player knocked out by a walker, resuming at the level's
+  start and at the restart point; each with a control run in which the
+  thrower wasn't knocked out: seen at its place after the resume in all
+  8.
 
 ## Not covered
 
@@ -380,8 +388,7 @@ The knocked-out thrower, knocked out by a bounce:
   31 px above the picture (`Y` − `W` less than −31).
   Contact and removal were measured after a bounce; after a roll or the
   ground action they are taken to be the same, the thrower's motion
-  being the same. Whether it is there again after the player is knocked
-  out or leaves the level.
+  being the same.
 - The other character, and contact while carrying, being hit or during
   a bounce's frozen frames.
 - Throwers facing right and throwers in other levels.
