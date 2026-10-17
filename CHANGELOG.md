@@ -2,6 +2,38 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.137.0
+
+The first level's room-return entrance, the thrower and placed ball
+after an exit, and what is there again after a knock-out.
+
+Part of clamber-engine/spec#17 (the first level's layout) and
+clamber-engine/spec#19 (the first level's remaining entities). Both
+issues stay open for the parts not covered yet.
+
+- `behavior/level-start.md`, new section "Coming back from the room":
+  the first level's second entry at the start point is of the new kind
+  `room-return-entrance`. Coming back from the room, it bursts and
+  throws the characters as the `entrance` does from the level map; the
+  other entry is there but does nothing and isn't drawn. New kind row
+  and checks in `formats/placements.md` (every reference the first
+  level uses now has a fingerprint row), one kind fingerprint row in
+  `formats/locators.md`, pointers in `behavior/exits.md` and
+  `formats/level-start.md`. (spec#19)
+- `behavior/exits.md`, "Coming back to the level": a thrower knocked
+  out by a bounce or a roll is there again after either exit, and the
+  level's placed ball appears again at the same position after either
+  exit (not without one). New checks; Not covered narrowed.
+  `behavior/thrower.md` "Balls placed in a level" updated to match.
+  (spec#19)
+- `behavior/restart-barrel.md`, new section "What is there again after
+  a knock-out" (first level, lead alone): the collectible count, figure
+  count and restart point are kept; the set of letters taken is emptied
+  on a resume at the level's start and kept at the restart point; which
+  taken or broken objects are there again. Pointers replace Not covered
+  sentences in `bunches.md`, `letters.md`, `figure.md`,
+  `extra-lives.md` and `exits.md`. (spec#17)
+
 ## spec-v0.136.0
 
 Rolling into the thrower, and an object carried into an exit during the
