@@ -140,6 +140,9 @@ members are looked up by their own references.
 | `restart-barrel` | The restart barrel | `restart-barrel.md` |
 | `stinger` | A stinger (flying enemy) | `stinger.md` |
 | `tyre` | A tyre that throws the player up | `tyre.md` |
+| `hidden-bunch` | A hidden object that the ground action strikes, releasing a bunch | `hidden-objects.md` |
+| `hidden-barrel` | A hidden object set off by a long fall onto it, releasing a `barrel` | `hidden-objects.md` |
+| `hidden-metal-barrel` | A hidden object set off by a long fall onto it, releasing a metal barrel | `hidden-objects.md` |
 
 The behavior files are in `../behavior/`. A row gives the kind only:
 the settings of the object (for example a walker's heading) are not
@@ -157,12 +160,14 @@ its own reference, and placed a tyre there.
 
 ### In the first level
 
-17 of the first level's 37 references have a kind fingerprint row. They
-are used by 30 of its entries (counting group members): 5 small
+20 of the first level's 37 references have a kind fingerprint row. They
+are used by 47 of its entries (counting group members): 5 small
 walkers (all three group members among them), 6 medium walkers, 3 large
 walkers, the
 thrower, a ball, 4 bunches, the four letters (one each), a barrel, 2
-holders, the animal crate, the restart barrel and the end marker. The other references place things that
+holders, the animal crate, the restart barrel, the end marker,
+15 hidden bunches, a hidden barrel and a hidden metal barrel. The other
+references place things that
 have no behavior file yet (for example scenery and signs), or that were
 not seen.
 
@@ -176,7 +181,10 @@ near the level's start in place of its own reference. Each time an
 object of the row's kind appeared there; with three of the letters'
 references (letters 1, 3 and 4), taking the object there took the
 letter with that number. A class 2 reference given to a class 1 entry
-placed the same kind as in its own class 2 entry.
+placed the same kind as in its own class 2 entry. Each of the three
+hidden-object references, given to a class 1 entry the same way, placed
+a hidden object that was set off and released its item as
+`../behavior/hidden-objects.md` says for its kind.
 
 ## When placed objects appear
 
