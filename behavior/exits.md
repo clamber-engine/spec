@@ -8,8 +8,8 @@ walks away through the exit on its own, the picture fades to black and
 play goes on in another area. This file covers when an exit takes over,
 how the lead moves afterwards, when the area is left, and where the
 first level's two exits lead: how the characters walk into the next
-area, the short scene one exit leads to, and how play comes back to the
-level.
+area, the short scene one exit leads to, how play comes back to the
+level, and what of the level is kept then.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. Horizontal
 positions are level x as in `view.md`; vertical positions are **level y**
@@ -192,6 +192,41 @@ and in the level, play simply goes on.
 
 What the scene shows is not covered.
 
+## Coming back to the level
+
+When play comes back to the first level after the scene or the room
+(frame 0 of the walk-in from the scene-return record, or of the level's
+start from the room-return record), some of what happened in the level
+before the exit took over is kept and some is not.
+
+Kept as it was when the area was left:
+
+- the collectible count (`collectibles.md`, `count-display.md`) and the
+  lives;
+- the set of letters taken (`letters.md`);
+- whether the level's restart point has been reached
+  (`restart-barrel.md`): after coming back, a knock-out resumes at the
+  restart point if the barrel was touched before the exit took over, and
+  play begins at the level's start if it wasn't.
+
+Still gone: a **bunch** taken (`bunches.md`), a **letter** taken, and
+the **restart barrel** once touched stay gone after coming back. They
+don't appear when the view comes back over their places, and nothing is
+taken there again: the count and the set of letters don't change. For
+these objects, "the rest of the visit to the level" in those files goes
+on through the scene and the room.
+
+There again, as when the level begins:
+
+- **single collectibles** (`collectibles.md`) taken before: they are
+  drawn again and can be taken again, each adding one to the count
+  again. For them, coming back starts a new visit to the level;
+- a **small walker** (kind `small-walker`) bounced on before
+  (`walker.md`, "Being bounced on"): it is there again when the view
+  comes to its place, walking as the level places it.
+
+Other kinds of object are not covered (see "Not covered").
+
 ## Example
 
 Synthetic, computed from the rules above, with an exit at `xe` = 300,
@@ -279,6 +314,22 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   level map (`level-start.md`, no input) on every frame 0 to 89 (3 690
   frames).
 
+- **Coming back.** 16 runs with the lead alone, eight through each
+  exit, each run going through the scene or the room and back. Four sets
+  of objects: one single collectible, a bunch and the first letter; a
+  second bunch, the second letter and the restart barrel; the third and
+  fourth letters and a third bunch; one small walker. For each exit and
+  set, one run took the set (or bounced on the walker) before leaving
+  and one, the control, didn't; after coming back, both runs went to
+  each object again. In all 16 the count, the lives, the set of letters
+  and the restart point were the same on coming back as on leaving. Runs
+  that had taken a set took nothing again except the single
+  collectible (the count went up by one); each control took the whole
+  set. The restart barrel was there again only in the controls, and a
+  knock-out afterwards resumed at the restart point only in the runs
+  that had touched it. The small walker was there again after both
+  exits. 88 checks in all, none different.
+
 ## Not covered
 
 - Exits leading right (the room has one), exits in other levels, and
@@ -290,9 +341,14 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   view limits, and where their start records are (the room has one: in
   a copy of the image with it moved, the walk-in moved with it). What
   the scene shows.
-- What of the level is kept when play comes back to it after the scene
-  or the room (objects collected or defeated before, and the restart
-  point).
+- What else is kept when play comes back to the level after the scene
+  or the room: barrels, holders and tyres moved or broken, the items of
+  hidden objects, the animal crate, walkers other than the small walker,
+  throwers, objects of kinds the spec doesn't name, and an object
+  carried through the exit. Coming back with two characters (the runs
+  in "Coming back to the level" had the lead alone).
+- Whether bunches and letters taken before a knock-out are there when
+  play resumes (`restart-barrel.md`).
 - Where the view is when an area is entered by walking in, and how it
   moves from frame 27; the other character after frame 27; two
   characters walking into the room (only the lead alone was measured
