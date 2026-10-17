@@ -2,6 +2,29 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.96.0
+
+Coverage: `title-2` level ground beyond the first level.
+
+Answers no `spec` issue.
+
+- `formats/level-ground.md`, "In `title-2`": new sections "Areas and
+  layouts" (the area record: map width and height, then each area's
+  rectangle and layout; layout 0 is a column-by-column map with a
+  16-band column grid, layouts 4 to 7 are row-by-row maps with a row
+  grid; the area's grid is its rectangle of the map), "Row grids" (bands
+  and cells from the rectangle; the ground below, with `title-1`'s
+  row-grid change to step 2 and step 3 never skipped), "The grid's first
+  cell" (grid column 0, band 0 never has ground) and "Shapes 63 to 79"
+  (a rise table, some shapes depending on the feet line's height in its
+  band). Also a synthetic row-grid example, checks, a note that some
+  levels set bit 8 of a half word, and an updated "Not covered in
+  `title-2`" list (layouts 1 to 3 and 8, searches leaving the
+  rectangle).
+- `vectors/level-ground/title-2/`: new `rows-*` vectors (types, unpacked
+  map, area record, expected grid, surfaces at each height, ground below)
+  and a README section.
+
 ## spec-v0.95.0
 
 Coverage: single collectibles in `title-2`.
