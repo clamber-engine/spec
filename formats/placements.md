@@ -203,6 +203,8 @@ members are looked up by their own references.
 | `tyre` | A tyre that throws the player up | `tyre.md` |
 | `sign` | A sign (scenery that nothing touches) | `signs.md` |
 | `critter` | A small flying creature (scenery that nothing touches) | `critter.md` |
+| `extra-life-1`, `extra-life-3` | An extra-life item that stays where it is placed, giving 1 or 3 lives | `extra-lives.md` |
+| `rising-extra-life-1`, `rising-extra-life-2` | An extra-life item that rises once it appears, giving 1 or 2 lives | `extra-lives.md` |
 | `hidden-bunch` | A hidden object that the ground action strikes, releasing a bunch | `hidden-objects.md` |
 | `hidden-barrel` | A hidden object set off by a long fall onto it, releasing a `barrel` | `hidden-objects.md` |
 | `hidden-metal-barrel` | A hidden object set off by a long fall onto it, releasing a metal barrel | `hidden-objects.md` |
@@ -223,15 +225,17 @@ its own reference, and placed a tyre there.
 
 ### In the first level
 
-27 of the first level's 37 references have a kind fingerprint row. They
-are used by 55 of its entries (counting group members): 5 small
+30 of the first level's 37 references have a kind fingerprint row. They
+are used by 60 of its entries (counting group members): 5 small
 walkers (all three group members among them), 6 medium walkers, 3 large
 walkers, the
 thrower, a ball, 4 bunches, the four letters (one each), a figure, a barrel, 2
 holders, the animal crate, the restart barrel, the end marker, the
 entrance, 2 exits,
 15 hidden bunches, a hidden barrel, a hidden metal barrel, 2 signs
-(two references, one sign each) and 2 critters (one reference). The
+(two references, one sign each), 2 critters (one reference) and 5
+extra-life items (two `rising-extra-life-1`, one `rising-extra-life-2`
+and two `extra-life-3`). The
 other references place things that have no behavior file yet (for
 example other scenery), or that
 were not seen.
@@ -258,16 +262,21 @@ the two `sign` references, given to a class 1 entry near the level's
 start, placed a sign there that behaved as `../behavior/signs.md` says.
 The `critter` reference, given to a class 1 entry near the level's
 start, placed a critter there that appeared and flew as
-`../behavior/critter.md` says.
+`../behavior/critter.md` says. Each of the three extra-life references,
+given to a class 1 entry near the level's start, placed an extra-life
+item there that moved (or stayed), was taken and gave lives as
+`../behavior/extra-lives.md` says for its kind.
 
 ### In the first level's room
 
 The room the upper exit leads to (`../behavior/exits.md`) has a
 placement list of its own (`locators.md`). It has no sections and no
-groups: all its entries are of class 1 or class 2. Two of its references
-have a kind row: `tyre`, and `end-marker` for the room's way out
-(`../behavior/level-end.md`, "In the first level's room"); the kinds of
-the others are not covered. In the
+groups: all its entries are of class 1 or class 2. Three of its
+references have a kind row: `tyre`, `end-marker` for the room's way out
+(`../behavior/level-end.md`, "In the first level's room"), and
+`extra-life-1` (`../behavior/extra-lives.md`; given to a class 1 entry
+near the first level's start, it placed an item that stayed where it was
+placed and gave 1 life); the kinds of the others are not covered. In the
 room the picture's left edge is always level x 0
 (`../behavior/level-ends.md`, "In the first level's room"), so every
 entry is in the window. An object for each of its entries was there
@@ -343,9 +352,10 @@ One entry can make more than one object appear (seen with one reference:
 two objects at the same position).
 
 How a walker is removed, comes back, or stays away once defeated is in
-`../behavior/walker-view.md`, and how a critter is removed and comes
-back in `../behavior/critter.md`. For the other objects it is not
-covered.
+`../behavior/walker-view.md`, how a critter is removed and comes
+back in `../behavior/critter.md`, and how an extra-life item is removed
+and stays away in `../behavior/extra-lives.md`. For the other objects it
+is not covered.
 
 ### In a list with sections
 
