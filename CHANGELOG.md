@@ -2,6 +2,30 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.136.0
+
+Rolling into the thrower, and an object carried into an exit during the
+walk-out.
+
+Part of clamber-engine/spec#17 (the first level's layout) and
+clamber-engine/spec#19 (the first level's remaining entities). Both
+issues stay open for the parts not covered yet.
+
+- `behavior/exits.md`, "The walk-out": new rule "An object in the lead's
+  hands": a barrel or holder still carried (or mid-throw) when the exit
+  takes over is let go on `T` + 1, then rises and falls on its own,
+  touching nothing, until it is removed off the left end or far below
+  the view, or the area changes. Two new reach rows for standing still
+  while carrying. "Coming back to the level" points to the new rule.
+  New checks; Not covered narrowed. (spec#17)
+- `behavior/thrower-contact.md`, new section "Rolling into the thrower":
+  when a roll defeats the thrower (attack frames as for walkers, the
+  thrower's own range), being hurt around a roll, and what follows a
+  defeat (the player's pause, boost and speeds as for walkers; the
+  thrower knocked out as by a bounce). Example and checks; Not covered
+  narrowed. Pointers in `thrower.md` and `rolling-into-walkers.md`.
+  (spec#19)
+
 ## spec-v0.135.0
 
 More of what stays gone after coming back through an exit, and whether
