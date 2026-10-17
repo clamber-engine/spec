@@ -2,6 +2,18 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.102.0
+
+Jumping after a bounce's landing in `title-1` (coverage).
+
+- `behavior/jump-input.md`: new subsection "After a bounce" under
+  "Landing lockout". A bounce landing's switch frame is the landing frame
+  (M = L), so E = L + 2, and the buffered-press window counts back from
+  that E. Table of cases and evidence. Bounces are removed from
+  "Landings this doesn't cover".
+- `behavior/bounce.md`: pointer to the new subsection; "Jumping on the
+  landing frame after a bounce" dropped from Not covered.
+
 ## spec-v0.101.0
 
 Jumping on a steep face and in front of a rise in `title-1` (coverage).
