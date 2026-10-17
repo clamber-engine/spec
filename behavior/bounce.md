@@ -60,7 +60,8 @@ Only the hold from B + 3 matters:
 Horizontally, the bounce doesn't change `vx`; from B + 3 on it changes
 as on any other airborne frame. Facing doesn't change from B to the
 landing, whatever is held (on the frozen frames too). The mode after
-landing is in `ground-speed.md` ("After a fall or a bounce").
+landing is in `ground-speed.md` ("After a fall or a bounce"); when a jump
+can start again after landing is in `jump-input.md` ("After a bounce").
 
 While airborne after the bounce the player's trace state is `bounce`,
 from B up to the landing frame.
@@ -283,7 +284,6 @@ This list is for `title-1`; `title-2` has its own list above.
   `animal-crate.md`, hidden objects landed on after a long fall in
   `hidden-objects.md`), bounces from a roll, bouncing again before
   landing, and the other character.
-- Jumping on the landing frame after a bounce.
 - Falls long enough after a bounce for `vy` to reach 8 weren't measured
   (the largest seen was 7.75); the cap is taken to be the same as for
   other falls.

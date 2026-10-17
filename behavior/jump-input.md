@@ -106,11 +106,40 @@ was measured. 238 of these landings were recorded after the rule was
 fixed. The window of "Pressing before landing" was checked to count
 back from E with E from L + 2 to L + 8.
 
+### After a bounce
+
+A landing that ends a bounce off an enemy (`bounce.md`) has no stage
+frames: its switch frame is the landing frame itself, M = L (the mode
+starts on L, `ground-speed.md`, "After a fall or a bounce"). So
+**E = L + 2**, however long jump was held before or after the bounce and
+however far the player fell after it.
+
+"Pressing before landing" below applies with this E:
+
+| Case | Result |
+|---|---|
+| Pressed L − 10 to L + 1, held through L + 1 | Jumps on L + 2 |
+| Pressed L − 11 or earlier, held through landing | No jump |
+| Pressed in the air, released on L or earlier | No jump |
+| Held without a break since B + 3 (B is the bounce frame, `bounce.md`) | No jump |
+| Pressed on L + 2 or later | Jumps on the frame after the press |
+
+Measured on `title-1` with the lead character: 190 landings after
+bounces off a small walker, by inputs (jump held 1 to 37 frames for the
+jump onto it and 0 to 40 frames, or to the end, from B + 3; none, Left,
+Right or Action, or a direction with Action, held in the air), some
+with the fall after the bounce made longer or shorter by moving the
+player up or down 5 frames after the bounce. Landings were on flat
+floor, on a slope and on one higher floor, 33 to 100 frames after B. 1 909 presses from L − 14 to
+L + 4, held 10 to 13 frames or to the end, matched with 0 mismatches.
+Landings where the player picked up an object with Action held, or left
+the ground again before jumping, were left out.
+
 ### Landings this doesn't cover
 
-For a landing after a jump that started from a roll, after a fall that
-didn't start with a jump (walking or rolling off a ledge), or after a
-bounce, the spec defines **E = L + 3** unless another file says
+For a landing after a jump that started from a roll, or after a fall
+that didn't start with a jump (walking or rolling off a ledge), the spec
+defines **E = L + 3** unless another file says
 otherwise (after a jump from a roll, M = L + 1). The mode after these
 landings is in `ground-speed.md` ("After a landing", "After a fall or a
 bounce"). In the original E varies on these landings
