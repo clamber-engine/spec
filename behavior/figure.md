@@ -98,7 +98,8 @@ back during the visit to the level: in the runs, a player who took it,
 went about 400 px further right and came back found no figure there. A
 figure that hasn't been taken does come back after leaving the view: it
 was seen to go when the view moved away from it and to be there again
-when the view came back. Whether a taken figure is there when the
+when the view came back (`../formats/placements.md`, "When placed
+objects are removed"). Whether a taken figure is there when the
 level is played again is not covered.
 
 ### The figure count

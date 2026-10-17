@@ -6,8 +6,8 @@ How a level says which objects it places where. A level's **placement
 list** holds the objects that appear as the view comes near them:
 walkers (`../behavior/walker.md`) and the other things standing or
 hanging in the level. This file covers how the list is stored, what its
-positions mean, and when the objects it places appear. Vectors:
-`../vectors/placements/`.
+positions mean, and when the objects it places appear and are
+removed. Vectors: `../vectors/placements/`.
 
 The list doesn't hold the characters (where they start is in
 `level-start.md`), the single collectibles
@@ -354,8 +354,8 @@ two objects at the same position).
 How a walker is removed, comes back, or stays away once defeated is in
 `../behavior/walker-view.md`, how a critter is removed and comes
 back in `../behavior/critter.md`, and how an extra-life item is removed
-and stays away in `../behavior/extra-lives.md`. For the other objects it
-is not covered.
+and stays away in `../behavior/extra-lives.md`. When the first level's
+other objects are removed is in "When placed objects are removed" below.
 
 ### In a list with sections
 
@@ -520,6 +520,100 @@ joins the last two at level x 60, level y 324. The view starts at
   smaller `x`: taking the lead as the first entry that isn't left of the
   window instead would have been wrong on 98 frames.
 
+## When placed objects are removed
+
+This section is about the objects placed by the first level's list (a
+list without sections) while they are still as they appeared: not
+taken, picked up, thrown, broken, opened or set off. What happens to an
+object after that is in its kind's behavior file. Walkers, stingers,
+critters, throwers, placed balls and extra-life items have their own
+rules (`../behavior/walker-view.md`, `../behavior/stinger.md`,
+`../behavior/critter.md`, `../behavior/thrower.md`,
+`../behavior/extra-lives.md`).
+
+`V` and `U` are the view's horizontal and vertical positions as in "When
+placed objects appear", rounded down to whole pixels, as they were at
+the start of the frame. Here `V` is **not** counted as 32 when it is less
+than 32. Near the level's left end it can be less than 0.
+
+- An entry is **in the window** when −31 ≤ `x` − `V` ≤ 288, as above.
+- An object is **in the vertical window** when −31 ≤ `y` − `U` ≤ 256,
+  with `y` the object's own level y. Most of these objects don't move,
+  so `y` is their entry's level y. A `barrel` or `holder` whose entry is
+  above the floor falls onto it, and its `y` is where it is at the start
+  of the frame.
+
+An object that is there is removed on the first frame on which its
+entry isn't in the window and the condition for its kind holds:
+
+| Kinds | Removed when the entry isn't in the window and |
+|---|---|
+| `bunch`, `barrel`, `holder`, `restart-barrel`, `sign`, `hidden-bunch`, `hidden-barrel`, `hidden-metal-barrel` | `x` − `V` ≤ −128, or `x` − `V` ≥ 385, or the object isn't in the vertical window |
+| `letter-1` to `letter-4`, `figure`, `animal-crate`, `exit` | always: the object is removed on the first frame on which its entry isn't in the window |
+
+So an object in the first row that is in the vertical window stays, if
+it was there, while `x` − `V` is from −127 to −32 or from 289 to 384.
+An object above or below the vertical window gets no such margin. This
+can also remove an object on a frame on which only `U` changes. If it is
+in the margin, it is removed on the first frame on which `y` − `U` is
+less than −31 or more than 256.
+
+The vertical window plays no part in appearing. Class 1 and class 2
+entries appear by `x` alone ("When placed objects appear"), even when
+their objects are far above or below the picture.
+
+**Coming back.** An object removed this way appears again, as in "When
+placed objects appear", the next time its entry is in the window. This
+can happen any number of times.
+
+### Example (synthetic)
+
+Three entries with `x` = 1000: a `bunch` at level y 300 (call it A), a
+`bunch` at level y 150 (B) and a `letter-1` at level y 300. All three
+objects are there. `U` stays 200, so A and the letter have `y` − `U` =
+100 (in the vertical window) and B has −50 (above it). The view moves
+left, then back to the right:
+
+| `V` at the start of the frame | `x` − `V` | A | B | `letter-1` |
+|---|---|---|---|---|
+| 712 | 288 | there | there | there |
+| 711 | 289 | there | removed | removed |
+| 616 | 384 | there | | |
+| 615 | 385 | removed | | |
+| 712 (moving right again) | 288 | appears | appears | appears |
+
+With A there and `V` = 650 (`x` − `V` = 350), A stays while `U` goes
+down to 44 (`y` − `U` = 256) and is removed on the first frame with `U`
+= 43 (257).
+
+### Checks
+
+Every kind in the table was put, by its reference, into one entry left
+of the characters' start and one right of it, with the entry's level y
+changed to put the object on the floor, at the vertical window's edges
+(`y` − `U` of −32, −31, 256 and 257) and far above and below the
+picture. A controller walked, ran and jumped the lead away from the
+object until it was removed and back until it appeared, four times per
+run with three random seeds, never touching it. The first level's own
+entries of most kinds, and its exit at the left end, were run in the
+same way. 330 runs, 271 516 frames: on every frame each object was there
+exactly when the rules above say.
+
+- First row: 917 appearances and 702 removals. Removals by edge: at
+  `x` − `V` = −128 to −131 and 385 to 388 in the vertical window (never
+  at −127 or 384), and 340 inside the margin, all with the object
+  outside the vertical window (one of them on a frame on which only `U`
+  changed).
+- Second row: 393 appearances and 304 removals, all on the first frame
+  with the entry outside the window (`x` − `V` from −32 to −35 and 289 to
+  292, with the view moving up to 4 px a frame), whether or not the
+  object was in the vertical window.
+- Removals with `V` less than 32: at `x` − `V` = 385 with `V` = 14 and 15.
+  Counting `V` as 32 would have kept the object.
+- A `barrel` and a `holder` placed above the floor fell onto it. Testing
+  their entry's level y instead of their own would have been wrong in
+  7 of their 21 runs each, on 25 to 110 frames per run.
+
 ## Example
 
 A list with three entries (the trailing entry of zeros not shown), with
@@ -563,8 +657,13 @@ on each frame: see its `README.md`.
 - What class 8 entries do other than the first level's (which starts
   the dimming), what a class 8 entry's `h` and reference mean, and
   classes other than 1, 2, 5, 8, 9 and 15.
-- When objects other than walkers are removed, and whether they come
-  back.
+- When objects other than walkers are removed in lists with sections,
+  and for the kinds not in the table (`end-marker`, `entrance`).
+- What a removed object that had been moved does (other than thrown
+  objects, `../behavior/thrown-objects.md`).
+- Objects whose entries are near the level's left end: in some runs an
+  object there didn't appear again when the view came back over its
+  entry.
 - Entries far above or below the view in lists without sections, and
   when the first level's entry that is out of order appears (it is past
   the furthest point the runs reached).

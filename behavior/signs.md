@@ -42,7 +42,10 @@ the start of the frame, and the **window** is as in
 - **Removal.** A sign that is there is removed on the first frame on
   which `x` − `V` ≤ −128 or `x` − `V` ≥ 385. These are the distances at
   which a walker that is away from its start is removed
-  (`walker-view.md`); a sign is always at its start.
+  (`walker-view.md`); a sign is always at its start. This holds while
+  the sign is in the vertical window. A sign above or below it is
+  removed as soon as its entry is out of the window
+  (`../formats/placements.md`, "When placed objects are removed").
 - **Coming back.** A removed sign appears again, as above, the next
   time its entry is in the window. This can happen any number of times.
 
