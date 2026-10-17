@@ -4,6 +4,22 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (`title-1`). Answers no open `spec` issue.
+
+- `behavior/steep-faces.md`, "Landing on or next to a face" (new): after
+  a jump, or a fall from a face, lands on or next to a face, the 1.5 px
+  per frame downhill and "Can't start toward a rise" wait for a switch
+  frame M. M from the jump's approach frame A (first frame from T + 20
+  with floor within 71 px and 2 bands below the feet): plain landings
+  (marks A, A + 2, A + 4, A + 6, A + 8, A + 11, A + 15; later marks run
+  one per frame after L), slide landings (A over a face column: 11 frames
+  after reaching other floor), and at the latest the first frame ending
+  on a face column with `vx` 0 or downhill. The downhill 1.5 as a push
+  set at the end of each frame and kept while the target or `vx` points
+  uphill. Two measured examples, evidence, not covered. "Can't start
+  toward a rise" and "Speed on a face" point to it; intro and "Not
+  covered" updated. `behavior/movement-summary.md`: steep faces row.
+
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.
