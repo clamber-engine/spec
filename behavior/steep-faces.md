@@ -4,8 +4,8 @@ Titles: `title-1`, `title-2`
 
 What happens when a grounded player meets ground that rises or falls too
 steeply to walk on: being stopped by it, not being able to start walking
-toward it from a standstill, being carried down a steep face, and leaving
-the ground on one. Frames are logic frames at 60 Hz, numbered as in a
+toward it from a standstill, being carried down a steep face, leaving
+the ground on one, and (in `title-1`) landing on or next to one. Frames are logic frames at 60 Hz, numbered as in a
 trace. `x`, `y` and `vx` are as in a trace: right and down are positive,
 speeds in px per frame. Speeds are whole multiples of 1/256 px per frame
 and are written both ways, as in `ground-speed.md`. "Left", "Right" and
@@ -15,7 +15,9 @@ Measured with the lead character, walking, running, standing and
 coasting with nothing held, on four steep faces (going down faces that
 fall to the right and to the left, and against faces that rise to the
 right and to the left) and against one vertical step up, going left.
-Jumps, rolls and landings on or against these surfaces are not covered
+Landings after jumps and after falls from a face were measured
+separately ("Landing on or next to a face", with its own evidence).
+Jumps from these surfaces and rolls on or against them are not covered
 (see the end).
 
 ## Columns, faces and steps
@@ -98,6 +100,9 @@ a rise can walk up to it at all. A player who does start moving is only
 stopped by the blocking rule above, so they can end up closer to the rise
 than they could have started from.
 
+The rule doesn't apply on the frames after a landing up to and including
+the switch frame M ("Landing on or next to a face" below).
+
 Measured standing at every 1/16 px across the boundary in front of a
 face rising to the right, a face rising to the left and a vertical step
 (rising to the left), and at the positions where players came to rest
@@ -133,6 +138,9 @@ ignored. Then the speed rule of `ground-speed.md` applies unchanged
   face columns, including up to 10 frames in a row with the uphill
   direction held. Whether a longer hold turns the player on a face isn't
   covered.
+- After a landing, the 1.5 px per frame downhill starts later, and a
+  held uphill direction is still ignored before it starts: see "Landing
+  on or next to a face" below.
 
 ## Following a face down, or leaving it
 
@@ -176,6 +184,209 @@ left off the foot of a face falling to the left, with Right held (three
 runs: target 0 on two frames, then the normal target) and with Left held
 (two runs: normal target from the first frame). Leaving a face moving
 right in this way, and facing on these frames, are not covered.
+
+## Landing on or next to a face
+
+This section covers what happens after a jump lands, or after a fall
+that started by leaving the floor of a face lands (as in "Following a
+face down, or leaving it"), when the player is on a face column on the
+landing frame or reaches one in the frames after it. Here **L** is the
+landing frame, the frame carrying `land` (`landing.md`), not the leave
+frame above. Frames that start in the air, the landing frame included,
+are as in `air-walls.md` and `landing.md`.
+
+After such a landing two of the rules above wait for a **switch frame
+M**, which is L or later:
+
+- the 1.5 px per frame downhill of "Speed on a face" is added only from
+  frame M + 1 on, and then by the push rule below;
+- "Can't start toward a rise" applies only from frame M + 1 on.
+
+On frames L + 1 to M the player is on the floor and otherwise moves as
+on any frame on the floor: a held direction that points uphill is
+ignored on a frame that starts on a face (target 0, as in "Speed on a
+face"); the speed rule of `ground-speed.md` applies to the target
+without the 1.5; "Stopped by a rise" and "Following a face down, or
+leaving it" apply as usual. So a player who lands on a face can stay
+still on it, or go on moving up it for a few frames, before being
+carried down.
+
+### The switch frame M
+
+**After a fall from a face** (no jump): M = L.
+
+**After a jump**, let T be the frame carrying `jump_start`
+(`jump-arc.md`). Let **A**, the **approach frame**, be the first frame
+from **T + 20** on at whose end there is floor within reach below the
+player. In level y (`view-vertical.md`), with the feet line F (the
+player's level y rounded up to a whole px) and the floor `Y` of the
+column containing `x`: the floor is within reach when it is at or below
+the feet and at most **71 px** below them (0 ≤ `Y` − F ≤ 71), and its
+32 px band is at most 2 more than the band of F, as in
+`view-vertical.md` ("The ground used"). A player on the floor always has
+floor within reach, so A is never later than the first frame from T + 20
+on which the player is on the floor. A doesn't depend on whether the
+player is still rising.
+
+If at the end of A `x` is in a face column, the landing is a **slide
+landing**, otherwise a **plain landing**.
+
+- **Plain landing.** Take the seven **stage frames** A, A + 2, A + 4,
+  A + 6, A + 8, A + 11 and A + 15 if A = T + 20, or A, A + 1, A + 3,
+  A + 5, A + 7, A + 10 and A + 14 if A is later than T + 20.
+  - If L < A: M = A + 4.
+  - Otherwise, with n the number of stage frames that are L or earlier:
+    M = L if n = 7; L + 1 if n = 6; L + 2 if n is 5 or 4; L + 3 if n is
+    3 or 2; L + 4 if n = 1. For example, with A = T + 20, L = A + 8
+    gives n = 5 and M = L + 2, and L = A + 12 gives n = 6 and M = L + 1.
+- **Slide landing.** Let R be the first frame from L or A on, whichever
+  is later, that ends on the floor of a column that isn't a face column.
+  Then M = R + 11. While the player stays on face columns, there is no
+  such R and only the next rule ends the wait.
+
+In every case, M is never later than the first frame from L on that
+ends on the floor of a face column with `vx` 0 or `vx` pointing downhill
+(for example a frame blocked by a rise, or one on which the speed comes
+to 0). If that frame comes first, it is M.
+
+Of the 1 047 landings on a face column in the first set of runs below,
+685 were slide landings; M was L on 337 of them, L + 1 on 461, and later
+(or not before the check ended) on the other 249.
+
+### The push
+
+From M on, the 1.5 px per frame downhill is a **push**, worked out at
+the end of every frame and added to the next frame's target speed
+before the speed rule:
+
+1. If the player ended the frame in the air, or the frame is earlier
+   than M, the push becomes 0.
+2. Otherwise, if the column containing `x` at the end of the frame isn't
+   a face column, the push becomes 0.
+3. Otherwise, on a face falling to the right: if the frame's target
+   speed (after the uphill rule, before any push) is 0 or more **and**
+   the new `vx` is 0 or more, the push becomes +1.5 (+384/256). If either
+   points left, the push keeps the value it had. On a face falling to
+   the left the same holds mirrored: target 0 or less and `vx` 0 or less
+   give −1.5 (−384/256), otherwise the push is kept.
+
+Away from landings (where there is no M to wait for) this gives exactly
+the targets of "Speed on a face": a player can only be moving uphill on
+a face column after a landing.
+After a landing, rule 3 means that a player still moving uphill on M
+gets the push only once `vx` has stopped or turned.
+
+### Examples (landings)
+
+Measured, with positions made relative. `y` is level y (`view-vertical.md`)
+of a synthetic floor: `y` = 81 for columns up to 99; a face rising to the
+right at columns 100 to 115 (`y` = 80, 76, 72, …, 20; column 100 is 1 px
+above the floor before it); `y` = 17 from column 116 on. Frame numbers
+count from the jump's T. "Column floor" is the floor of the column
+containing `x` at the end of the frame.
+
+**A plain landing, downhill direction held.** A jump from standing at
+`x` = 95.75 on the floor at `y` = 81, T = frame 0, Jump not held after
+frame 2:
+
+| Frame | Held | `x` | Column floor | `y` | `vx` (1/256) | `vy` (1/256) | `ground` |
+|---|---|---|---|---|---|---|---|
+| 19 | R | 97.953125 | 81 | 28.15625 | 211 | 296 | 0 |
+| 20 = A | R | 98.921875 | 81 | 29.75 | 248 | 408 | 0 |
+| 21 | R | 100.01953125 | 80 | 31.78125 | 281 | 520 | 0 |
+| 22 | – | 100.98046875 | 80 | 34.25 | 246 | 632 | 0 |
+| 23 | – | 101.82421875 | 76 | 37.15625 | 216 | 744 | 0 |
+| 24 | L | 102.3125 | 72 | 40.5 | 125 | 856 | 0 |
+| 25 | R | 102.98828125 | 72 | 44.28125 | 173 | 968 | 0 |
+| 26 | R | 103.828125 | 68 | 48.5 | 215 | 1080 | 0 |
+| 27 | R | 104.8125 | 64 | 53.15625 | 252 | 1192 | 0 |
+| 28 = L | L | 105.42578125 | 60 | 60 | 157 | 0 | 1 |
+| 29 | L | 105.71484375 | 60 | 60 | 74 | 0 | 1 |
+| 30 = M | L | 105.71875 | 60 | 60 | 1 | 0 | 1 |
+| 31 | L | 105.47265625 | 60 | 60 | −63 | 0 | 1 |
+| 32 | L | 104.8203125 | 64 | 64 | −167 | 0 | 1 |
+| 33 | L | 103.8125 | 68 | 68 | −258 | 0 | 1 |
+
+- Frame 20 is the first frame from T + 20 on with floor within reach:
+  feet line 30, floor 81 of column 98, 51 px below; band of 30 is 0,
+  band of 81 is 2. So A = 20. Column 98 isn't a face column: a plain
+  landing.
+- Frame 28 lands on face column 105 (`landing.md`). A = T + 20 and
+  L = A + 8, so five stage frames (A to A + 8) are L or earlier and
+  M = L + 2 = 30. Frames 28 to 30 end with `vx` pointing uphill
+  (right), so the last rule doesn't make M earlier.
+- Frames 29 and 30 start on the face, Left points downhill: target −512,
+  no push. Step (−512 − 157) ÷ 8 = −83, `vx` 74; then −73, `vx` 1.
+- Frame 30 is M, but its `vx` (+1) points uphill, so the push keeps its
+  value 0.
+- Frame 31: step (−512 − 1) ÷ 8 = −64, `vx` −63. Target and `vx` now
+  both point left (downhill): the push becomes −1.5.
+- Frame 32: target −512 − 384 = −896, step −104, `vx` −167. `x` moves
+  into column 104, 4 px lower: followed.
+
+With the 1.5 added from frame 29 on, as "Speed on a face" alone would
+give, `vx` on frame 29 would be 26 instead of 74.
+
+**A slide landing, uphill direction held.** Right held on every frame,
+falling past the face after a jump (T = frame 0):
+
+| Frame | Held | `x` | Column floor | `y` | `vx` (1/256) | `vy` (1/256) | `ground` |
+|---|---|---|---|---|---|---|---|
+| 11 | R | 111.7578125 | 36 | 32.875 | 407 | −560 | 0 |
+| 12 | R | 111 | 36 | 31.125 | 0 | −448 | 0 |
+| 13 | R | 111.25 | 36 | 29.8125 | 64 | −336 | 0 |
+| 14 | R | 111.71875 | 36 | 28.9375 | 120 | −224 | 0 |
+| 15 | R | 112.37890625 | 32 | 28.5 | 169 | −112 | 0 |
+| 16 | R | 112 | 32 | 28.5 | 0 | 0 | 0 |
+| 17 = L | R | 112.25 | 32 | 32 | 64 | 0 | 1 |
+| 18 | R | 112.46875 | 32 | 32 | 56 | 0 | 1 |
+| 19 | R | 112.66015625 | 32 | 32 | 49 | 0 | 1 |
+| 20 = A | R | 112.828125 | 32 | 32 | 43 | 0 | 1 |
+| 21 | R | 112.9765625 | 32 | 32 | 38 | 0 | 1 |
+| 22 = M | R | 112 | 32 | 32 | 0 | 0 | 1 |
+| 23 | R | 111.8125 | 36 | 36 | −48 | 0 | 1 |
+| 24 | R | 111.4609375 | 36 | 36 | −90 | 0 | 1 |
+
+- Frames 12 and 16 are blocked in the air by face columns above the feet
+  (`air-walls.md`). Frame 17 lands on face column 112.
+- A is frame 20, the first frame from T + 20 on; the player is on the
+  floor of face column 112, so this is a slide landing. The player never
+  leaves the face, so M comes from the last rule.
+- Frames 18 to 21 start on the face: Right points uphill and is ignored
+  (target 0), and there is no push, so `vx` falls by an 8th of itself
+  each frame and the player creeps up the face.
+- Frame 22: `vx` 33 would take `x` into face column 113, which rises to
+  the right: blocked, `x` 112, `vx` 0. It ends on a face column with `vx`
+  0, so M = 22, and the push becomes −1.5 at its end.
+- Frame 23: target 0 − 384, step −48. The player is carried down.
+
+### Evidence (landings)
+
+Measured with the lead character, by inputs only, objects nearby moved
+out of the way, on a face falling to the right whose low end meets a
+drop, the face rising to the right on the drop's far side, and a
+64 px face rising to the right from the floor beyond. Random inputs
+(Left, Right, Down, Jump and Action, held and released at random), from
+a start on the floor before the first face and from one on the floor
+before the 64 px face:
+
+- 800 runs, 296 494 frames, used to find the rules: 1 682 landings
+  followed onto or near a face (1 047 of them on a face column), 12 088
+  frames checked after them, 1 480 of them from L + 1 to M;
+- 800 further runs with new seeds, 293 557 frames, recorded afterwards
+  to test them: 1 753 landings (1 056 on a face column), 12 866 frames
+  checked, 1 582 from L + 1 to M.
+
+`x`, `y`, `vx` and `ground` matched the rules on every checked frame
+except one in each set, both the case under "Not covered" of a move
+across two face columns. Applying the push and "Can't start toward a
+rise" from L + 1 instead would have given 609 and 622 different frames.
+The approach frame was also checked directly against the player's pose,
+which changes on A: it matched in 4 952 of 4 954 jumps in the first set
+and 4 819 of 4 821 in the second, and so did the choice between a slide
+and a plain landing. The four others fell into the drop, below the
+floor. The push rule matched on every frame of the runs that wasn't
+part of a roll, or a jump's press frame or T: 589 883 frames.
 
 ## Examples
 
@@ -246,9 +457,20 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
   was seen to move). One case is measured: walking down the face at the
   top of a ledge, a press whose next frame starts on the face gives no
   jump (`walk-off.md`).
-- The frames after landing on a face from the air. Contact with faces
-  and walls while airborne is in `air-walls.md`, except falls into pits
-  that carry the player below the floor of the column they are in.
+- Landings on or next to a face after anything other than a jump or a
+  fall from a face (rolls, bounces, falls from ledges without a face,
+  jumps that start in the air), and jumps that take off from a face.
+  Contact with faces and walls while airborne is in `air-walls.md`,
+  except falls into pits that carry the player below the floor of the
+  column they are in.
+- A move on the floor that crosses two face columns of a rising face in
+  one frame and would end on floor beyond them that isn't a face column:
+  the player was blocked in both cases seen, which "Stopped by a rise"
+  as written doesn't give.
+- Which of standing, walking, running or a turn starts after a landing
+  on or next to a face (`ground-speed.md`, "After a landing"): the
+  landing checks above took the target speed from the game and tested
+  only how the face rules change it.
 - Moving left off the low end of a face that ends at a drop rather than
   at floor: the player was seen to leave the ground while still over the
   face's last column. (Moving right off such an end, the rule above
