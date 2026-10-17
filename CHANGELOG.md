@@ -2,6 +2,30 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.99.0
+
+The mode after falls and bounces in `title-1`.
+
+Answers clamber-engine/spec#36.
+
+- `behavior/ground-speed.md`: new section "After a fall or a bounce".
+  After walking or running off a ledge without a face, the mode and
+  stride cycle go on through the fall and the landing as on the ground,
+  and there are no landing frames. After a fall from a steep face there
+  are 11 landing frames (no mode, facing fixed, no turn), then a mode
+  starts as at the end of a turn. After a bounce, facing stays fixed up
+  to the landing and a mode starts on the landing frame. A roll off a
+  ledge ends as "After a roll" says. Also examples, evidence and an
+  updated "Not covered". The M = L + 1 default in "After a landing" now
+  applies only to jumps that started from a roll.
+- `behavior/air-control.md`: facing stays fixed during a walk-off fall
+  only at ledges with a steep face. At a ledge without a face, turns go
+  on in the air.
+- `behavior/bounce.md`: facing doesn't change from the bounce to the
+  landing, frozen frames included.
+- `behavior/jump-input.md`, `behavior/walk-off.md`: pointers to the new
+  section.
+
 ## spec-v0.98.0
 
 Coverage: the frames after a landing in `title-2`.
