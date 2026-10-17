@@ -231,13 +231,14 @@ player is still rising.
 If at the end of A `x` is in a face column, the landing is a **slide
 landing**, otherwise a **plain landing**.
 
-- **Plain landing.** Take the seven frames A, A + 2, A + 4, A + 6, A + 8,
-  A + 11 and A + 15.
-  - If L ≥ A + 15: M = L.
-  - If A ≤ L < A + 15: M is L plus the number of those seven frames that
-    come after L. For example L = A + 8 gives M = L + 2 (A + 11 and
-    A + 15 come after it), and L = A + 12 gives M = L + 1.
-  - If L < A: M = A + 6.
+- **Plain landing.** Take the seven **stage frames** A, A + 2, A + 4,
+  A + 6, A + 8, A + 11 and A + 15 if A = T + 20, or A, A + 1, A + 3,
+  A + 5, A + 7, A + 10 and A + 14 if A is later than T + 20.
+  - If L < A: M = A + 4.
+  - Otherwise, with n the number of stage frames that are L or earlier:
+    M = L if n = 7; L + 1 if n = 6; L + 2 if n is 5 or 4; L + 3 if n is
+    3 or 2; L + 4 if n = 1. For example, with A = T + 20, L = A + 8
+    gives n = 5 and M = L + 2, and L = A + 12 gives n = 6 and M = L + 1.
 - **Slide landing.** Let R be the first frame from L or A on, whichever
   is later, that ends on the floor of a column that isn't a face column.
   Then M = R + 11. While the player stays on face columns, there is no
@@ -310,10 +311,10 @@ frame 2:
   feet line 30, floor 81 of column 98, 51 px below; band of 30 is 0,
   band of 81 is 2. So A = 20. Column 98 isn't a face column: a plain
   landing.
-- Frame 28 lands on face column 105 (`landing.md`). L = A + 8, and
-  A + 11 and A + 15 come after it, so M = L + 2 = 30. Frames 28 to 30
-  end with `vx` pointing uphill (right), so the last rule doesn't make M
-  earlier.
+- Frame 28 lands on face column 105 (`landing.md`). A = T + 20 and
+  L = A + 8, so five stage frames (A to A + 8) are L or earlier and
+  M = L + 2 = 30. Frames 28 to 30 end with `vx` pointing uphill
+  (right), so the last rule doesn't make M earlier.
 - Frames 29 and 30 start on the face, Left points downhill: target −512,
   no push. Step (−512 − 157) ÷ 8 = −83, `vx` 74; then −73, `vx` 1.
 - Frame 30 is M, but its `vx` (+1) points uphill, so the push keeps its
