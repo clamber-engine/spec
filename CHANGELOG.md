@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.103.0
+
+Rolls on, onto and into steep faces in `title-1` (coverage).
+
+- `behavior/steep-faces.md`: new section "Rolling on, onto or into a
+  face". Steering does nothing on frames that start on a face; a roll
+  pointing downhill there gets 1.5 added downhill to its target, one
+  pointing uphill doesn't. Roll frames are blocked as in "Stopped by a
+  rise", and also onto non-face floor more than 8 px higher. A blocked
+  roll is stopped (target 0, carried down a face like a standing player)
+  until it pushes off at 2 with its direction held off a face; its size
+  stays 2 until the direction is held again. Synthetic examples and
+  evidence; intro, "Stopped by a rise" and Not covered updated.
+- `behavior/rolling-off-ledges.md`: how far below missing ground counts
+  for "Stopping before a ledge" (47 px counts, 49 px doesn't); a stopped
+  frame makes a stopped roll, and push-off follows the frame's steering.
+- Pointers in `roll-speed.md`, `roll-input.md` and `movement-summary.md`.
+
 ## spec-v0.102.0
 
 Jumping after a bounce's landing in `title-1` (coverage).
