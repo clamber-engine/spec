@@ -54,3 +54,6 @@ fingerprints" in `../REVIEW.md`).
   position, blending sample points with bell-shaped weights, level and
   volumes, taking blocks (loops, one-shot ends), and mixing. Vectors:
   `../vectors/voice-output/`.
+- `nibble-packing.md`: the packing `title-2` uses for its level maps:
+  header, nibble stream, commands and copies. Vectors:
+  `../vectors/nibble-packing/`.

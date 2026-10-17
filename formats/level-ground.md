@@ -1,6 +1,6 @@
 # Level ground
 
-Titles: `title-1`
+Titles: `title-1`, `title-2`
 
 How a level's ground is stored, and how to read from it where the ground
 is in each 1-px column. This is the data behind the floor heights,
@@ -512,3 +512,154 @@ Where the first level's grid and type table start in the image is in
 - Level x outside the grid.
 - Anything other than ground and cell pictures (walkers, objects,
   limits of the view). Cell pictures are in `graphics.md`.
+
+## In `title-2`
+
+Everything in this section was measured on `title-2`'s first level,
+which uses a column grid. It says how `title-2`'s ground differs from
+the column grids above. Anything it doesn't mention works as above.
+
+### Positions (`title-2`)
+
+Level x and level y are in whole px, growing to the right and downward
+as above, but the grid doesn't start at 0. The grid's left edge is at
+level x 256 and its top line (line 1) is at level y 257:
+
+- grid column `n` covers level x 256 + 32`n` to 256 + 32`n` + 31, and
+  the px column within the grid for level x `x` is `x` − 256;
+- line `L` is level y `L` + 256, so a surface at line `L` is one that a
+  player stands on with its feet at level y `L` + 256.
+
+The player's position is given in the same level positions.
+
+### The map and the grid (`title-2`)
+
+A level's ground comes from a **map**, stored packed
+(`nibble-packing.md`). Unpacked, the map is a run of **map columns**,
+each 16 cell words, top band first, stored as a column of a column grid
+is (32 bytes, cell words low byte first). The level's grid is a run of
+consecutive map columns: grid column 0 is map column `m`, grid column 1
+is map column `m` + 1, and so on, for as many columns as the level has.
+Map columns before and after them are not part of the level's grid.
+
+Cell words are as for column grids above: bits 0–13 the type, bit 14
+mirrored, bit 15 no effect on the ground. A cell word of 0, or a type of
+`N` or more, has no ground.
+
+### The type table (`title-2`)
+
+Each type has four bytes: the **left half word**, then the **right half
+word**, each 16 bits stored low byte first. Type `t`'s half words are at
+bytes 4`t` to 4`t` + 3 of the table.
+
+| Bits | Meaning |
+|---|---|
+| 0–7 | The half's **shape**, as in "Shapes"; 0 = no ground |
+| 8–13 | 0 in every type of the first level; see "Not covered in `title-2`" |
+| 14 | **Passable from below** |
+| 15 | **Flipped**: if set, the half's shape is mirrored left to right |
+
+"The surface in one cell" then works as above with half words in
+place of half bytes, and with the px column taken from the grid's left
+edge: `p` = (`x` − 256) mod 32 in grid column ⌊(`x` − 256) / 32⌋. The
+surface in band `k` is at line 32`k` + 32 − `s`, that is at level y
+32`k` + 288 − `s`.
+
+Shapes 0 to 62 are exactly as in "Shapes". The first level's types use
+shapes from 0 to 60 only.
+
+### Passable from below (`title-2`)
+
+Bit 14 marks the half's surface as passable from below, as bit 6 does
+in a column grid above (the half chosen after the cell's mirroring).
+In the first level's grid, the cells whose half words have bit 14 set
+are all platforms with open space under them.
+
+Checked on one such platform: a player jumping straight up from the
+floor 68 px below it rose through it and landed on it. With bit 14
+cleared in that platform's types, in a copy of the image, the same jump
+was stopped below the platform and the player fell back to the floor.
+Where exactly a rising player is stopped by ground that isn't passable
+from below is not covered.
+
+### The ground below a point (`title-2`)
+
+For level x `x` and feet at level y `y`, let `F` = `y` − 256 (the feet
+line) and use the grid's px column `x` − 256. The rules are those of
+"The ground below a point" above, with one difference: if `F` is 0 or
+less (feet at level y 256 or above), the feet's band `k` is taken as
+band **15**, not band 0. As above, `k` is band 15 if `F` is more than
+512. Results are lines; the ground below is at level y line + 256.
+
+### Example (synthetic, `title-2`)
+
+A type table with `N` = 3: type 1 has half words 0x0005, 0x0005 (shape 5,
+flat at rise 15); type 2 has half words 0x400C, 0x800C (left: shape 12,
+passable from below; right: shape 12 flipped). The map has 4 columns;
+the level's grid is map columns 1 and 2. Map column 1 holds 0x0001 in
+band 10 and 0x4002 in band 11; map column 2 holds 0x0002 in band 3.
+Every other cell word is 0.
+
+- Level x 259 (grid px column 3, grid column 0, map column 1), band 10:
+  `p` = 3, left half, shape 5, rise 15 → line 32·10 + 32 − 15 = 337,
+  level y 593.
+- Level x 259, band 11: mirrored, `p` = 28, right half (flipped), `c` =
+  15 − 12 = 3, shape 12 at 3: ⌊3/4⌋ + 12 = 12 → line 372, level y 628.
+  Its half word is the right one, which doesn't have bit 14: not
+  passable from below.
+- Level x 276 (`p` = 20), band 11: mirrored, `p` = 11, left half word
+  0x400C: shape 12 at 11 → rise 14, line 370, level y 626, passable
+  from below.
+- Level x 300 (grid column 1, map column 2), band 3: `p` = 12, left
+  half, shape 12 at 12 → rise 15, line 113, level y 369.
+- Ground below level x 259 with feet at level y 556 (`F` = 300, band
+  9): band 9 is empty, band 10 has line 337 → level y 593.
+- Ground below level x 259 with feet at level y 250 (`F` = −6): the
+  feet's band is taken as band 15, which is empty in this column, and
+  there are no bands below it → no ground. (With the `title-1` rule it
+  would be band 0, and the search would go on to bands 1 and 2.)
+
+More cases, as bytes, are in `../vectors/level-ground/title-2/`.
+
+### Checks (`title-2`)
+
+The map unpacked by `nibble-packing.md` was the same, byte for byte, as
+the game's own unpacked map, and the level's grid was the same as the
+game's grid for all its columns.
+
+These rules were checked against the game's own ground lookups. Every
+lookup made by any object at a level x inside the grid, on 48 000
+frames, was compared. On each frame the player was put at a random
+place in the first level (often near a surface, sometimes above the
+grid's top line or below its bottom line) and moved for one frame with
+random buttons held. On 24 000 of the
+frames the grid was used as it is; there were 115 198 lookups. On the
+other 24 000, six random cells of the game's grid near the player were
+changed first (random types, mirrored or not, some of `N` or more, many
+filling their band), and the rules were applied to the changed grid;
+there were 117 050 lookups. There were no differences in either. Every
+step of the rules came up, including both ways of reaching "above the
+level" and feet lines of 0 or less and of more than 512.
+
+Shapes 1 to 62 were also compared, at all 16 positions, with the game's
+own rule for each shape: no differences.
+
+### The first level's data (`title-2`)
+
+Where the first level's packed map and type table start in the image is
+in `locators.md`. The map unpacks to 29 568 bytes (924 map columns). The
+first level's grid is map columns 1 to 223 (223 columns, level x 256 to
+7 391). The type table has `N` = 170 types.
+
+### Not covered in `title-2`
+
+- Other kinds of grid. Some `title-2` levels lay out their maps
+  differently (more than 16 bands, or row by row); only the 16-band
+  column grid of the first level is described.
+- Where other levels' maps and type tables are, and which map columns
+  their grids use.
+- Bits 8–13 of a half word, and shape numbers above 62.
+- What being passable from below changes for anything other than the
+  player, and the way a rising player is stopped by ground that isn't.
+- Level x outside the level's grid columns.
+- Cell pictures (`graphics.md` is `title-1` only).

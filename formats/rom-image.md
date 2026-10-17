@@ -1,6 +1,6 @@
 # Image files
 
-Titles: `title-1`
+Titles: `title-1`, `title-2`
 
 How the importer recognizes a supported image of a title, checks that it
 is complete and unmodified, and turns a **location** (the form in which
@@ -11,11 +11,12 @@ image. Vectors: `../vectors/rom-image/`.
 
 The importer supports one release per title: the release that the
 title's behavior files and reference traces were measured on
-(`../TITLES.md`). So far that is `title-1` only.
+(`../TITLES.md`). So far that is `title-1` and `title-2`.
 
 | Title | Image size | SHA-256 of the image |
 |---|---|---|
 | `title-1` | 4 194 304 bytes (4 MiB) | `628147468c3539283197f58f03b94df49758a332831857481ea9cc31645f0527` |
+| `title-2` | 4 194 304 bytes (4 MiB) | `b79c2bb86f6fc76e1fc61c62fc16d51c664c381e58bc2933be643bbc4d8b610c` |
 
 Other releases of the same title (other revisions or regions) are not
 supported. They are told apart from the supported one by the hash alone;

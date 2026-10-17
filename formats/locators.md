@@ -76,3 +76,13 @@ names" table.
 | `f44d17c1cc692790ebee841de128717e08b078d09eb11b1931a12c05fbe5c81c` | `stinger` |
 | `f4b1fad5059ecd6ac05c3a59a129e6b47adf0feabddab5c437e06aec2b6214e2` | `tyre` |
 | `f85e5c914a63c73583c210056c33f883bcd8fecee32b42323bb458fb6f174819` | `ball` |
+
+## `title-2`
+
+SHA-256 of the image:
+`b79c2bb86f6fc76e1fc61c62fc16d51c664c381e58bc2933be643bbc4d8b610c`
+
+| Data | Format spec | Bank | Address |
+|---|---|---|---|
+| Level ground: the first level's packed map | `level-ground.md` ("In `title-2`"), `nibble-packing.md` | `e3` | `e006` |
+| Level ground: the first level's type table | `level-ground.md` ("In `title-2`") | `fc` | `6154` |
