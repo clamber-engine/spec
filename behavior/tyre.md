@@ -152,9 +152,44 @@ end of L:
 - `y` = −6 × (n − 1) + 0.4375 × (n − 1) × n / 2
 
 The top of the arc is on L + 14, 38.1875 px above the end of L (so 30.1875
-px above the standing height before the throw). With no input, a player
-thrown from a tyre at rest on flat ground falls back onto it and is
-caught again on L + 25; the cycle repeats every 40 frames.
+px above the standing height before the throw).
+
+### Throws with no input
+
+A player thrown with no input from a tyre at rest on flat ground falls
+back onto it and is caught again (as under "Being caught", with T = 16).
+Write the player's height on L as U = 6 + f, where f is the fraction of
+a pixel kept from the last catch (0 ≤ f < 1):
+
+- If f is less than 0.25, the player is caught on **L + 25**, and U
+  becomes 18 + (f + 0.75).
+- Otherwise the whole pixels of U on L + 25 are 19 or more, so the
+  player doesn't touch the tyre on that frame (and isn't caught). They
+  are caught on **L + 26**, and U becomes 18 + the fraction of
+  (f + 0.8125).
+
+Each catch starts a new squash, so the next throw frame is 15 frames
+later, from U = 6 plus the new fraction. A cycle (catch to next catch)
+is therefore 40 frames when f is less than 0.25 and 41 frames otherwise,
+and the fraction keeps changing from one cycle to the next.
+
+For a player who walked onto the tyre at a whole-pixel height (f = 0 on
+the first throw), the catches go like this, after which the last five
+cycles repeat:
+
+| Cycle | f on L | Caught on | U when caught | Cycle length |
+|---|---|---|---|---|
+| 1 | 0 | L + 25 | 18.75 | 40 |
+| 2 | 0.75 | L + 26 | 18.5625 | 41 |
+| 3 | 0.5625 | L + 26 | 18.375 | 41 |
+| 4 | 0.375 | L + 26 | 18.1875 | 41 |
+| 5 | 0.1875 | L + 25 | 18.9375 | 40 |
+| 6 | 0.9375 | L + 26 | 18.75 | 41 |
+
+So after the first cycle, the cycles repeat in a group of five (41, 41,
+41, 40 and 41 frames, 204 frames in all). `vy` is −6 on every throw
+frame and 0 on every catch frame. Measured for nine cycles in a row on
+each of the three placement references, all as above.
 
 After a throw, the tyre doesn't catch anyone on frames L + 1 to L + 8.
 It is ready again from L + 9.
@@ -291,6 +326,9 @@ fraction (the height above the tyre's position, not rounded).
 | L + 24 | −10 | 23.25 | 4.0625 | 0 | |
 | L + 25 | −10 | 18.75 | 0 | 1 | caught again (T = 16), fraction kept |
 | L + 26 | −10 | 14.75 | 0 | 1 | squashed |
+
+The next throw is on L + 40, from U = 6.75, and the player is caught
+after it on L + 66 (see "Throws with no input").
 
 ## Not covered
 
