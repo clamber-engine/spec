@@ -180,10 +180,25 @@ and `y` becomes the floor height of the column under the new `x`. On flat
 floor that means `y` is unchanged, as `jump-arc.md` states; on a slope `y`
 changes by 1 px on T if `x` crosses into the next 4-column step.
 
-From T + 1 the arc is the one in `jump-arc.md`, starting from `y` on T:
-the same `vy` on every frame, the same gravity and the same effect of
-holding jump. The slope only changes where the jump starts and where it
-ends.
+**T + 1**, the first airborne frame, starts from the **higher** of two
+heights: the player's `y` on T, and the floor height of the column
+containing `x` after T + 1's horizontal move. The player then moves by
+T + 1's `vy`, as in `jump-arc.md`. So:
+
+- going uphill, if T + 1's move reaches a higher column, the jump starts
+  from that column's height: the player ends T + 1 1 px higher than they
+  would on flat floor;
+- going downhill, the jump starts from `y` on T, as on flat floor.
+
+Measured with 24 walking jumps going up a 1-in-4 slope, pressed on 24
+frames in a row, so that T + 1 reached a higher column in 12 of them and
+stayed in T's column in the other 12. All 24 ended T + 1 at the height
+this rule gives. The riding jump and the hop follow the same rule
+(`riding-slopes.md`).
+
+From T + 2 the arc is the one in `jump-arc.md`: the same `vy` on every
+frame, the same gravity and the same effect of holding jump. The slope
+only changes where the jump starts and where it ends.
 
 ## Landing on a slope
 
