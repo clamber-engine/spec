@@ -2,6 +2,34 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.109.0
+
+The count display and the level map after a finish in `title-1`.
+
+Answers part of clamber-engine/spec#19 and part of
+clamber-engine/spec#17. The rest of each is not covered yet, so both
+stay open.
+
+- `behavior/count-display.md` (new): the count display at the top left
+  (a collectible image and the number shown, one or two digits), how
+  the number shown follows the count one step per frame, when the
+  display is shown (from a pickup's start until its steps have happened
+  and up to 59 frames after the latest step; not when a level begins),
+  and the lives display when the count reaches 100 (slide in, hold,
+  slide out, new number from `S` + 25). Synthetic example, checks and
+  Not covered.
+- `behavior/collectibles.md`, `behavior/bunches.md`: pointers to the
+  count display.
+- `behavior/level-map.md`: new "After finishing a level": the black
+  frames up to the map (49 on a first finish, 52 or 53 otherwise), the
+  fade-in, 50 still frames on a first finish only, the gate `G` (242 or
+  64), the given direction on `G` and how held and new presses act on
+  it, and entering the level again with Jump, Action or Pause from
+  `G` + 1, with its fade-out. Synthetic example, measurements and
+  Not covered updated.
+- `behavior/level-end.md`: the last frame points to the new section;
+  "what comes after" removed from Not covered.
+
 ## spec-v0.108.0
 
 Exits in `title-1`: where the first level's two exits lead, and the
