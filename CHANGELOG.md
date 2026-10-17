@@ -2,6 +2,35 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.134.0
+
+The animal after a knock-off, objects carried far from their entry, and
+touching the thrower.
+
+Part of clamber-engine/spec#17 (the first level's layout) and
+clamber-engine/spec#19 (the first level's remaining entities). Both
+issues stay open for the parts not covered yet.
+
+- `behavior/exits.md`, "Coming back to the level": an animal whose rider
+  was knocked off by a walker before the exit isn't there after coming
+  back, whether or not it was still in the level when the exit began,
+  and neither are the crate's boards. New check "Knocked off before the
+  exit"; Not covered narrowed. (spec#17)
+- `formats/placements.md`, "Objects put down elsewhere": a carried
+  `barrel` or `holder` is there on every frame, however far it is from
+  its entry, and the entry places nothing else while it is carried; once
+  it is put down, the existing rule applies from where it was put down.
+  New check "Checks, carried far"; Not covered narrowed. (spec#17)
+- New `behavior/thrower-contact.md`: when touching the thrower hurts the
+  player (offset ranges by pose and facing, vertical reach, the ledge
+  and landing rules, no hurt on the frame before a throw) and when it
+  gives a bounce (offset ranges, the up-speed limit, landing first on
+  the ledge). A bounce knocks the thrower out, as the ground action
+  does, and it throws no more balls. Synthetic examples, evidence and
+  Not covered. Pointers from `thrower.md`, `ball-contact.md`,
+  `knock-out.md`, `losing-a-character.md`, `bounce.md` and
+  `movement-summary.md`. (spec#19)
+
 ## spec-v0.133.0
 
 Riding the animal into an exit.
