@@ -311,6 +311,15 @@ the exit takes over keeps it through the exit and after coming back:
   (a ridden jump). There is no second animal: neither the crate, its
   broken pieces nor another animal is at the crate's place.
 
+**Knocked off before the exit.** If the rider was knocked off the animal
+(`riding-walkers.md`, "Being knocked off") before the exit took over,
+the animal is gone after coming back through either exit: it is neither
+at the crate's place nor where it was running, and no crate or broken
+pieces are there either. This holds whether the animal was still in the
+level, running away in the view, when the exit took over, or had already
+run out of it. The animal is not in the walk-out, the scene or the room,
+and the lead is on foot throughout.
+
 Other kinds of object are not covered (see "Not covered").
 
 ## Example
@@ -534,6 +543,21 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   lives were kept. In the controls no animal was there after coming
   back. Without an exit, the lead was still riding and the boards were
   still there. 54 checks in all, none different.
+- **Knocked off before the exit.** 5 more runs, each starting with the
+  lead alone and with the balls taken out of the level. In each, the
+  lead broke the animal crate, mounted the animal, rode for 30 frames
+  and was then put, riding, right next to a small walker, so that the
+  rider was knocked off. In 2 runs the
+  exit took over 60 frames after the knock-off, with the animal still
+  in the level about 150 px from the lead and running away; in 3 runs
+  the lead was first held still out of the walkers' reach for 400
+  frames, and by then the animal was gone. These 3 were one through
+  each exit and one without an exit. In every run the lives were kept,
+  no animal was there on any frame while leaving, in the scene or room
+  or in the first 200 frames after coming back, and the lead was never
+  riding. Neither an animal nor the crate's boards were at the crate's
+  place or along the animal's run, after either exit or without one.
+  59 checks in all, none different.
 
 ## Not covered
 
@@ -553,8 +577,8 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
 - What else is kept when play comes back to the level after the scene
   or the room: tyres moved, the
   hidden objects set off by a fall and their items,
-  an animal left after being mounted (got off or knocked off before
-  the exit), a thrower bounced on
+  an animal left after being mounted other than by a knock-off by a
+  walker, a thrower bounced on
   or rolled into, the `extra-life-3` items, objects of kinds the spec doesn't
   name, and objects other than a barrel or a holder carried through the
   exit. How a barrel or a holder carried into the exit moves during the
