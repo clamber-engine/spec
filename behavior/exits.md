@@ -249,7 +249,16 @@ There again, as when the level begins:
 - a **barrel** (kind `barrel`, `carrying.md`) picked up, thrown and
   broken against a wall before (`thrown-objects.md`, "Breaking against a
   wall"): it is at its place again when the view comes there, standing
-  as the level places it.
+  as the level places it;
+- a **barrel** picked up and put down unbroken somewhere else
+  (`carrying.md`, "Putting down"): it is at its place again in the same
+  way, and nothing is where it was put down;
+- a **barrel** still carried when the exit takes over: the exit takes
+  over as usual and the barrel is still there, in the level, as the
+  walk-out begins (how it moves during the walk-out is not covered). It
+  is not in the scene or the room, and the lead carries nothing when the
+  next area begins. After coming back it is at its place again in the
+  same way.
 
 Other kinds of object are not covered (see "Not covered").
 
@@ -385,6 +394,20 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   runs without an exit (going straight to the places instead): the
   broken barrel was not there again, and the animal was still waiting by
   the broken crate. 47 checks in all, none different.
+- **Coming back, moved barrels.** 6 more runs with the lead alone, 3
+  through each exit: the barrel picked up, carried left and put down on
+  flat floor; the barrel picked up and still carried, with Action held,
+  into the exit (the lead standing still within reach when the exit took
+  over); and a control that did nothing before leaving. The count, the
+  lives, the set of letters and the restart point were the same on
+  coming back as on leaving in all 6. In both carried runs the barrel
+  was there on every frame up to the walk-out's first frame and was not
+  in the scene or the room, and the lead wasn't carrying when the next
+  area began. After coming back, the barrel was at its place again in
+  all 6, and nothing was at the put-down place. The put-down run without
+  an exit (the lead going far enough away for the barrel to be removed,
+  then back) also found the barrel at its place again, as in
+  `../formats/placements.md` ("Objects put down elsewhere"). 45 checks in all, none different.
 
 ## Not covered
 
@@ -402,11 +425,12 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   room's placed objects other than the tyre and the end marker are not
   covered.
 - What else is kept when play comes back to the level after the scene
-  or the room: barrels moved and put down unbroken, holders and tyres
+  or the room: holders and tyres
   moved or broken, the hidden objects set off by a fall and their items,
   an animal mounted or ridden away from its crate, the large walker,
   throwers, the `extra-life-3` items, objects of kinds the spec doesn't
-  name, and an object carried through the exit. Whether a broken barrel
+  name, and objects other than the barrel carried through the exit. How
+  a barrel carried into the exit moves during the walk-out. Whether a broken barrel
   ever comes back during the same visit without an exit (it didn't in
   the one run above). Coming back with two characters (the runs in
   "Coming back to the level" had the lead alone).
