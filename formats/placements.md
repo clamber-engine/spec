@@ -375,17 +375,13 @@ entry, its own `x`). For each open section, on each frame:
   group's objects) is not there, and, for class 15, it is also in the
   vertical window.
 
-Entries that come up appear, all members of a group together, with three
+Entries that come up appear, all members of a group together, with two
 exceptions:
 
 1. **The home section waits** on a frame on which an entry of the far
-   section comes up: nothing in the home section comes up on that frame.
-2. **Class 2 entries** that come up outside the vertical window don't
-   appear ("Class 1 and class 2 entries in these lists"). Such an entry
-   still counts for exception 1, and it comes up again on the next frame
-   if it is still clear and outside the vertical window.
-3. **The section holds** on some frames when a group entry is just
-   before the lead ("Holding" below).
+   section appears: nothing in the home section appears on that frame.
+2. **Class 2 entries** outside the vertical window don't appear ("Class
+   1 and class 2 entries in these lists").
 
 An entry's object (for a group, its objects) is **there** from the frame
 it appears until it is removed. Once it has been removed, the entry can
@@ -399,33 +395,6 @@ Some consequences:
 - An entry stored before one with a smaller `x` doesn't appear while
   that entry is left of the window. In the underwater lists this doesn't
   happen; in the shared list it does (see "Checks").
-- While a class 2 entry of the far section stays clear outside the
-  vertical window, the home section's entries don't appear at all.
-
-#### Holding
-
-Let `G` be the entry just before a section's lead. An engine keeps, for
-each open section, its **mark**: an entry of the section. When a section
-opens (at the start of the area, or as a far section when a crossing
-starts), its mark is its first entry; a far section that becomes home
-keeps its mark.
-
-The section **holds** on a frame when `G` is a group entry of the
-section and the section's mark from the previous frame is after `G`. On
-that frame its mark is `G`; on other frames its mark is its lead.
-
-When the section holds, the entries that come up on that frame are
-those that would come up with `G` as the lead. So if `G` is not clear
-(its objects are gone and its last member is left of the window),
-nothing in the section comes up; and if `G`'s objects are gone but its
-members reach into the window, the group comes up although its entry is
-left of the window.
-
-The mark from a frame on which the section holds is `G`, which is not
-after `G`, so the section doesn't hold on the next frame: while `G` stays just before the
-lead, the section holds on every second frame. The entries after a group
-that isn't clear can therefore appear one frame later than they
-otherwise would.
 
 #### Class 1 and class 2 entries in these lists
 
@@ -470,16 +439,15 @@ joins the last two at level x 60, level y 324. The view starts at
   one run per area the player was moved by up to the whole level in one
   frame. 780 444 frames in all; the view's path changed the home section
   120 times and started 168 crossings. Removals were taken from the
-  game. The entries that appeared matched these rules on every frame
-  but one: the class 2 entry that appeared once outside the vertical
-  window. That is 5 751 appearances, 1 824 of them from class 15 entries
-  and 98 of groups. The home section waited on 6 038 frames, on 5 526 of
-  them only because of class 2 entries (or entries of the class 1
-  reference above) coming up outside the vertical window. On 2 of those
-  frames an entry of the home section would have appeared, and it
-  appeared one frame later.
-- Holding: without it, the appearances on 40 frames of these runs would have
-  been wrong (later or earlier by one frame, or a group missing).
+  game. There were 5 751 appearances, 1 824 of them from class 15
+  entries and 98 of groups, and the home section waited on 511 frames.
+  The entries that appeared matched these rules on every frame but 41:
+  the class 2 entry that appeared once outside the vertical window, and
+  the 40 frames given under "Not covered" (a group entry just before the
+  lead).
+- Letting the home section also wait on frames on which a far-section
+  entry is clear but doesn't appear (class 2 outside the vertical
+  window) changed what appeared on none of these frames.
 - Starting the area: each of the 8 areas was entered from the map; the
   home section the rule gives was the game's in all 8, and no record's
   point was in the window. Every record's point was at least 256 px
@@ -541,8 +509,8 @@ on each frame: see its `README.md`.
 - Entries far above or below the view in lists without sections, and
   when the first level's entry that is out of order appears (it is past
   the furthest point the runs reached).
-- Whether the rules of "When an entry appears" (leads, clear entries,
-  holding) also hold for lists without sections, taken as one section
+- Whether the rules of "When an entry appears" (leads, clear entries)
+  also hold for lists without sections, taken as one section
   covering the whole list. They were only measured on lists with
   sections.
 - In lists with sections: whether entries stored after an open
@@ -553,6 +521,14 @@ on each frame: see its `README.md`.
   the window on the area's first frame (neither happened in the runs);
   and the shared list beyond the checks above (no section changed in its
   runs).
+- In lists with sections, when the entry just before a section's lead
+  is a group entry: on some such frames the section's appearances came
+  later than "When an entry appears" gives, and the group's objects
+  sometimes appeared again after being removed while its entry was left
+  of the window and its members still reached into it. In the runs this
+  happened on 40 frames in 4 of the 8 areas: on 24, entries of the
+  section appeared one frame later than the rules give; on 16, the
+  group's objects appeared where the rules give nothing.
 - Groups in other levels: their members can be of other classes, and the
   group entry's position isn't always its first member's.
 - The characters' starting position, the level's left and right ends,

@@ -97,8 +97,8 @@ What the data exercises:
   appear before entry 13 is in the window (frame 813).
 - `V` less than 32 (frames 0–9 and others).
 - No record's point is in the window on frame 0.
-- Not exercised: holding (no object is removed, so the group stays
-  clear), and class 2 entries.
+- Not exercised: class 2 entries, and removals (no object is removed,
+  so the group stays clear).
 
 ### Expected output
 
