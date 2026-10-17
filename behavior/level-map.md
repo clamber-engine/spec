@@ -6,12 +6,14 @@ Between levels the player chooses where to go on a **level map**. The
 lead character (the **lead**) stands at a **stop** (a level or another place on the map); a
 direction makes it **walk** along a path to another stop. This file says
 how a walk moves, frame by frame, when a direction starts one, where
-the lead stands when the map appears, and what happens on the map after
-a level is finished.
+the lead stands when the map appears, how a new game begins on the map,
+what a press at a stop does, and what happens on the map after a level
+is finished.
 
 Where the stops and paths are and which directions take which path come
 from the map's data: `../formats/level-map.md`. Which paths are open
-comes from the player's progress, which is not covered yet.
+comes from the player's progress (`../formats/level-map.md`,
+"Progress").
 
 Frames are logic frames at 60 Hz. The map has occasional lag frames
 ("Pages"); they aren't counted.
@@ -168,12 +170,111 @@ from where the lead stands.
 
 The map fades in. No walk can start before 64 frames after the first
 frame of the fade-in (measured when coming back to the map after
-leaving a level, with a direction held all the time).
+leaving a level, with a direction held all the time). A press at a stop
+("Pressing at a stop") does nothing before then either, and isn't
+remembered (measured when the map appears after a new game's press at
+the link point, "A new game").
 
 After a level is finished, the lead walks on to the next stop without
 any input, by the rules above, starting from the appearance point with
 fractions 0. When that walk starts, and what can stop or replace it, is
 in "After finishing a level".
+
+## Pressing at a stop
+
+On a standing frame, a new press (held on this frame, not on the
+previous one) of Jump, Action or Pause does what the stop's kind says
+(`../formats/level-map.md`, "Kinds of stops"):
+
+- At a **level stop** the lead enters the stop's level. The map fades
+  out and the level begins (`level-start.md`). The fade-out is as in
+  "Entering the level again" below. An entering press beats a direction
+  with a path pressed or held on the same frame (measured at the first
+  level's stop after its finish).
+- At a **link point** the map fades out and appears again with the lead
+  at another stop's appearance point, or a level begins. The timing is
+  measured for the first level's link point ("A new game").
+- At a **place** a screen that isn't a level opens. What it does is not
+  covered. When the lead leaves it, the map appears with the lead at
+  the place's appearance point ("When the map appears").
+
+The pad's two face buttons that have no input name in this spec do the
+same as Jump here. A button that is kept held from before is not a new
+press, and a press before the standing frames (during a walk, or before
+the gates of "Pages", "When the map appears" and "After finishing a
+level") does nothing and isn't remembered for later: on a walk from the
+first level's Down neighbour into the first level's stop with last frame
+`L`, Jump pressed for one frame on `L` − 20, `L` − 5, `L` − 1 or `L`
+did nothing, and on `L` + 1 or `L` + 2 it entered the level on that
+frame. Swap does nothing at a stop except replace the remembered press
+("The remembered press").
+
+## A new game
+
+When a new game begins (after the title screens, which aren't covered),
+the map appears with the lead at the **start point**
+(`../formats/level-map.md`, "A new game"). In this section frames are
+counted at 60 Hz from the map's first frame, frame 0, and none are left
+out, as in "After finishing a level".
+
+1. On frame 0 the lead stands at the start point's appearance point,
+   with both fractions 0. The map fades in as in "After finishing a
+   level" ("Up to the map"): brightness `j` on frames 2`j` and 2`j` +
+   1, full from frame 32.
+2. On frame 64 the lead starts walking, with no input, along the path
+   to the start point's Right neighbour, the first level's **link
+   point**, by the rules of "Walking a path". Nothing pressed or held
+   from frame 0 on changes when it starts or how it goes. In `title-1`
+   the walk is one leg, and its last frame is `L` = 127.
+3. From `L` + 1 the lead stands at the link point. No direction has an
+   open path there (`../formats/level-map.md`, "Progress"). Call **`P`**
+   the first frame from `L` + 1 on with a new press of Jump, Action or
+   Pause. Without one, the lead stays at the link point.
+4. From frame `P` the map fades out: brightness 15 − `j` on frames `P`
+   + 2`j` and `P` + 2`j` + 1, for `j` from 0 to 14. Frames `P` + 30 and
+   `P` + 31 are black.
+5. Frame **`W`** = `P` + 32 is the first frame of the map again ("When
+   the map appears"), now with the lead at the first level's stop's
+   appearance point, with both fractions 0. The map fades in as on
+   frame 0: brightness `j` on frames `W` + 2`j` and `W` + 2`j` + 1, full
+   from `W` + 32.
+6. The first level's stop has no open path. From `W` + 64, a new press
+   of Jump, Action or Pause enters the first level ("Pressing at a
+   stop"): the map starts fading out on the frame of that press, as in
+   "Entering the level again". Before `W` + 64 such a press does
+   nothing.
+
+### Example
+
+Made up from the measured rules. Jump is pressed on frames 100 and 140
+(one frame each), Down is held from 180 to 200, and Jump is pressed
+again on frames 230 and 240.
+
+| Frame | What happens |
+|---|---|
+| 0 to 31 | fade-in, the lead at the start point |
+| 64 to 127 | the walk to the link point (the press on 100 does nothing) |
+| 140 = `P` | Jump: the fade-out starts |
+| 170, 171 | black |
+| 172 = `W` | the map again, the lead at the first level's stop; fade-in |
+| 180 to 200 | Down does nothing (no open path) |
+| 230 | Jump does nothing: before `W` + 64 = 236 |
+| 240 | Jump: the lead enters the first level; the map is black from 270 |
+
+### Measurements
+
+- 872 runs from the same new game, every one following these rules (0
+  mismatches): 400 with 1 to 5 random presses or holds (a direction,
+  Jump, Action, Pause, Swap, the other buttons, or a direction with
+  Jump, Action or Pause; 1 to 60 frames long) starting between 20
+  frames before frame 0 and frame 330, and 400 more starting up to
+  frame 600; then 72 with one-frame presses of Jump, Action, Pause,
+  Swap and the two face buttons without a name on `L` − 1 to `L` + 2,
+  and on `W` + 62 to `W` + 65, there also with the button held from 5
+  frames before. In 578 of them the lead was moved to the first level's
+  stop, and in 122 it then entered the first level.
+- The walk to the link point was compared frame by frame with "Walking
+  a path".
 
 ## After finishing a level
 
@@ -224,8 +325,9 @@ level's stop, as if that direction had been newly pressed on `G`. It
 replaces whatever was pressed on `G` itself, and it lasts, like any
 remembered press, for frame `G` and the next 30 frames, unless a later
 new press replaces it. For the first level, the next level's stop is
-the stop that its first finish opens a path to; which direction that is
-comes from the map's data (`../formats/level-map.md`, "Neighbours").
+the stop that its first finish opens a path to: its Down neighbour
+(`../formats/level-map.md`, "Progress"), so the given direction is
+Down.
 
 From `G` on, the frames are standing frames and the rules of "The
 direction" apply. So:
@@ -298,12 +400,12 @@ Jump were newly pressed on frame 245, the lead would enter the level on
 
 ## Not covered
 
-- Which paths are open (progress). Where the stops and points are and
-  which directions take which path are in `../formats/level-map.md`.
+- Progress other than at a new game and after the first level's first
+  finish (`../formats/level-map.md`, "Progress").
 - The second character on the map, and the figures' animation.
-- Buttons other than the directions at a stop (entering a level, other
-  menus), except at a finished level's stop after the finish ("Entering
-  the level again").
+- What follows a press at a place, at the start point, and at link
+  points other than the first level's; the time from an entering press
+  to the level's first frame.
 - After finishing a level other than the first: which direction is
   given, and the timings. What the still frames are for (the picture
   just stops).
