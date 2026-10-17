@@ -171,8 +171,10 @@ level after the scene.
 - **Fade-in.** The brightness (as in "Leaving the area") is `j` on
   frames 3`j`, 3`j` + 1 and 3`j` + 2 for `j` from 0 to 14, and 15 from
   frame 45 on.
-- **The view** doesn't change on frames 0 to 26. Where it is then, and
-  how it moves from frame 27 on, are not covered.
+- **The view** doesn't change on frames 0 to 26. Where it is on frame 0
+  and how it moves from frame 27 on are in `view.md` ("When an area
+  begins"), measured walking back into the first level. In the room and
+  the scene the picture doesn't move (`level-ends.md`).
 
 In the scene the lead stops after frame 28 ("The scene"); in the room
 and in the level, play simply goes on.
@@ -360,10 +362,8 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   in "Coming back to the level" had the lead alone).
 - Whether bunches and letters taken before a knock-out are there when
   play resumes (`restart-barrel.md`).
-- Where the view is when an area is entered by walking in, and how it
-  moves from frame 27; the other character after frame 27; two
-  characters walking into the room (only the lead alone was measured
-  there).
+- The other character after frame 27; two characters walking into the
+  room (only the lead alone was measured there).
 - How far left of the exit the reach goes, and the reach of states not
   in the table: rolls stopping or getting up (taken over at `I` up to 28
   to 30, by picture), crouching after the slide has stopped (up to 28 in
