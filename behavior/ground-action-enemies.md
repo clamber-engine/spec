@@ -142,6 +142,8 @@ thrower hurt the player before the action started.
 From K the thrower moves like a knocked-out walker but with `vy` −5 and
 `vx` 0: it doesn't move on K, K + 1 and K + 2, then from K + 3 its `vy`
 increases by 7/16 per frame and it moves by it.
+What it does after that (no contact, its removal) is in
+`thrower-contact.md`, "The knocked-out thrower".
 
 ## Example
 

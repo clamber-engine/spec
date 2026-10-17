@@ -4,8 +4,9 @@ Titles: `title-1`
 
 When contact between the player and a thrower (`thrower.md`) hurts the
 player (`knock-out.md`, `losing-a-character.md`) and when it gives a
-bounce (`bounce.md`), what a bounce does to the thrower, and what
-happens when a rolling player meets it. Balls touching the player are in
+bounce (`bounce.md`), what a bounce does to the thrower, what
+happens when a rolling player meets it, and what a knocked-out thrower
+does. Balls touching the player are in
 `ball-contact.md`.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x` grows to
@@ -128,11 +129,10 @@ A bounce knocks the thrower out, as the Down + Action ground action does
 (`ground-action-enemies.md`, "The thrower"), with B in place of K: it
 doesn't move on B, B + 1 and B + 2, then from B + 3 its `vy` (−5 on B)
 increases by 7/16 per frame, up to 8, and it moves by it; `vx` is 0. It
-falls through its ledge and is later removed (when isn't specified). It
-throws no more balls (measured for 200 frames after the bounce, past
-three of the frames its timetable would have thrown on).
-In the random runs it never hurt the player or gave a bounce after it
-was knocked out.
+falls through its ledge and every floor below it, and is removed once
+it leaves the picture ("The knocked-out thrower" below). It throws no
+more balls (measured for 200 frames after the bounce, past three of the
+frames its timetable would have thrown on).
 
 ## Rolling into the thrower
 
@@ -197,6 +197,7 @@ then from K + 3 its `vy` (−5 on K) increases by 7/16 per frame, up to 8,
 and it moves by it, with `vx` 0. It throws no more balls (measured for
 300 frames after K, past six of the frames its timetable would have
 thrown on).
+What it does after that is in "The knocked-out thrower".
 
 ### Example
 
@@ -215,6 +216,38 @@ are at the end of each frame.
 A fast roll pressed with the player facing right at `x` 1033.5 at the
 end of S − 1 (I = 33) and moving 2.33 px on S defeats the thrower on S,
 though I at the end of S is 35.
+
+## The knocked-out thrower
+
+This holds however the thrower was knocked out on K: by a bounce (with
+B as K), a roll, or the Down + Action ground action
+(`ground-action-enemies.md`, "The thrower"). It moves as described
+there, falling through its ledge and every floor below it.
+
+- **It never hurts the player and never gives a bounce**, from K + 4
+  on until it is removed, wherever the player is, in each of the poses
+  measured (standing, upright in the air and airborne).
+- **It is removed** on the first frame from K + 3 on on which, after its
+  move, it is outside the picture by the same edges as a ball
+  (`thrower.md`, "Leaving the picture"), with its own `x` and `y` in
+  place of the ball's. With `V` and `W` as they were at the start of the
+  frame, `X` its `x` rounded down and `Y` its new `y` rounded up, it is
+  removed when `X` − `V` is less than −31 or more than 288, or `Y` − `W`
+  is more than 256. The margins of a thrower that hasn't been knocked
+  out (removed only at `xt` − `V` ≤ −128 or ≥ 385, `thrower.md`, "The
+  thrower") no longer apply. Measured: kept at `X` − `V` = −31 and 288
+  and removed at −32 and 289; kept at `Y` − `W` = 256 and removed at
+  257.
+- **It never comes back.** With the view moved away past either side,
+  far enough for a thrower that hasn't been knocked out to be removed,
+  and back until `xt` was in the window again, nothing appeared at its
+  place. A thrower that hadn't been knocked out appeared again, by the
+  rule in `thrower.md`.
+
+For example, with the view still and `yt` − `W` = 100, `Y` − `W` is 250
+at the end of K + 44 and 258 on K + 45, the frame on which it is
+removed. With the view moving sideways, it can be removed sooner, when
+`xt` leaves the window.
 
 ## Examples
 
@@ -310,6 +343,26 @@ Rolling into the thrower:
   a defeat: every defeat frame, pause, boost, speed and the thrower's
   motion as described, 0 mismatches.
 
+The knocked-out thrower, knocked out by a bounce:
+
+- contact: every frame from K + 4 until it was removed, the player
+  placed at every second offset from the thrower's position, I from −60
+  to 60 and U from −70 to 50 at the placement, each followed for two
+  frames: standing on the ledge away from it and
+  placed in the air (falling 2 px per frame and rising 1 px per frame),
+  and in a jump's airborne pose (Jump held from 8 and from 20 frames
+  before): 502 335 placements, no hurt and no bounce. As a control, a
+  thrower that hadn't been knocked out was put at the same positions on
+  the same frames: 353 495 placements, 61 956 bounces and 39 231 hurts;
+- removal: 154 runs with the player kept at different places on the
+  ledge, under it and in the air on both sides, so the view moved
+  sideways and up or down while the thrower fell: removed on the frame
+  the rule above gives in every run (67 below the picture, 49 on its
+  left, 38 on its right, 2 of those also below it);
+- coming back: 3 runs, the view moved away right and left and back
+  (removed below, on the left and on the right of the picture); the
+  same 3 without the knock-out as the control.
+
 ## Not covered
 
 - Crouching, the fidget pose and the Down + Action ground action on the
@@ -321,8 +374,14 @@ Rolling into the thrower:
 - The upright pose in the air other than in the first frames of a jump,
   and the closing and landing pictures of the airborne pose
   (`walker-contact.md`, "Poses") in the air near the thrower.
-- Whether a knocked-out thrower can hurt the player or give a bounce
-  while it falls, and when it is removed.
+- The knocked-out thrower: contact on K to K + 3 (in the measurements
+  the player was still in the bounce then), a thrower outside the
+  picture on its frozen frames K to K + 2, and a thrower more than
+  31 px above the picture (`Y` − `W` less than −31).
+  Contact and removal were measured after a bounce; after a roll or the
+  ground action they are taken to be the same, the thrower's motion
+  being the same. Whether it is there again after the player is knocked
+  out or leaves the level.
 - The other character, and contact while carrying, being hit or during
   a bounce's frozen frames.
 - Throwers facing right and throwers in other levels.
