@@ -88,6 +88,7 @@ names" table.
 | `3e1f6c2f24fa461bc637adec8e62fe520d4f2a69e7cf8e0d950610235d2e3486` | `letter-4` |
 | `3f9e1b957059a405568bfd11ba7757786263483c98b2a01bb8e22cc9ae833735` | `stinger` |
 | `46a03d0df615a0aff54b9f2a823f9ead4e500b9ecdeb48c2fe2dfe37aa02431f` | `letter-2` |
+| `47a9fc70cf6be73792670830d89523401fe75b8ad5ade692f5fe8d534962429c` | `sign` |
 | `4c90ae328510dac24fa35424acdaa6b793fcbebfa288220cce41179f518d9978` | `tyre` |
 | `4cb625b24ccb2edc0d7487e5ff9aa9de2cd5409110383d64bfa5ff1a97a22170` | `large-walker` |
 | `558635a3657029cd26bc9e52c8c3a2d79fe81ebbad040fff194828098afe61a5` | `left-launch-barrel` |

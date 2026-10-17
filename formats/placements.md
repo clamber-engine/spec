@@ -311,12 +311,16 @@ the upper exit).
 
 The scene the floor exit leads to (`../behavior/exits.md`, "The scene")
 has a placement list of its own (`locators.md`). It has 3 entries, of
-classes 1 and 2, and no sections or groups. One of its references has a
-kind row: it is the room's `end-marker` reference. Nothing held has any
+classes 1 and 2, and no sections or groups. Two of its references have a
+kind row. One is the room's `end-marker` reference. Nothing held has any
 effect in the scene, and the lead walks in from the right and stops left
 of that entry's position (`../behavior/exits.md`, "The scene"): in all
 the scenes measured there, with random inputs, the marker was never
-passed. The kinds of the other two references are not covered. In the scene the picture's
+passed. The other is a `sign`, the scene's class 1 entry
+(`../behavior/signs.md`, "The scene's sign"); the lead stops right of
+it. Given to a class 1 entry near the first level's start, the `sign`
+reference placed a sign there that behaved as `../behavior/signs.md`
+says. The kind of the third reference, a class 2 entry, is not covered. In the scene the picture's
 left edge is always the same (`../behavior/level-ends.md`, "In the first
 level's scene"), and every entry is in the window. An object was at
 each entry's position from the scene's frame 1 on, and none on frame 0
