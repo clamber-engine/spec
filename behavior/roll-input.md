@@ -267,7 +267,8 @@ does, for three jump heights.
 This list is for `title-1`; `title-2` has its own list above.
 
 Roll speed and steering are in `roll-speed.md`, rolls into walkers in
-`rolling-into-walkers.md`, rolling off a ledge in `rolling-off-ledges.md`. Rolls on slopes and
+`rolling-into-walkers.md`, rolling off a ledge in `rolling-off-ledges.md`, rolls on, onto and
+into steep faces in `steep-faces.md`. Rolls on slopes and
 rolls into other enemies. The second character's rolls are in
 `second-character.md` ("Rolls"). The Down + Action ground action
 is in `ground-action.md`.
