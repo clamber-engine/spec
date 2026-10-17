@@ -198,8 +198,8 @@ previous one) of Jump, Action or Pause does what the stop's kind says
   covered. When the lead leaves it, the map appears with the lead at
   the place's appearance point ("When the map appears").
 
-The pad's two face buttons that have no input name in this spec do the
-same as Jump here. A button that is kept held from before is not a new
+Tandem (`T`) and the pad's top face button (`controls.md`) do the same
+as Jump here. A button that is kept held from before is not a new
 press, and a press before the standing frames (during a walk, or before
 the gates of "Pages", "When the map appears" and "After finishing a
 level") does nothing and isn't remembered for later: on a walk from the
@@ -269,7 +269,7 @@ again on frames 230 and 240.
   Jump, Action or Pause; 1 to 60 frames long) starting between 20
   frames before frame 0 and frame 330, and 400 more starting up to
   frame 600; then 72 with one-frame presses of Jump, Action, Pause,
-  Swap and the two face buttons without a name on `L` − 1 to `L` + 2,
+  Swap, Tandem and the top face button on `L` − 1 to `L` + 2,
   and on `W` + 62 to `W` + 65, there also with the button held from 5
   frames before. In 578 of them the lead was moved to the first level's
   stop, and in 122 it then entered the first level.

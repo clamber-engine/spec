@@ -51,7 +51,7 @@ Tab-separated, in this order. The column line is required and must match.
 | Column | Type | Meaning |
 |---|---|---|
 | `frame` | integer | Logic frame number from scenario start, from 0 |
-| `input` | string | Actions held this frame, in the order `LRUDJASP`; `.` if none |
+| `input` | string | Actions held this frame, in the order `LRUDJASPT`; `.` if none |
 | `x` | decimal | Horizontal displacement from the start position, px, right is positive |
 | `y` | decimal | Vertical displacement from the start position, px, **down is positive** |
 | `vx` | decimal | Horizontal velocity, px per frame |
