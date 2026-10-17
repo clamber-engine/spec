@@ -57,6 +57,8 @@ that ends with all of these true:
 | Rolling | left | 29 |
 | Crouching (Down held) while still sliding | left | 34 |
 | Standing, or turning (`ground-speed.md`) | right | 37 |
+| Standing still carrying an object (`carrying.md`) | left | 30 |
+| Standing still carrying an object | right | 32 |
 
 Call that frame **`T`**. Only the lead is taken over. In the runs with
 two characters, the other character (`following.md`) was never taken
@@ -93,6 +95,37 @@ whatever is in its way, and it is not stopped at the level's left end
 **Facing.** A lead facing left on `T` keeps facing left. A lead facing
 right on `T` (it was standing or turning) shows the pictures of a turn
 from `T` + 2 and faces left from `T` + 6.
+
+**An object in the lead's hands.** A `barrel` or a `holder` still in
+the lead's hands at the end of `T` is let go on `T` + 1 and falls away
+on its own. This includes an object carried with Action held and one
+whose throw (`carrying.md`, "Throwing") began on a frame `Q` with
+`Q` + 21 later than `T`, so that it hadn't left the hands yet; that
+throw never happens. Letting go of Action on `T` or later makes no
+difference either.
+
+- **On `T` + 1** the object doesn't move: it is where it was held at the
+  end of `T` (where a held object is relative to the player is not
+  covered, see `carrying.md`). Its `vx` becomes **1** (256/256) in the
+  direction the lead faces on `T`, and its `vy` becomes **−4**
+  (−1024/256, moving up).
+- **From `T` + 2**, every frame, `vy` increases by **0.4375** (112/256),
+  but never above **8** (2048/256); then `x` moves by `vx` (exactly 1 px)
+  and `y` by the new `vy`. Nothing else changes `vx`.
+- It **touches nothing**: it passes through floors, faces and walls
+  without landing, bouncing, rolling or breaking (a holder keeps the
+  missing character, `holder-breaking.md`), and nothing the lead or
+  the input does changes its motion.
+- It is **removed** on the first frame on which, after the move, its `x`
+  is less than 0 (left of the level's left end, however near the
+  picture: it was seen at `x` 0 with the picture's left edge 27 px to
+  the right of it), or its `y` rounded down is 256 or more below `U`,
+  the view's vertical position rounded down as in
+  `../formats/placements.md` ("When placed objects are removed"). If
+  neither happens first, it is gone when the area changes.
+
+So an object let go by a lead facing left rises for 9 frames and falls
+from `T` + 11, at 8 px per frame from `T` + 29.
 
 ## Leaving the area
 
@@ -288,7 +321,8 @@ There again, as when the level begins:
   way, and nothing is where it was put down;
 - a **barrel** still carried when the exit takes over: the exit takes
   over as usual and the barrel is still there, in the level, as the
-  walk-out begins (how it moves during the walk-out is not covered). It
+  walk-out begins, and moves as in "The walk-out" ("An object in the
+  lead's hands"). It
   is not in the scene or the room, and the lead carries nothing when the
   next area begins. After coming back it is at its place again in the
   same way.
@@ -298,9 +332,9 @@ There again, as when the level begins:
   put down. The missing character is still missing after coming back;
 - a **holder** still carried when the exit takes over: as for the
   barrel, the exit takes over as usual and the holder is still there, in
-  the level, as the walk-out begins (how it moves during the walk-out is
-  not covered). It is not in the scene or the room, it doesn't break,
-  and the lead carries nothing when the next area begins. After coming
+  the level, as the walk-out begins, and moves as the barrel does. It
+  is not in the scene or the room, it doesn't break, and the lead
+  carries nothing when the next area begins. After coming
   back it is at its place again, still holding the missing character.
 
 **Riding into the exit.** A lead riding the animal (`riding.md`) when
@@ -613,6 +647,35 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   the hidden object's place, at the item's rest place or at the put-down
   place, and a fall onto the hidden object's place from 170 px above
   released nothing. 138 checks in all, none different.
+- **An object in the lead's hands.** 38 runs with the lead alone,
+  logging every frame, in which the lead picked up the first level's
+  barrel or one of its two holders and then came to an exit carrying it.
+  For the barrel: walking left into each exit with Action held (4 runs
+  per exit at different phases of the walk; in one of each the lead had
+  been stopped right of the exit before it took over), landing in from
+  three jumps, standing still facing left (3 runs) or right (6 runs)
+  near the floor exit, letting go of Action 1, 3, 5 or 10 frames before
+  `T` or on `T`, `T` + 1 or `T` + 2, and holding Right, Jump, Down, Up,
+  Right with Jump, Right with Action, or nothing from `T` + 2. For each
+  holder: walking into each exit. In 16 more runs the barrel was moved
+  during the walk-out (a change made for the test while the game ran):
+  1 to 9 px down on `T` + 11, or 68 to 76 px left and 100 px up on
+  `T` + 17, to find where it is removed. In 49 runs the object was still
+  in the hands at the end of `T`; in the run that let go 10 frames
+  before `T` it had already been thrown, as in `carrying.md`, and in 4
+  standing runs no exit took over. Over the 1 781 frames from `T` + 1 to
+  the removal in those 49 runs, `x`, `y`, `vx` and `vy` were as the rules
+  above give on every frame, to 1/256 px, and it was removed on the
+  frame they give. Without a change it was removed below the picture 37
+  frames after `T` + 1 at the floor exit, and left of `x` 0 24 frames
+  after `T` + 1 at the upper exit. Moved down, it was still there after
+  a move that left its `y` 255.375 below `U`, and removed after one that
+  left it 256.375 below. Moved left, it was there at `x` 0 with `x` − `V`
+  0 (upper exit) or −27 (moved), and removed on the next frame. For the
+  reach rows the lead stood still carrying the barrel: facing left with
+  an `x` fraction of 0.68 it was taken over at `I` 30 but not at 31 or
+  32; facing right with a fraction of 0.17, at `I` 29 to 32 but not at
+  33 or 34.
 
 ## Not covered
 
@@ -635,8 +698,7 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   walker, a thrower bounced on
   or rolled into, objects of kinds the spec doesn't
   name, and objects other than a barrel or a holder carried through the
-  exit. How a barrel or a holder carried into the exit moves during the
-  walk-out. Whether a broken barrel
+  exit. Whether a broken barrel
   ever comes back during the same visit without an exit (it didn't in
   the one run above). Coming back with two characters, other than
   the character freed by a holder broken in the same visit (the other
@@ -653,14 +715,20 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
 - How far left of the exit the reach goes, and the reach of states not
   in the table: rolls stopping or getting up (taken over at `I` up to 28
   to 30, by picture), crouching after the slide has stopped (up to 28 in
-  the cases measured), turning while facing left, carrying an object,
-  riding, and the frames of a landing after the landing frame. How far
-  the vertical range changes with the lead's state.
+  the cases measured), turning while facing left, carrying an object
+  while moving, turning or landing (walking in at 3 px per frame was
+  taken over at `I` 29 and 30, the frame before at 32 and 33), riding,
+  and the frames of a landing after the landing frame. How far the
+  vertical range changes with the lead's state.
 - What the other character does from `T` on. In the runs it went on
   following the lead (`following.md`) and was in the next area with it;
   this was not checked frame by frame.
 - What a trace shows from `T` on (`../traces/VOCABULARY.md` has no state
   for the walk-out), and which picture shows each step of the fade.
 - Walkers, thrown objects or other objects meeting the lead during the
-  walk-out, and the lead being hurt or knocked out then.
+  walk-out, and the lead being hurt or knocked out then; an object let
+  go in the walk-out meeting a walker; where the let-go object is drawn;
+  the metal barrel released by a `hidden-metal-barrel` carried into the
+  exit (it was gone 19 to 37 frames into the walk-out, as the rules
+  above would give, but wasn't logged frame by frame).
 - Pausing during the walk-out.
