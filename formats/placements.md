@@ -9,7 +9,8 @@ hanging in the level. This file covers how the list is stored, what its
 positions mean, and when the objects it places appear. Vectors:
 `../vectors/placements/`.
 
-The list doesn't hold the characters, the single collectibles
+The list doesn't hold the characters (where they start is in
+`level-start.md`), the single collectibles
 (`../behavior/collectibles.md`), or objects made during play (for
 example the pieces of a broken object or a defeated walker, and short
 effects).
@@ -193,6 +194,7 @@ members are looked up by their own references.
 | `barrel` | An object that can be carried and holds nothing | `carrying.md`, `thrown-objects.md` |
 | `holder` | An object that can be carried and holds the missing character | `carrying.md`, `holder-breaking.md` |
 | `end-marker` | The level's end marker | `level-end.md` |
+| `entrance` | The place the characters come out of when the level begins | `level-start.md` |
 | `animal-crate` | A crate holding an animal | `animal-crate.md` |
 | `restart-barrel` | The restart barrel | `restart-barrel.md` |
 | `stinger` | A stinger (flying enemy) | `stinger.md` |
@@ -217,12 +219,13 @@ its own reference, and placed a tyre there.
 
 ### In the first level
 
-20 of the first level's 37 references have a kind fingerprint row. They
-are used by 47 of its entries (counting group members): 5 small
+21 of the first level's 37 references have a kind fingerprint row. They
+are used by 48 of its entries (counting group members): 5 small
 walkers (all three group members among them), 6 medium walkers, 3 large
 walkers, the
 thrower, a ball, 4 bunches, the four letters (one each), a barrel, 2
-holders, the animal crate, the restart barrel, the end marker,
+holders, the animal crate, the restart barrel, the end marker, the
+entrance,
 15 hidden bunches, a hidden barrel and a hidden metal barrel. The other
 references place things that
 have no behavior file yet (for example scenery and signs), or that were
@@ -241,7 +244,8 @@ letter with that number. A class 2 reference given to a class 1 entry
 placed the same kind as in its own class 2 entry. Each of the three
 hidden-object references, given to a class 1 entry the same way, placed
 a hidden object that was set off and released its item as
-`../behavior/hidden-objects.md` says for its kind.
+`../behavior/hidden-objects.md` says for its kind. The `entrance` row
+was checked as in `../behavior/level-start.md` ("The entrance").
 
 ## When placed objects appear
 
@@ -531,6 +535,6 @@ on each frame: see its `README.md`.
   group's objects appeared where the rules give nothing.
 - Groups in other levels: their members can be of other classes, and the
   group entry's position isn't always its first member's.
-- The characters' starting position, the level's left and right ends,
-  the view's limits, the level's exit, and other areas entered from the
-  level.
+- The level's left and right ends, the view's limits, the level's exit,
+  and other areas entered from the level. Where the characters start is
+  in `level-start.md`, not in the placement list.

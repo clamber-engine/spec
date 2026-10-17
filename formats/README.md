@@ -34,6 +34,9 @@ fingerprints" in `../REVIEW.md`).
   positions and appearance points, each stop's neighbour per direction,
   corner records, and the route of a walk. Vectors:
   `../vectors/level-map/`.
+- `level-start.md`: where the characters are when a level begins, and
+  a level's restart point (start records). Vectors:
+  `../vectors/level-start/`.
 - `locators.md`: where each kind of data starts in each supported
   image.
 - `sound.md`: samples (sample table, records, blocks, decoding, loops),

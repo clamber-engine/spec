@@ -262,9 +262,10 @@ first point (976) and follows the trail from there.
   on the trail.
 - Resting on ground that isn't flat or gently sloped, and a rest spot
   across a ledge.
-- How the characters enter when a level begins, and where each one is
-  when play resumes (`restart-barrel.md` covers where the lead is when
-  play resumes at a restart point).
+- Where each character is when play resumes (`restart-barrel.md`
+  covers where the lead is when play resumes at a restart point). How
+  the characters enter the first level when it begins is in
+  `level-start.md`.
 - Joining from an object that breaks on an enemy, joining while the
   lead is in the air, and input on frames S + 1 to S + 33.
 - The second character being knocked out with both there, and a level

@@ -32,6 +32,8 @@ SHA-256 of the image:
 | Level graphics: the first level's picture table | `graphics.md` | `d9` | `a3c0` |
 | Sprite frames: the frame table | `sprites.md` | `fb` | `cc9c` |
 | Placements: the first level's placement list | `placements.md` | `fd` | `95dc` |
+| Level start: the first level's start record | `level-start.md` | `fc` | `bf78` |
+| Level start: the first level's restart record | `level-start.md` | `fc` | `bfb4` |
 | Level map: point tables | `level-map.md` | `fc` | `f47b` |
 | Level map: corner records | `level-map.md` | `c0` | `d13c` |
 
@@ -66,6 +68,7 @@ names" table.
 | `7a0a5f16cbb9153611411aa5c6ed1aa024f8f2af6b87a221073c56f814c33e3d` | `thrower` |
 | `7d89c7e6b0041ab373a3e96810740ef610b1e112d06596aef72ff8fa0fe46b41` | `hidden-bunch` |
 | `814362811b6cd4c8fc220ee7fbd04eb626f6837ef7d7e5dc0027700380948338` | `bunch` |
+| `8aad3408aa49bd9ceda4b82bd21591b32c7417dd4d4971eba27e30fd47eaf42c` | `entrance` |
 | `9338801286daea12e1f30fd2478b61a44ef3325da9a893f865e2dff0b43c9cc7` | `hidden-barrel` |
 | `96815bf167d1e7ae0187cf583b5e9cd05af19646c808ad1b8abb2fe09ad30e52` | `stinger` |
 | `a18b370140438f25f467370655a5c802ccd40f07be7e5296c81570fd169a9add` | `medium-walker` |
