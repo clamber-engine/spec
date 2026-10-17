@@ -20,7 +20,8 @@ moving: rolling never delays or blocks a jump.
 
 What counts is being grounded at the end of frame P − 1. So where the
 ground simply ends, a press on the first airborne frame of a walk-off
-still starts a jump; at a ledge with a steep face it doesn't
+still starts a jump; at a ledge with a steep face it doesn't if the
+player was carried down the face just before leaving it
 (`walk-off.md`, "Jumping near the edge" and "Ledges without a face").
 
 ## Landing lockout
