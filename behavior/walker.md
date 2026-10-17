@@ -94,7 +94,8 @@ frame with the player's `bounce` event, `bounce.md`).
 1. On **B** the walker moves horizontally as usual but not vertically,
    and its `vy` becomes **−6**.
 2. On **B + 1** and **B + 2** it doesn't move at all (the same frozen
-   frames as the player's).
+   frames as the player's). No other walker moves on these frames
+   either (`bounce.md`, "Everything else on the frozen frames").
 3. On each frame from **B + 3**: `vy` increases by **0.4375** (7/16),
    but never above **8**; the walker moves down by the new `vy` and
    horizontally by its `vx`.
@@ -318,6 +319,5 @@ This list is for `title-1`; `title-2` has its own list above.
 - Whether the patrol range is always centred on the walker's start. When
   a walker appears and disappears as the view moves is in
   `walker-view.md`.
-- Whether other enemies freeze during the frozen frames of a bounce.
 - Other kinds of enemies, and how walkers look (poses while turning or
   falling).

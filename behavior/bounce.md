@@ -34,6 +34,32 @@ On **B + 1** and **B + 2** the player doesn't move: `x`, `y`, `vx` and
 `vy` stay exactly as they were at the end of B. Direction input on these
 frames doesn't change `vx`.
 
+### Everything else on the frozen frames
+
+On B + 1 and B + 2 no other object moves either (the view is in
+`view.md`; its sway goes on through these frames). Every other object
+keeps the position, speeds and facing it had at the end of B:
+the walker bounced on (`walker.md`, "Being bounced on"), the other
+walkers of every size, critters (`critter.md`), the thrower and its
+balls (`thrower.md`), the pieces of a broken object, extra-life items
+that are moving (`extra-lives.md`), a tyre (`tyre.md`, "Frozen frames")
+and the following character (`following.md`, "Pauses"). Nothing is made
+up afterwards: an object moving at a steady speed takes its next step on
+B + 3, so it ends up two frames behind. For example, a walker
+walking at 1 px per frame moves 1 px on B, 0 on B + 1 and B + 2, and
+1 px again on B + 3.
+
+Measured in `title-1` with the first character leading and the second
+following or absent: 160 runs through the first level under random
+input (817 966 logic frames, the lead kept from being hurt) with 260
+bounces. On both frozen frames, none of the 718 objects that moved on B
+or on B + 3 moved or changed facing (189 walkers bounced on, 224 other
+small walkers, 39 other medium walkers, 40 other large walkers, 78
+critters, 4 throwers, 2 balls, 11 pieces, 48 extra-life items and 83
+following characters). The 151 of them, other than the following
+character and the walker bounced on, that moved at a steady speed
+before B took the same step on B + 3 as on B.
+
 ## Each frame from B + 3
 
 Until the player lands, on each frame:
@@ -273,6 +299,8 @@ in the table was measured.
   landings were not on flat ground). Jumping on landing after a bounce.
 - Bounces from a roll, bouncing again before landing, bouncing while
   carrying an object, and the second character.
+- What other objects do on the frozen frames (in `title-1`: "Everything
+  else on the frozen frames").
 
 ## Not covered
 
@@ -284,6 +312,11 @@ This list is for `title-1`; `title-2` has its own list above.
   `animal-crate.md`, hidden objects landed on after a long fall in
   `hidden-objects.md`), bounces from a roll, bouncing again before
   landing, and the other character.
+- Whether timed behaviour that doesn't show in an object's position,
+  speeds or facing (the thrower's timetable, a walker's turn, a critter's
+  path) is also held for the two frozen frames; only those were
+  compared. Objects other than those listed in "Everything else on the
+  frozen frames", and the second character leading.
 - Falls long enough after a bounce for `vy` to reach 8 weren't measured
   (the largest seen was 7.75); the cap is taken to be the same as for
   other falls.
