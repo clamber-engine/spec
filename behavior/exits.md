@@ -735,8 +735,6 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   the one run above). Coming back with two characters, other than
   the character freed by a holder broken in the same visit (the other
   runs in "Coming back to the level" had the lead alone).
-- Whether bunches and letters taken before a knock-out are there when
-  play resumes (`restart-barrel.md`).
 - Riding into the exit with anything held during the walk-out or the
   walk-in, or with the second character; whether the animal is drawn
   on frames 0 to T − 1 of the level's start after the room

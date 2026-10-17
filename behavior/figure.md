@@ -100,7 +100,10 @@ figure that hasn't been taken does come back after leaving the view: it
 was seen to go when the view moved away from it and to be there again
 when the view came back (`../formats/placements.md`, "When placed
 objects are removed"). Whether a taken figure is there when the
-level is played again is not covered.
+level is played again after finishing it is not covered; after a
+knock-out it is there again and the figure count is kept
+(`restart-barrel.md`, "What is there again after a knock-out"), and
+after an exit it stays taken (`exits.md`, "Coming back to the level").
 
 ### The figure count
 

@@ -52,8 +52,10 @@ range. Call this frame `P`.
 
 A taken bunch stays taken for the rest of the visit to the level. In
 one case the view was moved back over a taken bunch's place, and the bunch
-did not come back. Whether it stays taken when the level is played again
-is not covered.
+did not come back. After a knock-out it is there again
+(`restart-barrel.md`, "What is there again after a knock-out"); after an
+exit it stays taken (`exits.md`, "Coming back to the level"). After
+finishing the level, not covered.
 
 ### Offsets
 
