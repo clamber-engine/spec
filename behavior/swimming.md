@@ -317,6 +317,9 @@ on frame 2 (held through frame 3). Rows relative to the start, with `x`,
 | 2 | `J` | −1.859375 | −1.953125 | `swim` | 0 | `stroke` |
 | 3 | `J` | −3.765625 | −1.90625 | `swim` | 0 | |
 
+The scenario `swim-strokes` (`../scenarios/swim-strokes.scn`) records
+these rows in open water, with a `title-1` reference trace.
+
 ## Checks
 
 Random input (runs of Left, Right or neither with Up, Down or neither,

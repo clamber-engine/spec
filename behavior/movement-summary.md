@@ -116,6 +116,7 @@ carry on into running until D + 6. Everything else is the same
 | `roll-flat` | A roll and the stop after it |
 | `bounce-walker` | A standing jump onto a walker and a full-height bounce |
 | `slope-dip` | Walking down and up 1-in-4 slopes, a jump from a slope |
+| `swim-strokes` | Swimming in open water: a plain, an Up and a Down stroke, sinking with and without Down, speeding up, slowing down and turning |
 
 ## Not covered
 
