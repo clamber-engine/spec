@@ -4,6 +4,16 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.75.0
+
+Answers https://github.com/clamber-engine/spec/issues/31.
+
+- `REVIEW.md`: director decision (spec #31). Constant tables or other
+  data measured from the console's own hardware are not transcribed into
+  the spec; a spec describes what the hardware does in words, so the
+  engine can compute an equivalent. A change that transcribes such a
+  table fails.
+
 Coverage (`title-2`). Answers no open `spec` issue.
 
 - `behavior/view.md`: new section "In `title-2`": the view aims 56 px
