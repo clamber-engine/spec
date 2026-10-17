@@ -86,7 +86,8 @@ copy of the image with the record's `x` lowered by 40, the lead was 40
 px further left on every frame of the scene, and at the same height.
 
 In the first level, the start record's point is also the position of
-the level's `entrance` entry (`placements.md`, "Kinds"), and the
+the level's `entrance` entry (`placements.md`, "Kinds") and of its
+`room-return-entrance` entry, and the
 restart record's point is the position of its `restart-barrel` entry.
 The records, not those entries, decide where the characters are:
 

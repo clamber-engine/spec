@@ -9,7 +9,8 @@ level's data (`../formats/level-start.md`). Which characters are there,
 and which one leads, is in `following.md` ("When a level begins again").
 Resuming at a restart point is in `restart-barrel.md`. Coming back to
 the first level from its room begins in the same way, at another record's
-point (`exits.md`, "Where the first level's exits lead").
+point and out of another entry ("Coming back from the room" below;
+`exits.md`, "Where the first level's exits lead").
 
 Frames are logic frames at 60 Hz, numbered as in a trace: frame 0 is the
 level's first frame. Horizontal positions are level x as in `view.md`;
@@ -37,10 +38,10 @@ Without it nothing below happens: in a copy of the image in which that
 entry's reference was replaced by another kind's, the characters stayed
 hidden at the start point, not moving, for as long as the runs went on
 (140 frames with one character, 200 with two). The first level has a
-second entry at the start point, of a kind without a fingerprint row; in
-copies of the image with only one of the two entries kept, the entrance
-alone gave every frame below exactly, and the other one alone gave the
-same as having neither.
+second entry at the start point, of kind `room-return-entrance` ("Coming
+back from the room" below). In copies of the image with only one of the
+two entries kept, the entrance alone gave every frame below exactly, and
+the room-return entrance alone gave the same as having neither.
 
 ## Frame by frame
 
@@ -111,6 +112,54 @@ shows each step is not covered.
 Where the view is from frame 0 and how it moves through the entrance
 are in `view.md` ("When an area begins").
 
+## Coming back from the room
+
+When play comes back to the first level from its room
+(`exits.md`, "Where the first level's exits lead"), the level begins as
+above, with the room-return record's point in place of the start
+record's (`../formats/level-start.md`), and with the entry of kind
+`room-return-entrance` in place of the `entrance`: that entry's object
+bursts on frame 41 and is removed on T, and everything above holds with
+it. The `entrance` entry's object is then there but takes no part.
+
+So each of the two entries acts only for its own way into the level:
+
+| Way into the first level | The entry that bursts and throws the characters | The other entry |
+|---|---|---|
+| From the level map | `entrance` | `room-return-entrance`: there, does nothing |
+| Coming back from the room | `room-return-entrance` | `entrance`: there, does nothing |
+
+An entry that does nothing is not drawn. With no input, entering from
+the level map and coming back from the room, the pictures of frames 30,
+45, 55, 80 and 110 were the same as in a copy of the image in which the
+entry that does nothing was given the reference of a hidden object
+(`hidden-objects.md`), which draws nothing.
+
+Without the `room-return-entrance`, coming back from the room is like a
+level without its entrance: the characters stay hidden at the point, not
+moving.
+
+Measured by coming back from the room as in `exits.md` ("Checks"): 41
+runs (one with no input after leaving the room, 40 with random inputs
+from frame 1) in each of four images: the supported image, and copies
+with only the `room-return-entrance` kept, only the `entrance` kept, and
+neither (the other entries at the start point given a hidden object's
+reference). The lead was compared on every frame 0 to 89 with the
+level's own start from the level map with no input (position, speed,
+state and facing):
+
+| Image | Runs | Frames | Different |
+|---|---|---|---|
+| Supported | 41 | 3 690 | none |
+| Only `room-return-entrance` | 41 | 3 690 | none |
+| Only `entrance` | 41 | 3 690 | every run, from frame 51 on: still hidden |
+| Neither | 41 | 3 690 | every run, from frame 51 on: still hidden |
+
+Entering from the level map with the same four images, with no input:
+the supported image and the copy with only the `entrance` threw the lead
+on frame 51 as above; with only the `room-return-entrance`, or neither,
+the lead stayed hidden.
+
 ## Example
 
 The start point is at `xs` = 100, `ys` = 300, and the floor below is
@@ -158,8 +207,10 @@ frames of 4 runs.
   or a ceiling.
 - Entrances in levels other than the first, other ways a level can
   begin, and how a level's data says which one it uses.
-- What the second entry at the start point is (in the runs it did
-  nothing).
+- Whether the `room-return-entrance` appears again after T while play
+  goes on (as the `entrance` doesn't: `../formats/placements.md`, "When
+  placed objects are removed"), and coming back from the room with two
+  characters.
 - The flash and pieces of the burst: their motion and when they are
   removed.
 - What a trace shows on frames 0 to T − 1 and during the throw (states
