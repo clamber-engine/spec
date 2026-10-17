@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.111.0
+
+Figures in `title-1`.
+
+Answers part of clamber-engine/spec#19. The rest is not covered yet, so
+it stays open.
+
+- `behavior/figure.md` (new): a figure's position (its placement
+  entry's level x and y), when it is taken (offsets in the facing
+  direction and from the feet line, with pickup ranges for standing,
+  walking, running, the ground action, crouching, rolling and two
+  stages of a jump), the figure count going up by one, taken figures
+  staying gone for the visit, and how the taken figure is shown
+  (flight to a resting place, rest, rising out of the picture). Checks
+  and Not covered.
+- `formats/placements.md`: new `figure` kind; first-level counts and
+  checks updated.
+- `formats/locators.md`: one kind fingerprint row for `figure`.
+- `behavior/collectibles.md`: pointers to the other collectible files.
+
 ## spec-v0.110.0
 
 What is kept when play comes back to the first level in `title-1`.
