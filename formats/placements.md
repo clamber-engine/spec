@@ -380,8 +380,11 @@ matters as it does in a list with sections. The rules of "When an entry
 appears" (in "In a list with sections" below) hold, with the whole list
 as one open section: an entry's object appears on the first frame on
 which the entry comes up. That section has no far section, so the home
-section never waits. Whether class 2 entries far above or below the view
-appear is not covered (see "Not covered").
+section never waits. Class 2 entries, like class 1 entries, need only
+the window, not the vertical window: they appear however far above or
+below the view they are (see "Far above or below the view" under "When
+placed objects are removed", "Checks"). This differs from lists with
+sections ("Class 1 and class 2 entries in these lists").
 
 In a list stored in order of `x`, this gives the same frames as the
 bullets above when each group's first member is at the group entry's
@@ -778,6 +781,25 @@ object was there exactly when the rules above say.
   their entry's level y instead of their own would have been wrong in
   7 of their 21 runs each, on 25 to 110 frames per run.
 
+**Far above or below the view.** A `bunch`, a `sign` and a `letter-1`
+were each put, by their reference, into the first level's class 2 entry
+at its left end and into a class 1 entry right of the characters'
+start. The entry's level y was changed to put the object 100, 600 and
+2 100 px above the picture's top row and 400, 824 and 1 824 px below
+it (`y` − `U` of about −100, −600, −2 100, 400, 824 and 1 824). The
+controller above ran three seeds for each entry, kind and height: 108
+runs, 32 220 frames. On every frame each object was there exactly when
+"When placed objects appear" and the table above say:
+
+- 324 appearances, all on the first frame with the entry in the window
+  (`x` − `V` from −31 to −28, with the view moving left), in either
+  class and at every height. Each object was at its entry's level y.
+- 216 removals, all on the first frame with the entry outside the window
+  (`x` − `V` from −32 to −35). The `bunch` and `sign` got no margin,
+  being outside the vertical window, and went on the same frames as the
+  `letter-1`.
+- With the same seed, the frames were the same at all six heights.
+
 **Exits, the entrance and the end marker.**
 
 - Exits: the exit reference was given to the first level's class 2
@@ -958,7 +980,6 @@ on each frame: see its `README.md`.
   put down elsewhere ("Objects put down elsewhere"): for example an
   object carried while its entry and the object are far apart, and
   objects put down in lists with sections.
-- Entries far above or below the view in lists without sections.
 - How many objects can be there ("How many objects can be there"):
   which short-lived objects take pictures, and for how long (in the
   first level's runs some kept theirs for a while after they were gone,
