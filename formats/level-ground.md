@@ -337,8 +337,10 @@ files).
 ## Ceiling grids
 
 The levels where the player swims use a third kind of grid, a
-**ceiling grid**. It is stored like a row grid, but its shape numbers are
-its own and half of them are ceilings. Some cells have ground above a
+**ceiling grid**. Every area on a ceiling grid is underwater all over
+except one, where the player rides instead (`../behavior/swimming.md`,
+"Where the player swims"). It is stored like a row grid, but its shape
+numbers are its own and half of them are ceilings. Some cells have ground above a
 line instead of below it. "The ground below a point" changes to match.
 
 What is the same as in a row grid: "Bands and storage" (64 cell words
