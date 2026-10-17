@@ -143,6 +143,19 @@ Coverage (`title-1`). Answers no open `spec` issue.
   floor from C + 28, 12 frames, then a settling frame); Jump and Action
   together; examples; not covered.
 
+Coverage (`title-1`). Answers no open `spec` issue.
+
+- `behavior/riding-slopes.md` (new): riding the animal on 1-in-4 slopes.
+  On the floor `y` follows the column under `x` on every frame, the rider
+  never leaves the floor going downhill, and speeds, turns, jumps, charges
+  and hops are as on flat floor. The first airborne frame of a jump or a
+  hop starts from the higher of the last height and the new column's
+  floor, and landings use the new column. Two measured examples and what
+  isn't covered (steep faces, walls, ledges).
+- `behavior/slopes.md`: "Jumping from a slope" (`title-1`) corrected:
+  T + 1 starts from the higher of `y` on T and the floor of T + 1's
+  column, as in `title-2`, not always from `y` on T.
+
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.
