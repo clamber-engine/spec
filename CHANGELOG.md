@@ -4,7 +4,9 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
-Answers `spec` issue #29 (`title-2`).
+## spec-v0.78.1
+
+Clarification (`title-2`). Answers `spec` issue #29.
 
 - `behavior/roll-speed.md`, "Worked values (`title-2`)": the fast row's
   lead-in is spelled out (Action alone on frames 0 to 45, a slow roll
