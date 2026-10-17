@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.101.0
+
+Jumping on a steep face and in front of a rise in `title-1` (coverage).
+
+- `behavior/steep-faces.md`: new section "Jumping on or next to a face".
+  The press frame is an ordinary frame on the floor. A press whose frame
+  or next frame starts on the face (a carried press) doesn't take off on
+  the next frame; held, it takes off on the frame after the player is
+  first on other floor, if that is at most 12 frames after the press,
+  and otherwise not at all. One measured exception for the frame that
+  steps onto a face with only the uphill direction held. On the take-off
+  frame "Can't start toward a rise" doesn't apply, "Stopped by a rise"
+  does, and `y` follows the new column's floor. Synthetic examples and
+  evidence; rolls onto faces and the second character stay not covered.
+- `behavior/walk-off.md`, `behavior/jump-input.md`,
+  `behavior/jump-arc.md`: pointers to the new section.
+
 ## spec-v0.100.1
 
 Repeated tyre throws with no input in `title-1` (clarification).
