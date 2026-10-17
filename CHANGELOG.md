@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.91.0
+
+Coverage: open-water swimming in `title-2`.
+
+Answers no `spec` issue.
+
+- `behavior/swimming.md`: lists `title-2`. New "In `title-2`": the
+  horizontal targets, including the faster targets after a frame with
+  Action and a direction; the Up stroke and the deeper sinking limit
+  with Down (kept while Up follows straight after); facing changes
+  through a turn, with a table for a stroke during a turn; worked
+  values, trace notes, checks and "Not covered in `title-2`".
+- `TITLES.md`: `swimming.md` added to the `title-2` files.
+
 ## spec-v0.90.0
 
 Coverage: placement lists with sections, and placement class 15.
