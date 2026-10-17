@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.86.0
+
+Coverage: falls without a jump, and the airborne pose against walkers
+(`title-1`).
+
+Answers no `spec` issue (closes an item from the "Not covered" list).
+
+- `behavior/walker-contact.md`: the vertical reach for being hurt now
+  follows the player's pose (upright or airborne, as in
+  `ball-contact.md`) and whether the player is on the ground, with
+  corrected values for the medium walker in the airborne pose and for
+  the frames after a landing. The airborne pose shortens the hurt range
+  on the side behind the player. New "Poses" and "Falls without a jump"
+  sections, worked examples, the evidence, and an updated "Not covered"
+  list.
+- `behavior/ball-contact.md`: a walk-off from a ledge without a face
+  stays upright; the airborne pose after the same kind of jump can end
+  on different frames.
+
 ## spec-v0.85.0
 
 Coverage: the large walker against the fidget pose (`title-1`).
