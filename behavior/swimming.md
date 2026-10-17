@@ -347,7 +347,8 @@ on frame 2 (held through frame 3). Rows relative to the start, with `x`,
 | 3 | `J` | −3.765625 | −1.90625 | `swim` | 0 | |
 
 The scenario `swim-strokes` (`../scenarios/swim-strokes.scn`) records
-these rows in open water, with a `title-1` reference trace.
+these rows in open water, with a `title-1` reference trace and a `title-2`
+one ("In a trace (`title-2`)").
 
 ## Checks
 
@@ -557,6 +558,22 @@ As in "In a trace": every swimming frame has the state `swim`, and
 facing changes (S + 5, or F after a stroke during the turn), not the
 frame the turn starts.
 
+The `title-2` reference trace for `swim-strokes`
+(`../traces/reference/title-2/swim-strokes.trace`) shows this. Its rows
+follow this section exactly from the scenario's start (`vx` 0, `vy`
+1.25, facing right). The strokes on frames 20, 50 and 85 have `vy` −500,
+−692 and −244 (in 1/256 px). Holding Down on frames 70 to 99 changes
+only the stroke on 85: `vy` is still below 0 on frame 99. Left from
+frame 130 starts a turn, and facing changes on frame 135. The top speed
+is 1.5 (384/256), and the trace ends at `x` 126.6796875, `y` −39.046875.
+
+The path stays between `x` 0.046875 and 133.6875 and between `y`
+−90.09375 and 25. Because of the stronger Up stroke, it goes 90 px above
+the start, 8 px higher than the 82 px in the scenario's `requires`
+(which follows the `title-1` path). Ground 122 px above the start
+(82 + 40) is still 32 px above the path's highest point; with a ceiling
+there the trace is the same.
+
 ### Checks (`title-2`)
 
 - Random input (runs of Left, Right or neither with Up, Down or neither,
@@ -588,7 +605,6 @@ frame the turn starts.
 - A second stroke during the same turn.
 - The second character, the partner, enemies and other objects.
 - Left and Right held together (the measuring setup can't hold both).
-- A `title-2` reference trace for `swim-strokes`.
 
 ## Not covered
 

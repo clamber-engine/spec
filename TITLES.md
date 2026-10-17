@@ -24,7 +24,7 @@ the release; until then, a title id stands for that one release.
 | Id | Behavior files | Reference traces |
 |---|---|---|
 | `title-1` | All files in `behavior/` | All traces directly in `traces/reference/` |
-| `title-2` | `ground-speed.md`, `jump-arc.md`, `jump-input.md`, `air-control.md`, `roll-input.md`, `roll-speed.md`, `bounce.md`, `walk-off.md`, `rolling-off-ledges.md`, `slopes.md`, `walker.md`, `walker-contact.md`, `knock-out.md`, `steep-faces.md`, `air-walls.md`, `rolling-into-walkers.md`, `view.md`, `swimming.md` (sections "In `title-2`") | `traces/reference/title-2/`: `run-jump-flat`, `roll-flat`, `walk-off-ledge`, `bounce-walker`, `slope-dip` |
+| `title-2` | `ground-speed.md`, `jump-arc.md`, `jump-input.md`, `air-control.md`, `roll-input.md`, `roll-speed.md`, `bounce.md`, `walk-off.md`, `rolling-off-ledges.md`, `slopes.md`, `walker.md`, `walker-contact.md`, `knock-out.md`, `steep-faces.md`, `air-walls.md`, `rolling-into-walkers.md`, `view.md`, `swimming.md` (sections "In `title-2`") | `traces/reference/title-2/`: `run-jump-flat`, `roll-flat`, `walk-off-ledge`, `bounce-walker`, `slope-dip`, `swim-strokes` |
 
 `title-3` hasn't been measured yet.
 
