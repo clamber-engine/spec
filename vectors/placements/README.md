@@ -63,3 +63,51 @@ What the data exercises:
   reference and bank block, or `none`.
 - `kinds.tsv`: for each reference, the block whose candidate matched a
   row and the row's kind, or `-` and `none`.
+
+## Lists with sections
+
+Vectors for "Lists with sections" and "In a list with sections" in
+`../../formats/placements.md`.
+
+### Input
+
+- `sections-bank.hex`: part of a made-up bank, in the same form as
+  `bank.hex`. The list starts at address `9008`, its section table at
+  `9100`, and the members of its one group at `9188` (the group entry's
+  reference is `9180`). `Yb` = 1024.
+- The view: `V` and `U` at the start of each frame are the first two
+  columns after `frame` in `sections-frames.tsv`. Frame 0 is the area's
+  first frame.
+- No object is ever removed.
+
+What the data exercises:
+
+- Three sections (entries 1–6, 7–10 and 11–14) joined by two records,
+  and the record of zeros that ends the table, with other bytes that
+  are not zero.
+- Class 15 entries that wait for the vertical window, class 1 entries
+  that don't, and a group.
+- A record that starts being watched, the other section's objects
+  appearing, and the current section changing as the view goes up past
+  a point; later, coming back down past a point, and the side edge
+  deciding when the view jumps past a side edge and the bottom edge in
+  one frame.
+- A frame on which the other section makes an object, so that a current
+  section entry waits one frame (frames 228 and 229).
+- Entry 14 is stored after entry 13, which has a larger `x`: it can't
+  appear before entry 13 is in the window (frame 813).
+- `V` less than 32 (frames 0–9 and others).
+- No record's point is in the window on frame 0.
+
+### Expected output
+
+- `sections-records.tsv`: the section table's records (`index` from 0)
+  with `level_y` = 1024 − `h`.
+- `sections-frames.tsv`: for each frame, after the frame's step: the
+  current section (first–last entry), the watched record (or `-`), its
+  other section (or `-`), the current section's reading start, and the
+  entries whose objects appear on that frame (a group is listed by its
+  entry's number, and all its members appear with it), or `-`.
+- `sections-appear.tsv`: for each entry of class 1, 5 or 15, the frame
+  on which its object (or the group's objects) appears and the `V` and
+  `U` of that frame, or `never`.

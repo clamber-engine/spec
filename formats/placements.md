@@ -23,6 +23,9 @@ seen: 230 appearances during the runs, plus the objects already there on
 the level's first frame. Of the other six, one places no object (class
 8) and five are past the furthest point the runs reached.
 
+Lists with sections (the underwater levels' lists, "Lists with
+sections" below) were measured separately, as described there.
+
 ## Positions
 
 Positions are **level x** and **level y** in whole px, as in
@@ -66,6 +69,8 @@ position).
 | 2 | One object, as for class 1 |
 | 5 | A **group** of objects. `r` locates the group's members |
 | 8 | No object. The first level's one class 8 entry starts the dimming (`../behavior/dimming.md`) |
+| 9 | No object. Only ever the first entry of a list: the list has **sections**, and `r` locates its **section table** ("Lists with sections") |
+| 15 | One object, as for class 1, that also has to be inside a vertical window to appear ("When placed objects appear") |
 
 Other classes are used by other levels' lists and are not covered.
 
@@ -81,10 +86,14 @@ reference alone: the same reference given to an entry somewhere else
 places the same kind of object there (checked for the references in
 "In the first level" below).
 
-A class 1 or class 2 reference leads to part of the original program.
-This spec doesn't describe what is there. The importer tells which kind
-of object an entry places by **fingerprint** (`../REVIEW.md`, "The
-second exception: kind fingerprints"), as in "Kinds" below.
+A class 1, class 2 or class 15 reference leads to part of the original
+program. This spec doesn't describe what is there. The importer tells
+which kind of object an entry places by **fingerprint** (`../REVIEW.md`,
+"The second exception: kind fingerprints"), as in "Kinds" below. Class
+15 references are of the same sort as class 1 references: the kind rows
+match them in the same way, and every object seen from a class 15 entry
+whose reference has a `bunch` or `letter-1` to `letter-4` row was a
+bunch or that letter.
 
 ### Groups
 
@@ -97,6 +106,53 @@ they are all zero.
 The members' positions are their own entries' `x` and `h`. In the first
 level's group, the members are class 1 entries and the group entry's
 `x` and `h` are its first member's.
+
+### Lists with sections
+
+A list whose first entry has class 9 is divided into **sections**. In
+`title-1` the four underwater levels' lists (`../behavior/swimming.md`)
+are like this, and so is one more list, used by the crystal-cave rooms.
+How the view's position chooses the sections that place objects is in
+"In a list with sections" below.
+
+The entries are numbered from 0 in stored order: the class 9 entry is
+entry 0. A **section** is a run of entries, given by the numbers of its
+first and its last entry. The class 9 entry's `x` and `h` are 0 in every
+such list, and its reference `r` is the address of the list's **section
+table**, at the location in the same bank as the placement list
+(`rom-image.md`, "Banks and locations").
+
+The section table is a run of **records** of 8 bytes each, up to a
+record whose first two bytes are both 0. That record is not part of the
+table, and its other six bytes mean nothing. A record is:
+
+| Bytes | Name | Meaning |
+|---|---|---|
+| 0 | `a1` | Number of the first entry of the record's **first section** |
+| 1 | `a2` | Number of the last entry of its first section |
+| 2–3 | `x` | The record's **point**: level x (16 bits, low byte first) |
+| 4–5 | `h` | The point's height above the bottom edge, as an entry's `h`: level y = `Yb` − `h` |
+| 6 | `b1` | Number of the first entry of the record's **second section** |
+| 7 | `b2` | Number of the last entry of its second section |
+
+Records are numbered from 0. Each record's second section is the next
+record's first section, so a table of `n` records describes `n` + 1
+sections, one after another in the list: record 0's first section, then
+each record's second section. A record's point marks where its two
+sections meet.
+
+In the four underwater lists:
+
+- There are 2 or 4 records, and their heights `h` increase from one
+  record to the next.
+- The first section starts at entry 1, each section starts with the
+  entry after the previous section's last one, and the last section runs
+  to the end of the list. Its last number is either the list's last
+  entry or the entry of zeros that ends the list. A reader stops at the
+  end of the list either way.
+- Within a section the entries are in order of `x`, except for one
+  entry, which comes after an entry with a larger `x`.
+- The classes used are 9 (entry 0 only), 15 (most entries), 1, 2 and 5.
 
 ## Kinds
 
@@ -194,11 +250,26 @@ The window and the view position `V` are as in
     −31 ≤ x − V ≤ 288
 
 with `V` the view's position, rounded down to a whole pixel, as it was
-at the start of the frame.
+at the start of the frame. While `V` is less than 32, the window is the
+one for `V` = 32: an entry is in the window when 1 ≤ `x` ≤ 320. (Seen
+in the underwater runs below: 379 appearances of entries with
+`x` − `V` > 288 while `V` was less than 32.)
+
+Class 15 entries also have to be in the **vertical window**:
+
+    −31 ≤ y − U ≤ 256
+
+with `y` = `Yb` − `h` the entry's level y and `U` the view's vertical
+position (`../behavior/view-vertical.md`: the level y of the picture's
+top row), rounded down to a whole pixel, as it was at the start of the
+frame.
 
 - **Class 1 and class 2.** The object appears on the first frame on
   which its entry is in the window. On the level's first frame, the
   objects of all entries already in the window are there.
+- **Class 15.** The object appears on the first frame on which its
+  entry is in the window and in the vertical window.
+- **Class 9.** Nothing appears.
 - **Class 5.** All members appear together, on the first frame on which
   the group entry is in the window, even members whose own `x` is still
   outside it.
@@ -226,6 +297,185 @@ two objects at the same position).
 How a walker is removed, comes back, or stays away once defeated is in
 `../behavior/walker-view.md`. For the other objects it is not covered.
 
+### In a list with sections
+
+In a list with sections ("Lists with sections" above), only the sections
+**in use** place objects, and the entries are read in the order
+described here. Everything in this section uses `V` and `U` as they were
+at the start of the frame, rounded down to whole pixels, with `V` less
+than 32 counting as 32.
+
+A record's point (`x`, `y`) is **in the window** when it is in both the
+window and the vertical window of a class 15 entry:
+
+    −31 ≤ x − V ≤ 288   and   −31 ≤ y − U ≤ 256
+
+Otherwise it is **past** the left edge (`x` − `V` < −31), the right edge
+(`x` − `V` > 288), the top edge (`y` − `U` < −31) or the bottom edge
+(`y` − `U` > 256). A point past a side edge and the top or bottom edge
+at once counts as past the side edge.
+
+#### The current section
+
+One section is always in use: the **current** section. With a table of
+`n` records and `k` from 0 to `n`, the current section is record `k`'s
+first section (when `k` < `n`), which is the same as record `k` − 1's
+second section (when `k` > 0). Records `k` − 1 and `k`, those of them
+that exist, are the current section's **neighbour records**.
+
+When the area begins, `k` is the number of records, counted from
+record 0, whose point is not above the view's top row (`y` ≥ `U`);
+counting stops at the first record whose point is above it.
+
+#### Watching a record
+
+On every frame, before any object appears:
+
+1. If no record is **watched**, the neighbour records are tried, record
+   `k` − 1 first. The first one whose point is in the window becomes the
+   watched record. From that frame on, the watched record's **other
+   section**, the one of its two sections that is not current, is in use
+   as well.
+2. If a record is watched and its point is still in the window, nothing
+   changes.
+3. If a record is watched and its point is no longer in the window, the
+   record stops being watched and its other section stops being in use.
+   If the point is past the left or the bottom edge and the current
+   section is the record's first section, the record's second section
+   becomes current (`k` goes up by 1). If the point is past the right or
+   the top edge and the current section is the record's second section,
+   its first section becomes current (`k` goes down by 1). Otherwise the
+   current section stays as it was.
+
+So a record is watched from the frame its point comes into the window
+until the frame it leaves. While it is watched, both its sections place
+objects. The edge it leaves by decides which one stays: past the bottom
+or left edge (the view has gone up or right past the point), the second
+section; past the top or right edge, the first.
+
+#### Reading a section
+
+After that step, the sections in use are **read**, which is when their
+objects appear: first the watched record's other section, if a record is
+watched, then the current section. If any object was made while reading
+the other section, the current section is not read on that frame, so
+its objects appear one frame later at the earliest.
+
+Each section in use has a **reading start**, an entry kept from one
+frame to the next. When the area begins, the current section's reading
+start is its first entry. When a record starts being watched, the
+reading start of its other section is that section's first entry, and
+when that section becomes current it keeps its reading start.
+
+An entry is **left of the window** when `x` − `V` < −31. Before a
+section is read, its reading start moves:
+
+- If the reading start is left of the window, it moves on one entry at
+  a time until it is on an entry that isn't, on the section's last
+  entry, or on the entry of zeros that ends the list, whichever comes
+  first.
+- Otherwise it moves back one entry at a time for as long as the entry
+  before it is not left of the window, but not past the section's first
+  entry. If it stopped before reaching the section's first entry, and the
+  entry before it (left of the window) is a group entry, it moves back
+  onto that group entry.
+
+Reading then takes the entries in list order from the reading start,
+going on past the section's last entry if it gets there, until it stops:
+
+- **Class 1, 2 or 15.** If the entry is not in the window (left or right
+  of it), reading stops. Otherwise, if its object is not there, the
+  object is made: always for class 1 and class 2, and for class 15 only
+  if the entry is also in the vertical window. Reading goes on.
+- **Class 5.** If the group's objects are there, reading goes on.
+  Otherwise, if its first member is right of the window (`x` − `V` > 288)
+  or its last member (the last in the members' list) is left of it,
+  reading stops. Otherwise all the members' objects are made and reading
+  goes on.
+- **Class 9.** Reading goes on.
+- **The entry of zeros** that ends the list: reading stops.
+
+An entry's object is **there** from the frame it is made until it is
+removed. Once it has been removed, the entry can make it again.
+
+Some consequences:
+
+- An entry that comes after one with a larger `x` is not reached while
+  that entry is right of the window, even when it is in the window
+  itself. In the underwater list that has one, the two appeared on the
+  same frame.
+- A group entry just left of the window, whose objects are gone and
+  whose members are all left of the window, stops reading on the frames
+  on which it is the reading start. With the reading start moving back
+  onto it on one frame and on past it on the next, the entries after it
+  can appear one frame later than they otherwise would.
+- In the runs, no entry after a section's last entry was ever made.
+
+#### Class 1 and class 2 objects in these lists
+
+Class 1 and class 2 entries are read by the window alone, so their
+objects are made even when the entry is far above or below the view.
+What happened to them then, in the runs, depends on the object, and is
+not covered as a rule:
+
+- Every class 2 object made outside the vertical window was gone again
+  by the end of the same frame (79 256 times), except once, when the
+  player was level with the entry. Made inside the vertical window, they
+  stayed (79 times). These objects are not drawn.
+- The objects of one class 1 reference (one class 1 entry in each of two
+  of the lists) did the same: 1 353 made and gone on the same frame, 17
+  that stayed, all of those inside the vertical window.
+- The object of one other class 1 entry, made outside the vertical
+  window, was gone on the frame after it was made. It was then made
+  again, so it was there on every second frame (3 731 appearances).
+
+An object that is gone again on the frame it was made still counts as
+made: while such an object is made from the other section on every
+frame, the current section isn't read at all.
+
+#### Example
+
+A made-up list (in `../vectors/placements/`, see "Vectors") with three
+sections: entries 1–6, 7–10 and 11–14, and two records. Record 0 joins
+the first two sections at a point at level x 960, level y 724. Record 1
+joins the last two at level x 60, level y 324. The view starts at
+`V` = 0, `U` = 760 and moves right along the bottom, then up:
+
+| Frame | `V` | `U` | What happens |
+|---|---|---|---|
+| 188 | 700 | 754 | Record 0's point comes into the window (`y` − `U` = −30). Entries 7–10 are in use as well as 1–6 |
+| 228 | 700 | 674 | Entry 9 (other section, level y 644) appears. Entry 6 (current section, also level y 644) would too, but the current section isn't read |
+| 229 | 700 | 672 | Entry 6 appears |
+| 332 | 700 | 466 | The point is past the bottom edge (`y` − `U` = 258): entries 7–10 become the current section, and 1–6 are no longer in use |
+
+#### Checks
+
+- Every underwater area: 8 areas, two for each of the four lists,
+  starting at different points. 3 runs each of up to 40 000 frames,
+  with the player moved through the open water along random routes so
+  that the view followed, and kept from being hurt. On some frames of one run per area the player
+  was moved by up to the whole level in one frame. 780 444 frames in
+  all, with 120 changes of the current section and 168 records starting
+  to be watched. On every frame, the current section, the watched record
+  and the reading start were as described here. The entries whose
+  objects were made, and the ones still there at the end of the frame
+  (as in "Class 1 and class 2 objects in these lists"), matched on every
+  frame but one: the class 2 object that stayed once outside the
+  vertical window. Removals were taken from the game. That is 5 751
+  appearances, 1 824 of them from class 15 entries and 98 of groups. The
+  current section wasn't read on 6 038 frames, on 5 526 of them only
+  because of objects gone at once. On 2 of those frames an object of the
+  current section was due, and it appeared one frame later.
+- Starting the area: each of the 8 areas was entered from the map; `k`
+  and the reading start on the first frame were as described. Every
+  record's point was at least 256 px above or below the view's top row.
+- Kinds: in four of the areas, the objects made from class 15 entries
+  with a `bunch` or letter row were all of that kind (11 appearances).
+- The crystal-cave rooms' list: three of its rooms, 66 294 frames, run
+  the same way until the player left the room. No section changed. One
+  class 2 object stayed once outside the vertical window, and nothing
+  else differed.
+
 ## Example
 
 A list with three entries (the trailing entry of zeros not shown), with
@@ -246,7 +496,10 @@ third entry both appear on the first frame that starts with `V` ≥ 612.
 
 `../vectors/placements/` holds a made-up bank fragment and the entries a
 reader gets from it, and a made-up image with kind fingerprint rows and
-the kinds a reader looks up from it: see its `README.md`.
+the kinds a reader looks up from it. It also holds a made-up list with
+sections, its section table, a view path, and on each frame the sections
+in use, the reading start and the entries that appear: see its
+`README.md`.
 
 ## Not covered
 
@@ -256,15 +509,31 @@ the kinds a reader looks up from it: see its `README.md`.
   kind fingerprint row. An object's settings (a walker's heading and
   patrol, whether it takes a first step on its first frame, a placed
   ball's speeds) also belong to the definition and are not covered.
-- What class 2 changes compared with class 1: in the runs measured,
-  class 2 objects appeared and started like class 1 objects.
+- What class 2 changes compared with class 1: in the first level's runs,
+  class 2 objects appeared and started like class 1 objects. In the
+  lists with sections, every class 2 object was gone again at once
+  outside the vertical window (see "Class 1 and class 2 objects in these
+  lists"). Whether that comes from class 2 or from the kind of object,
+  and what those objects do, is not covered.
+- Which class 1 kinds are gone again outside the vertical window, as in
+  "Class 1 and class 2 objects in these lists".
 - What class 8 entries do other than the first level's (which starts
-  the dimming), what a class 8 entry's `h` and reference mean, and the
-  classes used only in other levels.
+  the dimming), what a class 8 entry's `h` and reference mean, and
+  classes other than 1, 2, 5, 8, 9 and 15.
 - When objects other than walkers are removed, and whether they come
   back.
-- Entries far above or below the view, and when the entry that is out
-  of order appears (it is past the furthest point the runs reached).
+- Entries far above or below the view in lists without sections, and
+  when the first level's entry that is out of order appears (it is past
+  the furthest point the runs reached).
+- Whether the reading rules of "In a list with sections" also hold for
+  lists without sections, read as one section covering the whole list.
+  They were only measured on lists with sections.
+- In lists with sections: what happens when an object can't be made
+  because too many objects are already there; a record's point exactly
+  on the view's top row when the area begins, and a record's point in
+  the window on the area's first frame (neither happened in the runs);
+  and the crystal-cave rooms' list beyond the checks above (no section
+  changed in its runs).
 - Groups in other levels: their members can be of other classes, and the
   group entry's position isn't always its first member's.
 - The characters' starting position, the level's left and right ends,
