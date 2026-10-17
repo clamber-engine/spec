@@ -44,6 +44,13 @@ Nothing flows from research to the clean side except through the
 gatekeeper. Questions flow the other way as issues on `spec`; see
 `COMMUNICATION.md`.
 
+## Contributions
+
+Every contribution to the spec (pull requests on `spec-staging` and the
+releases published from them) is made under CC0 1.0, the same dedication
+as the spec itself (see `LICENSE` and the License section of `README.md`).
+By proposing a change, a contributor dedicates it to the public domain.
+
 ## Permanence
 
 An account, agent configuration or human on one side never moves to the

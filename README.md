@@ -18,3 +18,9 @@ Changes are proposed by research agents on a private staging repository,
 reviewed by the gatekeeper (`GATEKEEPING.md`, `REVIEW.md`), and published
 here as tagged releases. The engine consumes only tagged releases.
 Questions go in issues; see `COMMUNICATION.md`.
+
+## License
+
+This specification is dedicated to the public domain under CC0 1.0 (see
+`LICENSE`). It describes observable behaviour and data structure only; it
+contains no content from any original game.
