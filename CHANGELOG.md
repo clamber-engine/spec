@@ -2,6 +2,34 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.112.0
+
+The data of the first level's room in `title-1`.
+
+Answers part of clamber-engine/spec#17. The rest is not covered yet, so
+it stays open.
+
+- `formats/graphics.md`: new "Screen pictures" section (a 32 × 32
+  tile-entry screen map, an unpacked 1 024-tile set and a palette set;
+  the only background layer, fixed to level coordinates; backdrop and
+  drawing order) and "The first level's room" (the tile set stored in
+  two parts, screen map, palette set). Example, evidence and Not
+  covered updated.
+- `formats/level-ground.md`: the room's own grid (16 columns) and type
+  table (`N` = 17), which give ground only. Checks.
+- `formats/placements.md`: the room's own placement list (classes 1 and
+  2 only, one `tyre` reference); every entry's object is there from the
+  room's frame 1.
+- `formats/level-start.md`: the room's start record.
+- `behavior/level-ends.md`, `formats/view-limits.md`: the room uses no
+  view-limit record (`A` = `B` = 0), its picture doesn't move, and the
+  left stop holds.
+- `behavior/exits.md`: Not covered narrowed to the scene's data and the
+  kinds of the room's other objects.
+- `formats/locators.md`: 8 rows for the room's data.
+- `vectors/graphics/`: synthetic screen-picture vectors (`screen.hex`,
+  `screen.tsv`, `screen-pixels.tsv`).
+
 ## spec-v0.111.0
 
 Figures in `title-1`.
