@@ -517,6 +517,26 @@ below the lead's feet found by these rules matched the game's on all
 the ground. Frames on which the lead stood on an object were not
 counted.
 
+## The first level's scene
+
+The scene the floor exit leads to (`../behavior/exits.md`, "The scene")
+has a grid and a type table of its own. Where they start in the image is
+in `locators.md`. Both are column-grid data as above, with the scene's
+level y measured from the same 512 px tall grid:
+
+- The grid is 1 528 columns. The scene shows 8 of them, under its view
+  (`../behavior/level-ends.md`, "In the first level's scene"); its far
+  layer is made from the grid's first 8 columns (`graphics.md`, "The
+  first level's scene"). What the other columns are for is not
+  covered.
+- The type table has `N` = 154 types. The grid's cells also use types
+  154 to 435, which have pictures and no ground.
+
+In the scene the lead's position doesn't come from the ground: it walks
+in at the height of the scene's start record and then stands still
+(`../behavior/exits.md`, "The scene"). Where it stands, the ground below
+its feet found by these rules is at its feet line.
+
 ## Not covered
 
 - Whether being passable from below matters for anything other than

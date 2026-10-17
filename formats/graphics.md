@@ -5,12 +5,13 @@ Titles: `title-1`
 How the first level's background pictures are stored, and how to turn
 them into images: colours and palette rows, tiles, packed tile data,
 tile entries, cell pictures, and the two background layers built from
-them, and the one fixed picture of the first level's room
-(`../behavior/exits.md`, "Where the first level's exits lead"). The
+them, the one fixed picture of the first level's room, and the three
+layers of the first level's scene (`../behavior/exits.md`, "Where the
+first level's exits lead"). The
 **grid**, its **cells**, **cell words** and **types** are as in
 `level-ground.md`: the picture of a cell comes from the same cell word
 as its ground. Everything here was checked against the game's own video
-output on the first level and its room (see "Evidence").
+output on the first level, its room and its scene (see "Evidence").
 
 ## Colours
 
@@ -53,8 +54,9 @@ for row `y`) × 2^`p`.
 
 A **two-plane tile** stores planes 0 and 1 only, in 16 bytes, laid out
 like the first 16 bytes of a tile; its colour numbers are 0 to 3. The
-first level's background layers use only four-plane tiles; two-plane
-tiles are listed here for the vectors and for later parts.
+first level's background layers use only four-plane tiles; the front
+layer of the first level's scene uses two-plane tiles ("The first
+level's scene").
 
 A **tile set** is tiles stored one after another, numbered from 0.
 
@@ -169,11 +171,12 @@ palette set.
   level y `Vy`, showed grid picture row `Vy` + 1, and its left column,
   level x `Vx`, showed grid picture column `Vx`.)
 - The **far layer** is a 512 × 256 px picture that repeats in both
-  directions. It is the part of the grid picture made by the grid's
-  last 16 columns and bands 0 to 7: far picture pixel (`x`, `y`) is grid
-  picture pixel (32(`N` − 16) + `x`, `y`). In the first level that is
-  grid picture columns 5 376 to 5 887. How it moves with the view is not
-  covered.
+  directions. In the first level it is the part of the grid picture
+  made by the grid's last 16 columns and bands 0 to 7: far picture
+  pixel (`x`, `y`) is grid picture pixel (32(`N` − 16) + `x`, `y`),
+  grid picture columns 5 376 to 5 887. How it moves with the view is
+  not covered. The first level's scene takes its far layer from another
+  part of its grid ("The first level's scene").
 
 ## Drawing order
 
@@ -270,6 +273,90 @@ in "Evidence" the game held exactly these tiles, this screen map and
 these 8 palette rows. The fade-in and the walk-in are in
 `../behavior/exits.md`.
 
+## The first level's scene
+
+The scene the floor exit leads to (`../behavior/exits.md`, "The scene")
+has three background layers: a ground layer and a far layer made from
+its grid, as in "The layers", and a **front layer** made from a screen
+map of its own. For the scene the importer needs the following. Where
+each one starts in the image is in `locators.md`.
+
+- The packed tile data ("Packed tile data"). It unpacks to 28 064
+  bytes, which is 877 tiles. Tile 0 is all colour 0.
+- The palette set (8 rows).
+- The picture table ("Cell pictures"). The scene's grid uses types 0 to
+  435 for pictures, and the table has a picture for each. Type 0's
+  picture is empty, as in the first level. Bits 11 to 13 of the grid's
+  cell words are never set.
+- The grid (`level-ground.md`, "The first level's scene").
+- The **front tile set**: two-plane tiles ("Tiles"), stored as they
+  are, not packed, tile 0 first. The front map uses tiles 0 to 43.
+- The **front map**: 32 × 32 tile entries, 2 048 bytes, laid out as a
+  screen map ("Screen pictures"). Its entries' tile numbers are tiles of
+  the front tile set.
+
+### Colours of two-plane tiles
+
+A two-plane tile is drawn with the colours of the palette set counted
+as one run of 128 colours, from colour 0 of row 0 to colour 15 of row
+7. A tile entry with palette row `p` gives colour number `c` (1 to 3)
+the colour `4p` + `c` of that run: colour (4`p` + `c`) mod 16 of row
+⌊`p` / 4⌋. Colour number 0 is transparent. So entries with palette rows
+0 to 3 take their colours from the set's row 0, and entries with rows 4
+to 7 from its row 1. The scene's front map uses palette rows 0 and 4.
+Synthetic vectors: `../vectors/graphics/` ("Front layer").
+
+### The pictures
+
+- The **front picture** is the 256 × 256 px picture made from the front
+  map and the front tile set as in "Screen pictures", with the colours
+  of two-plane tiles above.
+- The scene's **far picture** is the part of the grid picture made by
+  the grid's first 8 columns and bands 0 to 7: far picture pixel (`x`,
+  `y`), with `x` and `y` from 0 to 255, is grid picture pixel (`x`,
+  `y`).
+- The ground layer is the grid picture, as in "The layers".
+
+### Where the layers are
+
+The scene's view doesn't move (`../behavior/level-ends.md`, "In the
+first level's scene"): on every frame the picture's left edge is at
+level x `E` and its top row at level y `Vy`, the values given there.
+Screen pixel column `i` (0 to 255) and row `j` (0 to 223), counted
+from the picture's top left, shows:
+
+- on the ground layer, grid picture pixel (`E` + `i`, `Vy` + 1 + `j`),
+  with the one-row shift of "The layers";
+- on the far layer, far picture pixel (`i`, `j` + 5);
+- on the front layer, front picture pixel (`i`, `j` + 1).
+
+The front layer doesn't depend on the view: in a copy of the image with
+the scene's view-limit record changed so that the view was somewhere
+else, it was still front picture pixel (`i`, `j` + 1). The far layer
+did move with the view there; how is not covered, so the far layer's
+place above holds for the scene's view as stored in the image.
+
+### Drawing order in the scene
+
+From the back:
+
+1. the far layer's tiles that are not raised,
+2. the ground layer's tiles that are not raised,
+3. the far layer's raised tiles,
+4. the ground layer's raised tiles,
+5. the front layer's raised tiles.
+
+Transparent pixels show what is behind them. This is the order of
+"Drawing order" with the front layer's raised tiles in front of
+everything. In the part of the far picture on screen no pixel is
+transparent, so the backdrop is never seen in the scene, and no tile is
+raised. Every front picture pixel on screen that isn't transparent comes
+from a raised entry. Where characters and other moving things are drawn
+in this order is not covered, as in "Drawing order".
+
+On screen, every layer shows the palette set's own colours (the first
+level's far layer, by contrast, was shown darker; see "Not covered").
+
 ## Example (synthetic)
 
 Packed data: a pair table whose pair 5 is `7e 7f` (other pairs any),
@@ -335,6 +422,33 @@ More cases, as bytes, are in `../vectors/graphics/`.
   gives with the picture's left edge at level x 0 and its top row at
   level y 0.
 
+- The first level's scene, entered by the floor exit with the lead
+  alone and with two characters: in each run, every 25th logic frame
+  from frame 50 to frame 350 (13 pictures per run, at full brightness),
+  the game's own picture of each background layer alone matched the
+  layer drawn from the image's data as in "The first level's scene",
+  with no pixel different (per picture: 40 796 non-transparent pixels on
+  the ground layer, 57 344 on the far layer, 9 753 on the front layer).
+  Each layer matched at the row offsets given there and at no other
+  (offsets of up to 2 px either way in both directions were tried; the
+  next best had 1 060 to 20 357 pixels different). The game's picture
+  of all three layers together, with characters and objects not drawn,
+  matched the order of "Drawing order in the scene" on every pixel of
+  the same 26 pictures.
+- At each of those 26 pictures the game's tiles were the scene's
+  unpacked tile data byte for byte, its colour rows 0 to 7 were the
+  scene's palette set, and the front layer's map and its tiles 0 to 43
+  were the image's front map and front tile set. Every tile entry the
+  game showed on the ground layer (896 per picture) matched the entry
+  built from the grid and the picture table, and all 1 024 entries of
+  the far layer matched the grid's first 8 columns, bands 0 to 7.
+- In a copy of the image with the scene's view-limit record changed
+  (its left and right limits and the entry's start lowered by 64, its
+  top and bottom lowered by 24): at 3 pictures (frames 100, 200 and
+  300), the ground layer matched with the moved view and the front
+  layer as before, each with no pixel different, and the far layer
+  matched at none of the offsets tried.
+
 ## Not covered
 
 - Sprite colours during the dimming near the first level's right end
@@ -350,8 +464,15 @@ More cases, as bytes, are in `../vectors/graphics/`.
 - The layer that shows counters and other information.
 - Characters, walkers, objects and other moving things (their tiles,
   palette rows and order against the layers).
-- Fades, and the pictures of areas other than the first level and its
-  room (the scene the floor exit leads to, `../behavior/exits.md`).
+- Fades, and the pictures of areas other than the first level, its
+  room and its scene.
 - Whether other areas with a screen picture have tile sets of other
   sizes, a far layer or a moving picture.
+- In the scene: whether the image's bytes right after the front map
+  belong to the front layer (the scene shows nothing from them), where the front layer's tiles that are not
+  raised are drawn (none is seen), and how the front layer's raised
+  tiles go against the ground layer's raised tiles (they never meet on
+  screen). Which part of a grid makes the far layer in other areas: the
+  first level and its scene take it from different ends of their
+  grids.
 - Other levels and other titles.

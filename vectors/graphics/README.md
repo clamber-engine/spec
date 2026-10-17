@@ -65,3 +65,20 @@ pixel column and row of its top-left pixel, and its entry in hex.
 square's entry, the colour number, the palette row, and the colour in
 hex or `transparent`. The first 256 rows cover squares 1 to 3 and 33
 completely.
+
+## Front layer (two-plane tiles)
+
+`front-tiles.hex`: four two-plane tiles (16 bytes, one tile per line).
+Tile 0 holds colour number `x` mod 4 at column `x` of every row; tile 1
+is all 0, tile 2 all 3, tile 3 random. `front.hex`: a front map (32
+rows of 32 tile entries, one row per line, each entry low byte first)
+using those tiles; entries 0 to 7 are tile 0 in palette rows 0 to 7
+with no flip, and entries 8, 9 and 10 are tile 0 in palette row 0 with
+flip left–right, flip top–bottom and both. `front-pixels.tsv`: pixels
+of the front picture drawn from `front.hex`, `front-tiles.hex` and
+`palette.hex` as in `../../formats/graphics.md` ("The first level's
+scene"): pixel column and row, the square's entry, the colour number,
+the entry's palette row, then the palette set's row and colour the
+pixel takes (4 × palette row + colour number, counted through the set)
+and that colour in hex, or `-`, `-` and `transparent`. The first 176
+rows cover entries 0 to 10 along pixel rows 0 and 5.

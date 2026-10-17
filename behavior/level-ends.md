@@ -75,6 +75,21 @@ from a view-limit record. In the room `A` and `B` are both 0:
   stopped on a frame that starts with ⌊`x0`⌋ less than 18. On the
   right, the room's exit is reached first (`exits.md`, "Not covered").
 
+## In the first level's scene
+
+The scene the floor exit leads to (`exits.md`, "The scene") takes its
+limits from a view-limit record of its own
+(`../formats/view-limits.md`, "The first level's scene"). In it `A` =
+`B`, and its one vertical limit entry has `top` = `bottom`:
+
+- `E` = `A` on every frame of the scene, from its frame 0, so the
+  picture always shows level x `A` to `A` + 255.
+- The picture's top row is at level y `top` on every frame of the
+  scene, from its frame 0. The scene's pictures are in
+  `../formats/graphics.md` ("The first level's scene").
+- Nothing pressed or held has any effect in the scene (`exits.md`, "The
+  scene"), so "The player at the ends" doesn't come into play.
+
 ## Examples
 
 Synthetic, computed from the rules above, with `A` = 64 and `B` = 4800.
@@ -135,6 +150,14 @@ than 82) `vx` is 0 and `x` stays 81.25.
   running, jumps, rolls, Down): 19 184 frames, of which 14 815 started
   with ⌊`x0`⌋ less than 18. On every one of them `vx` was not below 0,
   and when it was 0, `x` didn't change.
+- **The scene.** In a run through the scene with the lead alone and one
+  with two characters (397 frames each), `E` was the scene's `A` and the
+  picture's top row its `top` on every frame. Each of the 1 979 times a
+  character or object was drawn, it was where `../formats/sprites.md`
+  gives with those values. The scene's pictures matched the game's
+  (`../formats/graphics.md`, "Evidence"). In a copy of the image with
+  the scene's record changed, `E` and the top row were the changed
+  values on every frame (`../formats/view-limits.md`, "Checks").
 
 ## Not covered
 
