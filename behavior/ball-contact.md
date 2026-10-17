@@ -131,22 +131,30 @@ ball flights was drawn in the part these rules give.
 
 **Upright**: standing (until the fidget, below), walking, running,
 turning, the ground action (from its first frame; `ground-action.md`),
-teetering at the edge of a ledge, and a jump up to five frames after
-its take-off frame T (`jump-arc.md`): on frames up to T + 5.
+teetering at the edge of a ledge, a jump up to five frames after its
+take-off frame T (`jump-arc.md`): on frames up to T + 5, and a fall
+after walking off a ledge without a face (`walk-off.md`, "Ledges
+without a face"): the walking pose goes on through the fall and the
+landing (seen with walkers, `walker-contact.md`).
 
 **Airborne**: a jump from T + 6 on, until some frames after it lands
-(below). A fall after walking off a ledge, from shortly before the
-leave frame of `walk-off.md` (2 frames before it in most cases, 1 or 3
-in others) until some frames after it lands.
+(below). A fall after walking off a ledge with a face, from shortly
+before the leave frame of `walk-off.md` (2 frames before it in most
+cases, 1 or 3 in others; 4 on a ledge measured with walkers) until some
+frames after it lands.
 
 After landing, the airborne pose goes on for a time that depends on the
 jump. Measured, with L the landing frame and the player not jumping
 again: a full-height jump standing still, airborne up to L + 6 and
 upright from L + 7; a hop (jump input held for one frame), up to
 L + 3; a jump while walking, up to L + 4; a jump out of a roll, up to
-L + 1; a walk-off fall of 15 frames, up to L + 8. In the random runs the
-airborne pose ended anywhere from L − 1 to L + 7 after a jump, and up
-to L + 8 after a walk-off fall.
+L + 1; a walk-off fall of 15 frames (from a ledge with a face), up to
+L + 8. In the random runs the airborne pose ended anywhere from L − 1 to
+L + 7 after a jump, and up to L + 8 after a walk-off fall. The same kind
+of jump doesn't always end its airborne pose on the same frame: in 24
+standing and walking jumps on flat floor measured with walkers
+(`walker-contact.md`, "Poses"), 16 were upright from L + 4 (full-height
+jumps among them) and 8 from L + 7.
 
 **Rolling**: from the frame carrying `roll_start` to the end of the
 roll, and then for 3 more frames when Action is held (the roll runs on
