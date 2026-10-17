@@ -878,6 +878,13 @@ same rule as above. For one that has been moved:
   position, as an object that has not been moved. From then on it is
   removed and comes back as above.
 
+**While it is carried**, the object is there on every frame, however
+far apart it and its entry are and wherever the entry is: with the
+entry outside the window, and also when the entry comes back into the
+window, the carried object stays and the entry places nothing else.
+Once it is put down, it is removed and comes back as above, with its own
+position where it was put down.
+
 **Example (synthetic).** A `barrel` entry at `x` = 1000, with the barrel
 put down on the floor at `x` = 800 and `U` such that it stays in the
 vertical window:
@@ -924,6 +931,23 @@ appearance after a removal was at the entry's position.
   the view went right until the entry's `x` − `V` was −216, with the
   holder still there, and came back: no second holder appeared at the
   entry while the first one was there.
+
+**Checks, carried far.** In the same two places, with walkers along the
+way given a `sign`'s reference in copies of the image as above: the lead
+started carrying the object near its entry and carried it in 3 legs
+left and right of 60 to 500 frames each, with random jumps, landed, put
+it down and walked 6 legs as above, with 100 random seeds for each
+object. The objects were carried up to 1 037 px from their entry and
+put down from 428 px left to 1 029 px right of it. In every run the
+entry left the window while the object was carried (540 times in all),
+and in 199 runs it came back into the window while the object was still
+carried (397 times). On all 179 746 carried frames exactly one such
+object was there, the carried one. After the put-downs, on all 404 758
+frames each object was there exactly when the rules above say: 640
+removals, 197 of them of objects that had been moved, and 506
+appearances, all at the entry's position. Three runs were checked only
+up to a frame on which the put-down object moved 7 px, or was gone
+while in the view; these rules don't cover either.
 
 ## Example
 
@@ -988,9 +1012,9 @@ on each frame: see its `README.md`.
 - When objects other than walkers are removed in lists with sections.
 - What a removed object that had been moved does, other than thrown
   objects (`../behavior/thrown-objects.md`) and a `barrel` or `holder`
-  put down elsewhere ("Objects put down elsewhere"): for example an
-  object carried while its entry and the object are far apart, and
-  objects put down in lists with sections.
+  put down elsewhere ("Objects put down elsewhere"): for example
+  objects put down in lists with sections, and a put-down object that
+  moves again by itself or is pushed.
 - How many objects can be there ("How many objects can be there"):
   which short-lived objects take pictures, and for how long (in the
   first level's runs some kept theirs for a while after they were gone,
