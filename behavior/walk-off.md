@@ -119,7 +119,9 @@ direction held and arriving in short taps), and running off both ends
 speed after Action is released). The frames before L, L itself, and
 jump presses from L − 4 to L + 3 were measured. The rules above
 for L and the fall hold unchanged; this section adds when L happens,
-the frames before it, horizontal speed on L, and jumping.
+the frames before it, horizontal speed on L, and jumping. Walking,
+running and turns go on through the fall and the landing as on the
+ground (`ground-speed.md`, "After a fall or a bounce").
 
 ### When the player leaves
 

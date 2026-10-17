@@ -136,10 +136,14 @@ On the press frame P the player is still on the ground and the rules of
 `ground-speed.md` apply. Example: walking right, Jump and Left pressed
 together on P: facing is still right on P and becomes left on T.
 
-**During a fall after walking off a ledge** (no jump), facing doesn't
-change while airborne, whatever is held. Speed still follows the rule
-above, so holding the opposite direction slows and reverses the player
-while they keep facing the way they walked off.
+**During a fall after walking off a ledge** (no jump) at a ledge with a
+steep face at the top (`steep-faces.md`), facing doesn't change while
+airborne, whatever is held. Speed still follows the rule above, so
+holding the opposite direction slows and reverses the player while they
+keep facing the way they walked off. At a ledge without a face
+(`walk-off.md`, "Ledges without a face") facing changes only through
+turns, which go on in the air exactly as on the ground
+(`ground-speed.md`, "After a fall or a bounce").
 
 ## In `title-2`
 
@@ -297,7 +301,8 @@ This list is for `title-1`; `title-2` has its own list above.
 
 - Facing on the landing frame when the input there differs from the
   last airborne frame, and turns that are in progress when the player
-  leaves the ground.
+  jumps or falls from a face (at a ledge without a face they go on as
+  on the ground: `ground-speed.md`, "After a fall or a bounce").
 - Down held in the air.
 - An Action press on the take-off frame T.
 - Bounces off entities (see `bounce.md`). Jumps that start from a roll

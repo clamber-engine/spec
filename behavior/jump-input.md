@@ -105,8 +105,10 @@ back from E with E from L + 2 to L + 8.
 
 For a landing after a jump that started from a roll, after a fall that
 didn't start with a jump (walking or rolling off a ledge), or after a
-bounce, the spec defines **E = L + 3** (M = L + 1) unless another file
-defines M for that landing. In the original E varies on these landings
+bounce, the spec defines **E = L + 3** unless another file says
+otherwise (after a jump from a roll, M = L + 1). The mode after these
+landings is in `ground-speed.md` ("After a landing", "After a fall or a
+bounce"). In the original E varies on these landings
 too. Reference comparisons on them should allow ±1 frame on the
 `jump_start` and on frame counts measured from it.
 

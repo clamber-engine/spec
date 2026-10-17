@@ -141,9 +141,10 @@ This section is `title-1` only. It decides when a turn can start. It has
 no effect on speed: the speed rule applies on every frame.
 
 Outside a turn, the grounded player is always in one of three **modes**:
-standing, walking or running. The mode isn't a trace column, and it isn't
-the trace's `state` (`traces/VOCABULARY.md`: `idle` means not moving
-horizontally). A standing player can still be sliding (`vx` not 0),
+standing, walking or running. After walking off a ledge without a face
+the mode goes on in the air too ("After a fall or a bounce"). The mode
+isn't a trace column, and it isn't the trace's `state`
+(`traces/VOCABULARY.md`: `idle` means not moving horizontally). A standing player can still be sliding (`vx` not 0),
 for example after a turn that ends with no direction held.
 
 In this section **forward** is the direction the player faces and
@@ -264,12 +265,14 @@ landing frame as those files say; a jump starts on E = M + 2 at the
 earliest. An Action press on L + 1 or a later landing frame starts a
 roll, not a run.
 
-For the landings `jump-input.md` doesn't cover ("Landings this doesn't
-cover"), the spec uses M = L + 1: running on L + 1, the mode on L + 7.
-In the original these vary; reference comparisons on such landings
-should allow −1 frame on a run starting just after the landing, +3
-frames on walking or standing starting after it, and the same on the
-turn checks that follow.
+For a landing after a jump that started from a roll (`jump-input.md`,
+"Landings this doesn't cover"), the spec uses M = L + 1: running on
+L + 1, the mode on L + 7. In the original these vary; reference
+comparisons on such landings should allow −1 frame on a run starting
+just after the landing, +3 frames on walking or standing starting after
+it, and the same on the turn checks that follow. Landings after falls
+that didn't start with a jump, and after bounces, are in "After a fall
+or a bounce" below.
 
 Example: a standing jump facing right, Jump held for 20 frames, nothing
 else held in the air (M = L + 1, so K = L + 7). In the first case Left
@@ -304,6 +307,82 @@ With D the frame after a roll's last frame, as in `roll-input.md` and
   so with Action and a direction held, running starts at the first run
   check (the end of step 2), and with the opposite direction held a turn
   starts at the first turn check (the end of step 1).
+
+#### After a fall or a bounce
+
+This section is `title-1` only, measured with the lead character. It
+covers landings after the falls that don't start with a jump, and after
+bounces. **G** is the landing frame (the frame carrying `land`), as in
+`rolling-off-ledges.md`. Where a mode starts on a set frame below, it
+depends on that frame's input and v, with forward and opposite as
+above.
+
+- **Walking or running off a ledge without a face** (`walk-off.md`,
+  "Ledges without a face"): nothing changes at the edge, in the air or on
+  landing. The mode the player was in goes on through the fall, and every
+  rule of this section applies on each airborne frame as on the ground:
+  the stride cycle goes on, its turn checks and run checks are made
+  (so turns start in the air and facing changes on T + 4 as usual,
+  running can start in the air, and the player can come to stand in the
+  air), and a turn in progress at the edge goes on. There are no landing
+  frames: G is an ordinary frame in whatever mode the player is in.
+- **Falling from a steep face** (walking or running down the face at the
+  top of a ledge and leaving it into a fall, `steep-faces.md`, "Following
+  a face down, or leaving it"), landing on floor that isn't part of a
+  face: G to G + 10 are **landing frames**, however long the fall was
+  (falls of 4 to 47 frames measured). On them the player is in none of
+  the three modes, facing doesn't change whatever is held, and no turn
+  starts. On **G + 11** a mode starts as at the end of a turn ("Changing
+  mode at other times"):
+  - the opposite direction held (with or without Action): a turn starts;
+  - forward held: running at step 1 (counter 256) if Action is held and
+    v ≥ 512, otherwise walking at step 1;
+  - no direction held: standing.
+
+  An Action press on G + 1 or a later landing frame starts a roll on
+  that frame, as on the ground (`roll-input.md`). Facing during the fall
+  itself doesn't change (`air-control.md`).
+- **After a bounce** (`bounce.md`): there are no landing frames. Facing
+  doesn't change from the bounce frame to G, whatever is held. On G
+  itself a mode starts:
+  - Action and either direction held: running at step 1, facing
+    unchanged, even with the opposite direction held. The speed doesn't
+    matter. A press of Action on G counts as held on G; the roll it
+    starts follows on G + 1 (`roll-input.md`, "In the air");
+  - otherwise the opposite direction held: a turn starts on G;
+  - forward held: walking at step 1;
+  - no direction held: standing.
+- **Rolling off a ledge**: the roll goes on through the fall and the
+  landing (`rolling-off-ledges.md`, "When the roll ends"), and the mode
+  after it is as in "After a roll" above, with that file's D.
+
+From the frame after the mode starts, the rules above apply as usual.
+None of this changes speed: the target and the speed rule are as on any
+grounded or airborne frame, landing frames included.
+
+Example, falling from a steep face: running right off it, then Action
+alone held through the fall and the first landing frames, and Right
+added to Action from G + 4 (first case) or G + 5 (second case).
+
+| Frame | Right + Action from G + 4: `vx` (1/256) | Mode | Right + Action from G + 5: `vx` (1/256) | Mode |
+|---|---|---|---|---|
+| G | 113 | landing | 113 | landing |
+| G + 3 | 77 | landing | 77 | landing |
+| G + 4 | 163 | landing | 68 | landing |
+| G + 10 | 495 | landing | 452 | landing |
+| G + 11 | 529 | running starts | 491 | walking starts |
+
+Example, a bounce: Right and Action held in the air, facing right, `vx`
+768/256 on the frame before G, then Left and Action held from G.
+
+| Frame | `vx` (1/256) | Mode, facing |
+|---|---|---|
+| G | 576 | running starts, right |
+| G + 1, G + 2 | 408, 261 | running, right |
+| G + 3 | 133 | turn starts (step 1 ends with a turn check) |
+| G + 7 | −238 | turn, facing left |
+| G + 11 | −456 | walking starts (end of the turn, v < 512) |
+| G + 15 | −584 | running starts (run check at the end of step 2) |
 
 #### Example
 
@@ -380,13 +459,55 @@ turn start or facing:
   from the original; these check that M, and so K, follows from the
   jump.
 
+Falls and bounces ("After a fall or a bounce"), all by inputs with the
+lead character, each checked using only each frame's inputs and `vx`,
+0 mismatches in mode, turn start or facing:
+
+- 400 runs at a ledge without a face 176 px above flat floor: walking,
+  rolling or running off it, then random input (Right, Left or no
+  direction, Action on or off, segments of 1 to 20 frames) through the
+  fall and 60 frames after landing; half of the falls made shorter or
+  longer by moving the player up or down once partway through (falls of
+  1 to 45 frames). 59 164 frames in a mode, 12 534 of them airborne:
+  433 walk-offs (342 walking, 83 running, 6 in a turn, 2 standing), and
+  376 mode changes and 122 facing changes in the air.
+- At three ledges with a steep face at the top: 300 runs of the same
+  kind, and 2 580 scripted falls (walking or running off; Right, Left,
+  nothing, Action alone or with a direction in the air; then one input
+  from a frame between G − 12 and G + 11; some falls shortened or
+  lengthened as above; falls of 4 to 47 frames). Every landing frame was
+  checked in 1 250 of the scripted falls, and 622 falls in all reached
+  the mode start on G + 11 away from the face's foot and without a
+  roll. With Action and forward held on
+  G + 11, walking started at v up to 510 and running from v 516.
+- 240 runs of random input after bounces off a small walker, and 216
+  scripted bounces (Jump held 1, 12 or 30 frames; six inputs in the air
+  and one of six from G or G + 1): 453 mode starts on G (151 running,
+  70 turns, 102 walking, 130 standing).
+- 335 of the runs above rolled off a ledge; the 147 rolls that ended on
+  flat floor away from walls ended as "After a roll" says.
+
+Rules that fail on the same runs: no stride cycle in the air after a
+faceless walk-off (277 runs mismatch), 10 or 12 landing frames after a
+fall from a face (722 and 562 cases), no speed limit or a limit of 768
+for running on G + 11 (63 and 184), and a bounce pick in which the
+opposite direction always starts a turn (88).
+
 #### Not covered (`title-1` modes)
 
 - Which mode the player is in, and where the stride cycle starts, after
-  crouching, the Down + Action ground action, being hit, a swap, a
-  bounce off an enemy, a fall after walking off a ledge or a roll off a
-  ledge. Landings after jumps and the ends of rolls on flat ground are
-  in "After a landing" and "After a roll".
+  crouching, the Down + Action ground action, being hit or a swap.
+  Landings after jumps, falls and bounces, and the ends of rolls on flat
+  ground, are in "After a landing", "After a roll" and "After a fall or
+  a bounce".
+- After a fall from a steep face: landing on the face itself (the
+  player then goes on down it), landing at or next to its foot (the
+  rise there was seen to stop the player and change facing on landing
+  frames), speed next to the foot, a fall from a face that started
+  without walking or running down it, and Action presses made in the
+  air or on G.
+- Landing on uneven floor after any of these falls, and bounces off
+  anything other than a small walker (`walker-contact.md`).
 - Left and Right held together, Down, walls, carrying, and the second
   character. On 1-in-4 slopes this section applies unchanged
   (`slopes.md`, "Turning around on a slope"); other slopes are not
