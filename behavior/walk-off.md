@@ -28,7 +28,9 @@ without having jumped (the trace row carrying `leave_ground`).
 
 On each frame after L, in this order:
 
-1. `vy` increases by **0.4375** (7/16), but never above **8**.
+1. `vy` increases by **0.4375** (7/16), but never above **8**. (After a
+   jump press that counted but gave no jump, by g(f) while Jump stays
+   held; see "Jumping near the edge".)
 2. The player moves down by the new `vy`.
 3. The landing rule in `landing.md` applies unchanged: if the player is
    now less than 5 px above the floor, or at or below it, they land on
@@ -54,30 +56,60 @@ For n from 1 to 18 the total is 3.4375 + n/256 + 7n(n + 1)/32.
 
 ## Jumping near the edge
 
-This section is for ledges with a steep face at the top. At a ledge
-without a face, a press on L itself still starts a jump; see "Ledges
-without a face" below.
+This section is for ledges with a steep face at the top
+(`steep-faces.md`). It applies to both characters (for the second
+character's values see `second-character.md`, "Walking off a ledge").
+At a ledge without a face, see also "Ledges without a face" below; the
+rules here give the same results there.
 
-At a ledge with a face there is **no grace period** after leaving the
-ground. A jump press on frame L or on any later frame of the fall never
-starts a jump in the air. (A press made during the fall and held through landing can still
-start a jump on landing, as `jump-input.md` describes for any press made
-in the air.) In terms of `traces/METRICS.md`, `coyote_frames` is
-missing for every press on L or later.
+On the last few grounded frames before L the player may be carried down
+the face. A frame **starts on the face** if the frame before it ended
+with the player grounded on a face column, being carried down the face.
+The frame on which the player first moves onto the face doesn't start on
+it (`steep-faces.md`). L starts on the face if L − 1 ended on it.
 
-Before L, a press on a grounded frame P starts a jump on P + 1 as usual
-(`jump-input.md`), with one exception at the edge. All three ledges
-measured have a steep face at their top (`steep-faces.md`): on the last
-few grounded frames before L the player is carried down the face. A
-press on P starts **no jump** if frame P + 1 starts on a face column
-(the frames on which the player is being carried down the face). The
-press is then ignored as if it had been made in the air.
+**P** is the press frame (as in `jump-input.md`) and **T** the take-off
+frame (the row carrying `jump_start`).
 
-So the last frame on which a press still gives a jump is the frame
-before the first frame that starts on the face. The frame on which the
-player first moves onto the face doesn't start on it (`steep-faces.md`),
-so a press on the frame before that move still jumps, and the take-off
-frame is the frame of the move.
+1. A press on P **counts** only if frame P starts with the player
+   grounded and not on the face. A press on a frame that starts on the
+   face or in the air does nothing: no jump, and the fall is the same as
+   without it. (A press made during the fall and held through landing can
+   still start a jump on landing, as `jump-input.md` describes for any
+   press made in the air.)
+2. A press that counts sets the **jump gravity** g(f) for the frames
+   after it: the lighter jump gravity (`jump-arc.md`; 0.28125 for the
+   lead character) on frame f if Jump has been held on every frame from
+   P to f, and 0.4375 otherwise. It is used on every airborne frame from
+   P on, including L, whether or not the press gives a jump. On L the
+   player moves down 3 + g(L) (3.4375 with g = 0.4375) and `vy` ends at
+   0.00390625; on each later frame of a fall `vy` increases by g(f)
+   instead of 0.4375, up to 8 as in "Falling". Once Jump is released the
+   fall goes on with 0.4375.
+3. A press that counts starts a jump on T = P + 1, unless frame P + 1
+   starts on the face. On T the player first moves as they would without
+   the jump (a take-off on the frame that moves onto the face is carried
+   onto it; a take-off on L or later moves down as in rule 2), then `vy`
+   becomes the take-off value, and the jump follows `jump-arc.md` with
+   g(f) from rule 2. If P + 1 starts on the face there is no jump, but
+   rule 2 still applies to the fall.
+
+So when the player is carried down the face, there is **no grace
+period** after leaving the ground: L starts on the face, and no press on
+L or any later frame of the fall starts a jump in the air. In terms of
+`traces/METRICS.md`, `coyote_frames` is missing for every press on L or
+later. The last press that still gives a jump is on the frame before the
+first frame that starts on the face, and its take-off is on the frame
+that moves onto the face.
+
+At running speed the player can go over the face without any frame
+starting on it: L − 1 ends grounded and not on the face. Then the rules
+above give the same results as at a ledge without a face ("Jumping at a
+ledge without a face"): a press on L − 1 takes off on L, which moves down
+3 + g(L) before `vy` becomes the take-off value; a press on L counts and
+takes off on L + 1, which moves down 0.00390625 + g(L + 1) first; a
+press on L + 1 or later does nothing. `coyote_frames` is **1** for a
+press on L.
 
 Example, walking right at about 1.9 px per frame toward a ledge whose
 face the player moves onto on frame 21, so frames 22 and later start on
@@ -86,14 +118,37 @@ the face, and L = 23:
 | Press frame | Take-off | Result |
 |---|---|---|
 | 20 | 21 | Jump (take-off on the frame that moves onto the face) |
-| 21 | — | No jump (22 starts on the face) |
-| 22 | — | No jump |
-| 23 (L) or later | — | No jump in the air |
+| 21 | — | No jump (22 starts on the face). Counts: while Jump stays held, the fall from L uses the lighter gravity |
+| 22 | — | Does nothing (22 starts on the face) |
+| 23 (L) or later | — | Does nothing (no jump in the air) |
 
-Measured walking right off three ledges with presses from 3 frames
+Measured first walking right off three ledges with presses from 3 frames
 before L to 8 frames after it. On each ledge every press whose next
 frame started on the face gave no jump, and on the two ledges where the
-press before that was measured, it gave a jump.
+press before that was measured, it gave a jump. Then, with both
+characters, on the same three ledges (of different heights): walking
+and running right from 12 approach positions each, a press on every
+frame from L − 6 to L + 8, held 1, 3 or 20 frames, and every case
+without a press, 3,312 cases per character. Every frame from L to the
+landing (cases that rose onto a raised platform above one ledge were
+followed up to there) matched the rules above and "Falling", and the
+speed rule for `vx` (`air-control.md`) from L + 1 on:
+
+| | Lead character | Second character |
+|---|---|---|
+| Presses giving a jump before L | 891 | 1,026 |
+| Presses on L that counted and jumped (runs) | 21 | 36 |
+| Presses that counted but gave no jump | 195 | 180 |
+| Presses on a frame that started on the face | 405 | 270 |
+| Presses on a frame that started in the air | 1,728 | 1,728 |
+| Airborne frames checked | 82,664 | 75,398 |
+| Of them falling with the lighter gravity after a press with no jump | 1,111 | 1,038 |
+| Landings | 3,104 | 2,600 |
+| Mismatches | 0 | 0 |
+
+The rules as written before (an ignored press changes nothing, and no
+press on L ever jumps at a ledge with a face) gave 131 and 153
+mismatching cases on the same runs (lead and second character).
 
 ## Example
 
@@ -483,3 +538,7 @@ This list is for `title-1`; `title-2` has its own list above.
   character, Down or Action pressed near the end, and
   a turn in progress there. Rolling off a ledge is in
   `rolling-off-ledges.md`. The lead character swap.
+- At ledges with a steep face: walking or running left, approaches
+  slower than walking speed, Down or Action held near the edge, and
+  whether a press that counted but gave no jump can still start a jump
+  on landing.

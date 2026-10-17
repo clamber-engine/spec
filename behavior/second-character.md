@@ -7,8 +7,8 @@ How the **second character** (the one that joins later; see
 the character under control. It follows the same rules as the first
 character, with its own values. This file lists what differs and gives
 the second character's numbers; the rules themselves are in
-`ground-speed.md`, `jump-arc.md`, `air-control.md`, `landing.md`, and
-for rolls `roll-input.md` and `roll-speed.md`.
+`ground-speed.md`, `jump-arc.md`, `air-control.md`, `landing.md`,
+`walk-off.md`, and for rolls `roll-input.md` and `roll-speed.md`.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y`, `vx`
 and `vy` are as in a trace: right and down are positive, speeds in px per
@@ -252,6 +252,62 @@ Steering a slow roll: standing, Action alone on S, Right from S + 10.
 `vx` is 0.8203125 on S + 9 and 1.08984375 on S + 10 (toward 3), and
 2.6953125 on D.
 
+## Walking off a ledge
+
+Walking or running off a ledge with a steep face follows `walk-off.md`
+unchanged, with this character's take-off `vy` and lighter gravity:
+
+- The leave frame L and the fall ("The leave frame", "Falling"): on L
+  the player moves down 3.4375 and `vy` ends at 0.00390625; then `vy`
+  increases by 0.4375 per frame up to 8, and the landing rule of
+  `landing.md` applies.
+- Jumping near the edge ("Jumping near the edge"): which presses count,
+  which jump, and the jump gravity g(f) after a press that counted but
+  gave no jump, with g(f) = 0.3515625 (90/256) while Jump stays held.
+  A take-off sets `vy` to −8.3515625, and the jump then follows "Jump
+  arc" above.
+- `vx` in the fall from L + 1 on follows the speed rule toward ±2.25
+  (walking) or ±3.375 (Action held), as on the ground.
+
+Example, walking right at 2.25 px per frame (Right held): the player
+moves onto the face on L − 2, so L − 1 and L start on it. Height below
+the top of the ledge after each frame (negative is above it), Jump held
+20 frames from the press:
+
+| Frame | No press | Press on L − 4 | Press on L − 3 | Press on L − 2 | Press on L − 1 |
+|---|---|---|---|---|---|
+| L − 3 | 0 | 0 (T) | 0 | 0 | 0 |
+| L − 2 | 3 | −8 | 3 (T) | 3 | 3 |
+| L − 1 | 11 | −15.6484375 | −5 | 11 | 11 |
+| L | 14.4375 | −22.9453125 | −12.6484375 | 14.3515625 | 14.4375 |
+| L + 1 | 14.87890625 | −29.890625 | −19.9453125 | 14.70703125 | 14.87890625 |
+| L + 2 | 15.7578125 | −36.484375 | −26.890625 | 15.4140625 | 15.7578125 |
+
+The press on L − 2 counts (L − 2 doesn't start on the face) but gives no
+jump (L − 1 starts on it), so the fall uses the lighter gravity: `vy` is
+0.00390625 after L, 0.35546875 after L + 1 and 0.70703125 after L + 2.
+The press on L − 1 does nothing (L − 1 starts on the face).
+
+Running right at about 3.3 px per frame, the player goes over the face
+of the same kind of ledge without a frame starting on it, and presses
+on L − 1 and L still jump:
+
+| Frame | No press | Press on L − 2 | Press on L − 1 | Press on L |
+|---|---|---|---|---|
+| L − 1 | 0 | 0 (T) | 0 | 0 |
+| L | 3.4375 | −8 | 3.3515625 (T) | 3.3515625 |
+| L + 1 | 3.87890625 | −15.6484375 | −4.6484375 | 3.70703125 (T) |
+| L + 2 | 4.7578125 | −22.9453125 | −12.296875 | −4.29296875 |
+| L + 3 | 6.07421875 | −29.890625 | −19.59375 | −11.94140625 |
+
+Measured on three ledges with a steep face, the second character under
+control after a swap: walking and running right from 12 approach
+positions each, with presses from L − 6 to L + 8 held 1, 3 or 20 frames
+(3,312 cases). Every frame from L to the landing matched, 0 mismatches
+(evidence in `walk-off.md`, "Jumping near the edge"). With the first
+character's values instead (take-off `vy`, lighter gravity, walking and
+running speeds), all 3,312 cases mismatch; with the normal gravity in place of 0.3515625, 837 do.
+
 ## Not covered
 
 - Rolls on slopes, off ledges, into walls or enemies; steering during
@@ -260,9 +316,10 @@ Steering a slow roll: standing, Action alone on S, Right from S + 10.
   has no Down + Action ground action (`roll-input.md`).
 - What the first character does while following a rolling second
   character.
-- Falls that don't start with a jump (walking off a ledge), jumping on
-  landing from a press made in the air, and the landing lockout of
-  `jump-input.md` for this character.
+- Walking off a ledge without a face, and walking or running left off a
+  ledge. Jumping on landing from a press made in the air, and the
+  landing lockout of `jump-input.md` for this character, after jumps
+  and after falls.
 - Slopes, steep faces, walls, platforms from below, carrying, bouncing
   off enemies and being hurt, with the second character under control.
 - The swap itself (`S`) is in `swap.md`. The measurements above start
