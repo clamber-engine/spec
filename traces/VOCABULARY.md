@@ -19,6 +19,7 @@ rename or reuse a name, since existing traces refer to it.
 | `swap` | Switching lead character |
 | `ground_action` | Down + Action ground action in progress (`../behavior/ground-action.md`) |
 | `swim` | Swimming underwater: in open water, at a wall or on the floor (`../behavior/swimming.md`, "In a trace") |
+| `rope` | Holding a rope, from the frame of the catch up to the frame before jumping off or sliding off its end (`../behavior/ropes.md`, "In a trace") |
 
 ## Events
 
@@ -34,3 +35,5 @@ rename or reuse a name, since existing traces refer to it.
 | `hurt` | Took damage this frame |
 | `turn` | Facing direction changed this frame |
 | `stroke` | A swimming stroke began this frame (`../behavior/swimming.md`) |
+| `rope_catch` | Caught a rope this frame: the first `rope` frame (`../behavior/ropes.md`) |
+| `rope_slide_off` | Let go of a rope at its lower end this frame, without jumping (`../behavior/ropes.md`) |

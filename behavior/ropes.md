@@ -246,6 +246,81 @@ Action held, whether Action is held or not:
   doesn't change during this fall, whatever is held. It ends with a
   landing (`landing.md`); it can't catch a rope.
 
+## In a trace
+
+Every frame that **ends** with the player holding a rope has the state
+`rope` (`../traces/VOCABULARY.md`): the frame of the catch and every
+frame of "Holding a rope", turning frames and frames held down by the
+top of the view included. None of the other states appears on those
+frames.
+
+- `ground` is 0 and `vx` is 0 on every `rope` row.
+- On the catch frame `vx` and `vy` are 0, while `x` and `y` are where
+  the frame's move in the air took the player ("Catching a rope").
+- On the other `rope` rows, `vy` is the climbing speed after step 5,
+  down positive. `y` changes by `vy`, plus the whole px of step 6 on a
+  frame where the top of the view moves the player down. `x` takes the
+  rope's whole px (step 1) although `vx` is 0.
+
+Events on `rope` rows:
+
+| Event | Frames |
+|---|---|
+| `rope_catch` | The catch frame: the first `rope` row after a jump |
+| `turn` | Every frame on which facing changes: the 5th frame of a turn ("Turning"), so the 4th frame after the catch for a turn that starts on the catch frame |
+
+`land`, `leave_ground`, `jump_start` and `jump_release` never appear on
+a `rope` row. A trace that starts with the player already holding a rope
+has no `rope_catch` on its first row.
+
+The holding ends on one of two frames, neither of which is a `rope` row:
+
+- **Jumping off (frame P):** state `jump`, `ground` 0, event
+  `jump_start` (and `turn` if the jump changes facing). `vx` is 0 and
+  `vy` is the jump-off speed ("Jumping off"). From P + 1 on, the rows are
+  those of any jump: `jump` while `vy` is negative, `fall` from the first
+  frame on which it is 0 or more, `jump_release` on every frame on which
+  Jump is released while `vy` is still negative, and `land` on the
+  landing frame. A jump that catches a rope ends with a `rope_catch` row
+  instead.
+- **Sliding off the end:** the let-go frame has the state `fall`,
+  `ground` 0 and the event `rope_slide_off`; it is not a
+  `leave_ground`, since the player was not on the ground. `vx` is 0 and
+  `vy` is that frame's climbing speed (steps 4 to 7 still run on it).
+  The following rows are `fall` with no events (facing doesn't change)
+  up to the `land` row.
+
+### Example (synthetic)
+
+The player catches a rope on frame C while facing right, with no rope
+direction remembered, away from the top of the view. It holds Up on
+C + 1 and C + 2, presses Jump with Left on C + 3 (frame P) and holds
+nothing on C + 4. `y` is relative to the end of frame C; `x` is left
+out (it is the rope's up to P, then changes by `vx`):
+
+| Frame | Input | `y` | `vx` | `vy` | State | `ground` | Facing | Events |
+|---|---|---|---|---|---|---|---|---|
+| C | `.` | 0 | 0 | 0 | `rope` | 0 | R | `rope_catch` |
+| C + 1 | `U` | −0.1875 | 0 | −0.1875 | `rope` | 0 | R | |
+| C + 2 | `U` | −0.5390625 | 0 | −0.3515625 | `rope` | 0 | R | |
+| C + 3 | `LJ` | −6.6640625 | 0 | −6.125 | `jump` | 0 | L | `jump_start`, `turn` |
+| C + 4 | `.` | −12.3515625 | 0 | −5.6875 | `jump` | 0 | L | `jump_release` |
+
+On C + 1 the climbing step from 0 toward +384/256 is 48/256, and on
+C + 2 it is (384 − 48) ÷ 8 = 42/256 more. On C + 3 the speeds come from
+"Jumping off" (no Up or Down held on P), on C + 4 gravity is 0.4375
+because Jump was not held on every frame since P (`jump-arc.md`), and
+`vx` stays 0 with no direction held (`air-control.md`).
+
+Checked on the trace rows of 3 000 runs of random input on the two
+ropes measured (1 200 starting on a rope, 1 800 on the ground near
+them), recorded in the original: every row matched these rules (456 398
+rows, 62 450 `rope` rows of which 580 were held down by the top of the
+view, 702 catches, 1 469 jumps off, 431 slides off the end, 58 809 rows
+in the air after a rope up to landing or the next catch, 2 641
+`jump_release`). The example's rows were also reproduced in the
+original after 57 real catches.
+
 ## Not covered
 
 - The second character holding a rope, and the follower on ropes.
