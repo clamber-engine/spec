@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.118.0
+
+Extra-life items.
+
+Part of clamber-engine/spec#19 (extra lives). The issue stays open for
+the parts not covered yet.
+
+- New `behavior/extra-lives.md` (`title-1`): four kinds of extra-life
+  item, giving 1, 2 or 3 lives, that either stay where they are placed
+  or rise once they appear (speed growing by 1/256 px per frame each
+  frame, exact), and their removal at the level's top. Pickup ranges by
+  state and facing, the lives added on the pickup frame, the lives
+  display and its timing, and removal once the entry leaves the window,
+  with no coming back. Worked example, checks and Not covered.
+- `formats/placements.md`: the new kind names, the first level's
+  updated counts, the room's `extra-life-1`, and a pointer for how the
+  items are removed.
+- `formats/locators.md`: four kind fingerprint rows.
+- `behavior/count-display.md`: pointer to the new lives display.
+
 ## spec-v0.117.0
 
 Default controls per title, a new neutral input `T` (Tandem), and
