@@ -4,7 +4,9 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
-Spec#20 (`title-1` music), in part.
+## spec-v0.79.0
+
+New spec (`title-1` music). Answers `spec` issue #20 in part.
 
 - `formats/voices.md` (new): a voice's level (0 to 2047) on each audio
   output: a count shared by all voices; rates 1 to 31 with their periods
