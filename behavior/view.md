@@ -323,7 +323,7 @@ with the previous frame's `x`, 18,323.
   checked frame). Where the view starts when a level begins.
 - Speeds above 8 px per frame. In the measured runs `S` stayed far
   below this.
-- The view's vertical motion (`view-vertical.md` is `title-1` only).
+- The view's vertical motion: see `view-vertical.md`, "In `title-2`".
 - While the player is hurt or knocked out, carries or throws an object,
   or anything else that freezes the player for longer. In these, the
   view was seen to stop for other numbers of frames.
