@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.84.0
+
+Coverage: the medium walker on foot, and the fidget pose (`title-1`).
+
+Answers spec#33 (the medium walker's contact with a player on foot).
+
+- `behavior/walker-contact.md`: the medium walker joins the small and
+  large walkers, with its own hurt and bounce ranges for I (both facings,
+  both headings) and its vertical reach (early jump, later jump and
+  bounce). The fidget pose (as in `ball-contact.md`) shifts the hurt
+  range, measured for small and medium walkers. A worked example, the
+  evidence, and an updated "Not covered" list (the medium walker on
+  slopes, the large walker against the fidget pose).
+- `behavior/riding-walkers.md`: the medium walker on foot is no longer
+  listed as not covered.
+- `formats/placements.md`: `medium-walker` now points to
+  `walker-contact.md`.
+
 ## spec-v0.83.0
 
 New specs (the echo, hidden objects) and three new object kinds.
