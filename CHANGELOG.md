@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.78.0
+
 Coverage (`title-1`). Answers no open `spec` issue.
 
 - `behavior/ground-speed.md`: new sections "After a landing" and "After
