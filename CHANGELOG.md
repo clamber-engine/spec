@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.123.0
+
+When exits, the entrance and the end marker are there.
+
+Part of clamber-engine/spec#17 (the first level's layout). The issue
+stays open for the parts not covered yet.
+
+- `formats/placements.md`, "When placed objects are removed" (`title-1`):
+  exits also need the vertical window, appearing and being removed by
+  it (measured limits, with a narrow band near the top edge under Not
+  covered), except before the characters come out of the entrance; the
+  entrance is removed on frame T and doesn't come back while the level
+  goes on; whether the end marker is there outside the window makes no
+  difference to play. Class 2: moving references between class 1 and
+  class 2 entries of the first level changed nothing measured. New
+  checks, including the exit's height, and the Not covered list
+  updated.
+
 ## spec-v0.122.0
 
 The stiff tyre.
