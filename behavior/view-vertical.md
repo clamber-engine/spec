@@ -285,14 +285,19 @@ band.
 On the first level, the vertical aim also sways by `sway` px, a whole
 number from 0 to 15. It uses the same steps as the horizontal sway
 (`view.md`, "The aim (`title-2`)"): up from 0 to 15, 15 a second time,
-down to 0, 0 a second time, 32 steps in all. The two sways count the
-same logic frames, but the vertical one moves 1.5 times as fast.
-If `n` is the count of logic frames that gives the horizontal sway
-step ⌊`n` / 8⌋ mod 32, the vertical sway is at step
+down to 0, 0 a second time, 32 steps in all. Like the horizontal sway,
+its steps follow logic frames, but each step lasts 5 or 6 logic frames
+instead of 8: every 16 logic frames it goes through 3 steps, lasting 6,
+5 and 5 frames in that order. So it goes through 3 cycles while the
+horizontal sway goes through 2, and the two together repeat every 512
+logic frames.
 
-    ⌊(m + 31) / 8⌋ mod 32,  where m = (n + ⌊n / 2⌋) mod 65536
+They line up like this. Let `F` be a frame on which the horizontal sway
+becomes 1 on its way up. The vertical sway moved to its current step on
+`F` − 2 (a 6-frame step) and moves to the next step on `F` + 4, `F` + 9,
+`F` + 14, `F` + 20, `F` + 25 and so on. On `F` it is 5 on its way up in
+one horizontal cycle and 10 on its way down in the next, alternating.
 
-and `n` itself counts from 0 to 65535 and then starts again from 0.
 Off the first level, `sway` is 0 (not measured; see "Not covered in
 `title-2`").
 
@@ -496,6 +501,9 @@ them with a vertical move.
 - Levels other than the first, including whether they sway and other
   ways of following the player vertically.
 - Where the sway's cycle starts (as for the horizontal sway).
+- Whether the two sways keep this alignment after long play: it was
+  seen at every point of the 512-frame pattern, but only within the
+  first few thousand logic frames of play.
 - Near the top and bottom of the view's range: the view stayed at least
   16 px inside it on every checked frame. Where the level's limits are,
   how they change from one part of the level to the next, and which
