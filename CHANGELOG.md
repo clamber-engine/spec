@@ -2,6 +2,17 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.85.0
+
+Coverage: the large walker against the fidget pose (`title-1`).
+
+Answers no `spec` issue (closes an item from the "Not covered" list).
+
+- `behavior/walker-contact.md`: the fidget pose shifts the large
+  walker's hurt range the same way as for the small and medium walkers
+  (both facings, both headings). A worked example for the large walker,
+  the evidence, and the item dropped from "Not covered".
+
 ## spec-v0.84.0
 
 Coverage: the medium walker on foot, and the fidget pose (`title-1`).
