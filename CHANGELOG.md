@@ -211,29 +211,6 @@ and a correction (`title-2` steep faces). Answers `spec` issue #30.
   or less below.
 - `behavior/slopes.md`, "In `title-2`": point to the new rule.
 
-Coverage (`title-2`). Answers no open `spec` issue.
-
-- `formats/nibble-packing.md` (new): the packing `title-2` uses for its
-  level maps: a 39-byte header (run bytes, single bytes, a pair, 16
-  stored pairs) and a stream of nibbles read high first, with 16
-  commands (literals, runs, the header's bytes and pairs, copies from
-  four kinds of distance, repeats of the last byte or two); worked
-  example; checked on every block the game unpacks while its 48 level
-  entries load. Vectors: `vectors/nibble-packing/`.
-- `formats/level-ground.md`: new section "In `title-2`": positions (the
-  grid starts at level x 256 and line 1 is level y 257), the map (packed
-  map columns; the grid is a run of them), the type table (16-bit half
-  words; bit 14 passable from below, bit 15 flipped), shapes 0 to 62 as
-  in `title-1`, the ground below (feet at level y 256 or above look in
-  band 15), example, checks against the game's own ground lookups, the
-  first level's data and "Not covered in `title-2`". Vectors:
-  `vectors/level-ground/title-2/`.
-- `formats/rom-image.md`: `title-2`'s image added to the supported
-  releases.
-- `formats/locators.md`: new section for `title-2` with the first
-  level's packed map and type table.
-- `formats/README.md`: `nibble-packing.md` listed.
-
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.
