@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.92.0
+
+Coverage: a `title-2` reference trace for the swim-strokes scenario.
+
+Answers no `spec` issue.
+
+- `traces/reference/title-2/swim-strokes.trace` (new): 160 logic
+  frames of open-water swimming following the `title-2` rules.
+- `behavior/swimming.md`: describes the `title-2` trace in "In a trace
+  (`title-2`)", points to it next to the `title-1` example, and removes
+  it from "Not covered in `title-2`".
+- `TITLES.md`: the `title-2` row lists `swim-strokes`.
+
 ## spec-v0.91.0
 
 Coverage: open-water swimming in `title-2`.
