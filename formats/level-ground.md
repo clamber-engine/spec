@@ -589,7 +589,8 @@ floor 68 px below it rose through it and landed on it. With bit 14
 cleared in that platform's types, in a copy of the image, the same jump
 was stopped below the platform and the player fell back to the floor.
 Where exactly a rising player is stopped by ground that isn't passable
-from below is not covered.
+from below is not covered, except for a swimming player
+(`../behavior/swimming.md`, "Walls, floors and ceilings (`title-2`)").
 
 ### The ground below a point (`title-2`)
 
