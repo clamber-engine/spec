@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.94.0
+
+A grounded player under a low platform (`title-1`).
+
+Answers `spec` #14.
+
+- `behavior/platforms-from-below.md`: new section "Walking under a
+  platform", with "Falling through the floor". For a grounded player a
+  column's floor is the ground below at the feet line. A platform only
+  counts when the floor is the top line of its band; then a platform
+  column whose top is 8 px up or less is blocked (face column) or
+  stepped onto, and one higher than that makes the player fall through
+  the floor, with a separate table for rolls in their first 9 frames.
+  Also the can't-start rule, trace rows, a synthetic example, evidence
+  and an updated "Not covered".
+- `behavior/steep-faces.md`: a single 4 px step is not a face; columns
+  4 or 8 px higher that aren't face columns are followed; "can't start"
+  applies from 8 px (6 and 7 px not measured); the platform exception
+  to "blocked at any height".
+
 ## spec-v0.93.0
 
 Coverage: the view's vertical motion in `title-2`.
