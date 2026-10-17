@@ -228,6 +228,86 @@ only if the turn check changed nothing.
   check started no turn and didn't make the player stand. Before step 1
   of the run has ended, the player keeps running.
 
+#### After a landing
+
+Measured for landings after jumps on flat ground. With L the landing
+frame (the frame carrying `land`; `landing.md`), the player is in none
+of the three modes on frames L to L + 6, the **landing frames**. The
+speed rule applies as usual on them.
+
+- **Facing** follows the input on every landing frame, as in the air
+  (`air-control.md`, "Facing"): Left or Right held alone makes it that
+  direction on that frame, and the frame carries the `turn` event if
+  facing changed. No 8-frame turn starts on a landing frame.
+- **On L + 1**, if Action and exactly one of Left or Right are held and
+  no roll starts on L + 1 (`roll-input.md`), running starts on L + 1 at
+  step 1 (counter 256), in the held direction. In practice this is
+  Action held from the air through the landing, as when landing from a
+  running jump. Speed doesn't matter. No other landing frame can start
+  a mode.
+- **On L + 7**, if no mode has started: with Action and exactly one
+  direction held, running starts at step 1; with one direction held and
+  not Action, walking starts at step 1; otherwise the player is
+  standing. Facing on L + 7 follows the input as above, so the held
+  direction is always forward. The run needs no minimum speed here.
+- From the frame after the mode starts, the rules above apply as usual.
+
+A roll (`roll-input.md`) or a jump (`jump-input.md`) can start on a
+landing frame as those files say; a jump starts on E = L + 3 at the
+earliest. An Action press on L + 1 or a later landing frame starts a
+roll, not a run.
+
+**Variation in the original.** How long the landing frames last
+depends on the same hidden timing as the landing lockout of
+`jump-input.md`, and it can't be predicted from inputs, positions,
+velocities or trace events. In the original:
+
+- running sometimes starts on L rather than L + 1;
+- the landing frames sometimes run to L + 8 or L + 9, so the mode starts
+  on L + 9 or L + 10 rather than L + 7. On those landings running, if
+  Action and a direction are held, starts on L.
+
+This spec defines the case above, the one seen most often: running on
+L + 1, the mode on L + 7. An engine implements exactly that. In standing
+jumps from flat ground measured, landings with the mode on L + 7 had
+E = L + 3, and those with the mode on L + 9 or L + 10 had E = L + 2.
+Reference comparisons should allow −1 frame on a run starting just
+after a landing, +3 frames on walking or standing starting after a
+landing, and the same on the turn checks that follow.
+
+Example: a standing jump facing right, Jump held for 20 frames, nothing
+else held in the air. In the first case Left is held from L + 2; in the
+second Action is held from take-off and Right is added from L + 3.
+
+| Frame | Left from L + 2: `vx` (1/256), facing | Mode, counter | Action, Right from L + 3: `vx` (1/256) | Mode, counter |
+|---|---|---|---|---|
+| L, L + 1 | 0, right | landing | 0 | landing |
+| L + 2 | −64, left (`turn`) | landing | 0 | landing |
+| L + 3 to L + 6 | −120, −169, −211, −248 | landing | 96, 180, 253, 317 | landing |
+| L + 7 | −281 | walking starts, 256 | 373 | running starts, 256 |
+| L + 8 | −309 | walking, 160 | 422 | running, 160 |
+| L + 9 | −334 | walking, 64 | 465 | running, 59 |
+| L + 10 | −356 | walking, 219 (step 1 ends) | 502 | running, 207 (step 1 ends) |
+
+With Right and Action both held from take-off, running starts on L + 1
+instead.
+
+#### After a roll
+
+With D the frame after a roll's last frame, as in `roll-input.md` and
+`roll-speed.md`:
+
+- **After a stop** (D to D + 16 in the stop), the player is standing on
+  D + 17, whatever is held: holding a direction on D + 17 starts neither
+  walking nor a turn on that frame. From D + 18 the standing rules apply
+  (unless a roll starts on D + 17, `roll-input.md`).
+- **After carrying on into running**, walking (not running) starts on
+  D + 3, the `roll_end` frame, at step 1 (counter 256), whatever is
+  held, even the opposite direction. From D + 4 the walking rules apply,
+  so with Action and a direction held, running starts at the first run
+  check (the end of step 2), and with the opposite direction held a turn
+  starts at the first turn check (the end of step 1).
+
 #### Example
 
 From standing still, Right held from frame 0 (speeds as in "Worked
@@ -274,12 +354,36 @@ landing, using only each frame's inputs and `vx`.
   frame 1, 2, … 129 on: the turn starts on the frame these rules give
   with `vx` from the speed rule, in all 129 cases.
 
+Landings and roll endings ("After a landing", "After a roll"), all by
+inputs with the lead character on flat ground, 0 mismatches in mode,
+turn start or facing:
+
+- 315 runs of random input (Right, Left or no direction, Action on or
+  off, Jump held for the first frames of a segment, segments of 1 to 40
+  frames), 120 168 frames, each checked from its first standing frame
+  using only each frame's inputs and `vx`, with the landing variant
+  (above) taken from the original for each landing. 159 of them, with
+  other jump and Action rates, were checked only after the rules were
+  fixed. They hold 2 916 landings that end in a mode (1 092 running,
+  924 walking, 900 standing), 528 stops and 570 roll carry-ons; among
+  the landings ending without a jump or roll, the mode started on
+  L + 7 in 1 531, L + 9 in 201 and L + 10 in 244, and with Action and a
+  direction held through the landing running started on L + 1 in 777
+  and on L in 425.
+- 2 812 scripted standing jumps (Jump held 1 to 30 frames; nothing,
+  Right, Action, or Action and Right held in the air; then nothing,
+  Right, Left, Action, Action with either direction, or a one-frame
+  Action press, from 3 frames before L to L + 10), each checked to
+  L + 24 or until a roll started. Running on L + 1 was seen from `vx`
+  17/256, and on L + 7 from 96/256.
+
 #### Not covered (`title-1` modes)
 
 - Which mode the player is in, and where the stride cycle starts, after
-  a landing, a roll or the stop after it, crouching, the Down + Action
-  ground action, being hit or a swap. This includes whether a turn can
-  start on the frames just after a landing.
+  crouching, the Down + Action ground action, being hit, a swap, a
+  bounce off an enemy, a fall after walking off a ledge or a roll off a
+  ledge. Landings after jumps and the ends of rolls on flat ground are
+  in "After a landing" and "After a roll".
 - Left and Right held together, Down, walls, carrying, and the second
   character. On 1-in-4 slopes this section applies unchanged
   (`slopes.md`, "Turning around on a slope"); other slopes are not
@@ -490,8 +594,8 @@ All runs were by inputs, with the lead character on flat ground.
 
 This list is for `title-1`; `title-2` has its own list above.
 
-- When the walking and running modes start after landings, rolls and
-  other actions (see "Not covered (`title-1` modes)").
+- When the walking and running modes start after actions other than
+  jumps and rolls (see "Not covered (`title-1` modes)").
 - Air control: horizontal speed while jumping or falling, and on the
   landing frame.
 - Moving platforms, and the frame before walking off a ledge

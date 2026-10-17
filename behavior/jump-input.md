@@ -35,7 +35,9 @@ and airtime differ, and so do identical jumps landing on ground of
 different shape.
 
 The spec therefore defines **E = L + 3**, the value seen most often in
-measurements. An engine implements exactly this.
+measurements. An engine implements exactly this. The same timing
+decides when walking, running or standing starts after a landing
+(`ground-speed.md`, "After a landing").
 
 Reference comparisons: in the original, a `jump_start` that follows a
 `land` without an earlier chance to jump may come one frame earlier or
