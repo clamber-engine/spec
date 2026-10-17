@@ -58,7 +58,9 @@ Only the hold from B + 3 matters:
   gravity, and doesn't start a jump.
 
 Horizontally, the bounce doesn't change `vx`; from B + 3 on it changes
-as on any other airborne frame.
+as on any other airborne frame. Facing doesn't change from B to the
+landing, whatever is held (on the frozen frames too). The mode after
+landing is in `ground-speed.md` ("After a fall or a bounce").
 
 While airborne after the bounce the player's trace state is `bounce`,
 from B up to the landing frame.
@@ -277,7 +279,6 @@ This list is for `title-1`; `title-2` has its own list above.
 
 - Which contacts with other kinds of enemies cause a bounce (walkers:
   `walker-contact.md`).
-- Facing during the frozen frames.
 - Bouncing off other kinds of objects (the animal crate is in
   `animal-crate.md`, hidden objects landed on after a long fall in
   `hidden-objects.md`), bounces from a roll, bouncing again before
