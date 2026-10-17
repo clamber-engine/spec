@@ -652,7 +652,9 @@ joins the last two at level x 60, level y 324. The view starts at
 This section is about the objects placed by the first level's list (a
 list without sections) while they are still as they appeared: not
 taken, picked up, thrown, broken, opened or set off. What happens to an
-object after that is in its kind's behavior file. Walkers, stingers,
+object after that is in its kind's behavior file, except for a `barrel`
+or `holder` that was picked up and put down again: see "Objects put down
+elsewhere" below. Walkers, stingers,
 critters, throwers, placed balls and extra-life items have their own
 rules (`../behavior/walker-view.md`, `../behavior/stinger.md`,
 `../behavior/critter.md`, `../behavior/thrower.md`,
@@ -813,6 +815,83 @@ object was there exactly when the rules above say.
   after the end marker had gone, and in both it appeared again at the
   same view position as the first time.
 
+### Objects put down elsewhere
+
+A `barrel` or `holder` can be picked up, carried and put down
+(`../behavior/carrying.md`, "Putting down"), so it can be some way from
+its entry. Such an object is removed by the first row of the table,
+with the object's **own** position in the margin and the **entry's**
+in the window: it is removed on the first frame on which
+
+- its entry isn't in the window (−31 ≤ entry's `x` − `V` ≤ 288 doesn't
+  hold), and
+- its own level x, rounded down to a whole pixel, minus `V` is −128 or
+  less or 385 or more, or it isn't in the vertical window (its own `y`,
+  as above).
+
+An object that hasn't been moved is at its entry's `x`, so this is the
+same rule as above. For one that has been moved:
+
+- If its entry leaves the window first, it stays until its own `x` −
+  `V` reaches −128 or 385. It can stay long after an unmoved object at
+  its entry would have gone, with the entry far outside the window.
+- If its own position reaches the margin first, it stays until its
+  entry leaves the window, and is removed on that frame.
+- While it is there, its entry places nothing else, even with the entry
+  in the window.
+- Once it has been removed, it **comes back at its entry**, not where it
+  was put down: it appears as in "When placed objects appear", on the
+  first frame on which its entry is in the window, at the entry's
+  position, as an object that has not been moved. From then on it is
+  removed and comes back as above.
+
+**Example (synthetic).** A `barrel` entry at `x` = 1000, with the barrel
+put down on the floor at `x` = 800 and `U` such that it stays in the
+vertical window:
+
+| The view | `V` at the start of the frame | entry's `x` − `V` | own `x` − `V` | The barrel |
+|---|---|---|---|---|
+| moving right | 928 | 72 | −128 | there (the entry is in the window) |
+| moving right | 1031 | −31 | −231 | there |
+| moving right | 1032 | −32 | −232 | removed |
+| moving left again | 712 | 288 | | appears at `x` = 1000 |
+
+Had the view moved left instead after the put-down, the barrel would
+have stayed while `V` went down past 711 (entry's `x` − `V` = 289) and
+been removed on the first frame with `V` = 415 or less (own `x` − `V` ≥
+385). Put down at `x` = 1150 instead, with the view moving left, it
+would stay while its own `x` − `V` went past 385 (`V` ≤ 765), and be
+removed on the first frame with `V` = 711 or less, when its entry
+leaves the window.
+
+**Checks.** In the first level, with a `holder` and a `barrel` (the
+first level's own entries), and walkers near them given a `sign`'s
+reference in copies of the image so that nothing hit the lead: the lead
+started carrying the object near its entry, carried it left or right
+for 15 to 95 frames, put it down, and then walked left and right (6 legs
+of 80 to 600 frames each, random jumps, never Action) with random
+seeds: 200 runs with each object (the barrel's runs with the
+thrower near it removed by writing to memory, a research-only change).
+The objects were put down from 304 px left to 127 px right of their
+entry, on flat floor and on slopes. 813 341 frames: on every frame each
+object was there exactly when the rules above say, and every
+appearance after a removal was at the entry's position.
+
+- 394 of the 1 545 removals were of objects that had been moved. 226
+  of them came on the first frame on which the entry left the window
+  (entry's `x` − `V` −32 to −34, or 289 or 290), with the own position
+  already beyond the margin; 161 on the first frame on which the own
+  position reached the margin (own `x` − `V` −128 or −129, or 385 to
+  387), with the entry already outside the window; and 7 on a frame on
+  which both happened.
+- Testing the entry's `x` in the margin instead (the rule for unmoved
+  objects) gave a different answer on 51 150 frames, in all 400 runs.
+- None of these removals came from the vertical window.
+- In a separate run with the holder put down 127 px right of its entry,
+  the view went right until the entry's `x` − `V` was −216, with the
+  holder still there, and came back: no second holder appeared at the
+  entry while the first one was there.
+
 ## Example
 
 A list with four entries (the trailing entry of zeros not shown), with
@@ -874,8 +953,11 @@ on each frame: see its `README.md`.
   the dimming), what a class 8 entry's `h` and reference mean, and
   classes other than 1, 2, 5, 8, 9 and 15.
 - When objects other than walkers are removed in lists with sections.
-- What a removed object that had been moved does (other than thrown
-  objects, `../behavior/thrown-objects.md`).
+- What a removed object that had been moved does, other than thrown
+  objects (`../behavior/thrown-objects.md`) and a `barrel` or `holder`
+  put down elsewhere ("Objects put down elsewhere"): for example an
+  object carried while its entry and the object are far apart, and
+  objects put down in lists with sections.
 - Entries far above or below the view in lists without sections.
 - How many objects can be there ("How many objects can be there"):
   which short-lived objects take pictures, and for how long (in the
