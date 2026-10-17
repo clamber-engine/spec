@@ -2,6 +2,30 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.125.0
+
+How many objects can be there, and the wall-return entrance.
+
+Part of clamber-engine/spec#17 (the first level's layout) and part of
+clamber-engine/spec#19 (the first level's entities). Both issues stay
+open for the parts not covered yet.
+
+- `formats/placements.md`: new section "How many objects can be there":
+  the limits on places and pictures that can keep an entry that comes
+  up from appearing, the order in which waiting entries are taken, when
+  a freed place or picture can be used again, a first-level note, a
+  synthetic example and checks. The matching Not covered item is
+  narrowed, and the "Stored order" checks point to the new section.
+- `behavior/wall-exits.md`: new section "Coming back from the first
+  wall exit's area": the lead starts hidden at the wall-return record's
+  point and is thrown out of the `wall-return-entrance` entry: the
+  burst, the throw, steering from its seventh frame, facing, the fade,
+  the entry in other cases, checks and new Not covered items.
+- `formats/level-start.md`: the wall-return record.
+  `formats/placements.md`: kind row `wall-return-entrance`, the first
+  level's counts and the check. `formats/locators.md`: the wall-return
+  record row and one kind fingerprint row.
+
 ## spec-v0.124.0
 
 Noise, and the launch barrel.
