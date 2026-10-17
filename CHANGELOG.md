@@ -2,6 +2,32 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.124.0
+
+Noise, and the launch barrel.
+
+Part of clamber-engine/spec#20 (sound for the first level) and part of
+clamber-engine/spec#19 (the first level's entities). Both issues stay
+open for the parts not covered yet.
+
+- `formats/voice-output.md` (`title-1`): new section "Noise": the
+  shared noise register and noise rate, how the register steps (with
+  the same timing as envelope steps), the noise value, and a voice with
+  noise on using it in place of its blend, with everything else
+  unchanged. Worked example, "When handed values count" extended,
+  measurements and new Not covered items. `formats/echo.md` and
+  `formats/README.md` updated to point to it.
+- `vectors/noise/` (new): synthetic cases and expected outputs, with a
+  new `first_noise` column and noise events.
+- `behavior/launch-barrel.md` (new, `title-1`): kind
+  `left-launch-barrel`, a barrel that catches the player, holds them
+  and shoots them to the left: catch ranges per state, the catch frame,
+  the hold, the shot, the flight until landing, when it is ready again,
+  an example, checks and Not covered.
+- `formats/placements.md`: kind row `left-launch-barrel`, the first
+  level's counts and the check. `formats/locators.md`: one kind
+  fingerprint row.
+
 ## spec-v0.123.0
 
 When exits, the entrance and the end marker are there.
