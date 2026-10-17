@@ -205,6 +205,7 @@ members are looked up by their own references.
 | `tyre` | A tyre that throws the player up | `tyre.md` |
 | `stiff-tyre` | A tyre that throws the player up and never squashes | `tyre.md` ("The stiff tyre") |
 | `left-launch-barrel` | A barrel that catches the player and shoots them to the left | `launch-barrel.md` |
+| `down-launch-barrel` | A barrel that catches the player, shoots them straight down and breaks | `launch-barrel.md` ("The barrel that shoots down") |
 | `sign` | A sign (scenery that nothing touches) | `signs.md` |
 | `critter` | A small flying creature (scenery that nothing touches) | `critter.md` |
 | `extra-life-1`, `extra-life-3` | An extra-life item that stays where it is placed, giving 1 or 3 lives | `extra-lives.md` |
@@ -229,8 +230,8 @@ its own reference, and placed a tyre there.
 
 ### In the first level
 
-35 of the first level's 37 references have a kind fingerprint row. They
-are used by 65 of its entries (counting group members): 5 small
+36 of the first level's 37 references have a kind fingerprint row. They
+are used by 66 of its entries (counting group members): 5 small
 walkers (all three group members among them), 6 medium walkers, 3 large
 walkers, the
 thrower, a ball, 4 bunches, the four letters (one each), a figure, a barrel, 2
@@ -239,7 +240,8 @@ entrance, the wall-return entrance, 2 exits, 2 wall exits (two references, one e
 15 hidden bunches, a hidden barrel, a hidden metal barrel, 2 signs
 (two references, one sign each), 2 critters (one reference) and 5
 extra-life items (two `rising-extra-life-1`, one `rising-extra-life-2`
-and two `extra-life-3`), a stiff tyre and a launch barrel. The
+and two `extra-life-3`), a stiff tyre and two launch barrels (one of
+each kind). The
 other references place things that have no behavior file yet (for
 example other scenery), or that
 were not seen.
@@ -280,7 +282,12 @@ says. The `left-launch-barrel` reference, given to a class 1 entry near
 the level's start, placed a launch barrel there that caught the player
 and shot them to the left as `../behavior/launch-barrel.md` says. The
 `wall-return-entrance` row was checked as in `../behavior/wall-exits.md`
-("Coming back from the first wall exit's area").
+("Coming back from the first wall exit's area"). The `down-launch-barrel`
+reference, given to a class 1 entry near the level's start, placed a
+launch barrel there that caught the player, shot them down and broke as
+`../behavior/launch-barrel.md` says; its own entry was checked as in
+`../behavior/wall-exits.md` ("Coming back from the second wall exit's
+area").
 
 ### In the first level's room
 
