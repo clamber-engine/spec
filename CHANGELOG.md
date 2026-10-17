@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.122.0
+
+The stiff tyre.
+
+Part of clamber-engine/spec#19 (the first level's entities). The issue
+stays open for the parts not covered yet.
+
+- `behavior/tyre.md` (`title-1`): new section "The stiff tyre", kind
+  `stiff-tyre`, a tyre that never squashes or wobbles. Its top stays
+  fixed, with its own touch ranges by facing and its own throw range;
+  throws with no input are always caught a frame later than on the
+  other tyre, so every cycle is 41 frames. Everything else as for the
+  tyre. Measurements and two new Not covered items.
+- `formats/placements.md`: the new kind name, the first level's updated
+  counts, and the swap check.
+- `formats/locators.md`: one kind fingerprint row.
+
 ## spec-v0.121.0
 
 Exits in walls.
