@@ -1,11 +1,12 @@
 # The view: vertical motion
 
-Titles: `title-1`
+Titles: `title-1`, `title-2`
 
 How the view (`view.md`) moves up and down to follow the player: where
 it aims, the level's limits on it, how it eases toward its target, and
 how it shakes during the ground action. `view.md` covers the horizontal
-motion; the two are independent.
+motion; the two are independent. Everything outside the section
+"In `title-2`" is for `title-1`.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `vy` and
 `ground` are the player's values for the frame, as in a trace, taken
@@ -232,7 +233,286 @@ settled at `F` = 300 (`V` = 140.5, `Q` = 0). `P` is from 64 to 207 and
 | 20 | 460 | 300.5 | 190.61328125 | 21824 |
 | 30 | 540 | 380.5 | 255.71875 | 29845 |
 
+## In `title-2`
+
+Everything in this section was measured on `title-2` only, with the
+lead character alone, on the first level. It was measured away from the
+top and bottom of the view's range, while the player stood, walked, ran,
+turned, jumped, fell, rolled, walked and rolled off ledges, defeated
+walkers by rolling and bounced off them. The vertical motion works like
+`title-2`'s horizontal motion (`view.md`, "In `title-2`"): the view
+aims at a point, and its speed changes by limited amounts toward it.
+What differs is where it aims, which depends on the ground below the
+player, and how quickly it eases, which depends on where the player's
+feet are in the picture.
+
+Positions are level y in px, growing downward, kept to 1/256 px, as in
+`../formats/level-ground.md` ("Positions (`title-2`)"). `x` and `y` are
+the player's values for the frame, as in a trace, taken after the
+player has moved on that frame. `y` is the level y of the player's
+feet. Speeds are in 1/256 px per frame. ⌊ ⌋ rounds down (toward −∞).
+
+### The view's state (`title-2`)
+
+The view is 224 px tall. Vertically it has:
+
+- a **position** `V`: the level y of the top row of the picture, kept
+  to 1/256 px. The picture's top row is at ⌊`V`⌋. The ground layer
+  moves exactly with it.
+- a **speed** `S`, a whole number of 1/256 px per frame, signed.
+- the **aim** of the previous frame, `P`.
+- the **ground aim** `E`, a whole number of px: ⌊aim⌋ on the last frame
+  on which the ground below was in reach (see the next sections).
+
+### The ground below (`title-2`)
+
+Each frame, the **ground below** is found as in
+`../formats/level-ground.md` ("The ground below a point (`title-2`)"),
+at the player's ⌊`x`⌋ and ⌊`y`⌋. It is **in reach** if a surface was
+found and it is at or below the feet (its level y `G` ≥ ⌊`y`⌋). It is
+out of reach if there is no ground, if the ground below is above the
+level, or if it is above the feet (the feet are inside ground that is
+passable from below). While the player stands on the ground, `G` =
+⌊`y`⌋.
+
+Because the ground below is found at most two bands under the feet's
+band, a jump straight up keeps the take-off ground in reach until the
+feet are 64 to 95 px above it, depending on where the ground is in its
+band.
+
+### The sway (`title-2`)
+
+On the first level, the vertical aim also sways by `sway` px, a whole
+number from 0 to 15. It uses the same steps as the horizontal sway
+(`view.md`, "The aim (`title-2`)"): up from 0 to 15, 15 a second time,
+down to 0, 0 a second time, 32 steps in all. The two sways count the
+same logic frames, but the vertical one moves 1.5 times as fast.
+If `n` is the count of logic frames that gives the horizontal sway
+step ⌊`n` / 8⌋ mod 32, the vertical sway is at step
+
+    ⌊(m + 31) / 8⌋ mod 32,  where m = (n + ⌊n / 2⌋) mod 65536
+
+and `n` itself counts from 0 to 65535 and then starts again from 0.
+Off the first level, `sway` is 0 (not measured; see "Not covered in
+`title-2`").
+
+### The aim (`title-2`)
+
+Let `Y` = `y` − `sway`. On each frame:
+
+1. **Ground in reach:** aim = `Y` + (`G` − ⌊`y`⌋) − 156. That is the
+   ground's line, with `y`'s fraction, 156 px below the aim, less the
+   sway. `E` ← ⌊aim⌋.
+2. **Rising out of reach:** otherwise, if ⌊`Y`⌋ − 64 < `E`, aim = `Y` −
+   64.
+3. **Held:** otherwise, if ⌊`Y`⌋ − 200 < `E`, aim = `P` (the aim doesn't
+   change).
+4. **Falling out of reach:** otherwise, aim = `Y` − 200.
+
+So with the view settled on a standing player and no sway, the feet are
+156 px below the picture's top row (row 156, counting the top row as 0).
+After the ground goes out of reach, the aim stays where it was while
+⌊`Y`⌋ is from `E` + 64 to `E` + 199. With no sway and `E` taken from
+standing on ground at level y `G0`, that is until the feet are more than
+92 px above `G0`, or 44 px or more below it. The aim then follows the
+player with the feet 64 px (rising) or 200 px (falling) below it.
+
+### The level's limits (`title-2`)
+
+The level can keep the aim between a **top** and a **bottom**, whole px
+values of the aim. After the aim is worked out: if ⌊aim⌋ is less than
+the top, its whole px part becomes the top, and if it is more than the
+bottom, its whole px part becomes the bottom. The fraction was usually
+kept; for some limits it became 0 (see "Not covered in `title-2`").
+`E` keeps the value from before the limits; `P` (on the next frame)
+is the limited aim.
+
+On the first level the limits change from one part of the level to the
+next. Inside each part a single top and a single bottom were seen. Some
+parts have them as little as 8 px apart, so the view hardly moves
+vertically there. Where the parts are and how the limits are stored
+belong to the level format (not yet specified).
+
+### Following the aim (`title-2`)
+
+On each frame, after the player has moved:
+
+1. Work out the aim, as above, with the limits.
+2. Choose the **rates**. Let `a` = ⌊aim⌋, `p` = ⌊`P`⌋, `v` = ⌊`V`⌋
+   with `V` from before this frame, the **feet row** `r` = ⌊`y`⌋ − `v`,
+   and `dy` = ⌊`y`⌋ minus ⌊`y`⌋ on the frame before.
+   - If `a` < `p` and `a` < `v` (the aim moves up and is above the
+     picture's top): **usual** if `r` ≥ 32. With `r` < 32, see "Not
+     covered in `title-2`".
+   - Otherwise:
+     - `r` < 192: **usual**.
+     - `r` ≥ 216: **quick**.
+     - `r` from 192 to 215: **usual** if `dy` ≤ 2, **medium** if `dy` is
+       from 3 to 7, **quick** if `dy` ≥ 8.
+
+   | Rates | pull divisor | pull limit | lag divisor |
+   |---|---|---|---|
+   | usual | 32 | 64 | 16 |
+   | medium | 8 | 192 | 8 |
+   | quick | 4 | 576 | 4 |
+
+3. **Pull:** (aim − `V`) / pull divisor, rounded down, then limited to
+   the range −limit to +limit.
+4. **Lag:** `L` = `P` − `V`. If `L` is from −32 to 31, keep it.
+   Otherwise divide it by the lag divisor, rounded down. Then raise the
+   result to at least 8 if `L` was positive, or lower it to at most −8 if
+   `L` was negative.
+5. **Goal** and **speed:** as steps 4 and 5 of "Following the aim
+   (`title-2`)" in `view.md`: `D` = (aim − `P`) + the lag; if `D` is 0,
+   `S` becomes 0; otherwise add the pull to `S`, halve `S` (rounding
+   down) if `S` and `D` now have different signs (0 counts as positive),
+   and otherwise keep `S` from going past `D`.
+6. `V` ← `V` + `S`, but by at most 2048 (8 px) either way. `S` itself
+   isn't limited: it can stay above 2048, and `V` then moves 8 px per
+   frame.
+7. `P` ← aim.
+
+The usual rates are the slow ones: the pull adds at most 1/4 px per
+frame to `S`. The quick rates apply while the feet are low in the
+picture: on row 216 or below (the bottom 8 rows, or below the picture),
+or in the 24 rows above them while the player moves down 8 px or more
+per frame.
+
+### Frames on which the view stays still (`title-2`)
+
+The vertical motion stays still on exactly the frames on which the
+horizontal motion does (`view.md`, "Frames on which the view stays
+still (`title-2`)"): on those frames `V` and `S` keep their values from
+the frame before. The aim and `E` are worked out as usual, and `P`
+becomes the aim.
+
+### Examples (`title-2`)
+
+Synthetic, computed from the rules above with `sway` 0 and no limits.
+In each, the view starts settled on a player standing on ground at
+level y `G0`: `V` = `P` = `G0` − 156, `E` = `G0` − 156, `S` = 0.
+
+**(a)** `G0` = 400. From frame 1 the player stands on ground 32 px
+higher (`y` = `G` = 368). This isn't how the player gets there; it only
+shows the view.
+
+| Frame | aim | `V` | `S` |
+|---|---|---|---|
+| 1 | 212 | 243.75 | −64 |
+| 2 | 212 | 243.25 | −128 |
+| 3 | 212 | 242.5 | −192 |
+| 10 | 212 | 232.65625 | −353 |
+| 30 | 212 | 217.65625 | −97 |
+| 60 | 212 | 212.79296875 | −14 |
+| 100 | 212 | 212 | 0 |
+
+The view is exactly on the aim from frame 100 on.
+
+Frame 1 worked through: `a` = 212 is less than `p` = 244 and `v` = 244,
+and `r` = 368 − 244 = 124 ≥ 32, so the rates are usual. The pull is
+(212 − 244) × 256 / 32 = −256, limited to −64. The lag is `L` = 0. `D`
+= (212 − 244) × 256 = −8192. `S` = 0 − 64 = −64, which doesn't go past
+`D`. `V` moves by −64/256 px.
+
+Frame 2: the pull is ⌊(212 − 243.75) × 256 / 32⌋ = −254, limited to
+−64. `L` = (212 − 243.75) × 256 = −8128, outside −32 to 31, so the lag
+is −8128 / 16 = −508. `D` = 0 − 508 = −508, and `S` = −64 − 64 = −128.
+
+**(b)** `G0` = 400. The player jumps: `y` goes up 8 px per frame for 15
+frames (to 280), then back down 8 px per frame, landing on frame 30
+(simplified, not the real jump arc of `jump-arc.md`). For this example
+the ground below is taken to be in reach while the feet are at most
+72 px above it.
+
+| Frame | `y` | ground | aim | `V` | `S` |
+|---|---|---|---|---|---|
+| 1 | 392 | 400 | 244 | 244 | 0 |
+| 9 | 328 | 400 | 244 | 244 | 0 |
+| 10 | 320 | none | 244 | 244 | 0 |
+| 11 | 312 | none | 244 | 244 | 0 |
+| 12 | 304 | none | 240 | 243.875 | −32 |
+| 15 | 280 | none | 216 | 242 | −224 |
+| 18 | 304 | none | 240 | 240.80859375 | −57 |
+| 19 | 312 | none | 240 | 240.7578125 | −13 |
+| 21 | 328 | 400 | 244 | 240.7578125 | 13 |
+| 22 | 336 | 400 | 244 | 240.90625 | 38 |
+| 30 | 400 | 400 | 244 | 242.140625 | 31 |
+| 60 | 400 | 400 | 244 | 243.77734375 | 8 |
+
+On frames 10 and 11 the aim is held: ⌊`Y`⌋ − 64 = 256 and 248 are not
+less than `E` = 244. From frame 12 (304 − 64 = 240) it rises with the
+player. On frame 19 it is held again, at 240, the aim of frame 18. All
+rates are usual.
+
+**(c)** `G0` = 300. The player walks off the ground and falls 8 px per
+frame, with no ground in reach.
+
+| Frame | `y` | aim | `r` | rates | `V` | `S` |
+|---|---|---|---|---|---|---|
+| 1 | 308 | 144 | 164 | usual | 144 | 0 |
+| 5 | 340 | 144 | 196 | quick | 144 | 0 |
+| 6 | 348 | 148 | 204 | quick | 145 | 256 |
+| 7 | 356 | 156 | 211 | quick | 148.25 | 832 |
+| 8 | 364 | 164 | 216 | quick | 153.75 | 1408 |
+| 10 | 380 | 180 | 219 | quick | 169.5 | 2560 |
+| 20 | 460 | 260 | 219 | quick | 249.5 | 2720 |
+| 40 | 620 | 420 | 219 | quick | 409.5 | 2720 |
+
+Up to frame 5 the aim is held. From frame 6 (348 − 200 = 148 ≥ 144) it
+falls with the player. From frame 10 `S` is above 2048, so `V` moves the
+full 8 px per frame and the feet stay on row 219.
+
+### Evidence (`title-2`)
+
+Random walking, running, turning, jumping, rolling and standing from 10
+places in the first level (120 runs of 300 frames), and the same with
+the player moved up by 48 to 240 px at random moments to make long
+falls (120 runs). The model was started from the measured view at the
+start of each stretch and given only the player's `x`, `y`, the ground
+below (worked out from the level's ground as in
+`../formats/level-ground.md`), the sway and the limits. On 49 874
+frames (358 stretches) the aim, `S` and `V` matched exactly, with 0
+mismatches. The frames on which the player was moved, and the frame
+after, were left out.
+
+The checked frames include 2288 frames rising out of reach, 5413 held,
+17 falling out of reach, 124 with the ground below above the feet, 67
+frames on which the view stayed still, 162 with `S` beyond 8 px per
+frame, and 21 115 limited (215 of them with the fraction set to 0). The
+rates were usual on 49 359 frames (420 of them with the feet in rows
+192 to 215), medium on 101 and quick on 347 (210 with the feet in row
+216 or below). Only one top and one bottom were seen in each part of
+the level. With the sway taken one frame earlier, 4027 frames don't
+match. Without the sway, 23 412 don't. With the ground below taken at
+the previous frame's `x`, 2827 don't.
+
+With only the ground layer drawn, the picture moved vertically by
+exactly the change of ⌊`V`⌋ (one picture later, as for the horizontal
+motion) on all 1192 pairs of consecutive pictures from 4 places, 374 of
+them with a vertical move.
+
+### Not covered in `title-2`
+
+- Levels other than the first, including whether they sway and other
+  ways of following the player vertically.
+- Where the sway's cycle starts (as for the horizontal sway).
+- Near the top and bottom of the view's range: the view stayed at least
+  16 px inside it on every checked frame. Where the level's limits are,
+  how they change from one part of the level to the next, and which
+  limits set the aim's fraction to 0. A part shorter than the view.
+  Where the view starts when a level begins, and the ground aim `E`
+  then.
+- The aim moving up above the picture's top with the feet in the top 32
+  rows (`r` < 32 in step 2). This was seen on one frame, with quick
+  rates.
+- While the player is hurt or knocked out, carries or throws an object,
+  or is in or shot from a barrel: the view was seen to stop following
+  these rules.
+- Underwater, and the second character or two characters together.
+
 ## Not covered
+
+This list is for `title-1`; `title-2` has its own list above.
 
 - Other levels and other kinds of level, where the view may move
   differently. Only the first level was measured.
