@@ -7,7 +7,9 @@ nothing until a thrown object hits it, which **opens** it, and from then
 on it takes the lead out of the area like an exit, walking into the
 wall. The first level has two, both leading right. This file covers what
 opens a wall exit, when an open one takes over, how the lead walks
-out, and when the area is left. Where they lead is not covered.
+out, and when the area is left, and how the lead comes back into the
+first level from the area behind its first wall exit. What is in the
+areas behind the wall exits is not covered.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. Horizontal
 positions are level x as in `view.md`; vertical positions are **level
@@ -146,6 +148,96 @@ was from `T` + 4 to `T` + 21, mostly `T` + 16 to `T` + 18.
   walking right by 2 px every frame up to it. On the next logic frame,
   play is in another area (not covered).
 
+## Coming back from the first wall exit's area
+
+The first level's first wall exit (the one further left) leads to an
+area of its own. What is in that area is not covered; walking right
+through it to its right end brings play back to the first level. Frames
+here are counted from 0, the first frame back in the first level, and
+the lead was alone (as in all the runs of this file).
+
+The lead starts at the point of the first level's **wall-return
+record** (`../formats/level-start.md`), call it (`xw`, `yw`), and is
+thrown out of the level's entry of kind `wall-return-entrance`
+(`../formats/placements.md`, "Kinds"). That entry is not at the point:
+in the first level it is 16 px left of it and 2 px lower. The record,
+not the entry, decides where the lead is.
+
+| Frame | What happens |
+|---|---|
+| 0 to T − 1 | The lead is at `x` = `xw`, `y` = `yw`, not drawn, and doesn't move. Inputs have no effect. |
+| 41 | The entry's object bursts: a flash and four pieces appear, as for the level's entrance (`level-start.md`). |
+| T | The entry's object is removed. The lead is drawn from this frame, but doesn't move yet: `vx` becomes **+3.75** (to the right) and `vy` **−2** (up). |
+| T + 1 to T + 6 | The lead moves by `vx` and `vy` every frame, which don't change. |
+| T + 7 on, up to and including the landing frame | Each frame, `vy` first increases by **0.4375** (7/16); then `vx` changes with the input; then the lead moves by `vx` and `vy`. |
+| The landing frame | As in `landing.md`. |
+
+**T** was frame **51** in every run, also with the record moved.
+
+On frame T + `n`, for `n` from 0 to 6:
+
+- `x` = `xw` + 3.75 `n`
+- `y` = `yw` − 2 `n`
+
+The top of the arc is on T + 10: `vy` is −0.25 on T + 10 and +0.1875 on
+T + 11. In the first level, the lead landed on T + 23 in 199 of the 201
+runs below and on T + 24 in the other two, 21 px below the point (`y` =
+`yw` + 21), on the ground. `vy` didn't reach 8 in any run, so whether
+it is held at 8 as in `level-start.md` is not covered.
+
+From T to T + 6 every input is ignored. From T + 7, `vx` changes as in
+`level-start.md` ("Steering"): each frame the lead has a target speed
+set by what is held on that frame (±2 with Right or Left, ±3 with Action
+too, 0 with no direction), and the speed moves toward it by the gap ÷ 32,
+rounded toward zero, in 1/256 px per frame (the target itself if that is
+0). So, unlike the level's entrance, the throw can be steered from its
+seventh frame. With nothing held, the speed goes from 3.75 (960/256) to
+930/256 on T + 7, then 901/256 on T + 8. The lead faces right from frame
+0 up to and including the landing frame, whatever is held. From the
+frame after the landing the usual rules apply.
+
+The picture fades in from black as at the start of a level
+(`level-start.md`, "The picture"): after frame `f` the brightness is
+⌊`f` / 3⌋ fifteenths of full, full from frame 45.
+
+### The entry in other cases
+
+- **Without the entry.** In a copy of the image in which the
+  `wall-return-entrance` entry was given the reference of a hidden
+  object (`hidden-objects.md`), coming back left the lead hidden at the
+  point, not moving, up to frame 110 (11 runs).
+- **The level's other entries.** The `entrance` and the
+  `room-return-entrance` (`level-start.md`) take no part: with both
+  given a hidden object's reference, coming back was the same on every
+  frame (11 runs).
+- **Entering from the level map.** The entry's object appears as the
+  view reaches it, like other placed objects, and is drawn: it covers
+  part of the scenery, and in the copy without it that part of the
+  scenery looked different while the object would have been in the
+  picture. It never bursts, and it doesn't touch the lead: a lead
+  walking and jumping past it (from about 400 px left of it to about 480
+  px right of it) moved exactly as in the copy without it.
+
+### Checks
+
+- 201 runs coming back from the area, one with no input and 200 with
+  random inputs from frame 0 (directions, Jump, Action, Down, Up, and
+  Right or Left with Action, held for 1 to 20 frames each): every frame
+  from 0 up to the frame before the landing (position, speed, facing)
+  and the landing frame (`x`, `vx`, facing) as above, 15 077 frames.
+- 11 runs each in three copies of the image: without the
+  `wall-return-entrance`, with the `entrance` and the
+  `room-return-entrance` given a hidden object's reference, and with the
+  wall-return record moved (`../formats/level-start.md`), as above.
+- With no input, the entry's object was there up to and including
+  frame 50 and gone on frame 51, and the burst's flash and pieces were
+  there from frame 41.
+- Entering from the level map: a run along the level with and without
+  the entry (in a copy of the image as above), the lead's position the
+  same on every video frame from about 400 px left of the entry to about
+  480 px right of it; the pictures differed only while the entry's
+  object was in the view.
+
 ## Example
 
 Synthetic, computed from the rules above, with a wall exit at `xe` =
@@ -227,8 +319,12 @@ on `T` + 17, 14 on `T` + 18 and `T` + 19, and 0 on `T` + 46 and
 - The rolling stop (`roll-speed.md`) and other states not in the table.
 - How far right of the exit the reach goes. In the first level a lead
   can't get there from the left: the rise is in the way.
-- Where the wall exits lead (the areas behind them), what happens there,
-  and what is kept when play comes back to the level.
+- What is in the areas behind the wall exits and what happens there,
+  how play comes back from the second wall exit's area, and what is
+  kept when play comes back to the level.
+- Coming back from the first wall exit's area with two characters, how
+  the view moves then, and which picture the `wall-return-entrance`
+  shows. Throws that land after T + 24 or meet a wall or a ceiling.
 - Whether a wall exit opened before is still open when the view comes
   back to it after it was removed.
 - The second character, and wall exits leading left.

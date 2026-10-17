@@ -50,6 +50,16 @@ first level's exits lead"). Both points are in the first level, with
   coming back from the room began at the moved point, and entering the
   level from the map still began at the start record's point.
 
+`locators.md` also gives the **wall-return record**, for coming back to
+the first level from the area behind its first wall exit
+(`../behavior/wall-exits.md`, "Coming back from the first wall exit's
+area"). Its point is in the first level, with `Yb` = 512: the lead is
+there from the first frame back in the level until it is thrown out of
+the level's `wall-return-entrance`. The record, not that entry, decides
+where the lead is: in a copy of the image with the record's `x` raised
+by 40 and its `h` lowered by 30, coming back began at the moved point and
+the lead was thrown from there, with the entry where it was.
+
 `locators.md` also gives the **room's start record**, for the room the
 upper exit leads to. The room is an area of its own, with `Yb` = 512 as
 in the first level. When the room begins, the characters walk in from
