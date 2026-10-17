@@ -4,20 +4,6 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
-Coverage (`title-2`). Answers no open `spec` issue.
-
-- Traces: new `reference/title-2/run-jump-flat.trace`,
-  `reference/title-2/bounce-walker.trace` and
-  `reference/title-2/slope-dip.trace`. `title-2` now has a trace for
-  every scenario.
-- `TITLES.md`: the `title-2` row lists them.
-- `behavior/jump-arc.md` ("Example (`title-2`)"), `behavior/bounce.md`
-  ("Example (`title-2`)") and `behavior/slopes.md` ("Examples
-  (`title-2`)"): point to them.
-- `behavior/bounce.md` ("In `title-2`"): the landing frame's row is
-  grounded with `land`, as in `title-1` (it said the state stays `bounce`
-  on that frame); "Not covered" notes the trace's landing.
-
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.
