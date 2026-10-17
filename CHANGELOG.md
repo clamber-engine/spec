@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.89.0
+
+Which areas the player swims in.
+
+Answers `spec` #35.
+
+- `behavior/swimming.md`: new section "Where the player swims".
+  Swimming belongs to a whole area and is decided when the area begins;
+  in a swimming area the player swims everywhere, with no water surface
+  or boundary. In `title-1` every swimming area has a ceiling grid, no
+  column-grid or row-grid area swims, and one ceiling-grid area is a
+  riding bonus area where the player never swims. Adds the rule an
+  importer can use, a Checks bullet, and updates "Not covered".
+- `formats/level-ground.md`: "Ceiling grids" points to that section.
+
 ## spec-v0.88.0
 
 Coverage: a swimming scenario with a `title-1` reference trace.
