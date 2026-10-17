@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.139.0
+
+The knocked-out thrower.
+
+Part of clamber-engine/spec#19 (the first level's remaining entities).
+The issue stays open for the parts not covered yet.
+
+- `behavior/thrower-contact.md`, new section "The knocked-out thrower"
+  (first level, lead alone): however it was knocked out (bounce, roll or
+  ground action), it falls through every floor below its ledge, never
+  hurts the player or gives a bounce from K + 4 on, is removed once it
+  leaves the picture by the same edges as a ball, and never comes back.
+  Synthetic example, new checks; Not covered narrowed. Pointers from the
+  bounce and roll sections and from `behavior/ground-action-enemies.md`
+  "The thrower". (spec#19)
+
 ## spec-v0.138.0
 
 More of what is there again after a knock-out, and resuming at the
