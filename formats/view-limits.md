@@ -38,8 +38,12 @@ The end word only ends the list; no entry's `start` is `ffff`. A start
 of `ffff` (65535) can't be a level x of an entry in use, so a reader can
 stop at the first `ffff` in word 0 of an entry.
 
-`A` is less than `B`. Values of 32768 or more in `A`, `B`, `top` or
-`bottom` are not covered (none was seen in the first level's record).
+Every word is a whole number from 0 to 65 535, with no sign. In the
+first level's record `A` is less than `B`; in its scene's record they
+are equal ("The first level's scene"). The scene's record has `A`, `B`
+and `start` of 32 768 or more: they are level x in the scene's grid
+(`level-ground.md`) like any other. Values of 32 768 or more in `top`
+or `bottom` are not covered (none was seen).
 
 ## The first level
 
@@ -52,6 +56,15 @@ vertical limit entries; 1 of them is quick.
 The first level's room (`../behavior/exits.md`) doesn't use a record:
 its left and right limits are both 0, and its picture doesn't move
 (`../behavior/level-ends.md`, "In the first level's room").
+
+## The first level's scene
+
+`locators.md` also gives the record of the scene the floor exit leads
+to (`../behavior/exits.md`, "The scene"). It has `A` = `B`, and one
+vertical limit entry, whose `top` and `bottom` are equal. So the view
+can't move either way in the scene: its picture's left edge is always
+`A` and its top row always `top` (`../behavior/level-ends.md`, "In the
+first level's scene").
 
 ## Example (synthetic)
 
@@ -82,6 +95,12 @@ More cases, as bytes, are in `../vectors/view-limits/`.
   with the first level's `A` and `B` changed (to 40 and 300, and to 0
   and 300 or 301): the picture's left edge and the player's limits
   followed the changed values (`../behavior/level-ends.md`, "Checks").
+- The scene's record: in each of the 397 logic frames of the scene, in
+  runs with the lead alone and with two characters, the picture's left
+  edge was the record's `A` and its top row the record's `top`. In a
+  copy of the image with the scene's `A`, `B` and `start` all lowered by
+  64 and its `top` and `bottom` both lowered by 24, they were the
+  changed values on every frame of the scene.
 - The vertical limit entries: the checks of
   `../behavior/view-vertical.md` used the entries read from the first
   level's record as above.

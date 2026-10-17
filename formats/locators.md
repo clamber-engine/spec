@@ -45,6 +45,16 @@ SHA-256 of the image:
 | Level graphics: the first level's room's palette set | `graphics.md` | `f9` | `d683` |
 | Placements: the first level's room's placement list | `placements.md` | `fd` | `d3c0` |
 | Level start: the first level's room's start record | `level-start.md` | `fc` | `c090` |
+| Level ground: the first level's scene's grid | `level-ground.md` | `da` | `0000` |
+| Level ground: the first level's scene's type table | `level-ground.md` | `ec` | `15f4` |
+| Level graphics: the first level's scene's packed tile data | `graphics.md` | `dc` | `0000` |
+| Level graphics: the first level's scene's palette set | `graphics.md` | `f9` | `af65` |
+| Level graphics: the first level's scene's picture table | `graphics.md` | `da` | `bf00` |
+| Level graphics: the first level's scene's front tile set | `graphics.md` | `e7` | `fce9` |
+| Level graphics: the first level's scene's front map | `graphics.md` | `e7` | `dce9` |
+| Placements: the first level's scene's placement list | `placements.md` | `fd` | `d068` |
+| Level start: the first level's scene's start record | `level-start.md` | `fc` | `c03c` |
+| View limits: the first level's scene's record | `view-limits.md` | `fc` | `a5f2` |
 | Level map: point tables | `level-map.md` | `fc` | `f47b` |
 | Level map: corner records | `level-map.md` | `c0` | `d13c` |
 

@@ -57,6 +57,13 @@ this record's point as in `../behavior/exits.md` ("Walking in"). In a
 copy of the image with this record moved, the walk-in into the room
 moved with it (`../behavior/exits.md`, "Checks").
 
+`locators.md` also gives the **scene's start record**, for the scene the
+floor exit leads to. The scene is an area of its own, with `Yb` = 512
+as in the first level. When the scene begins, the lead walks in from
+this record's point as in `../behavior/exits.md` ("The scene"). In a
+copy of the image with the record's `x` lowered by 40, the lead was 40
+px further left on every frame of the scene, and at the same height.
+
 In the first level, the start record's point is also the position of
 the level's `entrance` entry (`placements.md`, "Kinds"), and the
 restart record's point is the position of its `restart-barrel` entry.
@@ -97,6 +104,5 @@ records at given addresses and the points a reader gets from them.
 - Whether a level can make the characters face left on its first frame
   (they faced right in every run).
 - Other areas entered from a level other than the first level's room
-  (the first level's scene, and other levels' areas), and where their
-  own start records are. Where play is when coming back to levels other
-  than the first.
+  and scene (other levels' areas), and where their own start records
+  are. Where play is when coming back to levels other than the first.

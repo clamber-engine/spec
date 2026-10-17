@@ -266,6 +266,19 @@ from the room's frame 1 on (frames numbered as in
 runs into the room (4 with two characters, with different input before
 the upper exit).
 
+### In the first level's scene
+
+The scene the floor exit leads to (`../behavior/exits.md`, "The scene")
+has a placement list of its own (`locators.md`). It has 3 entries, of
+classes 1 and 2, and no sections or groups. None of its references has
+a kind row; their kinds are not covered. In the scene the picture's
+left edge is always the same (`../behavior/level-ends.md`, "In the first
+level's scene"), and every entry is in the window. An object was at
+each entry's position from the scene's frame 1 on, and none on frame 0
+(frames numbered as in `../behavior/exits.md`, "Walking in"). None of
+them moved or went away before the scene's last frame. This held in a
+run with the lead alone and in one with two characters.
+
 ## When placed objects appear
 
 The window and the view position `V` are as in
