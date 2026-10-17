@@ -6,8 +6,10 @@ An **exit** is a placed object that takes the lead out of the area: once
 the lead comes within its reach, the player loses control, the lead
 walks away through the exit on its own, the picture fades to black and
 play goes on in another area. This file covers when an exit takes over,
-how the lead moves afterwards, and when the area is left. Which area
-comes next, and what happens there, is not covered yet.
+how the lead moves afterwards, when the area is left, and where the
+first level's two exits lead: how the characters walk into the next
+area, the short scene one exit leads to, and how play comes back to the
+level.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. Horizontal
 positions are level x as in `view.md`; vertical positions are **level y**
@@ -33,7 +35,7 @@ Its **position** (`xe`, `ye`) is its entry's level x and level y
 Every exit measured **leads left**. What follows is for an exit leading
 left; an exit leading right is not covered. Where an exit leads (which
 area comes next) is a setting of the object; the first level's two
-exits lead to different areas.
+exits lead to different areas ("Where the first level's exits lead").
 
 ## When an exit takes over
 
@@ -110,8 +112,85 @@ was from `T` + 9 to `T` + 22, mostly `T` + 17 to `T` + 19.
   It reaches 0 on `F` + 29.
 - **The end.** `F` + 30 is the last frame in the area. The lead goes on
   walking left by 2 px every frame up to it. On the next logic frame,
-  play is in another area. Which area that is, where the characters are
-  in it, and what happens there are not covered.
+  play is in another area. For the first level's exits, which area that
+  is and what happens there is in "Where the first level's exits lead".
+
+## Where the first level's exits lead
+
+The next area's frames are numbered from **0**, its first logic frame:
+the logic frame after `F` + 30.
+
+- **The floor exit** leads to a short **scene**: the characters walk in
+  from the right ("Walking in"), the lead stops, and after a fixed time
+  the picture fades out ("The scene"). Play then goes on in the first
+  level again: the characters walk in from the left, starting from the
+  first level's **scene-return record** (`../formats/level-start.md`),
+  and the player has control from frame 28 as below. The floor exit is
+  still there, a little left of that point, and it leads to the scene
+  again each time it is reached.
+- **The upper exit** leads to a **room**, a small area of its own where
+  the player has control. The characters walk in from the right
+  ("Walking in"). The room is left through an exit of its own that
+  leads right (see "Not covered"). After it, play goes on in the first
+  level, which begins exactly as it does from the level map
+  (`level-start.md`), at the first level's **room-return record**
+  (`../formats/level-start.md`) instead of its start record.
+
+Coming back from the room was checked frame by frame against the level's
+own start: the lead's position, speed, state and facing were the same
+on every one of the first 90 frames (see "Checks").
+
+## Walking in
+
+When the scene, the room or the level after the scene begins, the
+characters walk in. Let (`xs`, `ys`) be the point of the area's start
+record (`../formats/level-start.md`), and `d` the direction of the
+walk: −1 (left) into the scene and the room, +1 (right) back into the
+level after the scene.
+
+- **Frames 0 to 26.** On frame `k` the lead is at `x` = `xs` + `d` ×
+  (3`k` − 80), `y` = `ys`, with no fraction of a px: it walks 3 px per frame
+  in the direction `d`, facing that way from frame 1 (frame 0 is black,
+  see "Fade-in").
+- **Frame 27.** The lead moves 6 px: `x` = `xs` + 4`d`.
+- **Frame 28 on.** The player has control. On frame 28 the lead is on
+  the ground with a speed of 3 px per frame in the direction `d` (`vx` =
+  3`d`, that is ±768/256) and moves by the usual rules
+  (`ground-speed.md`), with that frame's input: with nothing held, for
+  example, `vx` becomes ±2.625 on frame 28.
+- **Input.** Nothing held or pressed on frames 1 to 27 has any effect
+  (frame 0 was not tried with input).
+  A Jump press on frame 28 or later works as usual (`jump-input.md`);
+  Jump or Action held down from before frame 28 is not a press on 28.
+- **The other character**, if there is one (`following.md`), walks in
+  with the lead: on frames 0 to 26 it is 28 px behind (`x` − 28`d`,
+  same `y`) and moves the same 3 px per frame, and on frame 27 it
+  doesn't move. Afterwards it follows the lead (not checked frame by
+  frame).
+- **Fade-in.** The brightness (as in "Leaving the area") is `j` on
+  frames 3`j`, 3`j` + 1 and 3`j` + 2 for `j` from 0 to 14, and 15 from
+  frame 45 on.
+- **The view** doesn't change on frames 0 to 26. Where it is then, and
+  how it moves from frame 27 on, are not covered.
+
+In the scene the lead stops after frame 28 ("The scene"); in the room
+and in the level, play simply goes on.
+
+## The scene
+
+- **Frames 0 to 28** are as in "Walking in", walking left.
+- **From frame 29** the lead stands still, facing left, at the `x` it
+  had at the end of frame 28, to the end of the scene. Nothing held or
+  pressed has any effect. The other character, if there is one, stays
+  where it was on frame 27.
+- **Fade-out.** The brightness is 15 on frame 366 and goes down by 1
+  every second frame: frames 365 + 2`j` and 366 + 2`j` have brightness
+  15 − `j`. It is 0 on frames 395 and 396.
+- **Frame 396** is the scene's last frame, whatever was pressed. On the
+  next logic frame, play is back in the first level (frame 0 of
+  "Walking in", walking right from the scene-return record).
+
+What the scene shows is not covered.
 
 ## Example
 
@@ -127,6 +206,14 @@ it is 331.75 − 2(`k` − 1). The first frame with `X` ≤ 296 is `T` + 19
 brightness is 15 on `T` + 19, 14 on `T` + 20 and `T` + 21, 1 on
 `T` + 46 and `T` + 47, and 0 on `T` + 48 and `T` + 49. `T` + 49, with
 `x` = 235.75, is the last frame in the area.
+
+Walking in, synthetic, with a start record point (`xs`, `ys`) = (400,
+150), walking right (`d` = +1): the lead is at `x` = 320 on frame 0, 323
+on frame 1, 398 on frame 26 and 404 on frame 27, always at `y` = 150. An
+other character is at 292 on frame 0 and 370 on frames 26 and 27. The
+brightness is 0 on frames 0 to 2, 1 on frames 3 to 5, 14 on frames 42 to
+44 and 15 from frame 45. With nothing held, frame 28 has `vx` = 2.625
+and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
 
 ## Checks
 
@@ -164,13 +251,52 @@ brightness is 15 on `T` + 19, 14 on `T` + 20 and `T` + 21, 1 on
   30, walked out, and left the area on `F` + 31, `F` being the first frame
   with `X` ≤ `xe` − 4. Each reference led to the same area as in its own
   place.
+- **Walking in and the scene.** 700 runs with random inputs (Left,
+  Right, Jump, Action, Up, Down, and Left or Right with Jump or Action)
+  from frame 1 of the next area: 300 through the floor exit with the lead
+  alone and 100 with the other character following, each through the
+  scene and back into the level, and 300 through the upper exit into the
+  room. 1 100 walk-ins: every frame 0 to 27 of the lead (29 700 frames)
+  and of the other character (5 400 frames) was as in "Walking in", and
+  the brightness of frames 0 to 47 as well (52 800 frames). The view
+  didn't change on frames 0 to 26 in any of them. Frame 28 was judged
+  in the 621 walk-ins with only Left, Right or Action held on it (and
+  no new Action press): `vx` and `x` were as given by `ground-speed.md`
+  from `vx` = 3`d` in all of them. In all 400 scenes the lead stood
+  still from frame 29, the fade-out was as above, frame 396 was the
+  last, and play went on in the level after it. In some runs the lead
+  walked back into the floor exit afterwards and went through the scene
+  again.
+- **The records decide where.** In a copy of the image with the room's
+  start record moved 16 px left, the scene-return record moved 40 px
+  right and the room-return record moved to another point, each arrival
+  started from the moved record (frames 0 and 27 as in "Walking in", and
+  the level's start as in `level-start.md` from the moved room-return
+  point); the first level's own start record was left as it was.
+- **Coming back from the room.** 41 runs leaving the room with Right
+  held, one with no input afterwards and 40 with random inputs from
+  frame 1: the lead was the same as at the level's own start from the
+  level map (`level-start.md`, no input) on every frame 0 to 89 (3 690
+  frames).
 
 ## Not covered
 
-- Exits leading right, exits in other levels, and where an exit leads:
-  which area comes next, where the characters are when it begins, and
-  what happens there (in the first level: a short scene in one case, a
-  room in the other).
+- Exits leading right (the room has one), exits in other levels, and
+  where an exit leads in general: which area comes next is a setting of
+  the object (its definition, `../formats/placements.md`), and how an
+  area is entered (walking in, and which way, or as a level begins) is
+  given above only for the first level's areas.
+- The room's and the scene's own data: ground, pictures, placed objects,
+  view limits, and where their start records are (the room has one: in
+  a copy of the image with it moved, the walk-in moved with it). What
+  the scene shows.
+- What of the level is kept when play comes back to it after the scene
+  or the room (objects collected or defeated before, and the restart
+  point).
+- Where the view is when an area is entered by walking in, and how it
+  moves from frame 27; the other character after frame 27; two
+  characters walking into the room (only the lead alone was measured
+  there).
 - How far left of the exit the reach goes, and the reach of states not
   in the table: rolls stopping or getting up (taken over at `I` up to 28
   to 30, by picture), crouching after the slide has stopped (up to 28 in
