@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.130.0
+
+Large walkers after an exit.
+
+Part of clamber-engine/spec#17 (the first level's layout). The issue
+stays open for the parts not covered yet.
+
+- `behavior/exits.md`, "Coming back to the level": a `large-walker`
+  bounced on before the exit is there again after coming back, as the
+  small and medium walkers are; without an exit it was not there again
+  within the same visit (one run). New checks "Coming back, large
+  walkers"; Not covered narrowed.
+
 ## spec-v0.129.0
 
 The first level's scene's sign, and moved barrels after an exit.
