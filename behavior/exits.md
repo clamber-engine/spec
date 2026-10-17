@@ -224,7 +224,12 @@ Still gone: a **bunch** taken (`bunches.md`), a **letter** taken, the
 **extra-life item** taken (kinds `rising-extra-life-1` and
 `rising-extra-life-2`, `extra-lives.md`), and a **hidden bunch** (kind
 `hidden-bunch`, `hidden-objects.md`) once struck, together with the
-bunch it released, whether that bunch was taken or not. They stay gone
+bunch it released, whether that bunch was taken or not. The **animal
+crate** (kind `animal-crate`, `animal-crate.md`) once broken is also
+still gone, and so is the animal that came out of it if it was left
+there and not mounted: neither the crate, its broken pieces nor the
+animal is at its place after coming back, so nothing is there to land on
+or to mount. They stay gone
 after coming back. They don't appear when the view comes back over their
 places, and nothing is taken or struck there again: the count, the
 lives, the figure count and the set of letters don't change. For these
@@ -240,7 +245,11 @@ There again, as when the level begins:
   (`walker.md`, "Being bounced on"): it is there again when the view
   comes to its place, walking as the level places it;
 - a **medium walker** (kind `medium-walker`) bounced on before: it is
-  there again in the same way.
+  there again in the same way;
+- a **barrel** (kind `barrel`, `carrying.md`) picked up, thrown and
+  broken against a wall before (`thrown-objects.md`, "Breaking against a
+  wall"): it is at its place again when the view comes there, standing
+  as the level places it.
 
 Other kinds of object are not covered (see "Not covered").
 
@@ -361,6 +370,21 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   no lives or figure again; the controls got 3 lives and one figure. The
   medium walker, gone after the bounce, was there again after both
   exits, as in its control. 146 checks in all, none different.
+- **Coming back, barrel and crate.** 8 more runs with the lead alone, 4
+  through each exit: the barrel picked up, carried left and thrown into
+  the wall left of it, where it broke; the animal crate landed on, so
+  that it broke and the animal came out and was left waiting; and a
+  control for each that did nothing before leaving. After coming back,
+  each run went to the barrel's place, or to the crate's place to land
+  on the crate again if it was there. The count, the lives, the set of letters and the
+  restart point were the same on coming back as on leaving in all 8. The
+  barrel was at its place again in all 4 barrel runs. In the 2 runs that
+  had broken the crate, neither the crate nor the animal was there, so
+  there was nothing to land on and no animal came out; in the 2 controls
+  the crate was there and broke, and its animal came out. The same four
+  runs without an exit (going straight to the places instead): the
+  broken barrel was not there again, and the animal was still waiting by
+  the broken crate. 47 checks in all, none different.
 
 ## Not covered
 
@@ -378,12 +402,14 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   room's placed objects other than the tyre and the end marker are not
   covered.
 - What else is kept when play comes back to the level after the scene
-  or the room: barrels, holders and tyres moved or broken, the hidden
-  objects set off by a fall and their items, the animal crate and its
-  animal, the large walker, throwers, the `extra-life-3` items, objects
-  of kinds the spec doesn't name, and an object carried through the
-  exit. Coming back with two characters (the runs
-  in "Coming back to the level" had the lead alone).
+  or the room: barrels moved and put down unbroken, holders and tyres
+  moved or broken, the hidden objects set off by a fall and their items,
+  an animal mounted or ridden away from its crate, the large walker,
+  throwers, the `extra-life-3` items, objects of kinds the spec doesn't
+  name, and an object carried through the exit. Whether a broken barrel
+  ever comes back during the same visit without an exit (it didn't in
+  the one run above). Coming back with two characters (the runs in
+  "Coming back to the level" had the lead alone).
 - Whether bunches and letters taken before a knock-out are there when
   play resumes (`restart-barrel.md`).
 - The other character after frame 27; two characters walking into the
