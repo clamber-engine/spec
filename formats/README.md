@@ -30,6 +30,10 @@ fingerprints" in `../REVIEW.md`).
 - `sprites.md`: pictures of characters and other moving things: the
   frame table, short and full frames, pieces, sheets, mirroring, where
   a frame is drawn, and sprite palettes. Vectors: `../vectors/sprites/`.
+- `level-map.md`: the level map's points (stops and corners), their
+  positions and appearance points, each stop's neighbour per direction,
+  corner records, and the route of a walk. Vectors:
+  `../vectors/level-map/`.
 - `locators.md`: where each kind of data starts in each supported
   image.
 - `sound.md`: samples (sample table, records, blocks, decoding, loops),
