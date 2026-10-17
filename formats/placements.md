@@ -614,9 +614,43 @@ can also remove an object on a frame on which only `U` changes. If it is
 in the margin, it is removed on the first frame on which `y` − `U` is
 less than −31 or more than 256.
 
-The vertical window plays no part in appearing. Class 1 and class 2
-entries appear by `x` alone ("When placed objects appear"), even when
-their objects are far above or below the picture.
+Except for exits (below), the vertical window plays no part in
+appearing. Class 1 and class 2 entries appear by `x` alone ("When placed
+objects appear"), even when their objects are far above or below the
+picture.
+
+**Exits.** An `exit` is there only while it is in the vertical window
+as well. It appears on the first frame on which its entry is in the
+window and it is in the vertical window, and it is removed on the first
+frame on which either no longer holds, also on a frame on which only
+`U` changes. Exits don't move, so `y` is their entry's level y. In the
+runs, an exit with `y` − `U` of −32 or less, or of 257 or more, was
+never there, and one with `y` − `U` from −27 to 256 was always there
+while its entry was in the window. From −31 to −28 it was there in some
+runs and not in others (see "Not covered"). An exit is not drawn and
+only takes over a player close to it (`../behavior/exits.md`).
+
+The rule doesn't hold before the characters come out of the entrance
+(`../behavior/level-start.md`), when nothing can reach an exit: the
+first level's exit at the left end, at level y 337, was there from
+frame 0 with `U` = 0 (`y` − `U` = 337) and was removed on frame 41, the
+frame the entrance bursts. It appeared again on frame 98, the first
+frame on which `y` − `U` was 256 as the view came down.
+
+**The entrance.** The `entrance` is removed on frame T, the frame on
+which it throws the characters out (`../behavior/level-start.md`). It
+doesn't appear again while the level goes on, however far the view goes
+from its entry and comes back. It is there again only when the level
+begins again.
+
+**The end marker.** An `end-marker` is not drawn and only acts on a lead
+at its own position (`../behavior/level-end.md`), which is always in the
+window. So whether it is there while its entry is outside the window
+makes no difference to play. In the runs it sometimes stayed there with
+its entry more than 1 000 px right of `V`, and was sometimes removed as
+soon as its entry was outside the window. Either way, when the view
+came back it appeared again at the same view position as the first time,
+before the lead could reach it.
 
 **Coming back.** An object removed this way appears again, as in "When
 placed objects appear", the next time its entry is in the window. This
@@ -644,16 +678,17 @@ down to 44 (`y` − `U` = 256) and is removed on the first frame with `U`
 
 ### Checks
 
-Every kind in the table was put, by its reference, into one entry left
-of the characters' start and one right of it, with the entry's level y
-changed to put the object on the floor, at the vertical window's edges
-(`y` − `U` of −32, −31, 256 and 257) and far above and below the
-picture. A controller walked, ran and jumped the lead away from the
-object until it was removed and back until it appeared, four times per
-run with three random seeds, never touching it. The first level's own
-entries of most kinds, and its exit at the left end, were run in the
-same way. 330 runs, 271 516 frames: on every frame each object was there
-exactly when the rules above say.
+Every kind in the table other than `exit` was put, by its reference,
+into one entry left of the characters' start and one right of it, with
+the entry's level y changed to put the object on the floor, at the
+vertical window's edges (`y` − `U` of −32, −31, 256 and 257) and far
+above and below the picture. A controller walked, ran and jumped the
+lead away from the object until it was removed and back until it
+appeared, four times per run with three random seeds, never touching
+it. The first level's own
+entries of most kinds, and its exit at the left end at its own height,
+were run in the same way. 330 runs, 271 516 frames: on every frame each
+object was there exactly when the rules above say.
 
 - First row: 917 appearances and 702 removals. Removals by edge: at
   `x` − `V` = −128 to −131 and 385 to 388 in the vertical window (never
@@ -669,6 +704,43 @@ exactly when the rules above say.
 - A `barrel` and a `holder` placed above the floor fell onto it. Testing
   their entry's level y instead of their own would have been wrong in
   7 of their 21 runs each, on 25 to 110 frames per run.
+
+**Exits, the entrance and the end marker.**
+
+- Exits: the exit reference was given to the first level's class 2
+  entry at its left end and to a class 1 entry right of the characters'
+  start, with the entry's level y set to put the exit at the vertical
+  window's edges (`y` − `U` of −32, −31, 256 and 257, with `U` as it was
+  where the lead walked) and on the floor, and run with the controller
+  above, three seeds each: 30 runs. In 27 of them (226 723 frames) each
+  exit was there on exactly the frames "Exits" gives. In the other 3,
+  in the class 1 entry with `y` − `U` = −31, it never appeared (see "Not
+  covered"). With the lead standing still and the entry in the window,
+  the exit in the class 2 entry was there down to `y` − `U` = −31 and
+  not at −32; in the class 1 entry it was there down to −27 and not at
+  −28. Put in the class 1 entry with the entry's class changed to 2, the
+  exit was there at −31; put in the class 2 entry with its class changed
+  to 1, it was there at −31 too.
+- Exits as the view comes down at the start of the level: the first
+  level's exit at the left end with its level y changed to 100, 132 and
+  168. The exits at 100 and 132 were removed on the first frame with
+  `y` − `U` less than −31 (on the frame with −32 for the one at 132),
+  with the entry in the window throughout. The one at 168 stayed.
+- The entrance: in copies of the image in which the other entry at the
+  start point was given a `sign`'s reference, the lead walked until
+  the view was 500 and 1 000 px right of the start and came back. The
+  entrance didn't appear again; the sign appeared each time the view
+  came back over its entry. With a `bunch`'s reference given to the
+  entrance's entry after the level had begun, that entry placed nothing
+  again either, while the same reference given to the other entry at
+  the start point placed a bunch each time. (Earlier runs in which an
+  object given the entrance's entry never appeared again came from
+  this.)
+- The end marker: from near the level's end, the lead walked, ran and
+  jumped away from it with the end marker there, until its entry was
+  up to 1 273 px right of `V`: 31 runs. In 2 of them the lead came back
+  after the end marker had gone, and in both it appeared again at the
+  same view position as the first time.
 
 ## Example
 
@@ -708,24 +780,31 @@ on each frame: see its `README.md`.
   kind fingerprint row. An object's settings (a walker's heading and
   patrol, whether it takes a first step on its first frame, a placed
   ball's speeds) also belong to the definition and are not covered.
-- What class 2 changes compared with class 1: in the first level's runs,
-  class 2 objects appeared and started like class 1 objects. In the
-  lists with sections, class 2 entries didn't appear outside the vertical
-  window (see "Class 1 and class 2 entries in these lists"). Whether that
-  comes from class 2 or from the kind of object, and what those objects
-  do, is not covered.
+- What class 2 changes compared with class 1. In the first level's runs,
+  class 2 objects appeared and started like class 1 objects, and moving
+  a reference from an entry of one class to one of the other changed
+  nothing measured: a `bunch` in the first level's class 2 entry at the
+  left end, at the vertical window's edges and on the floor (15 runs,
+  6 921 frames), appeared and was removed on exactly the frames the
+  first row of "When placed objects are removed" gives, and an `exit`
+  followed "Exits" in either class. In the lists with sections, class 2
+  entries didn't appear outside the vertical window (see "Class 1 and
+  class 2 entries in these lists"). Whether that comes from class 2 or
+  from the kind of object, and what those objects do, is not covered.
+- Exits with `y` − `U` from −31 to −28: there in some runs and not in
+  others. An exit given a class 1 entry right of the characters' start
+  was never there at −31 or −30, nor at −29 or −28 with the lead
+  standing still; with the lead walking, at −29 it was there in one of
+  two runs. In the first level's class 2 entry at the left end, and in
+  either entry with its class changed, it was there at −31.
 - Which class 1 kinds don't appear, or are gone again, outside the
   vertical window, as in "Class 1 and class 2 entries in these lists".
 - What class 8 entries do other than the first level's (which starts
   the dimming), what a class 8 entry's `h` and reference mean, and
   classes other than 1, 2, 5, 8, 9 and 15.
-- When objects other than walkers are removed in lists with sections,
-  and for the kinds not in the table (`end-marker`, `entrance`).
+- When objects other than walkers are removed in lists with sections.
 - What a removed object that had been moved does (other than thrown
   objects, `../behavior/thrown-objects.md`).
-- Objects whose entries are near the level's left end: in some runs an
-  object there didn't appear again when the view came back over its
-  entry.
 - Entries far above or below the view in lists without sections.
 - In any list: what happens when an object can't appear because too
   many objects are already there. In the first level's runs an entry
