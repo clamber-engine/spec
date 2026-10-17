@@ -279,7 +279,8 @@ This list is for `title-1`; `title-2` has its own list above.
   `walker-contact.md`).
 - Facing during the frozen frames.
 - Bouncing off other kinds of objects (the animal crate is in
-  `animal-crate.md`), bounces from a roll, bouncing again before
+  `animal-crate.md`, hidden objects landed on after a long fall in
+  `hidden-objects.md`), bounces from a roll, bouncing again before
   landing, and the other character.
 - Jumping on the landing frame after a bounce.
 - Falls long enough after a bounce for `vy` to reach 8 weren't measured

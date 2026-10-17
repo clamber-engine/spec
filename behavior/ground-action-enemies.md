@@ -95,8 +95,8 @@ means:
 
 ## The pause
 
-When anything is knocked out on K (a walker, the thrower, or one of the
-other things in "Not covered"), **K + 1** and **K + 2** are **pause
+When anything is knocked out on K (a walker, the thrower, or a hidden
+object struck as in `hidden-objects.md`), **K + 1** and **K + 2** are **pause
 frames**:
 
 - The player's `x` and `vx` stay as they were at the end of K. The
@@ -198,7 +198,7 @@ Without the walker, the action would have ended with E on frame 59.
   knock-outs the view did nothing on K and K + 1 and moved again on
   K + 2.
 - **Hurts after a pause** were measured by placement during pauses
-  caused by one of the other struck things in "Not covered": a walker
+  caused by striking a hidden object (`hidden-objects.md`): a walker
   put in the hurt range at the end of K, K + 1 or K + 2 (243 placements)
   never hurt the player before K + 4.
 - **The thrower:** 28 placements on its ledge, one pixel apart (15
@@ -217,9 +217,7 @@ Without the walker, the action would have ended with E on frame 59.
   knocked out from below its ledge, what happens to its throws, and
   balls (`thrower.md`).
 - Other kinds of enemies, and objects such as carried or thrown objects.
-- Other things the action strikes. Some placed things that can't be seen
-  are struck on attack frames too, and give the same pause; in one of
-  them a bunch (`bunches.md`) appeared. Which things these are, their
-  ranges, and how a level's placements mark them aren't specified.
+- Other things the action strikes. Hidden objects that release a bunch
+  are in `hidden-objects.md`.
 - How a pause affects the view's shake (`view-vertical.md`).
 - The other character, when present, during the pause.

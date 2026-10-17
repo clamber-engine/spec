@@ -35,7 +35,8 @@ A bunch does not move. Its **position** is a point (`xb`, `yb`) in the
 level. Its image is drawn around that point and spins, so the image's
 size changes from frame to frame. Every frame measured fell inside
 columns `xb` − 13 to `xb` + 15 and rows `yb` − 15 to `yb` + 8. How a bunch
-is stored in a level's data is not covered.
+is stored in a level's data is not covered. A bunch can also come out of
+a hidden object (`hidden-objects.md`), with its position given there.
 
 ## When a bunch is taken
 
