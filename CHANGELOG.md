@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.119.0
+
+When the first level's placed objects are removed.
+
+Part of clamber-engine/spec#17. The issue stays open for the parts not
+covered yet.
+
+- `formats/placements.md`: new section "When placed objects are
+  removed" for the first level's non-walker kinds. Removal once the
+  entry is out of the window, the kinds that get an extra margin (only
+  while inside the vertical window) and those that don't, and coming
+  back any number of times. Synthetic example, checks and a narrowed
+  Not covered list.
+- `behavior/signs.md`, `behavior/animal-crate.md`, `behavior/figure.md`:
+  pointers to the new section.
+
 ## spec-v0.118.0
 
 Extra-life items.
