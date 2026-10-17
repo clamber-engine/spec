@@ -130,9 +130,10 @@ the logic frame after `F` + 30.
   again each time it is reached.
 - **The upper exit** leads to a **room**, a small area of its own where
   the player has control. The characters walk in from the right
-  ("Walking in"). The room is left through an exit of its own that
-  leads right (see "Not covered"). After it, play goes on in the first
-  level, which begins exactly as it does from the level map
+  ("Walking in"). The room is left by walking right past its end marker
+  (`level-end.md`, "In the first level's room"), not through an exit.
+  After it, play goes on in the first level, which begins exactly as it
+  does from the level map
   (`level-start.md`), at the first level's **room-return record**
   (`../formats/level-start.md`) instead of its start record.
 
@@ -338,7 +339,7 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
 
 ## Not covered
 
-- Exits leading right (the room has one), exits in other levels, and
+- Exits leading right, exits in other levels, and
   where an exit leads in general: which area comes next is a setting of
   the object (its definition, `../formats/placements.md`), and how an
   area is entered (walking in, and which way, or as a level begins) is
@@ -349,7 +350,8 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   `../formats/placements.md` and `../formats/level-start.md` ("The
   first level's room" or "the room's start record"), and its view in
   `level-ends.md` ("In the first level's room"); the kinds of the
-  room's placed objects other than the tyre are not covered.
+  room's placed objects other than the tyre and the end marker are not
+  covered.
 - What else is kept when play comes back to the level after the scene
   or the room: barrels, holders and tyres moved or broken, the items of
   hidden objects, the animal crate, walkers other than the small walker,

@@ -32,8 +32,11 @@ at the level's end and 96 px before it. About 240 runs in all.
 A level's placement list (`../formats/placements.md`) places its end
 marker with an entry. The marker does not move and is not drawn. Its
 **position** (`xm`, `ym`) is the entry's level x and level y (see
-"Positions" there). How to tell that an entry places the end marker is
-not covered.
+"Positions" there). An entry places an end marker when its reference's
+kind is `end-marker` ("Kinds" there).
+
+The first level's room has an end marker too: it is the room's way out
+("In the first level's room").
 
 ## When the marker is passed
 
@@ -135,6 +138,75 @@ begins again is in `following.md`.
 
 The lead's rise stops on `F0`: its height on `F0` is that of `F0` − 1.
 
+## In the first level's room
+
+The room the first level's upper exit leads to (`exits.md`) has an end
+marker of its own: passing it is how the room is left. Everything above
+holds for it, with the picture's left edge always 0 (`level-ends.md`,
+"In the first level's room"), except for the fade's start, the last
+frame and what follows:
+
+- **The fade** starts on the frame after the first frame from `T` + 1
+  on that ends with `X` ≥ 240. When the lead's `X` is less than 240 on
+  `T`, this is the same frame as in "The fade". When it is 240 or more
+  on `T`, the fade starts on `T` + 2: the lead rises by 1/8 px on
+  `T` + 1 only.
+- **The last frame.** The brightness is 0 on `F0` + 28 and on `F0` + 29,
+  and `F0` + 29 is the room's last frame. The lead walks on by 2 px on
+  both.
+- **What follows.** The level isn't finished and the level map doesn't
+  follow. On the next logic frame, play is in the first level, which
+  begins as it does from the level map, at the first level's
+  room-return record (`exits.md`, "Where the first level's exits lead").
+  That logic frame is the level's frame 0.
+
+Synthetic example: the lead runs right with Right held and passes the
+marker on frame `n`, ending it at `x` = 241.25. On `T` it stays at
+241.25 (`X` = 241 ≥ 240 already, but `T` doesn't count), and `vx` = 2.
+`T` + 1 ends at 243.25, 1/8 px higher, and is the first frame from
+`T` + 1 with `X` ≥ 240, so `F0` = `T` + 2: brightness 14 on `T` + 2 and
+`T` + 3, 0 on `T` + 30 and `T` + 31. `T` + 31, with `x` = 303.25, is the
+room's last frame, and the next logic frame is the first level's frame
+0.
+
+Also measured in the room: Right held together with Down passed the
+marker (37 runs), as did Right with Jump, Action or Up.
+
+What follows the walk-out depends on the area the marker is in, not on
+which `end-marker` reference placed it. In copies of the image, the
+room's marker was given the first level's end-marker reference, and the
+first level's end marker was given the room's; in a third copy, a class 1
+entry near the first level's start became a class 2 entry with the
+room's reference. Every frame was the same as with the marker's own
+reference: in the room, play went back to the level; in the level, the
+level was finished and the level map followed.
+
+### Checks in the room
+
+- 500 runs with random inputs biased to the right (Right alone and with
+  Action, Jump, Up or Down; Action, Down, Down with Action, Jump, Left,
+  Left with Action, nothing): 200 from a standing start in the room, 200
+  with the lead alone put at a random point left of the marker first,
+  and 100 with the other character following (it went on following the
+  lead; not checked frame by frame).
+  Every frame before `T` (46 521) was judged by "When the marker is
+  passed": the marker was passed on exactly the frame the rules give, in
+  every run, with `X` − `xm` from 0 to 8 on that frame, 100 times on the
+  landing frame of a jump or fall. Every frame from `T` to the last
+  (16 982, inputs held on 15 001 of those from `T` + 1) was as in "The
+  walk-out" and "The fade" with the changes above, the last frame was
+  `F0` + 29 in every run, and the next was the first level's frame 0.
+  The first 91 frames there, with nothing held from frame 1, were the same
+  as the level's own start from the level map in every run (45 500
+  frames).
+- Three runs passed the marker while turning toward the right: the turn
+  went as in "The walk-out" ("Facing").
+- With the marker moved up or down by 4 px (a change made for the test
+  while the game ran), a lead walking right on the floor passed it; by
+  5 px it didn't, and was stopped at the room's right end. With the
+  marker moved 8, 40 or 100 px left, `T` changed and the fade started
+  on the frame after the first frame ending with `X` ≥ 240, as above.
+
 ## Example
 
 The marker is at `xm` = 1000, `ym` = 449. The lead walks right on a flat
@@ -163,14 +235,15 @@ last frame came 61 frames after `T`.
 
 ## Not covered
 
-- How to tell that a placed object is the end marker (see
-  `../formats/placements.md`), and other levels.
-- Passing the marker with Left and Right both held, with Down held, on
+- Other levels' end markers, and areas other than the first level and
+  its room.
+- Passing the marker with Left and Right both held, with Down held
+  (other than in the room), on
   the take-off frame of a jump, while carrying an object, while being
   hit or bouncing off an enemy, and with the second character leading.
 - Whether the other character can pass the marker, and the other
   character when it is not following (joining, being carried).
 - Enemies and other objects during the walk-out.
 - A lead that is already 240 px or more right of the picture's left
-  edge on `T`.
+  edge on `T`, other than in the room ("In the first level's room").
 - The sound during the walk-out and the fade.

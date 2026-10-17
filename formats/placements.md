@@ -194,7 +194,7 @@ members are looked up by their own references.
 | `figure` | A golden figure of an animal, adding to the figure count | `figure.md` |
 | `barrel` | An object that can be carried and holds nothing | `carrying.md`, `thrown-objects.md` |
 | `holder` | An object that can be carried and holds the missing character | `carrying.md`, `holder-breaking.md` |
-| `end-marker` | The level's end marker | `level-end.md` |
+| `end-marker` | An end marker: the level's end, or the way out of the first level's room | `level-end.md` |
 | `entrance` | The place the characters come out of when the level begins | `level-start.md` |
 | `exit` | An exit that takes the lead out of the area | `exits.md` |
 | `animal-crate` | A crate holding an animal | `animal-crate.md` |
@@ -256,8 +256,10 @@ figure that was taken and counted as `../behavior/figure.md` says.
 
 The room the upper exit leads to (`../behavior/exits.md`) has a
 placement list of its own (`locators.md`). It has no sections and no
-groups: all its entries are of class 1 or class 2. One of its references
-has a kind row (`tyre`); the kinds of the others are not covered. In the
+groups: all its entries are of class 1 or class 2. Two of its references
+have a kind row: `tyre`, and `end-marker` for the room's way out
+(`../behavior/level-end.md`, "In the first level's room"); the kinds of
+the others are not covered. In the
 room the picture's left edge is always level x 0
 (`../behavior/level-ends.md`, "In the first level's room"), so every
 entry is in the window. An object for each of its entries was there
@@ -270,8 +272,12 @@ the upper exit).
 
 The scene the floor exit leads to (`../behavior/exits.md`, "The scene")
 has a placement list of its own (`locators.md`). It has 3 entries, of
-classes 1 and 2, and no sections or groups. None of its references has
-a kind row; their kinds are not covered. In the scene the picture's
+classes 1 and 2, and no sections or groups. One of its references has a
+kind row: it is the room's `end-marker` reference. Nothing held has any
+effect in the scene, and the lead walks in from the right and stops left
+of that entry's position (`../behavior/exits.md`, "The scene"): in all
+the scenes measured there, with random inputs, the marker was never
+passed. The kinds of the other two references are not covered. In the scene the picture's
 left edge is always the same (`../behavior/level-ends.md`, "In the first
 level's scene"), and every entry is in the window. An object was at
 each entry's position from the scene's frame 1 on, and none on frame 0
