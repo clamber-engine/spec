@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.108.0
+
+Exits in `title-1`: where the first level's two exits lead, and the
+records for coming back to the level.
+
+Answers part of clamber-engine/spec#17 (the level's bounds). The rest
+of spec#17 is not covered yet, so it stays open.
+
+- `behavior/exits.md`: where the first level's exits lead (the floor
+  exit to a short scene and back into the level; the upper exit to a
+  room, then the level begins as from the level map). New "Walking in"
+  (27 frames at 3 px per frame, then 6 px, then control from frame 28
+  at `vx` = 3`d`; inputs ignored; the other character 28 px behind;
+  fade-in; view unchanged) and "The scene" (lead still from frame 29,
+  fade-out, last frame 396). Synthetic walk-in example, checks and
+  Not covered updated.
+- `formats/level-start.md`: the scene-return and room-return records.
+- `formats/locators.md`: two locator rows for these records.
+- `formats/placements.md`, `behavior/level-start.md`: pointers updated.
+
 ## spec-v0.107.0
 
 Exits in `title-1`: the object at the first level's left end (new
