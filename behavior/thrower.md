@@ -181,8 +181,27 @@ measured with the view moving right only), already one frame on: on its appearan
 from its placed position with its starting speeds. It isn't ignoring
 floors, and from then on it moves as above. The one on the first level
 started with `vx` −1.171875 (−300/256) and `vy` −3 (−768/256); it was
-seen appearing 6 times, always one frame on. Which speeds a placement
-gives isn't covered.
+seen appearing 11 times, always one frame on and always at the same
+position. Which speeds a placement gives isn't covered.
+
+A placed ball appears only once. After it is removed it doesn't come
+back, however the view moves, until play resumes after a knock-out:
+
+- In the first level, after the ball had been removed, its entry left
+  the window and came back into it 23 times, and no ball appeared. 20
+  times the view had gone left, with `x` − `V` up to 457; 3 times it had
+  gone right, with `x` − `V` down to −416. That is past the margins
+  within which a walker stays (`walker-view.md`), on both sides.
+- Twice the entry left the window (the view going left) while the ball
+  was still there, with `x` − `V` up to 342. The ball wasn't removed
+  then: it went on until "Leaving the picture" removed it, and didn't
+  come back when the entry came back into the window.
+- After a knock-out, play resumed at the restart point
+  (`restart-barrel.md`, "Resuming"), left of the ball's entry, and the
+  ball appeared again by the rule above when the view came back to it:
+  9 times, always on the first frame whose `V` put `x` in the window,
+  one frame on and at the same position as before. After 2 other
+  resumes the view didn't get that far.
 
 ## Example
 
@@ -225,6 +244,7 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   falling.
 - Walls and faces in a ball's way (none was met).
 - Throwers facing right, other timetables, and throwers in other levels.
-- Whether a placed ball comes back after it is removed, and what a
-  placed ball's speeds come from.
+- What a placed ball's speeds come from. Whether it comes back after
+  play begins again at the level's start (without the restart point),
+  or after leaving the level by an exit and coming back.
 - How the thrower and the balls are drawn.
