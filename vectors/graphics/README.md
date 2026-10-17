@@ -51,3 +51,17 @@ the cell words `0000`, `0001`, `4002` (mirrored), `8003` (bit 15),
 `c004` (both), `0005`, `4005` and `c005`. `cells.tsv`: for each 8 × 8 px
 square of band 0 (grid picture pixel column `x` and row `y` of its
 top-left pixel), the tile entry it holds, in hex.
+
+## Screen pictures
+
+`screen.hex`: a screen map (32 rows of 32 tile entries, one row per
+line, each entry low byte first). Its entries use tiles 0 to 3 of
+`tiles.hex` only; every 7th entry is 0, and entries 1, 2, 3 and 33 are
+tile 0 in palette row 1 with no flip, flip left–right, flip top–bottom
+and both. `screen.tsv`: for each square, its square column and row, the
+pixel column and row of its top-left pixel, and its entry in hex.
+`screen-pixels.tsv`: pixels of the screen picture drawn from
+`screen.hex`, `tiles.hex` and `palette.hex`: pixel column and row, the
+square's entry, the colour number, the palette row, and the colour in
+hex or `transparent`. The first 256 rows cover squares 1 to 3 and 33
+completely.

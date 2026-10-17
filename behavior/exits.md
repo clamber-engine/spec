@@ -337,10 +337,13 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   the object (its definition, `../formats/placements.md`), and how an
   area is entered (walking in, and which way, or as a level begins) is
   given above only for the first level's areas.
-- The room's and the scene's own data: ground, pictures, placed objects,
-  view limits, and where their start records are (the room has one: in
-  a copy of the image with it moved, the walk-in moved with it). What
-  the scene shows.
+- The scene's own data: ground, pictures, placed objects, view limits
+  and where its start record is, and what the scene shows. The room's
+  data is in `../formats/graphics.md`, `../formats/level-ground.md`,
+  `../formats/placements.md` and `../formats/level-start.md` ("The
+  first level's room" or "the room's start record"), and its view in
+  `level-ends.md` ("In the first level's room"); the kinds of the
+  room's placed objects other than the tyre are not covered.
 - What else is kept when play comes back to the level after the scene
   or the room: barrels, holders and tyres moved or broken, the items of
   hidden objects, the animal crate, walkers other than the small walker,
