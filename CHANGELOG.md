@@ -4,6 +4,17 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Coverage (`title-2`). Answers no open `spec` issue.
+
+- `behavior/view.md`: new section "In `title-2`": the view aims 56 px
+  behind a player facing right and 128 px behind one facing left, and
+  on the first level a sway of 0 to 15 px repeats every 256 frames. The
+  view's speed takes a pull of (aim − view) / 16, limited to 96/256 px
+  per frame, and is held to the frame's goal: how far the aim moved,
+  plus a sixteenth of the lag. It stays still on B, B + 1, K and K + 1.
+  Worked examples, evidence, and its own "Not covered" list.
+- `TITLES.md`: `view.md` added to the `title-2` row.
+
 Coverage (`title-1`). Answers no open `spec` issue.
 
 - `behavior/second-character.md`: new section "Rolls": the second
