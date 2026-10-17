@@ -2,6 +2,32 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.127.0
+
+Entries far above or below the view, and the barrel that shoots down.
+
+Part of clamber-engine/spec#17 (the first level's layout) and part of
+clamber-engine/spec#19 (the first level's entities). Both issues stay
+open for the parts not covered yet.
+
+- `formats/placements.md`: in lists without sections, class 2 entries,
+  like class 1 entries, need only the window, not the vertical window,
+  and appear however far above or below the view they are. New checks
+  "Far above or below the view"; the matching Not covered item is
+  removed.
+- `behavior/launch-barrel.md`: new section "The barrel that shoots
+  down", kind `down-launch-barrel`: catch, a 28-frame hold, the shot
+  straight down as the barrel breaks, and the flight. Checks and Not
+  covered updated.
+- `behavior/wall-exits.md`: new section "Coming back from the second
+  wall exit's area": the lead starts at the second wall-return record's
+  point and is caught by the level's `down-launch-barrel`; the record and
+  the barrel's entry in moved copies; the fade; checks.
+- `formats/level-start.md`: the second wall-return record.
+  `formats/locators.md`: its locator row and a `down-launch-barrel`
+  fingerprint row. `formats/placements.md`: the new kind row and the
+  first level's counts (36 of 37 references, 66 entries).
+
 ## spec-v0.126.0
 
 Barrels and holders put down elsewhere.
