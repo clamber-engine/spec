@@ -2,6 +2,32 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.106.0
+
+View limits and the level's left and right ends in `title-1` (new
+format and behavior specs).
+
+Answers part of clamber-engine/spec#17 (the level's bounds and the
+view's limits). The rest of spec#17 is not covered yet, so it stays
+open.
+
+- New `formats/view-limits.md`: the view-limit record (left limit `A`,
+  right limit `B`, the vertical limit entries of `view-vertical.md`,
+  and an end word), the first level's record (new row in
+  `locators.md`; the restart point uses the same record), a synthetic
+  example, checks and Not covered. Synthetic vectors in
+  `vectors/view-limits/` (records, entries, entry in use, picture
+  edge).
+- New `behavior/level-ends.md`: the picture's left edge `E` is ⌊`V`⌋
+  kept from `A` to `B`, while `V` itself can go past the limits; the
+  ground layer, sprites, placement window and level-end fade use `E`.
+  The player is stopped 18 px inside the range the picture can show:
+  moves toward an end from at or past that point get `vx` 0 and `x`
+  doesn't change. Synthetic examples, checks and Not covered.
+- Pointers updated in `behavior/view.md`, `behavior/view-vertical.md`,
+  `formats/placements.md`, `formats/level-ground.md` and
+  `formats/README.md`.
+
 ## spec-v0.105.0
 
 Trace vocabulary for holding a rope in `title-1`.
