@@ -124,24 +124,31 @@ is a **stopped frame** when both hold at its start:
   the frame moves as usual.
 - There is no ground 15 px ahead: in the column floor(x) + 15 when the
   roll goes right, floor(x) − 15 when it goes left (x at the start of
-  the frame). The floor 176 px below doesn't count as ground there. At
+  the frame). Floor up to 47 px below the player's feet counts as ground
+  there, and floor 49 px or more below doesn't (48 wasn't measured);
+  floor higher than the feet counts (measured up to 64 px higher). At
   the top of a pit whose edge is a short face, a face column 15 px
   below the player's feet did count as ground (the roll moved on), and
   the first column with no ground at all, one further, stopped it.
-  Depths in between weren't measured.
+  Measured at the top of a face (`steep-faces.md`, "Rolling on, onto or
+  into a face"): 45 to 47 px below counted, 49 to 64 px below didn't.
 
-On a stopped frame `vx` becomes 0 and the player doesn't move. A roll
-going away from the edge has ground ahead, so it has no stopped frames
-(rolls away from both edges, started up to 20 px from them, were
-checked).
+On a stopped frame `vx` becomes 0 and the player doesn't move. The roll
+is then a **stopped roll** (`steep-faces.md`, "Stopped rolls"): it stays
+where it is until it pushes off, as below. A roll going away from the
+edge has ground ahead, so it has no stopped frames (rolls away from both
+edges, started up to 20 px from them, were checked).
 
-**Pushing off.** If `vx` is 0 at the start of such a frame, the frame is
-S + 1 or later, and exactly one of Left or Right is held, in the roll's
-direction, then instead `vx` becomes 2 (512/256) in the roll's direction
-and the player moves by it. From the next frame the roll's speed rule
-applies again, with the target of a **normal** roll (3), whatever the
-roll's size was: a pushed slow or fast roll goes on as a normal roll.
-The roll usually goes off the edge a few frames later.
+**Pushing off.** On a frame S + 1 or later of a stopped roll on which
+exactly one of Left or Right is held, in the roll's direction, `vx`
+instead becomes 2 (512/256) in the roll's direction and the player moves
+by it. The direction is the one after the frame's steering
+(`roll-speed.md`): holding the direction away from the edge turns the
+roll and pushes off away from it on the same frame. From the next frame
+the roll's speed rule applies again with a size of 2 (512/256), whatever
+the roll's size was; holding the roll's direction on a later frame makes
+it a **normal** roll (3), as for a slow roll, and with nothing held it
+goes on at 2. The roll usually goes off the edge a few frames later.
 
 The roll's other rules don't change: it still lasts to D = S + 29 and
 then stops or carries on into running as in `roll-input.md` (with `vx`
@@ -473,11 +480,10 @@ This list is for `title-1`; `title-2` has its own list above.
 
 - Frame L's horizontal speed on ledges with a face at the top, and the
   frames just before it there.
-- Slow rolls toward the ledges with a long face at the top, and how
-  far below the player missing ground counts as missing (between 15
-  and 176 px).
-- Stopped frames while both Left and Right, or the opposite direction,
-  are held; and whether carry-on frames (D to D + 3) can be stopped.
+- Slow rolls toward the ledges with a long face at the top, and whether
+  ground exactly 48 px below counts.
+- Stopped frames while both Left and Right are held; and whether
+  carry-on frames (D to D + 3) can be stopped.
 - How long a roll lasts when it is pushed off and still on the ground
   at S + 29 (not seen: pushed rolls always went off the edge first).
 - Rolls that start in the stop after an earlier roll, and the second

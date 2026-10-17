@@ -19,8 +19,8 @@ right and to the left) and against one vertical step up, going left.
 Landings after jumps and after falls from a face were measured
 separately ("Landing on or next to a face", with its own evidence).
 Jumps on a face and in front of a rise are in "Jumping on or next to a
-face", also measured separately. Rolls on or against these surfaces are
-not covered (see the end).
+face", also measured separately, and rolls on, onto and against these
+surfaces in "Rolling on, onto or into a face".
 
 ## Columns, faces and steps
 
@@ -56,7 +56,7 @@ more than 2 px higher.
 ## Stopped by a rise
 
 On a grounded frame (walking, running or standing, and a jump's
-take-off frame; not a roll), after
+take-off frame; rolls in "Rolling on, onto or into a face"), after
 the speed for the frame is worked out (`ground-speed.md`, or the face
 rule below), the player is **blocked** if the move would take `x` into a
 different column that is either:
@@ -573,6 +573,176 @@ drop. The leave frames of falls from a face moved down 3.4375 px after a
 press that started on the face (476) and 3.28125 px after one that
 counted and was still held (122), as in `walk-off.md`.
 
+## Rolling on, onto or into a face
+
+`title-1` only. What happens to a roll (`roll-input.md`, `roll-speed.md`)
+on a face, moving onto one, and against a rise. S is the roll's press
+frame and the roll target is as in `roll-speed.md`: a direction times a
+size of 1, 3 or 4 (256/256, 768/256, 1024/256), or 2 (512/256) after a
+push-off ("Stopped rolls" below). "Starts on a face" is as
+in "Jumping on or next to a face". The rules below were checked on the
+frames on the floor from S to S + 28; every other rule of `roll-speed.md`,
+`roll-input.md` and `rolling-off-ledges.md` applies unchanged.
+
+### Steering on a face
+
+On a frame that starts on a face, Left and Right do nothing to the roll:
+the roll's direction doesn't reverse, and a slow roll doesn't become a
+normal one ("Steering during the roll" in `roll-speed.md`). On every other
+frame, in the air as well, steering works as usual. So a roll pointing
+up a face keeps pointing up it while the player is on the face, whatever
+is held.
+
+### Speed on a face
+
+On a frame that starts on a face, the target of the speed rule for a
+roll that isn't stopped ("Stopped rolls" below) is:
+
+- if the roll points **downhill**: the roll target plus 1.5 (384/256)
+  downhill. A normal roll's target is 4.5 (1152/256), a slow roll's 2.5
+  (640/256), a fast roll's 5.5 (1408/256), in the downhill direction;
+- if the roll points **uphill**: the roll target alone. There is no
+  downhill part, so a roll can move up a face.
+
+The frame that moves the player onto a face from other floor uses the roll
+target alone. Then `x` changes by the new `vx`, and the player follows the
+face down or leaves it as in "Following a face down, or leaving it". At
+these speeds a normal or fast roll pointing downhill crosses three or
+more columns in a frame and so leaves the ground on its first frame on
+the face; slow rolls can follow it.
+
+### Blocked
+
+A roll frame on the floor is blocked as in "Stopped by a rise": when the
+move would take `x` into a different column that is a face column of a
+face rising in the direction of the move. It is also blocked when the new
+column isn't a face column but its floor is **more than 8 px** higher
+than the floor before the frame: a roll moving up off a face's top over
+two face columns, onto floor 11 px higher, was blocked; one moving over
+one face column onto floor 7 px higher followed it. On a blocked frame
+`x` is set to the left edge of the column the player was in, `vx`
+becomes 0, and the player stays on that floor.
+
+"Can't start toward a rise" doesn't apply to roll frames: a roll pressed
+while standing in front of a rise starts moving on S as usual and is
+blocked when it reaches the face. What keeps a roll at a rise is the
+next rule.
+
+### Stopped rolls
+
+A roll is **stopped** from a blocked frame, or from a stopped frame of
+`rolling-off-ledges.md` ("Stopping before a ledge"), until it **pushes
+off**. While a roll is stopped:
+
+- its own target is 0: on other floor it doesn't move (`vx` stays 0);
+- on a frame that starts on a face its target is 1.5 (384/256) downhill
+  alone, whichever way the roll points: the player is carried down the
+  face like a player standing on it, with `vx` 0.1875, 0.3515625,
+  0.4921875, … downhill from a standstill.
+
+A stopped roll pushes off on a frame that doesn't start on a face, on
+which exactly one of Left or Right is held and it is the roll's direction
+(after any reversal on that frame, so holding the other direction turns
+the roll and pushes off at once). Whatever `vx` was, it becomes **2**
+(512/256) in the roll's direction, and the player moves by it, unless the
+move is blocked, in which case the roll is stopped again. After a
+push-off the roll is no longer stopped and its size is 2 (512/256):
+holding its direction on a later frame makes it a normal roll (3), as a
+slow roll becomes normal; with nothing held it goes on at 2.
+
+So:
+
+- A roll that reaches a rise stops at the face's foot. Holding the
+  direction toward the rise, every frame is a push-off that is blocked:
+  the player stays put, `vx` 0, until the roll ends. Holding the other
+  direction rolls away at once at 2 and then toward 3.
+- A roll pointing up a face moves up it with its own target until it
+  enters a higher face column (blocked), and is then carried down to the
+  foot. Reaching the floor at the foot with the uphill direction held,
+  its first frame there is a push-off into the face, blocked: `x` loses
+  its fraction, `vx` becomes 0, and the player stays at the foot. With no
+  direction held it keeps moving away from the face, slowing toward 0
+  (its target is 0).
+- A roll that stopped before a ledge and is then reversed by holding the
+  other direction pushes off at 2 on that frame.
+
+### Examples (rolls)
+
+Synthetic examples on a face rising to the right whose first column is
+c₀: the floor is flat up to column c₀ − 1, and the face columns are 1, 5,
+9, … px higher. `x − c₀` and `vx` are at the end of each frame. Frame k is
+the last frame before the rows (a frame of the roll on which it was
+stopped), with `vx` 0.
+
+Stopped at the foot, `x` = c₀ − 1, the roll pointing right; Right held on
+k + 1 to k + 3, Left on k + 4 to k + 6, then nothing:
+
+| Frame | Held | x − c₀ | vx | |
+|---|---|---|---|---|
+| k + 1 | Right | −1 | 0 | push-off, blocked |
+| k + 2 | Right | −1 | 0 | push-off, blocked |
+| k + 3 | Right | −1 | 0 | push-off, blocked |
+| k + 4 | Left | −3 | −2 (−512/256) | push-off (the roll turns) |
+| k + 5 | Left | −5.125 | −2.125 (−544/256) | normal roll |
+| k + 6 | Left | −7.359375 | −2.234375 (−572/256) | |
+| k + 7 | nothing | −9.6875 | −2.328125 (−596/256) | |
+| k + 8 | nothing | −12.09765625 | −2.41015625 (−617/256) | |
+
+The same start with Left held only on k + 1: `vx` is −2 on k + 1 and stays
+−2 on the following frames (`x − c₀` = −3, −5, −7, …).
+
+Stopped on the face at `x` = c₀ + 6 (a floor 25 px up), the roll pointing
+right, Right held throughout:
+
+| Frame | x − c₀ | Floor (px above the foot) | vx | |
+|---|---|---|---|---|
+| k + 1 | 5.8125 | 21 | −0.1875 (−48/256) | carried down |
+| k + 2 | 5.4609375 | 21 | −0.3515625 (−90/256) | |
+| k + 3 | 4.96875 | 17 | −0.4921875 (−126/256) | |
+| … | | | | |
+| k + 8 | 0.92578125 | 1 | −0.9765625 (−250/256) | |
+| k + 9 | −0.11328125 | 0 | −1.0390625 (−266/256) | at the foot |
+| k + 10 | −1 | 0 | 0 | push-off, blocked |
+| k + 11 | −1 | 0 | 0 | push-off, blocked |
+
+### Evidence (rolls)
+
+Measured with the lead character on the faces of "Evidence (jumps)", by
+inputs from the floor near each face, and with the player placed on the
+floor in front of the faces:
+
+- standing and walking toward a face rising to the right from 60 places,
+  with Action pressed alone, with the direction toward the face (then
+  that direction held, with or without Action), with the other direction,
+  with Action held after, or with the direction toward the face and then
+  the other one held: 1 380 cases;
+- walking, coasting or running left onto a face falling to the left from
+  its top, presses before and on the face: 1 350 cases;
+- walking, coasting or running onto the 32-column face falling to the
+  right, presses before and on it: 782 cases;
+- standing or walking on the floor at the foot of that face and rolling
+  into it (it rises to the left): 272 cases;
+- rolling into the face rising to the right and, after the first blocked
+  frame, holding nothing, either direction, Action, Up, or Left and
+  Action for 1, 2, 4 or 9 frames, then nothing or a direction: 432
+  cases.
+
+On the 64 628 frames on the floor from S to S + 28 of 2 660 of these
+rolls, every frame matched the rules above, including 1 116 frames that
+started on a face (559 downhill, 120 uphill with 24 of them blocked, 437
+stopped and carried down), 9 515 push-offs that were blocked and 492 that
+weren't. 1 600 more runs with random inputs, not used to find the rules,
+gave 23 544 frames on the floor of 1 161 rolls with 875 face frames: 6
+frames differed (in 4 rolls: a roll landing on a face, see "Not
+covered", one roll stuck where the floor outside the measured columns
+wasn't modelled, and two rolls pressed with Left held while facing right
+at the foot of a face whose first frame already went left). Without the stopped-roll rule 4 769
+and 1 559 frames differ; with steering on face frames 15 and 64, with
+only the uphill direction ignored there 0 and 50, a slow roll becoming
+normal on face frames 2 and 46, a push on uphill rolls 110 and 109, a
+normal size after a push-off 190 and 140, push-offs only from `vx` 0 14
+and 16, no block onto floor more than 8 px higher 1 and 50.
+
 ## Examples
 
 Synthetic floors. `y` is down-positive, as in a trace.
@@ -635,8 +805,21 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
 
 ## Not covered
 
-- Rolls on, onto or into faces and walls, and Action held on a face
-  (with or without a direction).
+- Action held on a face while walking or standing (with or without a
+  direction).
+- Rolls started while the player is carried down a face or on the frames
+  just after leaving one (up to about 12 frames): their direction and
+  size on S didn't always follow `roll-speed.md` (the held direction
+  won, and a recent running frame didn't always make them fast). Rolls
+  that land on a face pointing downhill: in the one run seen, the first
+  frame after the landing had no downhill part, and when the roll then
+  slowed below 1.0625 (272/256) with no floor ahead as in "Stopping
+  before a ledge", its speed went back to 0 at the start of every frame
+  and the downhill part moved it 0.1875 px per frame. A roll stopped
+  against a wall in the air acted as stopped and pushed off in the air
+  in the runs seen; air contacts weren't checked. The roll's frames after
+  S + 28 (its end, and rolls that go on in the air) weren't checked next
+  to faces.
 - Jump presses during a roll on or onto a face: some took off on the
   next frame and some didn't. Presses with the second character on a
   face. A take-off frame that would cross two or more face columns, or
@@ -644,15 +827,17 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
   uphill exception in "When the jump takes off" was measured on one face
   (falling to the left, 16 presses).
 - Landings on or next to a face after anything other than a jump or a
-  fall from a face (rolls, bounces, falls from ledges without a face,
-  jumps that start in the air), and jumps that take off from a face.
+  fall from a face (bounces, falls from ledges without a face, jumps
+  that start in the air; rolls only as in "Rolling on, onto or into a
+  face"), and jumps that take off from a face.
   Contact with faces and walls while airborne is in `air-walls.md`,
   except falls into pits that carry the player below the floor of the
   column they are in.
 - A move on the floor that crosses two face columns of a rising face in
   one frame and would end on floor beyond them that isn't a face column:
   the player was blocked in both cases seen, which "Stopped by a rise"
-  as written doesn't give.
+  as written doesn't give. (For rolls the rule in "Blocked" under
+  "Rolling on, onto or into a face" gives it.)
 - Which of standing, walking, running or a turn starts after a landing
   on or next to a face (`ground-speed.md`, "After a landing"): the
   landing checks above took the target speed from the game and tested

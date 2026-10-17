@@ -388,8 +388,10 @@ Down held were left out.
 
 This list is for `title-1`; `title-2` has its own list above.
 
-- Rolls into walls or enemies other than walkers. Rolls off ledges, and
-  so in the air, are in `rolling-off-ledges.md`. (On 1-in-4 slopes normal and fast rolls are as on flat floor;
+- Rolls into walls other than steep faces, and enemies other than
+  walkers. Rolls on, onto and into steep faces are in `steep-faces.md`
+  ("Rolling on, onto or into a face"). Rolls off ledges, and so in the
+  air, are in `rolling-off-ledges.md`. (On 1-in-4 slopes normal and fast rolls are as on flat floor;
   see `slopes.md`. Rolls into walkers are in `rolling-into-walkers.md`.)
 - Steering on D + 1 to D + 3 when the roll carries on into running
   (measured only with the input unchanged).
