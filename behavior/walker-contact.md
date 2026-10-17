@@ -110,10 +110,10 @@ shifts:
 - facing left: the low end is 3 px lower and the high end 10 px lower.
 
 For example, a player facing right in the fidget pose is hurt by a small
-walker heading left for I from −9 to 27, and by a medium walker heading
-right for I from −6 to 35. Measured for the small and medium walkers,
-both facings and both headings; the large walker in the fidget pose
-wasn't measured.
+walker heading left for I from −9 to 27, by a medium walker heading
+right for I from −6 to 35, and by a large walker heading left for I from
+−12 to 30. Measured for all three kinds of walker, both facings and both
+headings.
 
 ## Bouncing
 
@@ -211,6 +211,15 @@ level, on flat floor, with the first character alone:
   27 645 frames near a medium walker with 507 hurts and 328 bounces,
   and 14 009 frames near a small walker with 209 hurts and 109 bounces;
   128 of the hurts were in the fidget pose. 0 mismatches.
+- the large walker against a standing player in the fidget pose: a
+  large walker put in the same place, the player standing out of its
+  reach until the pose began, the walker turned around at chosen moments
+  so that it stayed on flat floor at full speed (the last turn at least
+  8 frames before the placement), then the player placed at
+  offsets one pixel apart, for both facings and both headings: 2 548
+  placements, on 24 frames spread over the pose and, as a control, 4
+  frames before it (these gave the large walker's ranges above). 0
+  mismatches.
 
 ## In `title-2`
 
@@ -371,7 +380,6 @@ This list is for `title-1`; `title-2` has its own list above.
   stopped at a barrier, frozen) and walkers already bounced on.
 - Contact while crouching, carrying, after a bounce, or being knocked
   back. Rolls into walkers are in `rolling-into-walkers.md`.
-- The large walker against a player in the fidget pose.
 - Falls without a jump (walking or rolling off a ledge): the player's
   vertical reach was seen to differ from that of a jump.
 - Walkers above the player (U below −6 on the ground, below −4 in the
