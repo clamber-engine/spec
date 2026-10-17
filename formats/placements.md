@@ -201,6 +201,7 @@ members are looked up by their own references.
 | `restart-barrel` | The restart barrel | `restart-barrel.md` |
 | `stinger` | A stinger (flying enemy) | `stinger.md` |
 | `tyre` | A tyre that throws the player up | `tyre.md` |
+| `sign` | A sign (scenery that nothing touches) | `signs.md` |
 | `hidden-bunch` | A hidden object that the ground action strikes, releasing a bunch | `hidden-objects.md` |
 | `hidden-barrel` | A hidden object set off by a long fall onto it, releasing a `barrel` | `hidden-objects.md` |
 | `hidden-metal-barrel` | A hidden object set off by a long fall onto it, releasing a metal barrel | `hidden-objects.md` |
@@ -221,17 +222,17 @@ its own reference, and placed a tyre there.
 
 ### In the first level
 
-24 of the first level's 37 references have a kind fingerprint row. They
-are used by 51 of its entries (counting group members): 5 small
+26 of the first level's 37 references have a kind fingerprint row. They
+are used by 53 of its entries (counting group members): 5 small
 walkers (all three group members among them), 6 medium walkers, 3 large
 walkers, the
 thrower, a ball, 4 bunches, the four letters (one each), a figure, a barrel, 2
 holders, the animal crate, the restart barrel, the end marker, the
 entrance, 2 exits,
-15 hidden bunches, a hidden barrel and a hidden metal barrel. The other
-references place things that
-have no behavior file yet (for example scenery and signs), or that were
-not seen.
+15 hidden bunches, a hidden barrel, a hidden metal barrel and 2 signs
+(two references, one sign each). The other references place things
+that have no behavior file yet (for example other scenery), or that
+were not seen.
 
 Checked in the game: every object seen from these 30 entries, in the
 runs in "When placed objects appear" and, for the end marker, the
@@ -250,7 +251,9 @@ a hidden object that was set off and released its item as
 was checked as in `../behavior/level-start.md` ("The entrance"), and the
 two `exit` rows as in `../behavior/exits.md` ("Checks"). The `figure`
 reference, given to a class 1 entry near the level's start, placed a
-figure that was taken and counted as `../behavior/figure.md` says.
+figure that was taken and counted as `../behavior/figure.md` says. Each of
+the two `sign` references, given to a class 1 entry near the level's
+start, placed a sign there that behaved as `../behavior/signs.md` says.
 
 ### In the first level's room
 
