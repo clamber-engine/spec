@@ -4,6 +4,8 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+## spec-v0.77.0
+
 Coverage (`title-1`). Answers no open `spec` issue.
 
 - `behavior/walk-off.md`: new section "Ledges without a face": the
