@@ -338,8 +338,8 @@ This list is for `title-1`; `title-2` has its own list above.
 - Near the ends of a level. Within about 210 px of the left end, the
   target was seen to differ from the rule by −1, +2 or +4 px. Near the
   first level's left end the view also stops moving altogether once the
-  player is left of the object there that leads out of the level
-  (`level-ends.md`, "Not covered"). The view's position going past the
+  player has walked past the exit there (`exits.md`, "Leaving the
+  area"). The view's position going past the
   level's limits, and the picture staying within them, are in
   `level-ends.md`.
 - Where the view starts when a level begins, and after the player falls
