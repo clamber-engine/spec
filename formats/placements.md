@@ -191,6 +191,7 @@ members are looked up by their own references.
 | `ball` | A ball placed in the level, not thrown (moving when it appears) | `thrower.md`, `ball-contact.md` |
 | `bunch` | A bunch | `bunches.md` |
 | `letter-1` to `letter-4` | The letter with that number | `letters.md` |
+| `figure` | A golden figure of an animal, adding to the figure count | `figure.md` |
 | `barrel` | An object that can be carried and holds nothing | `carrying.md`, `thrown-objects.md` |
 | `holder` | An object that can be carried and holds the missing character | `carrying.md`, `holder-breaking.md` |
 | `end-marker` | The level's end marker | `level-end.md` |
@@ -220,11 +221,11 @@ its own reference, and placed a tyre there.
 
 ### In the first level
 
-23 of the first level's 37 references have a kind fingerprint row. They
-are used by 50 of its entries (counting group members): 5 small
+24 of the first level's 37 references have a kind fingerprint row. They
+are used by 51 of its entries (counting group members): 5 small
 walkers (all three group members among them), 6 medium walkers, 3 large
 walkers, the
-thrower, a ball, 4 bunches, the four letters (one each), a barrel, 2
+thrower, a ball, 4 bunches, the four letters (one each), a figure, a barrel, 2
 holders, the animal crate, the restart barrel, the end marker, the
 entrance, 2 exits,
 15 hidden bunches, a hidden barrel and a hidden metal barrel. The other
@@ -247,7 +248,9 @@ hidden-object references, given to a class 1 entry the same way, placed
 a hidden object that was set off and released its item as
 `../behavior/hidden-objects.md` says for its kind. The `entrance` row
 was checked as in `../behavior/level-start.md` ("The entrance"), and the
-two `exit` rows as in `../behavior/exits.md` ("Checks").
+two `exit` rows as in `../behavior/exits.md` ("Checks"). The `figure`
+reference, given to a class 1 entry near the level's start, placed a
+figure that was taken and counted as `../behavior/figure.md` says.
 
 ## When placed objects appear
 
