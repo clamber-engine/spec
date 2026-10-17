@@ -285,6 +285,32 @@ There again, as when the level begins:
   and the lead carries nothing when the next area begins. After coming
   back it is at its place again, still holding the missing character.
 
+**Riding into the exit.** A lead riding the animal (`riding.md`) when
+the exit takes over keeps it through the exit and after coming back:
+
+- **The walk-out** is ridden, and is the same frame for frame as on
+  foot ("The walk-out"): at the end of `T`, `y` becomes `ye` + 1; on
+  `T` + 1, `vx` becomes −2 and `x` doesn't change; from `T` + 2, `x` goes
+  down by exactly 2 every frame. The area's last frame comes as many
+  frames after `T` as for a lead on foot. The animal stays under the lead
+  all the way, at the lead's `x` in whole px.
+- **In the scene and the room** the lead is on foot and the animal isn't
+  there. Every frame there is as for a lead that left on foot.
+- **Back in the level** the lead is riding the animal from frame 0 of
+  the next area, and the animal is at the lead's `x` in whole px from
+  frame 1. After the scene, frames 0 to 27 of "Walking in" are exactly
+  as given there. From frame 28 the player has control and the speed
+  follows `riding.md` ("Horizontal speed"), not `ground-speed.md`: with
+  nothing held, `vx` goes from 768/256 to 744/256 on frame 28 and to
+  721/256 on frame 29. After the room, the level begins as in
+  `level-start.md`, with the same position and speed on every frame up
+  to and including the landing frame. From the next frame the speed
+  follows `riding.md` in the same way: with nothing held, 350/256 on the
+  landing frame became 340/256.
+- After either exit, Right and Jump then worked as in `riding.md`
+  (a ridden jump). There is no second animal: neither the crate, its
+  broken pieces nor another animal is at the crate's place.
+
 Other kinds of object are not covered (see "Not covered").
 
 ## Example
@@ -492,6 +518,22 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   holder put down was back at its place when the lead came back to it,
   as "Objects put down elsewhere" in `../formats/placements.md` gives.
   156 checks in all, none different.
+- **Riding into the exit.** 5 more runs, each starting with the lead
+  alone and with the balls taken out of the level. In each, the lead
+  broke the animal crate and mounted the animal with a jump from the
+  boards. It rode through each exit with nothing held, or stayed in the
+  level without an exit. Two controls for the exits broke the crate and
+  left the animal waiting. In both exit runs, the walk-out frames were
+  as above, with the rider and the animal together every frame. The
+  walk-out lasted as many frames as in the control, and the scene or room
+  frames were the same as in the control. Every frame of the first 200
+  after coming back was riding, with one animal. Positions and speeds
+  matched the control up to frame 27 (scene) or the landing frame (room),
+  and on every later frame the speed was as `riding.md` gives with
+  nothing held. Then the rider rode right for 40 frames and jumped. The
+  lives were kept. In the controls no animal was there after coming
+  back. Without an exit, the lead was still riding and the boards were
+  still there. 54 checks in all, none different.
 
 ## Not covered
 
@@ -511,7 +553,8 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
 - What else is kept when play comes back to the level after the scene
   or the room: tyres moved, the
   hidden objects set off by a fall and their items,
-  an animal mounted or ridden away from its crate, a thrower bounced on
+  an animal left after being mounted (got off or knocked off before
+  the exit), a thrower bounced on
   or rolled into, the `extra-life-3` items, objects of kinds the spec doesn't
   name, and objects other than a barrel or a holder carried through the
   exit. How a barrel or a holder carried into the exit moves during the
@@ -522,6 +565,11 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   runs in "Coming back to the level" had the lead alone).
 - Whether bunches and letters taken before a knock-out are there when
   play resumes (`restart-barrel.md`).
+- Riding into the exit with anything held during the walk-out or the
+  walk-in, or with the second character; whether the animal is drawn
+  on frames 0 to T − 1 of the level's start after the room
+  (`level-start.md`), and how the rider and the animal are drawn during
+  the walk-out and the walk-in.
 - The other character after frame 27; two characters walking into the
   room (only the lead alone was measured there).
 - How far left of the exit the reach goes, and the reach of states not
