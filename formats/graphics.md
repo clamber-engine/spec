@@ -5,10 +5,12 @@ Titles: `title-1`
 How the first level's background pictures are stored, and how to turn
 them into images: colours and palette rows, tiles, packed tile data,
 tile entries, cell pictures, and the two background layers built from
-them. The **grid**, its **cells**, **cell words** and **types** are as
-in `level-ground.md`: the picture of a cell comes from the same cell
-word as its ground. Everything here was checked against the game's own
-video output on the first level (see "Evidence").
+them, and the one fixed picture of the first level's room
+(`../behavior/exits.md`, "Where the first level's exits lead"). The
+**grid**, its **cells**, **cell words** and **types** are as in
+`level-ground.md`: the picture of a cell comes from the same cell word
+as its ground. Everything here was checked against the game's own video
+output on the first level and its room (see "Evidence").
 
 ## Colours
 
@@ -187,6 +189,42 @@ Transparent pixels show what is behind them. Where characters and
 other moving things are drawn in this order is not covered. In the
 first level only the ground layer has raised tiles.
 
+## Screen pictures
+
+Some areas show one fixed picture instead of layers made from the grid.
+The first level's room is one of them. Its background is a **screen
+picture**, made from:
+
+- a **screen map** of 32 × 32 tile entries ("Tile entries"), 2 048
+  bytes. The entries are stored a row at a time, top row first, and left
+  to right in each row: the entry for square column `sx`, square row `sy`
+  (each 0 to 31) is bytes 64`sy` + 2`sx` and 64`sy` + 2`sx` + 1. It covers
+  the picture's pixel columns 8`sx` to 8`sx` + 7 and rows 8`sy` to
+  8`sy` + 7, so the screen picture is 256 × 256 px;
+- a tile set of 1 024 tiles, stored as they are, not packed (32 bytes
+  per tile, tile 0 first);
+- a palette set.
+
+Each pixel is the colour of its tile's colour number in the entry's
+palette row, or transparent for colour number 0, as in "The grid
+picture".
+
+In an area with a screen picture:
+
+- The screen picture is the only background layer. There is no far
+  layer, and the grid's cells (`level-ground.md`) give the area's ground
+  only: their pictures are not shown.
+- The picture doesn't move. Its pixel column `c` is always at level x
+  `c`, and its pixel row `r` is always at level y `r`, with no shift of a
+  row as the ground layer has ("The layers"). The 256 × 224 px picture
+  on screen shows the screen picture's rows 0 to 223.
+- Transparent pixels show the **backdrop**, one colour on the whole
+  picture: colour 0 of palette row 0 of the area's palette set.
+- From the back, the order is the backdrop, the screen picture's tiles
+  that are not raised, then its raised tiles. Where characters and other
+  moving things are drawn in this order is not covered, as in "Drawing
+  order".
+
 ## The first level's data
 
 For the first level the importer needs the following. Where each one
@@ -216,6 +254,22 @@ changes every colour of rows 1 to 7 step by step from the palette set's
 colours near the level's right end. The palette set is the level's
 colours before the dimming.
 
+## The first level's room
+
+For the room the upper exit leads to, the importer needs the following.
+Where each one starts in the image is in `locators.md`.
+
+- The tile set (1 024 tiles), stored in two parts: tiles 0 to 986 (31 584
+  bytes) at one location, and tiles 987 to 1 023 (1 184 bytes) at
+  another.
+- The screen map.
+- The palette set (8 rows).
+
+The room's grid and type table are in `level-ground.md`. At every check
+in "Evidence" the game held exactly these tiles, this screen map and
+these 8 palette rows. The fade-in and the walk-in are in
+`../behavior/exits.md`.
+
 ## Example (synthetic)
 
 Packed data: a pair table whose pair 5 is `7e 7f` (other pairs any),
@@ -239,6 +293,13 @@ A cell word 0x4003 (type 3, mirrored): if type 3's picture has entry
 0x4011 ^ 0x4000 = 0x0011 and square (3, 0) holds 0x0010 ^ 0x4000 =
 0x4010.
 
+In a screen map, bytes 130 and 131 are the entry for square column 1,
+square row 2 (130 = 64 · 2 + 2 · 1). If they are `05 64`, the entry is
+0x6405: tile 5, palette row 1, raised, flipped left to right, not
+flipped top to bottom. It covers the picture's pixel columns 8 to 15 and
+rows 16 to 23, that is level x 8 to 15 and level y 16 to 23 in an area
+with a screen picture.
+
 More cases, as bytes, are in `../vectors/graphics/`.
 
 ## Evidence
@@ -254,13 +315,33 @@ More cases, as bytes, are in `../vectors/graphics/`.
   gave the game's own picture of that layer with no pixel different, at
   six of those positions (256 × 224 px each), always with the one-row
   shift given in "The layers".
+- The first level's room, entered by the upper exit with the lead alone
+  and with two characters: 6 runs of 600 logic frames with made-up input
+  (walking, running, jumping and rolling, three runs each way),
+  checked every 50th frame (72 pictures). The game's own
+  picture of its background layer matched the screen picture drawn as
+  in "Screen pictures" from the image's tile set, screen map and palette
+  set, with every one of the 56 368 non-transparent pixels the same in
+  each picture (4 058 496 pixels, none different), and with no shift of
+  a row. The game's tiles and screen map were the image's, byte for
+  byte, and its colour rows 0 to 7 were the palette set.
+- In the same pictures, the game showed nothing on any other background
+  layer, and the transparent pixels showed one colour. In a copy of the
+  image with colour 0 of the room's palette row 0 changed, the backdrop
+  was the new colour.
+- Where characters and objects are drawn in the room: in 4 runs of 600
+  logic frames (two with two characters), each of 14 800 objects drawn
+  was at the point that `sprites.md` ("Where the picture is drawn")
+  gives with the picture's left edge at level x 0 and its top row at
+  level y 0.
 
 ## Not covered
 
 - Sprite colours during the dimming near the first level's right end
   (`../behavior/dimming.md`).
 - Where other levels' packed tile data, palette sets and picture
-  tables start in an image.
+  tables start in an image, and which areas other than the first
+  level's room have a screen picture.
 - How the far layer moves with the view, including different rates for
   different rows of the picture.
 - Colours on screen that are not the palette colours: the far layer
@@ -269,6 +350,8 @@ More cases, as bytes, are in `../vectors/graphics/`.
 - The layer that shows counters and other information.
 - Characters, walkers, objects and other moving things (their tiles,
   palette rows and order against the layers).
-- Fades, and areas other than the first level's main area (rooms
-  entered from it).
+- Fades, and the pictures of areas other than the first level and its
+  room (the scene the floor exit leads to, `../behavior/exits.md`).
+- Whether other areas with a screen picture have tile sets of other
+  sizes, a far layer or a moving picture.
 - Other levels and other titles.

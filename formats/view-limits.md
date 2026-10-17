@@ -49,6 +49,10 @@ level's record"). The first level's restart point
 limits were the same as when the level began. The record has 14
 vertical limit entries; 1 of them is quick.
 
+The first level's room (`../behavior/exits.md`) doesn't use a record:
+its left and right limits are both 0, and its picture doesn't move
+(`../behavior/level-ends.md`, "In the first level's room").
+
 ## Example (synthetic)
 
 Bytes from the record's start, in hex:

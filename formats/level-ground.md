@@ -495,6 +495,28 @@ Where the first level's grid and type table start in the image is in
   ground.
 - The type table has `N` = 234 types.
 
+## The first level's room
+
+The room the upper exit leads to (`../behavior/exits.md`) has a grid and
+a type table of its own. Where they start in the image is in
+`locators.md`. Both are column-grid data as above, with the room's level
+y measured from the same 512 px tall grid:
+
+- The grid is 16 columns (level x 0 to 511). The room uses all of them.
+- The type table has `N` = 17 types.
+
+The room's background picture doesn't come from this grid
+(`graphics.md`, "Screen pictures"); the grid gives the room's ground
+only.
+
+Checked against the game in the room: in 8 runs of 1 000 logic frames
+with made-up input (four with two characters; in half of them the lead
+was also put at a random point in the air every 25 frames), the ground
+below the lead's feet found by these rules matched the game's on all
+5 376 frames in the air, and its height matched it on all 2 106 frames on
+the ground. Frames on which the lead stood on an object were not
+counted.
+
 ## Not covered
 
 - Whether being passable from below matters for anything other than

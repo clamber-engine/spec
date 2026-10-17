@@ -37,6 +37,14 @@ SHA-256 of the image:
 | Level start: the first level's scene-return record | `level-start.md` | `fc` | `c09c` |
 | Level start: the first level's room-return record | `level-start.md` | `fc` | `bf58` |
 | View limits: the first level's record | `view-limits.md` | `fc` | `957a` |
+| Level ground: the first level's room's grid | `level-ground.md` | `e3` | `0000` |
+| Level ground: the first level's room's type table | `level-ground.md` | `d6` | `0000` |
+| Level graphics: the first level's room's tile set, tiles 0 to 986 | `graphics.md` | `cf` | `84a0` |
+| Level graphics: the first level's room's tile set, tiles 987 to 1 023 | `graphics.md` | `cf` | `0000` |
+| Level graphics: the first level's room's screen map | `graphics.md` | `cf` | `7da0` |
+| Level graphics: the first level's room's palette set | `graphics.md` | `f9` | `d683` |
+| Placements: the first level's room's placement list | `placements.md` | `fd` | `d3c0` |
+| Level start: the first level's room's start record | `level-start.md` | `fc` | `c090` |
 | Level map: point tables | `level-map.md` | `fc` | `f47b` |
 | Level map: corner records | `level-map.md` | `c0` | `d13c` |
 

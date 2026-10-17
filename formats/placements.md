@@ -252,6 +252,20 @@ two `exit` rows as in `../behavior/exits.md` ("Checks"). The `figure`
 reference, given to a class 1 entry near the level's start, placed a
 figure that was taken and counted as `../behavior/figure.md` says.
 
+### In the first level's room
+
+The room the upper exit leads to (`../behavior/exits.md`) has a
+placement list of its own (`locators.md`). It has no sections and no
+groups: all its entries are of class 1 or class 2. One of its references
+has a kind row (`tyre`); the kinds of the others are not covered. In the
+room the picture's left edge is always level x 0
+(`../behavior/level-ends.md`, "In the first level's room"), so every
+entry is in the window. An object for each of its entries was there
+from the room's frame 1 on (frames numbered as in
+`../behavior/exits.md`, "Walking in"), and none on frame 0, in each of 8
+runs into the room (4 with two characters, with different input before
+the upper exit).
+
 ## When placed objects appear
 
 The window and the view position `V` are as in

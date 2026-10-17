@@ -61,6 +61,20 @@ The rule held while the player stood, walked, ran, turned, jumped and
 fell, rolled, stopped after a roll, held Down, used the ground action
 (`ground-action.md`) and bounced off a walker (`bounce.md`).
 
+## In the first level's room
+
+The room the upper exit leads to (`exits.md`) doesn't take its limits
+from a view-limit record. In the room `A` and `B` are both 0:
+
+- `E` is 0 on every frame, whatever `V` does, so the picture always
+  shows level x 0 to 255.
+- The picture doesn't move up or down either: its top row is at level y
+  0 on every frame. The room's picture is a screen picture
+  (`../formats/graphics.md`, "Screen pictures").
+- "The player at the ends" holds with `A` = 0: a player moving left is
+  stopped on a frame that starts with ⌊`x0`⌋ less than 18. On the
+  right, the room's exit is reached first (`exits.md`, "Not covered").
+
 ## Examples
 
 Synthetic, computed from the rules above, with `A` = 64 and `B` = 4800.
@@ -112,6 +126,15 @@ than 82) `vx` is 0 and `x` stays 81.25.
   stricter run stopped and the other moved on. In the other 38 pairs no
   frame started exactly there. Moves away from the end, from past the
   limit, were not stopped (1 248 frames).
+- **The room.** In the runs of `../formats/graphics.md` ("Evidence"),
+  6 runs with 72 pictures and 4 runs with 14 800 objects drawn, the
+  picture showed level x 0 to 255 and level y 0 to 223 every time, and
+  every object was drawn as `../formats/sprites.md` gives with the
+  picture's left edge at level x 0 and its top row at level y 0. 16 runs
+  of random input in the room, mostly toward the left (walking,
+  running, jumps, rolls, Down): 19 184 frames, of which 14 815 started
+  with ⌊`x0`⌋ less than 18. On every one of them `vx` was not below 0,
+  and when it was 0, `x` didn't change.
 
 ## Not covered
 
@@ -123,7 +146,9 @@ than 82) `vx` is 0 and `x` stays 81.25.
   stop. The first level's left end has one: a player walking toward the
   end there is taken over by it before reaching the stop.
 - Whether the player's vertical motion changes on a stopped frame.
-- Other levels, and kinds of area that don't take their limits from a
-  view-limit record (`../formats/view-limits.md`, "Not covered").
+- Other levels, and kinds of area other than the first level's room
+  that don't take their limits from a view-limit record
+  (`../formats/view-limits.md`, "Not covered"). The right end of the
+  room.
 - How the player's speed changes on the frames after a stop, beyond
   what the usual rules give from `vx` = 0.
