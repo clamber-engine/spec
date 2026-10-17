@@ -10,8 +10,8 @@ positions mean, and when the objects it places appear and are
 removed. Vectors: `../vectors/placements/`.
 
 The list doesn't hold the characters (where they start is in
-`level-start.md`), the single collectibles
-(`../behavior/collectibles.md`), or objects made during play (for
+`level-start.md`), the single collectibles (their own group list,
+`collectibles.md`), or objects made during play (for
 example the pieces of a broken object or a defeated walker, and short
 effects).
 
