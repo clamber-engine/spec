@@ -197,6 +197,7 @@ members are looked up by their own references.
 | `end-marker` | An end marker: the level's end, or the way out of the first level's room | `level-end.md` |
 | `entrance` | The place the characters come out of when the level begins | `level-start.md` |
 | `exit` | An exit that takes the lead out of the area | `exits.md` |
+| `wall-exit` | An exit hidden in a wall, opened by a thrown object | `wall-exits.md` |
 | `animal-crate` | A crate holding an animal | `animal-crate.md` |
 | `restart-barrel` | The restart barrel | `restart-barrel.md` |
 | `stinger` | A stinger (flying enemy) | `stinger.md` |
@@ -225,13 +226,13 @@ its own reference, and placed a tyre there.
 
 ### In the first level
 
-30 of the first level's 37 references have a kind fingerprint row. They
-are used by 60 of its entries (counting group members): 5 small
+32 of the first level's 37 references have a kind fingerprint row. They
+are used by 62 of its entries (counting group members): 5 small
 walkers (all three group members among them), 6 medium walkers, 3 large
 walkers, the
 thrower, a ball, 4 bunches, the four letters (one each), a figure, a barrel, 2
 holders, the animal crate, the restart barrel, the end marker, the
-entrance, 2 exits,
+entrance, 2 exits, 2 wall exits (two references, one each),
 15 hidden bunches, a hidden barrel, a hidden metal barrel, 2 signs
 (two references, one sign each), 2 critters (one reference) and 5
 extra-life items (two `rising-extra-life-1`, one `rising-extra-life-2`
@@ -265,7 +266,11 @@ start, placed a critter there that appeared and flew as
 `../behavior/critter.md` says. Each of the three extra-life references,
 given to a class 1 entry near the level's start, placed an extra-life
 item there that moved (or stayed), was taken and gave lives as
-`../behavior/extra-lives.md` says for its kind.
+`../behavior/extra-lives.md` says for its kind. Each of the two `wall-exit`
+references, given to a class 1 entry near the level's start, placed a
+closed wall exit there that a lead walking through didn't open; in their
+own places they were opened and taken over as
+`../behavior/wall-exits.md` says.
 
 ### In the first level's room
 

@@ -341,8 +341,8 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
 
 ## Not covered
 
-- Exits leading right, exits in other levels, and
-  where an exit leads in general: which area comes next is a setting of
+- Exits leading right (other than the wall exits of `wall-exits.md`),
+  exits in other levels, and where an exit leads in general: which area comes next is a setting of
   the object (its definition, `../formats/placements.md`), and how an
   area is entered (walking in, and which way, or as a level begins) is
   given above only for the first level's areas.
