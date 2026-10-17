@@ -2,6 +2,32 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.115.0
+
+How the first level's room is left, and signs, in `title-1`.
+
+Answers part of clamber-engine/spec#17 and part of clamber-engine/spec#19.
+The rest of each is not covered yet, so both stay open.
+
+- `behavior/level-end.md`: an entry places an end marker when its
+  reference's kind is `end-marker`. New "In the first level's room"
+  (the room is left by passing its end marker; when the fade starts
+  there, the last frame, and play going on in the first level from the
+  room-return record; Right with Down also passes; what follows depends
+  on the area, not the reference; a synthetic example and checks). Not
+  covered updated.
+- `behavior/exits.md`: the room is left past its end marker, not
+  through an exit. Not covered updated.
+- `behavior/level-ends.md`: the room's right stop with `B` = 0, with
+  the end marker before it. Checks and Not covered updated.
+- New `behavior/signs.md`: the sign (scenery), its position, when it
+  appears and is removed, and that it has no effect on play; checks.
+- `formats/placements.md`: new `sign` kind; the `end-marker` kind also
+  covers the room's way out; the first level's, the room's and the
+  scene's references with kind rows updated.
+- `formats/locators.md`: one `end-marker` and two `sign` kind
+  fingerprint rows for `title-1`.
+
 ## spec-v0.114.0
 
 The ending after all four letters, and the data of the first level's
