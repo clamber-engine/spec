@@ -2,62 +2,12 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
-## spec-v0.80.0
+## spec-v0.81.0
 
-New specs and traces (`title-1` level map; `title-2` reference traces),
-and a correction (`title-2` steep faces). Answers `spec` issue #30.
-
-- `behavior/level-map.md` (new): walking on the level map. Map
-  positions with fractions, paths as lists of points, legs at
-  (end − start) / 64 px per frame per axis, each axis arriving on its
-  own (moving toward smaller values: put back to the end's whole pixel,
-  fraction kept), fractions carried from walk to walk; a worked example;
-  standing frames, the remembered press (new presses only, 31 frames),
-  the direction as the first of Right, Left, Up, Down among held and
-  remembered buttons (no fallback); 256 px pages, no walk before 64
-  frames after a page change or the map's fade-in; where the lead
-  stands when the map appears. Progress not covered.
-- `formats/level-map.md` (new): the level map's format. Point ids
-  (corner ids 112–143, the rest stops), seven 256-byte point tables
-  (page, `x` on the page, `h`, and each stop's neighbour for Right,
-  Left, Up and Down), the appearance point 8 px right of a stop's
-  position, corner records (two destination/next pairs each, `K` = 4 in
-  `title-1`), and the route of a walk (first corner by its record
-  naming the start, then next points toward the destination); example,
-  measurements, not covered. Vectors: `vectors/level-map/` (new).
-  `behavior/level-map.md` points to it. `formats/locators.md`: two
-  `title-1` rows; `formats/README.md` lists it.
-- Traces: new `reference/title-2/run-jump-flat.trace`,
-  `reference/title-2/bounce-walker.trace` and
-  `reference/title-2/slope-dip.trace`. `title-2` now has a trace for
-  every scenario. `TITLES.md`: the `title-2` row lists them.
-- `behavior/jump-arc.md` ("Example (`title-2`)"), `behavior/bounce.md`
-  ("Example (`title-2`)") and `behavior/slopes.md` ("Examples
-  (`title-2`)"): point to them. `slopes.md` notes that the `slope-dip`
-  summary describes `title-1`, and how far a `title-2` test level
-  continues the floor.
-- `behavior/bounce.md` ("In `title-2`"): the landing frame's row is
-  grounded with `land`, as in `title-1` (it said the state stays `bounce`
-  on that frame); "Not covered" notes the trace's landing.
-
-- `behavior/steep-faces.md`, "In `title-2`": the face limits are
-  corrected. They come before the blocking test, and keep downhill
-  speeds of 0.75 to 2.25 px per frame and any speed whose remainder
-  modulo 256/256 is 0 or 193/256 to 255/256. Others become 2 downhill
-  (576/256 or more downhill) or 0.75 downhill, every uphill speed
-  included. New "Blocked face frames": a blocked face frame ends with `x`
-  at the column edge and `vx` 0, and needs a kept uphill speed (seen on
-  the first frame after a landing). Face columns are the columns of
-  steep-face pieces; a lone 4 px step makes none. "Getting onto a face
-  from above" becomes "Following the floor down": each piece's steepness
-  gives a reach (3 px flat, 1-in-4, 1-in-2; 4 for 2-in-3; 5 for 1-in-1;
-  6 for 2-in-1; 8 for a steep face). The floor is followed down by up to
-  the reach, plus 3 px onto a sloped piece; otherwise L moves reach +
-  0.4375. Examples, evidence and "Not covered" updated.
-- `behavior/walk-off.md`, "In `title-2`": leaving at a step down; on
-  L + 1 `vy` is 113/256 instead of 368/256 when the floor is 2.5625 px
-  or less below.
-- `behavior/slopes.md`, "In `title-2`": point to the new rule.
+New specs (`title-1` voice output, ropes, tyres, restart barrel, riding
+the animal on flat floor, slopes and steep faces) and coverage
+(`title-1` landings on or next to steep faces, landing switch frame).
+Answers `spec` issue #20 in part.
 
 Importer: sound (`title-1`), in part for spec#20
 (https://github.com/clamber-engine/spec/issues/20). Uses the level from
@@ -179,16 +129,87 @@ Coverage (`title-1`). Answers no open `spec` issue.
 - `behavior/steep-faces.md`, "Landing on or next to a face" (new): after
   a jump, or a fall from a face, lands on or next to a face, the 1.5 px
   per frame downhill and "Can't start toward a rise" wait for a switch
-  frame M. M from the jump's approach frame A (first frame from T + 20
-  with floor within 71 px and 2 bands below the feet): plain landings
-  (marks A, A + 2, A + 4, A + 6, A + 8, A + 11, A + 15; later marks run
-  one per frame after L), slide landings (A over a face column: 11 frames
-  after reaching other floor), and at the latest the first frame ending
-  on a face column with `vx` 0 or downhill. The downhill 1.5 as a push
-  set at the end of each frame and kept while the target or `vx` points
-  uphill. Two measured examples, evidence, not covered. "Can't start
-  toward a rise" and "Speed on a face" point to it; intro and "Not
-  covered" updated. `behavior/movement-summary.md`: steep faces row.
+  frame M (as in `jump-input.md`; M = L after a fall from a face). Plain
+  landings use M from the stage frames; slide landings (A over a face
+  column) have M 11 frames after reaching other floor; at the latest M is
+  the first frame ending on a face column with `vx` 0 or downhill. The
+  downhill 1.5 as a push set at the end of each frame and kept while the
+  target or `vx` points uphill. Two measured examples, evidence, not
+  covered. "Can't start toward a rise" and "Speed on a face" point to it;
+  intro and "Not covered" updated. `behavior/movement-summary.md`: steep
+  faces row.
+
+Coverage (`title-1`). Answers no open `spec` issue.
+
+- `behavior/jump-input.md`, "Landing lockout": E = M + 2, with the
+  switch frame M (new section): the approach frame A (first frame from
+  T + 20 with floor within 71 px and 2 bands below the feet), seven stage
+  frames from A (spacing depends on whether A = T + 20), M from how many
+  stage frames are L or earlier, or A + 4 for a landing before A.
+  Examples for flat standing jumps; measurements. Landings not covered
+  (after a roll jump, falls, bounces) keep E = L + 3 with ±1 tolerance.
+  The buffered-press window counts back from E.
+- `behavior/ground-speed.md`, "After a landing": running starts on M;
+  otherwise the mode starts on K (M + 6 if M > L; L + 10 or L + 9 if
+  M = L). The "Variation in the original" paragraph is replaced;
+  tolerances kept for landings not covered.
+
+## spec-v0.80.0
+
+New specs and traces (`title-1` level map; `title-2` reference traces),
+and a correction (`title-2` steep faces). Answers `spec` issue #30.
+
+- `behavior/level-map.md` (new): walking on the level map. Map
+  positions with fractions, paths as lists of points, legs at
+  (end − start) / 64 px per frame per axis, each axis arriving on its
+  own (moving toward smaller values: put back to the end's whole pixel,
+  fraction kept), fractions carried from walk to walk; a worked example;
+  standing frames, the remembered press (new presses only, 31 frames),
+  the direction as the first of Right, Left, Up, Down among held and
+  remembered buttons (no fallback); 256 px pages, no walk before 64
+  frames after a page change or the map's fade-in; where the lead
+  stands when the map appears. Progress not covered.
+- `formats/level-map.md` (new): the level map's format. Point ids
+  (corner ids 112–143, the rest stops), seven 256-byte point tables
+  (page, `x` on the page, `h`, and each stop's neighbour for Right,
+  Left, Up and Down), the appearance point 8 px right of a stop's
+  position, corner records (two destination/next pairs each, `K` = 4 in
+  `title-1`), and the route of a walk (first corner by its record
+  naming the start, then next points toward the destination); example,
+  measurements, not covered. Vectors: `vectors/level-map/` (new).
+  `behavior/level-map.md` points to it. `formats/locators.md`: two
+  `title-1` rows; `formats/README.md` lists it.
+- Traces: new `reference/title-2/run-jump-flat.trace`,
+  `reference/title-2/bounce-walker.trace` and
+  `reference/title-2/slope-dip.trace`. `title-2` now has a trace for
+  every scenario. `TITLES.md`: the `title-2` row lists them.
+- `behavior/jump-arc.md` ("Example (`title-2`)"), `behavior/bounce.md`
+  ("Example (`title-2`)") and `behavior/slopes.md` ("Examples
+  (`title-2`)"): point to them. `slopes.md` notes that the `slope-dip`
+  summary describes `title-1`, and how far a `title-2` test level
+  continues the floor.
+- `behavior/bounce.md` ("In `title-2`"): the landing frame's row is
+  grounded with `land`, as in `title-1` (it said the state stays `bounce`
+  on that frame); "Not covered" notes the trace's landing.
+
+- `behavior/steep-faces.md`, "In `title-2`": the face limits are
+  corrected. They come before the blocking test, and keep downhill
+  speeds of 0.75 to 2.25 px per frame and any speed whose remainder
+  modulo 256/256 is 0 or 193/256 to 255/256. Others become 2 downhill
+  (576/256 or more downhill) or 0.75 downhill, every uphill speed
+  included. New "Blocked face frames": a blocked face frame ends with `x`
+  at the column edge and `vx` 0, and needs a kept uphill speed (seen on
+  the first frame after a landing). Face columns are the columns of
+  steep-face pieces; a lone 4 px step makes none. "Getting onto a face
+  from above" becomes "Following the floor down": each piece's steepness
+  gives a reach (3 px flat, 1-in-4, 1-in-2; 4 for 2-in-3; 5 for 1-in-1;
+  6 for 2-in-1; 8 for a steep face). The floor is followed down by up to
+  the reach, plus 3 px onto a sloped piece; otherwise L moves reach +
+  0.4375. Examples, evidence and "Not covered" updated.
+- `behavior/walk-off.md`, "In `title-2`": leaving at a step down; on
+  L + 1 `vy` is 113/256 instead of 368/256 when the floor is 2.5625 px
+  or less below.
+- `behavior/slopes.md`, "In `title-2`": point to the new rule.
 
 ## spec-v0.79.0
 
