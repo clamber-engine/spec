@@ -56,7 +56,7 @@ One line per held input: `FRAMES  BUTTONS`.
 - `BUTTONS` is one or more of the neutral actions below, without
   separators, in any order (`AJ` and `JA` are the same). Listing the same
   action twice on one line (`RR`) is an error. Traces still write the
-  `input` column in the fixed order `LRUDJASP`.
+  `input` column in the fixed order `LRUDJASPT`.
 - Every frame a line covers must be below `frames` (0 to `frames` − 1).
   A line covering a frame at or past `frames` is an error.
 - Lines combine: an action is held on a frame if any line covers it.
@@ -69,8 +69,10 @@ One line per held input: `FRAMES  BUTTONS`.
 | `A` | Action (run while held, roll on press) |
 | `S` | Swap lead character |
 | `P` | Pause |
+| `T` | Tandem: acts on the pair of characters; what it does in each title is in `../behavior/controls.md` |
 
-How these map to a controller is each side's own business.
+How these map to a controller is each side's own business; each title's
+own default layout is in `../behavior/controls.md`.
 
 ## `[metrics]`
 

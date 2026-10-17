@@ -11,7 +11,8 @@ Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y` and
 `vy` are as in a trace: right and down are positive, speeds in px per
 frame. Speeds and positions are whole multiples of 1/256 px. "Left",
 "Right", "Down", "Jump", "Action", "Swap" are the neutral inputs `L`,
-`R`, `D`, `J`, `A`, `S`.
+`R`, `D`, `J`, `A`, `S`. Tandem (`T`, `controls.md`) also starts swaps in
+`title-1`, with the differences listed there.
 
 The **first character** is the one under control when a game begins;
 the **second character** is the one that joins later (see
@@ -29,8 +30,10 @@ swap.
 
 ## Which presses start a swap
 
-Call **Q** the frame of a press: `S` held on Q and not on Q − 1. Holding
-`S` does nothing more; another swap needs another press.
+Call **Q** the frame of a press: `S` held on Q and not on Q − 1. Once a
+swap has started, holding `S` does nothing more; another swap needs
+another press. A refused press can still start a swap later while `S`
+stays held ("Holding Swap" below).
 
 A press on Q starts a swap on Q unless one of these holds:
 
@@ -59,8 +62,6 @@ A press on Q starts a swap on Q unless one of these holds:
    in the air: a press while the other character is in the air within
    7 px works.
 
-A refused press is forgotten: nothing happens later because of it.
-
 Presses that do start a swap, and what they cancel:
 
 - On the frame of a Jump press (P in `jump-input.md`), on P + 1 (the
@@ -72,6 +73,28 @@ Presses that do start a swap, and what they cancel:
 - During a turn (`ground-speed.md`), on any of its frames: the turn is
   abandoned; facing stays as it was on Q − 1.
 - While walking or running: the player stops dead on Q (below).
+
+### Holding Swap
+
+A press refused by rule 4 (roll) or rule 5 (crouching) is kept while `S`
+stays held: on each later frame with `S` still held, the rules are
+applied again as if that frame were Q, and the swap starts on the first
+such frame that no rule refuses. A refusal by rule 1, 2, 3 or 6, on Q or
+on any of those later frames, ends it: nothing happens later because of
+it, even if `S` stays held, and another swap needs another press. When
+`S` is released, a kept press is forgotten.
+
+For example, Down held from C and released on U = C + 30 with the first
+character as the player, and `S` pressed on C + 10 and held: the press
+is refused (rule 5) and kept, and the swap starts on U + 10 = C + 40,
+the first frame rule 5 allows. With a Jump press while crouching and
+`S` pressed on the same frame and held, the swap starts on the next
+frame (P + 1, see above). `S` pressed in the air and held through the
+landing never swaps.
+
+Measured by playing each of the 2 015 runs above again with `S` held for
+60 frames from its first press: every swap starts as these rules give.
+Treating rules 3 and 6 like rules 4 and 5 gets 301 of them wrong.
 
 ## The timeline
 
