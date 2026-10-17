@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.100.1
+
+Repeated tyre throws with no input in `title-1` (clarification).
+
+Answers clamber-engine/spec#37.
+
+- `behavior/tyre.md`: the rules are unchanged. "The cycle repeats
+  every 40 frames" held only for the first cycle. The new subsection
+  "Throws with no input" covers the pixel fraction kept from each catch,
+  which decides whether the next catch is on L + 25 or L + 26. Cycles
+  are 40 or 41 frames, and from a whole-pixel start a group of five
+  cycles (204 frames) repeats after the first. The example now continues
+  to the next throw and catch.
+
 ## spec-v0.100.0
 
 Walking off a ledge with the second character, and jump presses at
