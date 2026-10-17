@@ -274,6 +274,16 @@ There again, as when the level begins:
   is not in the scene or the room, and the lead carries nothing when the
   next area begins. After coming back it is at its place again in the
   same way.
+- a **holder** (kind `holder`, `holder-breaking.md`) picked up and put
+  down unbroken somewhere else: it is at its place again in the same
+  way, still holding the missing character, and nothing is where it was
+  put down. The missing character is still missing after coming back;
+- a **holder** still carried when the exit takes over: as for the
+  barrel, the exit takes over as usual and the holder is still there, in
+  the level, as the walk-out begins (how it moves during the walk-out is
+  not covered). It is not in the scene or the room, it doesn't break,
+  and the lead carries nothing when the next area begins. After coming
+  back it is at its place again, still holding the missing character.
 
 Other kinds of object are not covered (see "Not covered").
 
@@ -464,6 +474,24 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   the 2 runs without an exit (the lead going far away for 120
   frames, then back) the broken holder was not there either. 100 checks in all,
   none different.
+- **Coming back, holders moved.** 12 more runs, each starting with the
+  lead alone and with the balls taken out of the level. For each of the
+  first level's two holders: one run through each exit in which the
+  lead picked the holder up, carried it some way off and put it down
+  unbroken; one run through each exit in which the lead was still
+  carrying it as the exit took over; and one run without an exit in
+  which it was put down, the lead went far away for 120 frames and came
+  back to the holder's place. Two controls did nothing before leaving.
+  In the 10 exit runs the count, the lives, the set of letters and the
+  restart point were the same on coming back as on leaving, the lead was
+  never hurt before leaving, and the missing character stayed missing
+  throughout. In the 4 carried runs the walk-out began with the holder
+  still there, and no holder was in the scene or the room. After coming
+  back, in every run, both holders were at their places and nothing was
+  where a holder had been put down. In the 2 runs without an exit the
+  holder put down was back at its place when the lead came back to it,
+  as "Objects put down elsewhere" in `../formats/placements.md` gives.
+  156 checks in all, none different.
 
 ## Not covered
 
@@ -481,12 +509,13 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   room's placed objects other than the tyre and the end marker are not
   covered.
 - What else is kept when play comes back to the level after the scene
-  or the room: holders moved without breaking, tyres moved, the
+  or the room: tyres moved, the
   hidden objects set off by a fall and their items,
   an animal mounted or ridden away from its crate, a thrower bounced on
   or rolled into, the `extra-life-3` items, objects of kinds the spec doesn't
-  name, and objects other than the barrel carried through the exit. How
-  a barrel carried into the exit moves during the walk-out. Whether a broken barrel
+  name, and objects other than a barrel or a holder carried through the
+  exit. How a barrel or a holder carried into the exit moves during the
+  walk-out. Whether a broken barrel
   ever comes back during the same visit without an exit (it didn't in
   the one run above). Coming back with two characters, other than
   the character freed by a holder broken in the same visit (the other
