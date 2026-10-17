@@ -31,8 +31,9 @@ What the data exercises:
 - `appear.tsv`: with the view moving right 3 px a frame, `V` = −40 + 3`n`
   at the start of frame `n` (frame 0 is the level's first frame), the
   frame on which each object appears and its `V`, or `never` within
-  frames 0–299. Class 8 places nothing. Entry 6 is left out: when an
-  entry that is out of order appears is not covered.
+  frames 0–299. Class 8 places nothing. Entry 6 is in the window from
+  frame 134 on, but appears on frame 151 with entry 5, which is stored
+  before it and is right of the window until then ("Stored order").
 
 ## Kinds
 

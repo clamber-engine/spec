@@ -325,14 +325,15 @@ top row), rounded down to a whole pixel, as it was at the start of the
 frame.
 
 - **Class 1 and class 2.** The object appears on the first frame on
-  which its entry is in the window. On the level's first frame, the
+  which its entry is in the window, unless an entry stored before it
+  holds it back ("Stored order" below). On the level's first frame, the
   objects of all entries already in the window are there.
 - **Class 15.** The object appears on the first frame on which its
   entry is in the window and in the vertical window.
 - **Class 9.** Nothing appears.
 - **Class 5.** All members appear together, on the first frame on which
-  the group entry is in the window, even members whose own `x` is still
-  outside it.
+  the group entry is in the window (subject to "Stored order" below),
+  even members whose own `x` is still outside it.
 - **Class 8.** Nothing appears. For the first level's class 8 entry,
   the first frame on which it is in the window is the dimming's frame T
   (`../behavior/dimming.md`).
@@ -356,6 +357,52 @@ How a walker is removed, comes back, or stays away once defeated is in
 back in `../behavior/critter.md`, and how an extra-life item is removed
 and stays away in `../behavior/extra-lives.md`. When the first level's
 other objects are removed is in "When placed objects are removed" below.
+
+### Stored order
+
+In a list without sections, the order in which entries are stored
+matters as it does in a list with sections. The rules of "When an entry
+appears" (in "In a list with sections" below) hold, with the whole list
+as one open section: an entry's object appears on the first frame on
+which the entry comes up. That section has no far section, so the home
+section never waits. Whether class 2 entries far above or below the view
+appear is not covered (see "Not covered").
+
+In a list stored in order of `x`, this gives the same frames as the
+bullets above when each group's first member is at the group entry's
+`x` and no member is left of it, as in the first level: the entries in
+the window are next to each other in the list, and the lead is the
+first of them. It differs when an entry is
+stored after one with a larger `x`. Such an entry doesn't appear while
+that entry is right of the window, even when it is in the window
+itself. Both then appear on the same frame. The first level's list has
+one such entry: its `end-marker` entry (class 2) is stored after a
+class 1 entry with a larger `x`.
+
+**Checks.** In the first level:
+
+- The end marker, with the view moving right toward it: 20 runs
+  (walking and running, random pauses). In every run the marker appeared
+  on the first frame on which the class 1 entry stored before it was in
+  the window, and not on the frames before, on which the marker's own
+  entry was already in the window. In a copy of the image with the two
+  entries stored the other way round (5 runs), the marker appeared on
+  the first frame on which its own entry was in the window. In a copy
+  with the class 1 entry moved 28 px further right but still stored
+  first (5 runs), the marker appeared 28 px of view later than in the
+  real level, again on the first frame on which that entry was in the
+  window.
+- The whole list: 56 runs from 7 points along the level, of up to 12 000
+  frames each, with random walking, running, jumps and left legs, and
+  the player kept from being hurt (knock-outs from pits restart the
+  level and the run went on): 273 816 logic frames, 2 536 appearances.
+  The rules above gave every frame's appearances except on 58 frames:
+  8 frames on which the group appeared while its entry was left of the
+  window, and 50 on which an entry appeared late while many objects
+  were there. Both are under "Not covered". Taking each entry by its
+  own `x` alone (the bullets above without "Stored order") was also
+  wrong on 42 more frames: the frames on which the end marker's entry
+  was in the window but held back, in the 6 runs that reached it.
 
 ### In a list with sections
 
@@ -425,7 +472,7 @@ entry, its own `x`). For each open section, on each frame:
   section that is left of the window, or the section's first entry if
   none is. If the section's last entry is left of the window, nothing in
   the section appears on that frame.
-- An entry is **clear** when it is a class 9 entry, a class 1, 2 or 15
+- An entry is **clear** when it is a class 9 entry, a class 1, 2, 8 or 15
   entry in the window, or a group entry whose objects are there or whose
   first member is not right of the window and last member (the last in
   the members' list) not left of it.
@@ -616,24 +663,30 @@ exactly when the rules above say.
 
 ## Example
 
-A list with three entries (the trailing entry of zeros not shown), with
+A list with four entries (the trailing entry of zeros not shown), with
 `Yb` = 512:
 
 | `c` | `x` | `h` | `r` | Places |
 |---|---|---|---|---|
-| 1 | 300 | 175 | `A` | an object of definition `A` at level x 300, level y 337 |
+| 1 | 400 | 175 | `A` | an object of definition `A` at level x 400, level y 337 |
 | 5 | 900 | 160 | `G` | the members listed at `G` + 8, all appearing when 900 enters the window |
-| 1 | 900 | 200 | `B` | an object of definition `B` at level x 900, level y 312 |
+| 1 | 960 | 200 | `B` | an object of definition `B` at level x 960, level y 312 |
+| 2 | 930 | 63 | `C` | an object of definition `C` at level x 930, level y 449 |
 
-With the view moving right and still at `V` = 11 at the start of a
-frame, the first entry is outside the window (300 − 11 = 289). It
-appears on the first frame that starts with `V` ≥ 12. The group and the
-third entry both appear on the first frame that starts with `V` ≥ 612.
+With the view moving right and still at `V` = 111 at the start of a
+frame, the first entry is outside the window (400 − 111 = 289). It
+appears on the first frame that starts with `V` ≥ 112. The group
+appears on the first frame that starts with `V` ≥ 612. The fourth entry
+is in the window from `V` = 642 on, but the third entry, stored before
+it, is right of the window until `V` = 672 (960 − 672 = 288). Both
+appear on the first frame that starts with `V` ≥ 672.
 
 ## Vectors
 
-`../vectors/placements/` holds a made-up bank fragment and the entries a
-reader gets from it, and a made-up image with kind fingerprint rows and
+`../vectors/placements/` holds a made-up bank fragment, the entries a
+reader gets from it and the frames on which their objects appear with
+the view moving right (including an entry stored after one with a
+larger `x`), and a made-up image with kind fingerprint rows and
 the kinds a reader looks up from it. It also holds a made-up list with
 sections, its section table, a view path, and the entries that appear
 on each frame: see its `README.md`.
@@ -664,17 +717,16 @@ on each frame: see its `README.md`.
 - Objects whose entries are near the level's left end: in some runs an
   object there didn't appear again when the view came back over its
   entry.
-- Entries far above or below the view in lists without sections, and
-  when the first level's entry that is out of order appears (it is past
-  the furthest point the runs reached).
-- Whether the rules of "When an entry appears" (leads, clear entries)
-  also hold for lists without sections, taken as one section
-  covering the whole list. They were only measured on lists with
-  sections.
+- Entries far above or below the view in lists without sections.
+- In any list: what happens when an object can't appear because too
+  many objects are already there. In the first level's runs an entry
+  sometimes appeared late, while many objects were there, on the frame
+  after another object went away (50 frames in 7 runs, up to 20 px of
+  view late, for example just after the restart barrel had been broken
+  and its pieces were still flying).
 - In lists with sections: whether entries stored after an open
-  section's last entry can appear with it (in the runs, none did); what happens
-  when an object can't appear because too many objects are already
-  there; a record's point exactly
+  section's last entry can appear with it (in the runs, none did); a
+  record's point exactly
   on the view's top row when the area begins, and a record's point in
   the window on the area's first frame (neither happened in the runs);
   and the shared list beyond the checks above (no section changed in its
@@ -686,7 +738,10 @@ on each frame: see its `README.md`.
   of the window and its members still reached into it. In the runs this
   happened on 40 frames in 4 of the 8 areas: on 24, entries of the
   section appeared one frame later than the rules give; on 16, the
-  group's objects appeared where the rules give nothing.
+  group's objects appeared where the rules give nothing. In the first
+  level's list (one section, "Stored order") the same was seen: its
+  group appeared on 8 frames, in 6 runs, while its entry was left of
+  the window and its last member wasn't.
 - Groups in other levels: their members can be of other classes, and the
   group entry's position isn't always its first member's.
 - The level's exit at its end, other than the end marker
