@@ -230,54 +230,51 @@ only if the turn check changed nothing.
 
 #### After a landing
 
-Measured for landings after jumps on flat ground. With L the landing
-frame (the frame carrying `land`; `landing.md`), the player is in none
-of the three modes on frames L to L + 6, the **landing frames**. The
-speed rule applies as usual on them.
+Measured for landings after jumps. With L the landing frame (the frame
+carrying `land`; `landing.md`) and M the landing's switch frame
+(`jump-input.md`, "The switch frame M"), the player is in none of the
+three modes from L until a mode starts. These are the **landing
+frames**. The speed rule applies as usual on them.
 
 - **Facing** follows the input on every landing frame, as in the air
   (`air-control.md`, "Facing"): Left or Right held alone makes it that
   direction on that frame, and the frame carries the `turn` event if
   facing changed. No 8-frame turn starts on a landing frame.
-- **On L + 1**, if Action and exactly one of Left or Right are held and
-  no roll starts on L + 1 (`roll-input.md`), running starts on L + 1 at
-  step 1 (counter 256), in the held direction. In practice this is
-  Action held from the air through the landing, as when landing from a
-  running jump. Speed doesn't matter. No other landing frame can start
+- **On M**, if Action and exactly one of Left or Right are held and no
+  roll starts on M (`roll-input.md`), running starts on M at step 1
+  (counter 256), in the held direction. In practice this is Action held
+  from the air through the landing, as when landing from a running
+  jump. Speed doesn't matter. No other landing frame before K can start
   a mode.
-- **On L + 7**, if no mode has started: with Action and exactly one
+- **On K**, if no mode has started: with Action and exactly one
   direction held, running starts at step 1; with one direction held and
   not Action, walking starts at step 1; otherwise the player is
-  standing. Facing on L + 7 follows the input as above, so the held
+  standing. Facing on K follows the input as above, so the held
   direction is always forward. The run needs no minimum speed here.
+  K is:
+  - M + 6 if M is later than L;
+  - L + 10 if M = L and L is the seventh stage frame itself;
+  - L + 9 if M = L and L is later than the seventh stage frame.
 - From the frame after the mode starts, the rules above apply as usual.
 
+The most common case is M = L + 1: running on L + 1, the mode on L + 7.
+
 A roll (`roll-input.md`) or a jump (`jump-input.md`) can start on a
-landing frame as those files say; a jump starts on E = L + 3 at the
+landing frame as those files say; a jump starts on E = M + 2 at the
 earliest. An Action press on L + 1 or a later landing frame starts a
 roll, not a run.
 
-**Variation in the original.** How long the landing frames last
-depends on the same hidden timing as the landing lockout of
-`jump-input.md`, and it can't be predicted from inputs, positions,
-velocities or trace events. In the original:
-
-- running sometimes starts on L rather than L + 1;
-- the landing frames sometimes run to L + 8 or L + 9, so the mode starts
-  on L + 9 or L + 10 rather than L + 7. On those landings running, if
-  Action and a direction are held, starts on L.
-
-This spec defines the case above, the one seen most often: running on
-L + 1, the mode on L + 7. An engine implements exactly that. In standing
-jumps from flat ground measured, landings with the mode on L + 7 had
-E = L + 3, and those with the mode on L + 9 or L + 10 had E = L + 2.
-Reference comparisons should allow −1 frame on a run starting just
-after a landing, +3 frames on walking or standing starting after a
-landing, and the same on the turn checks that follow.
+For the landings `jump-input.md` doesn't cover ("Landings this doesn't
+cover"), the spec uses M = L + 1: running on L + 1, the mode on L + 7.
+In the original these vary; reference comparisons on such landings
+should allow −1 frame on a run starting just after the landing, +3
+frames on walking or standing starting after it, and the same on the
+turn checks that follow.
 
 Example: a standing jump facing right, Jump held for 20 frames, nothing
-else held in the air. In the first case Left is held from L + 2; in the
-second Action is held from take-off and Right is added from L + 3.
+else held in the air (M = L + 1, so K = L + 7). In the first case Left
+is held from L + 2; in the second Action is held from take-off and Right
+is added from L + 3.
 
 | Frame | Left from L + 2: `vx` (1/256), facing | Mode, counter | Action, Right from L + 3: `vx` (1/256) | Mode, counter |
 |---|---|---|---|---|
@@ -290,7 +287,7 @@ second Action is held from take-off and Right is added from L + 3.
 | L + 10 | −356 | walking, 219 (step 1 ends) | 502 | running, 207 (step 1 ends) |
 
 With Right and Action both held from take-off, running starts on L + 1
-instead.
+(M) instead.
 
 #### After a roll
 
@@ -376,6 +373,12 @@ turn start or facing:
   Action press, from 3 frames before L to L + 10), each checked to
   L + 24 or until a roll started. Running on L + 1 was seen from `vx`
   17/256, and on L + 7 from 96/256.
+- 806 of the landings after jumps measured for `jump-input.md` ("The
+  switch frame M"), with M from 0 to 6 frames after L: the first frame
+  in a mode was M (running) with Action and a direction held, otherwise
+  K, on every one. The first two sets above took each landing's timing
+  from the original; these check that M, and so K, follows from the
+  jump.
 
 #### Not covered (`title-1` modes)
 
