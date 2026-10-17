@@ -20,6 +20,35 @@ Underwater, the player is swimming all the time. There is no walking,
 running, jumping, rolling or turn: the rules below replace those on
 land.
 
+## Where the player swims
+
+Swimming belongs to a whole **area** (a level, or a room the player
+enters from one), not to a part of it. When an area begins, it either
+starts the player swimming or it doesn't. In an area that starts the
+player swimming, the player swims everywhere: from the left edge to the
+right, and from the top of the grid to the bottom. There is no water
+surface, and there is no line or region inside an area where the player
+starts or stops swimming, so there is nothing to cross. Nothing inside
+such an area turns swimming off. The player swims until the area ends
+or they are knocked out (`knock-out.md`). When the player goes on to
+another area, that area's start decides again.
+
+Which areas are underwater, in `title-1`:
+
+- Every area that starts the player swimming has a ceiling grid for its
+  ground (`../formats/level-ground.md`, "Ceiling grids").
+- No area whose ground is a column grid or a row grid starts the
+  player swimming, and the player doesn't swim there.
+- All but one of the areas on a ceiling grid start the player swimming.
+  The exception is a short bonus area. The player starts it on a helper
+  animal and rides underwater for the whole area. There are no enemies,
+  and the player never swims there. After about a minute (about 3 680
+  frames in the runs measured) the area ends and the player is back in
+  an area where they walk. Riding underwater is not covered here.
+
+So an imported area needs water over the whole level exactly when its
+ground is a ceiling grid and it doesn't start the player riding.
+
 ## Horizontal speed
 
 Each frame the player has a **target speed** set by what is held on that
@@ -351,6 +380,16 @@ player was on the floor or at a wall.
   +1/256. There were 4 554 strokes (25 from the floor, all with `ground`
   0), 781 `ground` 1 frames, 21 `land`, 19 `leave_ground` and 1 080
   `turn`.
+- Which areas swim: every area the title can load (199 areas) was
+  entered and watched for 300 frames. The player swam in exactly 8 of
+  them, all on a ceiling grid. The 9th area on a ceiling grid started
+  the player riding, and in the other 190 the player never swam. In each of the 9 areas on a ceiling grid, 600
+  placements went to random open-water points anywhere in the grid (any
+  level x from 0 to 6 399, about 15 % in the top 4 bands), each followed
+  by 60 frames of random input with enemies kept away. In the 8
+  swimming areas the player swam on every frame of all 4 800
+  placements. In the riding area the player rode on every frame of all
+  600.
 
 ## Not covered
 
@@ -366,4 +405,7 @@ player was on the floor or at a wall.
 - A stroke on the floor that leaves the player still less than 1 px
   above it (a Down stroke from near the bottom of the pixel) wasn't
   seen.
-- Entering and leaving the water, and the first frames of an area.
+- The first frames of an area, and how an image records which areas
+  start the player swimming and which one starts them riding.
+- Areas on a column grid or a row grid were checked only from their
+  start (first 300 frames), not all over.
