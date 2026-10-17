@@ -2,6 +2,30 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.117.0
+
+Default controls per title, a new neutral input `T` (Tandem), and
+holding Swap.
+
+Answers clamber-engine/spec#42 for `title-1` and `title-2`. `title-3`
+is not covered yet, so the issue stays open.
+
+- New `behavior/controls.md` (`title-1`, `title-2`): which pad button,
+  by position, gives each neutral input in each title. The right face
+  button is the new input `T` (Tandem). In `title-1` it is a press-only
+  swap with stated differences from `S`, gets off a ridden animal, and
+  does what Jump does on the level map. In `title-2` it lifts the other
+  character. Measurements and Not covered.
+- `behavior/swap.md`: new "Holding Swap" replaces "A refused press is
+  forgotten": a press refused for a roll or a crouch is kept while `S`
+  stays held. Example and measurements.
+- `behavior/level-map.md`, `behavior/riding.md`: pointers to Tandem and
+  the top face button.
+- `scenarios/FORMAT.md`, `traces/FORMAT.md`: new input code `T`; the
+  trace `input` column order is now `LRUDJASPT` (existing traces are
+  unchanged).
+- `TITLES.md`: `controls.md` added for `title-2`.
+
 ## spec-v0.116.0
 
 Where the view starts when an area begins, and critters, in `title-1`.
