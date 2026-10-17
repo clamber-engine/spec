@@ -282,5 +282,6 @@ This list is for `title-1`; `title-2` has its own list above.
   landings on the slope's floor height).
 - Hits during a roll or a bounce. Falling out of the level is in
   `falling-out.md`.
-- What happens after the last frame: the screen transition, where play
-  resumes, and any count of remaining tries.
+- What happens after the last frame: the screen transition and any count
+  of remaining tries. Where play resumes after a restart point has been
+  reached is in `restart-barrel.md`; otherwise, where play begins.

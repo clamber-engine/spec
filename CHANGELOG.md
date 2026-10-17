@@ -113,6 +113,23 @@ Coverage (`title-1`). Answers no open `spec` issue.
 - `formats/placements.md`: kind name `tyre`.
 - `formats/locators.md`: 3 kind fingerprint rows for `tyre`.
 
+Coverage (first level, `title-1`). Answers no open `spec` issue.
+
+- `behavior/restart-barrel.md` (new): the restart barrel. Touching it
+  (ranges of `I` and `D` by pose and facing, the poses of
+  `ball-contact.md`); breaking (four pieces and a flash); the level's
+  restart point (in the first level the barrel's position; it belongs
+  to the level, not to the barrel); after a knock-out or a fall-out,
+  play resumes there, also after a second loss, until the level is
+  finished; resuming (frames 0 to 62 inside a barrel that shakes and
+  bursts, the fall from frame 63, inputs from 63, the view on frame 0);
+  example; not covered.
+- `formats/placements.md`, `formats/locators.md`: kind
+  `restart-barrel` and its kind fingerprint row (16 of the first
+  level's 37 references now have one).
+- `behavior/knock-out.md`, `behavior/falling-out.md`,
+  `behavior/following.md`: point to it.
+
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.
