@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.131.0
+
+The thrower and the holders after an exit, and other objects on a
+bounce's frozen frames.
+
+Part of clamber-engine/spec#17 (the first level's layout) and part of
+clamber-engine/spec#19 (the first level's entities). Both issues stay
+open for the parts not covered yet.
+
+- `behavior/exits.md`, "Coming back to the level": a `thrower` knocked
+  out by the ground action before the exit is there again after coming
+  back; a broken `holder` stays gone and the character it freed still
+  follows the lead. Without an exit neither came back within the same
+  visit. New checks "Coming back, the thrower" and "Coming back, the
+  holders"; Not covered narrowed.
+- `behavior/bounce.md`: new subsection "Everything else on the frozen
+  frames": on B + 1 and B + 2 no other object moves or turns, and steady
+  movers take their next step on B + 3. New Not covered bullets.
+  `behavior/walker.md` and `behavior/movement-summary.md` updated to
+  match; the walker Not covered item about other enemies freezing is
+  removed.
+
 ## spec-v0.130.0
 
 Large walkers after an exit.
