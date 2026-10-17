@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.93.0
+
+Coverage: the view's vertical motion in `title-2`.
+
+Answers no `spec` issue.
+
+- `behavior/view-vertical.md`: new "In `title-2`": the view's state;
+  the ground below the player and when it is in reach; the first
+  level's vertical sway as steps and their alignment with the
+  horizontal sway; the aim on the ground, rising, held and falling;
+  the level's top and bottom limits; the rates and the step; still
+  frames; three synthetic examples, evidence and "Not covered in
+  `title-2`".
+- `TITLES.md`: `view-vertical.md` added to the `title-2` files.
+- `behavior/view.md`: the `title-2` not-covered line points to the new
+  section.
+
 ## spec-v0.92.0
 
 Coverage: a `title-2` reference trace for the swim-strokes scenario.
