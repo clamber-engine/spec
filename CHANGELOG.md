@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.107.0
+
+Exits in `title-1`: the object at the first level's left end (new
+behavior spec).
+
+Answers part of clamber-engine/spec#17 (the level's bounds). The rest
+of spec#17 is not covered yet, so it stays open.
+
+- New `behavior/exits.md`: kind `exit`, placed and not drawn at its
+  entry's position. When it takes over the lead (on the ground, not
+  moving right, within a vertical range and a per-state reach), the
+  walk-out (fixed `y`, 2 px left per frame, inputs ignored, no ground,
+  walls or left-end stop, turn for a lead facing right), and leaving
+  the area (view frozen, a 30-frame fade, last frame). Synthetic
+  example, checks and Not covered (where an exit leads, exits leading
+  right, other states, the other character, the trace).
+- `formats/locators.md`: two kind fingerprint rows for `exit`.
+- `formats/placements.md`: `exit` kind name; first-level counts now 23
+  references and 50 entries; checks and Not covered updated.
+- `behavior/level-ends.md`, `behavior/view.md`: Not covered items about
+  the left-end object now point to `exits.md`.
+
 ## spec-v0.106.0
 
 View limits and the level's left and right ends in `title-1` (new
