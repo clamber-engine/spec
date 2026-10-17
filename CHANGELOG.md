@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.95.0
+
+Coverage: single collectibles in `title-2`.
+
+Answers no `spec` issue.
+
+- `behavior/collectibles.md`: new section "In `title-2`". A
+  collectible's position on the player's scale; it is taken on the
+  first frame that ends with the player in range, with offsets from the
+  player's whole-pixel position; one range per pose (standing, walking,
+  running, turning, rolling, crouching, in the air), the same for both
+  facings and at any speed, with one air range for the whole jump or
+  fall through the frames after landing; which frames count as each
+  pose; the count goes up 33 frames after the pickup, also for images
+  partly off the left edge of the picture, with the rollover from 99
+  giving a life. Also a synthetic example, evidence and a "Not covered
+  in `title-2`" list; the existing "Not covered" list is marked as
+  `title-1`'s.
+- `TITLES.md`: the `title-2` row lists `collectibles.md`.
+
 ## spec-v0.94.0
 
 A grounded player under a low platform (`title-1`).
