@@ -37,6 +37,7 @@ SHA-256 of the image:
 | Level start: the first level's scene-return record | `level-start.md` | `fc` | `c09c` |
 | Level start: the first level's room-return record | `level-start.md` | `fc` | `bf58` |
 | Level start: the first level's wall-return record | `level-start.md` | `fc` | `bf40` |
+| Level start: the first level's second wall-return record | `level-start.md` | `fc` | `c0d8` |
 | View limits: the first level's record | `view-limits.md` | `fc` | `957a` |
 | Level ground: the first level's room's grid | `level-ground.md` | `e3` | `0000` |
 | Level ground: the first level's room's type table | `level-ground.md` | `d6` | `0000` |
@@ -81,6 +82,7 @@ names" table.
 | `334d93d686429e72e3c6a60e23570cd379765c0db2cae288375dc82355f418f7` | `tyre` |
 | `33ba1408651608e5bba77ae5a3232bc7fe0ea4a63c9950bb493bb07bed985c21` | `rising-extra-life-2` |
 | `3b1534a2da04c2655ee410d9570846bf8da60ecabf7afa758b2e5cab13c547a0` | `stinger` |
+| `3bd63880d0c8f6e81a4975e1549c730655b1f1e7957454c0ce6ea980044a1718` | `down-launch-barrel` |
 | `3e1f6c2f24fa461bc637adec8e62fe520d4f2a69e7cf8e0d950610235d2e3486` | `letter-4` |
 | `3f9e1b957059a405568bfd11ba7757786263483c98b2a01bb8e22cc9ae833735` | `stinger` |
 | `46a03d0df615a0aff54b9f2a823f9ead4e500b9ecdeb48c2fe2dfe37aa02431f` | `letter-2` |

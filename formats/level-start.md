@@ -60,6 +60,17 @@ where the lead is: in a copy of the image with the record's `x` raised
 by 40 and its `h` lowered by 30, coming back began at the moved point and
 the lead was thrown from there, with the entry where it was.
 
+`locators.md` also gives the **second wall-return record**, for coming
+back to the first level from the area behind its second wall exit
+(`../behavior/wall-exits.md`, "Coming back from the second wall exit's
+area"). Its point is in the first level, with `Yb` = 512: the lead is
+there on the first frame back in the level, and then falls into the
+level's `down-launch-barrel`. In the supported image the point is that
+entry's position. The record, not that entry, decides where the lead
+starts: in copies of the image with only the record moved (its `x`
+raised by 20 or 40, or its `h` lowered by 30), coming back began at the
+moved point.
+
 `locators.md` also gives the **room's start record**, for the room the
 upper exit leads to. The room is an area of its own, with `Yb` = 512 as
 in the first level. When the room begins, the characters walk in from

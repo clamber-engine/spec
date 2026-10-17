@@ -8,8 +8,8 @@ on it takes the lead out of the area like an exit, walking into the
 wall. The first level has two, both leading right. This file covers what
 opens a wall exit, when an open one takes over, how the lead walks
 out, and when the area is left, and how the lead comes back into the
-first level from the area behind its first wall exit. What is in the
-areas behind the wall exits is not covered.
+first level from the areas behind its two wall exits. What is in those
+areas is not covered.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. Horizontal
 positions are level x as in `view.md`; vertical positions are **level
@@ -238,6 +238,78 @@ The picture fades in from black as at the start of a level
   480 px right of it; the pictures differed only while the entry's
   object was in the view.
 
+## Coming back from the second wall exit's area
+
+The first level's second wall exit also leads to an area of its own,
+which is not covered either; leaving it brings play back to the first
+level. Frames are counted from 0, the first frame back in the first
+level, and the lead was alone.
+
+The lead starts at the point of the first level's **second wall-return
+record** (`../formats/level-start.md`), call it (`xw`, `yw`), and comes
+down out of the level's `down-launch-barrel` (`launch-barrel.md`, "The
+barrel that shoots down"). In the first level the record's point is the
+barrel's position, at the top edge of the level (`yw` = 1), above the
+second wall exit.
+
+| Frame | What happens |
+|---|---|
+| 0 | The lead is at `x` = `xw`, level y = `yw`, in the air, `vx` and `vy` 0, facing right. |
+| 1 | The barrel is there from this frame (not on frame 0). The lead starts to fall: with nothing held, `vy` is 0.4375. |
+| 1 and 2 | The lead moves by the usual rules for a lead in the air, with the inputs held then (which state the lead is in on these frames, and so exactly how inputs move it, is not covered). |
+| 2 | The barrel catches the lead: this is the catch frame C of `launch-barrel.md`. |
+| 3 to 30 | Held in the barrel (C + 1 to C + 28): on 3 the lead is moved by whole pixels to the barrel's position, then doesn't move. |
+| 31 | The barrel breaks and the lead is shot down (C + 29), facing right. |
+| 32 | The lead moves 8.46484375 px down (C + 30). |
+| 33 on | The flight of `launch-barrel.md` (C + 31 on), until the lead lands. |
+
+With nothing held, the lead comes straight down and lands on frame
+**81** on the floor 400 px below the point (level y 401), with `x`
+still `xw`. Left or Right held during the flight steers it as in
+`launch-barrel.md`, and it can land elsewhere. On the way down the lead
+can come down onto the level's `hidden-barrel` and bounce, on the frame
+`hidden-objects.md` gives ("Landed on after a long fall").
+
+The picture fades in from black as when coming back from the first wall
+exit's area: after frame `f` the brightness is ⌊`f` / 3⌋ fifteenths of
+full, full from frame 45.
+
+### The record and the barrel
+
+The record decides where the lead starts; the barrel's entry decides
+where it is held. In copies of the image (11 runs each, with random
+inputs):
+
+- **Record 20 px right** of the barrel: the lead started 20 px right of
+  it, was caught on frame 2 and held at the barrel's position, and from
+  then on everything was as above.
+- **Record 30 px lower** (level y 31): the same, the lead caught on
+  frame 2.
+- **Barrel entry 10 px right** of the record: the lead started at the
+  record's point and was held 10 px right of it.
+- **Record 40 px right** of the barrel: the lead was never caught, and
+  fell from the point (how is not covered).
+
+### Checks
+
+- 301 runs coming back from the area, one with no input and 300 with
+  random inputs from frame 0 (directions, Jump, Action, Down, Up, and
+  Right or Left with Jump or Action, held for 1 to 20 frames each): the
+  lead at the record's point on frame 0, caught on frame 2 in every run,
+  and every frame from 2 up to the landing as above and in
+  `launch-barrel.md` (23 960 frames). In 99 runs the lead bounced on the
+  `hidden-barrel`, each on the frame `hidden-objects.md` gives from the
+  positions above, and in no other run did that file give such a frame;
+  those runs were compared up to the frame before the bounce. 26 runs
+  were facing left on frame 2. 213 runs landed at level y 401, 87 at
+  other heights after steering, and one hadn't landed by frame 130.
+- The four copies above: 11 runs each, every frame from 2 to the landing
+  as above (2 645 frames) in the first three; in the fourth, the lead
+  held or shot on no frame (1 441 frames).
+- With no input: the barrel there from frame 1 to frame 30 and gone on
+  frame 31, a broken piece there from frame 31, and the brightness as
+  above on every frame from 0 to 140.
+
 ## Example
 
 Synthetic, computed from the rules above, with a wall exit at `xe` =
@@ -320,11 +392,13 @@ on `T` + 17, 14 on `T` + 18 and `T` + 19, and 0 on `T` + 46 and
 - How far right of the exit the reach goes. In the first level a lead
   can't get there from the left: the rise is in the way.
 - What is in the areas behind the wall exits and what happens there,
-  how play comes back from the second wall exit's area, and what is
-  kept when play comes back to the level.
+  and what is kept when play comes back to the level.
 - Coming back from the first wall exit's area with two characters, how
   the view moves then, and which picture the `wall-return-entrance`
   shows. Throws that land after T + 24 or meet a wall or a ceiling.
+- Coming back from the second wall exit's area with two characters, how
+  the view moves then, the lead's state on frames 0 to 2, and a lead not
+  caught on frame 2.
 - Whether a wall exit opened before is still open when the view comes
   back to it after it was removed.
 - The second character, and wall exits leading left.

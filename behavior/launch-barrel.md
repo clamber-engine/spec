@@ -3,10 +3,12 @@
 Titles: `title-1`
 
 A **launch barrel** is an object placed in a level that catches the
-player, holds them for a moment and then shoots them out sideways. This
-file covers the one kind the first level has, which shoots the player to
-the left: when it catches the player, the hold, the shot, the flight
-until the player lands, and when it can catch again.
+player, holds them for a moment and then shoots them out. This file
+covers the two kinds the first level has: one that shoots the player to
+the left (when it catches the player, the hold, the shot, the flight
+until the player lands, and when it can catch again), and one that
+shoots the player straight down and breaks ("The barrel that shoots
+down").
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x` grows to
 the right. `x`, `vx` and `facing` are as in a trace (`vx` in px per
@@ -30,9 +32,12 @@ inputs alone (see "Checks").
 | Kind | Shoots the player | Hold |
 |---|---|---|
 | `left-launch-barrel` | to the left | 15 frames |
+| `down-launch-barrel` | straight down, and breaks | 28 frames |
 
-A level's placement list places it with an entry of this kind
-(`../formats/placements.md`, "Kinds"). The first level has one, high up
+A level's placement list places a launch barrel with an entry of one of
+these kinds (`../formats/placements.md`, "Kinds"). From here up to "The
+barrel that shoots down", this file is about the `left-launch-barrel`.
+The first level has one, high up
 near the level's end, above the stiff tyre (`tyre.md`, "The stiff tyre"):
 a tyre jump from that tyre takes the player into it, and the shot
 carries them left through the two `extra-life-3` items there
@@ -156,6 +161,54 @@ the barrel's position at the end of any frame from C + 52 to C + 62,
 while still in the flight, was caught on C + 63; no catch on C + 1 to
 C + 62 was seen in any run.
 
+## The barrel that shoots down
+
+The first level has one `down-launch-barrel`, at the top edge of the
+level above the second wall exit. Play comes back to the level inside
+it from the area behind that wall exit (`wall-exits.md`, "Coming back
+from the second wall exit's area"). Its position (`xb`, `yb`) is as for
+the `left-launch-barrel`, and it doesn't move either. `I`, `D` and the
+speeds are as above (`vy` down positive).
+
+**Being caught.** In the cases measured it catches the player as the
+`left-launch-barrel` does: a lead walking right along the floor into a
+copy of it on the floor was caught on the first frame with `I` = −24
+(`D` = 0); a copy 60 px above the floor didn't catch a lead walking
+under it. A lead falling next to it in the air after coming back to the
+level (`wall-exits.md`) was caught with `I` from −11 to 21 and `D` 1, 2
+or 32, and not with `I` from 39 to 41. Its catch ranges were not
+measured separately. The catch frame **C** and C + 1 are as in "The
+catch frame" and "The hold".
+
+**The hold.** C + 2 to C + **28**: the player doesn't move, `vx` and
+`vy` stay 0, `facing` is the facing on C, and inputs make no difference,
+here or later.
+
+**The shot.**
+
+- **C + 29:** the barrel **breaks**: it is gone from this frame, and a
+  broken piece appears where it was (how the pieces move and are drawn
+  is not covered). The player faces **right**, whatever the facing
+  before. `vx` becomes 0 and `vy` **+8.46484375** (+2167/256, down). The
+  player doesn't move on C + 29.
+- **C + 30:** the level y grows by exactly 8.46484375 and `x` doesn't
+  change. There is no gravity, and inputs make no difference.
+
+**The flight.** From **C + 31** until the player lands, every frame
+follows the three steps of "The flight" above (target −3, +3 or 0 with
+Left, Right or neither held, Action making no difference; step = gap ÷
+32 rounded toward zero; `vy` grows by 0.4375 up to 8; then the move). So
+on C + 31 `vy` becomes 8, and it stays 8. `facing` stays right until the
+player lands, even with Left held. The landing frame and the frames
+after are as for the `left-launch-barrel`. For example, with Right held
+from C + 31, `vx` goes 0 → 24/256 (0.09375) on C + 31 → 47/256 → 69/256
+→ ….
+
+A barrel on the floor shoots the player into the floor: they land on
+C + 30.
+
+**Ready again.** Never: once it has broken it is gone.
+
 ## Example
 
 The barrel's entry has level x 400 on a flat floor at level y 337, so
@@ -178,6 +231,8 @@ ground rules (`ground-speed.md`): with nothing held it is −7.1796875
 (−1838/256) on 172.
 
 ## Checks
+
+All but the last item are for the `left-launch-barrel`.
 
 - Catch ranges: 75 grids of placements (a copy of the barrel 60 px
   above the floor; standing, walking, running, crouching, rolling, the
@@ -209,6 +264,23 @@ ground rules (`ground-speed.md`): with nothing held it is −7.1796875
   the same held from C + 20 on, compared with no input: the hold and the
   shot were the same in every case, and from C + 40 only Left and Right
   (with or without Action) changed the flight.
+- **The `down-launch-barrel`.** The first level's own barrel, in 301
+  runs coming back from the second wall exit's area with random inputs
+  (`wall-exits.md`), and in 33 runs in copies of the image with the
+  start point or the barrel moved: caught on frame 2 of the area in all
+  of them, and every frame from C to the landing as above (26 605 frames
+  compared), except that in 108 runs the player came down onto the
+  level's `hidden-barrel` and bounced (`hidden-objects.md`, "Landed on
+  after a long fall"), each on the frame that file gives, and no other
+  run had such a frame; those runs were compared up to the frame before
+  the bounce. 26 runs were facing left on C: right from C + 29 in all.
+  With no input, the barrel was there up to C + 28 and gone from C + 29,
+  with a broken piece there from C + 29. In 11 runs in a copy with the
+  start point 40 px right of the barrel, the lead was never caught. A
+  copy of the barrel given to a class 1 entry near the first level's
+  start, on the floor: a lead walking right into it was caught at `I` =
+  −24, held, shot down on C + 29 and landed on C + 30; 60 px above the
+  floor it caught nothing.
 
 ## Not covered
 
@@ -232,5 +304,8 @@ ground rules (`ground-speed.md`): with nothing held it is −7.1796875
 - How the barrel and the shot player are drawn, the objects drawn
   around them, and the sounds.
 - Trace states and events for the frames held and shot.
-- Launch barrels that shoot in other directions, wait for a button, or
-  break; the other levels; the other titles.
+- The `down-launch-barrel`'s catch ranges, the broken pieces, and a
+  shot player meeting anything but the floor or the `hidden-barrel` on
+  the way down.
+- Launch barrels that shoot in other directions or wait for a button;
+  the other levels; the other titles.
