@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.126.0
+
+Barrels and holders put down elsewhere.
+
+Part of clamber-engine/spec#17 (the first level's layout). The issue
+stays open for the parts not covered yet.
+
+- `formats/placements.md`: new subsection "Objects put down elsewhere"
+  under "When placed objects are removed": a `barrel` or `holder` that
+  was carried and put down is removed using its entry's position for
+  the window and its own position for the margin; while it is there its
+  entry places nothing else, and once removed it comes back at its
+  entry. Synthetic example and checks. The section intro points to it,
+  and the matching Not covered item is narrowed.
+
 ## spec-v0.125.0
 
 How many objects can be there, and the wall-return entrance.
