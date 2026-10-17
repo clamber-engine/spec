@@ -42,3 +42,7 @@ fingerprints" in `../REVIEW.md`).
 - `sound-effects.md`: sound effects: the effect block and table, the
   effect tempo, starting an effect, how an effect takes a voice from the
   song and hands it back. Vectors: `../vectors/sound-effects/`.
+- `voices.md`: how a voice's level follows its envelope settings, gain,
+  starts and releases: the shared count, rates, checks, attack, decay,
+  sustain and release, and the fixed level. Vectors:
+  `../vectors/voices/`.

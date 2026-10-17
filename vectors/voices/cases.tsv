@@ -1,0 +1,17 @@
+case	first_count	outputs	events
+slow-attack	1	4200	0 set 128 224 127; 0 start
+attack-r3	300	3000	0 set 129 224 127; 0 start
+attack-r7	1000	3000	0 set 131 224 127; 0 start
+attack-to-2016	1	2600	0 set 139 127 127; 0 start
+fast-attack-decay-sustain	7	3000	0 set 255 69 127; 0 start
+decay-line	2	6000	0 set 175 32 127; 0 start
+sustain-fast	1	1500	0 set 143 248 127; 0 start
+release	1	600	0 set 143 224 127; 0 start; 100 release
+release-mid-attack	1	900	0 set 134 224 127; 0 start; 500 release
+fixed-level	1	300	0 set 0 0 127; 0 start; 200 release
+fixed-level-change	2	300	0 set 0 0 127; 0 start; 100 set 0 0 37; 150 set 143 224 127
+restart-sounding	1	400	0 set 143 224 127; 0 start; 200 release; 250 start
+restart-other-parity	2	400	0 set 143 224 127; 0 start; 200 start
+lost-start	1	300	0 set 143 224 127; 0 start; 2 start; 100 start
+start-and-release	1	300	0 set 143 224 127; 0 start; 100 start; 100 release
+change-mid-note	1	5000	0 set 143 224 127; 0 start; 300 set 143 28 127; 2500 set 132 224 127

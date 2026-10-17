@@ -4,6 +4,19 @@ Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
 ## Unreleased
 
+Spec#20 (`title-1` music), in part.
+
+- `formats/voices.md` (new): a voice's level (0 to 2047) on each audio
+  output: a count shared by all voices; rates 1 to 31 with their periods
+  and when their steps are due; starts and releases taken at checks
+  every other output (level held, then 0 for 4 outputs, then attack; a
+  start right after a start is lost; release −8 each output); the fixed
+  level 16 × gain; attack, decay and sustain from the envelope settings,
+  with part changes worked out on every output. Vectors:
+  `vectors/voices/`.
+- `formats/songs.md`: points to it; "Not covered" updated.
+- `formats/README.md`: lists it.
+
 ## spec-v0.78.1
 
 Clarification (`title-2`). Answers `spec` issue #29.

@@ -6,8 +6,8 @@ What a song's data says: eight tracks of notes, rests and commands,
 played in steps and beats, and what each channel hands its voice (which
 sample, at what pitch, how loud, with which envelope settings) and when.
 Where the data is and which samples a song has are in `sound.md`; how a
-voice turns those settings into sound is not covered (see "Not
-covered"). Vectors: `../vectors/songs/`.
+voice turns those settings into sound is in `voices.md` (so far its
+level; the rest is not covered). Vectors: `../vectors/songs/`.
 
 All 2-byte numbers are stored low byte first. An **address** is a song
 address as in `sound.md` ("Song data"): address `A` is byte `A` − `D` of
@@ -65,7 +65,8 @@ There are 8 channels. Channel `i` plays its track on **voice** `i`
   the top bit of `e1` is 0 (as in some notes of song 11).
 
 The voice then **starts** the note: the sample from its beginning. A
-**release** lets the note go: it fades out (how is not covered).
+**release** lets the note go: it fades out. How the envelope settings,
+the gain, starts and releases set the voice's level is in `voices.md`.
 
 What a channel keeps:
 
@@ -355,12 +356,11 @@ beats are steps 2, 4, 6, … (the other channels' tracks end at once):
 
 ## Not covered
 
-- How a voice makes sound from its settings: how outputs between sample
-  points are made, the envelope settings and gain (attack, decay,
-  sustain, release and their timing), how left and right volume, main
-  volume, echo (feedback, filter, volume, delay, echo writing) and noise
-  sound, and pitches of 16 384 and over (reached only by song 5's notes
-  above 92).
+- How a voice makes sound from its settings, apart from its level
+  (`voices.md`): how outputs between sample points are made, how left
+  and right volume, main volume, echo (feedback, filter, volume, delay,
+  echo writing) and noise sound, and pitches of 16 384 and over
+  (reached only by song 5's notes above 92).
 - What the game does with songs: when it starts, stops or changes them,
   what it plays before a song starts, the branch value it sets, a mono
   sound option, and the first step's timing.
