@@ -230,7 +230,11 @@ crate** (kind `animal-crate`, `animal-crate.md`) once broken is also
 still gone, and so is the animal that came out of it if it was left
 there and not mounted: neither the crate, its broken pieces nor the
 animal is at its place after coming back, so nothing is there to land on
-or to mount. They stay gone
+or to mount. A **holder** (kind `holder`, `holder-breaking.md`) once
+broken is still gone too, and the character it freed is still there:
+after coming back that character follows the lead as it did before the
+exit (`following.md`).
+They stay gone
 after coming back. They don't appear when the view comes back over their
 places, and nothing is taken or struck there again: the count, the
 lives, the figure count and the set of letters don't change. For these
@@ -443,6 +447,23 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   thrower was there again after both exits, as in the controls. In the
   run without an exit (the lead going far left for 120 frames, then
   back) it was not there. 29 checks in all, none different.
+- **Coming back, the holders.** 8 more runs, each starting with the
+  lead alone: for each of the first level's two holders, one run through
+  each exit and one without an exit in which the lead picked the holder
+  up and threw it, so that it broke and the missing character joined;
+  and a control for each exit that did nothing before leaving. In all 8
+  the balls were taken out of the level, so that they couldn't hurt the
+  lead. After coming back, each run went to both holders' places. The
+  count, the lives, the set of letters and the restart point were the
+  same on coming back as on leaving in all 6 exit runs, and the lead was
+  never hurt. In the 4 exit runs with a holder broken, the character it
+  freed was following the lead before leaving, was next to the lead as
+  the next area began and was still following it after coming back; the
+  broken holder was not there again, and the other holder was. In the
+  controls both holders were there and the character stayed missing. In
+  the 2 runs without an exit (the lead going far away for 120
+  frames, then back) the broken holder was not there either. 100 checks in all,
+  none different.
 
 ## Not covered
 
@@ -460,15 +481,16 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   room's placed objects other than the tyre and the end marker are not
   covered.
 - What else is kept when play comes back to the level after the scene
-  or the room: holders and tyres
-  moved or broken, the hidden objects set off by a fall and their items,
+  or the room: holders moved without breaking, tyres moved, the
+  hidden objects set off by a fall and their items,
   an animal mounted or ridden away from its crate, a thrower bounced on
   or rolled into, the `extra-life-3` items, objects of kinds the spec doesn't
   name, and objects other than the barrel carried through the exit. How
   a barrel carried into the exit moves during the walk-out. Whether a broken barrel
   ever comes back during the same visit without an exit (it didn't in
-  the one run above). Coming back with two characters (the runs in
-  "Coming back to the level" had the lead alone).
+  the one run above). Coming back with two characters, other than
+  the character freed by a holder broken in the same visit (the other
+  runs in "Coming back to the level" had the lead alone).
 - Whether bunches and letters taken before a knock-out are there when
   play resumes (`restart-barrel.md`).
 - The other character after frame 27; two characters walking into the
