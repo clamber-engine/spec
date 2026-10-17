@@ -24,6 +24,7 @@ SHA-256 of the image:
 | Sound: shared sample list | `sound.md` | `ca` | `b24a` |
 | Sound: sample-set table | `sound.md` | `ca` | `b212` |
 | Sound: song table | `sound.md` | `ca` | `b15e` |
+| Sound: sound-effect block | `sound-effects.md` | `c9` | `2d95` |
 | Level ground: the first level's grid | `level-ground.md` | `d9` | `0000` |
 | Level ground: the first level's type table | `level-ground.md` | `d9` | `ed00` |
 | Level graphics: the first level's packed tile data | `graphics.md` | `d5` | `8fc0` |

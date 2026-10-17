@@ -39,3 +39,6 @@ fingerprints" in `../REVIEW.md`).
   and tempo), tracks of notes, rests and commands, lengths, the pitch of
   a note, the three effects, song-wide settings, and what each voice is
   handed and when. Vectors: `../vectors/songs/`.
+- `sound-effects.md`: sound effects: the effect block and table, the
+  effect tempo, starting an effect, how an effect takes a voice from the
+  song and hands it back. Vectors: `../vectors/sound-effects/`.
