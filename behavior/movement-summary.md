@@ -51,7 +51,7 @@ of 1 px in 4 don't change any of this (`slopes.md`).
 | Landing | A falling frame that ends less than 5 px above the floor lands on it | `landing.md` |
 | Jump after landing | Earliest on the third frame after the landing frame; a press made in the air shortly before, and held, is remembered until then | `jump-input.md` |
 | Walking off a ledge | Moves down 3.4375 px on the first airborne frame, then gravity 0.4375 up to 8 | `walk-off.md` |
-| Jumping after leaving a ledge | Not possible: no grace frames. At a ledge with a face at the top, the last chance is the frame before the player starts down the face | `walk-off.md` |
+| Jumping after leaving a ledge | Where the ground simply ends, a press on the first airborne frame still jumps (take-off on the next frame); no later press does. At a ledge with a face at the top, the last chance is the frame before the player starts down the face | `walk-off.md` |
 
 ## Rolling
 
@@ -108,5 +108,5 @@ carry on into running until D + 6. Everything else is the same
 ## Not covered
 
 What each file lists under "Not covered", and in particular: the
-walking and running modes after landings and rolls, walking off
-ledges without a face at the top, and every title other than `title-1`.
+walking and running modes after landings and rolls, and every title
+other than `title-1`.

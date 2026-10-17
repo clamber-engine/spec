@@ -54,9 +54,13 @@ For n from 1 to 18 the total is 3.4375 + n/256 + 7n(n + 1)/32.
 
 ## Jumping near the edge
 
-There is **no grace period** after leaving the ground. A jump press on
-frame L or on any later frame of the fall never starts a jump in the
-air. (A press made during the fall and held through landing can still
+This section is for ledges with a steep face at the top. At a ledge
+without a face, a press on L itself still starts a jump; see "Ledges
+without a face" below.
+
+At a ledge with a face there is **no grace period** after leaving the
+ground. A jump press on frame L or on any later frame of the fall never
+starts a jump in the air. (A press made during the fall and held through landing can still
 start a jump on landing, as `jump-input.md` describes for any press made
 in the air.) In terms of `traces/METRICS.md`, `coyote_frames` is
 missing for every press on L or later.
@@ -102,6 +106,106 @@ ledge's height on the frame before L.
 | L + 1 | 60.12109375 | 0.44140625 | Airborne |
 | L + 15 | 8.00390625 | 6.56640625 | Airborne |
 | L + 16 | 1 → 0 | 7.00390625 → 0 | Lands: placed on the floor, `vy` 0, `land` |
+
+## Ledges without a face
+
+Everything in this section was measured on `title-1` only, with the
+lead character, at both ends of a stretch of raised ground that ends
+flat on both sides (no face, no slope, no rounded lip) 176 px above the
+floor below. Walking right and left off both ends from many positions
+and speeds (from 0.03 to 2 px per frame, including sliding off with no
+direction held and arriving in short taps), and running off both ends
+(about 2.85 to 3 px per frame, and slowing from running to walking
+speed after Action is released). The frames before L, L itself, and
+jump presses from L − 4 to L + 3 were measured. The rules above
+for L and the fall hold unchanged; this section adds when L happens,
+the frames before it, horizontal speed on L, and jumping.
+
+### When the player leaves
+
+The column terms are as in `steep-faces.md`: the floor has one height for
+each 1-px-wide column of `x`, and the player's column is the one
+containing `x`.
+
+- On every grounded frame before L the player moves exactly as on flat
+  ground: `x` and `vx` by `ground-speed.md`, `y` unchanged. Nothing
+  slows or stops the player near the end, and nothing carries them
+  down. However slowly the player is moving, they go over the end.
+- **L** is the first frame whose move ends with the player's column
+  past the end of the ground. Going right, that is the first frame
+  ending with `x` at or beyond the left side of the first column without
+  ground. Going left, it is the first frame ending with `x` less than
+  the left side of the last column with ground (`x` in the column
+  without ground just beyond it). A frame that ends with `x` exactly on
+  the last column with ground, even 1/256 px from its far side, is
+  still grounded.
+- On L the player moves down 3.4375 and `vy` ends at 0.00390625, as in
+  "The leave frame" above.
+
+### Horizontal speed on L
+
+On L, `vx` and `x` follow the speed rule of `ground-speed.md` with the
+target from the input of frame L, exactly as on the grounded frames
+before and as `air-control.md` describes for the frames after. There is
+no special case on L, walking or running, speeding up or slowing down.
+
+Example: walking right with Right held, `vx` is 1.96875 on L − 1,
+1.97265625 on L (a step of 1/256 toward 2) and 2 on L + 1 (the gap is
+under 8/256, so the speed becomes the target).
+
+### Jumping at a ledge without a face
+
+**P** is the press frame (as in `jump-input.md`) and **T** the take-off
+frame (the row carrying `jump_start`). A press on P starts a jump if the
+player was grounded at the end of frame P − 1. That includes **P = L**.
+T is P + 1 in every case. **g(f)** is the frame's jump gravity: 0.28125
+if Jump has been held on every frame from P to f, and 0.4375 otherwise
+(`jump-arc.md`).
+
+| Press frame P | What happens |
+|---|---|
+| L − 2 or earlier | An ordinary jump from the ground (`jump-input.md`, `jump-arc.md`). T is grounded and the player is in the air on what would have been L. There is no L. |
+| L − 1 | T = L. On L the player goes over the end and moves down 3 + g(L); then `vy` becomes −7. The row for L has `ground` 0, `vy` −7 and `jump_start`, and no `leave_ground`. |
+| L | L is as without a jump, except that the player moves down 3 + g(L) = 3.28125 (Jump is held on L). `vy` ends at 0.00390625 and the row carries `leave_ground`. On T = L + 1 the player moves down by 0.00390625 + g(T), then `vy` becomes −7; the row carries `jump_start`. |
+| L + 1 or later | No jump in the air: the fall of "Falling" above. A press held through the landing can start a jump on landing (`jump-input.md`). |
+
+From T + 1 on, every jump above follows `jump-arc.md` ("Each frame after
+T"), with gravity g(f) counted from P. So in terms of
+`traces/METRICS.md`, `coyote_frames` is **1** for a press on L at a
+ledge without a face, and missing for presses on L + 1 or later.
+
+Example: walking right with Right held, as in the speed example above,
+Jump pressed on the frame given and held for 20 frames. Height is
+measured downward from the top of the ledge (positive is below it) after
+each frame; T is marked.
+
+| Frame | Press on L − 2 | Press on L − 1 | Press on L | No press |
+|---|---|---|---|---|
+| L − 1 | 0 (T) | 0 | 0 | 0 |
+| L | −6.71875 | 3.28125 (T) | 3.28125 | 3.4375 |
+| L + 1 | −13.15625 | −3.4375 | 3.56640625 (T) | 3.87890625 |
+| L + 2 | −19.3125 | −9.875 | −3.15234375 | 4.7578125 |
+| L + 3 | −25.1875 | −16.03125 | −9.58984375 | 6.07421875 |
+
+`vy` on the T rows is −7, and the jumps then rise as a held jump: −6.71875
+on T + 1, −6.4375 on T + 2, and so on.
+
+With Jump held for 1 frame only, g is 0.4375 from P + 1 on: a press on
+L − 1 moves down 3.4375 on L (= T), and a press on L moves down 3.28125
+on L and 0.44140625 on T.
+
+### Evidence (ledges without a face)
+
+- 332 walks and runs off the two ends without Jump: 16,120 grounded
+  frames (`y` unchanged, grounded exactly while the player's column has
+  ground), 332 leave frames, 3,984 airborne frames up to L + 12, 0
+  mismatches.
+- Horizontal speed by the speed rule on 85,825 frames, including L and
+  the jump cases, 0 mismatches.
+- 984 cases with Jump pressed from L − 4 to L + 3, held 1, 2, 3, 5 or 20
+  frames: 295 ground take-offs, 197 take-offs on L, 197 take-offs on
+  L + 1 after a press on L, no jump for every press on L + 1 or later,
+  and the vertical motion of every frame up to L + 12, 0 mismatches.
 
 ## In `title-2`
 
@@ -353,15 +457,17 @@ after all sets were recorded.
 
 This list is for `title-1`; `title-2` has its own list above.
 
-- What happens before L. Ground that falls away gradually (a slope, or a
-  rounded edge) is followed while the player is still grounded, so on
-  some ledges the player is lower than the ledge's top on the frame
-  before L. On steep faces, which drops the player follows and which
-  make them airborne is in `steep-faces.md`; on other ground it isn't
-  specified yet. The rules above start from wherever the player is on
-  the frame before L.
+- What happens before L on ground that falls away gradually (a slope,
+  or a rounded edge), which is followed while the player is still
+  grounded, so on some ledges the player is lower than the ledge's top
+  on the frame before L. On steep faces, which drops the player follows
+  and which make them airborne is in `steep-faces.md`; where the ground
+  simply ends, it is in "Ledges without a face". The rules above start
+  from wherever the player is on the frame before L.
 - Horizontal motion during the fall: see `air-control.md`, which covers
-  it from L + 1 on.
-- Ledges without a face at the top (the ground simply ending), where
-  the last-chance frame above wasn't measured. Rolling off a ledge is in
+  it from L + 1 on. Frame L is covered only at a ledge without a face
+  ("Horizontal speed on L").
+- At ledges without a face: drops other than 176 px, the second
+  character, Down or Action pressed near the end, and
+  a turn in progress there. Rolling off a ledge is in
   `rolling-off-ledges.md`. The lead character swap.
