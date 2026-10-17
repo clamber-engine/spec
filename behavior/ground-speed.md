@@ -467,8 +467,8 @@ does not matter which direction that was. Otherwise the smaller speed
 Up makes no difference to the target, except that it keeps a crouch
 going. While crouching, and on the first frame after a crouch, the target
 is 0 (see "Crouching" below). All of this was measured with the previous
-frame also grounded; the first grounded frame after a landing is not
-covered.
+frame also grounded. The frames after a landing are in "After a landing
+(`title-2`)" below.
 
 As in `title-1`, an Action **press** starts a roll; this section covers
 Action that is already held. Speed during a roll and the stop after it
@@ -522,8 +522,9 @@ A turn lasts 8 frames, T to T + 7, and facing changes on T + 4, as in
 `title-1` (one exception below). It has no effect on speed. Unlike `title-1`, a turn starts
 without delay, whether the player is standing or moving:
 
-- On a grounded frame that is not part of a turn, a crouch, or the 11
-  frames after a crouch, holding the net direction opposite to facing
+- On a grounded frame that is not part of a turn, a crouch, the 11
+  frames after a crouch, or a landing ("After a landing (`title-2`)"),
+  holding the net direction opposite to facing
   starts a turn on that frame (T). This holds at any speed, walking or
   running.
 - Once started, the turn completes even if the direction is released or
@@ -564,6 +565,66 @@ Right on throughout. `vx` is 1.96875 on frame 45, 1.72265625 on 46, and
 falls to 0.05078125 (13/256) on frame 75 (= U), then rises again from
 frame 76 (0.32421875).
 
+### After a landing (`title-2`)
+
+Measured on flat ground with the lead character, after standing,
+walking and running jumps and after walking and running off a ledge.
+**A** is the landing frame (the row carrying `land`). **S** is A after
+a jump, and A + 1 after a fall that didn't come from a jump. This is the
+same one-frame shift as for jumps after a fall (`walk-off.md`, "Jumping
+on landing after a fall (`title-2`)").
+
+The player is **landing** on S and on the frames after it:
+
+- **9 frames**, S to S + 8, if Action and a net direction (Left or Right
+  alone) are held on S;
+- **18 frames**, S to S + 17, otherwise.
+
+Only what is held on S decides this. Speed, the height of the jump or
+fall, and what is held before or after S make no difference. **E** is the
+first frame after the landing: S + 9 or S + 18.
+
+- **On S** (and, after a fall, on A before it) the target and facing
+  follow the air rules of `air-control.md` ("In `title-2`"): Down doesn't
+  make the target 0, and Left or Right held turns the player on that
+  frame. After a jump, S is the landing frame `air-control.md` already
+  describes.
+- **From S + 1 to E − 1** the target is the grounded target of "Target
+  speed (`title-2`)". As always it depends on the previous frame, which
+  on S + 1 is S. **Facing doesn't change and no turn starts**, whatever
+  is held. So holding the opposite direction slows the player under the
+  speed rule and then moves them backward, still facing the old way.
+- **On E** the usual rules apply again. If the direction opposite to
+  facing is held on E, a turn starts on E ("Turns (`title-2`)"), and
+  facing changes on E + 4.
+- A crouch, a roll or a jump can start on any frame from S + 1, under
+  its own rules ("Crouching (`title-2`)", `roll-input.md` and
+  `jump-input.md`, "In `title-2`"), and ends the landing. None can
+  start on S: Down held on S starts no crouch. After a fall, an Action
+  press on A + 1, or one made in the air on A − 4 to A, held through
+  A + 2, starts its roll on A + 2 (after a jump this is A + 1,
+  `roll-input.md`).
+
+Example: walking right at +2.25, a jump with Jump and Right held for 20
+frames, Right held in the air, then Left held alone from A + 1 (S = A,
+18 frames, E = A + 18):
+
+| Frame | `vx` (1/256) | Facing | Note |
+|---|---|---|---|
+| A | 576 | right | lands |
+| A + 1 to A + 5 | 432, 306, 196, 100, 16 | right | |
+| A + 6 to A + 8 | −58, −122, −178 | right | moving backward |
+| A + 17 | −453 | right | last landing frame |
+| A + 18 | −468 | right | E: turn starts |
+| A + 22 | −511 | left | facing changes |
+
+`x` is 4.1015625 px further right on A + 5 than on A, then decreases.
+In a standing jump with Action and Right held from take-off through A
+(9 frames, E = A + 9) and Left alone from A + 1, `vx` is 648 on A + 1
+(target −864, since Action and a direction were held on A), then 495,
+362, 245, …, −93 on A + 8; the turn starts on A + 9 and facing changes
+on A + 13.
+
 ### Evidence (`title-2`)
 
 All runs were by inputs, with the lead character on flat ground.
@@ -581,17 +642,37 @@ All runs were by inputs, with the lead character on flat ground.
 - Turns: 1447 turns in 46746 frames, 0 mismatches.
 - Frames during and directly after a roll, and frames touching a wall,
   were left out.
+- Landings ("After a landing (`title-2`)"): swept runs from 8 kinds of
+  jump (standing, walking and running, right and left, with and without
+  Action held in the air) and 4 kinds of walk-off, each with 3 to 12
+  different inputs switched on at every frame from A − 4 to A + 23; 30
+  runs with Down held for one frame on A, A + 1 or A + 2 of a fall; and
+  1 200 runs of random input in the air and after the landing, in four
+  independent sets. 5 592 landings: 4 221 after jumps (1 011 of them 9
+  frames) and 1 371 after falls (413 of them 9 frames). On 62 702 frames
+  from S + 1 to E − 1 facing didn't change and no turn started, 0
+  exceptions; the opposite direction was held on 4 483 of them. On 3 620
+  E frames (425 with the opposite direction held) a turn started exactly
+  as the rule says, 0 exceptions. Grounded target from S + 1: 66 322
+  frames, 0 mismatches. Air target and facing on S after a fall: 1 371
+  frames, 0 mismatches. Landings of 17 or 19 frames instead of 18, 8 or
+  10 instead of 9, or S = A after a fall, each give 58 to 543
+  mismatched frames. Left out: falls from rolling off a ledge (162),
+  falls while crouched (23) and jumps that rose up through the surface
+  they landed on (5).
 
 ### Not covered in `title-2`
 
 - The Down + Action ground action. Rolls are in `roll-input.md` and
   `roll-speed.md` ("In `title-2`").
-- The frame after a landing, walls other than steep faces, and the
-  second character. Slopes are in `slopes.md` ("In `title-2`"), steep
-  faces (being blocked by a rise, and going down a face) in
-  `steep-faces.md` ("In `title-2`").
+- Walls other than steep faces, and the second character. Slopes are
+  in `slopes.md` ("In `title-2`"), steep faces (being blocked by a
+  rise, and going down a face) in `steep-faces.md` ("In `title-2`").
   Air control and the landing frame are in `air-control.md` ("In
-  `title-2`").
+  `title-2`"), the frames after it in "After a landing (`title-2`)".
+- After a landing: falls from rolling off a ledge, falls while crouched,
+  landings on a platform after rising up through it, landings on slopes
+  and faces, and what follows a crouch that starts during the landing.
 
 ## Not covered
 

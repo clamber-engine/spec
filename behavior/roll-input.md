@@ -181,6 +181,12 @@ in the air and held into landing as in `jump-input.md`, "Landing
 Measured for three jump heights (landing 39, 45 and 46 frames after the
 jump press); the window doesn't change with airtime.
 
+After a fall that didn't come from a jump (walking or running off a
+ledge), the roll comes one frame later: a press on L + 1, or one made in
+the air on L − 4 to L, held through L + 2, starts a roll on L + 2
+(`ground-speed.md`, "After a landing (`title-2`)"). Earlier presses in
+the air weren't measured after falls.
+
 ### How long a roll lasts (`title-2`)
 
 A roll lasts 31 frames, S to S + 30. What happens next depends on frame
