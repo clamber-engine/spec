@@ -2,6 +2,36 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.114.0
+
+The ending after all four letters, and the data of the first level's
+scene, in `title-1`.
+
+Answers part of clamber-engine/spec#19 and part of clamber-engine/spec#17.
+The rest of each is not covered yet, so both stay open.
+
+- `behavior/letters.md`: new "The ending" (the four letters blink, then
+  move right one at a time, with the letter taken last one frame late;
+  the lives display coming in, changing to the new number and leaving;
+  an example and checks). "All four letters" and "The letter row" point
+  to it. Not covered updated.
+- `behavior/count-display.md`: "Reaching 100" corrected. The lives
+  number is also drawn, partly above the picture's top edge, on one
+  more frame at the start and two more at the end.
+- `formats/graphics.md`: new "The first level's scene" (what the
+  importer needs; colours of two-plane tiles; the front, far and ground
+  pictures; where each layer is on screen; drawing order with the front
+  layer's raised tiles in front). Evidence and Not covered updated.
+- `formats/level-ground.md`, `formats/placements.md`,
+  `formats/level-start.md`, `formats/view-limits.md`: the scene's grid
+  and type table, placement list, start record and view-limit record.
+  View-limit words are unsigned.
+- `behavior/level-ends.md`: new "In the first level's scene" (the view
+  doesn't move). `behavior/exits.md` points to the new sections.
+- `formats/locators.md`: 10 rows for the scene's data.
+- `vectors/graphics/`: synthetic front-layer vectors (`front-tiles.hex`,
+  `front.hex`, `front-pixels.tsv`).
+
 ## spec-v0.113.0
 
 The level map in `title-1`: kinds of stops, how a new game begins, and
