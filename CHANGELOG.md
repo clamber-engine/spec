@@ -156,6 +156,24 @@ Coverage (`title-1`). Answers no open `spec` issue.
   T + 1 starts from the higher of `y` on T and the floor of T + 1's
   column, as in `title-2`, not always from `y` on T.
 
+Coverage (`title-1`). Answers no open `spec` issue.
+
+- `behavior/riding-faces.md` (new): riding the animal on and near steep
+  faces. On a frame that starts on a face (the take-off frame counts as
+  ending on the floor), a held direction pointing uphill is ignored for
+  the target speed and for turns. A push of 1.5 px per frame downhill is
+  set at the end of each frame on a face (0 after an airborne or steered
+  frame; kept when the target or `vx` points uphill) and added to the
+  next frame's target unless that frame is steered. No jump starts on a
+  face. Rising faces block as in `steep-faces.md`. The rider leaves the
+  floor when the next column has no floor or is 12 px or more lower, and
+  on every frame that starts on a face's low end over a drop; the leave
+  frame drops 3 px plus the riding gravity. Walls in the air as in
+  `air-walls.md`. A jump's landing takes effect on max(L, A + 5), with
+  the approach frame A from the floor below (within 71 px and 2 rows of
+  32 px), and riding resumes on max(L + 8, A + 14). Evidence, two worked
+  examples, and its own "Not covered" list.
+
 ## spec-v0.79.0
 
 New spec (`title-1` music). Answers `spec` issue #20 in part.
