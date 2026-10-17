@@ -206,18 +206,38 @@ visit:
 - the **barrel** broken (`thrown-objects.md`), at its entry;
 - the **animal crate** broken (`animal-crate.md`): it is there, and
   bouncing on it brings the animal out again;
-- a **medium walker** (kind `medium-walker`) bounced on.
+- a **medium walker** (kind `medium-walker`) bounced on;
+- the **large walkers** (kind `large-walker`) bounced on;
+- the **thrower** (`thrower.md`) knocked out by the ground action;
+- the two **extra-life items** of kind `extra-life-3` taken: taking them
+  again gives their lives again;
+- a **hidden barrel** (kind `hidden-barrel`, `hidden-objects.md`) set
+  off, with its barrel left where it came to rest: the barrel is not
+  there, the hidden object is, and a long fall onto it sets it off again
+  and releases a barrel again.
 
-After resuming at the restart point, a bunch taken left of the restart
-point was there again (and gave its collectibles again), while the
-letter taken near it stayed gone (above).
+**After resuming at the restart point**, the same is true of every kind
+in the list above except the letters (above): a bunch, the figure, the
+barrel, the animal crate, the hidden bunch, a medium walker, the large
+walkers, the thrower, the `extra-life-3` items and the hidden barrel are
+there again, whether their places are left or right of the restart point.
+Where it was measured (a bunch, the figure, the `extra-life-3` items, the
+animal crate and the hidden barrel), taking, breaking or setting them off
+again gives what it gave the first time. This was measured with each of
+them taken, broken, bounced on, knocked out or set off after the restart
+point had been reached, and with a bunch also before it.
 
 Measured: 27 runs with a knock-out, each set of taken objects paired
 with a control run that took nothing before its knock-out, judged in 151
 checks, none different (8 more runs looked at the objects' places too
 soon after moving there and were repeated): the lives one fewer, the count and figure
 count unchanged, the set of letters as above, the objects seen at their
-places after the resume, and what taking them again gave.
+places after the resume, and what taking them again gave. The kinds
+added after the first runs (large walkers, the thrower, `extra-life-3`,
+`hidden-barrel`) and the resumes at the restart point other than for
+bunches and letters were measured in 28 more runs, 14 sets each with a
+control (the restart point reached in both for the restart-point sets),
+judged in 118 checks the same way, none different.
 
 ## Example
 
@@ -257,10 +277,13 @@ the barrel is touched on the third, the upright range starting at −24.
 - Touching the barrel while bouncing off an enemy, carrying an object,
   being hit or knocked out, swapping, or during the Down + Action
   ground action.
-- After a knock-out: other kinds of object, objects other than bunches
-  and letters after resuming at the restart point, the single
-  collectibles, two characters, and a fall-out instead of a knock-out
-  ("What is there again after a knock-out").
+- After a knock-out ("What is there again after a knock-out"): kinds
+  not listed there (among them holders, tyres, small walkers and
+  `hidden-metal-barrel`), objects that had been moved (put down
+  elsewhere, carried, thrown), extra-life items of kinds
+  `rising-extra-life-1` and `rising-extra-life-2` after resuming at the
+  restart point, the single collectibles, two characters, and a fall-out
+  instead of a knock-out.
 - Ways of leaving the level other than finishing it, a knock-out or a
   fall-out, and what happens to the restart point when another level is
   played before this one is entered again, or when no tries are left.
