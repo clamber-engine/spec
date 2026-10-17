@@ -155,6 +155,7 @@ on every output and the memory.
   with it all 0; a song after one that wrote to it may find values
   left).
 - The filter values before a song hands them (`songs.md`).
-- Noise, a voice's pitch being changed by the voice before it, and
-  muting all output.
+- A voice's pitch being changed by the voice before it, and muting all
+  output. (Noise is in `voice-output.md`, "Noise": a voice's sound with
+  noise on goes into the echo like any other.)
 - Sound effects; other titles.

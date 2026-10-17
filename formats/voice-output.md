@@ -6,8 +6,9 @@ How the eight voices become the audio the console plays: which points
 of its sample a voice plays on each output, how it blends them, how its
 level and volumes scale the result, and how the voices are mixed. A
 voice's level is in `voices.md`; what a voice is handed is in
-`songs.md`; samples and their points are in `sound.md`. Echo and noise
-are not covered (see "Not covered"). Vectors: `../vectors/voice-output/`.
+`songs.md`; samples and their points are in `sound.md`. Noise is in
+"Noise" below; echo is in `echo.md`. Vectors: `../vectors/voice-output/`
+and, for noise, `../vectors/noise/`.
 
 Time is counted in audio outputs as in `songs.md` and `voices.md`
 (32 000 a second). Each output has a left and a right value, each a
@@ -128,6 +129,63 @@ never heard, and of the block before it only about the first half.
 A looping sample needs no points past its blocks: the next block is
 always taken at least 12 points before its first point is used.
 
+## Noise
+
+A voice can sound **noise** in place of its sample. Noise is turned on
+and off for each voice, and all voices share one **noise rate**, 0 to
+31 (`songs.md`, commands 21, 25, 26 and 27; `sound-effects.md`).
+
+**The noise register.** All voices share a **noise register** `R`, a
+whole number from 1 to 32 767. When a step at the noise rate is due on
+an output, `R` changes after that output:
+
+`R` becomes ⌊`R` / 2⌋ + 16 384 × `b`,
+
+where `b` is 1 if `R` mod 2 and ⌊`R` / 2⌋ mod 2 differ, and 0 if they
+are the same. Whether a step is due is decided as for envelope steps
+(`voices.md`, "Rates"): the same periods, the same shared count `c` and
+the same `q`. So the value used on an output has taken the steps due
+on every output before it, but not the one due on that output. Rate 0
+never makes a step and `R` keeps its value. From any value, `R` goes
+through every whole number from 1 to 32 767 before coming back to it,
+and is never 0.
+
+The value of `R` when a song starts is not covered; an engine may start
+it at any value from 1 to 32 767. (The emulation measured has 16 384
+when it starts.)
+
+**The noise value** on an output is 2`R`, wrapped: 2`R` if `R` is below
+16 384, else 2`R` − 65 536. It is even, from −32 768 to 32 766.
+
+**A voice with noise on.** On every output on which a voice's sound is
+made from a blend ("The voice's sound", including the first 2 outputs
+of a start, when the note before goes on), a voice with noise on uses
+the noise value in place of the blend `B`:
+
+`y` = ⌊noise value × `L` / 2048⌋, rounded to even.
+
+Nothing else changes. The note's position still moves by the pitch,
+blocks are still taken, a one-shot sample still ends the note on the
+same output ("Taking blocks"), the level still follows `voices.md`,
+and outputs on which the sound is 0 stay 0. So with noise on, the pitch
+and the sample are not heard; they matter only for when a one-shot note
+ends. All voices with noise on use the same noise value on an output.
+Their sound then goes into the volumes, the mixing and the echo
+(`echo.md`) like any other voice's.
+
+**Example.** The register is 16 384 on output 0 and the rate is 31
+(period 1: a step is due on every output). Then `R` is 8 192 on output
+1, and on output `k` from 0 to 13 it is 16 384 / 2^`k`: 4 on output 12
+and 2 on output 13. On output 13 the two lowest bits of `R` = 2 are 0
+and 1, which differ, so on output 14 `R` is 1 + 16 384 = 16 385. The
+noise value on output 14 is 32 770 − 65 536 = −32 766. A voice with
+noise on and level 2047 two outputs before has the sound
+⌊−32 766 × 2047 / 2048⌋ = −32 751, rounded to even: −32 752. With left
+volume 127 and left main volume 127, the left output is
+⌊⌊−32 752 × 127 / 128⌋ × 127 / 128⌋ = ⌊−32 497 × 127 / 128⌋ = −32 244
+(case `rate-31` in `../vectors/noise/`, which starts the voice so that
+this is output 14).
+
 ## Volumes and mixing
 
 Volumes are bytes read as signed: 0 to 127 as they are, 128 to 255 as
@@ -152,7 +210,8 @@ counts from one of the next three outputs: which one depends on the
 voice and on the value, and is not covered. (The same holds for the
 envelope settings and gain in `voices.md`, which were measured there
 on one voice.) `songs.md` hands values once per step, about 400
-outputs apart.
+outputs apart. Noise on or off for a voice and the noise rate likewise
+count from one of the next outputs.
 
 ## Examples
 
@@ -211,10 +270,41 @@ All 70 `title-1` samples start with filter 0 and every one-shot sample
 has at least 6 blocks, so the cases left out below don't arise in its
 songs.
 
+### Noise
+
+"Noise" was checked the same way, with the console's own weights for
+blends, on random cases like those above with noise on or off for each
+voice and a random noise rate, every output compared:
+
+- 1 300 cases with the noise rate and noise on or off set before the
+  first output: 1 110 227 outputs, 0 differences.
+- 1 200 cases with the rate and noise on or off also changed between
+  outputs, while notes sounded, and with restarts, releases and other
+  values handed during notes: 6 914 528 outputs, 0 differences. In
+  these, noise replaced the blend on 2 314 594 outputs of 200 counted
+  cases, 1 216 of them on the first 2 outputs of a start.
+- Every rate from 0 to 31, each handed at 4 random counts, with one
+  voice at a fixed level so that every noise value shows: 128 runs of
+  9 000 outputs, 0 differences.
+- 600 cases with echo as in `echo.md` as well, the echo settings and
+  noise changed between outputs in half of them: 1 461 781 outputs and
+  the echo memory at the end, 0 differences.
+- The vectors in `../vectors/noise/` are computed with the bell's
+  weights. With the console's own weights, every output matched the
+  emulation, the same whichever of the next three outputs a handed value
+  counts from. With the bell's, only case `mixed` (the one with a voice
+  playing its sample) differs from the emulation, by at most 19.
+
+In `title-1`, no song turns noise on. Five of the sound effects do
+(`sound-effects.md`); the noise rates they hand are 27 or more.
+
 ## Not covered
 
-- Echo (echo volume, feedback, filter, delay, echo writing), noise, and
-  a voice's pitch being changed by the voice before it.
+- Echo (echo volume, feedback, filter, delay, echo writing; see
+  `echo.md`) and a voice's pitch being changed by the voice before it.
+- The noise register's value when a song starts ("Noise"), and on which
+  output a noise rate or noise on or off handed between outputs first
+  counts.
 - Which output a value handed between outputs first counts on (above).
 - A first block with a filter other than 0 (the filter then starts from
   points of the note before, not from 0); one-shot samples of one block.

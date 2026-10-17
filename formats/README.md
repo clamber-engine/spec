@@ -58,8 +58,8 @@ fingerprints" in `../REVIEW.md`).
   `../vectors/voices/`.
 - `voice-output.md`: how the voices become the audio output: a note's
   position, blending sample points with bell-shaped weights, level and
-  volumes, taking blocks (loops, one-shot ends), and mixing. Vectors:
-  `../vectors/voice-output/`.
+  volumes, taking blocks (loops, one-shot ends), noise, and mixing.
+  Vectors: `../vectors/voice-output/`, `../vectors/noise/`.
 - `echo.md`: the echo: the echo memory and its delay, the filter over
   what comes back, feedback, echo volume, and how it joins the output.
   Vectors: `../vectors/echo/`.
