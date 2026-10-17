@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.105.0
+
+Trace vocabulary for holding a rope in `title-1`.
+
+Answers clamber-engine/spec#39.
+
+- `traces/VOCABULARY.md`: new state `rope` and new events `rope_catch`
+  and `rope_slide_off`.
+- `behavior/ropes.md`, new section "In a trace": `rope` covers the catch
+  frame through the last holding frame, with `ground` and `vx` 0 on those
+  rows. The catch frame carries `rope_catch`. The jump-off frame is
+  `jump` with `jump_start` and is followed by ordinary jump rows. The
+  slide-off frame is `fall` with `rope_slide_off` (not `leave_ground`).
+  Includes a synthetic example and a check against recorded runs.
+
 ## spec-v0.104.0
 
 Level start in `title-1`: start records and the first level's entrance
