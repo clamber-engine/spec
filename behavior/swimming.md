@@ -273,6 +273,50 @@ and on Q + 3 Jump is pressed with Up and no direction:
 
 On every row, `x` changes by `vx` and `y` by `vy`.
 
+## In a trace
+
+Every frame on which the player is swimming has the state `swim`
+(`../traces/VOCABULARY.md`): in open water, at a wall, under a ceiling
+and on the floor alike. None of the land states (`idle`, `walk`, `run`,
+`jump`, `fall`, `roll`, ...) appears while swimming.
+
+- `ground` is 1 on a frame that ends with the player on the floor ("On
+  the floor": the landing frame and every resting frame), and 0 on every
+  other frame. A wall or a ceiling is not ground, so a frame stopped by
+  a wall has `ground` 0 unless the player is also on the floor.
+- `vy` is the frame's `vy` after its move, as everywhere in a trace: 0
+  on the floor and after a ceiling bump, and +1/256 on the first frame
+  of leaving without a stroke. On resting frames `y` still changes
+  while `vy` is 0: by +12/256, or by −244/256 on a frame where the
+  fraction wraps around.
+
+Events while swimming:
+
+| Event | Frames |
+|---|---|
+| `stroke` | Every frame with a stroke (Jump pressed, "Strokes and sinking"), also from the floor and also when a ceiling bump sets `vy` to 0 on that same frame |
+| `land` | The frame the player comes onto the floor (`ground` 0 to 1) |
+| `leave_ground` | The first frame no longer on the floor without a stroke (`ground` 1 to 0, "Leaving without a stroke") |
+| `turn` | Every frame on which facing changes ("Facing"); there is no turn movement |
+
+A stroke that takes the player off the floor is a `stroke`, not a
+`leave_ground`; its row has `ground` 0. `jump_start`, `jump_release`,
+`roll_start`, `roll_end` and `bounce` never appear while swimming.
+
+### Example (synthetic)
+
+The player rests on the floor facing left with the fraction of its
+height at least 24/256, holds nothing on frames 0 and 1, and presses Jump
+on frame 2 (held through frame 3). Rows relative to the start, with `x`,
+`vx` and `facing` left out (`vx` is 0, facing stays left):
+
+| Frame | Input | `y` | `vy` | State | `ground` | Events |
+|---|---|---|---|---|---|---|
+| 0 | `.` | 0.046875 | 0 | `swim` | 1 | |
+| 1 | `.` | 0.09375 | 0 | `swim` | 1 | |
+| 2 | `J` | −1.859375 | −1.953125 | `swim` | 0 | `stroke` |
+| 3 | `J` | −3.765625 | −1.90625 | `swim` | 0 | |
+
 ## Checks
 
 Random input (runs of Left, Right or neither with Up, Down or neither,
@@ -294,6 +338,16 @@ player was on the floor or at a wall.
   up at least 17 times there, including a start in the ground (by 1, 2,
   3 and 4 or more), steps of 1 to 3 px, pushes from in by 1 to 3, and
   74 landings with a ceiling half at the feet.
+- Trace rows (state, `ground`, events) on the same kind of random input
+  with Jump pressed for 1 to 6 frames: 8 underwater areas, 2 runs each
+  on the game's own ground and 2 more on the copy without ground, 3 000
+  frames per run: 93 000 frames in 31 runs (the 32nd stopped at a
+  knock-out, as above, and isn't counted). Every `stroke` row had the
+  stroke's own `vy` (or 0 after a bump, 417 times) and no other row did,
+  every `ground` 1 row had `vy` 0, and every `leave_ground` row had `vy`
+  +1/256. There were 4 554 strokes (25 from the floor, all with `ground`
+  0), 781 `ground` 1 frames, 21 `land`, 19 `leave_ground` and 1 080
+  `turn`.
 
 ## Not covered
 
@@ -303,8 +357,8 @@ player was on the floor or at a wall.
   player swam alone, and a hit was a knock-out (`knock-out.md`).
 - Areas where the player rides a helper animal underwater; enemies,
   currents and other objects.
-- The swimming state's name in the trace vocabulary, and what a stroke
-  looks like.
+- What a stroke looks like on screen.
+- Traces of a hit while swimming (a knock-out, `knock-out.md`).
 - Left and Right held together (the measuring setup can't hold both).
 - A stroke on the floor that leaves the player still less than 1 px
   above it (a Down stroke from near the bottom of the pixel) wasn't

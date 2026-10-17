@@ -18,6 +18,7 @@ rename or reuse a name, since existing traces refer to it.
 | `hurt` | Taking damage, control suspended |
 | `swap` | Switching lead character |
 | `ground_action` | Down + Action ground action in progress (`../behavior/ground-action.md`) |
+| `swim` | Swimming underwater: in open water, at a wall or on the floor (`../behavior/swimming.md`, "In a trace") |
 
 ## Events
 
@@ -32,3 +33,4 @@ rename or reuse a name, since existing traces refer to it.
 | `bounce` | Bounced off an entity this frame |
 | `hurt` | Took damage this frame |
 | `turn` | Facing direction changed this frame |
+| `stroke` | A swimming stroke began this frame (`../behavior/swimming.md`) |
