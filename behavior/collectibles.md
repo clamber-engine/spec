@@ -9,7 +9,8 @@ player takes by touching it. Each one taken adds one to the
 collectible is taken, which ones can be taken depending on the view, and
 when the count goes up. Bunches are in `bunches.md`, letters in
 `letters.md` and figures in `figure.md`; other kinds of collectible are
-not covered.
+not covered. Where a level's single collectibles are in its data is in
+`../formats/collectibles.md` (`title-1`).
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x` grows to
 the right. `vy` is as in a trace: down is positive, in px per frame.
@@ -381,4 +382,5 @@ This list is for `title-1`; `title-2` has its own list above.
 - The second character's running state, which wasn't reached in the
   runs measured. Its rolls were measured.
 - The view window's vertical limits.
-- How collectibles are placed in a level's data.
+- Where other levels' collectibles are in their data. The first
+  level's are in `../formats/collectibles.md`.

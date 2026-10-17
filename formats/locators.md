@@ -32,6 +32,8 @@ SHA-256 of the image:
 | Level graphics: the first level's picture table | `graphics.md` | `d9` | `a3c0` |
 | Sprite frames: the frame table | `sprites.md` | `fb` | `cc9c` |
 | Placements: the first level's placement list | `placements.md` | `fd` | `95dc` |
+| Single collectibles: the first level's group list | `collectibles.md` | `f8` | `c2ed` |
+| Single collectibles: shape table | `collectibles.md` | `f8` | `d75d` |
 | Level start: the first level's start record | `level-start.md` | `fc` | `bf78` |
 | Level start: the first level's restart record | `level-start.md` | `fc` | `bfb4` |
 | Level start: the first level's scene-return record | `level-start.md` | `fc` | `c09c` |
