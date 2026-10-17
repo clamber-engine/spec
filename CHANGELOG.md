@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.98.0
+
+Coverage: the frames after a landing in `title-2`.
+
+Answers no `spec` issue.
+
+- `behavior/ground-speed.md`: new section "After a landing (`title-2`)".
+  It defines the first landing frame (one frame later after a fall than
+  after a jump), the landing's length (9 frames if Action and a net
+  direction are held on that frame, else 18), air rules on its first
+  frame, the grounded target afterwards with facing fixed and no turn
+  until the landing ends, and crouches, rolls and jumps during it. Also
+  worked examples, evidence, and updates to the Turns rule, the Target
+  note and "Not covered in `title-2`".
+- `behavior/air-control.md`: the not-covered note points to the new
+  section.
+- `behavior/roll-input.md`: rolls after a fall start one frame later
+  than after a jump.
+
 ## spec-v0.97.0
 
 Coverage: swimming in `title-2` against walls, floors and ceilings.
