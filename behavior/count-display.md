@@ -103,7 +103,8 @@ after the pickup and 1 frame after it; both gave the table above. On `S` + 8,
 edge, and only its lowest rows are drawn.
 
 The lives display after all four letters are taken is in `letters.md`,
-"The ending".
+"The ending", and the one after an extra-life item is taken in
+`extra-lives.md`, "The lives display".
 
 ## Example
 
