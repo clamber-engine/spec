@@ -8,7 +8,8 @@ a bounce (`bounce.md`). This file covers how a walker moves, how it
 turns, how it moves while the player is knocked out, and what happens to
 it when the player bounces off it. Which contacts hurt the player and
 which give a bounce, and the sizes of walkers, are in
-`walker-contact.md`.
+`walker-contact.md`. A thrower's balls pass through walkers without
+affecting them (`thrower.md`, "Balls and walkers").
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x` grows to
 the right; `y` and `vy` are as in a trace (down is positive). Speeds are

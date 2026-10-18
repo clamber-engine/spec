@@ -11,7 +11,8 @@ it is gone. When a ball hurts the player is in `ball-contact.md`, and
 when the thrower itself hurts the player or gives a bounce, and what a
 bounce does to it, in `thrower-contact.md`. What happens when an object
 the player throws or carries meets the thrower is in
-`thrown-objects.md`, "Hitting the thrower".
+`thrown-objects.md`, "Hitting the thrower". Balls and walkers don't
+affect each other ("Balls and walkers").
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y`,
 `vx` and `vy` are as in a trace: right and down are positive, speeds in
@@ -249,6 +250,43 @@ comes back to the level after an exit:
   (`exits.md`, "Coming back to the level"), the ball appeared again when
   the view came to it, one frame on and at the same position as before,
   whether or not it had appeared and been removed before leaving.
+
+## Balls and walkers
+
+A ball and a walker (`walker.md`; small, medium and large walkers alike)
+don't affect each other. They pass through each other wherever they
+are: the ball isn't removed, doesn't bounce and keeps its speeds, and
+the walker isn't knocked out, doesn't turn and goes on walking as
+before. Each goes on exactly as it would without the other. A ball can
+still hurt the player while it is next to a walker (`ball-contact.md`),
+and the walker then stops as on any hit (`walker.md`, "While the player
+is knocked out").
+
+No walker walks near the first level's thrower, so for these
+measurements a walker was put into the level on the floor under the
+thrower's ledge, where the balls thrown straight up fall back through
+it. All three kinds were used, heading left and heading right, with the
+lead character alone, standing on the floor below:
+
+- by inputs: 18 runs (3 kinds, 6 walk-in lengths, then standing for
+  1200 frames), 11 746 frames, each run compared with the same inputs
+  with every ball removed as soon as it appeared, and with no walker.
+  On 489 of the frames a ball was within 16 px across and 24 px up or
+  down of the walker, on some of them at exactly the walker's
+  position (the same whole-pixel `x` and `y`). Walkers and balls were
+  the same as in the comparisons on every frame. Each run was compared
+  up to the first frame on which the player was hurt (by the walker or
+  a ball), after which everything stops anyway;
+- controlled: 948 537 placements of a ball at every whole-pixel offset
+  up to 64 px from a walker in each direction, set just before a frame,
+  with balls moving left, right and straight up or down, rising and
+  falling, then 1, 2 or 4 frames played. Each was compared with the
+  same frames with the ball put far from the walker, and with the walker
+  moved away from the ball. 86 988 placements ended the frame within
+  the 16 by 24 px above. The ball never differed. The walker differed
+  in 5 169, every one a placement in which the ball hurt the player,
+  just as it did with the walker moved away. The same placements with
+  the player in the walker's place found the hits.
 
 ## While the player is knocked out
 
@@ -540,12 +578,12 @@ Floor 331 never counted: the ball passed it while ignoring floors.
 
 ## Not covered
 
-- Thrown objects (`thrown-objects.md`) meeting a ball, and balls
-  meeting walkers. Objects meeting the thrower are in
-  `thrown-objects.md`, "Hitting the thrower". The thrower touching the player, bouncing
-  on it and rolling into it are in `thrower-contact.md`, balls touching
-  the player in `ball-contact.md`, and the ground action knocks it out,
-  `ground-action-enemies.md`.
+- Thrown objects (`thrown-objects.md`) meeting a ball. Objects meeting
+  the thrower are in `thrown-objects.md`, "Hitting the thrower", and
+  balls and walkers are in "Balls and walkers" above. The thrower
+  touching the player, bouncing on it and rolling into it are in
+  `thrower-contact.md`, balls touching the player in `ball-contact.md`,
+  and the ground action knocks it out, `ground-action-enemies.md`.
 - While the player is knocked out: a placed ball appearing while the
   view moves left (only the view moving right was measured with a
   knock-out; without one, see "Balls placed in a level").
