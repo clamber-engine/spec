@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.146.0
+
+Removal of placed objects in lists with sections.
+
+Part of clamber-engine/spec#17 (the first level's layout). The issue
+stays open for the parts not covered yet.
+
+- `formats/placements.md`, "When placed objects are removed": new "In
+  lists with sections". Objects in the shared list are removed by the
+  first level's table; in the underwater lists they are also removed by
+  the vertical window alone, with per-kind side margins. Not covered
+  narrowed. (spec#17)
+
 ## spec-v0.145.0
 
 A thrower knocked out by the ground action while the player is knocked
