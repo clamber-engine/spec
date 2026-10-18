@@ -123,8 +123,11 @@ and `ground` is 1 throughout.
 
 ## How it ends
 
-On **E**, the player is no longer in the action, but its speed doesn't
-change: `vx` on E is `vx` on P + 58, and the player moves by it. What is
+On **E**, the player is no longer in the action, but the speed takes one
+more step of the action's rule (toward direction × 3, as in "Speed and
+position"), and the player moves by it. On flat ground `vx` is already
+direction × 3 on P + 58, so it doesn't change: `vx` on E is `vx` on
+P + 58. (It can differ after a steep face: "At a steep face".) What is
 held on E doesn't affect the speed on E.
 
 From **E + 1** the normal grounded rules apply (`ground-speed.md`) from
@@ -284,6 +287,151 @@ frame	input	x	y	vx	vy	state	ground	facing	events
   8 frames after it: the last frame of the action, the take-off frame and `vx` on G + 1
   as above in every run.
 
+## At a steep face
+
+Measured on `title-1` with the first character alone, on flat ground
+next to steep faces (`steep-faces.md`, "Columns, faces and steps"):
+
+- going right, over a face of 8 columns falling to the right whose
+  lowest column is above a gap, with flat floor 48 px below the top
+  beyond the gap;
+- going right, over a face of 32 columns falling to the right, with
+  lower floor at the bottom and below it;
+- going left, over a face of 4 columns falling to the left whose lowest
+  column is above a gap;
+- going right, toward a face rising to the right.
+
+The action was started from standing at every whole-pixel position on
+the flat ground before each face (every 1/16 px on the last 2 px, and
+on the whole 16 px top before the long face), from walking toward the
+face, and on frames that start on a face or move onto one, with inputs
+during it and random input after the press. "Starts on a face" and
+"face column" are as in `steep-faces.md`. Directions are written for an
+action moving right; moving left is the mirror image, measured at one
+face.
+
+**Going down a face.** Nothing slows or stops the action at the top of a
+face. Its grounded frames follow the face down or leave the ground
+exactly as when walking (`steep-faces.md`, "Following a face down, or
+leaving it": a new column 8 px lower or less is followed, 11 px lower
+or no floor makes that frame the leave frame L, with the move down of
+3.4375 and `vy` 0.00390625 of `walk-off.md`). The action goes on, on the
+face, after L and through a landing, as at a ledge without a face
+(above), and ends on E.
+
+On every frame of the action that **starts on a face** (including L
+when the frame before it ended on the face), the speed rule's target
+is direction × 3 plus 1.5 downhill: **+4.5** (1152/256) for an action
+moving down a face that falls to the right. The frame that moves onto
+the face, and frames in the air, have the plain target direction × 3.
+Left, Right, Up, Down and Action make no difference on face frames
+either. So `vx` goes above 3 on the face and comes back toward 3 in
+the air by the speed rule: in the example below it is 2.93359375 on the
+frame that moves onto the face, 3.12890625 on L, then 3.11328125,
+3.1015625, … in the air.
+
+When `vx` is still above 3 on P + 58, the step on E ("How it ends")
+changes it: for example 3.046875 on P + 58 and 3.04296875 on E, after a
+landing on the floor below.
+
+**Jump.** The press rules of `walk-off.md` ("Jumping near the edge")
+apply, with one difference:
+
+- A Jump press on a frame that starts on the face does nothing: no
+  jump, the action goes on, and later frames fall with 0.4375 per frame
+  as without the press.
+- A press on any other frame Q of the action from P + 1 on (grounded,
+  not on the face) ends the action on Q as in "Inputs during the
+  action", and the take-off (`jump_start`) is on **Q + 1 even when
+  Q + 1 starts on the face**, that is when Q is the frame that moves
+  onto the face. (Walking, a press whose next frame starts on the face
+  gives no jump.) On Q + 1 the player first moves as without the jump:
+  following the face down (`y` changes by the drop to the new column)
+  or leaving it (down 3 + g, `walk-off.md`), then `vy` becomes the
+  take-off value. From Q + 1 the target is that of `air-control.md`
+  from the input, with no part downhill.
+
+**Pressing on the face or onto it.** If the press frame P starts on a
+face, or its move ends on a face column, there is **no ground action**.
+`vx` becomes 0 at the start of P, as when the action starts, and from
+then on P and the frames after it go as without the press: on P the
+target is that of a grounded frame with the inputs held there (Action
+is held, so the running target, `ground-speed.md`), or the face target
+of `steep-faces.md` ("Speed on a face") on a frame that starts on the
+face. With Action held on face frames, that target was 1.5 downhill
+plus the running target of 3 when the downhill direction was held
+(4.5), and 1.5 downhill otherwise; Down held on face frames made no
+difference. None of these frames are `ground_action`.
+
+**Toward a rising face.** A frame of the action that would move the
+player into a face column of a face rising in the direction of the
+move is blocked as in `steep-faces.md` ("Stopped by a rise"): `x`
+becomes the left edge of the column the player was in, and `vx` 0. The
+action still lasts to E, but the player doesn't move again: on every
+frame of the action (and on E) that starts with `vx` 0, the rule of
+`steep-faces.md` ("Can't start toward a rise") applies with the
+action's direction in place of a held direction, so with the column
+5 ahead 8 px or more higher, `vx` stays 0 and `x` doesn't change. The
+same holds on P when the player was standing (`vx` 0 on P − 1): the
+action starts but the player doesn't move at all. From E + 1 the
+normal rules apply, including "Can't start toward a rise" for a held
+direction.
+
+If instead `vx` was not 0 on P − 1 and the column 5 ahead of the
+player's column on P is 8 px or more higher, the speed on P becomes 0
+and then moves toward direction × **2** (512/256) instead of × 3:
+`vx` is 0.25, 0.46875, 0.66015625, 0.82421875, … on P, P + 1, … until
+the player is blocked, and 0 from then to E. Measured going right only.
+
+Example, direction +1 from standing 68 px before the first column of a
+face that falls to the right (8 columns, then the gap), nothing held
+after the press (`x` and `y` relative to the start; rows 7 to 32, 37 to
+45, 49 and 52 to 54 left out). The player moves onto the face on frame
+34, L is P + 30 and the landing G on the floor beyond the gap is
+P + 42:
+
+```
+frame	input	x	y	vx	vy	state	ground	facing	events
+4	.	0	0	0	0	idle	1	R	
+5	RDA	0.375	0	0.375	0	ground_action	1	R	
+6	RDA	1.078125	0	0.703125	0	ground_action	1	R	
+33	.	66.19921875	0	2.92578125	0	ground_action	1	R	
+34	.	69.1328125	7	2.93359375	0	ground_action	1	R	
+35	.	72.26171875	10.4375	3.12890625	0.00390625	ground_action	0	R	leave_ground
+36	.	75.375	10.87890625	3.11328125	0.44140625	ground_action	0	R	
+46	.	106.04296875	39.35546875	3.04296875	4.81640625	ground_action	0	R	
+47	.	109.08203125	48	3.0390625	0	ground_action	1	R	land
+48	.	112.1171875	48	3.03515625	0	ground_action	1	R	
+50	.	118.17578125	48	3.02734375	0	ground_action	1	R	
+51	.	121.17578125	48	3	0	ground_action	1	R	
+55	.	133.17578125	48	3	0	ground_action	1	R	
+```
+
+### Evidence (steep faces)
+
+- 4 844 runs (4 743 checked; in 99 the press came after walking off the
+  face or not at all, and 2 pressed just after a landing on a face were
+  left out): every start position as above toward each face, starts
+  while walking toward the face (press 1 to 7 frames after starting to
+  walk), presses on frames that start on the face or move onto it while
+  walking down it, 830 runs with Left, Right, Action, Down or Up held or
+  tapped from the frame before the player moves onto the face, 1 136
+  runs with Jump pressed from 3 frames before to 5 frames after that
+  frame (held 1 or 20 frames), 156 runs walking into the rising face
+  with the press 1 to 7 frames after starting, and 1 200 runs of random
+  input after the press. On 278 234 frames `x`, `vx`, whether the action
+  is in progress and `facing` during it, and on every frame up to
+  8 frames after the landing `y`, `vy` and `ground`, matched the rules
+  above with 0 differences: 4 243 frames of the action starting on a
+  face (2 354 of them leave frames), 839 blocked frames and 34 773
+  frames held still by "Can't start toward a rise", 1 914 landings
+  during the action, 209 Jump presses on face frames, 754 take-offs
+  (174 of them following the face down on Q + 1), 56 presses on or
+  onto a face, and 21 moving and 85 standing presses next to the rise.
+- Without the 1.5 downhill on face frames, 2 425 frames differ; without
+  the step on E, 85; without "Can't start toward a rise" during the
+  action, 767.
+
 ## Enemies
 
 The action knocks out walkers and the thrower, with any direction
@@ -320,10 +468,17 @@ frame	input	x	y	vx	vy	state	ground	facing	events
 
 ## Not covered
 
-- Ledges with a steep face, slopes or a rounded edge at the top
-  (`steep-faces.md`), steps up or down, walls, and slopes during the
-  action. Landing on anything other than flat floor after going over a
-  ledge, and the second character.
+- Ledges with slopes or a rounded edge at the top, steps up or down,
+  walls, and slopes during the action. Steep faces other than those in
+  "At a steep face": an action moving up a face (after a landing on one,
+  or started on one going uphill), E on a face frame, and moving starts
+  next to a rise going left. Landing on anything other than flat floor
+  after going over a ledge or a face (landings on a face were seen and
+  not checked), and the second character.
+- Jump held through the landing after a fall from a face during the
+  action, and an uphill direction held on the frame after a take-off
+  that ends on a face column (in the one random run seen, the target on
+  that frame was 0).
 - Enemies and other objects met in the air during the action, and the
   action's poses in the air.
 - Exits: in the 4 runs that reached the first level's left end, the
