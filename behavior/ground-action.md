@@ -299,7 +299,12 @@ next to steep faces (`steep-faces.md`, "Columns, faces and steps"):
   lower floor at the bottom and below it;
 - going left, over a face of 4 columns falling to the left whose lowest
   column is above a gap;
-- going right, toward a face rising to the right.
+- going right, toward a face rising to the right;
+- going left, toward a face of 32 columns rising to the left;
+- going left, toward two vertical steps up of 64 px (`steep-faces.md`),
+  one from a stretch of 16 columns and one from a long stretch of floor;
+- going right, off two vertical steps down of 64 px, the first onto a
+  stretch of 16 columns that ends at the second.
 
 The action was started from standing at every whole-pixel position on
 the flat ground before each face (every 1/16 px on the last 2 px, and
@@ -308,7 +313,13 @@ face, and on frames that start on a face or move onto one, with inputs
 during it and random input after the press. "Starts on a face" and
 "face column" are as in `steep-faces.md`. Directions are written for an
 action moving right; moving left is the mirror image, measured at one
-face.
+face going down and at one face and two steps going up. The player
+faced right before the press in every run.
+
+**Off a vertical step down.** A vertical step down is a ledge without a
+face: the action leaves the ground and goes on exactly as in "At a ledge
+without a face" above, including going off a second step during the
+same action.
 
 **Going down a face.** Nothing slows or stops the action at the top of a
 face. Its grounded frames follow the face down or leave the ground
@@ -363,10 +374,11 @@ plus the running target of 3 when the downhill direction was held
 (4.5), and 1.5 downhill otherwise; Down held on face frames made no
 difference. None of these frames are `ground_action`.
 
-**Toward a rising face.** A frame of the action that would move the
-player into a face column of a face rising in the direction of the
-move is blocked as in `steep-faces.md` ("Stopped by a rise"): `x`
-becomes the left edge of the column the player was in, and `vx` 0. The
+**Toward a rising face or a vertical step up.** A frame of the action
+that would move the player into a face column of a face rising in the
+direction of the move, or into the column beyond a vertical step up in
+that direction, is blocked as in `steep-faces.md` ("Stopped by a rise"):
+`x` becomes the left edge of the column the player was in, and `vx` 0. The
 action still lasts to E, but the player doesn't move again: on every
 frame of the action (and on E) that starts with `vx` 0, the rule of
 `steep-faces.md` ("Can't start toward a rise") applies with the
@@ -381,7 +393,45 @@ If instead `vx` was not 0 on P − 1 and the column 5 ahead of the
 player's column on P is 8 px or more higher, the speed on P becomes 0
 and then moves toward direction × **2** (512/256) instead of × 3:
 `vx` is 0.25, 0.46875, 0.66015625, 0.82421875, … on P, P + 1, … until
-the player is blocked, and 0 from then to E. Measured going right only.
+the player is blocked, and 0 from then to E. Measured going right and
+going left.
+
+**Facing next to a rise.** In both of these cases, that is whenever the
+column 5 ahead of the player's column in the action's direction is
+8 px or more higher on P, `facing` becomes the direction's side on P
+(left for direction −1) and stays so to E. This was measured with the
+player facing right before P, so going left it turns the player to
+face left. Otherwise `facing` doesn't change from P to E, as on flat
+ground, also when the player is blocked later in the action: a player
+facing right who presses Left + Down + Action further from the rise
+moves left facing right, is blocked, and still faces right.
+
+Example, direction −1 from standing facing right 14 px to the right of
+the left edge of the first column below a vertical step up of 64 px,
+Left held on P and P + 1, nothing held after P + 3 (`x` and `y`
+relative to the start; rows 9 to 11, 16 to 61 left out). On frame 14
+the move would end in the column beyond the step: the frame is blocked
+and `x` is the left edge of the column the player was in. From then
+to E (frame 64) "Can't start toward a rise" holds the player still.
+Started 4 px to the right of that edge instead, the player doesn't
+move at all and faces left from P:
+
+```
+frame	input	x	y	vx	vy	state	ground	facing	events
+4	.	0	0	0	0	idle	1	R	
+5	LDA	-0.375	0	-0.375	0	ground_action	1	R	
+6	LDA	-1.078125	0	-0.703125	0	ground_action	1	R	
+7	DA	-2.06640625	0	-0.98828125	0	ground_action	1	R	
+8	DA	-3.3046875	0	-1.23828125	0	ground_action	1	R	
+12	.	-10.1875	0	-1.9609375	0	ground_action	1	R	
+13	.	-12.27734375	0	-2.08984375	0	ground_action	1	R	
+14	.	-13	0	0	0	ground_action	1	R	
+15	.	-13	0	0	0	ground_action	1	R	
+62	.	-13	0	0	0	ground_action	1	R	
+63	.	-13	0	0	0	ground_action	1	R	
+64	.	-13	0	0	0	idle	1	R	
+65	.	-13	0	0	0	idle	1	R	
+```
 
 Example, direction +1 from standing 68 px before the first column of a
 face that falls to the right (8 columns, then the gap), nothing held
@@ -431,6 +481,26 @@ frame	input	x	y	vx	vy	state	ground	facing	events
 - Without the 1.5 downhill on face frames, 2 425 frames differ; without
   the step on E, 85; without "Can't start toward a rise" during the
   action, 767.
+- Rising face going left, vertical steps up and down: 5 574 runs (5 560
+  checked; in 14 the press came in the air or started a roll) at the
+  four places listed above, made the same way (every 1/16 px of the
+  16-column stretches, every whole pixel of the long one, walking
+  toward the rise or the step with the press 1 to 7 frames after
+  starting, 432 runs walking toward a rise from 4 to 16.5 px away,
+  inputs from the frame before the step or face, 1 584 runs with Jump
+  pressed around it, and 1 200 runs of random input). On 376 555
+  frames `x`, `vx`, whether the action is in progress and `facing`
+  during it, and `y`, `vy` and `ground` as above, matched with 0
+  differences: 893 frames blocked by the face (27 of them take-off
+  frames) and 1 846 by a step (64 take-off frames), 117 943 frames
+  held still by "Can't start toward a rise", 1 739 leave frames off a
+  step down and 1 709 landings, and 92 moving and 531 standing presses
+  next to a rise.
+  Checking stopped at frames in the air with higher ground less than
+  16 px ahead (`air-walls.md`).
+- Without the block at a vertical step, 1 836 frames differ; without
+  "Can't start toward a rise" during the action, 1 700; without the
+  change of `facing` on P next to a rise, 488.
 
 ## On a slope
 
@@ -564,12 +634,13 @@ frame	input	x	y	vx	vy	state	ground	facing	events
 
 ## Not covered
 
-- Ledges with slopes or a rounded edge at the top, steps up or down,
-  walls, and slopes other than 1 in 4 or where a slope meets a ledge,
-  wall or face. Steep faces other than those in
-  "At a steep face": an action moving up a face (after a landing on one,
-  or started on one going uphill), E on a face frame, and moving starts
-  next to a rise going left. Landing on anything other than flat floor
+- Ledges with slopes or a rounded edge at the top, vertical steps of
+  other heights, a vertical step rising to the right, other walls, and
+  slopes other than 1 in 4 or where a slope meets a ledge, wall or
+  face. Steep faces other than those in "At a steep face": an action
+  moving up a face (after a landing on one, or started on one going
+  uphill), and E on a face frame. A press next to a rise going right
+  while facing left. Landing on anything other than flat floor
   after going over a ledge or a face (landings on a face were seen and
   not checked), and the second character.
 - Jump held through the landing after a fall from a face during the
