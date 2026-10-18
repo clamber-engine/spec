@@ -31,6 +31,9 @@ object's height, position or speeds were set just before it reached
 flat floor or a face, to find the limits below. The floor there was
 flat, slopes of 1 px per 4 columns rising and falling, and faces of 4 px
 per column. Hitting walkers was measured separately (see that section).
+The floor below a platform that is passable from below, the platform's
+edge (a face) and its top were measured separately ("Ground passable
+from below").
 
 ## Each frame
 
@@ -58,7 +61,11 @@ While it hasn't started rolling:
 1. The new `vy` is `vy` + **0.4375** (112/256), but never above **8**
    (2048/256), as in `carrying.md`.
 2. Take the new `y` = `y` + new `vy`, and the floor `F` (a level y) of
-   the column of the object's new `x`.
+   the column of the object's new `x` ("The floor of a column" below).
+   If the new `vy` is 0 or less (moving up, or not moving) and `F` is
+   higher than the object's `y` before the frame, the object is
+   **lifted**: it moves to the new `y` − (⌈`y`⌉ − `F`), with `y` and
+   ⌈`y`⌉ from before the frame, keeps the new `vy`, and the frame ends.
 3. It **touches the floor** if the new `vy` is above 0 (moving down) and
    the new `y` is less than **5 px** above the floor: `y` > `F` − 5.
    Otherwise it simply moves to the new `y` with the new `vy`. A new
@@ -73,6 +80,24 @@ While it hasn't started rolling:
    - Otherwise, including when `v` was 0 or upward: it **starts
      rolling**.
 
+### The floor of a column
+
+The floor of a column, here and in "Rolling" and "Breaking against a
+wall", is the ground below the object's point **before the frame's
+move**: the ground below level x column `c` with feet at the object's
+`y` (`../formats/level-ground.md`, "The ground below a point"), with
+`c` the column named. That can be a surface above the object, within
+the band of the grid that its feet line is in. If it is more than
+**8 px** higher than the object (`F` < `y` − 8, with `y` before the
+frame), the column has no floor on that frame: the object moves as in
+the air with nothing to touch.
+
+So an object below the bottom of a platform's band (`platforms-from-below.md`)
+has the floor under the platform as its floor and moves under the
+platform; an object in the platform's band up to 8 px below its top is
+lifted onto it or touches it; and one lower in the band moves on as if
+there were no floor, until it is below the band.
+
 So a falling object bounces every time it lands while it still had at
 least 1 px per frame of speed, each bounce half as fast as the fall
 before it, and the first landing slower than that makes it roll. A
@@ -84,7 +109,8 @@ was 4.98 px above the floor and didn't at 5 px exactly.
 ## Rolling
 
 Once rolling, the object stays on the floor: each frame its `y` is the
-floor of the column of its new `x`, a whole number. It doesn't bounce
+floor of the column of its new `x` ("The floor of a column"), a whole
+number. It doesn't bounce
 or leave the floor again on the floors measured (flat, and slopes of
 1 px per 4 columns going up and going down). It keeps rolling at 3.5 px
 per frame until it breaks or is removed; it never stops on its own.
@@ -94,10 +120,9 @@ per frame until it breaks or is removed; it never stops on its own.
 On a frame whose move would take `x` into a **different column** that
 
 - is a face column of a face rising in the direction the object is
-  moving, of ground that is not passable from below
-  (`../formats/level-ground.md`), and
-- has its floor higher than the object's `y` at the start of the frame
-  (before this frame's move, up or down),
+  moving, and
+- has its floor ("The floor of a column") higher than the object's `y`
+  at the start of the frame (before this frame's move, up or down),
 
 the object **breaks**. It doesn't move on that frame and is gone: it is
 never seen in that column. Pieces fly from where it was (how they move
@@ -117,9 +142,75 @@ slope of 1 px per 4 columns (no face columns) doesn't. Rolling into a
 face, the object breaks on the frame whose move would take it into the
 face's first column, not before.
 
+Whether the face is passable from below (`../formats/level-ground.md`)
+makes no difference: a platform's edge that rises as a face breaks the
+object as other faces do (see "Ground passable from below").
+
 A broken object doesn't come back: in the runs measured, the view was
 moved until the object's starting place was well out of the picture and
 back, and nothing appeared there again.
+
+## Ground passable from below
+
+Whether ground is passable from below (`../formats/level-ground.md`,
+"Ground passable from below") matters for a thrown object only on a
+frame on which it **rises into that ground from below**:
+
+- **Passable from below**: nothing happens; the object moves up into the
+  ground's band as in "In the air", and from there the rules above
+  apply (lifted onto the top, touching it, or moving on as if there were
+  no floor, by "The floor of a column").
+- **Not passable from below**: the object is **stopped** as a rising
+  player is (`platforms-from-below.md`, "Ground that isn't passable from
+  below", with the object's `y` in place of the player's feet). On a
+  frame on which the new `vy` is below 0 and ⌈`y`⌉ before the frame is
+  below the bottom line of a cell's band, if ⌈new `y`⌉ would be in that
+  cell's ground in the column of the object's new `x`, its `y` becomes
+  the new `y` + (⌈`y`⌉ − ⌈new `y`⌉), with `y` from before the frame: it
+  keeps its whole px from before the frame and takes the fraction of a px
+  from the move. Its `vy` becomes 0, and `x` moves as usual. On the next
+  frame it falls as in "In the air".
+
+On every other frame (falling, not moving up or down, rolling, and
+breaking against a face) passable and solid ground give the same
+result. On the first level every surface with open space under it is
+passable from below, so a thrown object there is never stopped from
+below.
+
+**Measured** at the left edge of a platform on the first level whose
+ground is all passable from below, including its edge, which rises as a
+face of 4 steps of 4 px. Controlled frames: the object was put at 6
+places from 12 px to 0.5 px before the edge's first column, at heights
+from 10 px below the bottom line of the platform's band to 10 px above
+its top, every 0.25 px, with `vx` 3.5, 8 and 14.4375 px per frame (896/256, 2048/256,
+3696/256) moving right and `vy` −2, 0 and 2 (−512/256, 0, 512/256):
+7 614 starts, 6 frames each. The same starts were run in a copy of the
+image with every surface made not passable from below, and nothing else
+changed.
+
+- All 5 076 starts with `vy` 0 or 2 (not rising) gave the same frames
+  in both images, including 1 216 that broke against the edge.
+- Of the 2 538 rising starts, 211 differed. In each, the first
+  different frame was a stop as above in the copy: in the real image
+  the object rose into the platform's band.
+- Frame by frame, the rules of this file gave every one of the 30 070
+  frames that followed a start, in both images (with the stops in the
+  copy, 133 of them), except 200 frames whose move crossed face columns
+  into a column that isn't one (under "Not covered"). That includes 435
+  lifted frames and 432 breaks at the passable face.
+- The 135 throws by inputs alone of the first measurements (above),
+  with "The floor of a column" and the lift: every frame as the rules
+  give, except the 2 breaks under "Not covered" (a move crossing face
+  columns) and the frames of the 73 removals ("Leaving the picture").
+  The 158 frames on which a rising object over a slope had been 1 or 2
+  px higher than the rule without the lift are lifted frames.
+- 86 throws by inputs alone toward the platform's edge (walking toward
+  it for 12 to 40 frames and letting go, or jumping and letting go 0 to
+  27 frames after the jump press): the 128 frames that started at most
+  58 px past the edge's first column, as the rules give, except one
+  object let go inside the platform's band 15 px below its top at 16 px
+  per frame, which broke on the next frame with no face in its way
+  (under "Not covered").
 
 ## Leaving the picture
 
@@ -475,16 +566,14 @@ again. Speeds in 1/256 px per frame.
   the one measured, a thrown object moving left was seen to break with
   no wall there, and a carried object was knocked out of the player's
   hands.
-- Being in the air over a slope: rising over floor that rises under it,
-  the object was sometimes lifted 1 or 2 px higher than the rule above
-  gives (all 158 such frames were above slopes; none on flat floor).
 - A move that carries `x` past face columns into a column that isn't
-  one (seen three times, the object broke each time), ground other than
-  faces that is higher than the object, such as the edge of a platform
-  that is passable from below (seen to break it in some cases and not in
-  others), and faces of other steepness.
-- Landing on floor up to 8 px higher than the object, seen in controlled
-  frames at the edge of a platform; whether this holds generally.
+  one (the object broke in 2 of the first throws and on 200 controlled
+  frames at a platform's edge, but not always), an object let go inside
+  a platform's band (seen once: it broke on the next frame with no face
+  in its way, moving 16 px per frame), and faces of other steepness.
+- An object holding the missing character (`holder-breaking.md`) at a
+  face that is passable from below, and rising into ground from below:
+  only objects that hold nothing were measured there.
 - Rolling off a ledge or down a vertical step, and slopes other than
   1 px per 4 columns.
 - How the pieces of a broken object move and are drawn, and how the
