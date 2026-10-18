@@ -659,6 +659,44 @@ wider or narrower at either end does. With the small walker's ranges 708
 of the 1 380 runs don't match, and with the first character's large-walker
 ranges 793 don't.
 
+**Chains into other walkers.** Chains into small walkers heading right,
+and into medium and large walkers, follow the "Chains" rules above with
+each walker's own defeat range from this section: the same pause, frames
+and boost per defeat, and the size on P is the press-frame size plus the
+boosts so far, never more than 8. Walkers can be close enough together
+that two of them are in range at the end of the same attack frame. Then
+at least one of them is defeated on that frame, and which one isn't
+specified; on any frame other than P exactly one is defeated, and on P one
+or two are. Two defeats on one frame count as one: one pause and one
+boost. A walker left in range is defeated by the same rules on a later
+attack frame.
+
+Measured on `title-1` with the second character leading and the first
+following, on flat floor, by inputs alone, with the same kinds of random
+input as for the small walkers heading left, against a row of six walkers
+of one kind: small walkers heading right, 22 to 29 px apart, each made to
+head right as it came into view so that the player caught up with them
+from behind; medium and large walkers heading left at full speed, 26 to
+40 px apart; and medium walkers heading right in the same way, 26 to 40 px
+apart. 20 000 runs of each, 8 400 000 frames each (15 000 first and 5 000
+held back for a second check):
+
+| Walkers | Defeats | Chains reaching the limit | Runs that don't match |
+|---|---|---|---|
+| Small, heading right | 19 102 | 2 430 | 0 |
+| Medium, heading left | 26 703 | 3 274 | 1 |
+| Large, heading left | 27 027 | 3 321 | 1 |
+| Medium, heading right | 18 295 | 2 363 | 0 |
+
+The run that doesn't match is the same one with the medium and the large
+walkers: a fast roll boosted once, rolling left, reached the wall at the
+end of the flat floor and stopped against it. Every other frame matched
+these rules. On 162 frames
+more than one walker was in range; on 1 of them, a P, two were defeated,
+with one boost. With no size limit, 1 784 to 2 460 of the first 15 000
+runs of each kind don't match, and with the first character's defeat
+ranges 3 437 to 5 054 don't.
+
 With the first character following, a hurt lead loses the character as in
 `swap.md`; the frames above are those of the hurt. This character's hurt
 ranges against walkers aren't specified (`second-character.md`).
@@ -878,8 +916,7 @@ This list is for `title-1`; `title-2` has its own list above.
   also held during the pause, and objects other than those listed in
   "Everything else during the pause". Whether a defeated walker can hurt
   the player while it falls.
-- Other kinds of enemies. For the second character, slopes, steering a
-  boosted slow roll, and chains into walkers heading right or into medium
-  or large walkers.
+- Other kinds of enemies. For the second character, slopes and steering a
+  boosted slow roll.
   Rolling into the thrower is in `thrower-contact.md`; the Down + Action
   ground action meeting a walker is in `ground-action-enemies.md`.
