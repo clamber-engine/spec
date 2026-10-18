@@ -113,6 +113,50 @@ press on P ≥ D + 4 starts a roll on P. A press on D + 2 or D + 3 starts
 a roll on D + 4, the frame after `roll_end`, if Action is still held on
 D + 4; if it is released before D + 4, that press starts no roll.
 
+**When D + 4 starts on a steep face** (`steep-faces.md`; "starts on a
+face" as in "Jumping on or next to a face" there: the player is being
+carried down a face at the end of D + 3), a press on D + 2 or D + 3 starts
+no roll on D + 4. It works like a carried jump press:
+
+- Let **Q** be the first frame after D + 3 that starts with the player on
+  the floor on a column that isn't a face column. Walking or coasting off
+  the low end of the face, Q is the first frame that starts beyond its
+  last column; if the player leaves the ground on the face and lands on
+  other floor, Q is the frame after the landing frame.
+- If Action is held on every frame from P to Q and Q ≤ P + 7, a roll
+  starts on Q (`roll_start` on Q; an ordinary roll of 29 frames).
+- Otherwise no roll starts. A new press is needed.
+
+Until Q the press changes nothing: every frame from D + 1 to Q − 1 is the
+same as if Action had been held without a break from the roll on, with no
+new press. Down held on P or on D + 4 doesn't change any of this.
+
+For example, a roll that carried on is being carried down a face falling
+to the right at about 1 px per frame on D to D + 3. Action is released on
+D + 1, pressed again on D + 2 and held. The player is carried down the
+face on D + 4 to D + 8, and D + 9 takes them past its last column onto
+the floor at its foot, so Q = D + 10 = P + 8: too late, and no roll
+starts. Had the
+face ended one column sooner, so that Q = D + 9 = P + 7, the roll would
+start on D + 9.
+
+Checked with the first character on the 32-column face falling to the
+right of `steep-faces.md` ("Evidence (rolls)"), from 30 400 runs: from
+standing on the floor at the face's top, a roll toward the face, turned
+by holding the other direction as it moves onto the face so that it is
+stopped and carried down (`steep-faces.md`, "Stopped rolls"), Action held
+to D or D + 1, then a press on D + 2 or D + 3 held for 1 to 20 frames,
+Down on P and on D + 4 or not, and Left, Right or nothing held after D.
+In the 6 310 runs in which D + 4 started on the face, a roll started on Q
+in all 1 222 in which Action was held from P to Q with Q ≤ P + 7, and no
+roll started from D + 4 on in the other 5 088 (1 473 of them with Action
+held from P to Q, Q from P + 8 to P + 13). Each was played again with
+Action held without a break instead of the release and the new press:
+all 65 229 frames from D + 1 to Q − 1 were the same. With the limit at
+P + 8 or P + 6 instead, 102 and 204 runs differ. In the 7 225 runs in
+which D + 4 started on other floor, the rule above held (a roll on D + 4
+exactly when Action was held then).
+
 After a roll that ended in a stop: a press on P with D − 2 ≤ P ≤ D + 16
 is remembered, even if Action is held for one frame only, and the next
 roll starts on D + 17. A press during the roll before D − 2 is ignored. A
@@ -355,9 +399,10 @@ Roll speed and steering are in `roll-speed.md`, rolls into walkers in
 `rolling-into-walkers.md`, rolling off a ledge in `rolling-off-ledges.md`, rolls on, onto and
 into steep faces in `steep-faces.md`. Rolls on slopes and
 rolls into other enemies. A press on D + 2 or D + 3 after a roll that
-carried on, when D + 4 starts on a face: in the one run seen (Action and
-Down held on D + 4, the player carried down the face) no roll started.
-Down held during the second character's rolls on slopes and steep faces.
+carried on, when D + 4 starts on a face falling to the left (only a face
+falling to the right was measured), with Down held on Q, or with the
+second character. Down held during the second character's rolls on
+slopes and steep faces.
 The second character's rolls, with Down held during them, are in
 `second-character.md` ("Rolls"). The Down + Action ground action
 is in `ground-action.md`.
