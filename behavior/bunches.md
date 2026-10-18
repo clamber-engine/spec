@@ -100,13 +100,41 @@ player's state (ends included).
 frames of a jump, starting with `T`, the ranges are the standing ones.
 From `T` + 6 until the jump lands, the last row applies on every frame,
 whatever the vertical speed and the horizontal speed, and whether Jump
-is still held or not. (Single collectibles are different. Their jump
-ranges depend on the vertical speed.)
+is still held or not (after the landing, see "Landing" below). (Single
+collectibles are different. Their jump ranges depend on the vertical
+speed.)
 
-**Landing.** When a jump lands on frame `L` (the frame carrying `land`)
-and the player then stands still, the jump row still applies from `L`
-to `L` + 3. The standing row applies from `L` + 4. Landing while
-walking or running is not covered.
+**Landing.** A jump lands on frame `L` (the frame carrying `land`).
+The last row applies on every frame from `T` + 6 that ends with the
+player in the airborne pose (`ball-contact.md`, "Which pose the player
+has"), and that pose goes on for some frames after `L`. From the first
+frame that ends with the player upright again, the standing row
+applies, whatever the player then does (stands, walks or runs).
+Measured on flat ground:
+
+| Landing | Jumping ranges up to | Standing ranges from |
+|---|---|---|
+| Jumps in place with Jump held 3, 10, 14 or 30 frames, also turning left in the air, or with Action and a direction pressed from `L` + 2; jumps while walking left, with Left held through the landing or released in the air; all onto the floor they started from | `L` + 3 | `L` + 4 |
+| Jumps while walking right, off a ledge onto a floor 176 px lower, with Right held through the landing or released in the air | `L` + 4 | `L` + 5 |
+| Action and a direction held through the landing, so that the player runs on, onto the floor the jump started from | `L` | `L` + 1 |
+| The same, off the ledge onto the floor 176 px lower | `L` + 1 | `L` + 2 |
+
+In every case the switch came on the frame the airborne pose ended,
+whether the player went on standing, walking or running. When the
+airborne pose ends after other landings is not covered
+(`ball-contact.md`).
+
+This was measured with the bunch moved to every offset one pixel apart
+around the player (`I` −27 to 29 facing right, −29 to 27 facing left,
+`D` −20 to 60) on every frame from `L` − 1 to `L` + 10 of twelve
+landings (664 848 placements); every frame had exactly the jumping or
+the standing ranges. Separately, in 12 842 runs of play by inputs with a
+jump (random inputs in the air and after the landing), with the bunch
+placed once beforehand near the edge of the ranges, 2 459 pickups came
+on `L` to `L` + 10, 975 of them on the ground in the airborne pose, and
+every run took the bunch on the frame these rules give. Using the
+standing ranges from `L` would have given the wrong frame in 1 304 of
+them; from `L` + 4 whatever the pose, in 429.
 
 ### Two characters
 
@@ -208,7 +236,8 @@ is taken.
   an object (`carrying.md`), while falling without a jump, during the
   Down + Action ground action (`ground-action.md`), while turning, during the stop
   after a roll, and while being hit.
-- Landing while walking or running.
+- Landing on slopes, and a landing followed at once by a crouch, a
+  roll, a turn or another jump.
 - When a bunch that hasn't been taken appears and disappears as the
   view moves.
 - How a bunch is drawn while its items are released, and the path the
