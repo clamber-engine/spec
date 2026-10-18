@@ -153,6 +153,53 @@ from S + 1 to S + 33** (the join, see "Everything else waits"): on S it
 walks and its `vx` becomes −4 × d, its K + 1 step is on **S + 34**, and
 its K + 2 on S + 35 (all 12 throws).
 
+### Carried into a walker
+
+A **medium or large** walker meets the object while the player carries
+it by the rule for a carried object of `thrown-objects.md` ("A carried
+object", "When the walker is hit": the same ranges of I, H at most 55
+for a large walker and 42 for a medium one, and no hit on a frame on
+which the player bounces off the walker). The object breaks on that
+frame: S = K. A small walker on the player's floor never meets it.
+
+- **The joining character** appears on S at the object's whole-pixel
+  position, where the object is carried on S.
+- **The player** moves on S as if still carrying, doesn't move from
+  S + 1 to S + 33 ("Everything else waits"), and goes on from S + 34
+  without the object: on the ground it stands or walks, and in the air
+  it keeps the airborne carrying pose until it lands.
+- **The player isn't hurt by that walker.** With an object that holds
+  nothing, the walker can still hurt the player on K + 1
+  (`thrown-objects.md`, "What happens on a hit"); here K + 1 is S + 1,
+  in the wait, and from S + 34 on the walker has been hit.
+- **The walker** walks as usual on S, and its `vx` becomes −4 whichever
+  way the player faces (d = +1 in `thrown-objects.md`, "The walker").
+  It doesn't move from S + 1 to S + 33; it takes its K + 1 step there
+  (including the turn at the end of its patrol) on **S + 34** and its
+  K + 2 step on S + 35, then goes on as there.
+
+Measured on the first level with the lead alone, in copies that put
+this object at the start of the opening floor and a large, medium or
+small walker in place of the first walker:
+
+- by inputs: 240 runs of 500 frames (80 with each kind), carrying the
+  object with Action held all the time and walking, turning, standing
+  and jumping at random. 109 breaks on walkers (55 large, 54 medium):
+  every one on the frame the rule gives, and the rule gave no hit in
+  any other run. In each of the 108 that went on long enough, the
+  character appeared at the object's carried position, neither the
+  player nor the walker moved from S + 1 to S + 33, the walker's steps were as above (6 of them turned at the end of the
+  patrol on their K + 1 step), and the player wasn't hurt from S − 1 to
+  S + 80. In the other runs the object left the hands otherwise: the
+  player was hurt (51 runs: 48 by small walkers, 3 by a medium or large
+  walker from behind), bounced off the walker (56) or reached the
+  barrier at the floor's left end (14); 10 runs ended still carrying;
+- controlled: the 63 336 placements of `walker-contact.md` ("Carrying")
+  for all three kinds, compared with the same placements carrying an
+  object that holds nothing. The walker met the object on exactly the
+  same placements (12 856 large, 8 288 medium, no small), and the player
+  was hurt on none of them.
+
 ### The thrower and its balls
 
 The object breaks on the thrower and on its balls (`thrower.md`) too.
@@ -188,11 +235,13 @@ to walk again on S + 34, in 7 throws.)
 
 ## Before it is thrown
 
-- **Carried**: it doesn't break. A walker reaching a player who is
-  carrying it hurts the player as usual (`walker-contact.md`; with the
-  lead alone, a knock-out), and the object is let go without breaking
-  and falls away, still holding the missing character (`knock-out.md`,
-  "An object in the hands").
+- **Carried**: a medium or large walker that meets it breaks it
+  ("Carried into a walker" above). Otherwise it doesn't break. A walker
+  that reaches the player without meeting it (any small walker, or a
+  medium or large one from behind) hurts the player as usual
+  (`walker-contact.md`; with the lead alone, a knock-out), and the
+  object is let go without breaking and falls away, still holding the
+  missing character (`knock-out.md`, "An object in the hands").
 - **During a throw** (Q to Q + 21, still in the hands): on **Q + 1 to
   Q + 20** a walker breaks it, at its position in the hands, by the
   ranges for t from 1 to 16 (measured: small walker facing left, object
@@ -289,6 +338,11 @@ Q + 32 and the character appears at (105, 40). The walker's `vx` becomes
 ## Not covered
 
 - How the object moves after a bounce makes the player let go of it.
+- Carried into a walker: walkers on another floor or on a slope,
+  walkers that are turning or speeding up, H lower than measured for a
+  carried object (`thrown-objects.md`), and whether the player goes on
+  from S + 34 with exactly the position and speeds it would have had
+  still carrying (only that it doesn't move in the wait was checked).
 - Throwers and balls with the object moving left, balls moving sideways,
   other enemies; walkers other than the small walker facing left with
   the object moving right (the ranges of `thrown-objects.md` are assumed

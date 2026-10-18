@@ -532,9 +532,9 @@ air after its first bounce.
 
 ### A carried object
 
-An object that holds nothing also defeats a **large** walker that it
-meets while the player carries it (`carrying.md`, "Carrying"), and
-breaks. A small walker on the same floor as the player is never
+An object that holds nothing also defeats a **large** or **medium**
+walker that it meets while the player carries it (`carrying.md`,
+"Carrying"), and breaks. A small walker on the same floor as the player is never
 reached: the object is held too high, and the walker hurts the player
 as usual (`walker-contact.md`; for the object, `knock-out.md`, "An
 object in the hands").
@@ -559,6 +559,17 @@ object moved into the large walkers' patrol as above:
   60 858 frames with a large walker at full speed and no bounce. A
   small walker was never hit (1 810 frames, with the object 41 to 93 px
   above it).
+- medium walker: 21 112 placements, in a copy with a medium walker in
+  place of the first walker of the first level, on two frames of the
+  walker walking at full speed (heading left, and with its heading set
+  to the right 30 frames before), the player put at every whole pixel
+  from 45 px left to 45 px right of it, facing either way: standing,
+  walking, turning, early and late in jumps, landing and falling onto
+  it (`walker-contact.md`, "Evidence for carrying", gives the inputs).
+  The rule below gives a hit on exactly the 8 288 placements that had
+  one: H of 41 and 42 were hit, and 43, 44, 49 and 55 weren't. The
+  runs by inputs of `holder-breaking.md` ("Carried into a walker") add
+  54 hits of medium walkers, each on the frame the rule gives.
 
 #### When the walker is hit
 
@@ -585,6 +596,20 @@ Standing, walking, running and being in the air don't change them.
 The lowest H measured was 11, with the player standing on the walker's
 floor. Hits with H from 11 to 55 were seen; lower values weren't
 measured.
+
+A **medium** walker is hit in the same way, with H at most **42** and
+these ranges:
+
+| Walker facing | Player facing | I |
+|---|---|---|
+| right | right | −20 to 35 |
+| right | left | −25 to 30 |
+| left | right | −30 to 25 |
+| left | left | −35 to 20 |
+
+Both ends are included. The hits measured had H of 41 and 42 (the
+player on the walker's floor or a few pixels above it); H below 41
+wasn't measured.
 
 On a frame on which the player bounces off the walker (`bounce.md`),
 the walker isn't hit, even when the ranges hold. This was seen on 6
@@ -927,11 +952,13 @@ again. Speeds in 1/256 px per frame.
   position apply to it too wasn't checked); and the second character.
 - A carried object and walkers ("A carried object"): small walkers on
   a floor high enough above the player's to come within reach (their
-  limits for a carried object weren't measured), medium walkers,
-  walkers that are turning or speeding up, H below 11, a `holder`
-  carried into a walker, two walkers in range on the same frame, what
-  happens to the carried object when the player bounces off a walker,
-  and the second character. The ranges are given for the object's
+  limits for a carried object weren't measured), walkers that are
+  turning or speeding up, H below 11 (below 41 for a medium walker),
+  how a medium walker moves after a hit by a carried object that holds
+  nothing (only its `vx` on K was measured; `holder-breaking.md` has
+  the rest for the object holding the missing character), two walkers
+  in range on the same frame, what happens to the carried object when
+  the player bounces off a walker, and the second character. The ranges are given for the object's
   position; where a carried object is relative to the player is not
   covered (`carrying.md`).
 - Vertical steps ("Breaking at a vertical step"): steps met moving
