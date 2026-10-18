@@ -2,6 +2,34 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.151.0
+
+Walker settings with fingerprint rows, and the knocked-out thrower while
+a character is lost.
+
+Answers clamber-engine/spec#41 (per-object settings with fingerprint
+rows). Part of clamber-engine/spec#17 (the first level's layout) and
+clamber-engine/spec#19 (the first level's remaining entities). Both
+issues stay open for the parts not covered yet.
+
+- `REVIEW.md`: new rule "Settings with fingerprint rows" next to the
+  kind-fingerprint exception, as decided on spec#41: observed,
+  engine-neutral values only, how each was measured, and a default for
+  every setting. (spec#41)
+- `formats/placements.md`, new "Settings" section: walker kinds have a
+  heading, a patrol range relative to the start (or `none`) and a first
+  step, with defaults `left`, `none` and `1`, a synthetic example and
+  how the values were measured in play. `formats/locators.md` lists the
+  settings for the five walker fingerprints of `title-1`.
+  `behavior/walker.md` and `behavior/walker-view.md` point to them; the
+  patrol range need not be centred on the start. New synthetic vectors
+  in `vectors/placements/`. The Not covered item now concerns settings
+  of other kinds. (spec#41, spec#17)
+- `behavior/thrower.md`, "While a character is lost": a thrower already
+  knocked out goes on as without the hit, and its removal rule applies
+  with each run's own view, so it can be removed later. Not covered
+  narrowed. (spec#19)
+
 ## spec-v0.150.0
 
 Exits and wall exits at the vertical window, and a placed ball while a
