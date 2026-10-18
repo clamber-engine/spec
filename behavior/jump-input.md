@@ -28,6 +28,50 @@ or whose next frame does, doesn't take off on P + 1; held, it can take
 off later, once the player is on other floor (`steep-faces.md`,
 "Jumping on or next to a face").
 
+### Crouching
+
+A press on any frame of a crouch (`ground-speed.md`, "Crouching"),
+including its first frame D, the frames after Down is released early,
+and U to U + 9, starts a jump on P + 1 as on any other grounded frame,
+whether Down is held on P, on P + 1, or later.
+
+One combination is different: **Action pressed on P together with the
+Jump press, and Down held on P + 1**. Then there is no `jump_start` on
+P + 1. Instead P + 1 is the first frame D of a crouch, with the usual
+minimum length and target speeds of a crouch:
+
+- if Jump is held on P + 2, P + 2 counts as a press on a crouch frame,
+  and `jump_start` is on P + 3;
+- otherwise no jump starts, and a new press is needed.
+
+This doesn't depend on whether Down is held on P, on a crouch before P,
+on how long Action is held, or on the speed (standing, walking or
+running). Without Down on P + 1, or with Action pressed on P + 1
+instead of P, the jump is an ordinary one (`air-control.md`, "Action and
+Down around take-off and landing").
+
+| Inputs on P, P + 1, P + 2 (grounded on P) | Result |
+|---|---|
+| Jump + Action, then Jump + Down, then Jump | `jump_start` on P + 3 |
+| Jump + Action, then Jump + Down, then nothing | No jump; crouch from P + 1, at least to P + 13 |
+| Jump + Action, then Down, then nothing | No jump; crouch from P + 1, at least to P + 13 |
+| Jump + Action + Down, then Jump | `jump_start` on P + 1 |
+| Jump + Down, then Jump + Action + Down, then Jump | `jump_start` on P + 1 |
+
+Example: walking right at +2 with Right held throughout, Jump, Action
+and Down pressed on frame 30, Action and Down released after frame 31,
+Jump held on. `vx` is 544/256 on 30 and 572/256 on 31 (D: the target
+with Action held), 501/256 on 32 (a press on a crouch frame keeps the
+crouch's target 0), and 502/256 on 33, the `jump_start` frame (the air
+target). The player is airborne from frame 34.
+
+Measured from standing and walking with the crouch started 0 to 26
+frames before P or not at all, Jump held 1 to 60 frames, Action pressed
+on P or P + 1 and held 1 to 60 frames, Down on P, P + 1 and after
+in every combination (4 264 cases), and in the random runs of
+`air-control.md`, 1 676 such presses (1 482 with Jump held on P + 2):
+every frame as described.
+
 ## Landing lockout
 
 After landing, there is a short time when a jump can't start. Call the

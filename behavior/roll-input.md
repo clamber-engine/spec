@@ -23,7 +23,9 @@ on P), unless Down is held on frame P (Down makes no difference during
 a roll and the stop after one; see "Down during a roll"), or the player
 is standing within
 reach of an object that can be carried (then it is picked up instead; see
-`carrying.md`).
+`carrying.md`), or the press comes together with a Jump press or on a
+jump's take-off frame (then the jump goes on; `air-control.md`, "Action
+and Down around take-off and landing").
 
 This does not depend on:
 
