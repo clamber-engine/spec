@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.183.0
+
+Walkers during pick-ups, throws and put-downs (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/walker-contact.md`: "Carrying" now also covers the frames
+  of a pick-up on the ground, a throw (on the ground or in the air) and
+  a put-down, with the carrying hurt ranges and the upright vertical
+  reach, and says when the pose is upright again. There is no bounce
+  from the frame after a throw starts until the object leaves the
+  hands. During a pick-up, throw or put-down, the carried object also
+  hits small walkers. New section "Evidence for pick-ups, throws and
+  put-downs". Not covered now lists only pick-ups in the air for
+  carrying.
+
 ## spec-v0.182.0
 
 Leaving a face onto floor follows the rise rule (spec#51).
