@@ -232,9 +232,13 @@ as in `ground-speed.md` ("Crouching"), except that on the landing frame
 G and on G + 1 Down does nothing. The first crouch frame (its D) is the
 first frame from E + 1 and from G + 2 on with Down held.
 
-Example, direction +1 from standing 96 px before the end, nothing held
-after the press (`x` and `y` relative to the start; rows 6 to 28, 32
-to 57 and 61 to 62 left out): L is P + 25, the landing G is P + 55 and E is P + 59.
+Example, direction +1 from standing 56 px before the end of the ground
+(the first column without ground starts 56 px to the right of the
+start), nothing held after the press (`x` and `y` relative to the
+start; rows 6 to 28, 32 to 57 and 61 to 62 left out). Frame 29 ends
+with `x` at 54.5546875, still over the ground; frame 30 ends at
+57.44921875, past its end, so L is P + 25. The landing G is P + 55 and
+E is P + 59.
 
 ```
 frame	input	x	y	vx	vy	state	ground	facing	events
