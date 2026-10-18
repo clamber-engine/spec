@@ -266,6 +266,49 @@ differ in 6 813 and 7 129 runs. The last 5 000 runs, recorded as a
 holdout: 2 588 rolls with a defeat, 19 646 defeats, 2 378 chains of
 eight, the limit applying in 2 259, 0 runs different.
 
+Chains into walkers heading right were measured on the same floor with
+up to six small walkers in a row, each made to head right as it came
+into view (about 200 pixels ahead of the player), so that the player
+caught up with them from behind: 20 000 runs of random input as in the
+first set above, about 5 830 000 logic frames. In the first 15 000 runs,
+2 546 rolls defeated at least one walker, with 12 687 defeats (12 533
+with the player facing right, 154 facing left); 1 816 chains had six
+defeats, and in 1 275 chains the starting size plus the boosts came to
+9 or 10. Every frame matched the rules of this page, with the defeat
+ranges for a walker heading right and "Several walkers in range" below:
+0 runs different. The last 5 000 runs, recorded as a holdout: 806 rolls
+with a defeat, 4 004 defeats, 573 chains of six, the limit applying in
+406, 0 runs different.
+
+### Several walkers in range
+
+Walkers can be close enough together that two or three of them are in
+the defeat range at the end of the same attack frame. Then:
+
+- **At least one of them is defeated** on that frame. Which one isn't
+  specified: it was neither always the nearer one nor always the one
+  that came into view first.
+- **On any frame other than P** (the first frame after a pause), exactly
+  one is defeated.
+- **On P**, one or two of them are defeated.
+- **Two defeats on one frame** count as one defeat for the rest of the
+  roll: there is one pause, K + 1 and K + 2, and one boost on P = K + 3.
+  Each of the two walkers falls as a defeated walker ("The walker"
+  below), from the same K.
+- A walker in range that isn't defeated is like any other walker: on
+  every later attack frame on which it is in range, it is defeated by
+  the rules above.
+
+In the 20 000 runs with walkers heading right, 694 frames had more than
+one walker in range: 653 of them weren't P, and on each exactly one
+walker was defeated. On the 41 that were P, one walker was defeated on
+26 and two on 15; 4 of the 15 had the player facing left. With the
+limit of one boost for two defeats, the runs with two defeats on one
+frame matched; with one boost per defeat, 2 runs differ (in the other
+13 the extra boost made no difference). Of the 683 walkers left
+in range, 668 were defeated on the next attack frame, 7 on a later one,
+and 8 had left the range or the chain had ended by then.
+
 ## Speed on roll frames
 
 On every frame of a roll, of the frames that end it, and on its
@@ -527,8 +570,9 @@ This list is for `title-1`; `title-2` has its own list above.
 - Walkers on a different floor from the player, and rolls on or off
   ledges, in the air, or jumping out of a roll (a Jump press on K + 3
   starts a jump; what happens next isn't specified).
-- Chains into walkers heading right, and into medium or large walkers,
-  longer than two.
+- Chains into medium or large walkers longer than two.
+- Which walker is defeated when several are in range on one frame, and
+  when two are defeated on P rather than one.
 - Objects appearing on K + 2 (none were seen), and walkers whose first
   step is on the frame after they appear, appearing during the pause.
 - Being hurt in a stop that a defeat has lengthened.
