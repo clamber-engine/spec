@@ -135,6 +135,9 @@ has no effect on speed: the speed rule above applies on every frame of it.
   practice the turn starts 0 to 7 frames after the opposite direction is
   first held when walking, and 0 to 12 frames when running.
 
+In `title-1`, on frames held toward a rise right ahead, `facing` and the
+start of turns follow `steep-faces.md` ("Turns next to a rise") instead.
+
 ### Standing, walking and running
 
 This section is `title-1` only. It decides when a turn can start. It has

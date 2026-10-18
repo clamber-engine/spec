@@ -181,7 +181,8 @@ although that frame started with `vx` 0.
 `ground-speed.md`, "Standing, walking and running"), holding toward such
 a rise turns `facing` to the held side on that same frame, without the
 8-frame turn. On the landing frames `facing` follows the input anyway
-(`ground-speed.md`, "After a landing"). During a turn it is not covered.
+(`ground-speed.md`, "After a landing"). During a turn, see "Turns next
+to a rise" below.
 
 Example, walking left away from a face that rises to the right, then
 Right held (`x` relative to the start, 1 px to the left of the left edge
@@ -198,6 +199,60 @@ frame	input	x	y	vx	vy	state	ground	facing	events
 2	L	-0.71875	0	-0.46875	0	walk	1	L	
 3	R	-1.37890625	0	-0.66015625	0	walk	1	R	turn
 4	R	-2.203125	0	-0.82421875	0	walk	1	R	
+```
+
+**Turns next to a rise.** Here T is the first frame of an 8-frame turn
+(`ground-speed.md`, "Facing and turns"), and the turn's frames are T + 1
+up to its end, T + 8 included (the frame on which a new turn can start,
+which then has its own T + 1 to T + 8).
+
+- On each of the turn's frames that is held toward such a rise,
+  `facing` turns to the held side at once, as while standing, walking
+  or running. On T + 4 the turn's own change of `facing` comes after
+  that: on a T + 4 held toward the rise `facing` ends on the side away
+  from the rise, whichever side it had before the frame (the `turn`
+  event appears only if that differs from it).
+- Where `ground-speed.md` starts a turn because the direction opposite
+  to `facing` is held (while standing, at a turn check while walking or
+  running, and on T + 8 at the end of a turn), a frame held toward such
+  a rise starts one instead when the frame's target speed (as decided
+  above) is not 0 and is toward the side opposite to `facing`, with
+  `facing` already turned to the held side on that frame. As that side
+  is the rise's side, a turn starts when the kept target is away from
+  the rise, and not when it is 0 or toward the rise. Away from a rise
+  the target is on the held side (blocked frames aside, see "Not
+  covered"), and this is the same rule.
+
+Example, standing facing right 5.125 px to the right of the foot of a
+64 px vertical step rising to the left (`x` relative to the start).
+Left on frame 1 starts a turn (T = 1); the column 5 to the left isn't
+higher yet. From frame 2 on, the column 5 ahead is the step's while
+Left is held: `facing` turns left at once on frame 2. Right on frames 4
+to 7: the turn's change on frame 5 (T + 4) turns `facing` right, and the
+target becomes 2. Left again on frame 8 (toward the step): `facing`
+turns left at once, and the target stays 2. On frame 9 (T + 8) the kept
+target is to the right, opposite to `facing`: a new turn starts on
+frame 9, and its change on frame 13 turns `facing` right while Left is
+held. (From frame 10 the column 5 to the left is no longer higher, and
+the target follows Left.) With the turn decided by the held direction,
+no turn would start on frame 9 and `facing` would stay left.
+
+```
+frame	input	x	y	vx	vy	state	ground	facing	events
+0	.	0	0	0	0	idle	1	R	
+1	L	-0.25	0	-0.25	0	walk	1	R	
+2	L	-0.71875	0	-0.46875	0	walk	1	L	turn
+3	L	-1.37890625	0	-0.66015625	0	walk	1	L	
+4	R	-1.70703125	0	-0.328125	0	walk	1	L	
+5	R	-1.74609375	0	-0.0390625	0	walk	1	R	turn
+6	R	-1.53125	0	0.21484375	0	walk	1	R	
+7	R	-1.09375	0	0.4375	0	walk	1	R	
+8	L	-0.4609375	0	0.6328125	0	walk	1	L	turn
+9	L	0.33984375	0	0.80078125	0	walk	1	L	
+10	L	0.79296875	0	0.453125	0	walk	1	L	
+11	L	0.94140625	0	0.1484375	0	walk	1	L	
+12	L	0.82421875	0	-0.1171875	0	walk	1	L	
+13	L	0.47265625	0	-0.3515625	0	walk	1	R	turn
 ```
 
 ### Evidence (holding toward a rise)
@@ -239,8 +294,20 @@ frame	input	x	y	vx	vy	state	ground	facing	events
   while the target is kept), 62.
 - `facing` on the 18 061 frames held toward the rise while standing,
   walking or running (1 371 of them running, 299 turning on that
-  frame): the held side on every one. During turns 225 of 1 419 such
-  frames had the other `facing`.
+  frame): the held side on every one.
+- Turns next to a rise: the same 19 200 runs and 19 200 more of the same
+  kind with other random choices. On every frame of every turn that
+  started and ended on the floor without a jump press (168 377 frames,
+  3 559 of them held toward the rise, 439 of those on a T + 4), `facing`
+  matched the rule above with 0 differences. Of the 17 759 ends of a
+  turn on T + 8 (995 of them in turns with frames held toward the rise,
+  203 of those going on with a new turn) and the 12 106 turn starts while
+  walking or running (94 on frames held toward the rise), all matched
+  the target rule; 68 973 standing frames (24 448 held toward the rise)
+  started a turn exactly when it says. Controls on the same frames:
+  with turns started by the held direction, 120 differ; without
+  `facing` turning at once during turns, 957; with the turn's T + 4
+  change before turning to the held side, 439.
 
 ## Speed on a face
 
@@ -980,9 +1047,14 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
   faces steeper or less steep than 4 px per column, and a vertical step
   rising to the right.
 - Differences of 6 and 7 px in the "can't start" rule.
-- "Holding toward a rise": `facing` when holding toward a rise during a
-  turn; landings after falls and bounces, and slide landings, in front
-  of a rise (only plain landings after jumps were measured).
+- "Holding toward a rise": landings after falls and bounces, and slide
+  landings, in front of a rise (only plain landings after jumps were
+  measured). Turn checks while walking or running were not tracked
+  frame by frame: every turn start seen had the target toward the side
+  opposite to `facing`, but whether every turn check with such a target
+  started a turn wasn't tested; no standing player held toward a rise
+  had a target away from it. Whether a blocked frame ("Stopped by a
+  rise") with the direction away from the rise held can start a turn.
 - How a trace's `state` names frames on a face (the vocabulary has no
   name for being carried down a face).
 - Entities, moving platforms and the other character.
