@@ -1,0 +1,6 @@
+r	kind	heading	patrol	first_step
+8100	bunch	-	-	-
+9000	small-walker	right	-20 to 100	1
+9010	small-walker	left	-32 to 32	0
+ffe0	thrower	-	-	-
+4000	none	-	-	-

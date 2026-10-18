@@ -80,7 +80,8 @@ Other classes are used by other levels' lists and are not covered.
 Entries with the same reference `r` place the same kind of object, with
 the same settings (for example a walker's heading and whether it waits a
 frame before its first step, `../behavior/walker-view.md`). Different
-references can place objects of the same kind with different settings.
+references can place objects of the same kind with different settings
+("Settings" below).
 The first level's list uses 36 different references in its class 1 and
 2 entries, and its group's members use one more. The kind is told by the
 reference alone: the same reference given to an entry somewhere else
@@ -215,9 +216,8 @@ members are looked up by their own references.
 | `hidden-barrel` | A hidden object set off by a long fall onto it, releasing a `barrel` | `hidden-objects.md` |
 | `hidden-metal-barrel` | A hidden object set off by a long fall onto it, releasing a metal barrel | `hidden-objects.md` |
 
-The behavior files are in `../behavior/`. A row gives the kind only:
-the settings of the object (for example a walker's heading) are not
-given by it.
+The behavior files are in `../behavior/`. A kind row gives the kind;
+the settings of the objects it places are in "Settings" below.
 
 The `holder` reference is the one reference seen to make two objects
 appear (see "When placed objects appear"). The holder is one of them;
@@ -228,6 +228,93 @@ doesn't use; where the other levels' placement lists are is not covered
 yet. Each of the three `tyre` references was given, in a copy of the
 image, to one class 1 entry near the first level's start in place of
 its own reference, and placed a tyre there.
+
+### Settings
+
+An object's **settings** are values it starts with that differ between
+references of the same kind. `locators.md` can give, in a supported
+image's section, the settings for a kind fingerprint (`../REVIEW.md`,
+"Settings with fingerprint rows"). Every object an entry places whose
+reference has that fingerprint starts with those settings. A setting that
+isn't given for a fingerprint takes its default from the table below.
+The settings were measured in play ("How the walker settings were
+measured" below).
+
+The walker kinds (`small-walker`, `medium-walker` and `large-walker`)
+have three settings. No other kind has settings in this spec yet.
+
+| Setting | Values | Meaning | Default |
+|---|---|---|---|
+| heading | `left` or `right` | The heading the walker has when it appears (`../behavior/walker-view.md`, "Appearing") | `left` |
+| patrol | `none`, or `a` to `b` (px, `a` ≤ 0 ≤ `b`) | The walker's patrol range (`../behavior/walker.md`, "Turning at the end of a patrol") runs from L = S + `a` to R = S + `b`, with S its start. `none`: it has no patrol range and turns only where something else turns it | `none` |
+| first step | `0` or `1` | The frame of its first step, counted from the frame it appears: `0` is that frame, `1` the frame after it (`../behavior/walker-view.md`, "Appearing") | `1` |
+
+A walker that comes back after being removed (`walker-view.md`,
+"Coming back") starts again with the same settings.
+
+#### Example (synthetic)
+
+A fingerprint with heading `right`, patrol `−20` to `+100` and first
+step `1`, used by an entry whose walker starts at S = 500 on flat floor:
+the walker appears at x 500 heading right and stays there on that frame,
+moves to 500 + 1/8 on the next, and from then on walks as in
+`walker.md`. Its range is 480 to 600: heading right, it turns on the
+first frame that starts with `x` rounded down greater than 600; heading
+left, on the first frame that starts with `x` rounded down less than 480.
+
+#### How the walker settings were measured
+
+Walkers placed by each of the first level's five walker references
+(`locators.md`) were followed in play, every logic frame, for up to 4 000
+frames. The player stood still or walked so that the walker stayed in
+the level (`walker-view.md`, "Being removed") and never touched the
+player: standing still while it turned, backing off when it came near,
+following it when it walked away, and jumping over a walker that doesn't
+turn so that it could go on to a barrier and come back. Other walkers
+were kept away from the player. Each reference was followed at its own
+entries in the first level (one to three entries each; for the group's
+members, from walkers already walking) and, in a copy of the image, given
+to one class 1 entry near the level's start in place of its own
+reference.
+
+- **heading**: the direction of the walker's first step.
+- **first step**: whether its `x` on the frame it appeared was S (`1`)
+  or already one step from S (`0`).
+- **patrol**: on each frame T on which a walker turned without stopping
+  (`walker.md`), the end it turned at is its `x` rounded down at the end
+  of frame T − 2: L when it was heading left, R when heading right. Then
+  `a` = L − S and `b` = R − S. A reference has patrol `none` if its
+  walkers never turned except at a barrier.
+
+Results, 15 runs and 33 661 frames in all:
+
+- The `large-walker` reference: heading `left`, patrol `−128` to `+128`,
+  first step `1`. 3 runs (2 entries and the copy), 27 turns, every one at
+  the same two ends.
+- The `medium-walker` reference whose fingerprint begins `c833`: heading
+  `right`, patrol `−12` to `+240`, first step `1`. 2 runs (its entry and
+  the copy), 18 turns, every one at the same two ends.
+- The `medium-walker` reference whose fingerprint begins `a18b`: heading
+  `left`, patrol `none`, first step `0`. 4 runs (3 entries and the copy;
+  first step seen in 3). Its walkers walked 549, 1 277, 1 423 and 288 px
+  left of their start without turning; in the copy it then stopped at a
+  barrier and walked 1 809 px right of its start without turning.
+- The `small-walker` reference whose fingerprint begins `b0b7`: heading
+  `left`, patrol `none`, first step `0`. 2 runs (1 entry and the copy).
+  Its walkers walked 840 and 288 px left of their start to a barrier,
+  then 2 305 and 1 809 px right of their start without turning.
+- The `small-walker` reference whose fingerprint begins `bc06` (the
+  group's members): heading `left`, patrol `−144` to `+144`, first step
+  `1` (seen in the copy). 4 runs (3 members and the copy), 25 turns, every
+  one at the same two ends; one member was also turned by a barrier
+  before reaching its right end.
+
+The facing of every walker changed on T + 4 after each turn. With these
+settings, the rules in `walker.md` and `walker-view.md` gave the
+walker's `x` to 1/256 px and its facing on every frame of the 15 runs up
+to its first stop at a barrier (24 281 frames, 0 different). Frames on
+which the whole game was held, because the player struck something, are
+left out (2 frames).
 
 ### In the first level
 
@@ -1141,7 +1228,8 @@ appear on the first frame that starts with `V` ≥ 672.
 reader gets from it and the frames on which their objects appear with
 the view moving right (including an entry stored after one with a
 larger `x`), and a made-up image with kind fingerprint rows and
-the kinds a reader looks up from it. It also holds a made-up list with
+the kinds a reader looks up from it, with made-up settings rows and the
+settings looked up from them. It also holds a made-up list with
 sections, its section table, a view path, and the entries that appear
 on each frame: see its `README.md`.
 
@@ -1149,10 +1237,9 @@ on each frame: see its `README.md`.
 
 - Where the placement lists of levels other than the first are in the
   image.
-- What a definition holds, and the kinds of the references without a
-  kind fingerprint row. An object's settings (a walker's heading and
-  patrol, whether it takes a first step on its first frame, a placed
-  ball's speeds) also belong to the definition and are not covered.
+- The kinds of the references without a kind fingerprint row. Settings
+  of kinds other than the walkers ("Settings"), for example a placed
+  ball's speeds, and any settings of walkers other than the three there.
 - What class 2 changes compared with class 1. In the first level's runs,
   class 2 objects appeared and started like class 1 objects, and moving
   a reference from an entry of one class to one of the other changed

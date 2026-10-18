@@ -55,7 +55,8 @@ that frame is already `S − 1/8` (or `S + 1/8` heading right), which is the
 first step of speeding up from rest. Other walkers stay at `S` on that
 frame and take the same first step on the next frame. A given walker
 does the same thing every time it appears. Which walkers do which belongs
-to how they are placed. It doesn't follow from size or heading: both
+to how they are placed (the first step setting, `../formats/placements.md`,
+"Settings"). It doesn't follow from size or heading: both
 were seen among small walkers, and all three large walkers measured
 waited a frame.
 
