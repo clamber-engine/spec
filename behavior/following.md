@@ -168,7 +168,9 @@ wall, a barrier or an enemy, or leaves the picture
 frame on which it breaks. From S + 1 to S + 33 walkers and the thrower
 don't move either (`holder-breaking.md`).
 
-- If both characters are already there, nobody comes out.
+- If both characters are already there, nobody comes out, and nothing
+  waits from S + 1 on (`holder-breaking.md`, "With both characters
+  there").
 - Otherwise the missing character joins, whichever it is: also the
   first character, after it ran out of the level when hit
   (`losing-a-character.md`).
@@ -192,7 +194,7 @@ The joining character:
   first. From S + 34 it follows the trail (and usually starts to rest
   right away, walking to its rest spot).
 
-The lead doesn't move from S + 1 to S + 33: its position stays as it was
+When a character joins, the lead doesn't move from S + 1 to S + 33: its position stays as it was
 on S, even in the air, and it carries on from there on S + 34.
 
 Measured on two joins: one object thrown onto the floor 117 px from the

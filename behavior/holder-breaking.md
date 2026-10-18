@@ -7,7 +7,7 @@ it breaks, and the character joins (`following.md`, "Joining"). This file
 says on which frame **S** such an object breaks and where it is on S,
 from the moment it is picked up until it breaks; everything from S on is
 in `following.md`. Since one character is missing, the lead is alone
-throughout.
+throughout, except in "With both characters there" below.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y`,
 `vx` and `vy` are as in a trace: right and down are positive, speeds in
@@ -219,6 +219,39 @@ An Action press within reach picks it up (`carrying.md`). It doesn't
 break when it leaves the picture either: one left lying behind the
 player was not seen to free anyone.
 
+## With both characters there
+
+Such an object can also be met with both characters there: the holders
+are back at their places after a fall-out with both characters there
+(`restart-barrel.md`, "What is there again after a fall-out"), and one
+holder broken still leaves any other one in the level. Then:
+
+- It is picked up, carried and thrown as above, and a thrown one moves
+  and breaks by the rules above, on the same frame S and for the same
+  causes.
+- On S **nobody comes out**: no character appears, the lead and the
+  follower stay the same characters, and the lives and the count don't
+  change (`following.md`, "Joining").
+- **Nothing waits**: "Everything else waits" doesn't apply to the lead
+  or the follower. From S + 1 on, the lead moves by its input as on any
+  other frame, and the follower goes on following (`following.md`).
+
+Measured on the first level at the second such object, with both
+characters there after a fall-out and the resume at the restart point,
+the first character leading or (after a swap) the second: 140 throws by
+inputs (thrown from beside the object, carried left 30 frames and
+thrown left, or thrown right after turning to it), with nothing, Right,
+Left or Jump held after the throw. All 548 flight frames and the 140
+breaks (on the floor and against a wall) matched the rules above, and on
+S and the 40 frames after it the follower was still following. With Right
+held after the throw, the lead moved within S + 1 to S + 33 in all 35
+throws. The same throws and inputs with the lead alone at the same place
+(96 throws, each character leading) had the missing character joining
+and the lead still from S + 1 to S + 33 in every one. In 15 more throws
+(both characters, each leading) the leading character, the lives and the
+count were the same on every frame from the Action press to 200 frames
+after the throw.
+
 ## Examples
 
 Computed from the rules above. Thrown to the right while standing on
@@ -265,4 +298,7 @@ Q + 32 and the character appears at (105, 40). The walker's `vx` becomes
   one, at a face passable from below: the object broke on 140 controlled
   frames, on the same frames as an object holding nothing, but not on
   every such move (the 4 breaks of case 1 were at solid ground).
+- With both characters there: walkers and the thrower from S + 1 to
+  S + 33, breaks on enemies or at the edge of the picture, and the
+  first such object (only the second was measured).
 - Objects holding the missing character in other levels.

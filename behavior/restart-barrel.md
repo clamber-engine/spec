@@ -412,7 +412,8 @@ or at the restart point:
   before the fall-out, the second character leads after the resume
   (measured at the restart point);
 - the holders are at their entries' places again, as after a knock-out,
-  even though no character is missing.
+  even though no character is missing; breaking one then frees nobody
+  (`holder-breaking.md`, "With both characters there").
 
 This differs from a knock-out with both there, after which the
 character that led at the knock-out resumes alone ("Holders, and who
@@ -481,9 +482,8 @@ the barrel is touched on the third, the upright range starting at −24.
   example both there at the level's start), and where the missing
   character is when both holders are broken.
 - After a fall-out ("What is there again after a fall-out"): the same
-  items as after a knock-out, the other character falling out while the
-  lead stays in the level, and what breaking a holder does when both
-  characters are already there.
+  items as after a knock-out, and the other character falling out while
+  the lead stays in the level.
 - Ways of leaving the level other than finishing it, a knock-out or a
   fall-out, and what happens to the restart point when another level is
   played before this one is entered again, or when no tries are left.
