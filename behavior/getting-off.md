@@ -88,6 +88,24 @@ Measured with the first character alone, by inputs only:
   getting off, were as the rules give. Riding without the lighter
   gravity after the mount ("Right after a mount") makes 147 of the runs
   differ.
+- Landings after jump-offs, by inputs: from a rider at rest or after
+  riding left or right for 6 to 45 frames, Tandem and Jump pressed
+  together, Jump held 1 to 30 frames, and in the air Right, Left, Right
+  then Left (or Left then Right) from one of five frames, a direction
+  released on one of five frames before or after the landing, or Left
+  and Right held together from late in the jump; Action held from P + 2
+  or P + 14, or not at all. Each case was played again with Jump
+  pressed on L − 1 and held. On the long flat floor of the modified copy
+  38 880 cases, 32 931 landing (5 949 got on the animal again); next to
+  the level's own crate, unmodified, 1 800 cases, 1 300 landing (289 got
+  on again, 211 left the flat part). On all 34 231 landings, the switch
+  frame S (L or L + 1; 2 269 with S = L, half of them on the seventh
+  stage frame), E, facing from L to the start of on-foot play, and the
+  frame and kind of that start (13 141 runs on S, 16 319 times standing
+  and 4 771 walking on the later frame) were as "After the landing"
+  gives.
+  Taking P or P + 2 as the take-off frame instead makes 211 and 98 of
+  the first 3 000 cases differ.
 
 Each rule was also checked against its neighbours: moving any frame
 window below by one frame, changing the hop's starting speed by 16/256
@@ -259,6 +277,26 @@ P + 1, the player lands on P + 33; with Jump held for 30 frames, on
 P + 47. With nothing held after P the player comes straight down onto
 the animal and gets on it again (on P + 26 with Jump held 1 frame).
 
+**After the landing**, unless the player has got on the animal again, it
+goes on as after any jump, with P + 1 as the jump's take-off frame T:
+the approach frame A, the stage frames and the switch frame are as in
+`jump-input.md` ("The switch frame M"; call it **S** here, as M is the
+mount frame below), the earliest jump is on E = S + 2 ("Landing
+lockout", with "Pressing before landing" counting back from that E),
+and the landing frames, facing on them and the start of running,
+walking or standing are as in `ground-speed.md` ("After a landing",
+with S for its M). Nothing about the animal or the get-off changes
+these.
+
+From a rider at rest, with Jump held for 1 frame and Right held from
+P + 1 (landing on P + 33, L): S = L + 1 and E = L + 3; walking starts
+on L + 7, or running on L + 1 if Action has been held since before the
+landing. With Jump held for 6 frames the player lands on P + 36, the
+seventh stage frame (A = T + 20, L = A + 15), so S = L, E = L + 2, and
+running (Action and Right held) starts on L, or walking on L + 10; with
+Jump held for 7 frames, A = T + 21 and L = P + 37 comes after the
+seventh stage frame, so S = L and walking starts on L + 9.
+
 ## Right after a mount
 
 Riding starts on M + 23 (`animal-crate.md`, "Mounting the animal"). M + 22
@@ -358,9 +396,9 @@ turned around:
   crate (`animal-crate.md`); the runs above mounted the waiting animal.
 - Riding after a mount from a bounce (`bounce.md`) with Jump held:
   whether it starts with the lighter gravity, as after a jump.
-- What follows the landing of a jump-off (its landing frames and when
-  on-foot play starts, `jump-input.md` and `ground-speed.md`, "After a
-  landing").
+- Jump-off landings on floor higher or lower than the take-off floor
+  (switch frames later than L + 1), and an Action press or Down near a
+  jump-off's landing.
 - Getting on again after a bounce off an enemy (`bounce.md`), or while
   the animal is still falling.
 - Slopes, steep faces, ledges and walls: getting off near them, the
