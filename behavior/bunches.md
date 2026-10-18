@@ -90,7 +90,7 @@ player's state (ends included).
 
 | State | `I` | `D` |
 |---|---|---|
-| Standing, walking, running | −15 to 21 | −8 to 40 |
+| Standing, walking, running, Down + Action ground action | −15 to 21 | −8 to 40 |
 | Crouching (Down held on the ground) | −18 to 12 | −12 to 31 |
 | Rolling | −13 to 21 | −4 to 38 |
 | Jumping, from the take-off frame `T` to `T` + 5 | −15 to 21 | −8 to 40 |
@@ -135,6 +135,23 @@ on `L` to `L` + 10, 975 of them on the ground in the airborne pose, and
 every run took the bunch on the frame these rules give. Using the
 standing ranges from `L` would have given the wrong frame in 1 304 of
 them; from `L` + 4 whatever the pose, in 429.
+
+**Ground action.** During the Down + Action ground action
+(`ground-action.md`), the standing row applies on every frame from the
+press frame `G` to `G` + 58, whatever the action's direction and speed,
+including when the player moves against its facing. It also applies
+while the action carries the player down a slope (1 px down for every
+4 px across), and in the air after the action carries the player off a
+ledge, on every frame measured until the action ended (what the action
+does at a ledge is not covered in `ground-action.md`). This was measured
+with the bunch moved to every offset one pixel apart around the player,
+on every frame of five ground actions (direction 0, −1 and +1, facing right and
+left, about 1 400 000 placements). Separately, in 19 162 runs of play by
+inputs with ground actions and the bunch placed once beforehand near the
+edge of the standing row, 6 090 pickups came on ground-action frames,
+and every run took the bunch on the frame these rules give. Using the
+crouching row on ground-action frames instead would have given the wrong
+frame in 6 800 of them.
 
 ### Two characters
 
@@ -233,9 +250,8 @@ is taken.
 - The ranges while bouncing off a walker (`bounce.md`), while being
   carried down a steep slope or a rounded ledge (`steep-faces.md`), while
   passing through a platform (`platforms-from-below.md`), while carrying
-  an object (`carrying.md`), while falling without a jump, during the
-  Down + Action ground action (`ground-action.md`), while turning, during the stop
-  after a roll, and while being hit.
+  an object (`carrying.md`), while falling without a jump, while
+  turning, during the stop after a roll, and while being hit.
 - Landing on slopes, and a landing followed at once by a crouch, a
   roll, a turn or another jump.
 - When a bunch that hasn't been taken appears and disappears as the
