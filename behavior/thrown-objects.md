@@ -559,7 +559,7 @@ object moved into the large walkers' patrol as above:
   60 858 frames with a large walker at full speed and no bounce. A
   small walker was never hit (1 810 frames, with the object 41 to 93 px
   above it).
-- medium walker: 63 336 placements, in a copy with a medium walker in
+- medium walker: 21 112 placements, in a copy with a medium walker in
   place of the first walker of the first level, on two frames of the
   walker walking at full speed (heading left, and with its heading set
   to the right 30 frames before), the player put at every whole pixel
