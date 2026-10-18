@@ -2,6 +2,33 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.174.0
+
+4 changes: rising extra-life items gone untaken and then an exit, during
+a knock-out and while the game is paused, and the four-letter ending
+while the player is knocked out (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/exits.md`: "Coming back to the level" now lists rising
+  extra-life items that went away untaken as there again when play comes
+  back through an exit, as when the level begins. Checks for it are
+  included.
+- `behavior/extra-lives.md`: new "While the player is knocked out" under
+  "Rising": what rising items do on the hit frame, while held, and after
+  the knock-out, with a worked example. New "While the game is paused"
+  under "Rising": rising items stay still while paused and then go on, so
+  a trace is the same as with no pause. A pointer to `exits.md` under
+  "Going away untaken". Checks for each are included, and the Not
+  covered items are narrowed to what is still unmeasured.
+- `behavior/letters.md`: new "While the player is knocked out" under
+  "The ending": the letter row is unchanged, the lives number gets a
+  position on every frame and comes in and stays after the hit, and the
+  number shown changes for the knock-out and for the new life as stated.
+  Two worked examples and checks are included. The knock-out part of Not
+  covered is removed and the remaining limits are added.
+
 ## spec-v0.173.0
 
 1 change: rising extra-life items taken before a knock-out, resuming at
