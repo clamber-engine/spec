@@ -68,6 +68,26 @@ Measured with the first character alone, by inputs only:
 - On the flat floor next to the first level's own crate, unmodified: 200
   more random runs (19 990 frames, 189 hops, 5 jump-offs, 57 mounts
   again), with the same result.
+- On the flat floor next to the first level's own crate, unmodified,
+  from mounts by inputs (jumps onto the waiting animal in six ways:
+  Right held throughout, nothing held from the mount or from late in the
+  jump, Jump held throughout, Action held from late in the jump, Left
+  held from the mount): 2 551 scripted runs. Tandem held from each frame
+  from M − 12 to M + 30 for 1 to 40 frames, held from before the mount
+  until each frame from M + 18 to M + 30, and pressed on M + 22, M + 23
+  or M + 24 with a Jump, Action, Jump and Action, Down and Action, or
+  Left press on M + 23;
+  Jump held from the jump on foot and released on frames from M − 5 to
+  M + 45, or pressed again from M − 3 to M + 22, with Tandem pressed on
+  frames from M + 23 to M + 100; and 100 runs with a charge started on
+  M + 23 to M + 40 while Jump was still held from the jump, or after it
+  was released, some with a Tandem press later. The first get-off of
+  every run was on the frame the press rule gives (123 on M + 23, 555
+  later, none in the other 1 873 runs, 1 584 of which had Tandem held
+  during the mount), and all 160 149 frames from M + 23 on, riding and
+  getting off, were as the rules give. Riding without the lighter
+  gravity after the mount ("Right after a mount") makes 147 of the runs
+  differ.
 
 Each rule was also checked against its neighbours: moving any frame
 window below by one frame, changing the hop's starting speed by 16/256
@@ -81,9 +101,14 @@ A Tandem press on any frame of riding starts getting off on that frame:
 call it **P**. "Any frame of riding" is every part listed in `riding.md`,
 "Parts of riding": riding, a turn, a jump's crouch, air and landing
 frames, a charge, a charge end and the settling frame, on the floor or
-in the air. Tandem presses while mounting (`animal-crate.md`, M to
-M + 22) did nothing. Holding Tandem doesn't repeat it: a new press is
-needed.
+in the air. Holding Tandem doesn't repeat it: a new press is needed.
+
+Tandem pressed or held while mounting (`animal-crate.md`, M to M + 22)
+does nothing there, but it still counts as held: Tandem held on M + 22
+and still held on M + 23 is not a press on M + 23, and the player rides
+on until Tandem is released and pressed again. A press on M + 23, the
+first riding frame, starts getting off on M + 23 ("Right after a mount"
+below).
 
 What happens on P depends on Jump, Down and Action on P:
 
@@ -127,7 +152,9 @@ hop in the air or on a steered frame.
 
 The gravity is **0.28125** on P if at the end of P − 1 the rider was in a
 jump with the lighter gravity of `riding.md` (Jump held on every frame
-since its press frame; also during a charge started in that jump) and
+since its press frame; also during a charge started in that jump), or
+Jump has been held on every frame since the press of the jump on foot
+the player mounted from ("Right after a mount"), and
 Jump is held on P, and on each later frame as
 long as Jump has been held on every frame since; otherwise it is
 **0.4375**. Once Jump is released, it is 0.4375 until landing.
@@ -232,6 +259,55 @@ P + 1, the player lands on P + 33; with Jump held for 30 frames, on
 P + 47. With nothing held after P the player comes straight down onto
 the animal and gets on it again (on P + 26 with Jump held 1 frame).
 
+## Right after a mount
+
+Riding starts on M + 23 (`animal-crate.md`, "Mounting the animal"). M + 22
+ends in the air, so a press on M + 23 is always a **hop**, whatever else
+is pressed: Jump pressed with Tandem on M + 23 gives no jump-off (rule 1
+of "The press"), and Down with an Action press gives no ground action
+(rule 2). From M + 24 the rider is on the floor and the rules of "The
+press" apply as on any riding frame. A Jump press made during the mount
+(M to M + 22) is not a remembered press: with Jump still held, Tandem
+pressed on M + 24 gives a hop, and no riding jump starts.
+
+A hop on P = M + 23 is the hop above, starting from the player's
+position at the end of M + 22, which is still the position the mount
+gave (`animal-crate.md`, "Mounting the animal"), not the riding height
+of M + 23. For a mount on the waiting animal (`x` rounded down is `xc`,
+the feet line is `yc`, the fractions kept from M) `y` is up to 1 px
+above `yc`, where riding on M + 23 would have put it. P is not steered
+(a step of 1/32 of the gap in the speed rule), and facing is the facing
+at the end of M + 22. The animal stays at `xc` and `yc`, facing that
+way; it doesn't fall.
+
+**Jump held from the mounting jump.** If the player mounted from a jump
+on foot and Jump has been held on every frame since that jump's press,
+riding starts as if in a riding jump with the lighter gravity: as long as
+Jump stays held, a hop uses 0.28125 (on P and after it, as above), and so
+does a charge's hop (`riding.md`, "The charge"). Once Jump is released,
+or for a Jump press made in the air before the mount or during it, the
+gravity is the usual 0.4375.
+
+### Example
+
+Mounting from a jump to the right, Right held, Jump not held; Tandem
+pressed on M + 23 with Right held. `x` is relative to the end of M + 22
+and `y` to `yc` (both 0 for the animal).
+
+| Frame | Held | `x` | `y` | `vx` (1/256) | `vy` | |
+|---|---|---|---|---|---|---|
+| M + 22 | Right | 0 | −0.90625 | 512 | 0 | doesn't move yet (`animal-crate.md`) |
+| M + 23 (P) | Tandem, Right | 2 | −6.46875 | 512 | −5.5625 | hop |
+| M + 24 | Right | 4 | −11.59375 | 512 | −5.125 | |
+| M + 35 | Right | 26 | −39.09375 | 512 | −0.3125 | highest |
+| M + 47 | Right | 50 | −8.71875 | 512 | 4.9375 | |
+| M + 48 (L) | Right | 52 | 0 | 512 | 0 | lands |
+
+The same with Jump held from the jump on foot through the press: on
+M + 22 `y` is −0.375 (the mount kept a different fraction), and the hop
+has the lighter gravity: `vy` −5.71875 on P, −5.4375 on P + 1, −5.15625
+on P + 2, and so on while Jump is held.
+
 ## The animal
 
 On P the animal leaves the rider. It stays at `x` = the rider's `x` at
@@ -278,8 +354,10 @@ turned around:
 - Tandem with Down held and an Action press on the floor: the player was
   seen to leave the animal in the ground action (`ground-action.md`),
   moving up as on a hop's P, 5 times; what happens then is not covered.
-- A Tandem press on M + 23, the first riding frame after a mount, and
-  Tandem held from the mount into riding.
+- A press on M + 23 after a mount during the animal's hop out of the
+  crate (`animal-crate.md`); the runs above mounted the waiting animal.
+- Riding after a mount from a bounce (`bounce.md`) with Jump held:
+  whether it starts with the lighter gravity, as after a jump.
 - What follows the landing of a jump-off (its landing frames and when
   on-foot play starts, `jump-input.md` and `ground-speed.md`, "After a
   landing").

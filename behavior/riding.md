@@ -207,7 +207,9 @@ Frames of the charge:
   8, and the rider moves by the new `vy`, landing as in `landing.md`. The
   gravity is 0.4375, except that a charge started from a jump uses the
   jump's rule: 0.28125 while Jump has been held on every frame since the
-  jump's press frame P.
+  jump's press frame P. So does a charge started after a mount while
+  Jump has been held on every frame since the press of the jump on foot
+  the player mounted from (`getting-off.md`, "Right after a mount").
 - A charge that starts in the air keeps falling under the same gravity
   rule. If it is still in the air on C + 10, there is no hop. If it lands
   before C + 10, it hops on C + 10.
