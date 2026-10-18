@@ -112,7 +112,9 @@ not frame 306.
 - Which floors and walls stop a player who is below the floor of the
   column they are in (inside a gap, the player was seen to pass under
   the floors on either side) and where the sides of a gap stop a fall.
-- Falling out during a roll, a bounce (`bounce.md`), while carrying an
-  object (`carrying.md`) or while knocked out (`knock-out.md`).
+- Falling out during a roll, a bounce (`bounce.md`) or while knocked
+  out (`knock-out.md`). While carrying an object (`carrying.md`), only
+  that the object stays in the hands to the last frame is covered
+  (`restart-barrel.md`, "What is there again after a fall-out").
 - What enemies, objects and sound do from Z to the end.
 - Leaving the level through its left or right end.

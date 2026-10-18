@@ -384,6 +384,55 @@ runs, 4 sets (a bounce and a roll, each resuming at the level's start
 and at the restart point) each with a control in which the thrower
 wasn't knocked out: it was seen at its place after the resume in all 8.
 
+## What is there again after a fall-out
+
+A fall-out (`falling-out.md`) instead of a knock-out leaves the level in
+the same state for play to resume in, with one difference when both
+characters are there.
+
+**The same as after a knock-out.** Everything in "What is there again
+after a knock-out" above holds after a fall-out, at the level's start
+and at the restart point: one life fewer, the count, the figure count
+and the restart point kept, the set of letters emptied or kept as
+there, every kind in that list in the level again, and objects put down
+elsewhere at their entries' places. An object still in the hands when
+the player falls out stays in the hands, moving with the player, to the
+last frame of the level (`falling-out.md`, "The end of the level"); it
+is at its entry's place again after the resume (the holder still holding
+the missing character).
+
+**Both characters there.** With both characters there when the lead
+falls out, the level ends as in `falling-out.md`, and neither
+character is lost on its own. After the resume, at the level's start
+or at the restart point:
+
+- both characters are there: the character that was leading when it
+  fell out leads, and the other one follows it (`following.md`);
+- this holds whichever of the two was leading: with a swap (`swap.md`)
+  before the fall-out, the second character leads after the resume
+  (measured at the restart point);
+- the holders are at their entries' places again, as after a knock-out,
+  even though no character is missing.
+
+This differs from a knock-out with both there, after which the
+character that led at the knock-out resumes alone ("Holders, and who
+leads").
+
+Measured: every set of the knock-out measurements above except the two
+with a swap repeated with a fall-out (the lead dropped into the gap of `falling-out.md`) where
+those had the knock-out: 89 runs, each set with a control, judged in the
+same 411 checks, none different, except where the checks expected one
+character to resume alone. Those runs, with the first character
+leading, the second following and a holder broken, resumed with the
+first character leading and the second following (4 runs). The barrel
+and a holder in the hands (4 runs) stayed in the hands on every frame
+from the fall to the level's end. Both characters walking into the gap
+together, a holder broken earlier and the restart point reached, the
+first leading or (after a swap) the second, letting go of Right at five
+points each (10 runs, input only): one life fewer, the resume at the restart
+point, the same character leading, the other following, and the holder
+near the restart point there again in all 10.
+
 ## Example
 
 The restart point is at `xr` = 1000, `yr` = 400, over a floor at level
@@ -429,9 +478,12 @@ the barrel is touched on the third, the upright range starting at −24.
   `rising-extra-life-2` after resuming at the restart point, the single
   collectibles, a knock-out with both
   characters there in other ways than after breaking a holder (for
-  example both there at the level's start), where the missing character
-  is when both holders are broken, and a fall-out instead of a
-  knock-out.
+  example both there at the level's start), and where the missing
+  character is when both holders are broken.
+- After a fall-out ("What is there again after a fall-out"): the same
+  items as after a knock-out, the other character falling out while the
+  lead stays in the level, and what breaking a holder does when both
+  characters are already there.
 - Ways of leaving the level other than finishing it, a knock-out or a
   fall-out, and what happens to the restart point when another level is
   played before this one is entered again, or when no tries are left.
