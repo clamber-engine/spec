@@ -141,6 +141,19 @@ From G + 15 the player is carrying.
   every frame from P), horizontal speed per `air-control.md`, landing per
   `landing.md`. The player keeps holding the object through the jump and
   after landing.
+- **Ground passable from below** (`../formats/level-ground.md`) doesn't
+  touch a carried object: when the player rises into a platform from
+  below (`platforms-from-below.md`), the object stays in the hands and
+  in the same place relative to the player as on any other frame of a
+  jump. Where the player is stopped by ground that isn't passable from
+  below, the object is stopped with it and stays in the hands. Measured
+  in `title-1` with a carried `barrel`: 230 runs of walking and jumping
+  under a platform, on the first level and on a copy with every surface
+  made not passable from below, 160 frames each (36,800 frames per
+  copy). The barrel stayed in the hands on every frame of both copies,
+  including the 698 frames with the player inside the platform, and was
+  always at the place relative to the player that the same jump frame
+  has elsewhere.
 - Letting go of Action on **P + 1 or P + 2** cancels the jump: the player
   doesn't take off, and that frame is Q of a throw from the ground. Let go
   on P + 3 or later, the throw happens in the air.

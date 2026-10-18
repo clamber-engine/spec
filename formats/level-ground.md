@@ -114,7 +114,10 @@ passable from below is stopped. A thrown object rising into such ground
 is stopped the same way, and that is the only difference it makes for a
 thrown object (`../behavior/thrown-objects.md`, "Ground passable from
 below"): faces break thrown objects, and floors are landed on, whether
-they are passable from below or not.
+they are passable from below or not. For walkers and carried objects it
+makes no difference (`../behavior/walker.md`, "Ground passable from
+below", and `../behavior/carrying.md`, "Carrying"; for walkers one case
+is not covered).
 
 On the first level every surface with open space under it was passable
 from below. Many floors were too, but not all. For ground with nothing
@@ -543,9 +546,10 @@ its feet found by these rules is at its feet line.
 
 ## Not covered
 
-- Whether being passable from below matters for anything other than
-  the player and thrown objects (walkers, carried objects, other
-  objects).
+- Whether being passable from below matters for objects other than the
+  player, thrown objects, walkers and carried objects, and for a walker
+  reaching the square end of ground whose underside is 1 px above its
+  feet (`../behavior/walker.md`, "Not covered").
 - Some levels may also use a second grid.
 - In ceiling grids: what ceilings do to a swimming player, and from
   which point near the feet a swimming player's ground below is taken
