@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.152.0
+
+A placed ball whose appearance would come while the player is knocked
+out, and a thrower knocked out by a roll or the ground action while a
+character is lost.
+
+Part of clamber-engine/spec#19 (the first level's remaining entities),
+which stays open for the parts not covered yet.
+
+- `behavior/thrower.md`, "While the player is knocked out": a placed
+  ball that isn't there yet on H appears by the usual rule. The view
+  doesn't move on H to H + 9, so it can't appear before H + 11; it then
+  moves as usual, and it doesn't appear if the view doesn't come far
+  enough. Not covered now lists only a placed ball appearing while the
+  view moves left. (spec#19)
+- `behavior/thrower.md`, "While a character is lost": a thrower knocked
+  out by a roll or the ground action goes on as without the hit, the
+  same as after a bounce, with its removal rule applied with each run's
+  own view. Removed from Not covered. (spec#19)
+
 ## spec-v0.151.0
 
 Walker settings with fingerprint rows, and the knocked-out thrower while
