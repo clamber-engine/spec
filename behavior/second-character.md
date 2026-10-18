@@ -245,6 +245,23 @@ In detail:
   on D + 7); 1 486 released before D + 7 started none (225 crouched on
   D + 7, all with Down held then; the others neither rolled nor
   crouched).
+
+  These rules hold on 1-in-4 slopes as well (`slopes.md`), uphill and
+  downhill. Checked with 19 200 more runs of the same kind, from
+  standing still facing either way on the flat floor just before a dip,
+  on its downhill side, at its flat bottom and on its uphill side, with
+  the first character following, each run stopping when this character
+  left the dip and the flat floor just before it: all 2 612 635 frames
+  were the same with Down taken off as above, 182 913 of them with Down
+  taken off while this character was on a slope, and 4 324 Action
+  presses among those. Over the runs, 610 325 roll frames, 248 342 stop
+  frames and 45 825 frames of rolls carrying on into running were on a
+  slope. Taking Down off one frame longer changed 127 454 frames in
+  2 641 of 9 600 runs. Presses on D + 2 to D + 6 after carrying on: 917
+  with Action held on D + 7 all started a roll there (136 with Down held
+  on D + 7); 1 245 released before D + 7 started none (190 crouched on
+  D + 7, all with Down held then; the others neither rolled nor
+  crouched).
 - **Steering.** A slow roll steered in its direction moves toward 3
   (768/256) from that frame on: the first character's normal size, not
   this character's. Normal and fast rolls keep their sizes. Reversing is
@@ -354,7 +371,8 @@ running speeds), all 3,312 cases mismatch; with the normal gravity in place of 0
 
 ## Not covered
 
-- Rolls on slopes, off ledges, into walls or enemies; steering during
+- Rolls on slopes (other than Down held during them), off ledges, into
+  walls or enemies; steering during
   D to D + 6 of a carry-on with a changed input; running frames during
   the stop; presses in the air for other jump heights. This character
   has no Down + Action ground action (`roll-input.md`).
