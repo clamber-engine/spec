@@ -110,7 +110,11 @@ What this changes is in `../behavior/platforms-from-below.md`: a
 platform's top in a column is a surface that is passable from below,
 and its underside is the bottom line of the top's band. A rising player
 whose feet line would end a frame in the ground of a surface that isn't
-passable from below is stopped.
+passable from below is stopped. A thrown object rising into such ground
+is stopped the same way, and that is the only difference it makes for a
+thrown object (`../behavior/thrown-objects.md`, "Ground passable from
+below"): faces break thrown objects, and floors are landed on, whether
+they are passable from below or not.
 
 On the first level every surface with open space under it was passable
 from below. Many floors were too, but not all. For ground with nothing
@@ -540,7 +544,8 @@ its feet found by these rules is at its feet line.
 ## Not covered
 
 - Whether being passable from below matters for anything other than
-  the player (walkers, carried and thrown objects).
+  the player and thrown objects (walkers, carried objects, other
+  objects).
 - Some levels may also use a second grid.
 - In ceiling grids: what ceilings do to a swimming player, and from
   which point near the feet a swimming player's ground below is taken
