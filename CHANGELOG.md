@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.173.0
+
+1 change: rising extra-life items taken before a knock-out, resuming at
+the restart point (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/restart-barrel.md`: "What is there again after a knock-out"
+  now lists the extra-life items of all three kinds as there again after
+  resuming at the restart point. The `rising-extra-life-1` and
+  `rising-extra-life-2` items taken before the knock-out appear and give
+  their lives again, whether they were taken before or after the restart
+  point was reached. The runs that show it are included. The Not covered
+  item for these items is removed.
+- `behavior/extra-lives.md`: the Not covered item for items played
+  again now says that taken items were measured with play resuming at
+  the level's start and at the restart point.
+
 ## spec-v0.172.0
 
 1 change: rising extra-life items gone untaken, after a knock-out
