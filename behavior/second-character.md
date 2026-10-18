@@ -262,6 +262,29 @@ In detail:
   on D + 7); 1 245 released before D + 7 started none (190 crouched on
   D + 7, all with Down held then; the others neither rolled nor
   crouched).
+
+  They also hold next to and on steep faces (`steep-faces.md`): rolls
+  going down a face falling to the right and on into the air beyond it,
+  rolls blocked or stopped in front of a face rising to the right, and
+  rolls down the gentle rise before the falling face. Checked with
+  19 200 more runs of the same kind, from standing still facing either
+  way on the floor at the top of the falling face and on the floor in
+  front of the rising face, with the first character following, each
+  run stopping when this character left that stretch of floor: all
+  2 356 126 frames were the same with Down taken off as above, 11 064 of
+  them with Down taken off while this character was on a face, and 277
+  Action presses among those. Over the runs, 62 759 roll frames, 5 469
+  stop frames and 899 frames of rolls carrying on into running were on a
+  face, 309 444 frames of the three kinds had `vx` 0 within 16 px in
+  front of the rise, and 148 084 were in the air. Taking Down off one
+  frame longer changed 71 251 frames in 2 144 of 9 600 runs. Presses on
+  D + 2 to D + 6 after carrying on, made on the floor with this
+  character on the floor up to D + 7: 664 with Action held on D + 7 all
+  started a roll there (89 with Down held on D + 7); 897 released before
+  D + 7 started none (141 crouched on D + 7, all with Down held then).
+  When D + 7 started on a face, or the character was in the air on any
+  frame from P − 1 to D + 7, none of the 53 presses started a roll on
+  D + 7, including the 15 with Action held from P to D + 7.
 - **Steering.** A slow roll steered in its direction moves toward 3
   (768/256) from that frame on: the first character's normal size, not
   this character's. Normal and fast rolls keep their sizes. Reversing is
