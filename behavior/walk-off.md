@@ -540,7 +540,9 @@ This list is for `title-1`; `title-2` has its own list above.
   it from L + 1 on. Frame L is covered only at a ledge without a face
   ("Horizontal speed on L").
 - At ledges without a face: drops other than 176 px, the second
-  character, Down or Action pressed near the end, and
+  character, Down or Action pressed near the end (the Down + Action
+  ground action going over the end is in `ground-action.md`, "At a
+  ledge without a face"), and
   a turn in progress there. Rolling off a ledge is in
   `rolling-off-ledges.md`. The lead character swap.
 - At ledges with a steep face: walking or running left, approaches

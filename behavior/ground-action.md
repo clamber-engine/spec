@@ -20,7 +20,9 @@ Jump, Action, Swap, Up and direction presses at many points during and
 just after the action (79 actions). On every frame of 75 of them, from
 the press frame to the frame after the action ends, `x`, `vx`, `y`,
 `ground`, `facing` and whether the action is in progress match the rules
-below. The other 4 reached a ledge (see "Not covered").
+below. The other 4 reached an exit (see "Not covered"). What happens
+when the action goes over the end of the ground is in "At a ledge
+without a face".
 
 Speeds are whole multiples of 1/256 px per frame, written both ways as
 in `ground-speed.md` (768/256 = 3 px per frame).
@@ -155,6 +157,117 @@ P + 20 and Right held throughout: `vx` is 2.80859375 on P + 20 (the
 action's speed), then 2.7109375 on P + 21, the take-off frame, where
 `air-control.md` takes over with a target of 2.
 
+## At a ledge without a face
+
+Measured on `title-1` with the first character alone, at both ends of a
+stretch of raised ground that ends flat (no face, no slope, no rounded
+lip) 176 px above the floor below, as in `walk-off.md` ("Ledges without
+a face"). The action was started from standing at every whole-pixel
+position on the raised ground, moving toward either end, and with
+inputs during and after it; the fall was made longer or shorter in some
+runs by moving the player up or down after L, so that the landing came
+from 30 frames before E to well after it. Things on the lower floor that
+the action could strike were removed. Directions are written for an
+action moving right; moving left is the mirror image. Moving left, only
+the fall down to 157 px below the top was measured, not the landing.
+
+**Leaving the ground.** The player goes over the end exactly as when
+walking (`walk-off.md`, "When the player leaves"): nothing slows or
+stops the action near the end. **L** is the first frame whose move ends
+with the player's column past the end of the ground. On L the player
+moves down 3.4375 and `vy` ends at 0.00390625, and from L + 1 the player
+falls as in `walk-off.md` ("Falling": `vy` grows by 0.4375 a frame up to
+8, landing as in `landing.md`).
+
+**The action goes on in the air.** Leaving the ground doesn't end it.
+Frames P to P + 58 are still frames of the action, grounded or not, and
+on each of them `vx` follows the action's speed rule toward direction ×
+3, as in "Speed and position". Left, Right, Up, Down and Action make no
+difference in the air, as on the ground. E is still P + 59.
+
+**Jump.** A Jump press starts a jump only if the player was grounded at
+the end of the frame before it, as at any ledge without a face
+(`walk-off.md`, "Jumping at a ledge without a face"). So a press on any
+frame Q from P + 1 to L ends the action on Q as in "Inputs during the
+action" (Q is not a frame of the action, and `vx` on Q still follows
+the action's rule):
+
+- Q before L − 1: an ordinary jump from the ground.
+- Q = L − 1: the take-off (`jump_start`) is on L, with the move down on
+  L given in `walk-off.md` for a press on L − 1.
+- Q = L: L is the leave frame, as without a press but moving down
+  3 + g(L); the take-off is on L + 1.
+
+From the take-off on, the jump follows `jump-arc.md` and
+`air-control.md`. A press on L + 1 or later, in the air, does nothing:
+the action goes on, and the press is only remembered for the landing
+(below).
+
+**Landing during the action.** Call the landing frame **G** (the row
+with `land`). If G is P + 58 or earlier, the player lands as in
+`landing.md` and the action simply goes on on the ground: G and the
+frames after it are frames of the action, `vx` follows its rule, and it
+ends on E as in "How it ends". A Jump press on the ground, on G + 1 or
+later, ends it as in "Inputs during the action".
+
+**The action ending in the air.** If the player is still in the air on
+E, `vx` on E is unchanged, as on the ground. From E + 1 the air rules
+apply (`air-control.md`: target from the input of each frame), then the
+landing as in `landing.md`.
+
+**Jump held through the landing.** After either kind of landing, a Jump
+press made from G − 10 to G + 1 and held through G + 1 starts a jump
+whose take-off (`jump_start`) is on **G + 2**. It works as a press on
+G + 1: if G + 1 is still a frame of the action (G ≤ P + 57), the action
+ends on G + 1 and `vx` on G + 1 follows the action's rule; if G + 1 is
+E, `vx` on it is unchanged; later, the normal rules apply. A press on
+G − 11 or earlier gives no jump on landing, and a press on G + 2 or later
+takes off on the frame after it, as on the ground. In the terms of
+`jump-input.md` ("Pressing before landing"), these landings have
+E = L + 2 (its E and L, the landing lockout and the landing frame, not
+this file's).
+
+**Down after the landing.** From E + 1 on, Down makes the player crouch
+as in `ground-speed.md` ("Crouching"), except that on the landing frame
+G and on G + 1 Down does nothing. The first crouch frame (its D) is the
+first frame from E + 1 and from G + 2 on with Down held.
+
+Example, direction +1 from standing 96 px before the end, nothing held
+after the press (`x` and `y` relative to the start; rows 6 to 28, 32
+to 57 and 61 to 62 left out): L is P + 25, the landing G is P + 55 and E is P + 59.
+
+```
+frame	input	x	y	vx	vy	state	ground	facing	events
+5	RDA	0.375	0	0.375	0	ground_action	1	R	
+29	.	54.5546875	0	2.8828125	0	ground_action	1	R	
+30	.	57.44921875	3.4375	2.89453125	0.00390625	ground_action	0	R	leave_ground
+31	.	60.35546875	3.87890625	2.90625	0.44140625	ground_action	0	R	
+58	.	140.74609375	158.3203125	3	8	ground_action	0	R	
+59	.	143.74609375	166.3203125	3	8	ground_action	0	R	
+60	.	146.74609375	176	3	0	ground_action	1	R	land
+63	.	155.74609375	176	3	0	ground_action	1	R	
+64	.	158.74609375	176	3	0	walk	1	R	
+65	.	161.37109375	176	2.625	0	walk	1	R	
+```
+
+### Evidence (ledge without a face)
+
+- 2 246 runs (2 more, which walked off before the press, were left out):
+  every whole-pixel start position on the raised ground in
+  both directions; starts while walking toward the end or away from it;
+  621 runs with Left, Right, Action, Down, Up or Jump (pressed from L − 3
+  to L + 6, held 1 or 20 frames or to the end) from around L on; 539
+  runs with the fall made longer or shorter; 800 runs of random input
+  after the press. On 134 555 frames `x`, `vx`, whether the action is in
+  progress and `facing` during it, and on every frame up to 8 frames
+  after the landing `y`, `vy` and `ground`, matched the rules above
+  (2 095 leave frames, 53 623 frames of the action in the air, 1 391
+  landings), with 0 differences.
+- 1 664 runs with Jump pressed from 13 frames before to 2 frames after
+  the landing and held, for 104 landings from 30 frames before E to
+  8 frames after it: the last frame of the action, the take-off frame and `vx` on G + 1
+  as above in every run.
+
 ## Enemies
 
 The action knocks out walkers and the thrower, with any direction
@@ -168,8 +281,11 @@ are in `ground-action-enemies.md`.
 ## Trace rows
 
 Frames P to P + 58 have state `ground_action` (`../traces/VOCABULARY.md`),
-`ground` 1 and `vy` 0 (2 more frames for each pause after a knock-out,
-`ground-action-enemies.md`). There is no event on P. E, and a Jump
+`ground` 1 and `vy` 0 while on the ground (2 more frames for each pause
+after a knock-out, `ground-action-enemies.md`). Frames of the action in
+the air, after going over a ledge, are `ground_action` too, with
+`ground` 0 and the fall's `vy`; the leave frame carries `leave_ground`
+and the landing frame `land` (see "At a ledge without a face"). There is no event on P. E, and a Jump
 press frame Q ending the action early, are not `ground_action`: they map by the
 normal grounded rules (`idle` if `vx` is 0, else `walk` or `run` by
 whether Action is held). Example rows, walking right with Right held,
@@ -188,9 +304,15 @@ frame	input	x	y	vx	vy	state	ground	facing	events
 
 ## Not covered
 
-- Ledges: the player was seen to keep moving off the edge of a floor,
-  the action ending on reaching it. Steps up or down, walls, and slopes
-  during the action.
+- Ledges with a steep face, slopes or a rounded edge at the top
+  (`steep-faces.md`), steps up or down, walls, and slopes during the
+  action. Landing on anything other than flat floor after going over a
+  ledge, and the second character.
+- Enemies and other objects met in the air during the action, and the
+  action's poses in the air.
+- Exits: in the 4 runs that reached the first level's left end, the
+  exit there took over (`exits.md`, "The walk-out") and the action ended
+  on the walk-out's second frame. Exits weren't measured otherwise.
 - Enemies and hits taken during the action are in
   `ground-action-enemies.md`, with their own "Not covered" list.
 - An Action press with Down held during a roll or the stop after a roll.
