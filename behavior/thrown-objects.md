@@ -4,8 +4,8 @@ Titles: `title-1`
 
 What a thrown object that holds nothing does from the moment it is
 thrown until it is gone: how it bounces on the floor, how it then rolls,
-how it breaks against a wall, what happens when it hits a walker, and
-when it is removed after leaving the picture. `carrying.md` covers the throw itself and the flight up to the
+how it breaks against a wall, what happens when it hits a walker or the
+thrower, and when it is removed after leaving the picture. `carrying.md` covers the throw itself and the flight up to the
 first touch; this file carries on from there. An object that holds the
 missing character moves the same way until it breaks; when it breaks is
 in `holder-breaking.md`.
@@ -295,6 +295,121 @@ outside −48 to 28; on Q + 38 (t = 17) it is −45, outside −23 to 27; the
 walker is hit on Q + 43 with I = −18 and U = 8.4375, the object in the
 air after its first bounce.
 
+## Hitting the thrower
+
+An object that holds nothing knocks the thrower (`thrower.md`) out when
+it meets it: thrown, during the throw while it is still in the hands,
+and while the player carries it. A thrown object goes on as if the
+thrower weren't there; an object still in the hands breaks.
+
+Measured on the first level with the lead character alone, carrying the
+ordinary object that rests below the thrower's ledge: 225 runs by
+inputs, each played twice, once as it is and once with the thrower taken
+out of the level just before the inputs began (the control). In
+these the player was put on the floor left or right of the ledge or on
+the ledge itself, and threw standing, after walking, and at every few
+frames of a jump, with and without a direction held. The thrower's balls
+were moved out of the picture as soon as they were thrown. 197 runs had
+a hit (172 of a thrown object, from 1 to 8 frames after it left the
+hands, 95 moving right and 77 left; 22 during a throw; 3 while
+carrying), all on the frame the rules below give; 22 had none, and the
+rules gave none. Five runs were left out because the object met the
+thrower before the inputs began and one because a ball broke it
+("Not covered"). Separately, 559 399 controlled single frames in which
+the thrown object's position and speeds, or the thrower's position, were
+set just before a frame, to find the limits.
+
+### When the thrower is hit
+
+Let **I** be the object's `x` minus the thrower's `x`, both rounded
+down, and **H** the thrower's `y` rounded up minus the object's `y`
+rounded up (positive when the object is higher), both at the end of the
+frame. With Q the frame Action is let go and t as under "When a walker
+is hit" (t = 1 on Q + 22), the thrower is hit on a frame when it hasn't
+been knocked out yet and I and H are both within these ranges (ends
+included):
+
+| The object | Thrown or facing | I | H |
+|---|---|---|---|
+| thrown, t from 1 to 16, or in the hands from Q + 1 to Q + 20 | right | −55 to 37 | −47 to 65 |
+| the same | left | −36 to 56 | −47 to 65 |
+| thrown, t of 17 or more, or carried | right | −30 to 36 | −23 to 32 |
+| the same | left | −35 to 31 | −23 to 32 |
+
+The way an object was thrown decides its row; for a carried one, the
+way the player faces. Nothing is hit on Q and on Q + 21. The ranges
+don't depend on the object's speed (measured from 3.5 to 14 px per
+frame across, with no vertical speed and falling at 4 px per frame),
+on t within each group, or, while carried,
+on whether the player stands or jumps. They are the ranges of an
+object that holds the missing character (`holder-breaking.md`, "The
+thrower and its balls"), and the left rows are the right rows turned
+around and then moved 1 px right.
+
+### What happens on a hit
+
+Call the frame of the hit **K**.
+
+- **A thrown object** goes on exactly as it would have without the
+  thrower: same position and speeds on every frame, same bounces,
+  rolling and breaking.
+- **An object in the hands** (from Q + 1 to Q + 20) **breaks** on K: it
+  is gone, and its pieces appear as when it breaks against a wall. The
+  throw goes on as if the object were still there: the player's
+  position, speeds and pose are the same as without the thrower.
+- **A carried object breaks** on K in the same way. The player is then
+  no longer carrying: letting go of Action throws nothing. In the three
+  hits seen, in jumps, the player's position and speeds stayed those
+  of the control; it kept the airborne carrying pose until it landed
+  and then stood.
+- Nothing else is held up: no frame is paused, for the player or
+  anything else.
+
+The thrower, from K:
+
+1. On **K** it doesn't move. Its `vx` becomes −4 × d (4 px per frame),
+   where d is +1 if the object is moving right at the end of K and −1
+   if it is moving left; an object in the hands or carried gives −4
+   whichever way it faces. It doesn't move by this `vx`.
+2. On **K + 1** its `vx` becomes 0 and its `vy` −5 (−1280/256), and it
+   doesn't move.
+3. From **K + 2**, every frame, its `vy` increases by 7/16 (112/256) but
+   never above 8, and it moves by it, falling through its ledge and
+   every floor below it. Its `x` never changes.
+
+So it starts falling one frame sooner than after a bounce, a roll or
+the ground action (`thrower-contact.md`, "The knocked-out thrower",
+and `ground-action-enemies.md`, "The thrower"), where it doesn't move
+on K + 2 either. It throws no more balls from K on (97 throws were seen
+before K in the runs with a hit, none after). It is removed by the rule
+of `thrower-contact.md`, "The knocked-out thrower": in all 197 runs,
+on the frame that rule gives, between K + 39 and K + 47, always below
+the picture.
+
+### Example
+
+Synthetic, from the rules above, with the thrown object of the example
+at the end of this file (thrown right, `x` and `y` from its position on
+Q + 21) and a thrower at `x` 115, `y` 20 that hasn't been knocked out.
+
+| Frame | t | object `x` | object `y` | I | H | |
+|---|---|---|---|---|---|---|
+| Q + 22 | 1 | 14.4375 | 1.4375 | −101 | 18 | |
+| Q + 23 | 2 | 27.5078125 | 3.3125 | −88 | 16 | |
+| Q + 24 | 3 | 39.3828125 | 5.625 | −76 | 14 | |
+| Q + 25 | 4 | 50.2109375 | 8.375 | −65 | 11 | |
+| Q + 26 | 5 | 60.125 | 11.5625 | −55 | 8 | in range: K |
+
+| Frame | thrower `y` | thrower `vx` | thrower `vy` |
+|---|---|---|---|
+| K | 20 | −4 | — |
+| K + 1 | 20 | 0 | −5 |
+| K + 2 | 15.4375 | 0 | −4.5625 |
+| K + 3 | 11.3125 | 0 | −4.125 |
+| K + 4 | 7.625 | 0 | −3.6875 |
+
+The object goes on to Q + 27 at `x` 69.23828125 as without the thrower.
+
 ## Other objects
 
 A thrown object rolls past an object holding the missing character
@@ -343,6 +458,17 @@ again. Speeds in 1/256 px per frame.
   was hit, and the other one, out of range on the next frame, wasn't).
 - How a hit is drawn (something appears where the walker was hit) and
   how the hit walker is drawn while it falls.
+- The thrower ("Hitting the thrower"): throwers facing right; an object
+  inside the ground of the thrower's ledge, which can turn it round
+  there (with H from −21 to −1 the thrower was then knocked the other
+  way, by the object's new direction); whether the knocked-out thrower
+  can hurt the player or give a bounce after a hit by an object (only
+  its fall and removal were measured); a carried object meeting it while
+  the player stands or walks by inputs (only controlled frames), and
+  what the player does after a carried object breaks other than in a
+  jump; a ball thrown while an object is near the thrower (once a ball
+  due on that frame broke an object in the hands, the thrower wasn't
+  hit, and no ball was seen); and the second character.
 - A walker walking into an object that the player is carrying (seen to
   defeat the walker; the object was gone).
 - Places that stop walkers (`walker.md`, "Turning at a barrier"): near

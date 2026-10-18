@@ -222,7 +222,10 @@ though I at the end of S is 35.
 This holds however the thrower was knocked out on K: by a bounce (with
 B as K), a roll, or the Down + Action ground action
 (`ground-action-enemies.md`, "The thrower"). It moves as described
-there, falling through its ledge and every floor below it.
+there, falling through its ledge and every floor below it. When an
+object knocked it out (`thrown-objects.md`, "Hitting the thrower"), it
+starts falling one frame sooner, and its removal below is the same; the
+other two points weren't measured for that case.
 
 - **It never hurts the player and never gives a bounce**, from K + 4
   on until it is removed, wherever the player is, in each of the poses
