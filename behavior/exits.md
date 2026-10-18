@@ -334,6 +334,13 @@ There again, as when the level begins:
   when the view comes to its place, at the same position and one frame
   on, as when the level begins. Without an exit it doesn't come back
   (`thrower.md`);
+- a **rising extra-life item** (kinds `rising-extra-life-1` and
+  `rising-extra-life-2`, `extra-lives.md`) that appeared and went away
+  untaken before (`extra-lives.md`, "Going away untaken"), whether it
+  rose out of the level or went away past the window's left edge: it
+  appears again when its entry comes into the window, as when the level
+  begins, and taking it gives its lives. Without an exit it doesn't come
+  back (`extra-lives.md`);
 - a **barrel** (kind `barrel`, `carrying.md`) picked up, thrown and
   broken against a wall before (`thrown-objects.md`, "Breaking against a
   wall"): it is at its place again when the view comes there, standing
@@ -546,6 +553,16 @@ Walking left (`d` = −1) from an other character at 500, the points are
   no lives or figure again; the controls got 3 lives and one figure. The
   medium walker, gone after the bounce, was there again after both
   exits, as in its control. 146 checks in all, none different.
+- **Coming back, extra-life items gone untaken.** 16 more runs with the
+  lead alone, 8 through each exit, with the first level's three rising
+  extra-life items going away untaken in two ways before leaving: each
+  left to rise out of the level, or the view moved right until each had
+  gone past the window's left edge. Each had a control in which the
+  items hadn't appeared before leaving. In half of the runs each item's
+  place was watched after coming back, in the other half each item was
+  taken. The lives were the same on coming back as on leaving in all 16.
+  After coming back, every run saw the same items appear as its control
+  and got the same 4 lives from them. 64 checks in all, none different.
 - **Coming back, barrel and crate.** 8 more runs with the lead alone, 4
   through each exit: the barrel picked up, carried left and thrown into
   the wall left of it, where it broke; the animal crate landed on, so
