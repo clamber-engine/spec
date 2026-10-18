@@ -423,6 +423,24 @@ from H + 1 to H + 49 in the run with the hit). Every removal was below
 the picture. The run with the hit removed it on the same frame as the
 other in 12 runs and 1 to 7 frames later in 395.
 
+The same holds when the lead knocked the thrower out by a roll
+("Rolling into the thrower", `thrower-contact.md`) or the ground action
+(`ground-action-enemies.md`). Measured the same way, with the other
+character following: 476 different hits 3 to 45 frames after a roll
+knocked it out, and 480 different hits 3 to 29 frames after the ground
+action did, each compared with the hit prevented and ended the same
+way as above (the thrower was gone in both runs in 448 and 470 of
+them). No logic frame was paused, and on all 13 032 and 12 950 frames
+where both runs had the thrower it was at the same place with the same
+speeds. Every removal in either run was
+on the frame its next position left the window. With the hit, every
+removal was below the picture (H + 1 to H + 49 after a roll, H + 16 to
+H + 45 after the ground action). Without it, the thrower also left
+below the picture, except in 48 runs after a roll where it left past
+the window's left edge while that run's view moved right. The run with
+the hit removed it 0 to 8 frames later than the other after a roll and
+0 to 5 frames later after the ground action.
+
 ## Example
 
 A thrower is at (1000, 300). In column 1000 there are floors at y 301,
@@ -460,9 +478,8 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   view moves left (only the view moving right was measured).
 - While a character is lost (`losing-a-character.md`): a placed ball
   that appears after H (only thrown balls and a placed ball already
-  there on H were measured), a thrower knocked out by a roll or the
-  ground action (only a bounce was measured), and the second character
-  being the one hit.
+  there on H were measured), and the second character being the one
+  hit.
 - A ball moving up into a floor from below while not ignoring floors
   (it was seen to jump several px at the floor). This doesn't happen in
   the first level: balls start above the ledge and only bounce while
