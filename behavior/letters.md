@@ -93,6 +93,7 @@ ground action (`ground-action.md`), which has the standing ranges.
 | State | `I` | `D` |
 |---|---|---|
 | Standing, walking, running | −15 to 21 | −8 to 40 |
+| Turning on the ground (see below) | −15 to 21 | −8 to 40 |
 | Down + Action ground action | −15 to 21 | −8 to 40 |
 | Crouching (Down held on the ground) | −18 to 12 | −12 to 31 |
 | Rolling | −13 to 21 | −4 to 38 |
@@ -131,6 +132,24 @@ For example, a player facing right walking on a floor 33 px below a
 letter's position (`D` = 33) takes it on the first frame that ends with
 `X − xl` from −15 to 21. Walking right from far left, that is the first
 frame that ends with `X` = `xl` − 15 or more.
+
+**Turning.** During a turn on the ground (`ground-speed.md`, "Facing and
+turns"), from its first frame `U` to `U` + 7, the standing ranges apply
+on every frame, as for bunches (`bunches.md`, "Turning"). `I` is
+measured in the direction the player faces on that frame: the old
+facing from `U` to `U` + 3 and the new facing from `U` + 4. This holds
+for turns from standing, walking and running, facing either way, and
+for a new turn that starts on `U` + 8, whose first four frames again use
+the facing it starts in. On the two frames after a turn that no new
+turn follows, the standing ranges apply in the new facing too (the
+player was then standing, walking or running). This was measured with
+the letter moved to every offset one pixel apart around the player, on
+every frame of seven turns and the frames just before and after them
+(about 373 000 placements). Separately, in 17 342 runs of play by inputs
+with turns, the letter placed once near the edge of the standing ranges,
+5 931 pickups came on turn frames, and every run took the letter on the
+frame these rules give. Measuring `I` in the new facing on every frame
+of a turn would have given the wrong frame in 3 118 of them.
 
 ### Two characters
 
@@ -546,9 +565,8 @@ letter (`H` up to `J` − 12) gave no hit.
   state, and the letter row, the letters taken and the reward (only
   which character takes a letter, and on which frame, was measured).
 - Being hit, bouncing, carrying, landing after a jump (the frames from
-  `L`, the frame carrying `land`, on), turning on the ground and the
-  frame after a turn, and the stop after a roll; walking off a ledge
-  with a steep face.
+  `L`, the frame carrying `land`, on), and the stop after a roll;
+  walking off a ledge with a steep face.
 - Which letters are late in the ending when the fourth letter is taken
   120 frames or less after another (see "After another letter").
 - Taking the fourth letter on the frame after another.
