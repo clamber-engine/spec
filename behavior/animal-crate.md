@@ -182,7 +182,8 @@ begins on the 23rd frame after the mount, with `y` = 400.
 ## Not covered
 
 - Riding: everything from M + 23 on (moving, turning, jumping, what the
-  animal does to enemies, getting off or being knocked off).
+  animal does to enemies, being knocked off). Getting off and getting on
+  again are in `getting-off.md`.
 - Other levels, other crates, and the kind of animal: the first level's
   crate holds one animal; how a crate's animal is chosen, and other
   animals, are not covered.
