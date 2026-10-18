@@ -1010,9 +1010,9 @@ height except for barrels and holders, which fall.
   on 1 676 frames with `V` less than 32 and `x` − `V` from 289 to 304,
   where the raw `V` would remove them.
 
-**Objects put down elsewhere.** A `barrel` of the shared list that has
-been picked up and put down elsewhere follows "Objects put down
-elsewhere" above, with `V`, `U` and its own `y` as there: it is removed
+**Objects put down elsewhere.** A `barrel` or `holder` of the shared
+list that has been picked up and put down elsewhere follows "Objects
+put down elsewhere" above, with `V`, `U` and its own `y` as there: it is removed
 on the first frame on which its entry isn't in the window and its own
 `x` − `V` is −128 or less or 385 or more, or its own `y` isn't in the
 vertical window. Its entry places nothing else while it is there, and
@@ -1058,7 +1058,18 @@ frames, in 36 runs, the put-down barrel was there with its entry in
 both windows, and no second barrel appeared. Testing the entry's
 position in place of the barrel's own (the rule for unmoved objects)
 gave a different answer on 12 975 frames, in 141 of the 160 runs.
-Holders in the shared list were not measured.
+
+The same runs were repeated with a `holder` in the barrel's place: in a
+copy of the image the class 15 entry on the ledge was given the shared
+list's `holder` reference, and the shared list's own `holder` entry
+near there a `sign`'s. With the same 160 seeds and the same inputs, the
+holder was carried, put down, removed and came back on exactly the
+frames on which the barrel had (418 777 frames, 377 removals, 160 of
+them of the put-down holder; 248 appearances, all at the entry; 11 877
+frames with the put-down holder there and its entry in both windows,
+and never a second holder). On every frame it was there exactly when
+the rules above say. Testing the entry's position in place of the
+holder's own gave a different answer on 12 975 frames, in 141 runs.
 
 ## Example
 
@@ -1127,10 +1138,10 @@ on each frame: see its `README.md`.
   a bunch is, but at the bottom only from `y` − `U` = 277.
 - What a removed object that had been moved does, other than thrown
   objects (`../behavior/thrown-objects.md`) and a `barrel` or `holder`
-  put down elsewhere ("Objects put down elsewhere", and a `barrel` in
-  the shared list, "In lists with sections"): for example a `holder` put
-  down in the shared list, and a put-down object that moves again by
-  itself or is pushed.
+  put down elsewhere ("Objects put down elsewhere", also in the shared
+  list, "In lists with sections"): for example a put-down object that
+  moves again by itself or is pushed, and objects put down in other
+  levels' lists.
 - How many objects can be there ("How many objects can be there"):
   which short-lived objects take pictures, and for how long (in the
   first level's runs some kept theirs for a while after they were gone,
