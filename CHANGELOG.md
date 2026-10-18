@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.145.0
+
+A thrower knocked out by the ground action while the player is knocked
+out.
+
+Part of clamber-engine/spec#19 (the first level's remaining entities).
+The issue stays open for the parts not covered yet.
+
+- `behavior/thrower.md`, "While the player is knocked out": a thrower
+  knocked out by the ground action (including when the player is hit
+  while still in it) does the same as one knocked out by a bounce or a
+  roll. Not covered narrowed. (spec#19)
+
 ## spec-v0.144.0
 
 Defeated walkers falling out of the window, and a thrower knocked out by
