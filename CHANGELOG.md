@@ -2,6 +2,30 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.148.0
+
+A thrower knocked out by a bounce or a roll after a knock-out, the
+thrower and its balls while a character is lost, a holder put down
+elsewhere in the shared list, and thrown objects leaving the picture.
+
+Part of clamber-engine/spec#17 (the first level's layout) and
+clamber-engine/spec#19 (the first level's remaining entities). Both
+issues stay open for the parts not covered yet.
+
+- `behavior/thrower-contact.md`, `behavior/restart-barrel.md`: a
+  thrower knocked out by a bounce or a roll is there again after the
+  player's knock-out. (spec#19)
+- `behavior/thrower.md`, `behavior/losing-a-character.md`: new "While
+  a character is lost". The thrower and thrown balls do as they would
+  without the loss. Not covered narrowed. (spec#19)
+- `formats/placements.md`, "In lists with sections", "Objects put down
+  elsewhere": a `holder` of the shared list follows the same rules as a
+  `barrel`. Not covered narrowed. (spec#17)
+- `behavior/thrown-objects.md`, "Leaving the picture": now a rule with
+  limits on both sides, using the view at the start of the frame; the
+  starting place being in the window doesn't keep the object. Not
+  covered narrowed. (spec#19)
+
 ## spec-v0.147.0
 
 Another letter while the letter row is shown, and a barrel put down
