@@ -101,8 +101,7 @@ frames and later frames of the stop: 93 attack frames and 38 other
 frames, 13 231 placements. On every attack frame the walker was
 defeated for exactly the offsets of the range above (4 371 defeats);
 on the other frames it was never defeated, and the player was hurt for
-the offsets of the hurt range of `walker-contact.md`. Fast rolls weren't
-placed against the medium walker.
+the offsets of the hurt range of `walker-contact.md`.
 
 For the large walker with the player facing left, the ranges were
 found by placement alone: the player placed at every offset from −40 to
@@ -111,8 +110,23 @@ right, on 62 attack frames of slow and normal rolls to the left (roll
 frames, the frames that end a roll and the first frames of the stop)
 and on 20 other frames (standing and later frames of the stop): 6 642
 placements, 2 976 defeats, every one inside the range above, none
-outside it and none on the other frames. Fast rolls to the left weren't
-measured against the large walker.
+outside it and none on the other frames.
+
+Fast rolls were placed the same way against the medium walker (both
+facings, both headings) and against the large walker with the player
+facing left (both headings). Each fast roll came from Action and a
+direction held together on 3 to 11 frames in the air during a jump,
+then, 10 to 13 frames after the last of them, Action pressed on S with a
+direction held from S on, and Action either held on through the roll or
+held on S alone. The player was
+placed at every offset from −50 to 50 on every frame from S + 1 to
+D + 16: 432 attack frames (S + 1 to D + 7) and 108 later frames of the
+stop, 54 540 placements. On every attack frame the walker was defeated
+for exactly the offsets of the range above (20 448 defeats). Placed on
+D + 8, D + 9 or D + 10, nothing happened at any offset on that frame or
+the next; placed on D + 11 or later, the player was hurt on the next
+frame for exactly the offsets of the hurt range of `walker-contact.md`,
+and the walker was never defeated.
 
 The ranges are the same on every attack frame: for slow, normal, fast
 and sped-up rolls (below), on the frames that end a roll, and in the
@@ -680,8 +694,6 @@ This list is for `title-1`; `title-2` has its own list above.
 - Walkers on a different floor from the player, and rolls on or off
   ledges, in the air, or jumping out of a roll (a Jump press on K + 3
   starts a jump; what happens next isn't specified).
-- Fast rolls to the left into the large walker, and fast rolls into the
-  medium walker (its ranges were placed on slow and normal rolls only).
 - Chains into medium walkers heading right.
 - Which walker is defeated when several are in range on one frame, and
   when two are defeated on P rather than one.
