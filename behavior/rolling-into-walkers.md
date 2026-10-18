@@ -173,6 +173,20 @@ cases measured, it reached the defeat range on a later frame.
 - **A roll that ends in a stop:** on D + 8 to D + 11 a walker neither is
   defeated nor hurts the player. From D + 11 the hurt rule applies again:
   the earliest hurt is on D + 12.
+- **A stop that a defeat has lengthened** (a walker defeated on K in the
+  stop, D ≤ K ≤ D + 7, with no boost after it; "How the roll goes on"):
+  these frames come 2 frames later, as the rest of the stop does. The
+  stop's attack frames go on from K + 3 up to D + 9; on D + 10 to D + 13
+  a walker neither is defeated nor hurts the player; from D + 13 the hurt
+  rule applies again, and the earliest hurt is on D + 14. The defeat and
+  hurt offsets are the same as in a stop without a defeat.
+
+  Measured by placing the player next to a second small walker, one
+  pixel apart, after a defeat in the stop on each of D to D + 7, on every
+  frame from K to D + 25, facing right and left, with no direction held,
+  Right held and Left held: 540 placements of 81 offsets each, compared
+  with 81 placements in the same stops without a defeat. Every placement
+  gave exactly these frames and the offsets of a stop without a defeat.
 
 ## The pause
 
@@ -253,6 +267,13 @@ A defeat in the stop after a roll (D to D + 7) doesn't change the stop:
 from K + 3 it goes on as in `roll-input.md`, 2 frames later than it
 would have. Its speeds are the same, and with a direction held the
 player first moves again on D + 20 instead of D + 18.
+
+A second walker defeated in the same stop, on one of its later attack
+frames (up to D + 9, "Being hurt around a roll"), delays the rest of the
+stop by 2 more frames: with a direction held the player first moves
+again on D + 22. Measured with Right held for 27 pairs of defeats: the
+first on each of D to D + 5, the second on every attack frame after its
+pause.
 
 ### The boost
 
@@ -722,7 +743,7 @@ This list is for `title-1`; `title-2` has its own list above.
   when two are defeated on P rather than one.
 - Objects appearing on K + 2 (none were seen), and walkers whose first
   step is on the frame after they appear, appearing during the pause.
-- Being hurt in a stop that a defeat has lengthened.
+- When the player can be hurt in a stop with two or more defeats.
 - Whether timed behaviour that doesn't show in an object's position,
   speeds, facing or picture (a walker's turn, the thrower's timetable) is
   also held during the pause, and objects other than those listed in
