@@ -436,9 +436,8 @@ display"); what follows was measured with letter 1 taken last, so `G` =
 - The lives go up on `J`, but the letters' life counts toward the
   number of lives these rules compare with only from `G` on.
 - The frames `J` + 66 to `G` − 1 are held.
-- On the first frame from `G` on that isn't held for an item, the
-  countdown is set to 0, running, before the rules above apply, so a
-  step comes on that frame.
+- A step comes on the first frame from `G` on that isn't held for an
+  item. The steps after it follow the rules above, counted from it.
 - For the number's height, `J` counts as a frame on which an item is
   taken: if no lives display is shown, one starts (the table in "The
   lives display" above and the one in `letters.md` are the same); if
@@ -697,10 +696,11 @@ and is not drawn from frame 321 on.
   `J` + 66 to `G` − 1, 220 from `G` to `G` + 131 and 53 later; none was
   late. On all 841 666 frames the number shown and the number's height
   were as described. With no frames held from `J` + 66, 215 runs came
-  out different; with no countdown set to 0 on `G`, 1 097; with the letters'
-  life counted from `J`, 1 032; with `J` not counting for the height,
-  771; with the number moving up before the letters' step, 335; with the
-  held frames starting on `J` + 65 or `J` + 67, 5 each.
+  out different; with no step on the first frame from `G` on that
+  isn't held for an item, 1 097; with the letters' life counted from
+  `J`, 1 032; with `J` not counting for the height, 771; with the
+  number moving up before the letters' step, 335; with the held frames
+  starting on `J` + 65 or `J` + 67, 5 each.
 
 ## Not covered
 
