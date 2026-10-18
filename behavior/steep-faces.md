@@ -1186,23 +1186,26 @@ Right; `x` = 219.75 (top floor) and `vx` = −576/256 before frame 1:
 |---|---|---|---|---|
 | 1 | 217.5 | −64 | −576 | |
 | 2 | 215.25 | −61 | −576 | Onto the highest face column |
-| 3 | 213 | −53 | −576 | Face frame: normal target, 8 px down, followed |
-| 4 | 211 | −45 | −512 | Pull: −608, limited to −512 |
-| 5 | 209.40625 | −37 | −408 | Right held: target +320 |
-| 6 | 208.16796875 | −33 | −317 | |
-| 7 | 207.23828125 | −29 | −238 | |
-| 8 | 206.48828125 | −25 | −192 | −169 limited to −192 |
+| 3 | 213.25 | −53 | −512 | Face frame: normal target, −576 limited to −512; 8 px down, followed |
+| 4 | 211.09375 | −45 | −552 | Pull: target −832, −552 kept |
+| 5 | 209.36328125 | −37 | −443 | Right held: target +320 |
+| 6 | 208.00390625 | −33 | −348 | |
+| 7 | 206.96875 | −25 | −265 | |
+| 8 | 206.21875 | −25 | −192 | Same column |
 | 9 to 17 | … | | −192 | Down the face at 0.75 px per frame |
-| 17 | 199.73828125 | 0 | −192 | Onto the floor at the foot |
-| 18 | 199.23828125 | 0 | −128 | Pull once more: target +320 |
-| 19 | 199.08203125 | 0 | −40 | |
-| 20 | 199.2265625 | 0 | 37 | |
-| 21 | 199.6328125 | 0 | 104 | |
+| 17 | 199.46875 | 0 | −192 | Onto the floor at the foot |
+| 18 | 198.96875 | 0 | −128 | Pull once more: target +320 |
+| 19 | 198.8125 | 0 | −40 | |
+| 20 | 198.95703125 | 0 | 37 | |
+| 21 | 199.36328125 | 0 | 104 | |
 | 22 | 199 | 0 | 0 | Blocked: back at the foot |
 
-If Left had stayed held, frame 5 would have moved 2.15625 px from
-`x` = 211 to 208.84375, three columns and 12 px down, and the player
-would have left the ground there, 8 px lower (−37).
+The first face frame after walking onto the face from the top floor is
+limited like any other face frame. If Left had stayed held, frame 5's
+speed would have been −587, limited to −512, moving 2 px to
+`x` = 209.09375 (−37, 8 px down, followed); frame 6 (−552, kept) would
+have moved 2.15625 px to 206.9375, three columns and 12 px down, and the
+player would have left the ground there, 8 px lower (−29).
 
 **Landing on the face moving uphill.** Same floor. Two landings, each
 followed by a frame with Right held (target 2.25, no pull on the first
