@@ -56,7 +56,7 @@ frame `n`**, after the player has moved on that frame:
 So a letter is taken on the first frame that ends with the player in
 range. Call this frame `P`. The offsets are those of bunches
 (`bunches.md`), with the letter's position in place of the bunch's; the
-ranges are below. Landing was not measured for letters.
+ranges are below. Landing after a jump was not measured for letters.
 
 From `P` on, the letter is no longer in the level. It never comes back
 during the visit to the level: in one case the player was moved about
@@ -103,6 +103,29 @@ ground action (`ground-action.md`), which has the standing ranges.
 frames of a jump, starting with `T`, the ranges are the standing ones.
 From `T` + 6 until the jump lands, the last row applies on every frame,
 whatever the vertical speed, and whether Jump is still held or not.
+
+**Falling without a jump.** When the player walks or runs off a ledge
+(`walk-off.md`), the standing row applies on every frame in the air,
+from the first one to the landing, on the landing frame and on the
+frames after it, whether the player then stands still, walks on or runs
+on. Unlike a jump, the fall never switches to the last row. `I` is
+measured in the direction the player faces on that frame, also when the
+player turns in the air. This was measured at a ledge without a face,
+with a floor 176 px below it, with the letter moved to every offset one
+pixel apart around the player on every frame from the last frame on the
+ledge to 6 frames after the landing of five walk-offs: walking right
+with the direction held and with it released in the air, running right,
+walking left and releasing the direction, and walking right then
+turning left in the air (about 960 000 placements). Separately, in
+21 464 runs of play by inputs with walk-offs from both ends of the
+ledge, random changes of direction, Action, Down and Jump, and the
+letter placed once near the edge of the standing row, 11 187 pickups
+came in the air during such falls (634 of them while turning) and 704 on
+the landing frame or the 6 frames after it, and every run took the
+letter on the frame these rules give. Using the last row from the sixth
+frame in the air to 3 frames after the landing, as for a jump, would
+have given the wrong frame in 9 740 of them. Walking off a ledge with a
+steep face was not measured.
 
 For example, a player facing right walking on a floor 33 px below a
 letter's position (`D` = 33) takes it on the first frame that ends with
@@ -522,9 +545,10 @@ letter (`H` up to `J` − 12) gave no hit.
 - With two characters: the second character's landings and running
   state, and the letter row, the letters taken and the reward (only
   which character takes a letter, and on which frame, was measured).
-- Being hit, bouncing, carrying, falling without a jump, landing (the
-  frames from `L`, the frame carrying `land`, on), turning and the frame
-  after a turn, and the stop after a roll.
+- Being hit, bouncing, carrying, landing after a jump (the frames from
+  `L`, the frame carrying `land`, on), turning on the ground and the
+  frame after a turn, and the stop after a roll; walking off a ledge
+  with a steep face.
 - Which letters are late in the ending when the fourth letter is taken
   120 frames or less after another (see "After another letter").
 - Taking the fourth letter on the frame after another.
