@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.182.0
+
+Leaving a face onto floor follows the rise rule (spec#51).
+
+Answers clamber-engine/spec#51.
+
+- `behavior/steep-faces.md`: "Leaving a face onto floor" is rewritten.
+  The fixed two-frame window is replaced by "Holding toward a rise",
+  with the face as the rise: frames held back up the face that start in
+  the three columns next to it keep the previous frame's target, and
+  the normal target applies from the first frame that starts 4 or more
+  columns from the face. A frame on the face counts as the downhill
+  walking target if the downhill direction was held, else 0. On the
+  first four frames off the face that start next to it and are held
+  back up it, `facing` turns to the held side at once. A worked example
+  and an evidence section are added, and Not covered is updated.
+
 ## spec-v0.181.0
 
 2 changes: letter pickup ranges on landing after a jump, and walkers
