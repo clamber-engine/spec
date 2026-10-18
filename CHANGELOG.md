@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.164.0
+
+Walker contact at any speed.
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/walker-contact.md`: the walker's heading is now its facing
+  at the moment its position is taken (the end of H − 1 for a hurt, the
+  end of B − 1 for a bounce), which is the same as before for walkers at
+  full speed. New "Walkers that aren't at full speed": the same ranges
+  and limits hold for walkers speeding up, turning or stopped at a
+  barrier, and the column changes on the frame the facing changes, with
+  a medium-walker example at a barrier and its evidence. Not covered
+  narrowed to frozen walkers and the vertical reach of slow walkers.
+  (spec#19)
+
 ## spec-v0.163.0
 
 A large round: 41 changes on the first level's entities and ground
