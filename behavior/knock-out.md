@@ -79,6 +79,11 @@ an object carried with Action held and one whose throw (`carrying.md`,
 "Throwing") began on H − 1, so that it hadn't left the hands yet; that
 throw never happens. Input from H on makes no difference.
 
+A large walker that meets an object the player carries can be hit by
+the object first (`thrown-objects.md`, "A carried object"). The player
+is then not hurt unless the walker was already within the hurt range at
+the end of that frame.
+
 - **On H** the object is where it was held at the end of H − 1 (where a
   held object is relative to the player is not covered, see
   `carrying.md`). Its `vx` becomes **1** (256/256) in the direction the
