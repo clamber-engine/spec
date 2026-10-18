@@ -360,6 +360,9 @@ over the item's position and on past it, and no item appeared again.
 The rising items there went away this way before rising out of the
 level.
 
+After a knock-out, a rising item that went away untaken is in the level
+again (`restart-barrel.md`, "What is there again after a knock-out").
+
 ## Example
 
 A `rising-extra-life-2` item's entry has level x 400 and level y 337.
@@ -465,11 +468,12 @@ and is not drawn from frame 321 on.
   number of lives over 99 is shown anywhere other than the lives display
   (for example on the map).
 - Whether an item that went away is there when the level is played
-  again (after a knock-out, or coming back after an exit). An item
-  taken is there again after a knock-out (`restart-barrel.md`, "What is
-  there again after a knock-out"; rising items only measured with play
-  resuming at the level's start); an item taken before an exit stays
-  gone after coming back (`exits.md`, "Coming back to the level").
+  again after coming back through an exit. After a knock-out, a rising
+  item that went away untaken is there again, and so is an item taken
+  (`restart-barrel.md`, "What is there again after a knock-out"; rising
+  items taken only measured with play resuming at the level's start);
+  an item taken before an exit stays gone after coming back (`exits.md`,
+  "Coming back to the level").
 - Rising items while the game is paused or during a knock-out.
 - Entries far below the picture. With the player on the floor near the
   first level's start (level y 337), an item whose entry was at level y
