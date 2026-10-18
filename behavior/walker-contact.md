@@ -90,6 +90,8 @@ H − 1**, both of these hold:
      on the frames before leaving a ledge with a face and on those that
      show the **landing pictures**; never on a frame that shows one of
      the **closing pictures** of the airborne pose ("Poses" below).
+   - **crouching** (on the ground, "Crouching" below): the player and the
+     walker on the same floor (measured with U 0).
 
 So a hit is always decided one frame ahead: the frame on which the
 player first overlaps the walker is an ordinary frame, and the player is
@@ -113,7 +115,7 @@ Hurt ranges for I (both ends included):
 The ranges are those of the upright pose. They were the same standing,
 walking and in the air (measured on both ends for the small and medium
 walkers, and at the low end for the large walker in the air). The
-airborne and fidget poses change them.
+airborne, fidget and crouching poses change them.
 
 **Airborne pose.** In the airborne pose the end of the hurt range on the
 side behind the player moves 3 px in:
@@ -142,6 +144,29 @@ walker heading left for I from −9 to 27, by a medium walker heading
 right for I from −6 to 35, and by a large walker heading left for I from
 −12 to 30. Measured for all three kinds of walker, both facings and both
 headings.
+
+**Crouching.** A player who holds Down on the ground crouches
+(`ground-speed.md`, "Crouching", which also says when a crouch can't
+start). With D the first frame Down is held and U the first frame after
+the crouch, as there, the player has the crouching pose on every frame
+from D to **U + 8**: while going down and crouched, and on the first
+nine frames of getting up (U to U + 8), also when a short press makes
+the crouch last its 13 frames. From U + 9 the player is upright again.
+The pose counts at the end of H − 1, like the positions: Down first held
+on H − 1 already gives the crouching ranges, Down first held on H
+doesn't. Crouching while still sliding from a walk is the same. In the
+crouching pose the hurt range for I shifts:
+
+- facing right: the low end is 3 px lower and the high end 9 px lower;
+- facing left: the low end is 9 px higher and the high end 3 px higher.
+
+So a crouching player is reached 3 px sooner by a walker in front and
+9 px later by one from behind. For example, a player facing right and
+crouching is hurt by a small walker heading left for I from −22 to 15,
+by a medium walker heading right for I from −19 to 23, and a player
+facing left by a large walker heading left for I from −19 to 24.
+Measured for all three kinds of walker, both facings and both headings
+("Evidence for crouching").
 
 ### Poses
 
@@ -288,6 +313,21 @@ heading left:
 | 2 | 81.75 | 100.75 | 81 − 100 = −19 | inside: hurt on the next frame |
 | 3 | 81.75 | 99.75 | | H: hurt, the player doesn't move |
 
+The same walker meets a player facing right who has been crouching since
+frame 1, standing still at `x` 100.5:
+
+| Frame | Walker `x` | I | Notes |
+|---|---|---|---|
+| 40 | 123.25 | 100 − 123 = −23 | outside −22 to 15 |
+| 41 | 122.25 | 100 − 122 = −22 | inside: hurt on the next frame |
+| 42 | 121.25 | | H: hurt |
+
+Upright, the same player would have been hurt only on frame 45 (I = −19
+at the end of frame 44). If instead Down had been released on frame 32
+(U = 32), frame 40 is U + 8 and frame 41 is U + 9: the player is upright
+at the end of frame 41 (I = −22, outside −19 to 24), and is hurt on
+frame 45.
+
 A player facing right falls onto a small walker heading left, standing
 on the same floor:
 
@@ -407,6 +447,33 @@ reach by time since take-off with the standing ranges would have given
 the same results as the pose rule. The differences showed in the
 placements; with the player and the walker on different floors they
 weren't measured by inputs alone.
+
+## Evidence for crouching
+
+On the opening floor of the first level, with the first character alone,
+in the same modified copies as "Evidence for walkers that aren't at full
+speed" (a large walker with a patrol, small walkers with and without a
+patrol, a medium walker), at frames where the walker walks at full speed
+heading left and, after its turn, heading right. On each frame the player
+was placed on the walker's floor at offsets one pixel apart (−45 to 45),
+facing right and left, with H − 1 the frame of the positions, after: no
+Down; Down held from H − 1 on, or from 2 to 91 frames before it; Down
+held for 30 frames with U 1 to 13 frames before H − 1; one-frame presses
+of Down 2 to 23 frames before H − 1; walking with Down held from 3, 7 or
+14 frames before H − 1; and Down held on H alone.
+2 342 frames of play, 213 122 placements: 172 991 in the crouching pose
+(77 493 hurts) and 40 131 upright (20 619 hurts). The rules of this file
+with the crouching ranges from D to U + 8 and the upright ranges
+otherwise: 0 mismatches. The crouching ranges were the same on every
+frame of the crouch, from D to U + 8, however long Down was held.
+
+As a holdout, by inputs alone: 6 000 random runs near the four walkers,
+walking toward them, away or neither, with Down held in 40% of the
+stretches of play (all through, or for 1 to 3 frames) and Jump in a
+sixth (128 874 frames with a walker close; 35 330 of them crouching,
+including 774 hurts). 0 mismatches while crouching. The only 4
+mismatches were landing frames with a small walker, the case listed
+under "Not covered" (which picture shows on the landing frame).
 
 ## Evidence for walkers that aren't at full speed
 
@@ -599,8 +666,9 @@ This list is for `title-1`; `title-2` has its own list above.
   only with the player on the walker's floor or just above it). Walkers
   already bounced on don't touch the player (`walker.md`, "Being bounced
   on").
-- Contact while crouching, carrying, after a bounce, or being knocked
-  back. Rolls into walkers are in `rolling-into-walkers.md`.
+- Contact while carrying, after a bounce, or being knocked back; a
+  crouching player on a slope or with the walker on another floor.
+  Rolls into walkers are in `rolling-into-walkers.md`.
 - Rolling off a ledge onto a walker, and runs off a ledge (a run starts
   with a roll). Walk-offs were measured from ledges without a face 48
   and 112 px high and from one with a face 48 px high.
