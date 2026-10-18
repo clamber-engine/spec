@@ -65,6 +65,19 @@ What the data exercises:
 - `kinds.tsv`: for each reference, the block whose candidate matched a
   row and the row's kind, or `-` and `none`.
 
+### Settings
+
+Vectors for "Settings" in `../../formats/placements.md`, with the same
+image and references.
+
+- Input: `kinds-settings-rows.tsv`, made-up settings rows for two of the
+  fingerprints in `kinds-rows.tsv`, as a `locators.md` section would list
+  them; `-` marks a setting the row doesn't give.
+- Expected output: `kinds-settings.tsv`, the settings each reference's
+  objects start with: given settings, the default for the one not given
+  (heading of reference `9010`), and `-` for kinds without settings and
+  for the reference that matches no row.
+
 ## Lists with sections
 
 Vectors for "Lists with sections" and "In a list with sections" in

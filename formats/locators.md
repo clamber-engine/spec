@@ -13,6 +13,10 @@ second exception: kind fingerprints"): fingerprints and the
 engine-neutral kinds they stand for. How a fingerprint is computed is in
 the format spec named above the table.
 
+It can also list **settings** for some of those fingerprints
+(`../REVIEW.md`, "Settings with fingerprint rows"): values measured in
+play that the objects placed with that fingerprint start with.
+
 ## `title-1`
 
 SHA-256 of the image:
@@ -126,6 +130,20 @@ names" table.
 | `f4b1fad5059ecd6ac05c3a59a129e6b47adf0feabddab5c437e06aec2b6214e2` | `tyre` |
 | `f85e5c914a63c73583c210056c33f883bcd8fecee32b42323bb458fb6f174819` | `ball` |
 | `fc06b850598f866e68da84373087bd70260e200cd74a79edd39e9ee7612b91e3` | `sign` |
+
+### Settings: placement references
+
+Format spec: `placements.md` ("Settings"), where the settings and their
+defaults are defined. Each row is for a fingerprint in the table above,
+measured in play as `placements.md` says.
+
+| Fingerprint | Kind | Heading | Patrol | First step |
+|---|---|---|---|---|
+| `4cb625b24ccb2edc0d7487e5ff9aa9de2cd5409110383d64bfa5ff1a97a22170` | `large-walker` | `left` | `−128` to `+128` | `1` |
+| `a18b370140438f25f467370655a5c802ccd40f07be7e5296c81570fd169a9add` | `medium-walker` | `left` | `none` | `0` |
+| `b0b7540b3c061784c8c319b69b0c7db7ed9c67a84d094cefd7b05fa52dcbe7a4` | `small-walker` | `left` | `none` | `0` |
+| `bc061647de9b607ad9eb002282563c85bb821236cf557781087f987a0ba862aa` | `small-walker` | `left` | `−144` to `+144` | `1` |
+| `c8337d0771ac9e0feb76d90747123b32fba93ad3fe8fc5db12cd8a1a647b5910` | `medium-walker` | `right` | `−12` to `+240` | `1` |
 
 ## `title-2`
 

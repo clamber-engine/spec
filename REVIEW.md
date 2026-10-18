@@ -72,6 +72,28 @@ original program crosses the firewall:
 
 A row or description that fails any of these rules fails the change.
 
+### Settings with fingerprint rows
+
+Director decision (spec #41). A fingerprint row may also carry the
+**settings** of the objects that reference places, next to its kind:
+
+- Each setting is an engine-neutral quantity defined in a behavior or
+  format spec, for example a start heading, a range relative to the
+  object's start in px, or a speed in the spec's usual units.
+- Settings are **measured by observing play**: positions, speeds and
+  turnarounds in runs of the game. The change shows how each value was
+  measured. Never read out of the image, and never described in terms of
+  the original program or of the data at the referenced position.
+- Only the hash, the kind and the observed values cross the firewall.
+  Nothing says or implies where in the image settings are kept, how they
+  are encoded, or how the original program reads them.
+- Every setting has a stated default, which the importer uses for kinds
+  or references that have no measured value, so that every imported
+  level is playable.
+- The rules for fingerprint rows above still apply to the row itself.
+
+A setting that fails any of these rules fails the change.
+
 ## Hardware behaviour: describe, don't copy
 
 Director decision (spec #31). Constant tables or other data measured from

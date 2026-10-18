@@ -45,7 +45,9 @@ its speed.
 
 ## Turning at the end of a patrol
 
-A walker can have a **patrol range** from L to R (level data). At the
+A walker can have a **patrol range** from L to R, set by how it is placed
+(`../formats/placements.md`, "Settings": the patrol setting gives L and R
+relative to the walker's start, and need not be centred on it). At the
 start of each frame:
 
 - heading left, if `x` rounded down is less than L, or
@@ -317,8 +319,7 @@ This list is for `title-1`; `title-2` has its own list above.
   below; this isn't specified. Walkers on other slopes.
 - What places act as barriers, barriers met heading right, and a walker
   placed past a barrier.
-- Whether the patrol range is always centred on the walker's start. When
-  a walker appears and disappears as the view moves is in
+- When a walker appears and disappears as the view moves is in
   `walker-view.md`.
 - Other kinds of enemies, and how walkers look (poses while turning or
   falling).
