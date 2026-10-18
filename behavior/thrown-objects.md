@@ -592,14 +592,16 @@ Call the frame of the hit **K**.
 
 Synthetic, from the rules above. The thrown object is the one in the
 example at the end of this file (thrown right, `x` and `y` from its
-position on Q + 21). A ball falls straight down at `x` 74. The ball's
-columns are its position and part at the end of the frame before.
+position on Q + 21). A ball falls straight down at `x` 74, its `vy`
+growing by 0.4375 each frame (`thrower.md`, "Each frame"): 3.5 on
+Q + 22 and 3.9375 on Q + 23. The ball's columns are its position and
+part at the end of the frame before.
 
 | Frame | t | object `x` | object `y` | ball `x` | ball `y` | part | I | H | |
 |---|---|---|---|---|---|---|---|---|---|
 | Q + 22 | 1 | 14.4375 | 1.4375 | 74 | −30 | fourth | −60 | −32 | |
 | Q + 23 | 2 | 27.5078125 | 3.3125 | 74 | −26.5 | fourth | −47 | −30 | out: mirrored, I from −46 |
-| Q + 24 | 3 | 39.3828125 | 5.625 | 74 | −23.25 | first | −35 | −29 | in range: K |
+| Q + 24 | 3 | 39.3828125 | 5.625 | 74 | −22.5625 | first | −35 | −28 | in range: K |
 
 The ball is gone at the end of Q + 24. The object goes on to Q + 25 at
 `x` 50.2109375 as it would without the ball.
