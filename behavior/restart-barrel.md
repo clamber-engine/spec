@@ -38,6 +38,11 @@ alone, by inputs only except where said:
   so that it was never touched, and the level finished after touching
   it and then entered again. Resuming: about 20 runs from the first
   frame of a resume, with Right or Jump held from different frames.
+- Facing on resuming: three knock-outs facing left after touching the
+  barrel (two hit on consecutive frames just after a turn, one walking
+  left after a resume), each followed through the resume
+  (122 to 197 resumed frames), with nothing, Left or Right held from
+  frame 2.
 
 ## The barrel
 
@@ -134,8 +139,13 @@ characters, both were there, the first leading.
 
 ## Resuming
 
-Count the frames of the resumed level from 0, its first frame. In every
-run the player faced right throughout.
+Count the frames of the resumed level from 0, its first frame. The
+player faces right on frame 0 and on every frame until an input turns
+it, whichever way it faced when it was knocked out (it keeps the facing
+it had on the hit until the knock-out ends, `knock-out.md`). A player
+knocked out facing left resumed facing right, and holding Left from
+frame 2 started a turn on frame 63 (the player faced left from frame
+67 on); holding Right, or nothing, it went on as below.
 
 | Frame | What happens |
 |---|---|
@@ -347,7 +357,7 @@ the barrel is touched on the third, the upright range starting at −24.
   on frame 1 (a Right moved the player 0.25 px to the right, a Jump left
   the player in the jump's action), and the player then stayed where it
   was inside the barrel until frame 62.
-- Facing left when knocked out, and the facing on resuming then.
+- Facing on resuming after a fall-out facing left.
 - The fade-in, the sounds, how the
   pieces and the flash are drawn, where they start, when they are
   removed, and whether they touch anything.
