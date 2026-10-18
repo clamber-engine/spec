@@ -40,6 +40,19 @@ inputs only except where said:
   facing right). For each frame of these runs the rules were applied to
   where the player would have been without the crate or the animal (the
   same frame run again with the object moved away).
+- Mounting while the animal hops: the player was put at every
+  whole-pixel offset around the animal on each frame from B + 17 to
+  B + 23, facing either way, falling after a bounce at 3 px per frame
+  (also at half-pixel positions, with the downward speed forced to 1
+  and 8 px per frame, and rising), about 100 000 placements. Then at
+  12 000 random positions, speeds and inputs on the frames B + 17 to
+  B + 24, each run also with the animal moved away for the would-be
+  position, the player mounted on the frame the rules give in every
+  case (2 357 mounts, 87 of them with `D` above 45), and never
+  otherwise. With the height range kept at 5 to 45 and mounting only
+  from B + 22, 1 243 of the 12 000 cases differ. A player who has just
+  bounced off the crate is still far above the animal on these frames;
+  the cases were reached by placing the player.
 
 ## The crate
 
@@ -116,13 +129,13 @@ frame), and with it
 - **`I`** = that `x` rounded down, minus `xc`;
 - **`D`** = `yc` − the feet line of that position.
 
-The player mounts the animal on frame `n` (from B + 22 on) when:
+The player mounts the animal on frame `n` (from B + 19 on) when:
 
 1. the player was moving down on `n`;
 2. the player is in the air after a jump or after a bounce (`bounce.md`,
    including the bounce off the crate), and not rolling;
 3. `I` is within the range for the player's facing on `n`, and `D` is
-   within 5 to 45 (both ends included):
+   within 5 to 45 + `k` (both ends included):
 
 | Facing | `I` |
 |---|---|
@@ -131,6 +144,22 @@ The player mounts the animal on frame `n` (from B + 22 on) when:
 
 The left range is the right one moved 1 px to the right; it is not the
 right one turned around.
+
+`k` is how far the animal was above `yc` at the end of frame `n` − 1,
+in whole pixels (rounded down). It is 0 once the animal stands, and
+differs from 0 only on the frames around its hop:
+
+| `n` | `k` |
+|---|---|
+| B + 19 | 1 |
+| B + 20 | 2 |
+| B + 21 | 3 |
+| B + 22 | 3 |
+| B + 23 on | 0 |
+
+On B + 18, the frame the animal appears, the player never mounts. Only
+the high end of the `D` range moves with `k`; the low end stays 5, and
+the `I` ranges are the same on every frame.
 
 A player rising in a jump never mounted. A player put in the air in the
 walking pose (as after walking off a ledge) or rolling never mounted,
@@ -141,16 +170,22 @@ Call the frame the player mounts **M**.
 - **On M**, the player first moves as usual, horizontally too (the
   frame's air control, `air-control.md`, changes `vx` as on any airborne
   frame). Then the player is moved by whole pixels so that `x` rounded
-  down is `xc` and the feet line `F` is `yc`: the fractions of `x` and
-  `y` are kept. `vy` becomes 0. `vx` keeps its value from the move.
+  down is `xc` and the feet line `F` is `yc` − `k`: the fractions of `x`
+  and `y` are kept. `vy` becomes 0. `vx` keeps its value from the move.
+  If `k` isn't 0 (a mount while the animal hops), the animal stops
+  hopping: from M to M + 21 it stays `k` px above `yc`, at level y
+  `yc` − `k`.
 - **M + 1 to M + 21**: the player doesn't move; `x`, `y` and `vx` stay as
   they were at the end of M. Inputs have no effect: Jump pressed on
   M + 5 did not start a jump, and Left held from M + 10 changed nothing
   before M + 23.
 - **M + 22**: the player still doesn't move.
 - **From M + 23** the player rides the animal: `y` is `yc` (the
-  fraction is dropped) and the player is on the ground. Riding is not
-  covered.
+  fraction is dropped) and the player is on the ground, also after a
+  mount while the animal hops (the player then moves down to `yc` on
+  M + 23). Riding is not covered. After a mount while the animal hops,
+  the frames M + 23 to M + 39 were the same as after a mount on the
+  standing animal with the same inputs.
 
 ## Example
 
@@ -186,10 +221,9 @@ begins on the 23rd frame after the mount, with `y` = 400.
 - Other levels, other crates, and the kind of animal: the first level's
   crate holds one animal; how a crate's animal is chosen, and other
   animals, are not covered.
-- Mounting while the animal hops (B + 18 to B + 21); it did not happen
-  in the runs.
 - A crate not standing on the floor, and an animal coming out above the
-  floor.
+  floor. Mounting while the animal hops was measured falling after a
+  bounce only, not in a jump.
 - The second character: whether a following character breaks the crate
   or mounts the animal.
 - Breaking the crate while bouncing off an enemy, carrying an object,
