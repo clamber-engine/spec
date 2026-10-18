@@ -107,9 +107,21 @@ So with the feet at or above the underside, a face column of the
 platform's end whose top is above the feet blocks the player at any
 height difference. A column that isn't a face column blocks the player
 when its top is more than 8 px above the feet, and the player is stepped
-onto it when it is 8 px or less above. A player who passes under the end
-with the feet below the underside, and then rises into the layer, is
-inside.
+onto it when it is 8 px or less above, except for open sides (below). A
+player who passes under the end with the feet below the underside, and
+then rises into the layer, is inside.
+
+**Open sides.** A column whose top is given by a half of shape **1** or
+**5** (`../formats/level-ground.md`, "Shapes") that is passable from
+below doesn't block the player. When its top is more than 8 px above
+the feet before the frame, `x` moves by `vx` as usual and the player is
+not lifted: the frame goes on as if the column were not part of the
+platform, and if it ends with the feet in that column's layer, the
+player is inside from the end of that frame. A top 8 px or less above
+the feet is stepped onto as in the table. Only these two shapes do this:
+the flat shapes 61 and 62, which give the same tops as 1 and 5, block
+as in the table, and so do shapes 1 and 5 in ground that isn't passable
+from below.
 
 ## Falling onto the top
 
@@ -253,6 +265,60 @@ players with the direction held kept their speed, and rolls went on by
 the rules of `roll-speed.md`. Other inputs while falling through aren't
 covered.
 
+## Riding
+
+A player riding the animal (`riding.md`) meets platforms by the rules
+above, with the rider's `y` as the feet, on every frame that starts with
+the rider in the air: a jump's air frames, the hop of a charge, and
+falls. The frame's new `vx` and `vy` are the ones `riding.md` gives.
+So:
+
+- Nothing overhead stops the rider. A rising rider passes into the
+  layer and is inside; while inside it moves sideways freely, is lifted
+  onto the top on a rising frame that starts with the feet 2 px or less
+  below it ("Inside a platform"), and otherwise falls back down through
+  the platform to the floor beneath.
+- A rider above the top lands on it by the landing rule of `riding.md`
+  ("Jumping"), and then rides on the top as on any floor.
+- Moving sideways into a platform column from outside is as in "Moving
+  sideways into a platform from outside", open sides included.
+- A rider moving sideways out of the platform's columns while inside is
+  no longer inside: it goes on rising or falling over the floor beneath.
+- Ground that isn't passable from below stops a rising rider exactly as
+  in "Ground that isn't passable from below": the feet line stays what
+  it was, and `vy` becomes 0.
+- A rider on the floor under a platform whose floor isn't the top line
+  of its band is not affected by it ("Walking under a platform").
+
+Measured in modified copies of the game with the first level's crate
+moved onto the long flat floor near the level's start (as in
+`riding.md`) and a platform added over that floor: 160 px wide (5
+cells), with square ends, and its top 40, 48, 64 or 80 px above the
+floor (underside 17, 17, 49 and 49 px above it; tops given by halves of
+shapes 3, 1, 5 and 1), passable from below; and the 40 px and 64 px
+platforms not passable from below. Each run played random inputs as in
+`riding.md`, starting from standing still under the platform:
+
+- Passable from below: 200 runs on each copy, 800 in all, 413 045
+  frames compared. They held 2 504 entries into the layer from below,
+  18 086 frames inside, 275 lifts onto the top, 1 711 falls back out
+  through the underside, 109 moves out of the columns while inside, 91
+  entries through open sides (moving left and right), 14 blocks by the
+  ends of the 40 px platform and 18 steps onto an end. Runs were
+  compared up to the frame the rider rode off the end of the platform's
+  top (riding off a ledge, see "Not covered" in `riding.md`) or rose
+  more than 113 px above the floor.
+- Not passable from below: 60 runs on each copy, 18 848 frames compared,
+  with 204 stops, each run compared up to the landing after its first
+  stop (see "Not covered").
+
+In every frame `x`, `y`, `vx`, `vy`, `facing` and the part of riding
+were as the rules give. The same random runs on the floor without the
+platform (60 runs, 86 636 frames) were as `riding.md` gives. Checked
+by `riding.md` alone, without the rules of this file, 199 of the 200
+runs on the 40 px passable copy and 199 of the 200 on the 64 px one
+went wrong.
+
 ## What the trace shows
 
 Rising into, through and out of a platform adds nothing to the trace.
@@ -296,6 +362,24 @@ column and on the flat part). In 301 runs the first frame that differed
 from the unchanged platform was a stop by the rule above; the other runs
 never reached the platform's band and didn't differ at all. Every
 controlled frame matched the rule.
+
+Open sides were measured on foot in copies of the first level's opening
+floor with a platform 160 px wide over it, its top in the band 49 px
+above the floor, square ends, and its cells' halves all of one shape,
+passable from below: each of the shapes the first level's ground uses
+in surfaces passable from below (1, 5, 9 to 23, 25, 33 and 54 to 62)
+and the other flat shapes 2, 3, 4, 6, 7 and 8. In each copy the lead
+character walked and ran right with Jump held from 90 different frames
+for 6, 12, 24 or 40 frames (720 runs). Of the frames moving into the
+platform's first column from the side with the feet at or above the
+underside and the top above them, 144 had the top more than 8 px above
+the feet in a column of shape 1 or 5: none was blocked or lifted, and
+the player was inside at the end of the frame exactly when the feet
+ended in the layer. With every other shape, all 1 951 such frames were
+blocked as in "Moving sideways into a platform from outside". With
+every shape, the 1 257 frames with the top 8 px or less above the feet
+were stepped onto. With shapes 1, 5 and 62 not passable from below, all
+308 frames with the top more than 8 px above were blocked.
 
 Walking under a platform was measured on the first level's opening
 floor with the ground changed: a flat floor and, over it, a platform
@@ -451,8 +535,9 @@ either top, as if it weren't there.
   whose feet are already in such ground at the start of a frame.
 - Platforms whose band has ground right under it in the band below
   (ground thicker than one band), in jumps and for a grounded player.
-- In jumps: platforms with square ends (not faces), platforms thinner
-  than 15 px, and platforms whose ends slope at other rates.
+- In jumps on foot: platforms with square ends (not faces), other than
+  the frame that moves into an end column from the side; platforms
+  thinner than 15 px, and platforms whose ends slope at other rates.
 - Moving sideways out of a platform's columns while inside, and a
   take-off from a floor that is itself in a platform's layer.
 - Getting down through a platform from its top.
@@ -460,3 +545,8 @@ either top, as if it weren't there.
   being knocked back (`knock-out.md`) and the other character inside a
   platform.
 - Moving platforms, and entities overhead.
+- Riding: the landing after a stop by ground that isn't passable from
+  below. Under the 40 px platform the rider rode again 18 or 20 frames
+  after the landing frame (9 runs), not 8 as `riding.md` gives; under
+  the 64 px one, 8 frames after it (8 runs). Also riding off the end of
+  a platform's top.

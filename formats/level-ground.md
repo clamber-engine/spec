@@ -162,6 +162,11 @@ stays at 31 after that. Shape 26 uses the 2-per-3 steps 1, 2, 2, 3, 4,
 The steep faces of `steep-faces.md` are the 4-px-per-px shapes (54 to
 60). The 1-in-4 slopes of `slopes.md` are 9 to 16.
 
+Shapes 1 and 5 differ from the flat shapes 61 and 62, which give the
+same rises, in one way: in a half that is passable from below, they
+don't block a player coming from the side (`../behavior/platforms-from-below.md`,
+"Moving sideways into a platform from outside", "Open sides").
+
 ## The ground below a point
 
 The behavior files use "the ground below" a player (or other object):
