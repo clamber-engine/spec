@@ -806,7 +806,10 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
 ## Not covered
 
 - Action held on a face while walking or standing (with or without a
-  direction).
+  direction), except on the frames after a Down + Action press on or
+  onto a face (`ground-action.md`, "At a steep face"). The ground action
+  going down a face, against a rising face and the jumps during it are
+  in that section too.
 - Rolls started while the player is carried down a face or on the frames
   just after leaving one (up to about 12 frames): their direction and
   size on S didn't always follow `roll-speed.md` (the held direction

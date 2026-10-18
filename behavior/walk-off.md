@@ -546,6 +546,8 @@ This list is for `title-1`; `title-2` has its own list above.
   a turn in progress there. Rolling off a ledge is in
   `rolling-off-ledges.md`. The lead character swap.
 - At ledges with a steep face: walking or running left, approaches
-  slower than walking speed, Down or Action held near the edge, and
+  slower than walking speed, Down or Action held near the edge (the
+  Down + Action ground action going over a face is in
+  `ground-action.md`, "At a steep face"), and
   whether a press that counted but gave no jump can still start a jump
   on landing.
