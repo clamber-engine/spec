@@ -87,15 +87,13 @@ letter with `X − xl` from −15 to 21. Facing left, it takes one with
 
 A letter is in range when `I` and `D` are both within the ranges for
 the player's state (ends included). For the states that `bunches.md`
-covers, they are the ranges of bunches. The Down + Action ground action
-(`ground-action.md`) was measured for letters only: it has the standing
-ranges. `bunches.md` makes no claim about it, and this file makes none
-about bunches.
+covers, they are the ranges of bunches, including the Down + Action
+ground action (`ground-action.md`), which has the standing ranges.
 
 | State | `I` | `D` |
 |---|---|---|
 | Standing, walking, running | −15 to 21 | −8 to 40 |
-| Down + Action ground action (letters only, see above) | −15 to 21 | −8 to 40 |
+| Down + Action ground action | −15 to 21 | −8 to 40 |
 | Crouching (Down held on the ground) | −18 to 12 | −12 to 31 |
 | Rolling | −13 to 21 | −4 to 38 |
 | Jumping, from the take-off frame `T` to `T` + 5 | −15 to 21 | −8 to 40 |
