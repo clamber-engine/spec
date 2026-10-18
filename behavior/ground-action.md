@@ -391,20 +391,36 @@ direction.
 
 If instead `vx` was not 0 on P − 1 and the column 5 ahead of the
 player's column on P is 8 px or more higher, the speed on P becomes 0
-and then moves toward direction × **2** (512/256) instead of × 3:
-`vx` is 0.25, 0.46875, 0.66015625, 0.82421875, … on P, P + 1, … until
-the player is blocked, and 0 from then to E. Measured going right and
-going left.
+and then moves toward **2** (512/256) instead of 3, on the side of the
+**target speed of P − 1** (`ground-speed.md`, and `steep-faces.md`,
+"Holding toward a rise", when P − 1 held toward the rise), not on the
+side of the action's direction. The two differ when P − 1's target
+was away from the rise: the direction held on P − 1 was away from it
+(even while the player was still moving toward it), or it was toward
+it with the target still away from it ("Holding toward a rise").
 
-**Facing next to a rise.** In both of these cases, that is whenever the
+- P − 1's target toward the rise: `vx` is 0.25, 0.46875, 0.66015625,
+  0.82421875, … toward the rise on P, P + 1, … until the player is
+  blocked, and 0 from then to E.
+- P − 1's target away from the rise: the same values away from the
+  rise. The player moves away from the rise for the whole action,
+  approaching 2, and E is one more step toward 2 on that side. The
+  action's direction still decides `facing` (below).
+- P − 1's target 0 (no direction held there, the player slowing down):
+  as from standing, the player doesn't move at all from P to E.
+
+Measured going right and going left, with each of the three.
+
+**Facing next to a rise.** In all of these cases, that is whenever the
 column 5 ahead of the player's column in the action's direction is
 8 px or more higher on P, `facing` becomes the direction's side on P
 (left for direction −1) and stays so to E. This was measured with the
-player facing right before P, so going left it turns the player to
-face left. Otherwise `facing` doesn't change from P to E, as on flat
-ground, also when the player is blocked later in the action: a player
-facing right who presses Left + Down + Action further from the rise
-moves left facing right, is blocked, and still faces right.
+player facing right and facing left before P, for both directions, so
+it turns the player whenever they faced the other way. Otherwise
+`facing` doesn't change from P to E, as on flat ground, also when the
+player is blocked later in the action: a player facing right who
+presses Left + Down + Action further from the rise moves left facing
+right, is blocked, and still faces right.
 
 Example, direction −1 from standing facing right 14 px to the right of
 the left edge of the first column below a vertical step up of 64 px,
@@ -501,6 +517,30 @@ frame	input	x	y	vx	vy	state	ground	facing	events
 - Without the block at a vertical step, 1 836 frames differ; without
   "Can't start toward a rise" during the action, 1 700; without the
   change of `facing` on P next to a rise, 488.
+- Toward a face rising to the right from facing left, and the side of
+  the moving start: 5 714 runs (5 664 checked; in 50 the press came in
+  the air after walking off a step down). Standing facing left on the
+  floor in front of the face with Right pressed: every whole pixel of
+  the floor and every 1/16 px of the last 24 px, 152 runs walking
+  first, 230 with inputs from the frame before the face, 504 with Jump
+  pressed around it, 156 runs walking left (away) from 0.5 to 13 px in
+  front of the rise and pressing Right 1 to 7 frames later, and 1 200
+  runs of random input after the press. 3 000 more runs at that face
+  and at the 64 px step rising to the left, with random Left, Right or
+  nothing for 1 to 14 frames from standing and then the press toward
+  the rise (half of them with random input after the press). On
+  524 751 frames `x`, `vx`, whether the action is in progress and
+  `facing` during it, and `y`, `vy` and `ground` as above, matched with
+  0 differences: 401 moving presses next to a rise (90 with P − 1's
+  target toward the rise, 311 away from it, both directions), 123 with
+  P − 1's target 0 while moving and 553 standing presses next to a
+  rise, 453 of these 1 077 presses with the player facing the other
+  way before P; 4 242 blocked frames and 215 076 frames held still by
+  "Can't start toward a rise".
+- With the moving start always toward the action's direction, 434
+  frames differ; without "Can't start toward a rise" during the
+  action, 4 315; without the change of `facing` on P next to a rise,
+  453.
 
 ## On a slope
 
@@ -639,8 +679,9 @@ frame	input	x	y	vx	vy	state	ground	facing	events
   slopes other than 1 in 4 or where a slope meets a ledge, wall or
   face. Steep faces other than those in "At a steep face": an action
   moving up a face (after a landing on one, or started on one going
-  uphill), and E on a face frame. A press next to a rise going right
-  while facing left. Landing on anything other than flat floor
+  uphill), and E on a face frame. A press next to a rise on the frames
+  after a landing up to the switch frame M, or during a turn. Landing
+  on anything other than flat floor
   after going over a ledge or a face (landings on a face were seen and
   not checked), and the second character.
 - Jump held through the landing after a fall from a face during the
