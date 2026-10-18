@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.149.0
+
+The view while the player is knocked out.
+
+Part of clamber-engine/spec#19 (the first level's remaining entities).
+The issue stays open for the parts not covered yet.
+
+- `behavior/view.md`, `behavior/view-vertical.md`, "Frames on which the
+  view stays still": when the player is knocked out on frame H, the
+  view and its vertical motion don't move on H to H + 9 and move again
+  from H + 10. Not covered narrowed to H + 10 on. (spec#19)
+- `behavior/thrower.md`, "While the player is knocked out": a thrower
+  already knocked out can't be outside the window on H + 1 to H + 10;
+  that Not covered item is removed. (spec#19)
+
 ## spec-v0.148.0
 
 A thrower knocked out by a bounce or a roll after a knock-out, the
