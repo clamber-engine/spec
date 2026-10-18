@@ -241,6 +241,22 @@ letters 1, 4 and then 2 stay at y 12 up to frame 271, slide out on 272 to
 letter 2 when its copy arrives) is at −12, −8, −4, 0 on 226 to 229, at
 12 from 234 to 345, and is not drawn from 352.
 
+A third letter (again not the fourth) taken while a row is still drawn
+follows the same rules, with the last row brought in as the first row
+and the frame its end was last moved to as its end. Taken before that
+end, it moves the end to its own frame + 121 and the row goes on as it
+was; taken on the end or later (up to the end + 6), it brings in a row
+of its own beside the one sliding out. While two rows are drawn, it is
+the second one, the one brought in last, that it acts on: the first
+slides out as it would have.
+
+For example, with no letter taken before, take letter 1 on frame 100,
+letter 2 on 160 and letter 3 on 260: the row stays at y 12 up to frame
+381, slides out on 382 to 387, and isn't drawn from 388. Taking letter
+2 on frame 221 instead (the first row's end), and letter 3 on 226: the first row slides out on 222
+to 227; the second row, brought in by letter 2, is at y 12 from 231, now
+up to 347, slides out on 348 to 353, and isn't drawn from 354.
+
 The first level's letters are 866 px or more apart, so there this needs
 the player to get from one letter to the next in under 128 frames. In
 the checks, the player and the view were moved next to the second letter
@@ -265,6 +281,19 @@ pickup: 2 538 runs. On all 685 260 frames, checked as above, where each
 letter in the set was drawn matched the rules, 0 different. Under a rule
 in which a letter taken before the end brings in its own row instead,
 2 160 of the 2 538 runs came out different.
+
+For a third letter, the copy of the image also had another letter
+placed 81 px below letter 1, on the floor there, so that three letters
+(1 and two of 2, 3 and 4) were in the view at once. The player was put
+on the three letters in each of the six orders, with none of the
+letters in the set before, `d` from the first pickup to the second in
+13 steps from 1 to 140 and from the second to the third in 22 steps
+from 1 to 140, around the ends above: 5 148 runs, in 4 446 of them the
+third letter taken while a row was drawn. On all 1 674 342 frames,
+checked as above, where each letter in the set was drawn matched the
+rules, 0 different. Under a rule in which every later letter brings in
+its own row, 4 770 runs came out different, and under one in which only
+the second letter can move the end, 3 510.
 
 ## The ending
 
@@ -418,8 +447,7 @@ throughout.
   after a turn, and the stop after a roll.
 - Which letters are late in the ending when the fourth letter is taken
   120 frames or less after another (see "After another letter").
-- Taking the fourth letter on the frame after another, and taking a
-  third letter while the row is shown for two.
+- Taking the fourth letter on the frame after another.
 - The ending while the player is knocked out, leaves the level or
   finishes it, or while another lives display (`count-display.md`) is
   shown.
