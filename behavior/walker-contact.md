@@ -178,7 +178,21 @@ Measured for all three kinds of walker, both facings and both headings
 G + 15 of the pick-up, while Action stays held) has the carrying pose on
 every frame: standing, walking, turning, in the air through the whole
 jump, landing and after it. A jump made while carrying never takes the
-airborne pose. In the carrying pose the hurt range for I shifts:
+airborne pose. With G and Q as in `carrying.md` (the first frame of a
+pick-up, and the frame Action is let go), the player also has the
+carrying pose on every frame of:
+
+- a pick-up on the ground, G to G + 14 (a pick-up in the air is under
+  "Not covered");
+- a throw, on the ground or in the air, Q to Q + 42 (also after landing,
+  for the frames of the throw that are left);
+- a put-down, Q to Q + 12.
+
+From Q + 43 after a throw and from Q + 13 after a put-down the pose is
+upright again. A jump that ends a throw early (`carrying.md`,
+"Throwing") has the poses of any jump, and a roll that ends it is in
+`rolling-into-walkers.md`.
+In the carrying pose the hurt range for I shifts:
 
 - facing right: the low end is 1 px higher and the high end 5 px lower;
 - facing left: the low end is 5 px higher and the high end 1 px lower.
@@ -193,13 +207,22 @@ and a player facing left by a medium walker heading right for I from
 −17 to 25 and by a large walker heading left for I from −23 to 20.
 Measured for all three kinds of walker, both facings and both headings
 ("Evidence for carrying"). Bounces while carrying use the bounce ranges
-and limits below unchanged.
+and limits below unchanged, with one exception: **during a throw the
+player doesn't bounce on Q + 1 to Q + 21**, the frames after Q up to
+the one on which the object leaves the hands (`carrying.md`, "The
+object"). A player falling onto a walker on those
+frames goes on falling and is hurt or not by the rule above. A bounce
+can happen on Q itself, and from Q + 22 on bounces use the ranges below
+again ("Evidence for pick-ups, throws and put-downs").
 
 A medium or large walker that meets the object the player carries can be
 hit by it (`thrown-objects.md`); the rule above still decides whether the
 player is hurt on the next frame, from the positions at the end of the
 frame of the hit. A small walker was never hit by the carried object in
-these measurements (player on its floor or up to 45 px above it).
+these measurements (player on its floor or up to 45 px above it), but
+during a pick-up, a throw or a put-down walkers of all three kinds,
+small ones too, were hit by the object in the hands, and there too the
+rule above decided whether the player was hurt on the next frame.
 
 The same carrying ranges hold when the object holds the missing
 character (`holder-breaking.md`). But a medium or large walker that
@@ -552,6 +575,47 @@ including 1 260 hurts and 1 566 bounces. 2 mismatches, both bounces that
 happened with the player in the air pressed against the wall at the left
 end of the floor (listed under "Not covered").
 
+## Evidence for pick-ups, throws and put-downs
+
+On the opening floor of the first level, with the first character alone,
+in the modified copies of "Evidence for carrying" (an object at the
+start of the floor; the first walker replaced by a large walker, small
+walkers with and without a patrol, a medium walker), with the walker
+heading left, and heading right (its heading set to the right 30 frames
+earlier). The player walked back toward the start of the floor while
+carrying, facing left or turned to face right, and then:
+
+- put the object down and picked it up again, so that one frame of the
+  pick-up, G to G + 14, was the frame before H (for H = G + 1, the
+  object was moved along with the player when placing it);
+- threw it on the ground or put it down, so that one frame from Q to
+  Q + 43 (throw) or Q to Q + 14 (put-down) was the frame before H;
+- threw it in the air (Jump pressed 5 frames before Q), placed 6 to 45 px
+  above the walker's floor on 12 frames from Q to Q + 42, for hurts;
+- threw it in the air, placed 15 px above the walker's floor and falling,
+  so that B was one of the frames from Q to Q + 43, for bounces.
+
+At each of these frames the player was placed at offsets one pixel apart
+(−45 to 45) from the walker, facing right and left: 2 600 frames of play,
+1 088 360 placements. The 35 217 placements where the thrown object had
+already knocked the walker away were left out; the others had 175 539
+hurts and 23 760 bounces on the frames of a pick-up, throw or put-down.
+With the carrying ranges on every frame of a pick-up, throw or put-down,
+the upright ranges from Q + 43 and Q + 13, the bounce ranges unchanged
+and no bounce on Q + 1 to Q + 21: 0 mismatches. The upright ranges during the
+pick-up, throw and put-down instead: 24 990 mismatches; bounces allowed
+on Q + 1 to Q + 21: 24 654.
+
+As a holdout, by inputs alone: 6 000 random runs near the four walkers,
+starting while carrying, with Action held in only part of the stretches
+of play (letting go is a throw, or a put-down with Down; pressing it
+again next to the object is a pick-up) and Jump in a sixth of them.
+Of the frames with a walker close (within 60 px across and 70 px up or
+down), 2 322 were in a pick-up (every pick-up in these runs was on the
+ground from start to end), 2 012 in a
+put-down and 11 078 in a throw (2 923 of them in the air), with 139
+hurts and 60 bounces on those frames. 0 mismatches.
+
 ## Evidence for walkers that aren't at full speed
 
 On the opening floor of the first level, with the first character alone,
@@ -744,9 +808,10 @@ This list is for `title-1`; `title-2` has its own list above.
   already bounced on don't touch the player (`walker.md`, "Being bounced
   on").
 - Contact after a bounce, or being knocked back; a crouching player on
-  a slope or with the walker on another floor. Carrying: contact during
-  the pick-up and the throw, with the walker on another floor or on a
-  slope, and bounces with the player pressed against a wall.
+  a slope or with the walker on another floor. Carrying: a pick-up in
+  the air (only pick-ups on the ground were measured), with the walker on
+  another floor or on a slope, and bounces with the player pressed against
+  a wall.
   Rolls into walkers are in `rolling-into-walkers.md`.
 - Rolling off a ledge onto a walker, and runs off a ledge (a run starts
   with a roll). Walk-offs were measured from ledges without a face 48
