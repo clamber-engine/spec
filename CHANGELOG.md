@@ -2,6 +2,116 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.163.0
+
+A large round: 41 changes on the first level's entities and ground
+(spec#17, spec#19), getting off the animal (spec#46), image file
+extensions (spec#45), a title-2 example correction (spec#48), and the
+claim rules for several research agents (spec#38).
+
+Answers clamber-engine/spec#45, #46 and #48. Part of
+clamber-engine/spec#17 (level layout) and #19 (entities in the first
+level), which stay open for the parts not covered yet.
+
+Process:
+
+- `COMMUNICATION.md`: the director's rules for several research agents
+  (spec#38): **Claiming:**, **Withdrawn:** and **Taking over:** status
+  comments, claiming a part of a large issue or a whole small issue,
+  stale claims, and the priority order.
+
+Formats:
+
+- `formats/rom-image.md`: the usual file name extensions of image files,
+  matched in any letter case, as a filter only; archives are not images.
+  Identification is unchanged. (spec#45)
+- `formats/level-ground.md`: pointers for walkers, carried objects and
+  riding against ground passable from below, and the open sides of
+  shapes 1 and 5. (spec#17)
+
+Getting off and riding (spec#19 unless noted):
+
+- New `behavior/getting-off.md`: the Tandem press, the hop and the
+  jump-off, landing, where the animal stays and how it falls, and getting
+  on again; getting off right after a mount, with the lighter gravity
+  carried over from the mounting jump; what follows a jump-off's
+  landing. Pointers in `riding.md`, `controls.md` and `animal-crate.md`.
+  (spec#46)
+- `behavior/animal-crate.md`: mounting while the animal hops out of the
+  crate (from an earlier frame than stated before, with a height range
+  that grows with the hop).
+- `behavior/collectibles.md`, `behavior/riding.md`: collectible pickup
+  ranges while riding, with the turn exception.
+- `behavior/riding.md`, `behavior/platforms-from-below.md`: riding
+  through platforms passable from below. (spec#17)
+
+Rolling into walkers (`behavior/rolling-into-walkers.md`, spec#19):
+
+- Other objects hold still during the pause after a defeat.
+- Chains of more than two defeats, with the boosted size limited to 8,
+  including slow starts reaching the limit and walkers appearing during
+  the pause.
+- Chains into walkers heading right, and several walkers in range on one
+  attack frame.
+- The large walker with the player facing left, and chains into large
+  walkers; the medium walker's ranges, a roll's first frame and the
+  boost direction from the stop; fast rolls into the medium walker and
+  to the left into the large walker; chains into medium walkers heading
+  right.
+
+Down during rolls (spec#17):
+
+- `behavior/roll-input.md`, `behavior/ground-action.md`,
+  `behavior/ground-speed.md`: Down makes no difference during a roll and
+  the stop after it, for both characters (`second-character.md`), with a
+  correction: after a roll that carries on, the next roll's press counts
+  only if Action is still held on the stated frame. The same holds on
+  1-in-4 slopes (`slopes.md`) and next to and on steep faces
+  (`steep-faces.md`), and a press carried over onto a face counts like a
+  jump press.
+
+Losing a life, falling out and restarting:
+
+- `behavior/count-display.md`: new "Losing a life": the lives and count
+  displays after a knock-out or a fall-out; pointers in `knock-out.md`
+  and `falling-out.md`. (spec#19)
+- `behavior/knock-out.md`, `behavior/losing-a-character.md`: the second
+  character knocked out with no one left. (spec#19)
+- `behavior/falling-out.md`: falling out with the second character
+  leading. (spec#17)
+- `behavior/restart-barrel.md`: what is there again after a fall-out;
+  only the lead touches the barrel; the touch while holding an object.
+  `behavior/following.md`: the follower when play resumes at the restart
+  point. (spec#17)
+- `behavior/holder-breaking.md`: breaking a holder with both characters
+  there; `following.md` scopes the lead's wait to joins. (spec#17)
+
+Collectibles, figures and the level's end (spec#19):
+
+- `behavior/bunches.md`, `behavior/letters.md`: with two characters only
+  the lead takes; the second character's ranges.
+- `behavior/letters.md`: the fourth letter taken while the row is
+  shown.
+- `behavior/figure.md`: figures with two characters; taking a figure
+  while an earlier one's image is shown, and the places for counts 1 to
+  3.
+- `behavior/extra-lives.md`: a rising item reaching exactly the level's
+  top.
+- `behavior/level-end.md`: a bunch's items at the level's end; passing
+  the end marker with Left and Right together, with Down, and on a
+  jump's press and take-off frames.
+- `behavior/ground-action-enemies.md`, `behavior/hidden-objects.md`: two
+  things within reach of one ground action, and a correction to the
+  hurt frame after a pause.
+- `behavior/exits.md`, `behavior/level-start.md`: the other character
+  during exits, walk-ins and the room, and at the start after the room.
+  (spec#17)
+
+`title-2`:
+
+- `behavior/steep-faces.md`: the example "Walking down, then holding
+  uphill" corrected; its first face frame is limited. (spec#48)
+
 ## spec-v0.162.0
 
 Pick-up reach, and balls and walkers.
