@@ -2,6 +2,34 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.170.0
+
+3 changes: letters taken close together, and several extra-life items
+in one lives display (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/letters.md`: "Another letter while the row is shown" now
+  covers a second letter on the very next frame (`d` from 1) and a
+  second letter that comes earlier in the word: the order makes no
+  difference, and each letter is drawn in its own place in the row.
+  A new paragraph covers a third letter taken while a row is drawn: it
+  follows the same rules, acting on the row brought in last, with a
+  worked example. Evidence included. The Not covered items for these
+  cases are replaced by the fourth letter taken on the frame after
+  another.
+- `behavior/extra-lives.md`: new "Several items" under "The lives
+  display", for an item taken while another item's lives display is
+  shown and for two items on one frame. The number shown goes up one
+  step at a time on frames that no item's image is still on its way
+  for, with the gaps between steps given as counts of those frames.
+  It also gives the number's height up to and after the last step, an
+  item turning a leaving display back, the one-frame-later start seen
+  with the first level's own pair of items, a worked example and
+  evidence.
+  The Not covered item is narrowed to what is still open.
+
 ## spec-v0.169.0
 
 1 change: passing the end marker while hit or bouncing off an enemy
