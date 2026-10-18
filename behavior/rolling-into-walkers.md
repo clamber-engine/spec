@@ -572,8 +572,8 @@ instead of 1, 336 don't.
 
 In detail:
 
-- **Defeat ranges** are for the small walker (the medium walker's are
-  below). As for the first character,
+- **Defeat ranges** are for the small walker (the medium and large
+  walkers' are below). As for the first character,
   they are the same on every attack frame: slow, normal, fast and boosted
   rolls, the frames that end a roll that carries on, and the first 8 frames
   of the stop. On a roll's first frame S the walker is also defeated when
@@ -620,6 +620,27 @@ S − 1 to D + 18 of 16 input variants, which match these ranges, and no range
 1 px wider or narrower at either end does. Fast rolls were measured facing
 right into the walker heading right and facing left into the walker heading
 left. With the small walker's ranges 723 of the 1 380 runs don't match.
+
+**The large walker.** Rolling into the large walker, this character's
+defeat ranges are the small walker's widened by 3 px on each side, as for
+the first character:
+
+| Facing, walker heading | Defeat range |
+|---|---|
+| Right, left | −24 to 19 |
+| Right, right | −25 to 18 |
+| Left, left | −18 to 25 |
+| Left, right | −19 to 24 |
+
+Everything else is again the same as for the small walker. Measured on
+`title-1` in the same way, against the large walker heading left and
+heading right at full speed: 1 380 runs (303 600 frames, 791 defeats) in
+which everything matches, and 69 084 placements at offsets −50 to 50 px on
+every frame from S − 1 to D + 18 of 17 input variants (fast rolls in all
+four facing and heading pairs), which match these ranges, and no range 1 px
+wider or narrower at either end does. With the small walker's ranges 708
+of the 1 380 runs don't match, and with the first character's large-walker
+ranges 793 don't.
 
 With the first character following, a hurt lead loses the character as in
 `swap.md`; the frames above are those of the hurt. This character's hurt
@@ -840,7 +861,7 @@ This list is for `title-1`; `title-2` has its own list above.
   also held during the pause, and objects other than those listed in
   "Everything else during the pause". Whether a defeated walker can hurt
   the player while it falls.
-- Other kinds of enemies. For the second character, the large walker,
-  chains of defeats, slopes, and steering a boosted slow roll.
+- Other kinds of enemies. For the second character, chains of defeats,
+  slopes, and steering a boosted slow roll.
   Rolling into the thrower is in `thrower-contact.md`; the Down + Action
   ground action meeting a walker is in `ground-action-enemies.md`.
