@@ -76,6 +76,7 @@ names" table.
 | `064bbe75bd3abfab4b38a24ad7b839fc30bdfc417023fd381ada77694e617ded` | `stinger` |
 | `0d36c9a5953a166b2bbfafe60fc65cbe1abd9b66392a33c650daaeb3db1b9fe8` | `exit` |
 | `0e1f45ccf4bc6e7a48005c73ce0003f0a0d0205fbb063ade26b4f1fe83877da0` | `stinger` |
+| `10c0e2b03ca2e4bd4b19e904df4a206746f1a8068c58b18485b70c2ffbee8a86` | `thrower` |
 | `12ddb2c3b0a218c0ccb5c1798e7094b5a2b61d21d2361da03b6f6286fa191e0a` | `restart-barrel` |
 | `15ac2312a3f8d89089ee4c658cf1bee3df8b12254e7ebe4d7646b35028b932d6` | `letter-1` |
 | `15e5d66f8306cbb5fc446248adeed6c91374c587a91b124a466964d3c2afd580` | `stinger` |
@@ -89,18 +90,25 @@ names" table.
 | `33ba1408651608e5bba77ae5a3232bc7fe0ea4a63c9950bb493bb07bed985c21` | `rising-extra-life-2` |
 | `3b1534a2da04c2655ee410d9570846bf8da60ecabf7afa758b2e5cab13c547a0` | `stinger` |
 | `3bd63880d0c8f6e81a4975e1549c730655b1f1e7957454c0ce6ea980044a1718` | `down-launch-barrel` |
+| `3d6edece3440402e518d12b9b530167bc00a8ea4c35137f0ffb9414dcbce3c2c` | `thrower` |
 | `3e1f6c2f24fa461bc637adec8e62fe520d4f2a69e7cf8e0d950610235d2e3486` | `letter-4` |
 | `3f9e1b957059a405568bfd11ba7757786263483c98b2a01bb8e22cc9ae833735` | `stinger` |
+| `406919fff90e945a33f5cc43d8ac30037ff4c393cfa80eaba828d5955f523f63` | `thrower` |
 | `46a03d0df615a0aff54b9f2a823f9ead4e500b9ecdeb48c2fe2dfe37aa02431f` | `letter-2` |
+| `4799c125f8ce77f8cbcd9562a1c126036b80c0930f94ffe5c5b273a5ee6af2cc` | `thrower` |
 | `47a9fc70cf6be73792670830d89523401fe75b8ad5ade692f5fe8d534962429c` | `sign` |
 | `4c90ae328510dac24fa35424acdaa6b793fcbebfa288220cce41179f518d9978` | `tyre` |
 | `4cb625b24ccb2edc0d7487e5ff9aa9de2cd5409110383d64bfa5ff1a97a22170` | `large-walker` |
 | `558635a3657029cd26bc9e52c8c3a2d79fe81ebbad040fff194828098afe61a5` | `left-launch-barrel` |
 | `5624aa1b5f08527d0ddab7f1d5fc72f4fc0559b083ce1cd80be4baf05eac1997` | `wall-return-entrance` |
+| `5894d96cb527c55642142ea263c695df5028dc704583a4d0b29e20a2f3c6d895` | `thrower` |
+| `5d9b10becfc0595ae047545480de275256a32d63feb76eee0f71343b59ba4acf` | `thrower` |
 | `5fae0c706628b184dc3d2db99a589d70ce53d54750e685369dd03f73f71e7f06` | `stinger` |
 | `68ec177ef637f9d79142cd826f4de8d5b14836aa0067cee144d2c606eeaf9c52` | `letter-3` |
 | `705fd77a10893864d58f32885b437d1e741c3b935279dd4648a7c2282548d067` | `barrel` |
+| `72bc1c2e265a914fcfce4b9fd28df1243aa0c404bc95d3e185e030072236a427` | `thrower` |
 | `765a7a9517d401764d141421814606b3c711a924352de8ea10d9878433fe40de` | `stinger` |
+| `774c17b7d70e72c9f259f4b1cf4bac552f0a9ee7ed3fa62276229e5537da3b43` | `thrower` |
 | `7a0a5f16cbb9153611411aa5c6ed1aa024f8f2af6b87a221073c56f814c33e3d` | `thrower` |
 | `7d89c7e6b0041ab373a3e96810740ef610b1e112d06596aef72ff8fa0fe46b41` | `hidden-bunch` |
 | `814362811b6cd4c8fc220ee7fbd04eb626f6837ef7d7e5dc0027700380948338` | `bunch` |
@@ -108,6 +116,7 @@ names" table.
 | `858bd5ab1c8e2b25e0d23f36da439e91cc09f4578483506115836f355c507396` | `wall-exit` |
 | `8aad3408aa49bd9ceda4b82bd21591b32c7417dd4d4971eba27e30fd47eaf42c` | `entrance` |
 | `9338801286daea12e1f30fd2478b61a44ef3325da9a893f865e2dff0b43c9cc7` | `hidden-barrel` |
+| `9448b2e77aec028a49942a6a03cc58479acad0fdb0ee19ca26d46eabe8512402` | `thrower` |
 | `96815bf167d1e7ae0187cf583b5e9cd05af19646c808ad1b8abb2fe09ad30e52` | `stinger` |
 | `a18b370140438f25f467370655a5c802ccd40f07be7e5296c81570fd169a9add` | `medium-walker` |
 | `a3917b33a073e05c714b57e8b4ca93dc514015f068d5d3ae7c8e89e64d7bcf08` | `stinger` |
@@ -148,6 +157,19 @@ measured in play as `placements.md` says.
 | Fingerprint | Kind | Start `vx` | Start `vy` |
 |---|---|---|---|
 | `f85e5c914a63c73583c210056c33f883bcd8fecee32b42323bb458fb6f174819` | `ball` | −1.171875 (−300/256) | −3 (−768/256) |
+
+| Fingerprint | Kind | Throws (`vx` in 1/256 px per frame, wait in frames) |
+|---|---|---|
+| `10c0e2b03ca2e4bd4b19e904df4a206746f1a8068c58b18485b70c2ffbee8a86` | `thrower` | 0, 79 |
+| `3d6edece3440402e518d12b9b530167bc00a8ea4c35137f0ffb9414dcbce3c2c` | `thrower` | −304, 31; 0, 31; +304, 31; +800, 111; −800, 31 |
+| `406919fff90e945a33f5cc43d8ac30037ff4c393cfa80eaba828d5955f523f63` | `thrower` | 0, 47 |
+| `4799c125f8ce77f8cbcd9562a1c126036b80c0930f94ffe5c5b273a5ee6af2cc` | `thrower` | 0, 111 |
+| `5894d96cb527c55642142ea263c695df5028dc704583a4d0b29e20a2f3c6d895` | `thrower` | +640, 31; −640, 31; 0, 31 |
+| `5d9b10becfc0595ae047545480de275256a32d63feb76eee0f71343b59ba4acf` | `thrower` | +800, 111 |
+| `72bc1c2e265a914fcfce4b9fd28df1243aa0c404bc95d3e185e030072236a427` | `thrower` | 0, 31; +640, 79; −640, 31 |
+| `774c17b7d70e72c9f259f4b1cf4bac552f0a9ee7ed3fa62276229e5537da3b43` | `thrower` | 0, 31; +544, 79; −544, 31 |
+| `7a0a5f16cbb9153611411aa5c6ed1aa024f8f2af6b87a221073c56f814c33e3d` | `thrower` | 0, 31; +800, 111; −800, 31 |
+| `9448b2e77aec028a49942a6a03cc58479acad0fdb0ee19ca26d46eabe8512402` | `thrower` | −800, 31; 0, 31 |
 
 ## `title-2`
 

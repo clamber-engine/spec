@@ -223,11 +223,14 @@ The `holder` reference is the one reference seen to make two objects
 appear (see "When placed objects appear"). The holder is one of them;
 what the second one is, is not covered.
 
-The `stinger` and `tyre` rows are for references that the first level
-doesn't use; where the other levels' placement lists are is not covered
+The `stinger` and `tyre` rows, and all but one of the `thrower` rows, are
+for references that the first level doesn't use; where the other levels' placement lists are is not covered
 yet. Each of the three `tyre` references was given, in a copy of the
 image, to one class 1 entry near the first level's start in place of
-its own reference, and placed a tyre there.
+its own reference, and placed a tyre there. Each of the ten `thrower`
+references, given the same way to a class 1 entry near the first level's
+start and to the first level's thrower's own entry, placed a thrower
+there ("How the thrower settings were measured").
 
 ### Settings
 
@@ -238,11 +241,13 @@ image's section, the settings for a kind fingerprint (`../REVIEW.md`,
 reference has that fingerprint starts with those settings. A setting that
 isn't given for a fingerprint takes its default from the table below.
 The settings were measured in play ("How the walker settings were
-measured" and "How the ball settings were measured" below).
+measured", "How the ball settings were measured" and "How the thrower
+settings were measured" below).
 
 The walker kinds (`small-walker`, `medium-walker` and `large-walker`)
-have three settings, and the `ball` kind two ("Ball settings" below). No
-other kind has settings in this spec yet.
+have three settings, the `ball` kind two ("Ball settings" below) and the
+`thrower` kind one ("Thrower settings" below). No other kind has settings
+in this spec yet.
 
 | Setting | Values | Meaning | Default |
 |---|---|---|---|
@@ -373,6 +378,72 @@ and `vy` to 1/256 px on every frame after its appearance in the copies
 rules give) or the frame the player was knocked out (3 runs), with no
 difference. Each ball appeared on the first frame whose `V` put its
 placed `x` in the window, as `thrower.md` says.
+
+#### Thrower settings
+
+A `thrower` (`../behavior/thrower.md`) has one setting, its **throws**.
+Speeds are in px per frame, right and down positive, whole multiples of
+1/256, as in `thrower.md`.
+
+| Setting | Values | Meaning | Default |
+|---|---|---|---|
+| throws | A list of one or more throws, in order; each throw is a `vx` and a **wait**, a whole number of frames, 1 or more | The balls the thrower throws and when (`thrower.md`, "When it throws"): the first throw of the list is on frame `A` + 2, where `A` is the frame the thrower appeared; each throw is followed, its wait later, by the next one in the list, and the throw after the last one is the first one again. Each throw throws one ball with that `vx` | `vx` 0, wait 31; `vx` +3.125 (+800/256), wait 111; `vx` −3.125 (−800/256), wait 31 |
+
+The default is the first level's thrower (below). A ball thrown with
+`vx` 0 goes straight up, one with `vx` less than 0 to the left and one
+with `vx` more than 0 to the right. Every thrown ball starts as
+`thrower.md` says in "A thrown ball", with the throw's `vx` in place of
+that section's `vx` and the same `vy` −7 (−1792/256), and then moves as
+in "Each frame" there. A thrower that comes back after being removed
+starts its list again from its first throw (`thrower.md`, "The
+thrower"). So the throws repeat every (sum of the waits) frames.
+
+**Example (synthetic).** A fingerprint with throws `vx` −1.1875
+(−304/256), wait 47; `vx` 0, wait 31; `vx` +2.125 (+544/256), wait 95.
+A thrower of that fingerprint appearing on frame 1000 throws a ball to
+the left with `vx` −1.1875 on frame 1002, one straight up on 1049, one to
+the right with `vx` +2.125 on 1080, and then the same again 173 frames
+later (47 + 31 + 95): on 1175, 1222 and 1253, and so on.
+
+#### How the thrower settings were measured
+
+Each of the ten `thrower` references (`locators.md`) was given, in
+copies of the image, to two class 1 entries of the first level in place
+of their own references: to one near the level's start, raised to 65 px
+above the floor there, and to the first level's thrower's own entry. The
+player walked up until the thrower appeared and then stood still or
+walked back a little, so that it stayed in the level, and every logic
+frame was followed for up to 2 400 frames. A run was cut on the first
+frame the player was knocked out (from then on the throws come 10 frames
+late, as `thrower.md` says in "While the player is knocked out"). Each new ball was a throw: the frame it was first seen, and
+its `vx`, gave a throw's frame and `vx`, and the frames between one throw
+and the next gave the waits. At the thrower's own entry the thrower was
+already there at the start of each run; the player walked away until it
+was removed and back until it appeared again, and the throws were counted
+from that appearance.
+
+- In 29 runs (42 687 frames, 15 to 89 throws seen for each reference,
+  490 in all), every reference threw on the same frames, counted from the
+  frame its thrower appeared, and with the same `vx`, at both entries. So
+  the throws go with the reference, not the entry.
+- With each reference given to the entry near the start at a height 65 px
+  below the floor's top, inside the ground (10 runs, 23 995 frames, 471
+  throws), the balls stopped rising at once, but the throws came on the
+  same frames, with the same `vx`.
+- The first throw was always on `A` + 2. Every ball's `vy` was −7
+  (−1792/256), as in `thrower.md`.
+- The first level's reference threw as `thrower.md` says (the default
+  above). All ten throwers were drawn the same way, as the first level's
+  is.
+
+With these settings, the throws of every run were given to the frame and
+`vx` by the rule above: 0 different, and no throw that the rule gives was
+missing while the thrower's position was in the window (`thrower.md`,
+"The thrower"). Throws due while the thrower was outside the window and
+not yet removed were not seen, as `thrower.md` says for such throws. The
+balls then moved as `thrower.md` says, to 1/256 px on every frame of the
+29 runs above the floor (31 613 ball frames, 0 different, 467 removals,
+each on the frame the rules give).
 
 ### In the first level
 
@@ -1296,9 +1367,11 @@ on each frame: see its `README.md`.
 - Where the placement lists of levels other than the first are in the
   image.
 - The kinds of the references without a kind fingerprint row. Settings
-  of kinds other than the walkers and the `ball` ("Settings"), and any
-  settings of walkers other than the three there or of balls other than
-  their start speeds.
+  of kinds other than the walkers, the `ball` and the `thrower`
+  ("Settings"), and any settings of walkers other than the three there,
+  of balls other than their start speeds, or of throwers other than their
+  throws (for example a thrower drawn facing right; all ten measured were
+  drawn as the first level's is).
 - A placed `ball` whose placed position is below the top of a floor. In
   copies of the image with the first level's `ball` reference given to
   an entry 1 to 8 px below the top of a floor, the ball appeared as if

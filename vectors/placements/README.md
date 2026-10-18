@@ -47,8 +47,8 @@ Vectors for "Kinds" in `../../formats/placements.md`.
   `a6ba56c90978aa11c57f493b12e84636df5e08f726485164e53537cc69aaa433`.
 - `kinds-rows.tsv`: made-up kind fingerprint rows for this image, as a
   `locators.md` section would list them.
-- References to look up: `8100`, `9000`, `9010`, `ffe0`, `4000`, `9020`
-  and `9030`.
+- References to look up: `8100`, `9000`, `9010`, `ffe0`, `4000`, `9020`,
+  `9030` and `9044`.
 
 What the data exercises:
 
@@ -85,6 +85,15 @@ image and references.
   reference's objects start with: reference `9020` the given start `vx`
   and the default start `vy`, reference `9030` (no settings row) both
   defaults, and `-` for the other kinds.
+- Input: `kinds-thrower-settings-rows.tsv`, a made-up `thrower` settings
+  row for one of the two `thrower` fingerprints. Its throws are written
+  `vx:wait` in order, separated by commas, with `vx` in 1/256 px per
+  frame and the wait in frames.
+- Expected output: `kinds-thrower-settings.tsv`, for each reference the
+  throws its throwers have (the given ones for reference `ffe0`, the
+  default for reference `9044`, which has no settings row) and its first
+  seven throws as `frame:vx`, with frames counted from the frame the
+  thrower appeared (`A` = 0); `-` for the other kinds.
 
 ## Lists with sections
 
