@@ -99,6 +99,28 @@ For example, an item appearing at level y 337 rises for 414 frames: at
 the end of frame `a` + 414 it is at level y about 1.43, and on frame
 `a` + 415 it is removed.
 
+### While the player is knocked out
+
+When the player is knocked out (`knock-out.md`, hit frame H), a rising
+item that is already in the level rises as usual on H, doesn't move on
+**H + 1 to H + 10**, and rises again from H + 11. Its speed is held
+with it: on H + 11 it rises 1/256 px more than on H, as if the ten
+frames hadn't happened. So from H + 11 on, at the end of frame
+`a` + `n` it is where the rule above puts it at the end of `a` + `n` − 10.
+No logic frames run in the 32-frame pause between H + 7 and H + 8
+(`knock-out.md`), so the item doesn't move then either.
+
+After H + 10 it goes on rising while the player flies back and lies
+still. It is removed at the top as above (on the first frame its level
+y would be 0 or less, counted with the held frames), or when its entry
+leaves the window ("Going away untaken"). No item was removed on
+H + 1 to H + 10.
+
+For example, an item that appeared on frame `a` = H − 100 has risen
+99 × 100 / 512 ≈ 19.34 px at the end of H − 1 and rises 100/256 px on
+H. It is at the same place from H to H + 10 and rises 101/256 px on
+H + 11, where it would have risen 111/256 px with no knock-out.
+
 ## When an item is taken
 
 An item is taken on frame `n` when both of these hold **at the end of
@@ -411,6 +433,15 @@ and is not drawn from frame 321 on.
   removed on the frame "At the top" gives, and in the 22 runs whose step
   reached level y 0 exactly it was removed on that frame. With removal
   only below level y 0 instead, 26 runs came out wrong.
+- While the player is knocked out: 186 knock-outs in the first level,
+  forced by inputs and by moving a walker onto the player, with one of
+  its `rising-extra-life-1` items (94 runs) or its `rising-extra-life-2`
+  (92 runs) in the level from 80 to 211 frames before H, with Right or
+  nothing held from H − 1 on. Every one of the 16 523 frames of the
+  item's rise from H − 1 to its removal followed "While the player is
+  knocked out", 1 860 of them held. 181 items were removed at the top
+  and 5 past the window's left edge. Up to H the items were where they
+  were in the same runs with no hit.
 - Lives and the lives display: in every pickup in the runs above, the
   lives went up on `P` by the kind's number of lives, and the shown
   number stepped as above in 189 of the 190 pickups whose steps were
@@ -479,7 +510,10 @@ and is not drawn from frame 321 on.
   with play resuming at the level's start and at the restart point); an
   item taken before an exit stays gone after coming back (`exits.md`,
   "Coming back to the level").
-- Rising items while the game is paused or during a knock-out.
+- Rising items while the game is paused. During a knock-out: an item
+  that appears on H or later, an item touched by the player, items that
+  stay where they are placed, and the second character being the one
+  hit (`losing-a-character.md`).
 - Entries far below the picture. With the player on the floor near the
   first level's start (level y 337), an item whose entry was at level y
   433 appeared as usual, and none appeared from entries at 17 places
