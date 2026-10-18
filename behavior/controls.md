@@ -50,8 +50,8 @@ Select (`S`) and the right button (`T`). They are different inputs, and
 - **Riding** (`riding.md`): a `T` press makes the rider get off the
   animal, on the ground or in the air. Standing still, it hops up off the
   animal and comes down on its own feet; the animal stays where it was.
-  `S` does nothing while riding. Getting off frame by frame is not
-  covered yet.
+  `S` does nothing while riding. Getting off frame by frame is in
+  `getting-off.md`.
 - **On the level map:** `T` does what Jump does (`level-map.md`,
   "Pressing at a stop"); `S` does not.
 

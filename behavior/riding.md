@@ -294,8 +294,8 @@ starts on frame 40, because Right is held and the rider faces left.
 - Riding on slopes, at walls, and off ledges; near the left end of the
   measured floor (by a wall) the rider's floor was 1 px higher than the
   floor under the rider, which is not explained.
-- What the animal does to enemies, what happens when the rider is hurt,
-  and getting off the animal (a Tandem press, `controls.md`).
+- What the animal does to enemies and what happens when the rider is
+  hurt. Getting off the animal (a Tandem press) is in `getting-off.md`.
 - Objects: carrying, the crate, bonuses and anything touched while
   riding.
 - Other animals, and riding with the second character present.
