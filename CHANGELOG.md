@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.166.1
+
+1 change: the review rule for picture hashes (spec#49).
+
+Answers clamber-engine/spec#49 (naming the frames an animation shows).
+
+- `REVIEW.md`: new exception "picture hashes" next to the kind-fingerprint
+  exception, as decided on spec#49. A behavior spec may name the pictures
+  an object shows only by a SHA-256 of the decoded picture, with the
+  canonical form defined in `formats/sprites.md` and a synthetic vector,
+  and only for pictures with at least 32 non-transparent pixels. No
+  entry numbers, addresses, table layouts or bytes. Sequences and
+  durations are measured from play, and every list of hashes has a
+  stated fallback. A new checklist line asks for evidence described as
+  observation of play, not as values read from inside the running
+  program.
+
 ## spec-v0.166.0
 
 2 changes: walkers and a player carrying an object (spec#19).
