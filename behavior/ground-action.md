@@ -45,6 +45,13 @@ changes nothing.
   landing (pressed from L − 6 to L and held through L + 1) starts a
   **roll** on L + 1 even with Down held. A press on L + 1 or later with
   Down held starts the ground action on that frame.
+- **During a roll or the stop after it**: Down makes no difference from
+  the frame after the roll starts to D + 17 of a roll that ends in a stop,
+  or to D + 3 of one that carries on into running (`roll-input.md`,
+  "Down during a roll"). A press with Down held then is remembered or
+  ignored as without Down, and never starts the ground action. The first
+  frame on which a press with Down held starts it is D + 18 after a stop
+  and D + 4 after a roll that carried on.
 - **Second character**: it has no ground action. With the second
   character under control, Down held on the press frame makes no
   difference; the press starts a roll as it would without Down.
@@ -193,7 +200,6 @@ frame	input	x	y	vx	vy	state	ground	facing	events
   during the action.
 - Enemies and hits taken during the action are in
   `ground-action-enemies.md`, with their own "Not covered" list.
-- An Action press with Down held during a roll or the stop after a roll.
 - Jump, Down and Action all pressed on the same frame from standing: a
   jump starts, but later than a plain jump press. The timing isn't
   specified.
