@@ -47,8 +47,10 @@ timetable again.
 
 ## When it throws
 
-Let `A` be the frame the thrower appeared. It throws on these frames,
-for every whole `n` ≥ 0:
+Let `A` be the frame the thrower appeared. When it throws, and the `vx`
+of each ball, are the thrower's **throws** setting
+(`../formats/placements.md`, "Thrower settings"). The first level's
+thrower, measured here, throws on these frames, for every whole `n` ≥ 0:
 
 | Frame | Ball |
 |---|---|
@@ -63,13 +65,15 @@ no difference. The timetable goes on while the thrower is outside the
 window but not yet removed, and a throw due on the frame the thrower is
 removed still happens (seen once).
 
-The thrower measured was drawn facing left. Whether a thrower facing
-the other way throws in a mirrored order isn't covered.
+The thrower measured was drawn facing left, as were the throwers of the
+other throws settings measured. Throwers facing the other way aren't
+covered.
 
 ## A thrown ball
 
 A ball thrown on frame `T` starts at (`xt`, `yt` − 8), 8 px above the
-thrower's position, with:
+thrower's position, with `vy` −7 (−1792/256) and its throw's `vx`. The
+first level's thrower's balls start with:
 
 | Ball | `vx` | `vy` |
 |---|---|---|
@@ -486,5 +490,5 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   the first level: balls start above the ledge and only bounce while
   falling.
 - Walls and faces in a ball's way (none was met).
-- Throwers facing right, other timetables, and throwers in other levels.
+- Throwers facing right, and throwers in other levels.
 - How the thrower and the balls are drawn.
