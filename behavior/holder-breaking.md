@@ -301,4 +301,7 @@ Q + 32 and the character appears at (105, 40). The walker's `vx` becomes
 - With both characters there: walkers and the thrower from S + 1 to
   S + 33, breaks on enemies or at the edge of the picture, and the
   first such object (only the second was measured).
+- A face column more than 8 px higher than the object: an object
+  holding nothing breaks there too (`thrown-objects.md`, "Breaking
+  against a wall"), but this object wasn't measured against one.
 - Objects holding the missing character in other levels.

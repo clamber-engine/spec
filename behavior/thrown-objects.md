@@ -89,8 +89,11 @@ move**: the ground below level x column `c` with feet at the object's
 `c` the column named. That can be a surface above the object, within
 the band of the grid that its feet line is in. If it is more than
 **8 px** higher than the object (`F` < `y` − 8, with `y` before the
-frame), the column has no floor on that frame: the object moves as in
-the air with nothing to touch.
+frame), the column has no floor on that frame for moving: the object
+moves as in the air with nothing to touch. This limit is only for
+moving (touching, being lifted, rolling). It doesn't apply to breaking:
+"Breaking against a wall" uses the floor of the column however much
+higher than the object it is.
 
 So an object below the bottom of a platform's band (`platforms-from-below.md`)
 has the floor under the platform as its floor and moves under the
@@ -122,7 +125,9 @@ On a frame whose move would take `x` into a **different column** that
 - is a face column of a face rising in the direction the object is
   moving, and
 - has its floor ("The floor of a column") higher than the object's `y`
-  at the start of the frame (before this frame's move, up or down),
+  at the start of the frame (before this frame's move, up or down), by
+  any amount: the 8 px limit of "The floor of a column" doesn't apply
+  here,
 
 the object **breaks**. It doesn't move on that frame and is gone: it is
 never seen in that column. Pieces fly from where it was (how they move
@@ -137,10 +142,30 @@ column's floor 1 px higher than the floor before it, breaking up to
 a face column 13 px higher, breaking up to 0.5 px below, landing from
 level).
 
+A move that ends in such a column breaks the object whatever columns it
+passes on the way: on a face, the columns before it are lower than the
+one it ends in. (A move that passes face columns and ends in a column
+that isn't one is under "Not covered".)
+
 Even a face column only 1 px higher than the object breaks it, while a
 slope of 1 px per 4 columns (no face columns) doesn't. Rolling into a
 face, the object breaks on the frame whose move would take it into the
 face's first column, not before.
+
+**Measured** (breaking with no 8 px limit) at a solid face on the first
+level that rises 4 px per column, with the object moving toward it from
+the flat floor before it. Controlled frames: 64 places 0.125 px apart,
+7 speeds from 1 to 14.4375 px per frame (256/256 to 3696/256), heights
+every 0.5 px from 2 px below the floor to 52 px above it, and `vy`
+rising, 0 and falling: 146 496 starts, 432 126 frames.
+
+- 131 975 breaks. In 70 510 of them the face column was more than 8 px
+  higher than the object (up to 47 px), 8 881 of those while rolling.
+- With the rules of this file, every frame is as measured except
+  13 515 frames whose move passed face columns and ended in a column
+  that isn't one (under "Not covered").
+- With the 8 px limit also applied to breaking, 84 025 frames would
+  differ from the game.
 
 Whether the face is passable from below (`../formats/level-ground.md`)
 makes no difference: a platform's edge that rises as a face breaks the
@@ -535,7 +560,7 @@ again. Speeds in 1/256 px per frame.
 | Q + 48 | 179.87890625 | 54 | 987 | — | touches with `v` = −104: starts rolling |
 | Q + 49 | 183.69140625 | 54 | 976 | — | |
 | Q + 53 | 198.61328125 | 54 | 945 | — | |
-| Q + 54 | — | — | — | — | the move would take `x` to 202.28, a face column whose floor (45) is higher than `y` 54: breaks |
+| Q + 54 | — | — | — | — | the move would take `x` to 202.28, a face column whose floor (45) is higher than `y` 54 (9 px higher: the 8 px limit doesn't apply to breaking): breaks |
 
 ## Not covered
 
@@ -567,8 +592,9 @@ again. Speeds in 1/256 px per frame.
   no wall there, and a carried object was knocked out of the player's
   hands.
 - A move that carries `x` past face columns into a column that isn't
-  one (the object broke in 2 of the first throws and on 200 controlled
-  frames at a platform's edge, but not always), an object let go inside
+  one (the object broke in 2 of the first throws, on 200 controlled
+  frames at a platform's edge and on 13 515 at a solid face, but not
+  always), an object let go inside
   a platform's band (seen once: it broke on the next frame with no face
   in its way, moving 16 px per frame), and faces of other steepness.
 - Rolling off a ledge or down a vertical step, and slopes other than
