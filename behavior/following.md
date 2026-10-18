@@ -219,6 +219,62 @@ leads is under control. After a knock-out the other character is missing
 again, and a holder frees it again (`restart-barrel.md`, "Holders, and
 who leads").
 
+Both falling out with the second character leading was also measured
+after the restart point was reached: both were there when play resumed,
+the second leading.
+
+### At the restart point
+
+When play resumes at the restart point (`restart-barrel.md`,
+"Resuming", whose frame numbers are used here) with both characters
+there, the lead moves as given there, whichever character leads, and
+the follower:
+
+- **On frame 0** is at the restart point, at the same position as the
+  lead. The trail holds 16 points, all at the lead's whole-pixel
+  position on frame 0, and the follower's current point is the first of
+  them. The catching-up mark is clear.
+- **On frame 1** follows the trail as on any frame ("Following the
+  trail"), and the lead's point for frame 1 is added as usual.
+- **On frames 2 to 62** doesn't move, and nothing is added to the trail
+  (the lead doesn't move on these frames either).
+- **From frame 63 on** follows the trail and rests by the rules above.
+
+While the follower is at the restart point, it turns as if it stood on
+the ground there ("Facing": a 7-frame turn, not an immediate one). Like
+the lead, it isn't drawn while the barrel stands; both characters were
+first drawn on the same frame after the barrel burst.
+
+The restart point isn't on the ground (in the first level it is 9 px
+above the floor), so from frame 63 the follower steps on one point per
+frame through the copies of that point: it stays at the restart point
+until frame 77 and is at the lead's point from frame 1 on frame 78.
+From there it goes along the lead's path. With no input, for example,
+the lead falls from frame 63 and lands on frame 70. The follower then
+falls along the same heights from frame 78, lands on frame 85 and rests
+from there: it walks to the spot 28 px behind the lead.
+
+Measured on the first level with both characters falling out together
+after the restart point was reached, first or second leading, and then
+playing on from frame 0 of the resume: 66 runs of up to 343 frames, each
+of 33 input sets with each lead. 21 sets were chosen: no input; Right,
+Left, Jump or Down + Action held on frame 1 (Jump also held again from
+frame 63); walking, running or jumping from frame 63, 76, 81 or 90;
+short walks and stops; crouching. 12 were random stretches of standing,
+walking, running, jumps and crouching from frame 63. On 16 666 of the
+17 079 frames the follower's whole-pixel position and its way of moving
+(trail or resting) matched these rules. The other 413 frames were in 3
+runs. In each, the first difference was 1 px in x while the follower
+rested on sloped ground (see "Not covered"), and the other differences
+came from it. 21 runs stopped when the follower was hurt by a walker and
+one when it bounced off one. The facing differed on 103 frames: 62 of
+them within 10 frames of one of the follower's take-offs or landings, as
+in "Facing", and 41 on turns, while it rested or walked, that came on
+other frames than "Facing" gives (see "Not covered"). In 30 more runs
+(falling out from 5 places, with each lead, no input, Right from frame 1
+or Right from frame 63), both characters were at the restart point on
+frame 0 of the resume.
+
 ## Example (made-up numbers)
 
 The first character leads on flat ground at feet line 300, and the
@@ -265,8 +321,11 @@ first point (976) and follows the trail from there.
   on the trail.
 - Resting on ground that isn't flat or gently sloped, and a rest spot
   across a ledge.
-- Where each character is when play resumes (`restart-barrel.md`
-  covers where the lead is when play resumes at a restart point). How
+- Some of the follower's turns while it rests or walks after a resume
+  at the restart point came on other frames than "Facing" gives (41
+  frames in the runs of "At the restart point").
+- Where each character is when play begins again at the level's start
+  with both there (at the restart point: "At the restart point"). How
   the characters enter the first level when it begins is in
   `level-start.md`.
 - Joining from an object that breaks on an enemy, joining while the
