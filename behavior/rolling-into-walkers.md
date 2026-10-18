@@ -23,7 +23,7 @@ in `roll-speed.md` (slow 1, normal 3, fast 4); this spec adds sizes 2
 and 5 (512/256 and 1280/256 px per frame).
 
 Measured with the first character alone, on flat floor and 1-in-4
-slopes, on the two kinds of walker of `walker-contact.md`, by inputs
+slopes, on the small and large walkers of `walker-contact.md`, by inputs
 alone: 1 089 runs (about 253 000 frames, 631 defeats, 17 of them a
 second defeat in the same roll) with slow, normal and fast rolls,
 Action held, released and pressed again at every frame around a
@@ -70,9 +70,39 @@ Defeat ranges for I (both ends included):
 | small | left | −24 to 17 | −25 to 16 |
 | large | right | −19 to 28 | −20 to 27 |
 | large | left | −27 to 20 | −28 to 19 |
+| medium | right | −23 to 23 | −15 to 31 |
+| medium | left | −31 to 15 | −23 to 23 |
 
 The large walker's ranges are the small walker's widened by 3 px on each
 side, as for its hurt and bounce ranges.
+
+For every kind, facing and heading, each end of the defeat range is the
+same end of the hurt range in `walker-contact.md` ("Being hurt",
+upright pose) moved by the same amount:
+
+| Player facing | Walker heading | Low end | High end |
+|---|---|---|---|
+| right | left | 3 px higher | 1 px higher |
+| right | right | 1 px higher | 1 px lower |
+| left | left | 1 px higher | 1 px lower |
+| left | right | 1 px lower | 3 px lower |
+
+For example, the medium walker heading right hurts a player facing right
+for I from −16 to 32, and a roll facing right defeats it for I from −15
+to 31.
+
+For the medium walker, the ranges were found by placement alone: the
+player placed at every offset from −50 to 50 from a medium walker
+walking at full speed, heading left and heading right, with the player
+facing left and facing right, on the frames of slow and normal rolls
+(roll frames, the frames that end a roll and the first frames of the
+stop, up to the last of the stop's first 8 frames) and on standing
+frames and later frames of the stop: 93 attack frames and 38 other
+frames, 13 231 placements. On every attack frame the walker was
+defeated for exactly the offsets of the range above (4 371 defeats);
+on the other frames it was never defeated, and the player was hurt for
+the offsets of the hurt range of `walker-contact.md`. Fast rolls weren't
+placed against the medium walker.
 
 For the large walker with the player facing left, the ranges were
 found by placement alone: the player placed at every offset from −40 to
@@ -88,6 +118,28 @@ The ranges are the same on every attack frame: for slow, normal, fast
 and sped-up rolls (below), on the frames that end a roll, and in the
 first 8 frames of the stop. The defeat is decided on the frame itself,
 not one frame ahead as a hurt is.
+
+**A roll's first frame.** On the first frame of a roll (its S, or the
+first frame P of a boost, "The boost" below) the walker is also
+defeated when the offset taken with the player's `x` at the end of the
+frame before and the walker's `x` at the end of the first frame is
+within the range. So the range reaches further on the side behind the
+player by as much as the player moved on that frame: for a normal roll
+started while walking at 2 px per frame, a player facing right defeats
+a medium walker heading left for I from −23 to 25 on S. On S this only
+matters when the player isn't hurt on S ("Before the roll" below).
+
+For example, a player rolling right turns left with the roll's speed
+falling to 0 and then −0.5 px per frame, 32 px to the left of a medium
+walker heading left (I = −32 at the end of the frame, outside −31 to 15).
+On the boost's first frame P the player moves 1.06 px to the left; I at
+the end of P is still −32, but with the player's `x` from the end of
+P − 1 it is −31, so the walker is defeated on P.
+
+This was found by placement on the press frame of slow and normal rolls
+of both facings, against all three kinds of walker and both headings
+(1 919 placements, 900 defeats, every one as this rule says), and it
+explains one run of the chains into medium walkers below.
 
 Contact on an attack frame never hurts the player. A walker that is
 within the hurt range of `walker-contact.md` but outside the defeat
@@ -212,7 +264,10 @@ On P a **new 29-frame roll** starts:
   later ones. A roll that started fast is 8 from the fourth boost on, and
   one that started slow from the seventh (1 + 7), staying 8 after the
   eighth.
-- **Direction** stays the roll's direction. Steering works as in
+- **Direction** stays the roll's direction, except when P is in the
+  stop (or on the frame after it): the new roll then goes the way the
+  player faces on P, so a turn made in the stop (`roll-input.md`) counts.
+  Steering works as in
   `roll-speed.md` from P on, with P as the new roll's first frame: a
   direction opposite to the roll's direction, held on P or later,
   reverses it on that frame; the roll's own direction held from P + 1 on
@@ -307,6 +362,34 @@ those only the player's side was checked. The same rules with no limit,
 or a limit of 7, differ in 2 381 and 2 689 runs. The last 5 000 runs,
 recorded as a holdout: 1 865 rolls with a defeat, 8 276 defeats, 1 130
 chains of six, the limit applying in 814, 0 runs different.
+
+Chains into medium walkers were measured the same way with up to six
+medium walkers in a row heading left (26 to 40 pixels apart, each set
+walking at full speed as it came into view): 20 000 runs, about
+4 270 000 logic frames. In the first 15 000 runs, 5 308 rolls defeated
+at least one walker, with 23 341 defeats (23 154 with the player facing
+right, 187 facing left); 3 130 chains had six defeats, and in 2 264
+chains the starting size plus the boosts came to 9 or 10. Every frame
+matched the rules of this page with the medium walker's defeat ranges,
+except in six runs whose roll reached the floor's left end. The same
+rules with no limit, or a limit of 7, differ in 2 270 and 2 569 runs;
+with the small walker's ranges, in 5 303. The last 5 000 runs, recorded
+as a holdout: 1 843 rolls with a defeat, 8 052 defeats, 1 092 chains of
+six, the limit applying in 772; only one run, whose roll reached the
+floor's left end, differs.
+
+Two of these runs first differed from the rules and led to two new rules:
+one in the holdout, a defeat on a boost's first frame ("A roll's first
+frame" above, then found by placement), and one in the first set, a
+boost in the stop after the player had turned in it (the direction rule
+of "The boost"). The direction rule was then checked in 57 scripted runs
+each against the small and the medium walker: slow rolls whose stop
+meets the walker, with no turn, a turn, and a turn and back before the
+press (98 defeats, 0 runs different; with the roll's direction kept
+instead, 9 of the small walker's runs differ). The same runs against
+the large walker gave no defeat in the stop. Leaving out either rule
+makes one more of the 20 000 chain runs differ. Neither rule changes the result
+of the earlier measurements on this page.
 
 ### Several walkers in range
 
@@ -597,8 +680,9 @@ This list is for `title-1`; `title-2` has its own list above.
 - Walkers on a different floor from the player, and rolls on or off
   ledges, in the air, or jumping out of a roll (a Jump press on K + 3
   starts a jump; what happens next isn't specified).
-- Fast rolls to the left into the large walker.
-- Chains into medium walkers.
+- Fast rolls to the left into the large walker, and fast rolls into the
+  medium walker (its ranges were placed on slow and normal rolls only).
+- Chains into medium walkers heading right.
 - Which walker is defeated when several are in range on one frame, and
   when two are defeated on P rather than one.
 - Objects appearing on K + 2 (none were seen), and walkers whose first
