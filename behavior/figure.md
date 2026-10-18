@@ -185,14 +185,18 @@ one drawn from the state at the end of frame `n`, shown once frame `n`
 is over. The figure's image fits in a 34 × 34 px box; "the image at
 (`a`, `b`)" means that box has its top-left pixel at (`a`, `b`).
 
+Each figure count from 1 to 3 has a **place** at the top of the picture:
+place `c` is the image at (74 + 40 (`c` − 1), 2), so (74, 2), (114, 2)
+and (154, 2). Let `c` be the figure count after the pickup on `P`.
+
 1. **The flight.** From the picture made on `P` + 1, the image moves
-   from where the figure was drawn toward its **resting place**, the
-   image at (74, 2). Each frame it covers about an eighth of the
-   distance left, horizontally and vertically, slowing as it gets near.
-   Call **`A`** the first frame on which it is at its resting place; in
-   the cases measured `A` was from `P` + 29 to `P` + 33 (the further the
-   image has to travel, the later).
-2. **Resting.** It stays at (74, 2) from `A` to `A` + 62.
+   from where the figure was drawn toward its **resting place**, place
+   `c`. Each frame it covers about an eighth of the distance left,
+   horizontally and vertically, slowing as it gets near. Call **`A`**
+   the first frame on which it is at its resting place; in the cases
+   measured `A` was from `P` + 29 to `P` + 33 (the further the image has
+   to travel, the later).
+2. **Resting.** It stays at place `c` from `A` to `A` + 62.
 3. **Leaving.** From `A` + 63 it moves up 4 px per frame: the bottom row
    of its box is at y 31 on `A` + 63, 27 on `A` + 64, and so on to 3 on
    `A` + 70; parts above the picture's top edge aren't drawn. From
@@ -200,14 +204,48 @@ is over. The figure's image fits in a 34 × 34 px box; "the image at
 
 | Frame | Image at |
 |---|---|
-| `P` + 1 to `A` − 1 | moving toward (74, 2) |
-| `A` to `A` + 62 | (74, 2) |
-| `A` + 63 to `A` + 70 | (74, −2 − 4`k`) on `A` + 63 + `k` |
+| `P` + 1 to `A` − 1 | moving toward place `c` |
+| `A` to `A` + 62 | place `c` |
+| `A` + 63 to `A` + 70 | (74 + 40 (`c` − 1), −2 − 4`k`) on `A` + 63 + `k` |
 | `A` + 71 on | not drawn |
 
-For example, with `A` = `P` + 33 for a figure taken on frame 100, the
-image rests at (74, 2) from frame 133 to frame 195, rises from frame
-196, and is not drawn from frame 204 on.
+For example, with `A` = `P` + 33 for a figure taken on frame 100 with
+the count at 0, the image rests at (74, 2) from frame 133 to frame 195,
+rises from frame 196, and is not drawn from frame 204 on.
+
+#### The earlier figures
+
+When `c` is 2 or 3, the pictures from `P` on also show an image at each
+place from 1 to `c` − 1, one for each figure counted before. These
+images come down from above the picture and then go with the new one:
+
+| Frame | Image at each place `j` < `c` |
+|---|---|
+| `P` to `P` + 3 | not drawn |
+| `P` + `k`, `k` = 4 to 11 | (74 + 40 (`j` − 1), 4`k` − 46) |
+| `P` + 12 to `A` + 62 | place `j` |
+| `A` + 63 to `A` + 70 | (74 + 40 (`j` − 1), −2 − 4`k`) on `A` + 63 + `k` |
+| `A` + 71 on | not drawn |
+
+So the bottom row of each earlier image is at y 3 on `P` + 4, 7 on
+`P` + 5, and so on to 31 on `P` + 11, the leaving steps in reverse; as
+there, parts above the picture's top edge aren't drawn. They rest while
+the new image is still on its way, and from `A` + 63 the whole row
+rises together, on the new image's frames.
+
+This doesn't depend on what is shown of an earlier figure when the next
+one is taken. Its image may still be flying, resting, leaving or gone:
+from `P` on, only the images of this pickup are drawn, as above, and the
+earlier pickup's own resting and leaving frames don't happen. For
+example, with the count at 1, a second figure taken on frame 100 while
+the first figure's image rests at (74, 2) makes that image vanish on
+frame 100; it comes back down from frame 104, rests at (74, 2) from
+frame 112, and, with `A` = 133, rises with the new image at (114, 2)
+from frame 196.
+
+With `c` = 3, the rows above hold from `P` to `A` + 17. From `A` + 18
+the three images are shown differently, as part of what a figure count
+of 3 leads to (see "Not covered").
 
 ## Checks
 
@@ -242,6 +280,21 @@ image rests at (74, 2) from frame 133 to frame 195, rises from frame
   walking and running right and jumping left into a copy of the figure,
   and walking right into the level's own figure. `A` was `P` + 33,
   `P` + 33, `P` + 29 and `P` + 32.
+- **The earlier figures.** In a copy of the image with two copies of
+  the figure on the floor 94 px apart near the level's start, the
+  player walked or ran right into both, standing still for 0 to 160
+  frames after the first, so that the second was taken 30 to 207 frames
+  after the first: while the first image was still flying (2 runs),
+  resting (44), leaving (6) or gone (61). 21 of these 113 runs started
+  with the figure count at 1 (the second pickup made it 3); 3 more took
+  one figure with the count at 0, 1 and 2. In pictures with only
+  sprites drawn, each place's 34 px column was compared with the tables
+  from `P` to `A` + 80 (to `A` + 17 for a count of 3), apart from the new
+  image before `A`: 59 585 place-frames over 229 pickups. 59 313 were
+  as described and none different; on the other 272 the new image was
+  passing through another place's column and the picture held the
+  predicted rows and those of the passing image. Each new image arrived
+  on `P` + 33, except the 2 still flying when the next figure was taken.
 
 ## Not covered
 
@@ -259,5 +312,5 @@ image rests at (74, 2) from frame 133 to frame 195, rises from frame
   whether they share the count.
 - How a figure is drawn before it is taken, the exact path of the
   flight, and the sound.
-- Taking a figure while the image of an earlier one is still shown.
+- Figure counts above 3, and a pickup with the count already at 3.
 - Other levels.
