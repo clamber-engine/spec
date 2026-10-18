@@ -2,6 +2,18 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.155.0
+
+Facing on resuming after a knock-out facing left.
+
+Part of clamber-engine/spec#19 (object behavior), which stays open for
+the parts not covered yet.
+
+- `behavior/restart-barrel.md`, "Resuming": the player faces right from
+  a resume's first frame until an input turns it, whichever way it faced
+  when knocked out, with the runs that show it. Not covered narrowed to a
+  fall-out facing left. (spec#19)
+
 ## spec-v0.154.0
 
 Thrower settings (its throws) with fingerprint rows, and a walker
