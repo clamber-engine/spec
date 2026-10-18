@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.142.0
+
+Finishing a level with the second character leading, and the placed
+ball while the player is knocked out.
+
+Part of clamber-engine/spec#17 (the first level's layout) and
+clamber-engine/spec#19 (the first level's remaining entities). Both
+issues stay open for the parts not covered yet.
+
+- `behavior/level-end.md`, new section "The second character leading":
+  passing the end marker, the walk-out and the fade are the same with
+  the second character leading, including the walk-out speed; checks.
+  Not covered narrowed, with a new item for the follower's walk-out
+  movement. (spec#17)
+- `behavior/thrower.md`, "While the player is knocked out": a ball
+  placed in the level freezes and goes on 10 frames late like a thrown
+  ball. Not covered narrowed. (spec#19)
+
 ## spec-v0.141.0
 
 An object in the hands at a knock-out, and the thrower and its balls
