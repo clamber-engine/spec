@@ -25,7 +25,10 @@ ended at positions 1/8 to 2 px apart, and standing past the marker. For
 the marker's range the marker was also moved, up to 9 px up or down and
 up to 400 px left, with the lead walking or standing still; for the
 walk and the fade it was moved so that the lead passed it with the view
-at the level's end and 96 px before it. About 240 runs in all.
+at the level's end and 96 px before it. About 240 runs in all. With
+the second character leading and the first following, 320 runs with
+random inputs, 78 runs of small steps and 10 with the marker moved ("The
+second character leading").
 
 ## The end marker
 
@@ -138,6 +141,46 @@ begins again is in `following.md`.
 
 The lead's rise stops on `F0`: its height on `F0` is that of `F0` − 1.
 
+## The second character leading
+
+Everything above holds when the second character is the lead (after a
+swap, `swap.md`) and the first character follows it. "When the marker is
+passed" uses the second character's position, ground and the input
+held; the walk-out and the fade are as above, frame for frame. In
+particular `vx` is +2 from `T` on and `x` grows by 2 a frame from
+`T` + 1, although the second character walks at 2.25
+(`second-character.md`). `F0` + 28 is the last frame of the level, as
+above. Right held together with Down passes the marker too, as it does
+in the room.
+
+The first character went on following the lead from `T` on. Its
+movement during the walk-out is not covered.
+
+### Checks with the second character leading
+
+At the first level's end, with the second character leading and both
+characters standing left of the marker first:
+
+- **Random inputs.** 320 runs of random inputs biased to the right
+  (Right alone and with Action, Jump, Up or Down; Action, Down, Down with
+  Action, Jump, Left, Left with Action, nothing), held through the walk-out
+  and the fade too, for up to 1 500 frames. Every frame before `T`
+  (96 343 in all) was judged by "When the marker is passed", including
+  every frame of the 35 runs that never passed it (34 ended on the
+  higher floor over the marker, one left of it). In each of the 285 runs
+  that passed it, it was passed on exactly the frame the rules give,
+  with `X` − `xm` from 0 to 15 on that frame, 19 times on the landing
+  frame of a jump or fall, 7 times with Down and Right held. Every frame from `T` to `F0` + 28 (17 173,
+  with other inputs than Right alone held on 11 482 of them; one run
+  ran out of frames 19 frames after `T`) was as in "The walk-out" and
+  "The fade". No frame was different. In 4 runs played on, no logic
+  frame followed `F0` + 28 in the level.
+- **The marker's range.** 78 runs of small steps from standing near the
+  marker: frames ending 0.26 px left of `xm` with Right held didn't pass
+  it, and frames ending 0.67 px right of it did. With the marker moved
+  up or down by 3 or 4 px the lead passed it, and by 5, 6 or 7 px it
+  didn't.
+
 ## In the first level's room
 
 The room the first level's upper exit leads to (`exits.md`) has an end
@@ -238,9 +281,11 @@ last frame came 61 frames after `T`.
 - Other levels' end markers, and areas other than the first level and
   its room.
 - Passing the marker with Left and Right both held, with Down held
-  (other than in the room), on
-  the take-off frame of a jump, while carrying an object, while being
-  hit or bouncing off an enemy, and with the second character leading.
+  (other than in the room and with the second character leading), on
+  the take-off frame of a jump, while carrying an object, and while being
+  hit or bouncing off an enemy.
+- The first character's movement during the walk-out when it follows
+  the second character.
 - Whether the other character can pass the marker, and the other
   character when it is not following (joining, being carried).
 - Enemies and other objects during the walk-out.
