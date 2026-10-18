@@ -2,6 +2,31 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.154.0
+
+Thrower settings (its throws) with fingerprint rows, and a walker
+defeated by a bounce no longer touching the player.
+
+Part of clamber-engine/spec#17 (placement lists) and #19 (object
+behavior), which stay open for the parts not covered yet.
+
+- `formats/placements.md`, "Thrower settings": a `thrower` has one
+  setting, its throws (an ordered, repeating list of `vx` and wait), with
+  a default and a synthetic example. "How the thrower settings were
+  measured" says how they were measured in play. Not covered narrowed.
+  (spec#17)
+- `formats/locators.md`: nine more `thrower` kind fingerprint rows for
+  `title-1`, and a throws settings row for each of the ten. (spec#17)
+- `behavior/thrower.md`: "When it throws" and "A thrown ball" now point
+  to the throws setting; their tables are the first level's thrower.
+  (spec#17)
+- `vectors/placements/`: one more made-up `thrower` reference and new
+  `kinds-thrower-settings-rows.tsv` / `kinds-thrower-settings.tsv` (a
+  given setting and the default). (spec#17)
+- `behavior/walker.md`, "Being bounced on": from the bounce on, a
+  defeated walker no longer touches the player; `walker-contact.md`'s Not
+  covered points there. (spec#19)
+
 ## spec-v0.153.0
 
 Placed ball settings: start speeds with fingerprint rows.
