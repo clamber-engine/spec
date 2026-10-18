@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.153.0
+
+Placed ball settings: start speeds with fingerprint rows.
+
+Part of clamber-engine/spec#17 (placement lists), which stays open for
+the parts not covered yet.
+
+- `formats/placements.md`, "Ball settings": a placed `ball` has two
+  settings, start `vx` and start `vy`, each with a default, and how they
+  show on its appearance frame, with a synthetic example. "How the ball
+  settings were measured" says how they were measured in play. Not
+  covered now also lists a placed ball below a floor's top and one entry
+  above the vertical window. (spec#17)
+- `formats/locators.md`: a settings row for the `ball` fingerprint of
+  `title-1`. (spec#17)
+- `behavior/thrower.md`, "Balls placed in a level": the starting speeds
+  are the ball's settings; removed from Not covered. (spec#17)
+- `vectors/placements/`: two made-up `ball` references and new
+  `kinds-ball-settings-rows.tsv` / `kinds-ball-settings.tsv` (a given
+  setting, a default and a reference with no row). (spec#17)
+
 ## spec-v0.152.0
 
 A placed ball whose appearance would come while the player is knocked
