@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.168.0
+
+1 change: more than 99 lives (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/extra-lives.md`: new "More than 99 lives". The number of
+  lives can go past 99: gains add to it and each lost life takes one
+  off, but every lives display (from an item, the count reaching 100,
+  all four letters or a lost life) shows the number capped at 99, with
+  the usual timing and positions. The kept number is seen through later
+  lost lives: the display stays at 99 until the number is below 100.
+  Example and evidence included; the "97 or more lives" Not covered
+  item is replaced by what is still open.
+- `behavior/letters.md`: the 99-lives sentence points to that section,
+  and the extra life with 99 lives leaves Not covered.
+
 ## spec-v0.167.0
 
 1 change: thrown and carried objects at a vertical step (spec#19).
