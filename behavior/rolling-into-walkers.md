@@ -56,7 +56,9 @@ state are not attack frames.
 ## When a walker is defeated
 
 On an attack frame K, a walker walking at full speed (1 px per frame,
-`walker.md`) on the same floor or slope as the player is defeated on K
+`walker.md`; for walkers not at full speed see "Walkers that are
+speeding up or turning") on the same floor or slope as the player is
+defeated on K
 when, with both positions **at the end of K** (after both have moved on
 K), the offset **I** is within the defeat range below. I is as in
 `walker-contact.md`: the player's `x` minus the walker's `x`, both
@@ -497,9 +499,81 @@ when it leaves the window, from K + 3 on, as in `walker-view.md`
 ("Defeated walkers falling out"). In the runs measured it was there for
 the last time between K + 26 and K + 42.
 
-A walker that is turning or speeding up can be defeated too, and the
-player's pause, timing and boost are then the same. Its defeat range and
-its motion after K aren't specified.
+## Walkers that are speeding up or turning
+
+A walker that isn't at full speed can be defeated too: one speeding up
+after it appears, or one turning at the end of its patrol or at a
+barrier (`walker.md`). The player's attack frames, pause, timing and
+boost are the same as above. Such a walker moves by less than 1 px on
+K, so the range and its motion afterwards are stated in a form that
+holds at any speed.
+
+**Range.** Use the offset **I′**: the player's `x` at the end of K minus
+the walker's `x` at the **end of K − 1** (before the walker moves on K),
+both rounded down to whole pixels. Choose the column by the walker's
+**facing at the end of K − 1**. On the frame its facing changes (T + 4
+at a patrol end, S + 5 at a barrier) the old facing counts. The walker
+is defeated on K when I′ is within (both ends included):
+
+| Walker | Player facing | Walker facing left | Walker facing right |
+|---|---|---|---|
+| small | right | −17 to 24 | −16 to 25 |
+| small | left | −25 to 16 | −24 to 17 |
+| large | right | −20 to 27 | −19 to 28 |
+| large | left | −28 to 19 | −27 to 20 |
+
+For a walker at full speed this gives the same results as the table in
+"When a walker is defeated". There the walker moves exactly 1 px on K
+and faces the way it heads, so I′ = I − 1 heading left and I′ = I + 1
+heading right. A turning walker's facing and the sign of its `vx` can
+differ: at a barrier it moves right on S + 1 to S + 4 while still
+facing left, and the facing column is the one that applies. The large
+walker's facing-left rows were measured with the walker at full speed
+and turning alike.
+
+**Motion after K.** As in "The walker" above, except for `vx`:
+
+1. On K the walker moves horizontally exactly as it would have without
+   the defeat (its `vx` steps toward its target speed as usual), and
+   not vertically; its `vy` becomes −6.
+2. On K + 1 and K + 2 it doesn't move.
+3. From K + 3, on each frame: `vy` increases by 7/16, up to 8. `vx`
+   moves toward the **target speed it had on K** by the rule of
+   `walker.md` ("Walking"). The walker then moves by its `vy` and by
+   the new `vx`.
+
+From K on the walker no longer turns and its facing doesn't change. A
+turn that would have started on K + 1 or later never starts. A facing
+change that was still due (T + 4, S + 5) doesn't happen. So a walker defeated while
+speeding up or easing through a turn keeps easing toward full speed in
+the direction of its target. At full speed `vx` already equals the
+target, so this is the rule of "The walker" above. Near a barrier:
+
+- Defeated on **S**, the frame it stops at a barrier (`vx` 0), the
+  walker keeps `vx` 0 and falls straight down: the speed up from S + 1
+  never starts. In the runs measured it was removed after K + 3.
+- A falling walker isn't stopped by the barrier. Walkers defeated just
+  before S fell past it at their own speed.
+
+Example (synthetic, from the rules above). A small walker has just
+turned at the left end of its patrol: its target speed is +1, it still
+faces left, and at the end of K − 1 its `x` is 200.75 and its `vx` is
+64/256. The player faces right. Positions are relative; `y` is down
+positive, 0 at the walker's height on K.
+
+| Frame | Walker `x` | Walker `vx` (1/256) | Walker `vy` | Walker `y` | Notes |
+|---|---|---|---|---|---|
+| K − 1 | 200.75 | 64 | | 0 | facing left |
+| K | 201.09375 | 88 | −6 | 0 | player `x` 224.5: I′ = 224 − 200 = 24, defeated |
+| K + 1 | 201.09375 | 88 | −6 | 0 | pause |
+| K + 2 | 201.09375 | 88 | −6 | 0 | pause |
+| K + 3 | 201.51953125 | 109 | −5.5625 | −5.5625 | |
+| K + 4 | 202.015625 | 127 | −5.125 | −10.6875 | |
+| K + 5 | 202.57421875 | 143 | −4.6875 | −15.375 | still facing left |
+
+With the player's `x` at 225.5 instead, I′ = 25 and the walker isn't
+defeated on K. (The walker's position at the end of K, 201, would give
+24; the rule uses its position at the end of K − 1.)
 
 ## Examples
 
@@ -922,8 +996,9 @@ were recorded after the rules were fixed, as a holdout.
 
 This list is for `title-1`; `title-2` has its own list above.
 
-- Walkers that are turning, speeding up, stopped or frozen: their defeat
-  range and their motion after the defeat.
+- Walkers that are stopped or frozen, and medium walkers that are
+  turning or speeding up: their defeat range and their motion after the
+  defeat.
 - Walkers on a different floor from the player, and rolls on or off
   ledges, in the air, or jumping out of a roll (a Jump press on K + 3
   starts a jump; what happens next isn't specified).
