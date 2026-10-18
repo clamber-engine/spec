@@ -145,6 +145,10 @@ measured in play as `placements.md` says.
 | `bc061647de9b607ad9eb002282563c85bb821236cf557781087f987a0ba862aa` | `small-walker` | `left` | `−144` to `+144` | `1` |
 | `c8337d0771ac9e0feb76d90747123b32fba93ad3fe8fc5db12cd8a1a647b5910` | `medium-walker` | `right` | `−12` to `+240` | `1` |
 
+| Fingerprint | Kind | Start `vx` | Start `vy` |
+|---|---|---|---|
+| `f85e5c914a63c73583c210056c33f883bcd8fecee32b42323bb458fb6f174819` | `ball` | −1.171875 (−300/256) | −3 (−768/256) |
+
 ## `title-2`
 
 SHA-256 of the image:

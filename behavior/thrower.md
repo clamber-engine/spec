@@ -179,10 +179,11 @@ A level can also place a ball directly. It appears on the first frame
 whose `V` puts its placed `x` in the walker window (`walker-view.md`;
 measured with the view moving right only), already one frame on: on its appearance frame it has made one frame of moves
 from its placed position with its starting speeds. It isn't ignoring
-floors, and from then on it moves as above. The one on the first level
-started with `vx` −1.171875 (−300/256) and `vy` −3 (−768/256); it was
-seen appearing 11 times, always one frame on and always at the same
-position. Which speeds a placement gives isn't covered.
+floors, and from then on it moves as above. The speeds it starts with
+are its settings (`../formats/placements.md`, "Ball settings"): the one
+on the first level started with `vx` −1.171875 (−300/256) and `vy` −3
+(−768/256); it was seen appearing 11 times, always one frame on and
+always at the same position.
 
 A placed ball appears only once. After it is removed it doesn't come
 back, however the view moves, until play resumes after a knock-out or
@@ -486,5 +487,4 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   falling.
 - Walls and faces in a ball's way (none was met).
 - Throwers facing right, other timetables, and throwers in other levels.
-- What a placed ball's speeds come from.
 - How the thrower and the balls are drawn.
