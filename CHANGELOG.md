@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.171.0
+
+1 change: extra-life items going away past the window's left edge
+(spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/extra-lives.md`: "Going away untaken" now says an untaken
+  item goes away past either edge of the window of
+  `formats/placements.md`, with a worked example at the left edge and
+  the runs that show it. "Checks" adds runs with an item of each kind
+  placed near the first level's start and the view moving right past
+  it and back, with two controls. The Not covered item for the left
+  edge is removed.
+
 ## spec-v0.170.0
 
 3 changes: letters taken close together, and several extra-life items
