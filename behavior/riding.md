@@ -5,8 +5,9 @@ Titles: `title-1`
 After mounting the animal (`animal-crate.md`), the player **rides** it.
 This file covers riding on flat floor: horizontal speed, turning,
 jumping, and the **charge** that an Action press starts. Getting on is
-in `animal-crate.md`; everything else about riding is listed under "Not
-covered".
+in `animal-crate.md`; platforms passable from below are in
+`platforms-from-below.md` ("Riding"); everything else about riding is
+listed under "Not covered".
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x` and `vx`
 are as in a trace: right is positive, `vx` in px per frame. Vertical
