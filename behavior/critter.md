@@ -7,7 +7,7 @@ It is scenery: nothing in play touches it. Characters, the animal,
 walkers and thrown objects pass it as if it weren't there, it is never
 taken, it doesn't hurt, and it changes no count. This file covers when
 a critter appears and is removed as the view moves, where it appears,
-and what it does to play (nothing). How it flies is not covered.
+how it flies, and what it does to play (nothing).
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x` grows to
 the right. Horizontal positions are level positions as in `view.md`.
@@ -21,10 +21,11 @@ own critters and copies of them (see "Checks").
 
 ## Positions used
 
-- `S` is the critter's entry's level x (`../formats/placements.md`,
-  "Positions").
-- `X` is the critter's own level x, rounded down to a whole pixel, and
-  `y` its level y. They change as it flies.
+- `S` is the critter's entry's level x and `E` its level y
+  (`../formats/placements.md`, "Positions").
+- `x` is the critter's own level x and `y` the level y at which it is
+  drawn, both kept to 1/256 px. `X` is `x` rounded down to a whole
+  pixel.
 - `V` is the view's position, rounded down to a whole pixel, as it was
   at the start of the frame, and `U` the view's vertical position (the
   level y of the picture's top row, `view-vertical.md`), rounded down
@@ -33,6 +34,8 @@ own critters and copies of them (see "Checks").
   objects appear"): a horizontal position `p` is in it when
   −31 ≤ `p` − `V` ≤ 288.
 
+⌊ ⌋ rounds down and ⌈ ⌉ rounds up to a whole number.
+
 ## Appearing
 
 A critter that isn't there appears on the first frame on which its
@@ -40,26 +43,119 @@ entry is in the window, as for every class 1 or class 2 entry
 (`../formats/placements.md`, including the rule for `V` less than 32).
 
 Unlike other placed objects, a critter doesn't appear at its entry's
-position. It appears at the top of the picture: in the 304 appearances
-measured, `y` − `U` was from −7 to 2 and `X` − `V` from 14 to 245, so
-it was near the top edge and inside the picture's width. Where across
-the picture it appears was different from one appearance to the next;
-how that place is chosen is not covered. From there it flies down
-towards its entry's position.
+position. On the frame `F` on which it appears, two whole numbers are
+chosen at random: `r` from 0 to 255 and `q` from 1 to 512. The critter
+starts with (the names are those of "Flying"):
 
-On the level's first frame, the critter near the level's start is
-already there (its entry is in the window). In the runs measured it
-stood still for the first 41 frames, 90 px left of its entry and at the
-entry's level y, and was then at the top of the picture as after an
-appearance. What it does on those 41 frames is not covered.
+- `x` = `V` + `r`: somewhere across the picture's width;
+- `ux` = 4`r` if `r` is less than 128, and 4(`r` − 256) otherwise: a
+  horizontal speed of up to 2 px per frame, to the right for `r` from 1
+  to 127 and to the left for `r` from 128 to 255;
+- a flight height `z` = `U`: the picture's top row (with a fraction of
+  less than 1 px that this file doesn't fix; see "Not covered");
+- `uy` = `q`: from 1/256 to 2 px per frame, downwards;
+- its target (`A`, `B`) = (`S`, `E`), its entry's position;
+- and, for its first move, the drawn `y` of "the frame before" taken as
+  `E`, so that step 2 of that move sees no vertical distance.
+
+It makes its first move on `F` itself, so on `F` it is already drawn
+after one frame of flight: just below or above the picture's top row
+(in the 277 appearances measured during play, `r` was from 1 to 246
+and `q` from 6 to 511, and `y` − `U` was from −7 to 2).
+
+**At the level's start.** The critter near the first level's start
+has its entry in the window on the level's frame 0. It appears on
+frame 0 as above, with 0 in place of both `V` and `U`, but it doesn't
+fly on frames 0 to 40: on those frames it is drawn at `x` = `r` and at
+its entry's level y `E`. It flies from frame 41, the first move again
+seeing no vertical distance (it was drawn at `E` on frame 40). In the
+40 runs measured, every one entered from the map in the same way, `r`
+was the same each time (so it stood 90 px left of its entry).
 
 ## Flying
 
-While it is there, a critter flies about, with a small up-and-down
-flutter, and at times stays still for a while (up to 360 frames in the
-runs). In the runs it was from 87 px left to 25 px right of its entry,
-and from 266 px above to 50 px below its entry's level y. Its path, and
-where and for how long it stays still, are not covered.
+A critter flies towards a **target** (`A`, `B`), a point given in whole
+px. It keeps a horizontal speed `ux` and a vertical speed `uy`, in
+1/256 px per frame (`ux` positive to the right, `uy` positive
+downwards), and a **flight height** `z`, a level y kept to 1/256 px. It
+is drawn at (`x`, `y`) with `y` = `z` − `f`, where `f` is the frame's
+flutter (below).
+
+On each frame on which it flies, in this order:
+
+1. `ux` ← `ux` + ⌊(16 × (`A` − `X`) − `ux`) / 32⌋.
+2. `uy` ← `uy` + ⌈(4 × (`B` − ⌈`y`⌉) − `uy`) / 64⌉, with `y` where it
+   was drawn on the frame before.
+3. `x` ← `x` + `ux` / 256 and `z` ← `z` + `uy` / 256.
+4. `y` ← `z` − `f`.
+5. If −4 ≤ `X` − `A` ≤ 3 and −3 ≤ ⌈`y`⌉ − `B` ≤ 4 (with the new `x`
+   and `y`), it **perches** (below).
+
+So each speed is pulled a part of the way towards a speed that grows
+with the distance to the target: horizontally towards 1/16 of the
+distance per frame, closing 1/32 of the difference each frame;
+vertically towards 1/64 of the distance per frame, closing 1/64 of the
+difference. The critter overshoots the target and swings back about it
+until it comes close enough to perch.
+
+**The flutter** `f` takes the values 0, 2, 4, 6, 7, 5, 3, 1 px in turn,
+one per frame, and then starts again. On frame `n` of the level,
+counting frame 0 as when the level is entered from the map, `f` is the
+value at place (`n` + 2) mod 8 of that list, counting the first as
+place 0. So `f` is 4 on frame 0, 6 on frame 1 and 0 on frame 6. The
+list goes on with the frames, also on frames on which the critter
+doesn't fly. It raises the picture without changing `z`.
+
+**Perching.** On the frame `P` on which it perches the critter is drawn
+where step 4 put it. From `P` + 1 to `P` + 359 it stays exactly there:
+it doesn't move and its drawn `y` doesn't change (the flutter doesn't
+show). It flies again from `P` + 360, starting with step 1. On `P`
+itself its target becomes (`A` − 64, −16), 64 px left of the old target
+and at level y −16, and its speeds become `ux` = 512 (2 px per frame to
+the right) and `uy` = 256 (1 px per frame down), which it has when it
+starts again on `P` + 360.
+
+So a critter flies down to its entry's position, perches there, rises
+to a point 64 px further left at level y −16 and perches there, and
+then moves 64 px further left at that height each time, perching for
+359 frames between moves, until it is removed ("Removal"). Nothing else
+changes its path: the characters, the animal and other objects don't
+(see "What a critter does").
+
+**Held still.** On the frames on which the game holds the other objects
+still, a critter doesn't fly either: its position, speeds, flight
+height and drawn `y` stay as they were (the flutter list still goes on,
+so its next flying frame uses that frame's `f`). In the runs these were
+the two frozen frames after a bounce (`bounce.md`) and those after a
+roll defeats a walker (`rolling-into-walkers.md`), frames H + 1 to
+H + 10 of a knock-out (`knock-out.md`), and the 33 frames while a freed
+character joins (`holder-breaking.md`, "Everything else waits").
+
+### Example (synthetic)
+
+A critter's entry is at (400, 120). It appears on frame 1000 with `V` =
+300 and `U` = 40, and the random numbers are `r` = 40 and `q` = 256. So
+it starts with `x` = 340, `ux` = 160, `z` = 40 (taking the fraction as
+0), `uy` = 256, target (400, 120), and `y` counting as 120 before the
+first move.
+
+| Frame | `ux` | `uy` | `x` | `z` | `f` | `y` |
+|---|---|---|---|---|---|---|
+| 1000 | 185 | 252 | 340.72265625 | 40.984375 | 4 | 36.984375 |
+| 1001 | 209 | 254 | 341.5390625 | 41.9765625 | 6 | 35.9765625 |
+| 1002 | 231 | 256 | 342.44140625 | 42.9765625 | 7 | 35.9765625 |
+| 1003 | 252 | 258 | 343.42578125 | 43.984375 | 5 | 38.984375 |
+
+On frame 1000, step 1 gives 160 + ⌊(16 × 60 − 160) / 32⌋ = 160 + 25 =
+185, and step 2 gives 256 + ⌈(4 × 0 − 256) / 64⌉ = 256 − 4 = 252. On
+frame 1001, step 2 uses ⌈36.984375⌉ = 37: 252 + ⌈(4 × 83 − 252) / 64⌉ =
+252 + 2 = 254.
+
+Flying on with the same rules, it first meets the perching condition on
+frame 1338, at `x` = 399.01171875, `y` = 123.23046875 (`X` − `A` = −1,
+⌈`y`⌉ − `B` = 4). It stays there until frame 1697. Its target is now
+(336, −16), and on frame 1698 `ux` = 512 + ⌊(16 × (336 − 399) − 512) /
+32⌋ = 464 and `uy` = 256 + ⌈(4 × (−16 − 124) − 256) / 64⌉ = 244.
 
 ## Removal
 
@@ -160,11 +256,38 @@ runs.
   a critter there, which appeared at the top of the picture and flew as
   above.
 
+- **Flying.** 162 runs: 40 random walks of up to 2 400 frames (walking,
+  running, jumping and standing still both ways) from each of four
+  starts (near the first critter, two near the second, and the level's
+  first frame entered from the map), and one run of 6 000 frames
+  standing still near each critter; 231 551 frames, with a critter
+  there on 76 677. Every frame was compared with the rules above,
+  starting from what the critter was on the frame before: on all 76 278
+  frames after the first one of each stay, its `x`, flight height,
+  drawn `y`, speeds and target were as the rules give, counting
+  1 815 frames held still (40 at the level's start in each of the 40
+  runs from the map, and 215 frames in 23 holds during play: 5 after
+  bounces, 3 after rolls into walkers, 12 knock-outs, 2 characters
+  joining, and the one under "Not covered"). On all 277 appearances
+  during play and the 40 at the level's start there were an `r` and a
+  `q` that gave exactly what was seen. All 23 perches that started and
+  ended in a run lasted to `P` + 359, flying again on `P` + 360.
 ## Not covered
 
-- How a critter flies: its path, where it stays still and for how long,
-  where across the picture it appears, and its first 41 frames at the
-  level's start.
+- How `r` and `q` are chosen beyond being whole numbers in those ranges
+  (any choice in them is a possible game), and the fraction of the
+  flight height on appearing (the runs fitted with fractions from 0 to
+  255/256 px).
+- The flutter's place in its list when play doesn't begin by entering
+  the level from the map (after a knock-out, after coming back through
+  an exit).
+- A perch, or the 41 frames at the level's start, that overlaps frames
+  held still. One more hold was seen: the second character knocked out
+  with the first already lost (`losing-a-character.md`); the critter
+  stood still on 13 frames in a row from the frame after the hit, with
+  the game's 32-frame pause after the tenth of them.
+- Distances between a critter and its target of 2 048 px or more (not
+  reached in the runs).
 - Removal above or below the picture, and critters whose entry is far
   above or below the view.
 - The second object that appeared near the second critter (see "What
