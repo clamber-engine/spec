@@ -207,6 +207,29 @@ The table was measured with 5 lives before `P` for each of the four
 kinds (walking into the item, or with the player placed on it), and with 9 lives before
 an `extra-life-3` (shown 9, then 10, 11 and 12 with two digits).
 
+## More than 99 lives
+
+The number of lives can go past 99, but no lives display shows more
+than 99. This is the same however the number changes: taking an item
+here, the count reaching 100 (`count-display.md`, "Reaching 100"), all
+four letters (`letters.md`, "The lives display"), and a life lost by a
+knock-out (`knock-out.md`) or a fall-out (`falling-out.md`).
+
+- **What is kept.** A gain adds to the whole number of lives and a lost
+  life takes one from it, with no limit at 99: with 97 lives an
+  `extra-life-3` gives 100, and with 255 it gives 258; with 101 lives a
+  knock-out or a fall-out leaves 100, and with 100 it leaves 99.
+- **What is shown.** Wherever a lives display would show a number `n`
+  (the number before a change, each step, and the new number), it shows
+  `n` when `n` is 99 or less and 99 otherwise, as two digits at x 215
+  and x 225. Its timing and positions are the same as for smaller
+  numbers.
+
+So with 99 or more lives before a gain, the display shows 99 all the
+time it is drawn; with 97 lives before an `extra-life-3` its steps show
+98, 99 and 99. With 100 or more lives before a lost life it shows 99
+both before and after the life is taken off.
+
 ## Going away untaken
 
 An item that hasn't been taken is removed on the first frame on which its
@@ -270,6 +293,15 @@ and is not drawn from frame 321 on.
   seen (`S` from `P` + 41 to `P` + 47; the other one is under "The lives
   display"). The display's positions were measured frame by
   frame in 8 pickups (the four kinds, with 5 and 9 lives before).
+- More than 99 lives: 43 runs with the lives set beforehand. An
+  `extra-life-3` taken with 24 numbers of lives from 0 to 255 (including
+  every tens digit, and 96 to 100, 150 and 253 to 255); a fall-out with
+  2, 10, 99, 100, 101, 102 and 150 lives; two knock-outs each with 100
+  and 101; the count reaching 100 and all four letters, each with 98,
+  99, 100 and 150. In every run the lives after were the lives before
+  plus the gain or minus one, and on every frame on which the lives
+  number was drawn it showed the number above (the number capped at 99,
+  one digit at x 220 for 0 to 9).
 
 ## Not covered
 
@@ -281,8 +313,8 @@ and is not drawn from frame 321 on.
 - Taking an item while a lives display is still shown (from another
   item, the count reaching 100, or all four letters), and two items on
   one frame.
-- 97 or more lives before `P`: the number of lives went past 99 in the
-  runs (to 100 to 102); what is then shown and kept is not covered.
+- More than 258 lives, and whether a number of lives over 99 is shown
+  anywhere other than the lives display (for example on the map).
 - Going away past the window's left edge; whether an item that went
   away is there when the level is played again (after a knock-out, or
   coming back after an exit). An item taken is there again after a
