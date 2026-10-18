@@ -3,7 +3,8 @@
 Titles: `title-1`, `title-2`
 
 How a player moves on sloped floor: horizontal speed, height while
-grounded, stopping, jumping off and landing on a slope, and rolling.
+grounded, stopping, jumping off and landing on a slope, rolling, and the
+ground action.
 Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y` and
 `vy` are as in a trace: down is positive, speeds in px per frame.
 Measured with the lead character on gentle slopes that rise or fall
@@ -174,6 +175,12 @@ it, turns into and out of a crouch, Down pressed again just after a
 crouch, and random sequences of Left, Right, Down, Action held and
 nothing. Runs of the same inputs from different points on flat floor
 were also identical to each other (679 runs).
+
+## The ground action on a slope
+
+The Down + Action ground action on 1-in-4 slopes is the same as on flat
+floor, uphill and downhill, with `y` following "Grounded on a slope":
+`ground-action.md` "On a slope".
 
 ## Jumping from a slope
 
@@ -498,7 +505,6 @@ This list is for `title-1`; `title-2` has its own list above.
 - Whether the 5 px landing margin is ever decided by the previous
   column's floor (landings measured here were placed on the new column's
   floor in every case; none fell exactly between the two rules).
-- The Down + Action ground action on slopes.
 - Walking off the end of a slope, moving or tilting floors, and enemies
   or objects on slopes.
 - Carrying objects is in `carrying.md`. Its pick-up, carrying and throw
