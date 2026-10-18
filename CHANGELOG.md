@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.166.0
+
+2 changes: walkers and a player carrying an object (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+Carrying and walkers (spec#19):
+
+- `behavior/walker-contact.md`: new "Carrying" pose under "Being hurt":
+  the hurt range while carrying is 6 px narrower than upright, the
+  vertical reach is as upright, and bounces are unchanged. A note says
+  the carried object can hit a medium or large walker, and there is a
+  new "Evidence for carrying" section.
+- `behavior/thrown-objects.md`: new "A carried object" under "Hitting
+  walkers": a large walker that walks into the object the player carries
+  is defeated and the object breaks. It covers the ranges for each
+  facing, what happens next and a synthetic example. Cross-references
+  in `carrying.md` and `knock-out.md`.
+
 ## spec-v0.165.0
 
 21 changes: the ground action at ledges, steep faces, slopes and rises
