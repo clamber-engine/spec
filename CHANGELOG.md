@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.162.0
+
+Pick-up reach, and balls and walkers.
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/carrying.md`: "Picking up" now gives one rule (Action held
+  on the frame, the player on the ground, not carrying and not knocked
+  out, and within reach at the end of the frame before), with landing
+  and take-off within reach added. New "Reach": ranges of the object's
+  position relative to the player by facing, for a `barrel` and for a
+  `holder` looking still or shaking, which facing counts, and the
+  `holder`'s 40-frame look cycle. Not covered narrowed. (spec#19)
+- `behavior/thrower.md`: new "Balls and walkers": a thrower's balls and
+  walkers of every size pass through each other without affecting each
+  other; a ball next to a walker can still hurt the player. Not covered
+  narrowed to thrown objects meeting a ball; `behavior/walker.md` gets a
+  pointer. (spec#19)
+
 ## spec-v0.161.0
 
 Thrown objects and ground passable from below.
