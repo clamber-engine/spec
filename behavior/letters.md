@@ -120,8 +120,10 @@ A letter taken on frame `P` joins the set a little later, after its
 copy has flown to the letter row (see "The letter row"). In the two
 cases where both were measured, it joined 2 frames after the copy
 reached its place. Over all cases measured it joined on `P` + 30 (two
-cases), `P` + 31 or `P` + 33. The copy's exact path is not covered, so
-neither is the exact frame.
+cases), `P` + 31 or `P` + 33, and in the runs of "Another letter while
+the row is shown" (letters drawn in other places in the picture) from
+`P` + 6 to `P` + 35. The copy's exact path is not covered, so neither is
+the exact frame.
 
 ## All four letters
 
@@ -161,7 +163,9 @@ the frame it joins the set; see "The ending"):
    is drawn starting about where the letter was and moving toward its
    slot, slowing as it gets near: each frame it covers roughly an eighth
    of the distance left. It reached its slot on `P` + 28 or `P` + 29 in
-   the cases measured, and stays there.
+   the cases measured above (sooner when the letter was drawn nearer
+   its slot), and stays there, also while the rest of the row is still
+   sliding in.
 2. **Sliding in.** The rest of the row (the letters already in the set)
    slides in from the top, 4 px per frame: at y −12 on `P` + 2, −8 on
    `P` + 3, and so on to 16 on `P` + 9, then at y 12 from `P` + 10 on.
@@ -184,6 +188,55 @@ For example, with letters 1 and 2 already taken, take letter 3 on frame
 and (108, 12) from frame 110. Letter 3's copy reaches (132, 12) around
 frame 128. All three stay there until frame 221, and nothing of the row
 is drawn from frame 228.
+
+### Another letter while the row is shown
+
+Take a letter on frame `P1` and another one on `P2` = `P1` + `d`, with
+`d` from 2 to 127, while the row for the first is still drawn. The
+second letter is not the fourth (that case is not covered). The row's
+**end** is its last frame at y 12: `P1` + 121 after the first letter.
+What happens depends on whether `P2` comes before the end:
+
+- **`P2` before the end** (`d` from 2 to 120). The row goes on as it
+  was, without sliding in again: still sliding in when `d` is 9 or
+  less, then at y 12. Its end becomes `P2` + 121: it stays at y 12 up to
+  `P2` + 121, slides out on `P2` + 122 to `P2` + 127 (y 8, 4, 0, −4,
+  −8, −12) and isn't drawn from `P2` + 128 on.
+- **`P2` on the end or later** (`d` from 121 to 127). The first row
+  goes on as if the second letter hadn't been taken: it slides out on
+  `P1` + 122 to `P1` + 127 and isn't drawn from `P1` + 128. The second
+  letter brings in a **second row**, which follows the table above
+  from `P2` (not drawn on `P2` and `P2` + 1, y −12 on `P2` + 2, and so
+  on). Until the first is gone, both are drawn, each showing the
+  letters in the set; where they overlap, the picture shows both. From
+  `d` = 128 on only the second row is left, as for a single letter.
+
+Each letter's copy (step 1) flies to its slot and joins the set as for a
+single letter, whatever the row does.
+
+For example, with letter 4 already taken, take letter 1 on frame 100.
+The row (letter 4) slides in from frame 102 and is at y 12 from 110, and
+letter 1 joins the set around frame 130. Taking letter 2 on frame 150,
+letters 1, 4 and then 2 stay at y 12 up to frame 271, slide out on 272 to
+277, and nothing of the row is drawn from 278. Taking letter 2 on frame
+224 instead, the first row (letters 1 and 4) is at y 8, 4, 0, −4, −8 and
+−12 on frames 222 to 227, and the second row (letters 1 and 4, joined by
+letter 2 when its copy arrives) is at −12, −8, −4, 0 on 226 to 229, at
+12 from 234 to 345, and is not drawn from 352.
+
+The first level's letters are 866 px or more apart, so there this needs
+the player to get from one letter to the next in under 128 frames. In
+the checks, the player and the view were moved next to the second letter
+on `P1` + 1, and the player was then put on it on `P2`. Pairs of letters
+next to each other in the word were used (1 then 2, 2 then 3, 3 then 4),
+each with none or one of the other two letters already in the set, with
+`d` from 2 to 140 and without the second pickup: 1 260 runs. In another
+13 runs only the player was moved and the view followed by itself
+(`d` from 140 to 200). On every frame of each run, to 199 frames after
+the second pickup, where each letter in the set was drawn matched the
+rules above: 345 631 frames, 0 different. A copy that reached its slot before the
+row was at y 12 stayed at its slot (twice). The picture itself was
+checked in one run with `d` = 123.
 
 ## The ending
 
@@ -287,7 +340,9 @@ gave 99 shown throughout.
 - Being hit, bouncing, carrying, falling without a jump, landing (the
   frames from `L`, the frame carrying `land`, on), turning and the frame
   after a turn, and the stop after a roll.
-- Taking a letter while the row is still shown for another one.
+- Taking the fourth letter while the row is still shown for another
+  one, taking two letters on consecutive frames, and taking a letter
+  that comes earlier in the word than one whose row is still shown.
 - The ending while the player is knocked out, leaves the level or
   finishes it, or while another lives display (`count-display.md`) is
   shown, and what the extra life with 99 lives does.
