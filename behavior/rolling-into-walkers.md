@@ -599,6 +599,23 @@ In detail:
   earliest hurt is on the frame after `roll_end`; in a stop, nothing on
   D + 8 to D + 10 and the earliest hurt on D + 12), and the walker's motion
   after K.
+- **Chains.** A walker defeated during a boosted roll is defeated by the
+  same ranges and gives the same pause, frames and boost, with P counted
+  from the new defeat, as for the first character. Each boost adds 1 more:
+  the size on P is the roll's size on its press frame S plus the number of
+  boosts so far in the chain, but **never more than 8**. A normal roll
+  (3.375) becomes 4.375, 5.375, 6.375, 7.375 and then 8; a fast roll (4.5)
+  5.5, 6.5, 7.5 and then 8; a slow roll (1.125) 2.125, 3.125 and so on up
+  to 7.125 after six defeats and 8 after the seventh. Measured on
+  `title-1` with a row of small walkers heading left on flat floor, 22 to
+  29 px apart (up to 5 met) or 21 to 25 px apart (up to 7 met), by inputs
+  alone: 35 000 runs (14 700 000 frames, 83 712 defeats) with normal, fast
+  and slow starts, Action held, released and pressed again at random,
+  short presses against the roll's direction, and Down and Jump taps. In
+  every run the defeats, the frames, `vx` and the walkers' motion match
+  the rules. With no limit, or a limit of 9 or 8.125, 1 990 of the 15 000
+  runs with normal and fast starts don't match, and 8 112 of the 15 000
+  with slow starts; with a limit of 7, 2 286 and 8 448 don't.
 
 **The medium walker.** Rolling into the medium walker, this character's
 defeat ranges are:
@@ -861,7 +878,8 @@ This list is for `title-1`; `title-2` has its own list above.
   also held during the pause, and objects other than those listed in
   "Everything else during the pause". Whether a defeated walker can hurt
   the player while it falls.
-- Other kinds of enemies. For the second character, chains of defeats,
-  slopes, and steering a boosted slow roll.
+- Other kinds of enemies. For the second character, slopes, steering a
+  boosted slow roll, and chains into walkers heading right or into medium
+  or large walkers.
   Rolling into the thrower is in `thrower-contact.md`; the Down + Action
   ground action meeting a walker is in `ground-action-enemies.md`.
