@@ -110,6 +110,38 @@ All of the roll's timing then resumes on K + 3 where it stopped: every
 later frame of the roll, of the frames that end it and of the stop comes
 2 frames later than it would have without the defeat.
 
+### Everything else during the pause
+
+On K + 1 and K + 2 no other object moves either, as on the frozen frames
+after a bounce (`bounce.md`, "Everything else on the frozen frames").
+Every other object keeps the position, speeds and facing it had at the
+end of K: other walkers of every size, critters (`critter.md`), the
+pieces of a broken object, extra-life items that are moving
+(`extra-lives.md`) and the following character (`following.md`,
+"Pauses"). Nothing is made up afterwards: an object moving at a steady
+speed takes its next step on K + 3, so it ends up two frames behind.
+
+No object's picture changes on K + 1 or K + 2 either, the player's
+included: an object whose picture changes on K shows its next change on
+K + 3 at the earliest. The view is in `view.md` ("Frames on which the
+view stays still").
+
+Measured on the first level with the first character leading and the
+second following or absent: 280 runs of random play with frequent
+Action presses (about 3 540 000 logic frames, the lead kept from being
+hurt), with 147 roll defeats. On both pause frames, none of the 404
+objects that moved on K or on K + 3 moved or changed facing (147
+defeated walkers, 100 other small walkers, 25 other medium walkers, 18
+other large walkers, 31 critters, 11 pieces, 29 extra-life items and 43
+following characters), and the 136 of them other than the following
+character and the defeated walkers that moved at a steady speed before K
+took the same step on K + 3 as on K. None of the 386 objects whose
+picture changed on K or on K + 3 changed it on K + 1 or K + 2. Scripted
+rolls into a small walker (116 defeats) and into two large walkers (147
+defeats) gave the same, with the player's picture also unchanged on
+both frames. Walkers defeated by a thrown or rolling object rather than
+by the roll are left out here: there is no pause then.
+
 ## How the roll goes on
 
 ### Without Action
@@ -446,8 +478,11 @@ This list is for `title-1`; `title-2` has its own list above.
   starts a jump; what happens next isn't specified).
 - More than two defeats in one chain, and whether the size keeps growing.
 - Being hurt in a stop that a defeat has lengthened.
-- Whether other enemies and objects move during the pause, and whether a
-  defeated walker can hurt the player while it falls.
+- Whether timed behaviour that doesn't show in an object's position,
+  speeds, facing or picture (a walker's turn, the thrower's timetable) is
+  also held during the pause, and objects other than those listed in
+  "Everything else during the pause". Whether a defeated walker can hurt
+  the player while it falls.
 - Other kinds of enemies and the second character. Rolling into the
   thrower is in `thrower-contact.md`; the Down + Action ground action
   meeting a walker is in `ground-action-enemies.md`.
