@@ -2,6 +2,31 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.178.0
+
+2 changes: extra-life items around the four-letter ending, and bunch
+pickup ranges during the stop after a roll (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/extra-lives.md`: new "The four-letter ending" under
+  "Several items". The lives display after all four letters is the same
+  lives display, and the rules above take in its life: the letters'
+  life counts from `G`, the frames `J` + 66 to `G` − 1 are held, a step
+  comes on the first frame from `G` that isn't held for an item, and `J`
+  counts as a pickup for the number's height. Covers items taken before,
+  during and after the ending, with a worked example and checks. Not
+  covered is narrowed.
+- `behavior/letters.md`: a pointer under "The lives display".
+- `behavior/bunches.md`: new "After a roll" paragraph under "Pickup
+  ranges". With `R` the first frame after the roll, the rolling row
+  still applies from `R` to `R` + 8 during the stop and the standing
+  row applies from `R` + 9. When the roll carries on into running, the
+  rolling row applies from `R` to `R` + 2 and the standing row from
+  `R` + 3. `I` is measured in the frame's facing. Checks are included.
+  Not covered is narrowed.
+
 ## spec-v0.177.0
 
 2 changes: the count reaching 100 alongside extra-life items, and bunch
