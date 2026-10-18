@@ -446,6 +446,45 @@ the window's left edge while that run's view moved right. The run with
 the hit removed it 0 to 8 frames later than the other after a roll and
 0 to 5 frames later after the ground action.
 
+A placed ball that isn't there yet on H appears by the usual rule
+("Balls placed in a level") with the view of the run with the hit: on
+the first frame whose `V` at the start of the frame puts its placed `x`
+in the walker window, one frame on and at its usual first position.
+From then on it moves exactly as usual (it isn't held or delayed) and is
+removed by "Leaving the picture" with that run's view. If that first
+frame is H, it appears on H, as without the hit (the view at the start
+of H is the same in both runs). After H, the view decides: in the runs
+measured the view didn't move from H to H + 56, so the ball appeared 57
+to 64 frames later than without the hit, H + 58 at the earliest, or not
+at all if the view didn't come far enough.
+
+Measured on the first level: both characters walked right toward the
+placed ball, with the two large walkers kept ahead of them, and the lead
+was hit by putting a walker where it was, on each of 78 consecutive
+frames (from 76 frames before the ball's appearance in the walk to 1
+frame after it), with Right, nothing, or Right and Jump held from then
+on. Each of the 234 runs was compared with the same play with the hit
+prevented, for 200 frames or until the lead in the run without the hit
+was hit or bounced or a character in the run with the hit was knocked
+out or bounced; each was also repeated with the walkers kept 100 and 160
+px ahead, with the same appearance frames.
+
+- In 6 runs the ball appeared on H − 1 or H, on the same frame in both
+  runs.
+- In 157 it appeared on H + 1 to H + 79 without the hit and on H + 58
+  to H + 136 with it.
+- In 5 (nothing held) it appeared on H + 8 to H + 17 without the hit
+  and not within 200 frames with it.
+- In 66 (nothing held) it didn't appear in either run.
+
+In every run each appearance came on the frame the rule gives with that
+run's view, and in the runs with the hit the view never moved left
+before it. On all 22 472 frames the ball was there it was on its usual
+path, one step a frame from its appearance, and every removal was on the
+frame "Leaving the picture" gives (3 times it stayed one frame below the
+window on the frame it stopped ignoring floors, as that section says).
+No logic frame was paused on the 43 510 frames compared with the hit.
+
 ## Example
 
 A thrower is at (1000, 300). In column 1000 there are floors at y 301,
@@ -481,10 +520,11 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   `ground-action-enemies.md`.
 - While the player is knocked out: a placed ball appearing while the
   view moves left (only the view moving right was measured).
-- While a character is lost (`losing-a-character.md`): a placed ball
-  that appears after H (only thrown balls and a placed ball already
-  there on H were measured), and the second character being the one
-  hit.
+- While a character is lost (`losing-a-character.md`): the second
+  character being the one hit, and a placed ball appearing while the
+  view moves left. How the view moves after H, which decides when a
+  placed ball that isn't there on H appears, is not covered
+  (`view.md`).
 - A ball moving up into a floor from below while not ignoring floors
   (it was seen to jump several px at the floor). This doesn't happen in
   the first level: balls start above the ledge and only bounce while
