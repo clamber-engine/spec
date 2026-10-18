@@ -571,9 +571,6 @@ again. Speeds in 1/256 px per frame.
   frames at a platform's edge, but not always), an object let go inside
   a platform's band (seen once: it broke on the next frame with no face
   in its way, moving 16 px per frame), and faces of other steepness.
-- An object holding the missing character (`holder-breaking.md`) at a
-  face that is passable from below, and rising into ground from below:
-  only objects that hold nothing were measured there.
 - Rolling off a ledge or down a vertical step, and slopes other than
   1 px per 4 columns.
 - How the pieces of a broken object move and are drawn, and how the
