@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.160.0
+
+Objects meeting the ledge thrower.
+
+Part of clamber-engine/spec#19 (object behavior), which stays open for
+the parts not covered yet.
+
+- `behavior/thrown-objects.md`, new "Hitting the thrower": an object
+  that holds nothing knocks the thrower out when it meets it, thrown,
+  still in the hands during a throw, or carried. Gives the I/H ranges
+  by phase and direction, what happens to the object (a thrown one goes
+  on unaffected; one in the hands or carried breaks) and the thrower's
+  fall, one frame sooner than after a bounce, a roll or the ground
+  action. With a synthetic example and the runs that show it, plus a new
+  Not covered item. (spec#19)
+- `behavior/thrower.md`, `behavior/thrower-contact.md` ("The
+  knocked-out thrower") and `behavior/carrying.md`: pointers to the new
+  section. (spec#19)
+
 ## spec-v0.159.0
 
 Walkers and bunches during the level-end walk-out.
