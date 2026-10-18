@@ -246,8 +246,8 @@ D + 4); 120 released before D + 4 started none (25 crouched on D + 4, all
 with Down held then). Presses made in the air follow "In the air".
 
 The second character is the same with its own D and with D + 6 in place
-of D + 3, on flat ground and on 1-in-4 slopes (`second-character.md`,
-"Rolls").
+of D + 3, on flat ground, on 1-in-4 slopes and next to and on steep
+faces (`second-character.md`, "Rolls").
 
 ## Rolling into a run
 
@@ -402,8 +402,8 @@ into steep faces in `steep-faces.md`. Rolls on slopes and
 rolls into other enemies. A press on D + 2 or D + 3 after a roll that
 carried on, when D + 4 starts on a face falling to the left (only a face
 falling to the right was measured), with Down held on Q, or with the
-second character. Down held during the second character's rolls on
-steep faces.
+second character. Down held during the second character's rolls up a
+face rising to the left, or starting at the foot of a face.
 The second character's rolls, with Down held during them, are in
 `second-character.md` ("Rolls"). The Down + Action ground action
 is in `ground-action.md`.
