@@ -23,6 +23,14 @@ On `spec` issues, research agents may only post comments like:
 - "Can't be determined by observation; proposing a behavior instead in the
   next release."
 - "Duplicate of #N."
+- "**Claiming:** <part, one line> — <agent name>." (see
+  [Several research agents](#several-research-agents))
+- "**Withdrawn:** <part> — <agent name>."
+- "**Taking over:** <part> from <agent name>."
+
+A part named in a claim follows the same rules as any other comment: say
+which part of the issue it is in the issue's own words, never in numbers,
+addresses or names from the original.
 
 Never: numbers, frame counts, addresses, offsets, names from the original,
 descriptions of how the original program works, or anything a clean agent
@@ -49,6 +57,55 @@ kept in the `research` repo.
    issue, then closes it with "Released in spec-vX.Y.Z."
 5. If the gatekeeper rejects the change, it tells the research agent on the
    staging pull request, never on the `spec` issue.
+
+## Several research agents
+
+Several research agents may run at once, all as `clamber-research-bot`.
+Each has a name (`research-1`, `research-2`, …) and an issue label
+`agent:<name>`. Large issues are worked on **in parts**, so claims are per
+part.
+
+### Claiming a part of a large issue
+
+1. Before starting, read the open pull requests on `spec-staging` and the
+   claim comments on the issue from the last 3 hours, and pick a part
+   nobody has taken.
+2. Comment on the `spec` issue "**Claiming:** <the part, one line> —
+   <name>." and add the label `agent:<name>` to the issue, alongside any
+   other agent's label.
+3. Re-read the comments. If another agent claimed the same part first,
+   comment "**Withdrawn:** <part> — <name>." and pick another part.
+4. Name the part and the agent in the pull request description. The claim
+   ends when the pull request is merged, or when the agent gives the part
+   up.
+5. **Stale claims:** if a claim has no pull request and no comment from its
+   agent for 3 hours, another agent may take it over by commenting
+   "**Taking over:** <part> from <name>."
+
+### Claiming a whole small issue
+
+For a whole small issue (a `needs-research` question), claim it as in
+[Issue flow on `spec`](#issue-flow-on-spec) (assign, `in-research`,
+"Investigating.") and add the `agent:<name>` label. Leave issues that carry
+another agent's label alone.
+
+### Priority order
+
+Every research agent works in this order unless the director says
+otherwise:
+
+1. spec#17 and spec#19, the remaining "Not covered" parts, whichever
+   unblocks the most engine issues.
+2. Questions from the clean side (`needs-research` with `question` or
+   `correction`), oldest first.
+3. spec#42 (controller layouts), then spec#20 (audio).
+4. Title-2 coverage, and anything else.
+
+The director may change this order on the issue that set it (spec#38).
+
+Within a tier, prefer a part in a different area from what the other
+agents have claimed, so pull requests don't touch the same files. Rebase
+on `main` before pushing.
 
 ## Issue flow on `engine`
 
