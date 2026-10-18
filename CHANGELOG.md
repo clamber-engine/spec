@@ -2,6 +2,78 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.165.0
+
+21 changes: the ground action at ledges, steep faces, slopes and rises
+(spec#17), thrown objects at faces (spec#47, spec#17), the second
+character rolling into walkers, rolls into slow walkers, crouching
+against walkers, thrown objects against balls and pickups on landing
+(spec#19), and Action and Down around jumps.
+
+Answers clamber-engine/spec#47. Part of clamber-engine/spec#17 (level
+layout) and #19 (entities in the first level), which stay open for the
+parts not covered yet.
+
+Ground action and rises (spec#17):
+
+- `behavior/ground-action.md`, `behavior/walk-off.md`: new "At a ledge
+  without a face": the Down + Action ground action goes on over a ledge,
+  through the fall and after the landing, with Jump and Down around it,
+  a worked example and trace rows for its frames in the air.
+- `behavior/ground-action.md`, `behavior/steep-faces.md`: new "At a
+  steep face": going down a face, Jump presses on and onto a face, a
+  press on a face, rising faces and vertical steps up and down, the
+  moving start next to a rise, and `facing` on P next to a rise.
+- `behavior/ground-action.md`, `behavior/slopes.md`: new "On a slope":
+  on 1-in-4 slopes the action is the same as on flat floor, with `y`
+  following the floor.
+- `behavior/steep-faces.md`: new "Holding toward a rise": the target
+  speed kept while held toward a near rise (standing, walking, running,
+  turning, and around landings), `facing`, and when turns start next to
+  a rise, with examples. `behavior/ground-speed.md` points to it.
+
+Thrown objects:
+
+- `behavior/thrown-objects.md`: "The floor of a column" and "Breaking
+  against a wall": the 8 px limit is for moving only; a move ending in a
+  face column higher by any amount breaks the object, whatever it
+  passes. (spec#47)
+- `behavior/thrown-objects.md`, `behavior/holder-breaking.md`: new "A
+  floor more than 8 px higher": when a move into higher ground that
+  isn't a face breaks the object, and when it moves on. (spec#17)
+- `behavior/thrown-objects.md`: new "Hitting a ball": a thrown, held or
+  carried object meeting one of the thrower's balls, reach ranges by the
+  ball's turn, what happens on a hit, and a synthetic example. Pointers
+  in `ball-contact.md`, `carrying.md` and `thrower.md`. (spec#19)
+
+Rolling into walkers (spec#19), `behavior/rolling-into-walkers.md`:
+
+- New "The second character (`title-1`)": its defeat ranges against the
+  small, medium and large walkers, attack frames, the frames after a
+  defeat, the boosted roll, chains (size limit 8) and chains into other
+  walkers.
+- New "Walkers that are speeding up or turning": the range rule using
+  the walker's position and facing at the end of K − 1, for all three
+  kinds, and the walker's motion after the defeat.
+- Being hurt in a stop that a defeat has lengthened, and two defeats in
+  one stop.
+
+Contact and pickups (spec#19):
+
+- `behavior/walker-contact.md`: new "Crouching": the crouching pose
+  from D to U + 8 and its hurt ranges, with an example and evidence.
+- `behavior/bunches.md`: "Landing" rewritten: the jumping ranges hold
+  while the airborne pose goes on after the landing, then the standing
+  ones, whether the player stands, walks or runs, with a table of
+  measured landings.
+
+Player movement:
+
+- `behavior/air-control.md`: new "Action and Down around take-off and
+  landing"; `behavior/jump-input.md`: jumping from a crouch; with
+  matching changes in `ground-action.md`, `ground-speed.md`,
+  `movement-summary.md` and `roll-input.md`.
+
 ## spec-v0.164.0
 
 Walker contact at any speed.
