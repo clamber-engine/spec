@@ -205,13 +205,16 @@ is drawn from frame 228.
 ### Another letter while the row is shown
 
 Take a letter on frame `P1` and another one on `P2` = `P1` + `d`, with
-`d` from 2 to 127, while the row for the first is still drawn. When the
-second letter is the fourth, what follows holds up to the frame it joins
-the set; from then on see "The ending" ("After another letter"). The row's
+`d` from 1 to 127, while the row for the first is still drawn. It may
+come before or after the first one in the word: the order makes no
+difference to anything in this section, and each letter in the set is
+drawn in its own place in the row. When the second letter is the fourth
+(`d` from 2), what follows holds up to the frame it joins the set; from
+then on see "The ending" ("After another letter"). The row's
 **end** is its last frame at y 12: `P1` + 121 after the first letter.
 What happens depends on whether `P2` comes before the end:
 
-- **`P2` before the end** (`d` from 2 to 120). The row goes on as it
+- **`P2` before the end** (`d` from 1 to 120). The row goes on as it
   was, without sliding in again: still sliding in when `d` is 9 or
   less, then at y 12. Its end becomes `P2` + 121: it stays at y 12 up to
   `P2` + 121, slides out on `P2` + 122 to `P2` + 127 (y 8, 4, 0, −4,
@@ -251,6 +254,17 @@ the second pickup, where each letter in the set was drawn matched the
 rules above: 345 631 frames, 0 different. A copy that reached its slot before the
 row was at y 12 stayed at its slot (twice). The picture itself was
 checked in one run with `d` = 123.
+
+For `d` = 1 and for a second letter earlier in the word, the checks used
+a copy of the image in which letter 2, 3 or 4 was placed 61 px right of
+letter 1, both letters' places in the view at once. The player was put
+on one of the two letters and then on the other: letter 1 first and the
+other letter first, each with none or one of the other two letters
+already in the set, with `d` from 1 to 140 and without the second
+pickup: 2 538 runs. On all 685 260 frames, checked as above, where each
+letter in the set was drawn matched the rules, 0 different. Under a rule
+in which a letter taken before the end brings in its own row instead,
+2 160 of the 2 538 runs came out different.
 
 ## The ending
 
@@ -402,10 +416,10 @@ throughout.
 - Being hit, bouncing, carrying, falling without a jump, landing (the
   frames from `L`, the frame carrying `land`, on), turning and the frame
   after a turn, and the stop after a roll.
-- Taking two letters on consecutive frames, and taking a letter that
-  comes earlier in the word than one whose row is still shown.
 - Which letters are late in the ending when the fourth letter is taken
   120 frames or less after another (see "After another letter").
+- Taking the fourth letter on the frame after another, and taking a
+  third letter while the row is shown for two.
 - The ending while the player is knocked out, leaves the level or
   finishes it, or while another lives display (`count-display.md`) is
   shown.
