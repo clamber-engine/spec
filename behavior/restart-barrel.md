@@ -42,7 +42,13 @@ alone, by inputs only except where said:
   barrel (two hit on consecutive frames just after a turn, one walking
   left after a resume), each followed through the resume
   (122 to 197 resumed frames), with nothing, Left or Right held from
-  frame 2.
+  frame 2; and six fall-outs facing left after touching the barrel
+  (five walking back off a ledge into a pit, at two different times,
+  and one jumping into it with Left released; 257 to 297 resumed
+  frames), with nothing, Left (twice) or Right held from frame 2. The
+  player's position, action and facing on the resumed frames were
+  compared with the knock-out runs holding the same input (148, 157
+  and 197 frames).
 
 ## The barrel
 
@@ -142,10 +148,14 @@ characters, both were there, the first leading.
 Count the frames of the resumed level from 0, its first frame. The
 player faces right on frame 0 and on every frame until an input turns
 it, whichever way it faced when it was knocked out (it keeps the facing
-it had on the hit until the knock-out ends, `knock-out.md`). A player
-knocked out facing left resumed facing right, and holding Left from
+it had on the hit until the knock-out ends, `knock-out.md`) or when it
+fell out of the level (`falling-out.md`). A player knocked out or
+fallen out facing left resumed facing right, and holding Left from
 frame 2 started a turn on frame 63 (the player faced left from frame
-67 on); holding Right, or nothing, it went on as below.
+67 on); holding Right, or nothing, it went on as below. The resumed
+frames don't depend on how the level was left: with the same inputs,
+the player was in the same place, in the same action and facing the
+same way on every resumed frame after a fall-out as after a knock-out.
 
 | Frame | What happens |
 |---|---|
@@ -357,7 +367,6 @@ the barrel is touched on the third, the upright range starting at −24.
   on frame 1 (a Right moved the player 0.25 px to the right, a Jump left
   the player in the jump's action), and the player then stayed where it
   was inside the barrel until frame 62.
-- Facing on resuming after a fall-out facing left.
 - The fade-in, the sounds, how the
   pieces and the flash are drawn, where they start, when they are
   removed, and whether they touch anything.
