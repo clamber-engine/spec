@@ -168,6 +168,20 @@ with Action held on D + 4 all started a roll there (51 with Down held on
 D + 4); 186 released before D + 4 started none (35 crouched on D + 4,
 all with Down held then).
 
+With the first character these rules hold on 1-in-4 slopes as well
+(`slopes.md`), uphill and downhill. Checked with 19 200 more runs of the
+same kind, from standing still facing either way on the flat floor just
+before a dip, on its downhill side, at its flat bottom and on its uphill
+side, each run stopping when the player left the dip and the flat floor
+just before it: all 2 730 783 frames were the same with Down taken off
+as above, 149 770 of them with Down taken off while the player was on a
+slope, and 3 605 Action presses among those. Over the runs, 623 155 roll
+frames, 199 785 stop frames and 21 131 frames of rolls carrying on into
+running were on a slope. Taking Down off one frame longer changed
+122 467 frames in 2 282 of 9 600 runs. Presses on D + 2 or D + 3 after
+a roll that carried on: 311 with Action held on D + 4 all started a roll
+there; 164 released before D + 4 started none.
+
 The second character is the same with its own D and with D + 6 in place
 of D + 3 (`second-character.md`, "Rolls").
 
@@ -321,7 +335,7 @@ This list is for `title-1`; `title-2` has its own list above.
 Roll speed and steering are in `roll-speed.md`, rolls into walkers in
 `rolling-into-walkers.md`, rolling off a ledge in `rolling-off-ledges.md`, rolls on, onto and
 into steep faces in `steep-faces.md`. Rolls on slopes and
-rolls into other enemies. Down held during rolls on slopes and steep
-faces. The second character's rolls, with Down held during them, are in
+rolls into other enemies. Down held during rolls on steep faces. The
+second character's rolls, with Down held during them, are in
 `second-character.md` ("Rolls"). The Down + Action ground action
 is in `ground-action.md`.

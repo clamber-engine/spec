@@ -54,6 +54,8 @@ apply on 1-in-4 slopes exactly as on flat floor, uphill and downhill:
 - A player standing still on a slope stays still. There is no sliding.
 - Roll speeds and roll lengths are the same as on flat floor, for
   normal and fast rolls, uphill and downhill, rolling right and left.
+- Down held during a roll or the stop after one makes no difference on
+  a slope either (`roll-input.md`, "Down during a roll").
 
 ## Turning around on a slope
 
