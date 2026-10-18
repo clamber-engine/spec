@@ -425,6 +425,58 @@ number would have come in on frames 129 to 135 and shown 6 from frame
 146; the item taken on frame 147, the frame after that last step, would
 then have made it show 7, 8 and 9 from frames 183, 199 and 215.
 
+#### The four-letter ending
+
+The lives display after all four letters are taken (`letters.md`, "The
+ending") is the same lives display, and the rules above take in its
+life. `J` and `G` are as in `letters.md` ("The ending", "The lives
+display"); what follows was measured with letter 1 taken last, so `G` =
+`J` + 163. Then:
+
+- The lives go up on `J`, but the letters' life counts toward the
+  number of lives these rules compare with only from `G` on.
+- The frames `J` + 66 to `G` − 1 are held.
+- On the first frame from `G` on that isn't held for an item, the
+  countdown is set to 0, running, before the rules above apply, so a
+  step comes on that frame.
+- For the number's height, `J` counts as a frame on which an item is
+  taken: if no lives display is shown, one starts (the table in "The
+  lives display" above and the one in `letters.md` are the same); if
+  the number is moving up, it turns back; if it is coming in or at
+  y 10, nothing changes.
+- From `J` on, the number doesn't move up before the step of the third
+  rule has come. That step counts like any other for `E`.
+
+With no item, this gives the display in `letters.md`: the step comes on
+`G` (`E` = `G`), and the number moves up from `G` + 122. With an item
+(`P` and `A` as above):
+
+- Taken before `J`, with its steps over by `J` + 65: its steps come as
+  for the item alone, and one more on `G`. The number stays at y 10 up
+  to `G` + 121, however long before its steps ended.
+- With steps still due on `J` + 66 or later, taken before or after `J`:
+  none comes from `J` + 66 to `G` − 1. The next comes on `G`, and the
+  remaining ones, the letters' among them, follow 16 frames apart.
+- Taken on `G` or before, with its image arriving after `G` (`A` >
+  `G`): no step comes on `G`. The first comes on `A`, and the others,
+  the letters' among them, follow 16 frames apart.
+- Taken after `G`: the letters' step has come on `G`, and the item is
+  one taken after the last step. Its first step comes on `A` + 10, or on
+  `A` if it was taken on `G` + 1. Taken from `G` + 122 on, it turns the
+  number back or starts a new display, as above with `E` = `G`.
+
+**Example.** Letters 2, 3 and 4 are taken and the player has 5 lives.
+Letter 1 joins the set on frame 500 (`J`), so `G` is 663 and the lives
+are 6. The player takes an `extra-life-3` on frame 504 (the lives
+become 9). The number comes in for the letters: y −12 on 507, y 10 from
+513. The item's image arrives on frame 540, and the number shows 6 from
+frame 550. The next step would be due on 566, but frames 566 to 662 are
+held. The number shows 7 from 663, then 8 and 9 from 679 and 695 (`E` =
+695). It moves up from frame 817 and isn't drawn from 823 on. Had the
+item been taken on frame 564 instead, its image would have arrived on
+600, while held, and the number would have shown 6, 7, 8 and 9 from
+frames 663, 679, 695 and 711.
+
 ## More than 99 lives
 
 The number of lives can go past 99, but no lives display shows more
@@ -631,6 +683,24 @@ and is not drawn from frame 321 on.
   frames after the pause. A second press from 2 to 101 frames after the
   pausing press (800 runs) ended the pause exactly when it came 33 or
   more frames after it.
+- The four-letter ending ("The four-letter ending"): 1 106 runs in a
+  copy of the image with letter 1 placed near the first level's start,
+  an `extra-life-3` 94 px to its left and letters 2, 3 and 4 already
+  taken, as a change made for the test. The player was put on one of the
+  two and, a chosen number of frames after taking it, on the other (and
+  out of reach of both otherwise), with 1, 5 or 9 lives before: 600 runs
+  with the letter first and the item taken 1 to 360 frames after it
+  (from before `J` to after the display had ended, every frame with 5
+  lives), 500 runs with the item first and the letter taken 1 to 300
+  frames after it, and 6 runs with only one of the two taken. Of the
+  items, 556 were taken before `J`, 110 from `J` to `J` + 65, 161 from
+  `J` + 66 to `G` − 1, 220 from `G` to `G` + 131 and 53 later; none was
+  late. On all 841 666 frames the number shown and the number's height
+  were as described. With no frames held from `J` + 66, 215 runs came
+  out different; with no countdown set to 0 on `G`, 1 097; with the letters'
+  life counted from `J`, 1 032; with `J` not counting for the height,
+  771; with the number moving up before the letters' step, 335; with the
+  held frames starting on `J` + 65 or `J` + 67, 5 each.
 
 ## Not covered
 
@@ -639,9 +709,11 @@ and is not drawn from frame 321 on.
 - Taking an item while landing (the frames from `L`, the frame carrying
   `land`, to `L` + 6), turning and the frame after a turn, falling
   without a jump, the stop after a roll, being hit, bouncing, carrying.
-- Taking an item while a lives display from all four letters is still
-  shown, the count reaching 100 more than once in one lives display, and
-  rising items with the count reaching 100.
+- The count reaching 100 more than once in one lives display, and rising
+  items with the count reaching 100. With the four-letter ending ("The
+  four-letter ending"): a letter other than letter 1 taken last, late
+  items, more than one item, the count reaching 100 during the ending, a
+  knock-out during it with an item taken, and 97 or more lives.
 - When an item is late ("Late items"), other than the first level's own
   two `extra-life-3` items. In the three-item runs of "Checks" it
   depended on where the items were placed and not on how long the player
