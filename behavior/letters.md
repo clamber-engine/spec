@@ -530,8 +530,9 @@ letter (`H` up to `J` − 12) gave no hit.
 - The ending while the player leaves the level or finishes it, or while
   another lives display (`count-display.md`) is shown. A knock-out with
   `H` before `J` − 11 (between the pickup and the copy reaching its
-  slot), with 99 lives, or with a letter other than letter 1 taken last
-  (only the rules in terms of `G` were checked, with `G` = `J` + 163);
+  slot), with 99 lives, with a letter other than letter 1 taken last
+  (only the rules in terms of `G` were checked, with `G` = `J` + 163), or
+  with the fourth letter taken after another ("After another letter");
   losing a character (`losing-a-character.md`) during the ending; and
   how the image beside the lives number is drawn during a knock-out.
 - In one setup, with the player rolling from the pickup on, the lives
