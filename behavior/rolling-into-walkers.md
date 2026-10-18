@@ -197,8 +197,9 @@ bounced on") with B = K: on K it moves horizontally as usual but not
 vertically and its `vy` becomes −6; on K + 1 and K + 2 it doesn't move;
 from K + 3 its `vy` increases by 7/16 per frame, up to 8, and it moves
 by its `vy` and by the `vx` it had on K. It doesn't land and is removed
-once out of view. In the runs measured it last moved between K + 26 and
-K + 42; when it is removed isn't specified.
+when it leaves the window, from K + 3 on, as in `walker-view.md`
+("Defeated walkers falling out"). In the runs measured it was there for
+the last time between K + 26 and K + 42.
 
 A walker that is turning or speeding up can be defeated too, and the
 player's pause, timing and boost are then the same. Its defeat range and

@@ -86,10 +86,65 @@ view can bring the start back in from either side. A walker that comes
 back starts afresh: it is at its start, at rest, with its placed heading.
 
 A walker that has been **defeated** never comes back. That covers a walker
-bounced on (`walker.md`) or rolled into (`rolling-into-walkers.md`). It
+bounced on (`walker.md`), rolled into (`rolling-into-walkers.md`) or hit
+by a thrown object (`thrown-objects.md`, "Hitting walkers"). It
 stays away however the view moves afterwards, including when its start
 leaves the window and comes back in. This held in every run measured:
-2685 frames in which a defeated walker's start was in the window.
+2685 frames in which a defeated walker's start was in the window, and
+three runs in which the player walked on after a hit until the start of
+the walker hit had left the window and then walked back until it was in
+the window again.
+
+## Defeated walkers falling out
+
+A defeated walker falls through the floor (`walker.md`, "Being bounced
+on"; `rolling-into-walkers.md`; `thrown-objects.md`, "The walker") and is
+removed when its own position leaves the window. Where its start is
+doesn't matter.
+
+From its first falling frame on, it is removed on the first frame on
+which, after that frame's move,
+
+- `X` − `V` < −31 or `X` − `V` > 288, with `X` its `x` rounded down and
+  `V` as in "The view position used", or
+- its `y` is more than 256 px below the picture's top row: `y` − `U` >
+  256, with `U` the view's vertical position (`view-vertical.md`: the
+  level y of the picture's top row), rounded down to a whole pixel.
+
+These are the edges of the window above and the bottom edge of the
+vertical window in `../formats/placements.md`, applied to the walker
+itself. Its `y` is compared with its fraction: 256 below `U` stays,
+256.0625 below is removed.
+
+The first falling frame is:
+
+| Defeated by | Not removed on | Checked from |
+|---|---|---|
+| a bounce (`walker.md`) or a roll (`rolling-into-walkers.md`), defeat frame B | B, B + 1, B + 2 | B + 3 |
+| a thrown object (`thrown-objects.md`), hit frame K | K, K + 1 | K + 2 |
+
+On the frames before, the walker stayed even when it was far outside
+the window: with `X` − `V` of −200 and 300 on B + 1 and B + 2, and with
+`X` − `V` of −204 and 396 or `y` − `U` of 303 on K + 1. On the first
+checked frame it is removed if it is already outside, so a walker hit
+while well left or right of the picture is there for the last time on
+K + 1.
+
+So a walker defeated near the picture usually leaves through the bottom
+edge. In the first level, on flat floor and with the view standing
+still, a small walker bounced on is there for the last time on B + 41,
+and a small walker hit by a thrown object on K + 40, both 95 px below
+the floor they had walked on.
+
+Measured on the first level: 434 walkers hit by thrown objects (small
+and large; 13 038 falling frames; 321 removed at the bottom edge, 81 at
+the left edge and 32 at the right), 21 small walkers bounced on (812
+frames) and 33 rolled into (1 231 frames), with no frame differing from
+the rule. Then, walkers were put at chosen places before their first
+checked frame and on later frames: `X` − `V` of −31 and 288 stayed, −32
+and 289 were removed; with the view moving right, on 24 frames `X` − `V`
+was −31 with the view position from the start of the frame and −32 or
+−33 with the one from its end, and the walker stayed.
 
 ## Groups
 
@@ -142,8 +197,11 @@ ahead of a view standing at 1500. Its start is far outside the window
   and groups are placed is in `../formats/placements.md`.
 - Walkers far above or below the view. Levels that scroll mostly
   vertically.
-- When a defeated walker leaves the level while falling (`walker.md`
-  gives its last measured move).
+- A defeated walker above the picture, and `U` changing while a defeated
+  walker falls: in every run measured the view's vertical position stayed
+  the same while defeated walkers fell, so whether `U` is taken at the
+  start or at the end of the frame wasn't seen. Large walkers bounced on
+  or rolled into (only small ones were measured for these).
 - Whether defeated walkers come back after the player is knocked out or
   falls out of the level and the level starts again.
 - Any limit on how many walkers or objects can be in the level at once.
