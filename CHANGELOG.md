@@ -2,6 +2,36 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.175.0
+
+2 changes: picture hashes and the player's pictures when held still
+(spec#44, under the director's spec#49 decision), and late extra-life
+items and three items in one lives display (spec#19).
+
+Answers clamber-engine/spec#44. Part of clamber-engine/spec#19
+(entities in the first level), which stays open for the parts not
+covered yet.
+
+- `formats/sprites.md`: new "Picture hashes". A frame's picture is
+  named by the SHA-256 of a canonical form: the box of opaque pixels,
+  then one colour number per pixel, not mirrored. Only full frames with
+  at least 32 opaque pixels have one. The importer decodes every full
+  frame, hashes it and matches. Includes a synthetic example.
+- `vectors/sprites/`: `hashes.tsv` (the picture hashes of the made-up
+  full frames) and `hash-input-35.hex` (every byte hashed for one of
+  them).
+- `behavior/player-frames.md` (new): which picture each character shows,
+  and for how long, in the stop after a roll, through a jump and its
+  landing, and on a bounce's frozen frames, with each picture named by
+  its picture hash. If any hash of a section isn't found, the engine
+  shows its own art there with the same timing. Measured from what was
+  on screen, with worked examples.
+- `behavior/extra-lives.md`: three or more items in one lives display
+  follow the same rules. New "Late items": a late item counts as if taken
+  one frame later, and of the first level's own two items the right one
+  is late. Includes a worked example. When other items are late is under
+  Not covered, with what was seen. Checks are included.
+
 ## spec-v0.174.0
 
 4 changes: rising extra-life items gone untaken and then an exit, during
