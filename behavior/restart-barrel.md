@@ -395,6 +395,15 @@ again gives what it gave the first time. This was measured with each of
 them taken, broken, bounced on, knocked out or set off after the restart
 point had been reached, and with a bunch also before it.
 
+**Extra-life items that went away untaken.** A `rising-extra-life-1` or
+`rising-extra-life-2` item that appeared and went away without being
+taken before the knock-out (`extra-lives.md`, "Going away untaken"),
+whether it rose out of the level or went away past the window's left
+edge, is there again after the resume, at the level's start and at the
+restart point. It appears when its entry comes into the window and
+rises as on a first visit, and taking it gives its lives. Without a
+knock-out it stays gone.
+
 Measured: 27 runs with a knock-out, each set of taken objects paired
 with a control run that took nothing before its knock-out, judged in 151
 checks, none different (8 more runs looked at the objects' places too
@@ -424,6 +433,19 @@ The thrower knocked out by a bounce or a roll was measured in 8 more
 runs, 4 sets (a bounce and a roll, each resuming at the level's start
 and at the restart point) each with a control in which the thrower
 wasn't knocked out: it was seen at its place after the resume in all 8.
+The first level's three rising extra-life items going away untaken
+were measured in 16 runs: two ways of going away (all three left to
+rise out of the level, or the view moved right until each had gone past
+the window's left edge), each resuming at the level's start and at the
+restart point (reached after the items had gone), each with a control
+in which the items hadn't appeared before the knock-out (in the
+restart-point controls, the item nearest the restart point had appeared
+and risen out of the level while the restart point was reached). In
+half of the runs each item's place was watched after the resume, in the
+other half each item was taken: the same items appeared and gave the
+same lives as in the control, judged in 84 checks, none different. In 2
+more runs without a knock-out, taking the items right after they had
+gone found none of them and gave no lives.
 
 ## What is there again after a fall-out
 
@@ -517,7 +539,8 @@ the barrel is touched on the third, the upright range starting at −24.
   not listed there (among them tyres and `hidden-metal-barrel`), objects
   moved in other ways (thrown without breaking, put down in other
   places), extra-life items of kinds `rising-extra-life-1` and
-  `rising-extra-life-2` after resuming at the restart point, the single
+  `rising-extra-life-2` taken before the knock-out, after resuming at
+  the restart point (those that went away untaken are above), the single
   collectibles, a knock-out with both
   characters there in other ways than after breaking a holder (for
   example both there at the level's start), and where the missing
