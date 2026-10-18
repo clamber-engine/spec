@@ -27,7 +27,9 @@ variations of its approach jump (start, length, extra jumps, rolls,
 crouches). That play included 56 pickups, all mid-jump, and each came on
 the frame the rules give. In all 56, every item reached the count on the
 frame the rules give, including 35 where some items flew and some were
-counted at once.
+counted at once. Two characters (the second character leading, and the
+character that follows) were measured separately; see "Two characters"
+under "Pickup ranges".
 
 ## A bunch's position
 
@@ -106,6 +108,55 @@ and the player then stands still, the jump row still applies from `L`
 to `L` + 3. The standing row applies from `L` + 4. Landing while
 walking or running is not covered.
 
+### Two characters
+
+With two characters there (`second-character.md`), one leads and the
+other follows it. The ranges above are the first character's when it
+leads, with or without the second character following.
+
+**Only the lead takes.** Whether a bunch is taken depends on the
+leading character's offsets alone. The character that follows never
+takes one, even with the bunch inside its own ranges and outside the
+lead's. This holds with either character leading.
+
+**Second character leading.** With the second character leading, its
+own ranges apply:
+
+| State | `I` | `D` |
+|---|---|---|
+| Standing | −12 to 11 | −10 to 38 |
+| Walking, rolling | −18 to 12 | −6 to 38 |
+| Crouching (Down held on the ground) | −19 to 14 | −9 to 25 |
+| Jumping, from the take-off frame `T` until it lands | −18 to 12 | −6 to 38 |
+
+Its jumps have one row: unlike the first character's, there is no
+change at `T` + 6, and none with speed. With the second character
+leading, Down + Action gives a roll and uses the rolling row. Its
+landings are not covered.
+
+For example, the second character standing facing left takes a bunch
+with `xb − X` from −12 to 11, so with `X` from `xb` − 11 to `xb` + 12.
+
+Measured on the first level. The bunch was moved to chosen offsets from
+one character, one pixel apart, with both characters in poses reached by
+inputs only: standing, walking, crouching, rolling (also with Action
+held on from the roll), and frames of jumps from take-off to landing
+(Jump held, released early, from a run, facing left). A letter was
+measured the same way. With the second character leading, every pose
+gave exactly the ranges above, facing either way, for both (801 125
+placements). With the bunch or the letter moved to offsets from the
+character that follows, in six poses of the lead with either character
+leading (261 630 placements), it was taken on exactly the placements
+that put it inside the lead's ranges. 54 773 of those placements put it
+inside the follower's own ranges and outside the lead's; none of them
+took it.
+
+Separately, play by random inputs alone was checked against the rules,
+at a bunch and at a letter, with each character leading: 543 287
+frames with 511 pickups by the lead (509 mid-jump), each on the frame
+the rules give, and no pickup on a frame they don't give. Another 22 pickups came in states listed under
+"Not covered" (landing, bouncing) and weren't checked.
+
 ## Releasing the items
 
 A taken bunch releases its ten items one at a time, on frames `P`,
@@ -149,7 +200,8 @@ is taken.
 
 ## Not covered
 
-- The second character, leading or following, touching a bunch.
+- The second character's landings and running state, and its ranges
+  in the states listed in the next item.
 - The ranges while bouncing off a walker (`bounce.md`), while being
   carried down a steep slope or a rounded ledge (`steep-faces.md`), while
   passing through a platform (`platforms-from-below.md`), while carrying
