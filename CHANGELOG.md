@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.167.0
+
+1 change: thrown and carried objects at a vertical step (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/thrown-objects.md`: new "Breaking at a vertical step". An
+  object holding nothing that moves into the upper side of a 64 px
+  vertical step up breaks when it is more than 8 px below the upper
+  floor; otherwise it meets that floor by the "In the air" rules. An
+  object in the hands reaches beyond the step and isn't broken: the
+  player is stopped at the step and gets onto the upper side only by
+  jumping. The barrier in `walker.md` "Turning at a barrier" is the
+  lower of the two steps measured. Evidence included; the "Places that
+  stop walkers" Not covered item is replaced by what is still open.
+- `behavior/walker.md`: the barrier measured is this step, nothing is
+  drawn there, and it stops the player as in `steep-faces.md`. Not
+  covered narrowed.
+- `behavior/holder-breaking.md`: "Carried up to a barrier": the exit,
+  not the barrier, lets go of the object (`exits.md`).
+
 ## spec-v0.166.1
 
 1 change: the review rule for picture hashes (spec#49).
