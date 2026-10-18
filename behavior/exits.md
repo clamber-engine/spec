@@ -62,7 +62,10 @@ that ends with all of these true:
 
 Call that frame **`T`**. Only the lead is taken over. In the runs with
 two characters, the other character (`following.md`) was never taken
-over; it went on following the lead.
+over. From `T` on, up to and including the area's last frame, it
+follows the lead as in `following.md`: the lead's positions in the
+walk-out are added to the trail like any others, and it rests, waits
+and steps on by the same rules.
 
 A player moving right is never taken over, however close: a lead that
 walks right past an exit and stops in its reach is taken over on the
@@ -201,8 +204,18 @@ level after the scene.
 - **The other character**, if there is one (`following.md`), walks in
   with the lead: on frames 0 to 26 it is 28 px behind (`x` − 28`d`,
   same `y`) and moves the same 3 px per frame, and on frame 27 it
-  doesn't move. Afterwards it follows the lead (not checked frame by
-  frame).
+  doesn't move.
+- **Its trail.** On frame 27, before it moves, the other character's
+  trail (`following.md`, "The trail") is replaced by 16 points, oldest
+  first: (`xo` + ⌊28`k``d` / 16⌋, `yo`) for `k` = 0 to 15, where
+  (`xo`, `yo`) is its own whole-pixel position. They go 1/16 of the way
+  per point toward the lead's frame-26 position (28 px ahead), which is
+  not itself one of them. The first point is its current point, and the
+  catching-up mark is clear. In the level and in the room it follows the
+  trail from frame 27 on ("Following the trail" there): on frame 27 it
+  stays where it is (step 1 puts it on its own point), and the lead's
+  frame-27 position is added at the end of that frame as usual. In the
+  scene it doesn't follow ("The scene").
 - **Fade-in.** The brightness (as in "Leaving the area") is `j` on
   frames 3`j`, 3`j` + 1 and 3`j` + 2 for `j` from 0 to 14, and 15 from
   frame 45 on.
@@ -405,6 +418,15 @@ other character is at 292 on frame 0 and 370 on frames 26 and 27. The
 brightness is 0 on frames 0 to 2, 1 on frames 3 to 5, 14 on frames 42 to
 44 and 15 from frame 45. With nothing held, frame 28 has `vx` = 2.625
 and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
+On frame 27 the other character's trail becomes 370, 371, 373, 375,
+377, 378, 380, 382, 384, 385, 387, 389, 391, 392, 394, 396 (all at
+`y` = 150), and the lead's 404 is added at the end of the frame. The
+other character stands on the ground at 370 and the newest point is
+then 396, 26 px away: on frame 27 the catching-up mark stays clear and
+it doesn't step on. On frame 28 the newest point is 404 (34 px): the
+mark is set, and it steps on from frame 29, reaching 371 on frame 30.
+Walking left (`d` = −1) from an other character at 500, the points are
+500, 498, 496, 494, 493, … , 473 (the last is 500 + ⌊−420 / 16⌋).
 
 ## Checks
 
@@ -464,6 +486,30 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   started from the moved record (frames 0 and 27 as in "Walking in", and
   the level's start as in `level-start.md` from the moved room-return
   point); the first level's own start record was left as it was.
+- **Two characters.** 400 runs with the other character following,
+  each started standing still after the level's entrance, the lead first
+  moved by random inputs biased to the left (Left, Left with Jump or
+  Action, Jump, Down, Down with Left, Right, Action, none) until an
+  exit took it over, then random inputs of every kind (also Up) to the
+  end: 200 from near the floor exit and 200 from the high ground near
+  the upper exit. 399 left through an exit (151 into the scene, 248 into
+  the room) and many went on: back into the level after the scene,
+  through the room's way out (`level-end.md`) to the level's start, and
+  into the scene again. In 100 of the runs the other character was
+  nearer the exit than the lead on `T`. Checked frame by frame against
+  `following.md` from the frame before `T`, with the trail as it was
+  there: 399 walk-outs, 18 916 frames, no difference. 647 walk-ins (248
+  into the scene, 248 into the room, 151 back into the level; 18 116
+  frames) were as in "Walking in". From frame 27 on, starting from the
+  trail given there: 34 167 frames back in the level after the scene
+  and 39 855 in the room, no difference; the room's frames stopped at
+  the first frame the lead was on or thrown by the tyre (127 visits).
+  In the 248 scenes the other character stayed where it was on frame 27
+  to the scene's last frame (66 054 frames). In 150 starts after the
+  room it was as in `level-start.md` ("The second character") on every
+  frame up to the lead's landing (16 200 frames), and followed the lead
+  as in `following.md` afterwards (30 252 frames from its own landing,
+  with the trail as it was there).
 - **Coming back from the room.** 41 runs leaving the room with Right
   held, one with no input afterwards and 40 with random inputs from
   frame 1: the lead was the same as at the level's own start from the
@@ -740,8 +786,11 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   on frames 0 to T − 1 of the level's start after the room
   (`level-start.md`), and how the rider and the animal are drawn during
   the walk-out and the walk-in.
-- The other character after frame 27; two characters walking into the
-  room (only the lead alone was measured there).
+- The other character's facing from `T` on and after a walk-in
+  (`following.md` gives its turns only away from take-offs and
+  landings), and the other character meeting the room's tyre: in the
+  room, the other character was checked only up to the first frame on
+  which the lead stood on the tyre or was thrown by it (`tyre.md`).
 - How far left of the exit the reach goes, and the reach of states not
   in the table: rolls stopping or getting up (taken over at `I` up to 28
   to 30, by picture), crouching after the slide has stopped (up to 28 in
@@ -750,9 +799,6 @@ and `x` = 406.625; with Right held, `vx` = 2.875 and `x` = 406.875.
   taken over at `I` 29 and 30, the frame before at 32 and 33), riding,
   and the frames of a landing after the landing frame. How far the
   vertical range changes with the lead's state.
-- What the other character does from `T` on. In the runs it went on
-  following the lead (`following.md`) and was in the next area with it;
-  this was not checked frame by frame.
 - What a trace shows from `T` on (`../traces/VOCABULARY.md` has no state
   for the walk-out), and which picture shows each step of the fade.
 - Walkers, thrown objects or other objects meeting the lead during the
