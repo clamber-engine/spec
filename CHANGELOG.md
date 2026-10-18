@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.157.0
+
+A placed ball appearing after a character is lost, input on frame 1 of
+a resume, and how a critter flies.
+
+Part of clamber-engine/spec#19 (object behavior), which stays open for
+the parts not covered yet.
+
+- `behavior/thrower.md`: when a placed ball whose appearance would come
+  while a character is lost appears, with the runs that show it. Not
+  covered narrowed. (spec#19)
+- `behavior/restart-barrel.md`, "Resuming": new "Input on frame 1".
+  What Left/Right, Jump, Down + Action and the other inputs held on a
+  resume's frame 1 do on that frame and from frame 63 on, with the runs
+  that show it. Not covered narrowed. (spec#19)
+- `behavior/critter.md`: how a critter flies: where it appears and its
+  starting speeds, steering towards a target, the flutter, perching and
+  moving on, frames held still, and the level's first 41 frames, with a
+  synthetic worked example and the runs that show it. Not covered
+  narrowed. (spec#19)
+
 ## spec-v0.156.0
 
 Facing on resuming after a fall-out facing left.
