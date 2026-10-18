@@ -141,8 +141,9 @@ to walk again on S + 34, in 7 throws.)
 
 - **Carried**: it doesn't break. A walker reaching a player who is
   carrying it hurts the player as usual (`walker-contact.md`; with the
-  lead alone, a knock-out), and the object was let go without breaking
-  (seen once; what happens to it isn't covered).
+  lead alone, a knock-out), and the object is let go without breaking
+  and falls away, still holding the missing character (`knock-out.md`,
+  "An object in the hands").
 - **During a throw** (Q to Q + 21, still in the hands): on **Q + 1 to
   Q + 20** a walker breaks it, at its position in the hands, by the
   ranges for t from 1 to 16 (measured: small walker facing left, object
@@ -201,8 +202,7 @@ Q + 32 and the character appears at (105, 40). The walker's `vx` becomes
 
 ## Not covered
 
-- How the object moves after a bounce makes the player let go of it,
-  and what a carried one does when a walker hurts the player.
+- How the object moves after a bounce makes the player let go of it.
 - Throwers and balls with the object moving left, balls moving sideways,
   other enemies; walkers other than the small walker facing left with
   the object moving right (the ranges of `thrown-objects.md` are assumed

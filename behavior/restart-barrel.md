@@ -222,6 +222,9 @@ visit:
 - a **holder** (kind `holder`, `holder-breaking.md`) picked up and put
   down unbroken somewhere else: it is at its entry's place again, still
   holding the missing character, and nothing is where it was put down;
+- the **barrel** or a **holder** still in the hands at the knock-out
+  (`knock-out.md`, "An object in the hands"): it is at its entry's place
+  again (a holder still holding the missing character);
 - a **holder** broken: see "Holders, and who leads" below.
 
 **Holders, and who leads.** A holder broken before the knock-out frees
@@ -248,8 +251,9 @@ in the list above except the letters (above): a bunch, the figure, the
 barrel, the animal crate, the hidden bunch, a medium walker, the large
 walkers, the thrower, the `extra-life-3` items and the hidden barrel are
 there again, whether their places are left or right of the restart point;
-so are a small walker, the barrel and a holder put down elsewhere (at
-their entries' places) and a holder broken.
+so are a small walker, the barrel and a holder put down elsewhere or
+still in the hands at the knock-out (at their entries' places) and a
+holder broken.
 Where it was measured (a bunch, the figure, the `extra-life-3` items, the
 animal crate and the hidden barrel), taking, breaking or setting them off
 again gives what it gave the first time. This was measured with each of
@@ -274,7 +278,13 @@ reaching the restart point), judged in 138 checks the same way plus who
 led and which character was missing after the resume and after breaking
 the holder again, none different. With both characters there the lead
 was walked into the walkers, so these runs could take bunches on the
-way; the count after the resume was the count at the knock-out.
+way; the count after the resume was the count at the knock-out. The
+barrel and a holder (the one nearer the level's start) still in the
+hands at the knock-out (picked up, then Action held through the hit)
+were measured in 8 more runs, 4 sets each with a control (each also
+after reaching the restart point), judged in 44 checks the same way plus
+the object being in the hands on the frame before the hit, none
+different.
 
 ## Example
 
@@ -316,10 +326,10 @@ the barrel is touched on the third, the upright range starting at −24.
   ground action.
 - After a knock-out ("What is there again after a knock-out"): kinds
   not listed there (among them tyres and `hidden-metal-barrel`), objects
-  moved in other ways (carried at the knock-out, thrown without
-  breaking, put down in other places), extra-life items of kinds
-  `rising-extra-life-1` and `rising-extra-life-2` after resuming at the
-  restart point, the single collectibles, a knock-out with both
+  moved in other ways (thrown without breaking, put down in other
+  places), extra-life items of kinds `rising-extra-life-1` and
+  `rising-extra-life-2` after resuming at the restart point, the single
+  collectibles, a knock-out with both
   characters there in other ways than after breaking a holder (for
   example both there at the level's start), where the missing character
   is when both holders are broken, and a fall-out instead of a

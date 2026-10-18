@@ -70,6 +70,71 @@ Call **F** the frame of the third landing. The player stays where they
 are, not moving, on F and the **153** frames after it. **F + 153** is the
 last logic frame of the level; then the level ends.
 
+## An object in the hands
+
+A `barrel` or a `holder` (`carrying.md`) still in the player's hands at
+the end of H − 1 is let go on H and falls away on its own. This includes
+an object carried with Action held and one whose throw (`carrying.md`,
+"Throwing") began on H − 1, so that it hadn't left the hands yet; that
+throw never happens. Input from H on makes no difference.
+
+- **On H** the object is where it was held at the end of H − 1 (where a
+  held object is relative to the player is not covered, see
+  `carrying.md`). Its `vx` becomes **1** (256/256) in the direction the
+  player faces on H, and its `vy` becomes **−4** (−1024/256, moving
+  up).
+- **When it starts moving** depends on the kind:
+  - a **barrel** doesn't move from H to H + 10, like the player, and
+    moves from **H + 11**;
+  - a **holder** moves from **H + 1**.
+- **Every frame it moves**, `vy` increases by **0.4375** (112/256), but
+  never above **8** (2048/256); then `x` moves by `vx` (exactly 1 px)
+  and `y` by the new `vy`. Nothing else changes `vx`. Nothing happens
+  to it during the 32-frame pause.
+- It **touches nothing**: it passes through floors, faces and walls
+  without landing, bouncing, rolling or breaking (a holder keeps the
+  missing character, `holder-breaking.md`), and it doesn't touch the
+  walker or the player.
+- It is **removed** on the first frame on which, after the move, its `x`
+  is less than 0, or its `y` rounded down is 256 or more below `U`, the
+  view's vertical position at the start of the frame, rounded down as in
+  `../formats/placements.md` ("When placed objects are removed"). If
+  neither happens first, it is gone when the level ends.
+
+This is the same motion as an object let go during an exit's walk-out
+(`exits.md`, "An object in the lead's hands"), starting from H instead
+of `T` + 1, and for a barrel held still for 10 more frames.
+
+A barrel let go by a player facing left, relative to where it was held
+at the end of H − 1 (a holder: the same rows 10 frames earlier):
+
+| Frame | `x` | `y` | `vy` | Note |
+|---|---|---|---|---|
+| H to H + 10 | 0 | 0 | −4 | not moving yet |
+| H + 11 | −1 | −3.5625 | −3.5625 | first move |
+| H + 12 | −2 | −6.6875 | −3.125 | |
+| H + 19 | −9 | −16.3125 | −0.0625 | highest point |
+| H + 20 | −10 | −15.9375 | 0.375 | falling |
+| H + 38 | −28 | 65.375 | 8 | at the cap from here |
+
+Mirror image (`x` positive) when facing right.
+
+Measured: 108 knock-outs by a small walker in the first level with the
+player alone and carrying an object, each followed until the object was
+removed (4 440 object frames): 46 with the barrel (23 facing left and 17
+facing right with Action held, standing, walking either way or turning
+at the hit; 6 with the throw begun on H − 1) and 62 with a holder (31
+facing each way). On every frame from H to the removal, the object's
+`x`, `y`, `vx` and `vy` were as the rules above give, to 1/256 px, and
+it was removed on the frame they give; the holder kept the missing
+character throughout. In those runs the barrel was removed below the
+picture 44 to 48 frames after H (the view moving differently) and the
+holder 38 frames after H. In 36 more runs that put
+the walker on the player during a throw, from the frame after the throw
+began to 20 frames after it with the barrel and to 22 with a holder, the
+object still in the hands hit the walker and broke
+(`holder-breaking.md`), and the player was not hurt.
+
 ## In a trace
 
 - State `hurt` on every row from H to the last frame. Event `hurt` on H.
@@ -283,6 +348,9 @@ This list is for `title-1`; `title-2` has its own list above.
   landings on the slope's floor height).
 - Hits during a roll or a bounce. Falling out of the level is in
   `falling-out.md`.
+- Objects other than a `barrel` or a `holder` in the hands at the hit,
+  hits during a throw other than on the frame after it began, and how
+  walkers and other objects move from H to H + 10.
 - What happens after the last frame: the screen transition and any count
   of remaining tries. Where play resumes after a restart point has been
   reached is in `restart-barrel.md`; otherwise, where play begins.

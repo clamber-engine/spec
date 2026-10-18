@@ -228,7 +228,9 @@ player's position on the frame before G:
   the object, but not when jumping over it), and picking up during other
   actions (turning, crouching, landing, being hit).
 - Where the object is drawn or how it collides with anything while it is
-  held, and carrying into walls or enemies.
+  held, and carrying into walls or enemies (when a walker knocks out a
+  player alone who carries an object, what the object does is in
+  `knock-out.md`, "An object in the hands").
 - What a thrown object does when it first touches a character. Bouncing,
   rolling and breaking against walls for an object that holds nothing
   are in `thrown-objects.md`; when an object that holds the missing
