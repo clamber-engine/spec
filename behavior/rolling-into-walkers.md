@@ -126,6 +126,16 @@ included: an object whose picture changes on K shows its next change on
 K + 3 at the earliest. The view is in `view.md` ("Frames on which the
 view stays still").
 
+Placed objects still appear during the pause as the view brings them in
+(`../formats/placements.md`, "When placed objects appear"). A walker
+that appears on K + 1 is at its placed position on K + 1 and K + 2 and
+takes its first step on K + 3: from K + 3 on it moves exactly as a
+walker does from the frame it appears, two frames late. Measured for
+small walkers whose first step is on the frame they appear (first step
+`0`): 172 such appearances in the slow-start chain runs ("More
+defeats"), all at the placed position on both pause frames and on the
+ordinary path of a walker's first four frames from K + 3 to K + 6.
+
 Measured on the first level with the first character leading and the
 second following or absent: 280 runs of random play with frequent
 Action presses (about 3 540 000 logic frames, the lead kept from being
@@ -189,7 +199,9 @@ On P a **new 29-frame roll** starts:
   **8**. After one defeat: slow 1 → 2, normal 3 → 4, fast 4 → 5. After a
   second defeat and boost in the same chain, a roll that started normal
   is 5; after the fifth it is 8, and it stays 8 after the sixth and
-  later ones. A roll that started fast is 8 from the fourth boost on.
+  later ones. A roll that started fast is 8 from the fourth boost on, and
+  one that started slow from the seventh (1 + 7), staying 8 after the
+  eighth.
 - **Direction** stays the roll's direction. Steering works as in
   `roll-speed.md` from P on, with P as the new roll's first frame: a
   direction opposite to the roll's direction, held on P or later,
@@ -215,7 +227,7 @@ If there is no frame P, the roll goes on as in "Without Action".
 
 A walker defeated during a boosted roll is defeated by the same rules
 and gives the same pause, timing and boost, with P counted from the new
-defeat. Chains of up to six defeats were measured, and none of these
+defeat. Chains of up to eight defeats were measured, and none of these
 rules changed along a chain except that the size stops growing at 8
 (see "Size" above). Each boost follows "The
 boost" above, with its own P to P + 32; the chain ends once a roll and
@@ -237,6 +249,22 @@ differ in 1 839 and 2 058 runs. The last 5 000 runs were
 recorded after the rules were fixed, as a holdout: 1 362 rolls with a
 defeat, 6 299 defeats, 870 chains of six, the limit applying in 623
 chains, 0 runs different.
+
+Rolls that started slow were measured on the same floor with eight
+small walkers heading left (about 32 pixels apart as they came into
+view): 20 000 runs of random input (a walk right without Action, then
+the press with no direction held, Action held, released and pressed
+again at random, mostly no direction during the chain with occasional
+short Right or Left presses and Jump presses), about 5 500 000 logic
+frames. In the first 15 000 runs, 7 876 rolls defeated at least one
+walker, with 59 518 defeats; 7 075 chains had eight defeats, and in
+6 672 chains a slow start plus eight boosts came to 9, so the limit
+applied on the eighth boost. All matched the rules of this page except
+one run whose roll reached the wall at the floor's left end (walls
+aren't covered here). The same rules with no limit, or a limit of 7,
+differ in 6 813 and 7 129 runs. The last 5 000 runs, recorded as a
+holdout: 2 588 rolls with a defeat, 19 646 defeats, 2 378 chains of
+eight, the limit applying in 2 259, 0 runs different.
 
 ## Speed on roll frames
 
@@ -499,9 +527,10 @@ This list is for `title-1`; `title-2` has its own list above.
 - Walkers on a different floor from the player, and rolls on or off
   ledges, in the air, or jumping out of a roll (a Jump press on K + 3
   starts a jump; what happens next isn't specified).
-- A roll that started slow reaching the limit (seven boosts); chains into
-  walkers heading right, and into medium or large walkers, longer than
-  two.
+- Chains into walkers heading right, and into medium or large walkers,
+  longer than two.
+- Objects appearing on K + 2 (none were seen), and walkers whose first
+  step is on the frame after they appear, appearing during the pause.
 - Being hurt in a stop that a defeat has lengthened.
 - Whether timed behaviour that doesn't show in an object's position,
   speeds, facing or picture (a walker's turn, the thrower's timetable) is
