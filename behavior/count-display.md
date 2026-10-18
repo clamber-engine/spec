@@ -106,7 +106,10 @@ edge, and only its lowest rows are drawn.
 
 The lives display after all four letters are taken is in `letters.md`,
 "The ending", and the one after an extra-life item is taken in
-`extra-lives.md`, "The lives display".
+`extra-lives.md`, "The lives display". The count reaching 100 while the
+lives display of an extra-life item is shown, or before an item is
+taken while its own is shown, is in `extra-lives.md`, "The count
+reaching 100".
 
 ## Losing a life
 
@@ -225,7 +228,8 @@ frame 342; it isn't shown from frame 343.
   pickup). A lives display that is sliding in or out on `H`, or that is
   shown on `Z`, and a knock-out whose `G` would come before `A` + 6.
 - A count step from 99 to 0 together with another one on the same frame,
-  a lives display started while one is still shown, and 10 or more
-  lives, other than in "Losing a life".
+  a lives display started while one is still shown (other than with
+  extra-life items, `extra-lives.md`, "The count reaching 100"), and 10
+  or more lives, other than in "Losing a life".
 - How the images and digits are drawn and animated.
 - Other levels, and pausing.
