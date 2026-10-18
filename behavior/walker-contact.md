@@ -201,6 +201,20 @@ player is hurt on the next frame, from the positions at the end of the
 frame of the hit. A small walker was never hit by the carried object in
 these measurements (player on its floor or up to 45 px above it).
 
+The same carrying ranges hold when the object holds the missing
+character (`holder-breaking.md`). But a medium or large walker that
+meets that object breaks it, and then **doesn't hurt the player**: the
+frame after the hit is the first frame of the pause while the character
+joins, and when play goes on the walker has been hit. A walker that
+reaches the player from behind without meeting the object hurts as
+above. Measured with the placements of "Evidence for carrying" for all
+three kinds, at two of its three frames and without the extra heights
+in the air (63 336 placements): the walker met the object on exactly
+the same placements as with an ordinary object, and every placement
+without a hit gave the same hurt or bounce as with an ordinary object.
+On the 21 144 placements with a hit the player was never hurt; with an
+ordinary object, 16 020 of them were hurts on the next frame.
+
 ### Poses
 
 The rules above use the poses of `ball-contact.md`. The parts that
@@ -732,8 +746,7 @@ This list is for `title-1`; `title-2` has its own list above.
 - Contact after a bounce, or being knocked back; a crouching player on
   a slope or with the walker on another floor. Carrying: contact during
   the pick-up and the throw, with the walker on another floor or on a
-  slope, a carried `holder`, and bounces with the player pressed against
-  a wall.
+  slope, and bounces with the player pressed against a wall.
   Rolls into walkers are in `rolling-into-walkers.md`.
 - Rolling off a ledge onto a walker, and runs off a ledge (a run starts
   with a roll). Walk-offs were measured from ledges without a face 48
