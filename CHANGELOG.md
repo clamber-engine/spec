@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.141.0
+
+An object in the hands at a knock-out, and the thrower and its balls
+while the player is knocked out.
+
+Part of clamber-engine/spec#17 (the first level's layout) and
+clamber-engine/spec#19 (the first level's remaining entities). Both
+issues stay open for the parts not covered yet.
+
+- `behavior/knock-out.md`, new section "An object in the hands": a
+  barrel or holder still in the hands at a knock-out is let go on the
+  hit frame and falls away without touching anything until it is
+  removed; when each kind starts moving, worked table, measurements.
+  `behavior/holder-breaking.md` and `behavior/carrying.md` point to it.
+  `behavior/restart-barrel.md`: such an object is at its entry's place
+  again after the resume. Not covered narrowed. (spec#17)
+- `behavior/thrower.md`, new section "While the player is knocked out":
+  the thrower and every ball stop for 10 frames after the hit frame,
+  then go on 10 frames late. Not covered narrowed. (spec#19)
+
 ## spec-v0.140.0
 
 Holders and who leads after a knock-out, more kinds there again, and the
