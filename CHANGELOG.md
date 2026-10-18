@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.150.0
+
+Exits and wall exits at the vertical window, and a placed ball while a
+character is lost.
+
+Part of clamber-engine/spec#17 (the first level's layout) and
+clamber-engine/spec#19 (the first level's remaining entities). Both
+issues stay open for the parts not covered yet.
+
+- `formats/placements.md`, "When placed objects are removed": wall
+  exits join the table's second row. A closed wall exit follows the
+  window alone; an open one also needs the vertical window, as an exit
+  does, and comes back closed once removed. An exit in a class 2 entry
+  is there from `y` − `U` −31 to 256; the Not covered item now concerns
+  the exit reference in a class 1 entry. `behavior/wall-exits.md` gets a
+  pointer and loses its Not covered item about a reopened wall exit.
+  (spec#17)
+- `behavior/thrower.md`, "While a character is lost": a placed ball that
+  is there on H goes on as without the hit, and is removed by "Leaving
+  the picture" with each run's own view. Not covered narrowed. (spec#19)
+
 ## spec-v0.149.0
 
 The view while the player is knocked out.
