@@ -528,7 +528,8 @@ walkers on screen): 0 mismatches.
 This list is for `title-1`; `title-2` has its own list above.
 
 - Walkers that aren't walking at full speed (turning, speeding up,
-  stopped at a barrier, frozen) and walkers already bounced on.
+  stopped at a barrier, frozen). Walkers already bounced on don't touch
+  the player (`walker.md`, "Being bounced on").
 - Contact while crouching, carrying, after a bounce, or being knocked
   back. Rolls into walkers are in `rolling-into-walkers.md`.
 - Rolling off a ledge onto a walker, and runs off a ledge (a run starts

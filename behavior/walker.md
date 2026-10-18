@@ -118,6 +118,23 @@ position on B:
 It reaches the top of its arc 38.1875 px above the floor on B + 15, and
 is below the floor from B + 29.
 
+From B on, the walker no longer touches the player, wherever it is on
+its fall: it never hurts the player (`walker-contact.md`, "Being hurt"),
+and the player never bounces off it again.
+
+Measured on the first level with all three kinds of walker: 304 bounces
+in random play (290 different). From 20 frames of each, from B + 1 to
+B + 41, the walker was put on the player on every frame up to B + 41,
+and each run was compared with the same play where it was left to fall.
+On 92 278 frames it ended the frame within 4 px across and 10 px up or
+down of the player (the player rising on 22 685 of them, falling on
+47 803 and on the ground on 23 269). On every frame the player was the
+same in both runs. In 714 of these runs the player was on the ground
+when the walker was first put there (3 311 frames on the ground; on
+2 639 of them the walker ended the frame at the player's height). In
+192 of those runs a walking walker was put on the player the same way:
+it hurt the player in 161, on the next frame.
+
 ## Examples
 
 Synthetic. A walker heading left at full speed with a patrol range
@@ -311,9 +328,9 @@ floor, 1-in-4 slopes and a 1-in-2 slope.
 This list is for `title-1`; `title-2` has its own list above.
 
 
-- Whether a walker defeated by a bounce can still hurt the player while
-  it falls. Walkers defeated in other ways are in `thrown-objects.md`
-  ("Hitting walkers") and `rolling-into-walkers.md`.
+- Whether walkers defeated in other ways (`thrown-objects.md`, "Hitting
+  walkers", and `rolling-into-walkers.md`) can hurt the player while they
+  fall, and the second character touching a walker defeated by a bounce.
 - Ledges and steep faces: one walker was seen to follow a steep face
   down and fall off its end without turning, then land on the floor
   below; this isn't specified. Walkers on other slopes.
