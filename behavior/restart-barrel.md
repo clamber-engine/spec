@@ -384,16 +384,18 @@ character, as on a first visit.
 **After resuming at the restart point**, the same is true of every kind
 in the list above except the letters (above): a bunch, the figure, the
 barrel, the animal crate, the hidden bunch, a medium walker, the large
-walkers, the thrower, the `extra-life-3` items and the hidden barrel are
-there again, whether their places are left or right of the restart point;
+walkers, the thrower, the extra-life items of all three kinds and the
+hidden barrel are there again, whether their places are left or right
+of the restart point;
 so are a small walker, the barrel and a holder put down elsewhere or
 still in the hands at the knock-out (at their entries' places) and a
 holder broken.
-Where it was measured (a bunch, the figure, the `extra-life-3` items, the
+Where it was measured (a bunch, the figure, the extra-life items, the
 animal crate and the hidden barrel), taking, breaking or setting them off
 again gives what it gave the first time. This was measured with each of
 them taken, broken, bounced on, knocked out or set off after the restart
-point had been reached, and with a bunch also before it.
+point had been reached, and with a bunch and the `rising-extra-life-1`
+and `rising-extra-life-2` items also before it.
 
 **Extra-life items that went away untaken.** A `rising-extra-life-1` or
 `rising-extra-life-2` item that appeared and went away without being
@@ -429,6 +431,15 @@ were measured in 8 more runs, 4 sets each with a control (each also
 after reaching the restart point), judged in 44 checks the same way plus
 the object being in the hands on the frame before the hit, none
 different.
+The first level's three rising extra-life items taken before a knock-out
+with play resuming at the restart point were measured in 8 more runs, 2
+sets each with a control in which only the restart point was reached: all
+three taken and then the restart point reached, or the two farther from
+the restart point taken, the restart point reached and then the nearest
+one taken. In half of the runs each item's place was watched after the
+resume, in the other half each item was taken: the same items appeared
+and gave the same lives as in the control (all three, 4 lives in total),
+judged in 36 checks, none different.
 The thrower knocked out by a bounce or a roll was measured in 8 more
 runs, 4 sets (a bounce and a roll, each resuming at the level's start
 and at the restart point) each with a control in which the thrower
@@ -538,10 +549,7 @@ the barrel is touched on the third, the upright range starting at −24.
 - After a knock-out ("What is there again after a knock-out"): kinds
   not listed there (among them tyres and `hidden-metal-barrel`), objects
   moved in other ways (thrown without breaking, put down in other
-  places), extra-life items of kinds `rising-extra-life-1` and
-  `rising-extra-life-2` taken before the knock-out, after resuming at
-  the restart point (those that went away untaken are above), the single
-  collectibles, a knock-out with both
+  places), the single collectibles, a knock-out with both
   characters there in other ways than after breaking a holder (for
   example both there at the level's start), and where the missing
   character is when both holders are broken.
