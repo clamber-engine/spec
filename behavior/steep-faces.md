@@ -122,7 +122,81 @@ jump's take-off frame ("Jumping on or next to a face").
 Measured standing at every 1/16 px across the boundary in front of a
 face rising to the right, a face rising to the left and a vertical step
 (rising to the left), and at the positions where players came to rest
-by themselves.
+by themselves. Frames held toward a rise that don't start at `vx` 0 are
+in "Holding toward a rise" below; this rule is the case of that one in
+which the previous frame's target was 0.
+
+## Holding toward a rise
+
+This section is `title-1` only. It covers grounded frames on which Left
+or Right is held toward a rise as in "Can't start toward a rise": the
+column 5 columns ahead of the player's column in the held direction is
+8 px or more higher than the player's column. It holds whatever `vx` is
+when the frame starts.
+
+**Target speed.** On such a frame the target speed (`ground-speed.md`)
+doesn't follow the held direction. It is on the same side as the
+previous frame's target: 2 px per frame (3 with Action held) in the
+direction of the previous frame's target, or 0 if that target was 0. A
+frame that was blocked ("Stopped by a rise") counts as having target 0.
+When the previous frame is itself such a frame, its target was decided
+the same way, so the side carries over from the last frame on which the
+held direction was not toward a rise like this. The speed rule then
+applies as on any grounded frame. So:
+
+- A player who is standing still, or who has just been blocked, has
+  target 0 and stays where they are: this is "Can't start toward a
+  rise".
+- A player walking toward the rise keeps walking toward it until the
+  move is blocked.
+- A player moving away from the rise who then holds toward it keeps
+  going away, speeding up toward 2 (3 with Action held), as long as
+  the column 5 ahead in the held direction stays 8 px or more higher.
+- A player slowing down with nothing held (target 0) who then holds
+  toward the rise keeps slowing down under target 0.
+
+In one run seen, the speed reached exactly 0 under the speed rule while
+the side was still away from the rise (the player was reversing). On
+the next frame the player started moving away from the rise again,
+although that frame started with `vx` 0.
+
+**Facing.** While standing or walking (the modes of `ground-speed.md`,
+"Standing, walking and running"), holding toward such a rise turns
+`facing` to the held side on that same frame, without the 8-frame turn.
+
+Example, walking left away from a face that rises to the right, then
+Right held (`x` relative to the start, 1 px to the left of the left edge
+of the face's first column, facing left). Right is held from frame 3,
+but the target stays −2 and the player keeps speeding up to the left;
+`facing` turns right on frame 3. On frame 5 the player's column is far
+enough from the face that the column 5 ahead is no longer 8 px higher,
+and the usual rules apply from then on.
+
+```
+frame	input	x	y	vx	vy	state	ground	facing	events
+0	.	0	0	0	0	idle	1	L	
+1	L	-0.25	0	-0.25	0	walk	1	L	
+2	L	-0.71875	0	-0.46875	0	walk	1	L	
+3	R	-1.37890625	0	-0.66015625	0	walk	1	R	turn
+4	R	-2.203125	0	-0.82421875	0	walk	1	R	
+```
+
+### Evidence (holding toward a rise)
+
+- 3 000 runs of random Left, Right, Left + Action, Right + Action or
+  nothing, 1 to 8 frames at a time, for 60 frames, from standing
+  0 to 12 px in front of a rise (a face rising to the right, starting
+  facing left or right; a 64 px vertical step rising to the left): on
+  153 035 grounded frames the target speed matched this rule and
+  `ground-speed.md` with 0 differences (1 710 blocked frames left
+  out). 20 987 of these frames were held toward the rise: 15 389 with
+  target 0 (14 653 of them starting at `vx` 0), 3 642 with the target
+  toward the rise and 1 956 with it away from the rise. With the target
+  taken from the held direction alone, 17 336 frames differ.
+- `facing` on the 17 077 frames held toward the rise while standing or
+  walking: the held side on every one, 621 of them turning on that
+  frame.
+- No running frames came up in these runs.
 
 ## Speed on a face
 
@@ -855,6 +929,9 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
   faces steeper or less steep than 4 px per column, and a vertical step
   rising to the right.
 - Differences of 6 and 7 px in the "can't start" rule.
+- "Holding toward a rise": `facing` when holding toward a rise during a
+  turn, holding toward a rise while running, and on the frames after a
+  landing up to the switch frame M.
 - How a trace's `state` names frames on a face (the vocabulary has no
   name for being carried down a face).
 - Entities, moving platforms and the other character.
