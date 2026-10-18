@@ -92,6 +92,12 @@ H − 1**, both of these hold:
      the **closing pictures** of the airborne pose ("Poses" below).
    - **crouching** (on the ground, "Crouching" below): the player and the
      walker on the same floor (measured with U 0).
+   - **carrying** (on the ground or in the air, "Carrying" below): as
+     upright: on the ground the player and the walker on the same floor
+     (measured with U 0), in the air U at most **11** (small walker),
+     **24** (medium walker) or **37** (large walker). These tops were
+     measured 5 frames after the Jump press; at 5 px above the walker's
+     floor the player is reached on every frame of the jump measured.
 
 So a hit is always decided one frame ahead: the frame on which the
 player first overlaps the walker is an ordinary frame, and the player is
@@ -115,7 +121,7 @@ Hurt ranges for I (both ends included):
 The ranges are those of the upright pose. They were the same standing,
 walking and in the air (measured on both ends for the small and medium
 walkers, and at the low end for the large walker in the air). The
-airborne, fidget and crouching poses change them.
+airborne, fidget, crouching and carrying poses change them.
 
 **Airborne pose.** In the airborne pose the end of the hurt range on the
 side behind the player moves 3 px in:
@@ -167,6 +173,33 @@ by a medium walker heading right for I from −19 to 23, and a player
 facing left by a large walker heading left for I from −19 to 24.
 Measured for all three kinds of walker, both facings and both headings
 ("Evidence for crouching").
+
+**Carrying.** A player who carries an object (`carrying.md`: from
+G + 15 of the pick-up, while Action stays held) has the carrying pose on
+every frame: standing, walking, turning, in the air through the whole
+jump, landing and after it. A jump made while carrying never takes the
+airborne pose. In the carrying pose the hurt range for I shifts:
+
+- facing right: the low end is 1 px higher and the high end 5 px lower;
+- facing left: the low end is 5 px higher and the high end 1 px lower.
+
+So the carrying range is 6 px narrower than the upright one, and the
+player is reached 1 px later by a walker in front and 5 px later by one
+from behind. The facing is the player's facing at the end of H − 1, as
+for any hurt; in a turn it changes on the fifth frame of the turn
+(`carrying.md`, "Carrying"). For example, a player facing right and
+carrying is hurt by a small walker heading left for I from −18 to 19,
+and a player facing left by a medium walker heading right for I from
+−17 to 25 and by a large walker heading left for I from −23 to 20.
+Measured for all three kinds of walker, both facings and both headings
+("Evidence for carrying"). Bounces while carrying use the bounce ranges
+and limits below unchanged.
+
+A medium or large walker that meets the object the player carries can be
+hit by it (`thrown-objects.md`); the rule above still decides whether the
+player is hurt on the next frame, from the positions at the end of the
+frame of the hit. A small walker was never hit by the carried object in
+these measurements (player on its floor or up to 45 px above it).
 
 ### Poses
 
@@ -475,6 +508,36 @@ including 774 hurts). 0 mismatches while crouching. The only 4
 mismatches were landing frames with a small walker, the case listed
 under "Not covered" (which picture shows on the landing frame).
 
+## Evidence for carrying
+
+On the opening floor of the first level, with the first character alone,
+carrying an object (in modified copies that put an object at the start
+of the floor, and replace the first walker as in "Evidence for walkers
+that aren't at full speed": a large walker, small walkers with and
+without a patrol, a medium walker). At three frames with the walker
+walking at full speed, heading left, and with its heading set to the
+right 30 frames earlier, the player was placed at offsets one pixel apart
+(−45 to 45), facing right and left, with Action held all the time:
+standing, walking toward the facing side, turning (the new direction
+first held 0 to 10 frames before H − 1), early and late in a jump (Jump
+held from 1 to 20 frames before H − 1; 5 px above the walker's floor),
+landing after a short jump (Jump pressed 10 to 40 frames before H − 1,
+on the walker's floor), and falling onto the walker (bounces, 15 px
+above). In the air, at one frame per heading, heights 6 to 45 px above
+the walker's floor were also tried. 1 408 frames of play, 184 912
+placements: 54 768 hurts on the walker's floor and early in jumps,
+8 768 hurts at the heights tried in the air, 2 820 bounces. The rules of
+this file with the carrying ranges and the upright vertical reach for
+hurts, and the bounce ranges unchanged: 0 mismatches. The upright ranges
+instead: 8 064 mismatches.
+
+As a holdout, by inputs alone: 6 000 random runs carrying near the four
+walkers (walking toward them, away or neither, Jump in a sixth of the
+stretches of play), 88 858 frames carrying with a walker close,
+including 1 260 hurts and 1 566 bounces. 2 mismatches, both bounces that
+happened with the player in the air pressed against the wall at the left
+end of the floor (listed under "Not covered").
+
 ## Evidence for walkers that aren't at full speed
 
 On the opening floor of the first level, with the first character alone,
@@ -666,8 +729,11 @@ This list is for `title-1`; `title-2` has its own list above.
   only with the player on the walker's floor or just above it). Walkers
   already bounced on don't touch the player (`walker.md`, "Being bounced
   on").
-- Contact while carrying, after a bounce, or being knocked back; a
-  crouching player on a slope or with the walker on another floor.
+- Contact after a bounce, or being knocked back; a crouching player on
+  a slope or with the walker on another floor. Carrying: contact during
+  the pick-up and the throw, with the walker on another floor or on a
+  slope, a carried `holder`, and bounces with the player pressed against
+  a wall.
   Rolls into walkers are in `rolling-into-walkers.md`.
 - Rolling off a ledge onto a walker, and runs off a ledge (a run starts
   with a roll). Walk-offs were measured from ledges without a face 48
