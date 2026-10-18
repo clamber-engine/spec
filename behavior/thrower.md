@@ -10,7 +10,8 @@ covers where a thrower is, when it throws, and how a ball moves until
 it is gone. When a ball hurts the player is in `ball-contact.md`, and
 when the thrower itself hurts the player or gives a bounce, and what a
 bounce does to it, in `thrower-contact.md`. What happens when an object
-the player throws meets the thrower is not covered here.
+the player throws or carries meets the thrower is in
+`thrown-objects.md`, "Hitting the thrower".
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y`,
 `vx` and `vy` are as in a trace: right and down are positive, speeds in
@@ -539,8 +540,9 @@ Floor 331 never counted: the ball passed it while ignoring floors.
 
 ## Not covered
 
-- Thrown objects (`thrown-objects.md`) meeting a ball or the thrower,
-  and balls meeting walkers. The thrower touching the player, bouncing
+- Thrown objects (`thrown-objects.md`) meeting a ball, and balls
+  meeting walkers. Objects meeting the thrower are in
+  `thrown-objects.md`, "Hitting the thrower". The thrower touching the player, bouncing
   on it and rolling into it are in `thrower-contact.md`, balls touching
   the player in `ball-contact.md`, and the ground action knocks it out,
   `ground-action-enemies.md`.
