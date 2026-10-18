@@ -2,6 +2,32 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.161.0
+
+Thrown objects and ground passable from below.
+
+Part of clamber-engine/spec#17 (level ground), which stays open for the
+parts not covered yet.
+
+- `behavior/thrown-objects.md`: new "The floor of a column" (the floor
+  is the ground below the object's point before the frame's move, and a
+  column has no floor that frame if it is more than 8 px above the
+  object), a lift in "In the air" for an object not moving down with the
+  floor above it, and new "Ground passable from below": only rising into
+  ground from below differs (solid ground stops the object as it stops a
+  rising player, passable ground doesn't). "Breaking against a wall" now
+  applies to passable faces too. Not covered updated: the slope lift and
+  higher-landing items are answered, and the multi-column item now gives
+  counts. (spec#17)
+- `behavior/holder-breaking.md`: an object holding the missing character
+  meets passable ground as an object holding nothing does; case 1 now
+  applies to passable faces, with a new "Ground passable from below"
+  section, its measurements and a Not covered item for multi-column
+  moves at a passable face. (spec#17)
+- `formats/level-ground.md`: "Ground passable from below" says what it
+  changes for thrown objects; the Not covered item is narrowed to
+  walkers, carried objects and other objects. (spec#17)
+
 ## spec-v0.160.0
 
 Objects meeting the ledge thrower.
