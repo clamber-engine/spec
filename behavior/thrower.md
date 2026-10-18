@@ -295,6 +295,16 @@ there, and outside it by its next position on the frame it was removed
 (354 removals in each run, from H + 11 to H + 50 in the knock-out run).
 In none of them was it outside the window on H + 1 to H + 10.
 
+It is the same when a roll knocked the thrower out (`thrower-contact.md`,
+"Rolling into the thrower"). Measured the same way on the first level:
+356 knock-outs while the thrower was falling, 3 to 42 frames after the
+player rolled into it from the left. The thrower was as in the run
+without the hit on H, unchanged on all 3 560 frames from H + 1 to
+H + 10, and 10 frames behind that run on all 9 204 frames compared after
+that. Removal followed the rule above in both runs (356 removals in
+each, from H + 11 to H + 50 in the knock-out run), and it was never
+outside the window on H + 1 to H + 10.
+
 ## Example
 
 A thrower is at (1000, 300). In column 1000 there are floors at y 301,
@@ -331,8 +341,8 @@ Floor 331 never counted: the ball passed it while ignoring floors.
 - While the player is knocked out: losing a character with two present
   (`losing-a-character.md`), a placed ball whose appearance would come
   on H + 1 to H + 10, and a thrower already knocked out that is outside
-  the window on H + 1 to H + 10, or that was knocked out by a roll or
-  the ground action (only bounces were measured; its fall is the same).
+  the window on H + 1 to H + 10, or that was knocked out by the ground
+  action (only bounces and rolls were measured; its fall is the same).
 - A ball moving up into a floor from below while not ignoring floors
   (it was seen to jump several px at the floor). This doesn't happen in
   the first level: balls start above the ledge and only bounce while
