@@ -48,8 +48,8 @@ Using whole pixels, let `X` be the lead's `x` rounded down.
 The lead passes the marker on frame `n` when all of these hold **at the
 end of frame `n`**, after the lead has moved on that frame:
 
-1. Right was held on frame `n` (with or without other inputs; see
-   below);
+1. Right was held on frame `n` and Left wasn't (with or without other
+   inputs; see below);
 2. the lead is on the ground (`ground` is 1);
 3. `X` ≥ `xm`;
 4. `F` − `ym` is from −4 to 4 (the lead's feet line is at most 4 px
@@ -66,6 +66,10 @@ Things that do **not** pass the marker:
   after Right is released: the lead stood 7 px past the marker without
   passing it, then passed it on the first frame it held Right.
 - Holding only Up, or only Left, standing past the marker.
+- Holding Left and Right together, with or without other inputs, even
+  while the lead is on the ground past the marker and moving right
+  (sliding to a stop, rolling or crouching). The lead passed it on the
+  first frame after that with Right held and Left not.
 - Being in the air: a lead jumping past the marker with Right held
   passed it on the frame it landed (`n` = the landing frame).
 - Passing above or below the marker by more than 4 px: a lead walking
@@ -75,10 +79,59 @@ Right held together with Up, Jump (a jump already held through a
 landing) or Action (running) counts. A roll counts: the lead passed the
 marker on a frame of a roll with Right held.
 
+Right held together with **Down** counts too, whatever Down is doing
+(`ground-speed.md`, "Crouching"; `ground-action.md`): a lead crouching
+and still past the marker passed it on the first frame Right was added,
+a lead sliding while crouched passed it on the first frame ending with
+`X` ≥ `xm`, and so did a lead in the Down + Action ground action with
+Right held. Down held without Right, or with Left and Right together,
+doesn't pass it.
+
+**Jumps.** The frame a jump is pressed and its take-off frame (on which
+`ground` is still 1; `jump-arc.md`, "Take-off frame") are grounded
+frames like any other: with Right held on one of them and the rest of
+the rules met, the lead passes the marker on that frame. The jump then
+never happens: `T` and the walk-out are exactly as in "The walk-out"
+below, starting from where the lead stood on the floor. A jump
+pressed with Left and Right both held, or with no direction, and then
+Right held on the take-off frame passes the marker on the take-off
+frame. With Right not held on either frame, the lead leaves the ground
+and can only pass the marker on landing, as above.
+
 The boundaries were measured as follows: frames ending 0.13 px left of
 `xm` did not pass the marker, and frames ending 0.26 px right of it did;
 nothing in between was measured. `F` − `ym` of −4 and 4 passed it and −5
 and 5 did not, with the lead's feet on whole px.
+
+Left and Right together, Down and jumps were measured at the first
+level's end, with the first character leading and with the second
+character leading (the first following):
+
+- **Scripted inputs.** 107 runs with the first character leading, from
+  standing 7 px past the marker and from standing 113 px left of it:
+  Left and Right together (alone and with Action, Up, Down or Jump) from
+  a stand and after walking, running or a roll, switched to at 7 to 9
+  points on the way in; Down with and without Right, from a stand, after
+  a crouch and switched to at 7 to 9 points on the way in; Down with
+  Action; jumps pressed at 5 to 8 points up to the frame the walk
+  reaches the marker, with Right, Right with Down or Up, or Left and
+  Right on the press frame and Right or nothing after it. 35 runs of the
+  same kinds with the second character leading. Every frame up to `T`
+  (24 213 and 6 970) was judged by the rules above: the marker was
+  passed on exactly the frame they give in the 63 + 22 runs that passed
+  it, and in no other run. 9 + 3 of those passes were on a take-off
+  frame and 10 + 3 on a frame with Jump held.
+- **Random inputs.** 400 runs, 200 with each character leading, from
+  standing left of the marker, of random inputs biased to the right,
+  with Left and Right together (alone and with Action, Jump or Down),
+  Down with Right (alone and with Jump or Action), Down, short Jump
+  presses with Right, Right with Up, Jump alone, Left and nothing. Every
+  frame up to `T` (54 830) was judged by the rules above: every run
+  passed the marker, on exactly the frame they give. 278 frames met every
+  rule except that Left was held with Right and didn't pass it; 175
+  passes had Down held (61 of them with Action, 11 with Jump), 6 were on
+  a take-off frame and 25 on a press frame. Every frame from `T` to
+  `F0` + 28 (24 071) was as in "The walk-out" and "The fade".
 
 ## The walk-out
 
@@ -289,7 +342,9 @@ particular `vx` is +2 from `T` on and `x` grows by 2 a frame from
 `T` + 1, although the second character walks at 2.25
 (`second-character.md`). `F0` + 28 is the last frame of the level, as
 above. Right held together with Down passes the marker too, as it does
-in the room.
+in the room, and Left and Right held together, the frame a jump is
+pressed and its take-off frame are as above (the second character's
+`vy` on its take-off frame is its own, `second-character.md`).
 
 The first character went on following the lead from `T` on. Its
 movement during the walk-out is not covered.
@@ -418,10 +473,9 @@ last frame came 61 frames after `T`.
 
 - Other levels' end markers, and areas other than the first level and
   its room.
-- Passing the marker with Left and Right both held, with Down held
-  (other than in the room and with the second character leading), on
-  the take-off frame of a jump, and while being hit or bouncing off an
-  enemy.
+- Passing the marker while being hit or bouncing off an enemy, and
+  Left and Right held together at the room's marker (measured at the
+  first level's end only).
 - The first character's movement during the walk-out when it follows
   the second character.
 - Whether the other character can pass the marker, and the other
