@@ -572,7 +572,8 @@ instead of 1, 336 don't.
 
 In detail:
 
-- **Defeat ranges** are for the small walker. As for the first character,
+- **Defeat ranges** are for the small walker (the medium walker's are
+  below). As for the first character,
   they are the same on every attack frame: slow, normal, fast and boosted
   rolls, the frames that end a roll that carries on, and the first 8 frames
   of the stop. On a roll's first frame S the walker is also defeated when
@@ -598,6 +599,27 @@ In detail:
   earliest hurt is on the frame after `roll_end`; in a stop, nothing on
   D + 8 to D + 10 and the earliest hurt on D + 12), and the walker's motion
   after K.
+
+**The medium walker.** Rolling into the medium walker, this character's
+defeat ranges are:
+
+| Facing, walker heading | Defeat range |
+|---|---|
+| Right, left | −28 to 14 |
+| Right, right | −20 to 22 |
+| Left, left | −22 to 20 |
+| Left, right | −14 to 28 |
+
+Everything else in this section is the same as for the small walker: the
+attack frames, the first-frame rule, the frames after a defeat, the boost
+and being hurt around a roll. Measured on `title-1` in the same way as for
+the small walker, against the medium walker heading left and heading right
+at full speed: 1 380 runs (303 600 frames, 726 defeats) in which everything
+matches, and 65 650 placements at offsets −50 to 50 px on every frame from
+S − 1 to D + 18 of 16 input variants, which match these ranges, and no range
+1 px wider or narrower at either end does. Fast rolls were measured facing
+right into the walker heading right and facing left into the walker heading
+left. With the small walker's ranges 723 of the 1 380 runs don't match.
 
 With the first character following, a hurt lead loses the character as in
 `swap.md`; the frames above are those of the hurt. This character's hurt
@@ -818,7 +840,7 @@ This list is for `title-1`; `title-2` has its own list above.
   also held during the pause, and objects other than those listed in
   "Everything else during the pause". Whether a defeated walker can hurt
   the player while it falls.
-- Other kinds of enemies. For the second character, the large and medium
-  walkers, chains of defeats, slopes, and steering a boosted slow roll.
+- Other kinds of enemies. For the second character, the large walker,
+  chains of defeats, slopes, and steering a boosted slow roll.
   Rolling into the thrower is in `thrower-contact.md`; the Down + Action
   ground action meeting a walker is in `ground-action-enemies.md`.
