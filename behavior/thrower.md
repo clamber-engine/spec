@@ -277,6 +277,34 @@ frames from H + 1 to H + 10, and 10 frames behind the run without the
 hit on all 2 893 frames it was followed after that, while both runs
 still had it (in 19 runs one of them had removed it by H + 11).
 
+A placed ball that isn't there yet when the player is hit appears by
+the rule in "Balls placed in a level", with the view at the start of
+each frame. The view doesn't move from H to H + 9, so a ball that
+didn't appear on H doesn't appear on H + 1 to H + 10 either, even when
+it would have without the knock-out. The first frame it can appear on
+is H + 11, and only if the view's move on H + 10 or later brings its
+placed `x` into the window; if the view doesn't come that far, it
+doesn't appear. When it appears it is one frame on, as usual, and it
+moves as usual from then on: it isn't held.
+
+Measured on the first level, with the player walking right toward the
+placed ball and hit on 31 consecutive frames H, from 29 frames before to
+1 frame after the frame on which the ball appeared when the walk went
+on. The hit was set up by putting a walker, kept 100 or 160 px ahead of
+the player until then, where the player was, with Right, nothing, or
+Right and jump held from the frame before H; 186 runs, each compared
+with the same play with no hit. In all 186 the view was still on H to
+H + 9 and moved on H + 10. In 54 runs the ball appeared on H + 1 to
+H + 10 without the hit. With the hit it appeared on H + 11, H + 12 or
+H + 14 (6 runs each) when it had appeared on H + 1, H + 2 or H + 3
+without it, and on H + 17 (4 runs) or H + 18 (2) for H + 4. In the other
+30 the view stopped 2 to 12 px short of bringing it in, and it hadn't
+appeared by H + 58. In every run, with the hit and without it, it
+appeared on the first frame whose start-of-frame `V` put its placed `x`
+in the window, at its usual first position, and from there it followed
+its usual path (8 732 ball frames compared), held on H + 1 to H + 10
+only when it had appeared on H or earlier (12 runs).
+
 A thrower already knocked out (`thrower-contact.md`, "The knocked-out
 thrower") also does the same. It falls as usual on H, keeps its
 position and up speed on H + 1 to H + 10, and from H + 11 it is where it
@@ -428,8 +456,8 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   on it and rolling into it are in `thrower-contact.md`, balls touching
   the player in `ball-contact.md`, and the ground action knocks it out,
   `ground-action-enemies.md`.
-- While the player is knocked out: a placed ball whose appearance would
-  come on H + 1 to H + 10.
+- While the player is knocked out: a placed ball appearing while the
+  view moves left (only the view moving right was measured).
 - While a character is lost (`losing-a-character.md`): a placed ball
   that appears after H (only thrown balls and a placed ball already
   there on H were measured), a thrower knocked out by a roll or the
