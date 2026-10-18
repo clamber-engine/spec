@@ -56,7 +56,7 @@ frame `n`**, after the player has moved on that frame:
 So a letter is taken on the first frame that ends with the player in
 range. Call this frame `P`. The offsets are those of bunches
 (`bunches.md`), with the letter's position in place of the bunch's; the
-ranges are below. Landing after a jump was not measured for letters.
+ranges are below.
 
 From `P` on, the letter is no longer in the level. It never comes back
 during the visit to the level: in one case the player was moved about
@@ -150,6 +150,36 @@ with turns, the letter placed once near the edge of the standing ranges,
 5 931 pickups came on turn frames, and every run took the letter on the
 frame these rules give. Measuring `I` in the new facing on every frame
 of a turn would have given the wrong frame in 3 118 of them.
+
+**Landing.** The last row applies on every frame from `T` + 6 that ends
+with the player in the airborne pose (`ball-contact.md`, "Which pose the
+player has"), and that pose goes on for some frames after the jump lands
+on frame `L` (the frame carrying `land`). From the first frame that ends
+with the player upright again, the standing ranges apply. Measured on
+flat ground:
+
+| Landing | Jumping ranges up to | Standing ranges from |
+|---|---|---|
+| Jumps in place with Jump held 3, 10, 14 or 30 frames, also turning left in the air, or with Action and a direction pressed from `L` + 2; a jump while walking left; all onto the floor they started from | `L` + 3 | `L` + 4 |
+| A jump while walking right, off a ledge onto a floor 176 px lower | `L` + 4 | `L` + 5 |
+| Action and a direction held through the landing, so that the player runs on, onto the floor the jump started from | `L` | `L` + 1 |
+| The same, off the ledge onto the floor 176 px lower | `L` + 1 | `L` + 2 |
+
+In every case the switch came on the frame the airborne pose ended.
+This was measured with the letter moved to every offset one pixel apart
+around the player on every frame from `L` − 1 to `L` + 10 of ten
+landings (about 540 000 placements); every frame had exactly the
+jumping or the standing ranges. Separately, in 12 842 runs of play by
+inputs with a jump (random inputs in the air and after the landing),
+with the letter placed once beforehand near the edge of the ranges,
+2 459 pickups came on `L` to `L` + 10, 975 of them on the ground in the
+airborne pose, and every run took the letter on the frame these rules
+give. Using the standing ranges from `L` would have given the wrong
+frame in 1 304 of them; from `L` + 4 whatever the pose, in 429; from
+`M` + 3, with `M` the switch frame of `jump-input.md` (from `M` when
+running starts on `M`), in 308. When
+the airborne pose ends after other landings is not covered
+(`ball-contact.md`).
 
 ### Two characters
 
@@ -564,9 +594,9 @@ letter (`H` up to `J` − 12) gave no hit.
 - With two characters: the second character's landings and running
   state, and the letter row, the letters taken and the reward (only
   which character takes a letter, and on which frame, was measured).
-- Being hit, bouncing, carrying, landing after a jump (the frames from
-  `L`, the frame carrying `land`, on), and the stop after a roll;
-  walking off a ledge with a steep face.
+- Being hit, bouncing, carrying, and the stop after a roll; walking off
+  a ledge with a steep face. Landing on slopes, and a landing followed
+  at once by a crouch, roll, turn or another jump.
 - Which letters are late in the ending when the fourth letter is taken
   120 frames or less after another (see "After another letter").
 - Taking the fourth letter on the frame after another.
