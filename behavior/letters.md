@@ -340,6 +340,9 @@ example, is drawn at x 97, 109, 119, 128, 136, 143, 149, 154, 159, 163,
 `G` is the first frame on which letter 4 is gone: `J` + 163, or `J` +
 164 when letter 4 was taken last.
 
+Extra-life items taken around the ending, while this lives display or
+an item's is shown, are in `extra-lives.md`, "The four-letter ending".
+
 The **lives display** shows the number of lives near the top right,
 with the same digits as the count display (`count-display.md`, "What the
 count display shows"): one digit (1 to 9) at x 220, two digits (10 to
