@@ -181,6 +181,30 @@ running starts on `M`), in 308. When
 the airborne pose ends after other landings is not covered
 (`ball-contact.md`).
 
+**After a roll.** Let `R` be the first frame after the roll's 29
+frames, the frame `roll-input.md` calls D ("How a roll ends"). When the
+roll ends in a stop (`roll_end` on `R`), the rolling ranges still apply
+from `R` to `R` + 8, and the standing ranges apply from `R` + 9 to the
+end of the stop. When a roll carries on into running (the player still
+in `roll` on `R` to `R` + 2, `roll_end` on `R` + 3), the rolling ranges
+apply on `R`, `R` + 1 and `R` + 2, and the standing ranges from `R` + 3.
+`I` is measured in the direction the player faces on that frame, also
+when the player turns during the stop. This was measured on
+flat ground, after slow rolls to the left and to the right and a roll to
+the left started from walking, with the letter moved to every offset one
+pixel apart around the player on every frame from `R` − 1 to `R` + 17 of
+four stops (one of them turning on `R`, another on `R` + 8) and from
+`R` − 1 to `R` + 4 of a roll that carried on (about 430 000
+placements). Separately, in 10 815 runs of play by inputs with a roll,
+random presses during the roll and the stop, and the letter placed once
+beforehand near the edge of the standing ranges, 1 766 pickups came on
+stop frames and 111 on the three frames of a roll carrying on, and every
+run took the letter on the frame these rules give. Using the rolling
+ranges on every frame of the stop would have given the wrong frame in
+1 437 of them; switching to the standing ranges on `R` + 8 or `R` + 10
+instead of `R` + 9, in 1 425 and 1 418. Stops after a fast roll
+(`roll-speed.md`) and stops on slopes were not measured.
+
 ### Two characters
 
 With two characters there (`second-character.md`), only the character
@@ -594,9 +618,9 @@ letter (`H` up to `J` − 12) gave no hit.
 - With two characters: the second character's landings and running
   state, and the letter row, the letters taken and the reward (only
   which character takes a letter, and on which frame, was measured).
-- Being hit, bouncing, carrying, and the stop after a roll; walking off
-  a ledge with a steep face. Landing on slopes, and a landing followed
-  at once by a crouch, roll, turn or another jump.
+- Being hit, bouncing, carrying, and the stop after a fast roll or on
+  a slope; walking off a ledge with a steep face. Landing on slopes, and
+  a landing followed at once by a crouch, roll, turn or another jump.
 - Which letters are late in the ending when the fourth letter is taken
   120 frames or less after another (see "After another letter").
 - Taking the fourth letter on the frame after another.
