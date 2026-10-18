@@ -123,15 +123,32 @@ back, and nothing appeared there again.
 
 ## Leaving the picture
 
-Let `V` be the view's position rounded down to a whole pixel (as in
-`walker-view.md`) and `X` the object's new `x` rounded down. The object
-was removed on frames where `X` − `V` was **385** or **386**, and never
-while `X` − `V` was 382 or less; 383 and 384 weren't seen. This is the
-limit `walker-view.md` gives for walkers (`X` − `V` ≥ 385), so at least
-129 px right of the first pixel past the picture's right edge. Being
-removed on the left wasn't seen. A removed object didn't come back
-while its starting place stayed near the picture (the only case
-measured).
+Let `V` be the view's position rounded down to a whole pixel, **as it
+was at the start of the frame** (as in `walker-view.md`), and `X` the
+object's new `x` rounded down. The object is removed on the first frame
+on which
+
+    X − V ≤ −128   or   X − V ≥ 385
+
+that is, once it is at least 128 px left of the picture's left edge or
+at least 129 px right of the first pixel past its right edge. These are
+the limits `walker-view.md` gives for walkers' own positions, but
+unlike a walker, where the object was placed in the level doesn't
+matter: it is removed even while its starting place is in the walker
+window. A removed object didn't come back while its starting place
+stayed near the picture (the only case measured).
+
+Measured on the first level with an object picked up near its place:
+2 400 throws by inputs alone (walking either way or standing before the
+throw, then standing, walking, running, jumping or rolling either way,
+so that the view moved at many speeds both ways), ending in 839 breaks
+and 1 561 removals. 384 removals were on the left, at `X` − `V` from
+−136 to −128 (53 at −128), and 1 177 on the right, from 385 to 393 (352
+at 385). On the 149 772 frames the moving object stayed, `X` − `V` was
+never below −127 or above 384 (87 frames at −127, 383 at 383, 388 at
+384). The starting place was in the walker window on all 384 removals
+on the left and 940 of those on the right. With `V` taken at the end of
+the frame instead, no pair of limits fits these runs.
 
 ## Hitting walkers
 
@@ -346,5 +363,6 @@ again. Speeds in 1/256 px per frame.
   1 px per 4 columns.
 - How the pieces of a broken object move and are drawn, and how the
   object is drawn while bouncing and rolling.
-- Removal on the left of the picture, and `X` − `V` of 383 and 384.
 - Objects thrown by the second character.
+- Removal above or below the picture (only horizontal positions were
+  measured).
