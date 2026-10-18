@@ -471,9 +471,9 @@ and is not drawn from frame 321 on.
   again after coming back through an exit. After a knock-out, a rising
   item that went away untaken is there again, and so is an item taken
   (`restart-barrel.md`, "What is there again after a knock-out"; rising
-  items taken only measured with play resuming at the level's start);
-  an item taken before an exit stays gone after coming back (`exits.md`,
-  "Coming back to the level").
+  items taken measured with play resuming at the level's start and at
+  the restart point); an item taken before an exit stays gone after
+  coming back (`exits.md`, "Coming back to the level").
 - Rising items while the game is paused or during a knock-out.
 - Entries far below the picture. With the player on the floor near the
   first level's start (level y 337), an item whose entry was at level y
