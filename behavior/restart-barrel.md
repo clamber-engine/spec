@@ -439,6 +439,11 @@ the barrel is touched on the third, the upright range starting at −24.
   1 after the player leaves the floor or meets a slope (it was followed
   only on flat floor); and a turn started on frame 1 with Right held
   from frame 2 (the player moved right while facing left).
+- Objects of the level whose place comes into the window
+  (`walker-view.md`) during a resume. A walker and a placed ball whose
+  places came into the window on frames 76 to 81, with the player walking
+  left from frame 63 (the ball also with the player running), both
+  appeared on frame 82, not on the frame their place came in.
 - The fade-in, the sounds, how the
   pieces and the flash are drawn, where they start, when they are
   removed, and whether they touch anything.

@@ -180,14 +180,40 @@ A removed ball doesn't come back.
 ## Balls placed in a level
 
 A level can also place a ball directly. It appears on the first frame
-whose `V` puts its placed `x` in the walker window (`walker-view.md`;
-measured with the view moving right only), already one frame on: on its appearance frame it has made one frame of moves
+whose `V` puts its placed `x` in the walker window (`walker-view.md`),
+with the view moving right or left, already one frame on: on its appearance frame it has made one frame of moves
 from its placed position with its starting speeds. It isn't ignoring
 floors, and from then on it moves as above. The speeds it starts with
 are its settings (`../formats/placements.md`, "Ball settings"): the one
 on the first level started with `vx` −1.171875 (−300/256) and `vy` −3
 (−768/256); it was seen appearing 11 times, always one frame on and
 always at the same position.
+
+"Leaving the picture" applies on the appearance frame too, to the
+position one frame on. So a ball that starts moving left and comes into
+the window from its left side, with the view moving left, can be outside
+the window on the frame it appears. Its placed `x` first comes into the
+window at `x` − `V` = −31 or a little more. With the first level's
+starting `vx` of −1.171875, its first `x` rounded down is then 2 px less
+than the placed `x`: at −31 and −30 that is 33 and 32 px left of `V`,
+so the ball is removed on the frame it appears and is never seen. It
+appears only once (below), so it doesn't come back while the view goes
+on moving left and its placed `x` stays in the window. At −29 or more
+it stays and is seen on that frame.
+
+Measured on the first level, in copies of the image in which a level
+entry 32 to 153 px left of the view's left edge on resuming at the
+restart point (`restart-barrel.md`, "Resuming") was given the ball's
+reference, at a height above the floor there; 21 places. After a
+knock-out, play resumed there, and the player walked left, or ran left,
+from frame 75 of the resume: 280 runs, with the view moving 2, 3 or
+4 px a frame. In 136 runs the placed `x` first came into the window at
+−31 and in 75 at −30. No ball was seen in any of them, though the
+placed `x` then stayed in the window for at least 107 more frames. In 68
+runs it came in at −29 and in 1 at −28. In all 69 the ball was seen on
+that frame at its usual first position, one frame on; runs from the same
+place followed the same path (3 657 ball frames), and each ball was
+removed by "Leaving the picture" when it fell below the picture.
 
 A placed ball appears only once. After it is removed it doesn't come
 back, however the view moves, until play resumes after a knock-out or
@@ -519,7 +545,8 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   the player in `ball-contact.md`, and the ground action knocks it out,
   `ground-action-enemies.md`.
 - While the player is knocked out: a placed ball appearing while the
-  view moves left (only the view moving right was measured).
+  view moves left (only the view moving right was measured with a
+  knock-out; without one, see "Balls placed in a level").
 - While a character is lost (`losing-a-character.md`): the second
   character being the one hit, and a placed ball appearing while the
   view moves left. How the view moves after H, which decides when a
