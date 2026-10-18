@@ -16,6 +16,8 @@ And that it does contain:
 - [ ] Behavior in observable, engine-neutral terms (units, frames, conditions)
 - [ ] Format descriptions as structure (fields, encodings, algorithms in prose)
 - [ ] Synthetic vectors for any decoder it specifies
+- [ ] Evidence described as observation of play, not as values read from
+      inside the running program (director, spec #49)
 
 ## The one exception: locator tables
 
@@ -93,6 +95,37 @@ Director decision (spec #41). A fingerprint row may also carry the
 - The rules for fingerprint rows above still apply to the row itself.
 
 A setting that fails any of these rules fails the change.
+
+## The third exception: picture hashes
+
+Director decision (spec #49). A behavior spec may say which picture an
+object shows on screen, and in what order and for how long, by naming
+each picture with a **picture hash**:
+
+- The hash is a **SHA-256** of a frame's picture, decoded exactly as
+  `formats/sprites.md` describes. That file defines the canonical form
+  (pixel order, colour numbers rather than colours, transparent pixels
+  and the box hashed), and its vectors include the hash of a made-up
+  picture. Only pictures that `formats/sprites.md` can decode on its own
+  are named, and only those with at least 32 non-transparent pixels,
+  so the picture can't be recovered by trying every possibility.
+- The spec contains hashes only. No frame-table entry numbers, addresses,
+  table layouts or bytes from the image, and no original names.
+- **Sequences and durations** (which picture follows which, for how many
+  frames) are **measured by observing play**: which picture is on screen
+  on each frame of a run. The change shows how this was measured. Never
+  read from the program or its tables, and never described in terms of
+  how the program picks pictures.
+- Every list of hashes has a stated **fallback**, which the engine uses
+  when the importer finds no frame in the image with one of the hashes
+  (for example its own art for that state), so an import with an
+  unmatched picture still works.
+- The importer decodes every frame it can find through the format specs,
+  hashes each one and matches. The hashes are computed on the player's
+  machine; no picture crosses the firewall.
+
+A hash, list or description that fails any of these rules fails the
+change.
 
 ## Hardware behaviour: describe, don't copy
 
