@@ -19,7 +19,9 @@ always rolls first (see "Rolling into a run").
 ## On the ground
 
 A press on frame P while grounded starts a roll on frame P (`roll_start`
-on P), unless Down is held on frame P, or the player is standing within
+on P), unless Down is held on frame P (Down makes no difference during
+a roll and the stop after one; see "Down during a roll"), or the player
+is standing within
 reach of an object that can be carried (then it is picked up instead; see
 `carrying.md`).
 
@@ -107,8 +109,9 @@ stop as usual (`behavior/jump-input.md`).
 ## Starting the next roll
 
 After a roll that carried on into running (Action held through D): a new
-press on P ≥ D + 2 starts a roll on max(P, D + 4), i.e. no earlier than
-the frame after `roll_end`.
+press on P ≥ D + 4 starts a roll on P. A press on D + 2 or D + 3 starts
+a roll on D + 4, the frame after `roll_end`, if Action is still held on
+D + 4; if it is released before D + 4, that press starts no roll.
 
 After a roll that ended in a stop: a press on P with D − 2 ≤ P ≤ D + 16
 is remembered, even if Action is held for one frame only, and the next
@@ -118,6 +121,52 @@ press on D + 17 or later starts a roll on that frame.
 **Exception:** a roll started on D + 17 from a remembered press lasts 30
 frames instead of 29 (S to S + 29, so D = S + 30). Everything in this
 section and the previous one holds with that D.
+
+## Down during a roll
+
+From S + 1 to D + 17 of a roll that ends in a stop, and from S + 1 to
+D + 3 of a roll that carries on into running, Down makes no difference
+at all: everything happens as it would without it. So:
+
+- a press with Down held during the roll or the stop is remembered or
+  ignored as above, and a remembered press starts its roll on D + 17
+  even with Down held then; a press on D + 17 with Down held starts a
+  roll on D + 17;
+- after a roll that carried on into running, a press on D + 2 or D + 3
+  with Down held starts a roll on D + 4 if Action is still held on
+  D + 4, with or without Down on D + 4;
+- a crouch (`ground-speed.md`, "Crouching") or the ground action
+  (`ground-action.md`) starts no earlier than D + 18 (stop) or D + 4
+  (carried on), and only if Down is held on that frame. Down held without
+  a break from earlier is the same as Down first held then: after a stop,
+  Down held from the roll on through D + 18 makes D + 18 the crouch's
+  first frame.
+
+For example, walking right with Right held throughout, Action is pressed
+on frame 20 and held to 49: the roll is frames 20 to 48 and carries on
+into running (D = 49, `roll_end` on 52). Action is pressed again on 52
+for one frame and Down is held on 53 (D + 4) only: the player crouches
+from 53 to 65 and no roll starts. With Action held on 52 and 53 instead,
+the roll starts on 53 whether Down is held on 53 or not. After a
+one-frame press from standing on frame 10 (roll 10 to 38, D = 39), Down
+held from frame 30 on and Action pressed again on 57 (D + 18): the
+ground action starts on 57; pressed on 56 (D + 17) instead, a roll
+starts on 56.
+
+Checked on flat ground with the first character, from standing facing
+either way, with 19 200 runs of 200 frames: Action pressed for 1 to 6
+frames or held for 40 to 89, Down held for 1 to 40 frames at a time,
+Left, Right or neither in stretches, no Jump; half of the runs begin with
+a roll that carries on into running. Each run was played again with Down
+taken off from S + 1 to D + 17 (stop) or D + 3 (carried on) of every
+roll: all 3 664 375 frames were the same in both (`x`, `y`, `vx`,
+`facing`, `ground` and the player's state), 396 927 of them with Down
+taken off and 9 631 Action presses among those. Taking Down off one frame
+longer as well (D + 18 or D + 4) changed 180 970 frames in 3 150 of
+9 600 runs. Presses on D + 2 or D + 3 after a roll that carried on: 367
+with Action held on D + 4 all started a roll there (51 with Down held on
+D + 4); 186 released before D + 4 started none (35 crouched on D + 4,
+all with Down held then).
 
 ## Rolling into a run
 
@@ -269,6 +318,7 @@ This list is for `title-1`; `title-2` has its own list above.
 Roll speed and steering are in `roll-speed.md`, rolls into walkers in
 `rolling-into-walkers.md`, rolling off a ledge in `rolling-off-ledges.md`, rolls on, onto and
 into steep faces in `steep-faces.md`. Rolls on slopes and
-rolls into other enemies. The second character's rolls are in
+rolls into other enemies. Down held during rolls on slopes and steep
+faces, and during the second character's rolls. The second character's rolls are in
 `second-character.md` ("Rolls"). The Down + Action ground action
 is in `ground-action.md`.

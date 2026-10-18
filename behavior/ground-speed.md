@@ -519,7 +519,11 @@ This section is `title-1` only; `title-2` crouching is different (see
 "In `title-2`").
 
 Holding Down while grounded (without an Action press on that frame; see
-`roll-input.md`) makes the player crouch. Call the first frame Down is
+`roll-input.md`) makes the player crouch. During a roll and the stop
+after it Down makes no difference (`roll-input.md`, "Down during a
+roll"): a crouch starts no earlier than D + 18 after a roll that ends in
+a stop, or D + 4 after one that carries on into running (D as in
+`roll-input.md`, not the crouch's D below). Call the first frame Down is
 held **D**:
 
 - On D, the target speed is still the one in the table above.
