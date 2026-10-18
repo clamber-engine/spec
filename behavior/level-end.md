@@ -117,6 +117,70 @@ every frame from `T` on, staying 35.83 px behind the lead (its distance
 on `T`), and its height followed the lead's earlier positions along the
 trail, going up as the lead had. It was drawn behind the scenery too.
 
+### An object in the lead's hands
+
+A `barrel` or a `holder` still in the lead's hands at the end of frame
+`n` (the frame on which the marker is passed) is let go on `T` and
+falls away on its own. This includes an object carried with Action held
+and one whose throw (`carrying.md`, "Throwing") began on a frame `Q`
+with `Q` + 21 equal to `T` or later, so that it hadn't left the hands by
+the end of `n`; that throw never happens. With `Q` + 21 equal to `n` or
+earlier the object is thrown as usual before the marker is passed.
+Letting go of Action on `T` or later makes no difference.
+
+- **On `T`** the object doesn't move: it is where it was held at the
+  end of `n`. Its `vx` becomes **1** (256/256) in the direction the lead
+  faces on `T` (left for a lead that is turning toward the right on
+  `T`, "Facing" above), and its `vy` becomes **−4** (−1024/256, moving
+  up).
+- **From `T` + 1**, every frame, `vy` increases by **0.4375** (112/256),
+  but never above **8** (2048/256); then `x` moves by `vx` (exactly 1 px)
+  and `y` by the new `vy`. Nothing else changes `vx`.
+- It **touches nothing**: it passes through floors and walls (at the
+  first level's end, the wall that ends the level on the right) without
+  landing, bouncing, rolling or breaking, and nothing held changes its
+  motion.
+- It is **removed** on the first frame on which, after the move, its `x`
+  is less than 0, or its `x` rounded down minus `V` rounded down is 289
+  or more, or its `y` rounded down is 256 or more below `U` or 33 or
+  more above `U`, with `U` the view's vertical position rounded down as
+  in `../formats/placements.md` ("When placed objects are removed"). If
+  none of these happens first, it is gone when the level is over.
+
+This is the movement of an object carried into an exit (`exits.md`, "An
+object in the lead's hands"), starting on `T` instead of `T` + 1. The
+lead's own walk-out and the fade are unchanged.
+
+So a barrel let go by a lead facing right rises for 9 frames, from `T` +
+1 to `T` + 9, and falls from `T` + 10, at 8 px per frame from `T` + 28.
+With the view at the first level's end it was removed below the picture
+36 to 38 frames after `T`, before the fade had ended.
+
+Measured in 105 runs with the lead alone. The lead picked up the first
+level's barrel or one of its two holders and was moved near the level's
+end while carrying it (a change made for the test while the game ran),
+then came to the marker: walking in with Action held from 7 points (one
+in small steps), landing on the marker from 4 jumps, stopping short and
+walking on (3 runs), turning toward the right on the marker (3 runs),
+letting go of Action 1 to 25 frames before `T`, on `T` or on `T` + 1
+(10 runs), standing past the marker and letting go of Action 1 to 30
+frames before Right was held (9 runs), holding Right, Jump, Down, Up,
+Left, Left with Jump, Left with Action or nothing from `T` + 1 (8 runs),
+and with each holder (3 runs). In 58 more runs the barrel was moved
+during the walk-out to find where it is removed: 20 to 26 px down on
+`T` + 12, 60 to 400 px right on `T` + 5, 140 to 300 px up on one of `T`
++ 3 to `T` + 8, or left of `x` 0. In every run the marker was passed on
+the frame "When the marker is passed" gives, and the lead's walk-out and
+the fade were as above on all 6 340 frames from `T` on. In 96 runs the
+object was still in the hands at the end of `n` (8 of them in a throw);
+over the 2 855 frames from `T` to its removal, `x`, `y`, `vx` and `vy`
+were as the rules above give on every frame, to 1/256 px, and it was
+removed on the frame they give. In the 9 others the throw had already
+let it go. The removal edges, after the move: still there with `y`
+255.375 below `U`, removed at 256.375; still there with `x` − `V` 288,
+removed at 289; still there with `y` 31.3125 above `U` (rounded down,
+32), removed at 32.25 (rounded down, 33).
+
 ## The fade
 
 The fade starts on the frame after the first frame from `T` on that
@@ -282,13 +346,15 @@ last frame came 61 frames after `T`.
   its room.
 - Passing the marker with Left and Right both held, with Down held
   (other than in the room and with the second character leading), on
-  the take-off frame of a jump, while carrying an object, and while being
-  hit or bouncing off an enemy.
+  the take-off frame of a jump, and while being hit or bouncing off an
+  enemy.
 - The first character's movement during the walk-out when it follows
   the second character.
 - Whether the other character can pass the marker, and the other
   character when it is not following (joining, being carried).
 - Enemies and other objects during the walk-out.
+- An object in the lead's hands with the second character leading, or
+  with the other character following.
 - A lead that is already 240 px or more right of the picture's left
   edge on `T`, other than in the room ("In the first level's room").
 - The sound during the walk-out and the fade.
