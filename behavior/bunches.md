@@ -104,6 +104,30 @@ is still held or not (after the landing, see "Landing" below). (Single
 collectibles are different. Their jump ranges depend on the vertical
 speed.)
 
+**After a roll.** Let `R` be the first frame after the roll's 29
+frames, the frame `roll-input.md` calls D ("How a roll ends"). When the
+roll ends in a stop (`roll_end` on `R`), the rolling row still applies
+from `R` to `R` + 8, and the standing row applies from `R` + 9 to the
+end of the stop. When a roll carries on into running (the player still
+in `roll` on `R` to `R` + 2, `roll_end` on `R` + 3), the rolling row
+applies on `R`, `R` + 1 and `R` + 2, and the standing row from `R` + 3.
+`I` is measured in the direction the player faces on that frame, also
+when the player turns during the stop. This was measured on flat
+ground, after slow and normal rolls to the left and to the right, with
+the bunch moved to every offset one pixel apart around the player on
+every frame from `R` − 1 to `R` + 17 of four stops (one of them turning
+on `R`, another on `R` + 8) and from `R` − 1 to `R` + 4 of a roll that
+carried on (about 430 000 placements). Separately, in 18 244 runs of
+play by inputs with a roll, random presses during the roll and the
+stop, and the bunch placed once beforehand near the edge of the
+standing row, 4 096 pickups came on stop frames and 280 on the three
+frames of a roll carrying on, and every run took the bunch on the frame
+these rules give; 21 of those pickups came in stops after a fast roll
+(222 such stops). Using the rolling row on every frame of the stop would
+have given the wrong frame in 3 339 of them; switching to the standing
+row on `R` + 8 or `R` + 10 instead of `R` + 9, in 3 334 and 3 311.
+Stops on slopes were not measured.
+
 **Landing.** A jump lands on frame `L` (the frame carrying `land`).
 The last row applies on every frame from `T` + 6 that ends with the
 player in the airborne pose (`ball-contact.md`, "Which pose the player
@@ -265,8 +289,8 @@ is taken.
 - The ranges while bouncing off a walker (`bounce.md`), while being
   carried down a steep slope or a rounded ledge (`steep-faces.md`), while
   passing through a platform (`platforms-from-below.md`), while carrying
-  an object (`carrying.md`), while falling without a jump, during the
-  stop after a roll, and while being hit.
+  an object (`carrying.md`), while falling without a jump, and while
+  being hit; the stop after a roll on a slope.
 - Landing on slopes, and a landing followed at once by a crouch, a
   roll, a turn or another jump.
 - When a bunch that hasn't been taken appears and disappears as the
