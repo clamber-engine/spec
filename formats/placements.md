@@ -668,7 +668,8 @@ list without sections) while they are still as they appeared: not
 taken, picked up, thrown, broken, opened or set off. What happens to an
 object after that is in its kind's behavior file, except for a `barrel`
 or `holder` that was picked up and put down again: see "Objects put down
-elsewhere" below. Walkers, stingers,
+elsewhere" below. How the objects of lists with sections are removed is
+in "In lists with sections" at the end of this section. Walkers, stingers,
 critters, throwers, placed balls and extra-life items have their own
 rules (`../behavior/walker-view.md`, `../behavior/stinger.md`,
 `../behavior/critter.md`, `../behavior/thrower.md`,
@@ -950,6 +951,65 @@ appearances, all at the entry's position. Three runs were checked only
 up to a frame on which the put-down object moved 7 px, or was gone
 while in the view; these rules don't cover either.
 
+### In lists with sections
+
+In the **shared list**, objects are removed by the table above, as in
+the first level's list, with the same `V`, `U` and own `y`. This was
+measured for `bunch`, `barrel`, `holder`, `sign`, `hidden-bunch` and
+`letter-1`, `letter-2` and `letter-4`, in class 15 and class 1 entries.
+In particular, an object of the table's first row stays above or below
+the vertical window as long as its entry is in the window.
+
+In the **four underwater levels' lists**, objects are also removed by
+the vertical window alone, even with their entry in the window. An
+object there is removed on the first frame on which:
+
+| Kinds | Removed when |
+|---|---|
+| `bunch`, `sign` | `x` − `V` ≤ −128, or `x` − `V` ≥ 385, or the object isn't in the vertical window |
+| `letter-1` to `letter-4`, `figure` | the entry isn't in the window, or the object isn't in the vertical window. Here `V` less than 32 counts as 32, as when entries appear ("In a list with sections") |
+
+`V` and `U` are taken at the start of the frame, rounded down, as above.
+For `bunch` and `sign`, `V` is not counted as 32 when it is less than
+32. These objects don't move, so `y` is their entry's level y. So an
+underwater `bunch` or `sign` keeps the margin of the table's first row
+only while it is in the vertical window. It is removed on the first
+frame on which `y` − `U` is less than −31 or more than 256, wherever it
+is across. So underwater letters and figures are there only while
+their entry is in both windows, the same window in which a class 15
+entry appears ("In a list with sections").
+
+The difference goes with the list, not with the class or the kind. The
+underwater lists' class 1 `sign` entries are removed by the vertical
+window too. In copies of the image, a class 15 letter entry of the
+shared list was given a `bunch`'s or a `sign`'s reference, and the
+object then followed the table's first row there. With its entry in the
+window it stayed with `y` − `U` as low as −153.
+
+**Checks.** The lead was led along random slow routes through every
+underwater area and through four of the shared list's areas, with
+random waits and sometimes jumps of the view, as in "In a list with
+sections": 72 runs, 1 962 478 frames. An object counted as there while
+an object of its kind was at its entry's `x`, and also at its entry's
+height except for barrels and holders, which fall.
+
+- Underwater lists: 156 077 frames on which a listed object stayed, and
+  334 removals, all on the frames the rules give. 134 of them were by the
+  vertical window alone, with the entry in the window: 67 at the bottom
+  edge (`y` − `U` = 257) and 67 at the top edge (−32). Bunches and signs
+  went at −128 and 385, letters and figures at −32 and 289 across. 9 more
+  objects went while inside both windows, each with the lead within
+  64 px across and 128 px up or down, close enough to take them. These
+  were set aside (in the one checked, the count went up).
+- Shared list: 237 577 frames and 44 removals, all as the table gives.
+- `V` below 32: in a copy of the image, an underwater letter entry near
+  an area's left end was moved to `x` 400 and given a `bunch`'s
+  reference, then a `sign`'s. Both were there with `V` = 16
+  (`x` − `V` = 384) and removed on the frame that started with `V` = 15
+  (385), so the raw `V` is used. In the runs, underwater letters stayed
+  on 1 676 frames with `V` less than 32 and `x` − `V` from 289 to 304,
+  where the raw `V` would remove them.
+
 ## Example
 
 A list with four entries (the trailing entry of zeros not shown), with
@@ -1010,7 +1070,11 @@ on each frame: see its `README.md`.
 - What class 8 entries do other than the first level's (which starts
   the dimming), what a class 8 entry's `h` and reference mean, and
   classes other than 1, 2, 5, 8, 9 and 15.
-- When objects other than walkers are removed in lists with sections.
+- In lists with sections, the removal of group members and of the kinds
+  not listed in "In lists with sections" (in "When placed objects are
+  removed"). In a copy of the image, a `barrel` given an underwater
+  `bunch`'s entry was removed at the top edge of the vertical window as
+  a bunch is, but at the bottom only from `y` − `U` = 277.
 - What a removed object that had been moved does, other than thrown
   objects (`../behavior/thrown-objects.md`) and a `barrel` or `holder`
   put down elsewhere ("Objects put down elsewhere"): for example
