@@ -2,6 +2,30 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.177.0
+
+2 changes: the count reaching 100 alongside extra-life items, and bunch
+pickup ranges while turning (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/extra-lives.md`: new "The count reaching 100" under
+  "Several items". The count's lives display is the same display as the
+  items'. Its step from 99 to 0 on `S` acts like an item taken on
+  `S` + 1 that holds no frames: the new life counts from `S` + 1, and
+  the number's height does what a pickup then would do. The "Otherwise"
+  step rule gets one more condition on the frame counted from, which
+  changes nothing for items alone. Covers the cases that follow, with a
+  worked example in both orders, plus checks. Not covered is narrowed.
+- `behavior/count-display.md`: a cross-reference under "Reaching 100",
+  and its Not covered item narrowed.
+- `behavior/bunches.md`: the standing row of the pickup ranges also
+  covers turning. A new "Turning" paragraph says it applies on every
+  frame from the turn's first frame `U` to `U` + 7, with `I` measured in
+  the facing of that frame (the old facing up to `U` + 3, the new one
+  from `U` + 4). Checks are included. Removed from Not covered.
+
 ## spec-v0.176.0
 
 1 change: bunch pickup ranges during the Down + Action ground action
