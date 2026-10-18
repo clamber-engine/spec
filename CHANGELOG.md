@@ -2,6 +2,34 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.181.0
+
+2 changes: letter pickup ranges on landing after a jump, and walkers
+meeting a carried object that holds the missing character (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/letters.md`: new "Landing" paragraph under "Pickup ranges".
+  From `T` + 6, the jumping ranges apply on every frame that ends with
+  the player in the airborne pose, including the frames after the
+  landing `L` while that pose goes on; the standing ranges apply from
+  the first frame upright again. A table gives the measured cases.
+  Not covered is narrowed to landings on slopes and landings followed
+  at once by a crouch, roll, turn or another jump.
+- `behavior/holder-breaking.md`: new "Carried into a walker" section. A
+  medium or large walker that meets the carried object breaks it by the
+  carried-object rule of `thrown-objects.md`; the character appears
+  where the object is carried, and the player waits and isn't hurt by
+  that walker. The "Carried" bullet now says which walkers still hurt
+  the player.
+- `behavior/thrown-objects.md`, "A carried object": medium walkers are
+  hit too, with their own table of `I` ranges. "Medium walkers" and a
+  carried `holder` are taken out of Not covered.
+- `behavior/walker-contact.md`, "Carrying": the carrying ranges hold
+  with this object too, and a walker that breaks it doesn't hurt the
+  player. A carried `holder` is taken out of Not covered.
+
 ## spec-v0.180.0
 
 2 changes: letter pickup ranges while turning on the ground, and bunch
