@@ -277,6 +277,24 @@ frames from H + 1 to H + 10, and 10 frames behind the run without the
 hit on all 2 893 frames it was followed after that, while both runs
 still had it (in 19 runs one of them had removed it by H + 11).
 
+A thrower already knocked out (`thrower-contact.md`, "The knocked-out
+thrower") also does the same. It falls as usual on H, keeps its
+position and up speed on H + 1 to H + 10, and from H + 11 it is where it
+would have been 10 frames earlier without the knock-out, with the same
+speeds. It is never removed on H + 1 to H + 10. From H + 11 the removal
+rule there applies again on every frame, with the view of that frame,
+so it may be removed earlier or later in its fall than without the
+knock-out. Measured on the first level: 354 knock-outs while the
+thrower was falling, 3 to 41 frames after it was knocked out by a
+bounce. The hit was set up by putting a ball where the player was. Each
+knock-out was compared with the same play with the hit prevented. The
+thrower was as in that run on H, unchanged on all 3 540 frames from
+H + 1 to H + 10, and 10 frames behind it on all 3 384 frames compared
+after that. In both runs it was inside the window on every frame it was
+there, and outside it by its next position on the frame it was removed
+(354 removals in each run, from H + 11 to H + 50 in the knock-out run).
+In none of them was it outside the window on H + 1 to H + 10.
+
 ## Example
 
 A thrower is at (1000, 300). In column 1000 there are floors at y 301,
@@ -310,9 +328,11 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   on it and rolling into it are in `thrower-contact.md`, balls touching
   the player in `ball-contact.md`, and the ground action knocks it out,
   `ground-action-enemies.md`.
-- While the player is knocked out: a thrower already knocked out,
-  losing a character with two present (`losing-a-character.md`), and a
-  placed ball whose appearance would come on H + 1 to H + 10.
+- While the player is knocked out: losing a character with two present
+  (`losing-a-character.md`), a placed ball whose appearance would come
+  on H + 1 to H + 10, and a thrower already knocked out that is outside
+  the window on H + 1 to H + 10, or that was knocked out by a roll or
+  the ground action (only bounces were measured; its fall is the same).
 - A ball moving up into a floor from below while not ignoring floors
   (it was seen to jump several px at the floor). This doesn't happen in
   the first level: balls start above the ledge and only bounce while
