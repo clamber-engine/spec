@@ -279,6 +279,46 @@ begins again is in `following.md`.
 
 The lead's rise stops on `F0`: its height on `F0` is that of `F0` − 1.
 
+### A bunch's items at the level's end
+
+A bunch taken shortly before the level's last frame (during the walk-out,
+"Walkers and bunches", or before it) may still have items that haven't
+reached the collectible count by `F0` + 28. Take its items' arrival
+frames from `bunches.md` ("Releasing the items"), as if the level went
+on:
+
+- An item that would reach the count on **`F0` + 29**, the frame after
+  the level's last frame (it belongs to no trace), is counted.
+- Items that would reach it on `F0` + 30 or later, and items not yet
+  released by `F0` + 28, are **never counted**.
+
+So at most one item is added after the last frame. The count the game
+goes on with (on the level map that follows, and when the next level
+begins) is the count on `F0` + 28 plus that item, if there is one.
+
+For example, a bunch taken on `P` = `F0` − 6 whose items all fly
+releases them on `F0` − 6, `F0`, `F0` + 6, … `F0` + 24 (six by the last
+frame; the other four are never released), and they would reach the
+count on `F0` + 11, + 17, + 23, + 29, + 35, … The first three reach it
+during the fade, the fourth is counted after the last frame, and the
+other six are never counted: the count after the level is 4 more than
+before the bunch was taken.
+
+Measured on the first level's end, finished for the first time, the
+lead alone, in a copy of the image in which the entry right of the
+marker was given the reference of a `bunch` with `yb` = `ym` − 17, at
+145 places with `xb` from `xm` − 1 to `xm` + 143. The lead came to the
+marker walking (125 places), running (145) or walking after standing
+still for 37 frames (125), so that the level's last frame came at three
+different places relative to the bunch (395 runs). The bunch was taken in 339 runs, from 70 to 13 frames before the
+last frame. In every run each count step in the level came on the frame
+"Releasing the items" gives, and on every one of the 600 frames
+following the last frame, through the black frames and onto the level
+map, the count was the count on `F0` + 28 plus 1 in the 59 runs with an
+item due on `F0` + 29 and plus 0 in the others; up to 10 items were
+never counted. In one run played on into the next level from the map,
+the count was still the same there.
+
 ## The second character leading
 
 Everything above holds when the second character is the lead (after a
@@ -430,8 +470,11 @@ last frame came 61 frames after `T`.
   object in the lead's hands, during the walk-out. A walker hurting the
   lead on the frame `n` itself (in the runs, every hurt before `T` came
   before the lead reached the marker).
-- Whether a bunch's items that haven't reached the count by the level's
-  last frame are counted.
+- A bunch's items at the level's end ("A bunch's items at the level's
+  end") with two bunches releasing at once, with the second character
+  leading, when the level has been finished before, and items counted at
+  once (`bunches.md`) whose release would come on `F0` + 29. How the
+  count display shows an item counted after the last frame.
 - An object in the lead's hands with the second character leading, or
   with the other character following.
 - A lead that is already 240 px or more right of the picture's left
