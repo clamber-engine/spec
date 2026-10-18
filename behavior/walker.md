@@ -69,8 +69,8 @@ until something else turns it.
 
 ## Turning at a barrier
 
-Some places stop a walker heading toward them. In the case measured the
-barrier was invisible and didn't stop the player. A walker heading left
+Some places stop a walker heading toward them. In the case measured
+nothing is drawn at the barrier. A walker heading left
 toward a barrier at position X_b (it can't have `x` below X_b):
 
 1. On the frame **S** where its move would take `x` below X_b, it is
@@ -80,6 +80,17 @@ toward a barrier at position X_b (it can't have `x` below X_b):
 
 A barrier on the other side works the same way with the directions
 swapped (not measured).
+
+The barrier measured is at a vertical step up (`steep-faces.md`) at the
+first level's left end: `X_b` is the left edge of the step's lower side.
+The step stops the player too: walking or running into it, the player is
+blocked as in `steep-faces.md` ("Stopped by a rise"), and gets onto its
+upper side only by jumping. A player seen to go on past it without a
+jump was walking out through the exit there, which moves the lead
+whatever is in its way (`exits.md`). Thrown objects break at the step
+(`thrown-objects.md`, "Breaking at a vertical step"). Whether walkers
+turn at other vertical steps, or at places that aren't steps, is not
+covered.
 
 ## While the player is knocked out
 
@@ -376,8 +387,9 @@ This list is for `title-1`; `title-2` has its own list above.
   it met the ground for 6 frames and then moved back the other way,
   speeding up, while it went down. This is the only difference being
   passable from below was seen to make for a walker.
-- What places act as barriers, barriers met heading right, and a walker
-  placed past a barrier.
+- What other places act as barriers (the one measured is a vertical
+  step, "Turning at a barrier"), barriers met heading right, and a
+  walker placed past a barrier.
 - When a walker appears and disappears as the view moves is in
   `walker-view.md`.
 - Other kinds of enemies, and how walkers look (poses while turning or

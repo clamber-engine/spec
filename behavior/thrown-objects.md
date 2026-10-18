@@ -4,8 +4,9 @@ Titles: `title-1`
 
 What a thrown object that holds nothing does from the moment it is
 thrown until it is gone: how it bounces on the floor, how it then rolls,
-how it breaks against a wall, what happens when it hits a walker, the
-thrower or one of the thrower's balls, and when it is removed after leaving the picture. `carrying.md` covers the throw itself and the flight up to the
+how it breaks against a wall or at a vertical step, what happens when
+it hits a walker, the thrower or one of the thrower's balls, and when it
+is removed after leaving the picture. `carrying.md` covers the throw itself and the flight up to the
 first touch; this file carries on from there. An object that holds the
 missing character moves the same way until it breaks; when it breaks is
 in `holder-breaking.md`.
@@ -231,6 +232,66 @@ object as other faces do (see "Ground passable from below").
 A broken object doesn't come back: in the runs measured, the view was
 moved until the object's starting place was well out of the picture and
 back, and nothing appeared there again.
+
+## Breaking at a vertical step
+
+A vertical step (`steep-faces.md`, "Columns, faces and steps": two
+adjacent columns whose floors differ by 64 px) breaks the object by a
+rule of its own, which doesn't need a face column. On a frame whose move
+would take `x` into a different column beyond a vertical step up in the
+direction the object moves, call **`F_u`** the floor of the step's upper
+side (64 px higher than the floor of the column the object leaves).
+Then, with `y` the object's `y` at the start of the frame:
+
+- If `y` is more than **8 px** below `F_u` (`y` > `F_u` + 8), the object
+  **breaks**, as against a wall: it doesn't move on that frame and is
+  gone, pieces fly from where it was, and the player isn't held up.
+- Otherwise (`y` ≤ `F_u` + 8) it isn't stopped. It moves into the column
+  and meets `F_u` as in "In the air", with `F_u` as the column's floor:
+  it is lifted onto it, touches it and bounces or starts to roll, or
+  flies on above it. An object on the upper side that later meets a
+  second vertical step up follows the same rule there.
+
+Only `y` before the frame decides, not the frame's vertical move: the
+limit was the same with `vy` from −4 to +4 (−1024/256 to 1024/256).
+Rolling and in the air are the same. The break happens on the frame
+whose move would take `x` into the upper side's first column: measured
+moving left, a move ending 1/16 px inside that column broke the object,
+and a move ending exactly on the left edge of the lower side's last
+column didn't.
+
+An object **in the hands** isn't broken by a step. The player can't walk
+past a vertical step up (`steep-faces.md`, "Stopped by a rise"), but an
+object held out in front of the player reaches beyond it, and it stays
+in the hands there even at heights at which a thrown object breaks. At
+the first level's lower step, walking left, the object was held over the
+step's upper side, below the limit, on the last 3 frames before the
+exit there took over the player (the lead was still on the lower side);
+the exit then let it go as in `exits.md` ("An object in the lead's
+hands"). Jumping left, the player landed on the upper side and was
+stopped at the second step, and the object was held beyond that step,
+below its limit, on 5 to 9 frames of each jump.
+
+The place where walkers turn in `walker.md` ("Turning at a barrier") is
+the lower of the two steps measured: `X_b` there is the left edge of the
+step's lower side.
+
+Measured on the first level with the lead alone, at its two vertical
+steps up to the left, one above the other at the level's left end, with
+an object that holds nothing moved in the level's placement list onto
+the floor in front of them (nothing else changed): 68 throws by inputs
+(standing, walking and jumping, after turning toward the steps), 2 245
+frames of flight, ending in 46 breaks at the steps and 22 removals at
+the picture's edge, each on the frame the rules give (35 objects broke
+at the lower step; 11 thrown from jumps passed it above the limit and
+broke at the upper one); 16 runs carrying the object up to the steps (8 walking, 8 jumping),
+in which it stayed in the hands; and 7 515
+controlled frames in which the object's `x`, `y` and `vy` were set just
+before the frame, at the lower step and 18 to 22 px away from it, with
+no difference from the rule above in the 5 979 frames with `y` no more
+than 8 px below the lower floor. An object more than 8 px below the floor of its own column
+broke on those frames wherever it was, also away from the step (see
+"Not covered").
 
 ## Ground passable from below
 
@@ -873,10 +934,11 @@ again. Speeds in 1/256 px per frame.
   and the second character. The ranges are given for the object's
   position; where a carried object is relative to the player is not
   covered (`carrying.md`).
-- Places that stop walkers (`walker.md`, "Turning at a barrier"): near
-  the one measured, a thrown object moving left was seen to break with
-  no wall there, and a carried object was knocked out of the player's
-  hands.
+- Vertical steps ("Breaking at a vertical step"): steps met moving
+  right, steps down, steps of other heights than 64 px, and steps in
+  other levels. An object more than 8 px below the floor of its own
+  column (seen in controlled frames only: it broke on the next frame
+  anywhere on the flat floor measured, also away from a step).
 - An object inside ground passable from below that it didn't come up
   into from below. One let go inside a platform's band broke on the
   next frame with no face column in its way (seen once, moving 16 px

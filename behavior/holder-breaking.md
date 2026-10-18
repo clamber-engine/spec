@@ -54,7 +54,9 @@ case that applies on a frame makes that frame S.
    floor there (then its `y` is that floor). The joining character
    appears at that `x` and the new `y`.
 2. **At a barrier.** A place that stops walkers (`walker.md`, "Turning
-   at a barrier") stops this object the same way it breaks at a wall: on
+   at a barrier"; the one measured is a vertical step, where an object
+   holding nothing breaks too, `thrown-objects.md`, "Breaking at a
+   vertical step") stops this object the same way it breaks at a wall: on
    the frame whose move would take `x` below X_b (moving left), it
    breaks, with `x` unchanged and its vertical move done as in case 1.
    Measured at one barrier, moving left: a move ending 0.03 px below X_b
@@ -198,9 +200,13 @@ to walk again on S + 34, in 7 throws.)
   to 54). Not on Q, and not on Q + 21. The walker is hit as above.
   Seen in 4 throws by inputs, and on about 1 100 controlled frames
   moving the walker next to the object.
-- **Carried through a barrier**: the object is knocked out of the hands
-  and falls through the floor; it was removed below the picture and
-  **nobody joined** (seen once).
+- **Carried up to a barrier**: the barrier doesn't break it. The lead
+  is stopped by the step (`steep-faces.md`, "Stopped by a rise"), but
+  the object held out in front reaches beyond it. In the one run, the
+  exit at the level's left end then took over the lead, still on the
+  step's lower side, and let the object go as in `exits.md` ("An object
+  in the lead's hands"); it fell through the floor, was removed below
+  the picture and **nobody joined**.
 - **Bouncing on a walker while carrying** (`bounce.md`): the object
   leaves the hands and flies on ahead, then breaks by the rules above;
   in the runs seen (4, all the same jump), it broke on its first touch
@@ -287,8 +293,8 @@ Q + 32 and the character appears at (105, 40). The walker's `vx` becomes
   other enemies; walkers other than the small walker facing left with
   the object moving right (the ranges of `thrown-objects.md` are assumed
   to hold, as they did for that one).
-- The barrier: where barriers are, heights more than 55 px above the
-  floor there, and a barrier met moving right.
+- The barrier (case 2, a vertical step): heights more than 55 px above
+  the floor there, and a barrier met moving right.
 - Two causes on the same frame, other than the floor and the window
   together (seen once: the character appeared on the floor, `y` = `F`).
 - The view moving on the frame the object leaves the picture (the window
