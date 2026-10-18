@@ -265,6 +265,18 @@ for the frame on which it is thrown, not for which of the two it is
 run only, each with the ball one frame on outside the other run's
 window.
 
+A ball placed in the level ("Balls placed in a level") does the same:
+it moves on H, keeps its position and speeds on H + 1 to H + 10, isn't
+removed then, and from H + 11 is where it would have been 10 frames
+earlier without the knock-out. Measured on the first level: 242
+knock-outs in random play while its placed ball was there (in 192 of
+them it was the only ball, and in all of them the ball nearest the
+player just before H), each compared with the same play with the hit
+prevented. It was as without the hit on H, unchanged on all 2 420
+frames from H + 1 to H + 10, and 10 frames behind the run without the
+hit on all 2 893 frames it was followed after that, while both runs
+still had it (in 19 runs one of them had removed it by H + 11).
+
 ## Example
 
 A thrower is at (1000, 300). In column 1000 there are floors at y 301,
@@ -298,9 +310,9 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   on it and rolling into it are in `thrower-contact.md`, balls touching
   the player in `ball-contact.md`, and the ground action knocks it out,
   `ground-action-enemies.md`.
-- While the player is knocked out: a ball placed in a level (only
-  thrown balls were measured), a thrower already knocked out, and
-  losing a character with two present (`losing-a-character.md`).
+- While the player is knocked out: a thrower already knocked out,
+  losing a character with two present (`losing-a-character.md`), and a
+  placed ball whose appearance would come on H + 1 to H + 10.
 - A ball moving up into a floor from below while not ignoring floors
   (it was seen to jump several px at the floor). This doesn't happen in
   the first level: balls start above the ledge and only bounce while
