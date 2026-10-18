@@ -90,7 +90,7 @@ player's state (ends included).
 
 | State | `I` | `D` |
 |---|---|---|
-| Standing, walking, running, Down + Action ground action | −15 to 21 | −8 to 40 |
+| Standing, walking, running, turning, Down + Action ground action | −15 to 21 | −8 to 40 |
 | Crouching (Down held on the ground) | −18 to 12 | −12 to 31 |
 | Rolling | −13 to 21 | −4 to 38 |
 | Jumping, from the take-off frame `T` to `T` + 5 | −15 to 21 | −8 to 40 |
@@ -152,6 +152,21 @@ edge of the standing row, 6 090 pickups came on ground-action frames,
 and every run took the bunch on the frame these rules give. Using the
 crouching row on ground-action frames instead would have given the wrong
 frame in 6 800 of them.
+
+**Turning.** During a turn (`ground-speed.md`, "Facing and turns"),
+from its first frame `U` to `U` + 7, the standing row applies on every
+frame. `I` is measured in the direction the player faces on that frame:
+the old facing from `U` to `U` + 3 and the new facing from `U` + 4. This
+holds for turns from standing, walking and running, facing either way,
+and for a new turn that starts on `U` + 8, whose first four frames again
+use the facing it starts in. This was measured with the bunch
+moved to every offset one pixel apart around the player, on every frame
+of seven turns and the frames just before and after them (about
+340 000 placements). Separately, in 16 489 runs of play by inputs with
+turns and the bunch placed once beforehand near the edge of the standing
+row, 6 396 pickups came on turn frames, and every run took the bunch on
+the frame these rules give. Measuring `I` in the new facing on every
+frame of a turn would have given the wrong frame in 3 310 of them.
 
 ### Two characters
 
@@ -250,8 +265,8 @@ is taken.
 - The ranges while bouncing off a walker (`bounce.md`), while being
   carried down a steep slope or a rounded ledge (`steep-faces.md`), while
   passing through a platform (`platforms-from-below.md`), while carrying
-  an object (`carrying.md`), while falling without a jump, while
-  turning, during the stop after a roll, and while being hit.
+  an object (`carrying.md`), while falling without a jump, during the
+  stop after a roll, and while being hit.
 - Landing on slopes, and a landing followed at once by a crouch, a
   roll, a turn or another jump.
 - When a bunch that hasn't been taken appears and disappears as the
