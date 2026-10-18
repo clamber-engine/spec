@@ -18,7 +18,7 @@ its top-left corner (the picture is 256 × 224 px, `view.md`,
 `view-vertical.md`).
 
 Measured on the first level with the first character leading and
-alone. The player was placed at chosen offsets from two of the level's
+alone (two characters: see "Two characters" under "Pickup ranges"). The player was placed at chosen offsets from two of the level's
 letters, one pixel apart, in poses reached by inputs only: standing,
 walking, running, crouching, rolling, the Down + Action ground action,
 and frames of jumps from take-off until well after the top (Jump held
@@ -110,6 +110,19 @@ For example, a player facing right walking on a floor 33 px below a
 letter's position (`D` = 33) takes it on the first frame that ends with
 `X − xl` from −15 to 21. Walking right from far left, that is the first
 frame that ends with `X` = `xl` − 15 or more.
+
+### Two characters
+
+With two characters there (`second-character.md`), only the character
+that leads takes a letter, by its own offsets. The character that
+follows never takes one, even with the letter inside its own ranges and
+outside the lead's. The ranges above are the first character's when it
+leads, with or without the second character following. With the second
+character leading, its ranges are those of bunches for the second
+character (`bunches.md`, "Two characters"), with one row for its jumps
+from take-off until they land.
+This was measured with letters and bunches alike, with each character
+leading (`bunches.md`, "Two characters", has the measurements).
 
 ## The letters taken
 
@@ -336,7 +349,9 @@ gave 99 shown throughout.
 
 ## Not covered
 
-- The second character, leading or following.
+- With two characters: the second character's landings and running
+  state, and the letter row, the letters taken and the reward (only
+  which character takes a letter, and on which frame, was measured).
 - Being hit, bouncing, carrying, falling without a jump, landing (the
   frames from `L`, the frame carrying `land`, on), turning and the frame
   after a turn, and the stop after a roll.
