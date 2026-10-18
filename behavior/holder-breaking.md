@@ -44,9 +44,10 @@ case that applies on a frame makes that frame S.
    with its floor ("The floor of a column" there) higher than the
    object's `y` at the start of the frame. Whether the face is passable
    from below makes no difference ("Ground passable from below" below).
-   At solid ground, a move of more than one column that passes such a
-   face column broke it too, even when the new column isn't one (seen 4
-   times; at a passable face this wasn't always so, see "Not covered").
+   The rule's "A floor more than 8 px higher" breaks it too, with the
+   same conditions (a move past face columns into a column that isn't
+   one broke it on the same frames as an object holding nothing: 4 at
+   solid ground, 140 at a face passable from below).
    On S its `x` doesn't change, but
    its vertical move of this frame ("In the air", steps 1 to 4) still
    happens, in the column of the unchanged `x`, including touching the
@@ -123,13 +124,12 @@ copy with every surface made not passable from below.
   the passable face), and also on every frame on which that object
   bounced (1 431 starts: case 3 above). It never broke on any other
   frame.
-- Frame by frame, the rules of this file without the sentence on moves
-  of more than one column gave every one of the 24 701 frames that
-  followed a start, in both images, except 140 frames on which a move
-  crossed face columns into a column that isn't one and the object
-  broke (an object holding nothing broke on the same frames). With that
-  sentence, 251 frames would have broken that didn't. So at this edge
-  neither gives every frame (under "Not covered").
+- Frame by frame, the rules of this file gave every one of the 24 701
+  frames that followed a start, in both images. 140 of them were moves
+  past face columns into a column that isn't one, on which the object
+  broke by "A floor more than 8 px higher" (an object holding nothing
+  broke on the same frames); on the frames of objects that had come up
+  into the platform from below, it didn't break.
 - On every break (3 155 in each image, 1 798 of them on the first frame
   after the start) the joining character appeared at the object's
   whole-pixel position.
@@ -294,10 +294,6 @@ Q + 32 and the character appears at (105, 40). The walker's `vx` becomes
 - The view moving on the frame the object leaves the picture (the window
   is taken from the view as in `thrower.md`, but only a still view was
   measured).
-- A move that carries `x` past face columns into a column that isn't
-  one, at a face passable from below: the object broke on 140 controlled
-  frames, on the same frames as an object holding nothing, but not on
-  every such move (the 4 breaks of case 1 were at solid ground).
 - With both characters there: walkers and the thrower from S + 1 to
   S + 33, breaks on enemies or at the edge of the picture, and the
   first such object (only the second was measured).
