@@ -584,7 +584,11 @@ in "Jumping on or next to a face". The rules below were checked on the
 frames on the floor from S to S + 28; every other rule of `roll-speed.md`,
 `roll-input.md` and `rolling-off-ledges.md` applies unchanged. Down
 held during a roll or the stop after one makes no difference on or next to
-a face either (`roll-input.md`, "Down during a roll").
+a face either (`roll-input.md`, "Down during a roll"). One rule of
+`roll-input.md` changes on a face: a press just after a roll that carried
+on into running, when the frame after `roll_end` starts on a face, is
+carried like a jump press until the player is off the face
+(`roll-input.md`, "Starting the next roll").
 
 ### Steering on a face
 
