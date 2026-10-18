@@ -1010,6 +1010,56 @@ height except for barrels and holders, which fall.
   on 1 676 frames with `V` less than 32 and `x` − `V` from 289 to 304,
   where the raw `V` would remove them.
 
+**Objects put down elsewhere.** A `barrel` of the shared list that has
+been picked up and put down elsewhere follows "Objects put down
+elsewhere" above, with `V`, `U` and its own `y` as there: it is removed
+on the first frame on which its entry isn't in the window and its own
+`x` − `V` is −128 or less or 385 or more, or its own `y` isn't in the
+vertical window. Its entry places nothing else while it is there, and
+once removed it comes back at its entry, as an object that has not been
+moved. It comes back as
+entries in these lists appear ("When an entry appears"): its entry is a
+class 15 entry, so it comes back only on the first frame on which the
+entry is in the window (with `V` less than 32 counted as 32) **and** in
+the vertical window. While the view is far above or below the entry, it
+doesn't come back, however close across the view is.
+
+**Example (synthetic).** A class 15 `barrel` entry at `x` = 200, level y
+1000, with the barrel carried down to a floor at level y 1400 and put
+down there at `x` = 600:
+
+| The view | `V` | `U` | entry's `x` − `V` | entry's `y` − `U` | own `x` − `V` | own `y` − `U` | The barrel |
+|---|---|---|---|---|---|---|---|
+| moving right along the lower floor | 300 | 1250 | −100 | −250 | 300 | 150 | there (own position in both windows) |
+| moving right | 727 | 1250 | −527 | −250 | −127 | 150 | there |
+| moving right | 728 | 1250 | −528 | −250 | −128 | 150 | removed |
+| moving left along the lower floor | 150 | 1250 | 50 | −250 | | | not there: the entry isn't in the vertical window |
+| going up | 150 | 1031 | 50 | −31 | | | appears at `x` = 200, level y 1000 |
+
+Had the view gone up from `V` = 150 before the barrel was removed, the
+barrel would have stayed down on the lower floor (its entry is in the
+window), and no second barrel would have appeared at the entry.
+
+**Checks.** In one of the shared list's areas, with the walkers near the
+floor given a `sign`'s reference in a copy of the image so that nothing
+hit the lead: the lead picked up the class 15 `barrel` from its entry on
+a ledge, carried it off the ledge down to a floor below, and put it
+down from 86 to 623 px right of the entry and from 448 to 512 px below
+it. Then, with 160 random seeds, 8 legs each of walking left and right on
+the floor (random jumps, never Action), of standing on the ledge after
+being put back there (a research-only change of the lead's position),
+or of walking off the ledge down to the floor again: 418 777 frames. On
+every frame the barrel was there exactly when the rules above say, and
+there was never more than one. 377 removals, 160 of them of the
+put-down barrel, all with its entry outside the window; 248
+appearances, all at the entry's position, 50 of them as the view came
+up to the entry with the entry already in the window across. On 11 877
+frames, in 36 runs, the put-down barrel was there with its entry in
+both windows, and no second barrel appeared. Testing the entry's
+position in place of the barrel's own (the rule for unmoved objects)
+gave a different answer on 12 975 frames, in 141 of the 160 runs.
+Holders in the shared list were not measured.
+
 ## Example
 
 A list with four entries (the trailing entry of zeros not shown), with
@@ -1077,9 +1127,10 @@ on each frame: see its `README.md`.
   a bunch is, but at the bottom only from `y` − `U` = 277.
 - What a removed object that had been moved does, other than thrown
   objects (`../behavior/thrown-objects.md`) and a `barrel` or `holder`
-  put down elsewhere ("Objects put down elsewhere"): for example
-  objects put down in lists with sections, and a put-down object that
-  moves again by itself or is pushed.
+  put down elsewhere ("Objects put down elsewhere", and a `barrel` in
+  the shared list, "In lists with sections"): for example a `holder` put
+  down in the shared list, and a put-down object that moves again by
+  itself or is pushed.
 - How many objects can be there ("How many objects can be there"):
   which short-lived objects take pictures, and for how long (in the
   first level's runs some kept theirs for a while after they were gone,
