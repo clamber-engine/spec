@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.184.0
+
+Letter ranges in the stop after a roll, and bunch ranges while
+bouncing off a walker (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/letters.md`: new "After a roll" paragraph under "Pickup
+  ranges". After a roll that ends in a stop, the rolling ranges still
+  apply for the first 9 frames and the standing ranges after that; when
+  a roll carries on into running, the rolling ranges apply until it
+  does. Not covered now lists only stops after a fast roll or on a
+  slope.
+- `behavior/bunches.md`: new "Bouncing off a walker" paragraph under
+  "Pickup ranges", with the ranges on the bounce frame and from the end
+  of the frozen frames until landing, no pickup on the frozen frames,
+  and the standing row from the landing frame. Not covered now lists
+  bounces from a roll, bouncing again before landing, landing on a slope
+  after a bounce and the second character bouncing.
+
 ## spec-v0.183.0
 
 Walkers during pick-ups, throws and put-downs (spec#19).
