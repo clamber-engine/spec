@@ -550,6 +550,118 @@ Without the walker, the second roll would have ended in a stop with
 - No event in the trace vocabulary marks a defeat.
 - `roll_start` and `roll_end` are as in "The boost".
 
+## The second character (`title-1`)
+
+The rules above also apply when the second character (`second-character.md`)
+leads and rolls into a walker, with the differences in this section. S and D
+are this character's own (`second-character.md`, "Rolls"): its rolls last 24
+frames, so D = S + 24, and a roll that carries on is still `roll` on D to
+D + 5 with `roll_end` on D + 6.
+
+Measured on `title-1` with both characters there, the second leading and the
+first following, on flat floor, against the small walker heading left and
+heading right at full speed, by inputs alone: 1 380 runs (303 600 frames,
+817 defeats) with slow, normal and fast rolls; Action held, pressed once,
+held and then released and pressed again, and pressed again on every third
+frame after the defeat and on each frame around the end of the boost window;
+a slow roll steered in its direction, and reversals. The walker was met
+during the roll, while carrying on and in the stop. In every run, from the
+press of the roll that meets the walker to the end of that roll's ending,
+the defeat frames, the frames of the roll, its ending and the stop, `vx` on
+those frames, the frames on which the player was hurt and the walker's
+motion match the rules. The ranges and frames were found by placing the
+player at offsets −40 to 40 px from the walker, one pixel apart, on every
+frame from S − 1 to D + 18 of 17 input variants (55 566 placements): every
+defeat in them matches, and no hurt comes on an attack frame or on D + 8 to
+D + 10 of a stop. With the first character's defeat ranges
+819 of the 1 380 runs don't match, and with a boost adding 1.125 per defeat
+instead of 1, 336 don't.
+
+| Value | First character | Second character |
+|---|---|---|
+| Defeat range, facing right, walker heading left | −16 to 25 | **−21 to 16** |
+| Defeat range, facing right, walker heading right | −17 to 24 | **−22 to 15** |
+| Defeat range, facing left, walker heading left | −24 to 17 | **−15 to 22** |
+| Defeat range, facing left, walker heading right | −25 to 16 | **−16 to 21** |
+| Attack frames while carrying on | D, D + 1, D + 2 | **D to D + 5** |
+| After a defeat, no boost: still `roll` on | D + 2 to D + 4 | **D + 2 to D + 7** |
+| After a defeat, no boost: `roll_end` | D + 5 | **D + 8** |
+| Boost: roll frames | P to P + 28 | **P to P + 23** |
+| Boost: still `roll` on | P + 29 to P + 31 | **P + 24 to P + 29** |
+| Boost: `roll_end` | P + 32 | **P + 30** |
+| Boosted size after one defeat | slow 2, normal 4, fast 5 | **slow 2.125, normal 4.375, fast 5.5** |
+
+In detail:
+
+- **Defeat ranges** are for the small walker (the medium walker's are
+  below). As for the first character,
+  they are the same on every attack frame: slow, normal, fast and boosted
+  rolls, the frames that end a roll that carries on, and the first 8 frames
+  of the stop. On a roll's first frame S the walker is also defeated when
+  the offset between the player's `x` at the end of S − 1 and the walker's
+  `x` at the end of S is within the range.
+- **Without Action.** A roll that defeats a walker carries on into running,
+  as for the first character: S to D + 1 are roll frames, D + 2 to D + 7
+  are still `roll`, `roll_end` is on D + 8, and the speed rule applies
+  through D + 8. A defeat on D to D + 5 of a roll that carries on gives the
+  same frames.
+- **The boost** window is as for the first character: from K + 3 up to and
+  including the frame that would be `roll_end` (D + 8 after a defeat during
+  the roll or while carrying on), or D + 19 after a defeat in the stop. On P
+  the size becomes the roll's size on its press frame S plus 1 (256/256)
+  per boost: this character's sizes 1.125, 3.375 and 4.5 become 2.125
+  (544/256), 4.375 (1120/256) and 5.5 (1408/256). The boosted roll lasts 24
+  frames (P to P + 23), is still `roll` on P + 24 to P + 29, has `roll_end`
+  on P + 30 and always carries on into running.
+- **The same as for the first character:** the pause on K + 1 and K + 2
+  (inputs ignored, then everything later by 2 frames), the stop after a
+  defeat in it (attack frames D to D + 7, the stop lasts 2 frames longer),
+  being hurt around a roll (never on an attack frame; after carrying on, the
+  earliest hurt is on the frame after `roll_end`; in a stop, nothing on
+  D + 8 to D + 10 and the earliest hurt on D + 12), and the walker's motion
+  after K.
+
+**The medium walker.** Rolling into the medium walker, this character's
+defeat ranges are:
+
+| Facing, walker heading | Defeat range |
+|---|---|
+| Right, left | −28 to 14 |
+| Right, right | −20 to 22 |
+| Left, left | −22 to 20 |
+| Left, right | −14 to 28 |
+
+Everything else in this section is the same as for the small walker: the
+attack frames, the first-frame rule, the frames after a defeat, the boost
+and being hurt around a roll. Measured on `title-1` in the same way as for
+the small walker, against the medium walker heading left and heading right
+at full speed: 1 380 runs (303 600 frames, 726 defeats) in which everything
+matches, and 65 650 placements at offsets −50 to 50 px on every frame from
+S − 1 to D + 18 of 16 input variants, which match these ranges, and no range
+1 px wider or narrower at either end does. Fast rolls were measured facing
+right into the walker heading right and facing left into the walker heading
+left. With the small walker's ranges 723 of the 1 380 runs don't match.
+
+With the first character following, a hurt lead loses the character as in
+`swap.md`; the frames above are those of the hurt. This character's hurt
+ranges against walkers aren't specified (`second-character.md`).
+
+Example, synthetic from the rules: walking right at +2.25, Action and Right
+on frame 0 (S = 0, a normal roll, D = 24), Right held. A small walker heads
+left at full speed, its `x` at the end of frame f being 69 − f. `x` is
+relative to the start of frame 0.
+
+| Frame | `x` (Action held) | `vx` (Action held) | `x` (Action on frame 0 only) | `vx` (Action on frame 0 only) | Notes |
+|---|---|---|---|---|---|
+| 11 | 34.1328125 | 3.13671875 | 34.1328125 | 3.13671875 | I = −24 |
+| 12 | 37.296875 | 3.1640625 | 37.296875 | 3.1640625 | I = −20: K |
+| 13, 14 | 37.296875 | 3.1640625 | 37.296875 | 3.1640625 | pause |
+| 15 | 40.609375 | 3.3125 | 40.484375 | 3.1875 | P: size 4.375 (held) |
+| 26 | 82.9375 | 4.12109375 | 76.53125 | 3.3203125 | D + 2: still `roll` |
+| 32 | 108.1875 | 4.25390625 | 96.53515625 | 3.34375 | `roll_end` = D + 8 (Action on frame 0 only) |
+| 38 | 133.93359375 | 4.3125 | | | P + 23: last roll frame |
+| 45 | 164.2578125 | 4.34375 | | | `roll_end` = P + 30 (held) |
+
 ## In `title-2`
 
 Everything in this section was measured on `title-2` only, with the lead
@@ -749,6 +861,7 @@ This list is for `title-1`; `title-2` has its own list above.
   also held during the pause, and objects other than those listed in
   "Everything else during the pause". Whether a defeated walker can hurt
   the player while it falls.
-- Other kinds of enemies and the second character. Rolling into the
-  thrower is in `thrower-contact.md`; the Down + Action ground action
-  meeting a walker is in `ground-action-enemies.md`.
+- Other kinds of enemies. For the second character, the large walker,
+  chains of defeats, slopes, and steering a boosted slow roll.
+  Rolling into the thrower is in `thrower-contact.md`; the Down + Action
+  ground action meeting a walker is in `ground-action-enemies.md`.
