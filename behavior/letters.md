@@ -192,8 +192,9 @@ is drawn from frame 228.
 ### Another letter while the row is shown
 
 Take a letter on frame `P1` and another one on `P2` = `P1` + `d`, with
-`d` from 2 to 127, while the row for the first is still drawn. The
-second letter is not the fourth (that case is not covered). The row's
+`d` from 2 to 127, while the row for the first is still drawn. When the
+second letter is the fourth, what follows holds up to the frame it joins
+the set; from then on see "The ending" ("After another letter"). The row's
 **end** is its last frame at y 12: `P1` + 121 after the first letter.
 What happens depends on whether `P2` comes before the end:
 
@@ -249,8 +250,10 @@ slide out; this section gives what it shows instead.
 ### The four letters
 
 The letter taken last is **one frame late**: everything below happens
-to it one frame later than to the other three. For letter `k`, let
-`n` = `f` − `J` on frame `f` (`f` − `J` − 1 for the late letter), and let
+to it one frame later than to the other three. (When the fourth letter
+is taken while the row is shown for another one, which letters are late
+can differ: see "After another letter".) For letter `k`, let
+`n` = `f` − `J` on frame `f` (`f` − `J` − 1 for a late letter), and let
 its **slot place** be (84 + 24 × (`k` − 1), 12), its slot in the row.
 
 | `n` | Letter `k` is |
@@ -301,6 +304,39 @@ lives before the new life up to `G` − 1, and the new number from `G` on.
 With 99 lives before the new life, the number shown stayed 99, also from
 `G` on.
 
+### After another letter
+
+When the fourth letter is taken on `P2` while the row is still shown for
+another letter taken on `P1` (as in "Another letter while the row is
+shown", `d` = `P2` − `P1` from 2 to 127), the row follows that section up
+to `J`, and the ending is as above from `J` on, with one difference:
+which letters are **late**. Each letter is either on time or late (one
+frame late in everything above, as the letter taken last is after a
+single letter), but the late ones are not always just the letter taken
+last. With `d` from 121 to 140 (the largest measured) they were. With
+`d` up to 120, the late
+ones were sometimes all four letters, sometimes only the letter taken on
+`P1`, and sometimes only the letter taken last:
+
+| Letters (`P1`, then `P2`) | Only the letter taken on `P1` | All four | Only the letter taken last |
+|---|---|---|---|
+| 1, then 2 | `d` 2 to 4 | `d` 5 and 6 | `d` 7 to 140 |
+| 2, then 3 | — | `d` 2 to 120 | `d` 121 to 140 |
+| 3, then 4 | `d` 2 | `d` 3 to 120 | `d` 121 to 140 |
+
+What decides this for `d` up to 120 is not covered. `G` is still the
+first frame on which letter 4 is gone: `J` + 163, or `J` + 164 when
+letter 4 is late. The lives display follows its table from `J` whatever
+is late, and the lives go up by one on `J`.
+
+For example, with letters 1 and 2 already taken and 5 lives, take
+letter 3 on frame 1 and letter 4 on frame 61 (`d` = 60). Letter 4 joins
+the set on frame 89 (`J`), and all four letters are late: all four are
+drawn on frame 90, none of them on 91 to 98, all four again from 99, and
+letter 1 starts moving on frame 157. The lives display comes in with 5
+at y −12 on frame 96, as for a single letter. Letter 4 is gone from
+frame 253 (`G` = `J` + 164), and the display shows 6 from then on.
+
 ### Example
 
 With letters 1, 2 and 4 already taken and 5 lives, the player takes
@@ -334,15 +370,27 @@ also checked in the picture itself in one run. 10 and 99 lives after
 the new life (9 and 98 before) gave the two-digit places, and 99 before
 gave 99 shown throughout.
 
+For "After another letter", the fourth letter was taken after the one
+before it in the word (1 then 2, 2 then 3, 3 then 4, the other two
+letters already in the set), with `d` from 2 to 140, as in the checks of
+"Another letter while the row is shown": 417 runs. On every frame from
+`P1` to `J` + 300 (to `J` + 299 in 139 runs where the player was knocked
+out on `J` + 300), where each letter and the lives number were drawn,
+the frame the number changed and the frame the lives went up were as
+above, with each letter's lateness taken from the run: 165 936 frames,
+0 different, and in every run each letter was either on time or late
+throughout.
+
 ## Not covered
 
 - The second character, leading or following.
 - Being hit, bouncing, carrying, falling without a jump, landing (the
   frames from `L`, the frame carrying `land`, on), turning and the frame
   after a turn, and the stop after a roll.
-- Taking the fourth letter while the row is still shown for another
-  one, taking two letters on consecutive frames, and taking a letter
-  that comes earlier in the word than one whose row is still shown.
+- Taking two letters on consecutive frames, and taking a letter that
+  comes earlier in the word than one whose row is still shown.
+- Which letters are late in the ending when the fourth letter is taken
+  120 frames or less after another (see "After another letter").
 - The ending while the player is knocked out, leaves the level or
   finishes it, or while another lives display (`count-display.md`) is
   shown, and what the extra life with 99 lives does.
