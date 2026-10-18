@@ -140,7 +140,8 @@ unchanged: −3, −2, 0, 2 or 3 px per frame. Releasing Action doesn't
 change it: a player whose target was 3 keeps 3 with only the direction
 held. (Pressing Action on the floor starts a roll, `roll-input.md`; a
 target of 2 kept with Action held newly wasn't measured.) A frame on which the player was
-blocked ("Stopped by a rise") counts as having target 0. When the previous
+blocked ("Stopped by a rise") counts as having target 0. A frame that started
+on a face column counts as described in "Leaving a face onto floor". When the previous
 frame is itself such a frame, its target was decided the same way, so
 the target carries over from the last frame on which it followed the
 held input. The speed rule then applies as on any grounded frame. So:
@@ -375,20 +376,105 @@ follows it for a few frames and then leaves it.
 ## Leaving a face onto floor
 
 When a grounded player moves off the low end of a face onto other floor
-and stays grounded, then on the **first two frames** that start on a
-column that isn't a face column:
+and stays grounded, the face is a rise behind them: on a face rising
+4 px per column whose lowest column is 1 px above the floor beyond it,
+the three columns next to the face are the ones whose column 5 ahead,
+toward the face, is 8 px or more higher. On frames that start in those
+columns with the direction back up the face held, "Holding toward a
+rise" above applies as anywhere else: the target speed is the previous
+frame's target, unchanged, with the same exceptions (take-off frames,
+and landing frames up to the switch frame M).
 
-- a held direction pointing **back up the face** (opposite to the face's
-  downhill direction) is ignored: the target speed is 0, as if no
-  direction were held;
-- a held direction pointing the other way (the way the face falls)
-  applies normally.
+For this, a frame that started on a face column counts as having the
+target of the held direction when that direction points down the face
+(the normal walking target, −2 px per frame on a face falling to the
+left), and target 0 when nothing or the uphill direction was held. The
+1.5 px per frame downhill part of "Speed on a face" isn't kept. So, with
+the direction back up the face held on every frame from the last frame
+on the face on:
 
-From the third such frame the normal target applies. Measured moving
-left off the foot of a face falling to the left, with Right held (three
-runs: target 0 on two frames, then the normal target) and with Left held
-(two runs: normal target from the first frame). Leaving a face moving
-right in this way, and facing on these frames, are not covered.
+- If nothing or the uphill direction was held on the last frame on the
+  face, the target is 0 on every frame that starts in the three columns
+  next to the face: the player slows down under target 0 and doesn't
+  start moving back toward the face. The normal target applies from the first
+  frame that starts 4 or more columns from the face. How many frames
+  that takes depends on the speed coming off the face: 2 at the usual
+  speed of a player carried down the face, more for a slower player
+  (4 in the example below), and the target is 0 on the third and fourth
+  frames off the face as well if they still start next to it.
+- If the downhill direction was held on the last frame on the face, the
+  target stays the downhill walking target on those frames, and the
+  player keeps speeding up away from the face until they start a frame
+  4 or more columns from it.
+
+A held direction pointing down the face, away from the rise, applies
+normally from the first frame off the face, as does any direction once
+the player starts a frame 4 or more columns from the face.
+
+**Facing.** On each of the first four frames off the face that starts
+next to the face and is held back up it, `facing` ends on the held side,
+turning on that frame if it was the other way. Frames further from the
+face are not covered.
+
+Example, the player carried down a face falling to the left, Right held
+on every frame (`x` relative to the left edge of the face's lowest
+column, `y` relative to the floor beyond the face, so the lowest face
+column is at `y` −1). Frame 1 starts on the face (target −1.5 with the
+uphill direction ignored). Frames 2 to 5 start 1, 2, 2 and 3 columns
+from the face, with target 0 (the frame on the face counts as 0), and
+frame 6 starts 4 columns away, where the target is +2.
+
+```
+frame	input	x	y	vx	facing	target
+0	.	0.76171875	-1	-0.9765625	L
+1	R	-0.27734375	0	-1.0390625	L	-1.5
+2	R	-1.1875	0	-0.91015625	R	0
+3	R	-1.984375	0	-0.796875	R	0
+4	R	-2.68359375	0	-0.69921875	R	0
+5	R	-3.296875	0	-0.61328125	R	0
+6	R	-3.5859375	0	-0.2890625	R	2
+7	R	-3.58984375	0	-0.00390625	R	2
+8	R	-3.34375	0	0.24609375	R	2
+```
+
+With Left held on the last frame on the face instead, and Right from the
+first frame off it, the target stays −2 on the frames next to the face
+(in one run `vx` went from −1.69921875 to −1.734375 on the first frame
+off it), and +2 from the first frame 4 columns away.
+
+Measured moving left off the foot of a face falling to the left (see
+"Evidence (leaving a face onto floor)" below). Leaving a face moving
+right is not covered.
+
+### Evidence (leaving a face onto floor)
+
+- 1 200 runs of 100 frames on a face falling to the left, 4 px per
+  column, whose lowest column is 1 px above a flat floor. Half the runs
+  started by dropping straight onto one of the face's 11 lowest columns
+  (`vx` 0, 4 to 40 px above it), half by creeping onto it from the flat
+  floor at its top; on the face the runs held Right, nothing or Left
+  (3 : 2 : 1, 1 to 6 frames at a time), and once on the floor below,
+  Right, Left or nothing (4 : 1 : 1, 1 to 12 frames at a time) with an
+  occasional jump. On the 63 073 frames that started and ended on the
+  floor below or beside the face (blocked frames left out), the target
+  speed matched "Holding toward a rise" with face frames counted as above,
+  and `ground-speed.md`, with 0 differences.
+- Of these, 833 frames were held Right on every frame since leaving the
+  face, were the third or a later frame off it, started next to the face
+  with the player still moving, and had target 0. 1 193 more like them
+  were the first or second frame off the face. 288 frames held Right after
+  Left on the last frame on the face kept the target −2. 66 second frames
+  off the face that started 4 columns or more from it, Right held, had
+  target +2.
+- Controls on the same frames: with target 0 for exactly the first two
+  frames off the face and the rise rule after that, 412 frames differ;
+  with target 0 for exactly the first two frames and the normal target
+  from the third, 2 204; with a face frame's kept target taken as the
+  whole face target (−1.5, or −3.5 with the downhill direction held),
+  2 370.
+- `facing` on the 2 112 frames held Right among the first four off the
+  face that started next to it: the held side on every one, 520 of them
+  turning on that frame.
 
 ## Landing on or next to a face
 
@@ -1041,8 +1127,10 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
   at floor: the player was seen to leave the ground while still over the
   face's last column. (Moving right off such an end, the rule above
   holds.)
-- Leaving a face onto floor while moving right, and facing on the frames
-  after leaving a face.
+- Leaving a face onto floor while moving right; `facing` on frames off a
+  face other than the first four next to it (35 of 948 frames held back
+  up the face among the first four but 4 or more columns away didn't
+  turn); Action held on the last frame on the face.
 - Vertical steps of other heights, steps up of 9 to 63 px in general,
   faces steeper or less steep than 4 px per column, and a vertical step
   rising to the right.
