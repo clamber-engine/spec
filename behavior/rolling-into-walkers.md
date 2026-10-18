@@ -185,9 +185,11 @@ On P a **new 29-frame roll** starts:
   Action does and whatever its size.
 - **Size:** on P the size becomes the size the roll had on its own press
   frame S (slow 1, normal 3, fast 4, before any steering) **plus the
-  number of boosts so far in this chain of rolls**. After one defeat:
-  slow 1 → 2, normal 3 → 4, fast 4 → 5. After a second defeat and boost
-  in the same chain, a roll that started normal is 5.
+  number of boosts so far in this chain of rolls**, but never more than
+  **8**. After one defeat: slow 1 → 2, normal 3 → 4, fast 4 → 5. After a
+  second defeat and boost in the same chain, a roll that started normal
+  is 5; after the fifth it is 8, and it stays 8 after the sixth and
+  later ones. A roll that started fast is 8 from the fourth boost on.
 - **Direction** stays the roll's direction. Steering works as in
   `roll-speed.md` from P on, with P as the new roll's first frame: a
   direction opposite to the roll's direction, held on P or later,
@@ -213,7 +215,28 @@ If there is no frame P, the roll goes on as in "Without Action".
 
 A walker defeated during a boosted roll is defeated by the same rules
 and gives the same pause, timing and boost, with P counted from the new
-defeat. Chains of two defeats were measured.
+defeat. Chains of up to six defeats were measured, and none of these
+rules changed along a chain except that the size stops growing at 8
+(see "Size" above). Each boost follows "The
+boost" above, with its own P to P + 32; the chain ends once a roll and
+its ending are over without another defeat.
+
+Measured on the first level's opening floor with up to six small
+walkers in a row heading left (walkers added to the level, 22 to 29
+pixels apart), the first character leading: 20 000 runs of random input
+(walking or running first, Action held, released and pressed again at
+random, Right mostly held with short Left presses, occasional Down and
+Jump presses), about 4 560 000 logic frames. In the first 15 000 runs,
+4 070 rolls defeated at least one walker, with 18 863 defeats; 2 614
+chains had six defeats, and in 1 839 chains the starting size plus the
+boosts came to 9 or 10, so the limit applied. Every frame of every chain
+(defeats, pauses, roll, ending and stop frames, speeds, the defeated
+walkers' motion and hurts) matched the rules of this page with the limit
+of 8: 0 runs different. The same rules with no limit, or a limit of 7,
+differ in 1 839 and 2 058 runs. The last 5 000 runs were
+recorded after the rules were fixed, as a holdout: 1 362 rolls with a
+defeat, 6 299 defeats, 870 chains of six, the limit applying in 623
+chains, 0 runs different.
 
 ## Speed on roll frames
 
@@ -476,7 +499,9 @@ This list is for `title-1`; `title-2` has its own list above.
 - Walkers on a different floor from the player, and rolls on or off
   ledges, in the air, or jumping out of a roll (a Jump press on K + 3
   starts a jump; what happens next isn't specified).
-- More than two defeats in one chain, and whether the size keeps growing.
+- A roll that started slow reaching the limit (seven boosts); chains into
+  walkers heading right, and into medium or large walkers, longer than
+  two.
 - Being hurt in a stop that a defeat has lengthened.
 - Whether timed behaviour that doesn't show in an object's position,
   speeds, facing or picture (a walker's turn, the thrower's timetable) is
