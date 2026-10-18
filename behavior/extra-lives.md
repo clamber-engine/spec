@@ -207,6 +207,94 @@ The table was measured with 5 lives before `P` for each of the four
 kinds (walking into the item, or with the player placed on it), and with 9 lives before
 an `extra-life-3` (shown 9, then 10, 11 and 12 with two digits).
 
+### Several items
+
+What follows holds when an item is taken while the lives display of
+another extra-life item is still shown, and when two items are taken on
+the same frame. Items keep their own `P` and give their lives on it
+("What taking an item does"); there is one lives display, and the
+number shown goes up one step at a time until it reaches the number of
+lives.
+
+For each taken item, call **`A`** its **arrival**: the frame its image
+reaches the lives display. For an item taken alone `S` = `A` + 10, so `A`
+is `S` − 10 as above. The frames `P` to `A` − 1 of any taken item are
+**held**, and the other frames are **free**. The number shown changes
+only on free frames, by one (a **step**) each time. Counting free frames
+only, and not the frame counted from:
+
+- After a step that leaves the number shown below the number of lives,
+  the next step comes on the 16th free frame after it.
+- After the step that makes the number shown equal to the number of
+  lives, on frame `E`: if an item is taken on `E` + 1, the next step
+  comes on the first free frame after `E` (that item's `A`, or later if
+  another taken item holds it).
+- Otherwise (the first step of all, or after `E` when no item is taken
+  on `E` + 1), the next step comes on the 10th free frame after the first
+  free frame on which the number shown is less than the number of lives.
+
+For a single item this gives the steps above (`S` = `A` + 10, then every
+16 frames). So:
+
+- An item taken before an earlier one's image has arrived: the steps of
+  both start 10 frames after the later arrival, 16 frames apart, as many
+  as the two give together. Two items taken on the same frame are the
+  same case.
+- An item taken while the earlier one's steps are still due: the step
+  due next comes later by the frames held for the new item, and the
+  steps that remain follow 16 frames apart.
+- An item taken after the last step: the next step comes 10 frames after
+  its arrival, as for a single item, except when it is taken on the
+  frame right after the last step: then the first step comes on its
+  arrival frame `A`.
+
+Call **`E`** the frame of the last step (the number shown then equals
+the number of lives). The lives number's height:
+
+- An item taken when no lives display is shown starts one, as in the
+  table above.
+- Taking an item while the number is coming in, or at y 10, changes
+  nothing; the number stays at y 10 up to `E` + 121, with `E` the last
+  step of all the items taken.
+- From `E` + 122 it moves up 4 px per frame: y 6 on `E` + 122, then 2,
+  −2, −6, −10, −14 up to `E` + 127, and on through −18, −22 and −26 on
+  `E` + 128 to `E` + 130, where it isn't drawn. The display ends on
+  `E` + 131.
+- An item taken on a frame `Q` from `E` + 122 to `E` + 131 turns it
+  back: on `Q` its y is 4 px lower than on `Q` − 1, and it keeps moving
+  down 4 px per frame until it is at y 10 (taken on `E` + 122, it stays
+  at 10). It then stays at 10 up to 121 frames after the new last step.
+- An item taken on `E` + 132 or later starts a new lives display, as in
+  the table above.
+
+The number is drawn when its y is −16 or more (at −16 none of its rows
+are in the picture).
+
+In the first level's own two `extra-life-3` items, taken one after the
+other in real play (from the shot of the launch barrel, `launch-barrel.md`),
+the number came in one frame later than in the table: not drawn up to
+`P` + 7, then −12 to 8 on `P` + 8 to `P` + 13. This also happened when
+only the right one of the two was taken, and not when only the left one
+was. Why is not covered. Everything else above held in those runs, with
+each image arriving 42 frames after its item was taken.
+
+#### Example
+
+Two `extra-life-3` items are on the floor 94 px apart, and the player
+has 5 lives. The player walks into the first one on frame 100 and the
+lives become 8; its image arrives on frame 136, the first free frame
+on which the number shown (5) is less than the lives, and the number
+shows 6 from frame 146, the 10th free frame after it. The player takes
+the second item on frame 147 (the lives become 11), and its image
+arrives on frame 183: frames 147 to 182 are held, so the 16th free frame
+after frame 146 is frame 198. The number shows 7 from frame 198, then 8,
+9, 10 and 11 from frames 214, 230, 246
+and 262 (`E` = 262). The number came in on frames 107 to 112 and stays at
+y 10 up to frame 383; it moves up from frame 384 and isn't drawn from
+frame 390 on. Had the second item been taken on frame 179 instead, one
+frame after the step to 8 on frame 178, its image would have arrived on
+frame 215 and the number would have shown 9 from that frame.
+
 ## More than 99 lives
 
 The number of lives can go past 99, but no lives display shows more
@@ -322,6 +410,20 @@ and is not drawn from frame 321 on.
   row by fall-outs (entering the level again from the map in between).
   The display after each lost life matched the example; with 150 lives
   it showed 99 after all three.
+- Several items ("Several items"): 500 runs with two items near the
+  first level's start in a copy of the image: an `extra-life-3` on the
+  floor and a second item 0 to 94 px to its right, either an
+  `extra-life-3` on the floor or 30 to 60 px above it (taken in a jump),
+  or a `rising-extra-life-1` or `rising-extra-life-2`; walking or
+  running, with 5 or 9 lives before. The second item was taken 0 to 287
+  frames after the first, every gap in that range at least once. Also
+  36 runs of the first level's own two `extra-life-3` items taken from
+  the launch barrel's shot, 2 frames apart, with 0, 5, 9 and 98 lives
+  before. Images arrived 34 to 42 frames after their pickups. On all
+  362 418 frames the number shown and the number's height were as
+  described (the 36 runs with the one-frame-later start noted there).
+  With the next step always 10 frames after each arrival instead, 125 of
+  the 500 runs came out different.
 
 ## Not covered
 
@@ -330,9 +432,11 @@ and is not drawn from frame 321 on.
 - Taking an item while landing (the frames from `L`, the frame carrying
   `land`, to `L` + 6), turning and the frame after a turn, falling
   without a jump, the stop after a roll, being hit, bouncing, carrying.
-- Taking an item while a lives display is still shown (from another
-  item, the count reaching 100, or all four letters), and two items on
-  one frame.
+- Taking an item while a lives display from the count reaching 100 or
+  from all four letters is still shown, and three or more items taken
+  while one lives display is shown. Why the number came in one frame
+  later with the first level's own `extra-life-3` items ("Several
+  items").
 - Whether the number kept above 99 counts down the same way after the
   count reaching 100 or all four letters (only an `extra-life-3` was
   followed by lost lives), how far above 99 it can go, and whether a
