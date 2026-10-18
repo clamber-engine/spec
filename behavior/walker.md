@@ -102,7 +102,8 @@ frame with the player's `bounce` event, `bounce.md`).
 
 From B on the walker no longer turns, its facing doesn't change, and its
 `vx` stays what it was on B. It doesn't land: it falls through the floor
-and out of the bottom of the view, and is then removed. In every case
+and out of the bottom of the view, and is then removed (`walker-view.md`,
+"Defeated walkers falling out", from B + 3). In every case
 measured (all from flat floor, falling past the same view) it moved for
 the last time on B + 41, 95 px below the floor it had been walking on.
 

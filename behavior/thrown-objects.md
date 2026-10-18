@@ -246,13 +246,14 @@ K + 1 + n (n ≥ 1, before `vy` reaches 8), its `y` is
 −6 × n + 0.4375 × n(n + 1) / 2 relative to its `y` on K + 1, as for a
 bounced walker one frame earlier.
 
-It is then removed. Small walkers on flat floor last moved on K + 40,
-95 px below the floor they had been walking on; large walkers on slopes
-and flat floor last moved between K + 38 and K + 42, 79 to 112 px below
-their floor on K. A walker hit while it was well left of the picture
-(its `x` rounded down minus `V`, as in "Leaving the picture", −38 or
-less on K + 1) last moved on K + 1; from −35 on it fell as above. When
-exactly it is removed isn't specified.
+It is removed when it leaves the window, from K + 2 on, as in
+`walker-view.md` ("Defeated walkers falling out"), and it never comes
+back (`walker-view.md`, "Coming back"). Small walkers on flat floor
+were there for the last time on K + 40, 95 px below the floor they had
+been walking on; large walkers on slopes and flat floor between K + 38
+and K + 42, 79 to 112 px below their floor on K. A walker that was
+already outside the window on K + 2 was there for the last time on
+K + 1.
 
 ### Example
 
@@ -323,7 +324,6 @@ again. Speeds in 1/256 px per frame.
   are still speeding up, outside the picture, or not on the floor; and
   two walkers in range on the same frame (seen once: only one of them
   was hit, and the other one, out of range on the next frame, wasn't).
-- When exactly a hit walker is removed, and whether it comes back.
 - How a hit is drawn (something appears where the walker was hit) and
   how the hit walker is drawn while it falls.
 - A walker walking into an object that the player is carrying (seen to
