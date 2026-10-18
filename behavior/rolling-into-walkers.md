@@ -521,6 +521,8 @@ is defeated on K when I′ is within (both ends included):
 | small | left | −25 to 16 | −24 to 17 |
 | large | right | −20 to 27 | −19 to 28 |
 | large | left | −28 to 19 | −27 to 20 |
+| medium | right | −24 to 22 | −14 to 32 |
+| medium | left | −32 to 14 | −22 to 24 |
 
 For a walker at full speed this gives the same results as the table in
 "When a walker is defeated". There the walker moves exactly 1 px on K
@@ -529,7 +531,9 @@ heading right. A turning walker's facing and the sign of its `vx` can
 differ: at a barrier it moves right on S + 1 to S + 4 while still
 facing left, and the facing column is the one that applies. The large
 walker's facing-left rows were measured with the walker at full speed
-and turning alike.
+and turning alike. The medium walker has no patrol; its rows were
+measured while it speeds up after it appears and while it turns at a
+barrier, and its motion after K follows the same rules.
 
 **Motion after K.** As in "The walker" above, except for `vx`:
 
@@ -996,9 +1000,8 @@ were recorded after the rules were fixed, as a holdout.
 
 This list is for `title-1`; `title-2` has its own list above.
 
-- Walkers that are stopped or frozen, and medium walkers that are
-  turning or speeding up: their defeat range and their motion after the
-  defeat.
+- Walkers that are stopped or frozen: their defeat range and their
+  motion after the defeat.
 - Walkers on a different floor from the player, and rolls on or off
   ledges, in the air, or jumping out of a roll (a Jump press on K + 3
   starts a jump; what happens next isn't specified).
