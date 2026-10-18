@@ -116,6 +116,23 @@ The same applies on the frame of a roll defeat (**K**,
 knock-out during the ground action (**K**, `ground-action-enemies.md`)
 and on **K + 1**. The view continues from **K + 2**.
 
+When the player is knocked out (`knock-out.md`, hit frame **H**), the
+view does nothing on **H to H + 9**, ten logic frames (the 32-frame
+pause between H + 7 and H + 8 has no logic frames). The target, `V` and
+`S` keep their values from the end of H − 1, whatever the view was
+doing then, and so does the vertical motion (`view-vertical.md`). The
+view moves again from **H + 10**, the last frame on which the player
+is still frozen; how it moves from then on, through the knock-back and
+after, isn't covered.
+
+Measured on the first level: 164 knock-outs of the player alone in
+random play from 8 places along the level. In 162 of
+them the view had moved on H − 1, and in 159 the same play with the hit
+prevented moved it on H. In all 164, the target, `V` and `S`, and the
+vertical target, `V` and `Q`, were exactly as at the end of H − 1 on
+every frame from H to H + 9 (1 640 frames, to 1/256 px and 1/8192 px
+per frame), and the view had moved again by the end of H + 10.
+
 ## When an area begins
 
 Frames here are numbered from the area's first logic frame, frame 0, as
@@ -455,9 +472,11 @@ This list is for `title-1`; `title-2` has its own list above.
 - Faster view moves: in the measured runs the view never moved by more
   than 7 px in a frame (the fastest were fast frames of the level's
   start).
-- While the player is knocked out (`knock-out.md`), loses a character
-  (`losing-a-character.md`), throws an object, or falls into a pit. In
-  all of these the target was seen to stop following the rule.
+- While the player is knocked out from H + 10 on (`knock-out.md`; H to
+  H + 9 are in "Frames on which the view stays still"), loses a
+  character (`losing-a-character.md`), throws an object, or falls into
+  a pit. In all of these the target was seen to stop following the
+  rule.
 - The second character leading (`swap.md`).
 - Layers that move at other rates than the ground.
 - Which frame's view the picture of a frame is drawn with, relative to
