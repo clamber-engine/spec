@@ -177,6 +177,13 @@ and on **K + 1**; it continues from **K + 2** (156 knock-outs, in 63 of
 which the view moved again on K + 2). Roll defeats (`view.md`) weren't
 measured for the vertical motion.
 
+While the player is knocked out (`knock-out.md`, hit frame **H**), the
+vertical motion does nothing on **H to H + 9**, like the horizontal
+one: the target, `V` and `Q` keep their values from the end of H − 1.
+It moves again from H + 10 (`view.md`, "Frames on which the view stays
+still", has the measurements; in 129 of those knock-outs the vertical
+motion would have moved on H without the hit).
+
 ## Examples
 
 Synthetic, computed from the rules above, with no limits in effect.
@@ -528,8 +535,10 @@ This list is for `title-1`; `title-2` has its own list above.
   follow these rules. The start of a level, after the player falls out
   of a level, and the end of a level (the view stops while the player
   walks out).
-- While the player is knocked out (`knock-out.md`), loses a character
-  (`losing-a-character.md`), throws an object, or the partner runs off.
+- While the player is knocked out from H + 10 on (`knock-out.md`; H to
+  H + 9 are in "Frames on which the view stays still"), loses a
+  character (`losing-a-character.md`), throws an object, or the partner
+  runs off.
   In all of these the target was seen to stop following the rules, as
   in `view.md`.
 - The second character leading (`swap.md`).

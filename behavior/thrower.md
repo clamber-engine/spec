@@ -242,10 +242,10 @@ been there:
   `T`.
 
 Leaving the picture and appearing still follow the view of each frame,
-and the view follows the player, who moves differently during a
-knock-out; so a ball may be removed earlier or later than it would have
-been, and a throw near the window's edge may be seen or not
-("A thrown ball").
+and the view (which doesn't move from H to H + 9, `view.md`) follows
+the player, who moves differently during a knock-out; so a ball may be
+removed earlier or later than it would have been, and a throw near the
+window's edge may be seen or not ("A thrown ball").
 
 Measured on the first level: 172 knock-outs near the thrower in random
 play (in 84 of them the player was out of the thrower's own reach,
@@ -281,7 +281,11 @@ A thrower already knocked out (`thrower-contact.md`, "The knocked-out
 thrower") also does the same. It falls as usual on H, keeps its
 position and up speed on H + 1 to H + 10, and from H + 11 it is where it
 would have been 10 frames earlier without the knock-out, with the same
-speeds. It is never removed on H + 1 to H + 10. From H + 11 the removal
+speeds. It is never removed on H + 1 to H + 10, and it can't be outside
+the window then: the view doesn't move from H to H + 9 (`view.md`,
+"Frames on which the view stays still"), so on each of H + 1 to H + 10
+the removal rule would see the same position and the same view as on
+H, when it was kept. From H + 11 the removal
 rule there applies again on every frame, with the view of that frame,
 so it may be removed earlier or later in its fall than without the
 knock-out. Measured on the first level: 354 knock-outs while the
@@ -381,8 +385,7 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   the player in `ball-contact.md`, and the ground action knocks it out,
   `ground-action-enemies.md`.
 - While the player is knocked out: a placed ball whose appearance would
-  come on H + 1 to H + 10, and a thrower already knocked out that is
-  outside the window on H + 1 to H + 10.
+  come on H + 1 to H + 10.
 - While a character is lost (`losing-a-character.md`): a ball placed in
   a level and a thrower already knocked out (only thrown balls and a
   standing thrower were measured), and the second character being the
