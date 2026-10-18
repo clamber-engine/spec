@@ -30,23 +30,81 @@ Frame names used here:
 
 ## Picking up
 
-A pick-up starts in either of these cases:
+A pick-up starts on a frame **f** when all of these hold:
 
-- **Moving into the object with Action held**: running into it, sliding
-  into it while slowing down with Action still held, or rolling into it.
-  Approaching from the left, the pick-up starts on the frame **after** the
-  first frame that ends with the player within reach of the object.
-- **Pressing Action while standing within reach**: the pick-up starts on
+- Action is held on f (pressed on f or held from before);
+- the player ended f − 1 on the ground (`ground` 1 in its trace row),
+  not holding an object and not knocked out (`knock-out.md`);
+- the player was **within reach** of the object at the end of f − 1
+  (see "Reach").
+
+So, in practice:
+
+- **Moving into the object with Action held** (running into it, sliding
+  into it while slowing down with Action still held, rolling into it),
+  the pick-up starts on the frame **after** the first frame that ends
+  with the player within reach. This is so from either side.
+- **Pressing Action while standing within reach**, the pick-up starts on
   the press frame, and **no roll starts**. (A press out of reach
   starts a roll as usual, `roll-input.md`; if the roll then reaches the
   object with Action still held, the roll ends and the pick-up starts as
   above.)
+- **Landing** within reach with Action held, the pick-up starts on the
+  frame after the landing frame. A jump's take-off frame still ends with
+  `ground` 1, so a player who takes off within reach with Action held
+  picks the object up on the next frame, in the air; jumping over the
+  object from further away doesn't.
 
 Moving into the object without Action held does nothing: the player walks
 past it.
 
-Reach depends on the sizes of the player and the object, which this spec
-doesn't define (see "Not covered").
+### Reach
+
+Reach is decided from the positions at the end of the frame before (f −
+1), in whole pixels: `x` rounded down and `y` rounded up, for the player
+and for the object. With **X** = the object's `x` minus the player's
+`x` and **E** = the object's `y` minus the player's `y`, the player is
+within reach when X is in the range for the player's facing and E is in
+its range (both ends included):
+
+| Object | X, facing right | X, facing left | E |
+|---|---|---|---|
+| `barrel`, and `holder` looking still | −7 to 38 | −33 to 12 | −22 to 32 |
+| `holder` shaking | −10 to 43 | −36 to 17 | −21 to 31 |
+
+(`barrel` and `holder` are the kinds of `formats/placements.md`: an
+object that holds nothing and one that holds the missing character.)
+E is positive when the object is lower than the player.
+
+**Facing**: the player's facing on f itself (its trace row), except on
+the frame on which a turn changes facing (`ground-speed.md`, "Facing and
+turns": the fifth frame of the turn), which still uses the facing of
+f − 1. For example, Action pressed during the first four frames of a
+turn, out of reach, starts a roll facing the old way (`roll-input.md`);
+on the next frame the player faces the held direction, and that facing
+decides reach.
+
+**The holder's look**: a `holder` lying at its place in the level shakes in a cycle
+of 40 frames. With **A** the frame it appears (`formats/placements.md`),
+it looks still on the frames where (frame − A) mod 40 is 9 to 13 or 34
+to 38, and shakes on the others. When still, it looks the same as a `barrel`
+(the same picture). Reach uses its look at the end of f − 1.
+
+Measured on the first level with the lead: about 590 000 controlled
+frames, in which the object was moved to every X from −50 to 50 and every
+E from −30 to 40 next to a player standing still, just before a frame
+with Action pressed: a `barrel` and the `holder`, both facings, the
+`holder` at each of the 40 frames of its cycle; every frame gave the
+ranges above. The `holder`'s look was logged on every frame for 130
+frames from its appearance, for 8 different appearance frames. Then 6 000
+runs of random input (standing, walking, running, rolls, turns and jumps,
+with Action held or not; 1 359 547 frames) from 6 starts: each object
+at its place in the level with the player on either side, and each
+object put down. All 4 782 pick-ups started on the frame predicted by the
+rule above, and none started on any other frame. The same check with the
+player's facing taken from f − 1 on every frame, or from f on every
+frame, misses pick-ups; with either X range made 1 px narrower or wider
+on one side, it misses dozens.
 
 ### During the pick-up
 
@@ -220,13 +278,13 @@ player's position on the frame before G:
 
 ## Not covered
 
-- **Reach**: how close the player must be to an object to pick it up, and
-  the sizes of objects. The two objects measured were reached at
-  different distances. Approaching from the right, the pick-up was seen to
-  start one to three frames after the player came within reach.
-- Picking up in the air (seen to happen just after a take-off close to
-  the object, but not when jumping over it), and picking up during other
-  actions (turning, crouching, landing, being hit).
+- Reach for other objects that can be carried, for an object that is
+  moving (thrown, bouncing or rolling), and with two objects within reach
+  at once. The `holder`'s look while it is carried and after it is put
+  down, and for a `holder` already there on the level's first frame.
+- Picking up with Down or Up held, while being hit with both characters
+  there, and Action held during a throw or a put-down with another
+  object within reach.
 - Where the object is drawn or how it collides with anything while it is
   held, and carrying into walls or enemies (when a walker knocks out a
   player alone who carries an object, what the object does is in
