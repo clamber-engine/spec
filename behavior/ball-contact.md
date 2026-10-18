@@ -6,7 +6,9 @@ When a ball thrown by a thrower, or placed in a level (`thrower.md`),
 hurts the player. What happens after the hit is in `knock-out.md` (no
 other character) and `losing-a-character.md` (two characters), and
 protection after losing a character is in `protection.md`. The thrower
-itself touching the player is in `thrower-contact.md`.
+itself touching the player is in `thrower-contact.md`, and an object
+the player throws or carries meeting a ball in `thrown-objects.md`,
+"Hitting a ball".
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x` and `y`
 are as in a trace: right and down are positive. Measured on the first
@@ -198,8 +200,9 @@ within 18 to 54, and the player is hurt on T + 7.
 
 ## Not covered
 
-- The ground action or thrown objects meeting balls (other than
-  in `holder-breaking.md`).
+- The ground action meeting balls. Thrown and carried objects meeting
+  balls are in `thrown-objects.md`, "Hitting a ball", and in
+  `holder-breaking.md`.
 - Poses not listed above: bouncing (`bounce`), carrying an object,
   being hurt, swapping characters; the second character under control.
 - Exactly when the airborne pose ends after a landing and when it
