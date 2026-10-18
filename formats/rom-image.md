@@ -38,6 +38,29 @@ removed:
 
 File names and extensions are ignored.
 
+### Usual file name extensions
+
+Identification never uses the file's name, but players' files of
+supported images usually have one of these extensions, so an importer
+can offer them as a filter in a file dialog (for example "Game images")
+next to one for all files:
+
+| Extension | Usually |
+|---|---|
+| `.sfc` | No copier header |
+| `.smc` | Either: with or without a copier header |
+| `.swc` | With a copier header |
+| `.fig` | With a copier header |
+
+The extension doesn't say whether the file has a copier header; "Files
+and images" decides that by size alone. Extensions may be in any letter
+case (`.SMC`, `.Sfc`), so a filter should match them without regard to
+case. A file with any other name, or none, is identified the same way.
+
+A compressed archive that holds an image (such as a `.zip` file) is not
+itself an image: read as it is, it gives `not-an-image`, `wrong-size` or
+`unsupported`. Whether an importer opens archives is outside this spec.
+
 ## Identifying an image
 
 1. Find the image as in "Files and images".
