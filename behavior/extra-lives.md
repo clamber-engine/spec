@@ -310,13 +310,42 @@ the number of lives). The lives number's height:
 The number is drawn when its y is −16 or more (at −16 none of its rows
 are in the picture).
 
-In the first level's own two `extra-life-3` items, taken one after the
-other in real play (from the shot of the launch barrel, `launch-barrel.md`),
-the number came in one frame later than in the table: not drawn up to
-`P` + 7, then −12 to 8 on `P` + 8 to `P` + 13. This also happened when
-only the right one of the two was taken, and not when only the left one
-was. Why is not covered. Everything else above held in those runs, with
-each image arriving 42 frames after its item was taken.
+Three or more items in one lives display (three were measured) follow
+the same rules.
+
+#### Late items
+
+A taken item can be **late**. A late item counts, in all the rules of
+this section, as if it were taken on `P` + 1 and its image arrived on
+`A` + 1:
+
+- its held frames are `P` + 1 to `A`;
+- on `P`, the number of lives these rules compare with is the one
+  before the late item was taken (the lives themselves still go up on
+  `P`, as in "What taking an item does");
+- if it starts a lives display, the number comes in one frame later
+  than in the table: not drawn up to `P` + 7, −12 to 8 on `P` + 8 to
+  `P` + 13, at y 10 from `P` + 14. Taken alone, its `S` is `A` + 11;
+- the cases above that depend on `P` (taken on the frame right after
+  the last step, taken from `E` + 122 on, and so on) take `P` + 1 for
+  it.
+
+An item that isn't late counts as described above. Of the first level's
+own two `extra-life-3` items, taken one after the other in real play
+(from the shot of the launch barrel, `launch-barrel.md`), the right one
+is late and the left one isn't; the right one is also late when it is
+taken alone, and the left one taken alone isn't. Which other items are
+late is not covered ("Not covered").
+
+**Example.** No lives display is shown, and the player, with 11 lives,
+takes a late `extra-life-3` item on frame 457; the lives are 14 from
+then on. Its image arrives on frame 493: frames 458 to 493 are held, and
+on 457 the number shown (11) is compared with 11 lives, so the first
+free frame on which the number shown is less than the lives is 494, not
+493. The number shows 12 from frame 504, the 10th free frame after it,
+then 13 and 14 from 520 and 536 (`E` = 536); it is drawn from frame 465
+(y −12) and is at y 10 from 471. Had the item not been late, the number
+would come in on 464 and show 12 from 503.
 
 #### Example
 
@@ -490,9 +519,24 @@ and is not drawn from frame 321 on.
   the launch barrel's shot, 2 frames apart, with 0, 5, 9 and 98 lives
   before. Images arrived 34 to 42 frames after their pickups. On all
   362 418 frames the number shown and the number's height were as
-  described (the 36 runs with the one-frame-later start noted there).
-  With the next step always 10 frames after each arrival instead, 125 of
-  the 500 runs came out different.
+  described, with the right one of the first level's own items late
+  ("Late items"). With the next step always 10 frames after each arrival
+  instead, 125 of the 500 runs came out different.
+- Three items and late items ("Late items"): 471 runs in a copy of the
+  image with three `extra-life-3` items near the first level's start:
+  the first on the floor, the second 0 to 94 px to its right on the
+  floor or 30 or 50 px above it, the third 0 to 389 px to the first
+  one's right, on the floor or 30 or 50 px above it; walking, running
+  or jumping, waiting 0 to 400 frames between pickups (so that some
+  third items started a second lives display after the first had
+  ended), with 1, 5 or 90 lives before. With 334 of the 1 361 pickups
+  late, 0 of the 454 158 frames differed from the rules; the 36 runs
+  of the level's own items above (19 848 frames) were run again with the
+  same result. With no item ever late, 3 296 frames in 231 runs came out
+  different (and in the 36 runs the number came in a frame early). In 71
+  runs a walker later reached the player, who stood still after the
+  third pickup; those runs were checked up to 20 frames before the lives
+  went down (`knock-out.md`).
 - Going away: 24 runs with an item placed near the first level's start
   (12 of an `extra-life-3`, 6 of each rising kind), the view moving
   right past the item by walking, running and pausing at random and then
@@ -522,10 +566,16 @@ and is not drawn from frame 321 on.
   `land`, to `L` + 6), turning and the frame after a turn, falling
   without a jump, the stop after a roll, being hit, bouncing, carrying.
 - Taking an item while a lives display from the count reaching 100 or
-  from all four letters is still shown, and three or more items taken
-  while one lives display is shown. Why the number came in one frame
-  later with the first level's own `extra-life-3` items ("Several
-  items").
+  from all four letters is still shown.
+- When an item is late ("Late items"), other than the first level's own
+  two `extra-life-3` items. In the three-item runs of "Checks" it
+  depended on where the items were placed and not on how long the player
+  waited between pickups: with the second item 94 px to the first one's
+  right, a third item walked into was late when placed 95 to 134 or 194
+  to 263 px to the first one's right (every 3 px) and not at 137 to 191
+  or 266 to 389. Whether a lives display being shown can keep a placed
+  object from appearing when the limit of `../formats/placements.md`
+  ("How many objects can be there") is reached.
 - Whether the number kept above 99 counts down the same way after the
   count reaching 100 or all four letters (only an `extra-life-3` was
   followed by lost lives), how far above 99 it can go, and whether a
