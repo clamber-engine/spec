@@ -582,7 +582,9 @@ size of 1, 3 or 4 (256/256, 768/256, 1024/256), or 2 (512/256) after a
 push-off ("Stopped rolls" below). "Starts on a face" is as
 in "Jumping on or next to a face". The rules below were checked on the
 frames on the floor from S to S + 28; every other rule of `roll-speed.md`,
-`roll-input.md` and `rolling-off-ledges.md` applies unchanged.
+`roll-input.md` and `rolling-off-ledges.md` applies unchanged. Down
+held during a roll or the stop after one makes no difference on or next to
+a face either (`roll-input.md`, "Down during a roll").
 
 ### Steering on a face
 

@@ -182,6 +182,25 @@ running were on a slope. Taking Down off one frame longer changed
 a roll that carried on: 311 with Action held on D + 4 all started a roll
 there; 164 released before D + 4 started none.
 
+With the first character they also hold next to and on steep faces
+(`steep-faces.md`): rolls going down a face or up one, blocked or stopped in front of a rise, and
+rolls that leave a face or a vertical step and go on in the air. Checked
+with 19 200 more runs of the same kind, from standing still facing either
+way on the floor at the top of a face falling to the right, on the floor
+at its foot, and on the floor in front of a face rising to the right, each
+run stopping when the player left that stretch of floor: all 2 589 411
+frames were the same with Down taken off as above, 7 186 of them with
+Down taken off while the player was on a face, and 193 Action presses
+among those. Over the runs, 42 555 roll frames, 3 132 stop frames and 153
+frames of rolls carrying on into running were on a face, 183 782 frames
+of the three kinds had `vx` 0 within 16 px in front of the rise, and
+217 171 were in the air. Taking Down off one frame longer changed 60 446
+frames in 1 813 of 9 600 runs. Presses on D + 2 or D + 3 after a roll
+that carried on, on the floor and with D + 4 starting on the floor: 212
+with Action held on D + 4 all started a roll there (25 with Down held on
+D + 4); 120 released before D + 4 started none (25 crouched on D + 4, all
+with Down held then). Presses made in the air follow "In the air".
+
 The second character is the same with its own D and with D + 6 in place
 of D + 3 (`second-character.md`, "Rolls").
 
@@ -335,7 +354,10 @@ This list is for `title-1`; `title-2` has its own list above.
 Roll speed and steering are in `roll-speed.md`, rolls into walkers in
 `rolling-into-walkers.md`, rolling off a ledge in `rolling-off-ledges.md`, rolls on, onto and
 into steep faces in `steep-faces.md`. Rolls on slopes and
-rolls into other enemies. Down held during rolls on steep faces. The
-second character's rolls, with Down held during them, are in
+rolls into other enemies. A press on D + 2 or D + 3 after a roll that
+carried on, when D + 4 starts on a face: in the one run seen (Action and
+Down held on D + 4, the player carried down the face) no roll started.
+Down held during the second character's rolls on slopes and steep faces.
+The second character's rolls, with Down held during them, are in
 `second-character.md` ("Rolls"). The Down + Action ground action
 is in `ground-action.md`.
