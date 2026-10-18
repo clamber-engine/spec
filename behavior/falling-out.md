@@ -8,17 +8,20 @@ the fall ends the life, and what happens until the level ends. Frames are
 logic frames at 60 Hz, numbered as in a trace. `x`, `y`, `vx` and `vy` are
 as in a trace: down is positive, speeds in px per frame.
 
-Measured with the first character leading, at one gap in the floor of
-one level: alone (24 runs) and with the second character following (8
-runs). The player went in by walking off the gap's edge and then
+Measured at one gap in the floor of one level: the first character
+alone (24 runs), the first character leading with the second following
+(8 runs), and the second character leading with the first following
+(23 runs). The player went in by walking off the gap's edge and then
 stopping, turning back or pressing buttons while falling, or by jumping
 into it with or without turning back. Separately, the fall was started
 at 2560 chosen heights and downward speeds in the gap to find the exact
-limit. For the input on Z, one input was held only on Z, only on Z − 1,
-only on Z − 2, only on Z + 1, on Z − 1 and Z, or from Z on, in 144
-falls (and the same falls with nothing extra held): walking off the
-edge alone and with the second character following, and jumping in
-alone.
+limit, and at 97 heights around it with the second character leading.
+For the input on Z, one input was held only on Z, only on Z − 1, only
+on Z − 2, only on Z + 1, on Z − 1 and Z, or from Z on, in 144 falls
+(and the same falls with nothing extra held): walking off the edge
+alone and with the second character following, and jumping in alone;
+and in 132 more falls with the second character leading, walking off
+the edge and jumping in.
 
 ## The level's bottom
 
@@ -67,16 +70,23 @@ except that play resumes at the level's restart point once it has been
 reached (`restart-barrel.md`). The lives display from Z on is in
 `count-display.md`, "Losing a life".
 
-In all 32 runs, Z + 96 was the last frame, whatever the input, the way
+In all 55 runs, Z + 96 was the last frame, whatever the input, the way
 the player went in and the speed on the way down.
 
 ## With two characters
 
 Falling out ends the level in the same way when the other character is
-present: Z is found the same way from the lead character, and Z + 96 is
-the last frame. The other character isn't lost first and doesn't take
-over. It keeps following the lead's path after Z; in every run it went
-into the gap after the lead and fell out of sight too.
+present, whichever of the two leads: Z is found the same way from the
+lead character, and Z + 96 is the last frame. The other character isn't
+lost first and doesn't take over. It keeps following the lead's path
+after Z (`following.md`); in every run it went into the gap after the
+lead and fell out of sight too.
+
+With the second character leading, everything in this file holds as
+written: the limit at `Yb` + 48, Z's move by Z's input, input ignored
+from Z + 1, and the last frame. On Z the second character steers with
+its own target speeds (`second-character.md`): with Right held on Z,
+the target is +2.25 walking or +3.375 with Action held, not +2 or +3.
 
 ## In a trace
 
@@ -99,14 +109,15 @@ If frame 306 ends with `vx` at 0 and Right is held on frame 307 only,
 the target is +2, so `vx` on 307 is 0 + 512/8 = +64/256 = +0.25 and
 `x` on 307 is `x` on 306 + 0.25. Frames 308 to 403 keep that `x`.
 Holding Right from frame 308 on instead changes nothing.
+With the second character leading, the same Right on frame 307 gives a
+target of +2.25, so `vx` on 307 is 0 + 576/8 = +72/256 = +0.28125.
 
 Had frame 306 ended at exactly 448, Z would have been frame 307 at 456,
 not frame 306.
 
 ## Not covered
 
-- The second character leading, with the first one following, and the
-  other character falling out while the lead stays in the level.
+- The other character falling out while the lead stays in the level.
 - Other gaps and other levels. The rule was measured against one
   bottom edge only.
 - Which floors and walls stop a player who is below the floor of the
