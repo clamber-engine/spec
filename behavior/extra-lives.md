@@ -338,13 +338,27 @@ before 98 is shown tells them apart (the item gave 99, 100 and 101).
 
 An item that hasn't been taken is removed on the first frame on which its
 entry is no longer in the window of `../formats/placements.md` ("When
-placed objects appear"), and doesn't come back when its entry is in the
-window again. This was seen past the window's right edge, in three runs:
-an item that stays where it is placed and a rising item placed near the
-first level's start, and the first level's own second
-`rising-extra-life-1`. In the first two the view came back over the
-item's position and no item appeared again. A rising item that rose out
-of the level didn't appear again either.
+placed objects appear"), past either edge, and doesn't come back when
+its entry is in the window again. A rising item that rose out of the
+level didn't appear again either.
+
+For example, an item whose entry has level x 400 is there on every frame
+that starts with the view's position `V` (rounded down) at 431 or less
+(400 − 431 = −31), and is removed on the first frame that starts with
+`V` at 432 or more. If the view then moves back left over the item's
+position, no item appears.
+
+Past the right edge this was seen in four runs: an item that stays where
+it is placed (two runs) and a rising item placed near the first level's
+start, and the first level's own second `rising-extra-life-1`. In one
+run of each placed kind the view came back over the item's position and
+no item appeared again. Past the left edge it was seen in 23 runs, with
+an item of each kind placed near the first level's start and the view
+moving right, by walking, running and pausing, until the entry had left
+the window (see "Checks"). In all of them the view then moved back left
+over the item's position and on past it, and no item appeared again.
+The rising items there went away this way before rising out of the
+level.
 
 ## Example
 
@@ -424,6 +438,14 @@ and is not drawn from frame 321 on.
   described (the 36 runs with the one-frame-later start noted there).
   With the next step always 10 frames after each arrival instead, 125 of
   the 500 runs came out different.
+- Going away: 24 runs with an item placed near the first level's start
+  (12 of an `extra-life-3`, 6 of each rising kind), the view moving
+  right past the item by walking, running and pausing at random and then
+  back left; 12 158 frames. In 23 runs the item went away past the left
+  edge and in one past the right edge; the item was there or not as
+  "Going away untaken" says on every frame. With the left limit 1 px
+  further left, 16 frames came out wrong; with the view's position at the
+  end of the frame instead of its start, 24.
 
 ## Not covered
 
@@ -442,13 +464,12 @@ and is not drawn from frame 321 on.
   followed by lost lives), how far above 99 it can go, and whether a
   number of lives over 99 is shown anywhere other than the lives display
   (for example on the map).
-- Going away past the window's left edge; whether an item that went
-  away is there when the level is played again (after a knock-out, or
-  coming back after an exit). An item taken is there again after a
-  knock-out (`restart-barrel.md`, "What is there again after a
-  knock-out"; rising items only measured with play resuming at the
-  level's start); an item taken before an exit stays gone after coming
-  back (`exits.md`, "Coming back to the level").
+- Whether an item that went away is there when the level is played
+  again (after a knock-out, or coming back after an exit). An item
+  taken is there again after a knock-out (`restart-barrel.md`, "What is
+  there again after a knock-out"; rising items only measured with play
+  resuming at the level's start); an item taken before an exit stays
+  gone after coming back (`exits.md`, "Coming back to the level").
 - Rising items while the game is paused or during a knock-out.
 - Entries far below the picture. With the player on the floor near the
   first level's start (level y 337), an item whose entry was at level y
