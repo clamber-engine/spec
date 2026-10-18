@@ -100,7 +100,9 @@ With two characters, the one that isn't leading stays at the start point,
 not moving, up to and including T. From T + 1 up to and including the
 lead's landing frame, on each frame it is at the lead's position of the
 frame before, rounded down to whole px (`x` and `y`). After that it
-follows the lead as in `following.md`.
+follows the lead as in `following.md`. This holds too when the level
+begins again after its room ("Coming back from the room" below; measured
+in `exits.md`, "Checks", "Two characters").
 
 ### The picture
 
@@ -209,8 +211,7 @@ frames of 4 runs.
   begin, and how a level's data says which one it uses.
 - Whether the `room-return-entrance` appears again after T while play
   goes on (as the `entrance` doesn't: `../formats/placements.md`, "When
-  placed objects are removed"), and coming back from the room with two
-  characters.
+  placed objects are removed").
 - The flash and pieces of the burst: their motion and when they are
   removed.
 - What a trace shows on frames 0 to T − 1 and during the throw (states
