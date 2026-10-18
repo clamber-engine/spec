@@ -168,6 +168,9 @@ with Action held on D + 4 all started a roll there (51 with Down held on
 D + 4); 186 released before D + 4 started none (35 crouched on D + 4,
 all with Down held then).
 
+The second character is the same with its own D and with D + 6 in place
+of D + 3 (`second-character.md`, "Rolls").
+
 ## Rolling into a run
 
 Pressing Action while walking and keeping it held gives a roll followed by
@@ -319,6 +322,6 @@ Roll speed and steering are in `roll-speed.md`, rolls into walkers in
 `rolling-into-walkers.md`, rolling off a ledge in `rolling-off-ledges.md`, rolls on, onto and
 into steep faces in `steep-faces.md`. Rolls on slopes and
 rolls into other enemies. Down held during rolls on slopes and steep
-faces, and during the second character's rolls. The second character's rolls are in
+faces. The second character's rolls, with Down held during them, are in
 `second-character.md` ("Rolls"). The Down + Action ground action
 is in `ground-action.md`.

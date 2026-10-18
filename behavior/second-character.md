@@ -186,7 +186,9 @@ match the rules below, and every start and end frame matches.
 | Size of a slow roll after steering in its direction | 3 (768/256) | **3** (768/256), the same; not 3.375 |
 | Carrying on into running: still `roll` on | D, D + 1, D + 2 | **D to D + 5** |
 | Carrying on: `roll_end` | D + 3 | **D + 6** |
-| Next roll after carrying on, press on P ≥ D + 2 | max(P, D + 4) | **max(P, D + 7)** |
+| Next roll after carrying on: a press on P ≥ D + 2 starts it on | max(P, D + 4), if Action is still held then | **max(P, D + 7)**, if Action is still held then |
+| Down makes no difference, roll ending in a stop | S + 1 to D + 17 | S + 1 to D + 17, the same |
+| Down makes no difference, roll carrying on | S + 1 to D + 3 | **S + 1 to D + 6** |
 | Down held on the press frame | the ground action | a roll (`roll-input.md`) |
 
 In detail:
@@ -201,6 +203,48 @@ In detail:
   1.09375 (280/256) on D + 6, then 0.95703125 on D + 7 (slowing toward 0,
   no direction held). Running frames on D + 6 don't count toward a fast
   next roll, as `roll_end` frames never do.
+- **Next roll after carrying on.** A press on D + 2 to D + 6 starts a
+  roll on D + 7, the frame after `roll_end`, if Action is still held on
+  D + 7; if Action is released before D + 7, that press starts no roll.
+  A press on D + 7 or later starts a roll on that frame.
+- **Down during a roll.** As for the first character (`roll-input.md`,
+  "Down during a roll"), Down makes no difference at all from S + 1 to
+  D + 17 of a roll that ends in a stop, and from S + 1 to D + 6 of one
+  that carries on into running. As this character has no ground action,
+  a press with Down held is an ordinary roll press at all times:
+  remembered or ignored during the stop as without Down, and starting a
+  roll on the frames given above with or without Down held then. This
+  character's crouch (see "Values") starts no earlier than D + 18 after
+  a stop or D + 7 after carrying on, and only if Down is held on that
+  frame and no roll starts on or before it.
+
+  For example, standing facing left with Left held from frame 0 on,
+  Action is pressed on frame 10 and held to 34: the roll is frames 10 to
+  33 and carries on into running (D = 34, `roll_end` on 40). Action is
+  pressed again on 39 (D + 5) for one frame and Down is held on 41
+  (D + 7) only: the character crouches from 41 and no roll starts. With
+  Action held from 39 to 41 instead, a roll starts on 41 whether Down is
+  held on 41 or not. After a one-frame press from standing on frame 10
+  (roll 10 to 33, D = 34), Down held from frame 25 on: with no other
+  press, the crouch starts on 52 (D + 18); with Action pressed again on
+  51 (D + 17) or 52, a roll starts on that frame.
+
+  Checked with 19 200 runs of 200 frames, from standing facing either
+  way on the flat ground described above: Action pressed for 1 to 6
+  frames or held for 40 to 89, Down held for 1 to 40 frames at a time,
+  Left, Right or neither in stretches, no Jump; half of the runs begin
+  with a roll that carries on into running. Each run was played again
+  with Down taken off from S + 1 to D + 17 (stop) or D + 6 (carried on)
+  of every roll: all 3 644 937 frames were the same in both (this
+  character's `x`, `y`, `vx`, `facing`, `ground` and state, and the
+  following first character's `x` and state), 513 261 of them with Down
+  taken off and 12 020 Action presses among those. Taking Down off one
+  frame longer as well (D + 18 or D + 7) changed 300 812 frames in 5 929
+  of the 19 200 runs. Presses on D + 2 to D + 6 after carrying on: 1 131
+  with Action held on D + 7 all started a roll there (174 with Down held
+  on D + 7); 1 486 released before D + 7 started none (225 crouched on
+  D + 7, all with Down held then; the others neither rolled nor
+  crouched).
 - **Steering.** A slow roll steered in its direction moves toward 3
   (768/256) from that frame on: the first character's normal size, not
   this character's. Normal and fast rolls keep their sizes. Reversing is
