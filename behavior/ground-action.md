@@ -420,6 +420,100 @@ frame	input	x	y	vx	vy	state	ground	facing	events
   the step on E, 85; without "Can't start toward a rise" during the
   action, 767.
 
+## On a slope
+
+On gentle slopes that rise or fall 1 px for every 4 px across
+(`slopes.md`), the ground action is the same as on flat floor, uphill
+and downhill, in either direction: which presses start it, the
+direction, the duration, the speed on every frame from P to E, the step
+on E, the inputs during the action and the normal grounded rules from
+E + 1 are all as in the sections above. The slope makes no difference to
+`x`, `vx` or `facing` on any frame:
+
+- **Speed**: the action is no faster downhill and no slower uphill. It
+  reaches 3 px per frame on P + 39 as on flat floor and stays there,
+  also across the frames where the floor goes from flat to sloped, from
+  falling to rising, or back to flat.
+- **Direction 0**: a player that presses on a slope with neither or both
+  of Left and Right held stays where it is, with `vx` 0, to E. It
+  doesn't slide.
+- **Height**: on every frame of the action, and on E, `y` is the floor
+  height of the column containing `x` after the frame's move, as in
+  `slopes.md` "Grounded on a slope": a whole number, `vy` 0 and `ground`
+  1. Following a 1-in-4 slope down at the action's top speed of 3 px per
+  frame never made the player airborne.
+- **Jump**: a Jump press on Q during the action ends it as on flat floor
+  ("Inputs during the action"), with the same speed on Q and on the
+  take-off frame Q + 1. The jump itself follows `slopes.md` "Jumping
+  from a slope".
+
+**Example.** A synthetic dip: columns up to 99 at `y` = 0, then going
+down 1 px every 4 columns to the right (columns 100 to 103 at `y` = 1,
+104 to 107 at `y` = 2, and so on to 156 to 159 at `y` = 15), columns 160
+to 191 at `y` = 16, then going up 1 px every 4 columns (192 to 195 at
+`y` = 15, and so on to 248 to 251 at `y` = 1), and columns from 252 at
+`y` = 0. Standing still facing right at `x` = 74.26953125, `y` = 0,
+Down, Action and Right pressed together on frame 0 = P, and Right held
+alone from frame 1 on. Every row has `ground` 1 and `vy` 0; frames 0 to
+58 are the action and frame 59 is E. `vx` on every frame is the flat
+floor's (the table in "Speed and position").
+
+| Frame | `x` | `y` | `vx` (1/256) |
+|---|---|---|---|
+| 0 = P | 74.64453125 | 0 | 96 |
+| 13 | 98.42578125 | 0 | 647 |
+| 14 | 101.01171875 | 1 | 662 |
+| 15 | 103.6484375 | 1 | 675 |
+| 16 | 106.328125 | 2 | 686 |
+| 17 | 109.046875 | 3 | 696 |
+| 35 | 161.109375 | 16 | 758 |
+| 39 = P + 39 | 173.015625 | 16 | 768 |
+| 45 | 191.015625 | 16 | 768 |
+| 46 | 194.015625 | 15 | 768 |
+| 47 | 197.015625 | 14 | 768 |
+| 58 = P + 58 | 230.015625 | 6 | 768 |
+| 59 = E | 233.015625 | 5 | 768 |
+| 60 | 235.890625 | 5 | 736 |
+| 66 | 251.296875 | 1 | 615 |
+| 67 | 253.65234375 | 0 | 603 |
+
+On frame 17 the move of 2.71875 px crosses from column 106 to column
+109, so `y` goes from 2 to 3 in one frame although column 106 is at
+`y` = 2 and column 109 at `y` = 3 (there is no in-between frame for
+columns 107 and 108). The same inputs from standing still on flat floor
+give the same `x` − (`x` on P − 1) and the same `vx` on every frame.
+
+### Evidence (slopes)
+
+Measured on `title-1` with the first character alone, by playing the
+same input sequences from standing still at points on flat floor and at
+16 points on and beside a 1-in-4 dip (down, a flat bottom, up), and
+comparing every run frame by frame with the same inputs from flat
+floor, with no enemies or objects in reach (any that were, were removed
+for these runs). The inputs were presses from
+standing (with Right, Left, neither or both held on P for 1 or 2
+frames, and from a crouch), while walking (direction held, released or
+reversed on P) and while running after a roll; Left, Right, Down, Up,
+Action and nothing held during the action; Jump pressed on every fourth
+frame from P + 1 to P + 57 and on E and E + 1, held 1 or 12 frames; a
+second press with Down, or a roll, 1 to 6 frames after E; turns from E
+on; and 80 random sequences of Left, Right, Down, Action and Jump.
+
+- 2 488 slope runs, 176 051 frames up to and including the first airborne frame, 68 101
+  of them on slope columns: `x` relative to the starting point, `vx`,
+  `ground`, `facing` and whether the action is in progress matched the
+  flat-floor run on every frame, and `y` was the column's floor height on
+  every grounded frame, with 0 differences. 1 115 of the runs took off
+  after a Jump press; they were compared up to and including the
+  take-off frame.
+- They include 34 947 frames of the action on slope columns (10 948
+  moving downhill, 11 755 moving uphill, 12 244 still), 857 presses on
+  slope columns and 590 E frames on slope columns. The fastest `vx`
+  during the action on a slope column was 3 px per frame.
+- 214 runs from different flat points gave identical runs as well.
+  Taking `y` from the column before the frame's move instead would be
+  wrong on 28 297 of 173 631 grounded frames of the action.
+
 ## Enemies
 
 The action knocks out walkers and the thrower, with any direction
@@ -437,7 +531,9 @@ Frames P to P + 58 have state `ground_action` (`../traces/VOCABULARY.md`),
 after a knock-out, `ground-action-enemies.md`). Frames of the action in
 the air, after going over a ledge, are `ground_action` too, with
 `ground` 0 and the fall's `vy`; the leave frame carries `leave_ground`
-and the landing frame `land` (see "At a ledge without a face"). There is no event on P. E, and a Jump
+and the landing frame `land` (see "At a ledge without a face"). On a
+1-in-4 slope the rows are the same, with `y` following the floor ("On a
+slope") and `vy` 0. There is no event on P. E, and a Jump
 press frame Q ending the action early, are not `ground_action`: they map by the
 normal grounded rules (`idle` if `vx` is 0, else `walk` or `run` by
 whether Action is held). Example rows, walking right with Right held,
@@ -457,7 +553,8 @@ frame	input	x	y	vx	vy	state	ground	facing	events
 ## Not covered
 
 - Ledges with slopes or a rounded edge at the top, steps up or down,
-  walls, and slopes during the action. Steep faces other than those in
+  walls, and slopes other than 1 in 4 or where a slope meets a ledge,
+  wall or face. Steep faces other than those in
   "At a steep face": an action moving up a face (after a landing on one,
   or started on one going uphill), E on a face frame, and moving starts
   next to a rise going left. Landing on anything other than flat floor
