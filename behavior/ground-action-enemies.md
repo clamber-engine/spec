@@ -83,15 +83,20 @@ means:
 - **On frames that aren't attack frames,** a walker hurts the player as
   usual.
 - **On an attack frame,** a walker within the knock-out range at the end
-  of the frame is knocked out instead. A walker within the hurt range but
-  outside the knock-out range at the end of an attack frame hurts the
-  player on the next frame (for example a small walker heading left with
-  the player facing right, I from 11 to 24), unless that frame is a
-  pause frame (below).
-- **After a pause** that starts on K, the player is not hurt on K + 1,
-  K + 2 or K + 3, whatever is in the hurt range at the end of K, K + 1 or
-  K + 2. The earliest hurt is on K + 4, when the conditions hold at the
-  end of K + 3.
+  of the frame is knocked out instead, unless another walker is knocked
+  out on that frame or was knocked out earlier in the action ("Two
+  things in reach"); it then hurts as on other frames. A walker within
+  the hurt range but outside the knock-out range at the end of an attack
+  frame hurts the player on the next frame (for example a small walker
+  heading left with the player facing right, I from 11 to 24), unless
+  that frame is a pause frame (below).
+- **After a pause** that starts on K, the player is not hurt on the
+  pause frames K + 1 and K + 2. On K + 3 the usual rule applies again:
+  the player is hurt on K + 3 when the conditions hold at the end of
+  K + 2, which, since nothing moved on the pause frames, are the
+  positions at the end of K. A walker that is in the hurt range at the
+  end of K and isn't knocked out (for example one beside the walker
+  that is) therefore hurts the player on K + 3.
 
 ## The pause
 
@@ -105,8 +110,39 @@ frames**:
 - On K + 3, t is one more than on K, and the speed rule of
   `ground-action.md` continues from the `vx` of K.
 
-Knock-outs on two different attack frames of one action make two
-pauses (E = P + 63).
+### Two things in reach
+
+One action knocks out **at most one walker**:
+
+- **Two walkers in range on the same attack frame.** Only one of them is
+  knocked out, and there is one pause. Which one doesn't depend on where
+  they are: for a given pair of walkers it was always the same one,
+  whatever their offsets, including when the other one was nearer to the
+  player. Which of two walkers it is isn't specified.
+- **After a walker has been knocked out,** the rest of that action's
+  attack frames knock out nothing and strike no hidden object, even
+  when a walker or a hidden object is in range on them, and there is no
+  further pause. Another walker is not kept from hurting the player: it
+  hurts as on frames that aren't attack frames ("Being hurt during the
+  action"), on K + 3 if it was in the hurt range at the end of K.
+- **A new action** starts afresh: a walker that comes into range on an
+  attack frame of the next action is knocked out as usual.
+
+Striking a hidden object (`hidden-objects.md`) doesn't use up the
+action in this way:
+
+- **A walker and a hidden object in range on the same attack frame**
+  (t = 25 or t = 31): the walker is knocked out and the hidden object
+  isn't struck. There is one pause.
+- **A hidden object struck first** doesn't stop a walker: a walker in
+  range on a later attack frame is knocked out as usual. The two make
+  two pauses (E = P + 63).
+
+For example, with the player facing right and direction 0, two small
+walkers heading left that are at I = −30 and I = −55 at the end of
+t = 17 make one pause: one of them is knocked out on t = 17 and E is
+P + 61. The other one is not knocked out on t = 25 or t = 31; it hurts
+the player when it reaches the hurt range.
 
 ## The view
 
@@ -199,16 +235,47 @@ Without the walker, the action would have ended with E on frame 59.
   walkers' motion matched the rules above, with 0 mismatches. In all 156
   knock-outs the view did nothing on K and K + 1 and moved again on
   K + 2.
-- **Hurts after a pause** were measured by placement during pauses
-  caused by striking a hidden object (`hidden-objects.md`): a walker
-  put in the hurt range at the end of K, K + 1 or K + 2 (243 placements)
-  never hurt the player before K + 4.
+- **Hurts after a pause.** In the placements below, a walker that had
+  moved on K by itself and was in the hurt range at the end of K hurt
+  the player on K + 3: 23 048 placements with another walker knocked out
+  on K, and 714 with a hidden object struck on K; none hurt on K + 1 or
+  K + 2. A walker moved into place by placement hurts no earlier than 2
+  frames after the frame it was moved on, pause or not (32 hurts in 36
+  placements with no pause, all 2 frames after; 355 placements at the
+  end of K to K + 4 of a walker knock-out's pause, earliest hurts K + 4,
+  K + 4, K + 4, K + 5, K + 6). So the earlier placements in the hurt
+  range at the end of K, K + 1 or K + 2 of pauses from a hidden object
+  (243 placements), which never hurt the player before K + 4, didn't
+  show the hurt on K + 3.
+- **Two things in reach.** Two small walkers heading left on a flat
+  stretch, the player facing right: both walkers put at every pair of
+  whole-pixel offsets from −70 to 16 at the end of t = 16, t = 24 and
+  t = 30 with direction 0 (three pairs of walkers, both ways round), and
+  at the end of t = 16 with direction +1 and −1 (offsets −50 to 30 for
+  −1); one walker put at −90 to −62 (in range only later) with the other
+  at −70 to 16; and the second walker in range in the next action:
+  59 892 placements, each compared with the same walker alone (1 392
+  single-walker placements); 57 939 were checked (the others had a hurt
+  before any knock-out). In 36 178 both walkers were in range on the
+  same frame; in 3 584 one of them came into range on a later attack
+  frame of the action after the other was knocked out, and in 2 263 in
+  the next action. With a hidden object (`hidden-bunch`) at the level's
+  start: the player at
+  52 places from 0 to 66 px left of it, the walker at offsets −90 to 16,
+  placed at the end of t = 16, t = 24 and t = 30 (16 692 placements,
+  16 314 checked; 7 854 with both in range on the same frame, 3 723 with
+  the walker first, 612 with the hidden object first). Every checked
+  placement matched the rules of "Two things in reach", the knock-out
+  frames, the pause frames and E, with 0 mismatches.
 - **The thrower:** 28 placements on its ledge, one pixel apart (15
   knock-outs, 13 hurts before the action).
 
 ## Not covered
 
-- Two things knocked out on the same attack frame (one pause or two).
+- Which of two walkers in range on the same attack frame is knocked out.
+  Two things in reach with the player facing left, with the large or
+  medium walker, with walkers heading right, and with the thrower; two
+  hidden objects in reach of one action (`hidden-objects.md`).
 - Walkers that are turning, speeding up, stopped or frozen, walkers on a
   different floor from the player, and the action on slopes or at a
   ledge (`ground-action.md`).

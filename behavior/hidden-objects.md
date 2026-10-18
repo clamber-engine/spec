@@ -106,6 +106,10 @@ an object from 53 px in front of it (to its right) up to its own `x`, and
 none behind it. A moving action strikes one that is in range on t = 25
 or t = 31.
 
+A `hidden-bunch` in range is not struck on an attack frame on which a
+walker is knocked out, nor after a walker has been knocked out earlier
+in the same action (`ground-action-enemies.md`, "Two things in reach").
+
 K counts as a frame on which something is knocked out, in the sense of
 `ground-action-enemies.md` ("The pause"). K + 1 and K + 2 are pause
 frames, the action lasts 2 frames longer, and the player's `x` and `vx`
