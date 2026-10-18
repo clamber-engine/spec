@@ -130,6 +130,39 @@ So a piece of width `w` at offset (`ox`, `oy`) ends up at
 The player character is drawn mirrored left–right exactly when it
 faces left.
 
+## Picture hashes
+
+A frame's **picture hash** names its picture without numbering it
+(`../REVIEW.md`, "The third exception: picture hashes"). It is the
+SHA-256 of these bytes, worked out from the frame's picture as
+"The frame's picture" gives it, not mirrored:
+
+1. The **box**: the smallest rectangle holding every opaque pixel, as
+   offsets from the origin. Its left and top offsets, each as a signed
+   16-bit number, then its width and height, each as an unsigned 16-bit
+   number; all four low byte first (8 bytes).
+2. Then one byte per pixel of the box, row by row from the top and left
+   to right within a row: the pixel's **colour number** (1 to 15), or 0
+   for a transparent pixel. Colours and palettes are not part of the
+   hash.
+
+Only full frames have picture hashes, and only those with at least 32
+opaque pixels. In `title-1`, 2 699 of the 2 714 full frames have one,
+and they have 2 684 different hashes (some frames have the same
+picture).
+
+A behavior file that names a picture by its hash means that picture,
+mirrored as the object's mirroring says ("Mirroring"). To find it, an
+importer decodes every full frame of the table, works out each one's
+hash and keeps the frames whose hash is wanted. The behavior file says
+what to show when a hash isn't found.
+
+Example (synthetic): a frame whose only opaque pixels are colour 3 at
+(−1, −2) and colour 5 at (0, −1) has the box left −1, top −2, width 2,
+height 2, so the bytes hashed are `ff ff fe ff 02 00 02 00 03 00 00 05`.
+(Such a picture has too few opaque pixels to be named; the vectors have
+full-size ones.)
+
 ## Where the picture is drawn
 
 For an object at level x `x` and level y `y` (as in `placements.md`; for
@@ -171,7 +204,8 @@ level x 299, level y 337.
 
 `../vectors/sprites/`: a made-up bank with a frame table and short and
 full frames, the decoded table, headers, pieces and sheets, the pictures
-as stored and mirrored, and a sprite palette.
+as stored and mirrored, a sprite palette, and the picture hashes of the
+full frames with every byte hashed for one of them.
 
 ## Evidence
 
@@ -203,7 +237,9 @@ as stored and mirrored, and a sprite palette.
   uses. (The frame table is in `locators.md`; it locates the frames.)
 - Which frames each kind of object shows and when (animation sequences
   and their timing), which palette each uses, and which objects are
-  mirrored top–bottom.
+  mirrored top–bottom. The player's frames in the stop after a roll,
+  after a jump's landing and on a bounce's frozen frames are in
+  `../behavior/player-frames.md`.
 - The tile sets short frames use, and where they come from.
 - What the order adjustment does, and the order objects are drawn in
   (which object is in front of which), and how pictures are ordered

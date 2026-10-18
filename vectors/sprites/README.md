@@ -46,3 +46,8 @@ What the data exercises:
   transparent, and `+` for the origin when it is transparent.
 - `palette.tsv`: the palette's colours 1 to 15 as red, green and blue
   (0 to 31).
+- `hashes.tsv`: the picture hash of frames 35, 36 and 37 ("Picture
+  hashes"): the box (left, top, width, height), the number of opaque
+  pixels, the number of bytes hashed and the SHA-256 in hex.
+- `hash-input-35.hex`: every byte hashed for frame 35, in order, 16 per
+  line.
