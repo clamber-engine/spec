@@ -38,6 +38,17 @@ alone, by inputs only except where said:
   so that it was never touched, and the level finished after touching
   it and then entered again. Resuming: about 20 runs from the first
   frame of a resume, with Right or Jump held from different frames.
+- Input on frame 1: every set of Left, Right, Up, Down, Jump and Action
+  held on frame 1 only (64 sets), from the first frame of two resumes,
+  one after a knock-out and one after a fall-out, 130 frames each. The
+  two resumes gave the same `x`, `y`, `vx`, `vy` and facing on every
+  frame for every set. On all 16 490 frames checked (the landing frames
+  of jumps and, for the ground action with a direction, frames after
+  frame 102 or after leaving the floor left out) the player's position,
+  speed and facing were as the rules in "Input on frame 1" give. Also
+  26 runs from the knock-out resume with Jump, Left, Right, Up, Down and
+  Down + Action held longer, released, or pressed again on frame 63
+  (200 frames each).
 - Facing on resuming: three knock-outs facing left after touching the
   barrel (two hit on consecutive frames just after a turn, one walking
   left after a resume), each followed through the resume
@@ -160,7 +171,7 @@ same way on every resumed frame after a fall-out as after a knock-out.
 | Frame | What happens |
 |---|---|
 | 0 | The player is at `x` = `xr`, `y` = `yr`. The picture is black. |
-| 1 | The player is at `y` = `yr` − 8.5625 (`x` = `xr`), inside a barrel standing at the restart point. The player is not drawn; the barrel is. |
+| 1 | The player is at `y` = `yr` − 8.5625 (`x` = `xr`), inside a barrel standing at the restart point. The player is not drawn; the barrel is. Input held on this frame can change this and later frames ("Input on frame 1" below). |
 | 2 to 61 | The player doesn't move and inputs have no effect. The barrel shakes (below). |
 | 62 | The barrel bursts: it is removed, and a flash and four pieces appear as in "Breaking" (the picture showed the burst from frame 63). The player still doesn't move and inputs still have no effect. |
 | 63 on | The player is in the air and falls: `vy` is 0.4375 (7/16) on frame 63 and grows by 0.4375 every frame, until the player lands (`landing.md`). Inputs work from frame 63 on, as for any fall. |
@@ -186,6 +197,67 @@ ends; `view.md`, "When an area begins"). From frame 1 the view follows
 the usual rules of `view.md`.
 
 The picture fades in from black from frame 4 on.
+
+### Input on frame 1
+
+Input held on frame 0 has no effect. Input held on frame 1 acts on
+frame 1, and some of it has effects that last into frame 63 and later;
+the table above is the case with nothing held on frame 1. Up, Down and
+Action held alone on frame 1 have no effect.
+
+**Position.** Left and Right held on frame 1 move the player to the
+right on frame 1, and `x` then stays at the new place until frame 63:
+
+| Held on frame 1 | `x` on frames 1 to 62 |
+|---|---|
+| Right without Left | `xr` + 0.25 (`xr` + 0.375 with Action) |
+| Left without Right | `xr` + 0.75 (`xr` + 0.625 with Action) |
+| Both, or neither | `xr` |
+
+Holding Left moves the player right as well. From frame 63 on, the
+player moves from there as it would from `xr`: after Right held on frame
+1 only, every later frame is as with nothing held, 0.25 px further
+right, and the player doesn't start walking.
+
+Besides the position, the first of these that applies says what else
+frame 1's input does:
+
+1. **Jump held** (whatever else is held): the player jumps on frame 63.
+   On frames 1 to 62, `y` is `yr` − 8.71875 (0.15625 higher than with no
+   jump). On frame 63 the player moves down by 0.4375, or by 0.28125 if
+   Jump is held on frame 63, and `vy` is −7: frame 63 is the jump's
+   take-off frame. From frame 64 on, each frame is as in `jump-arc.md`
+   ("Each frame after T"), with frame 1 as the press frame and frames 2
+   to 62 left out: the lighter gravity applies while Jump has been held
+   on frame 1 and on every frame from 63 up to this one, whatever is
+   held on frames 2 to 62. With Jump held on frame 1 only, the top of
+   the jump is 52.5 px above `y` on frame 63; held on, 83.625 px, as for
+   any jump (`jump-arc.md`, "How long jump is held"). The player lands
+   as in `landing.md` (on frame 96, and 114 holding Jump, where the floor
+   is 9 px below `yr`). Inputs from frame 63 on act as for any jump.
+   There is no turn and no ground action.
+2. **Down and Action held, Up not held**: the ground action
+   (`ground-action.md`) starts on frame 1, though the player is in the
+   air, with the direction set by Left and Right on frame 1 as usual.
+   It is in progress on frames 1 to 119; frame 120 is its first frame
+   after (`E`), and from frame 121 the usual rules apply. `y` and `vy`
+   are as with nothing held on frame 1 (the player falls from frame 63
+   and lands). With direction 0 the player doesn't move until frame
+   121; Left or Right held from frame 2 or 63 on makes no difference
+   before then. With direction ±1, `vx` is 0 until frame 62, and from
+   frame 63 the speed follows `ground-action.md` ("Speed and position")
+   with frame 63 as `P`: ±0.375 on frame 63, ±0.703125 on 64, and so on,
+   ±3 from frame 102 (`P` + 39) on flat floor.
+3. **Left held without Right**: a turn (`ground-speed.md`, "Facing and
+   turns") starts on frame 1 and goes on from frame 63: the player
+   faces left from frame 64 on, and frame 67 is the turn's last frame
+   (as for a turn with `T` + 4 on frame 64). Frames 2 to 62 are as in the
+   table. With Left held on, the player moves left in the air from
+   frame 63 and walks left after landing; with nothing held it lands
+   and stands facing left.
+
+Right held on frame 1, alone or with Up, Down or Action (but not Down
+and Action without Up), changes only the position.
 
 ## What is there again after a knock-out
 
@@ -363,10 +435,10 @@ the barrel is touched on the third, the upright range starting at −24.
 - Ways of leaving the level other than finishing it, a knock-out or a
   fall-out, and what happens to the restart point when another level is
   played before this one is entered again, or when no tries are left.
-- Input on frame 1 of a resume. Right or Jump held from frame 0 acted
-  on frame 1 (a Right moved the player 0.25 px to the right, a Jump left
-  the player in the jump's action), and the player then stayed where it
-  was inside the barrel until frame 62.
+- Swap held on frame 1 of a resume; the ground action started on frame
+  1 after the player leaves the floor or meets a slope (it was followed
+  only on flat floor); and a turn started on frame 1 with Right held
+  from frame 2 (the player moved right while facing left).
 - The fade-in, the sounds, how the
   pieces and the flash are drawn, where they start, when they are
   removed, and whether they touch anything.
