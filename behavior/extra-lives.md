@@ -87,7 +87,13 @@ level y would be 0 or less: at the end of that frame it is no longer in
 the level. In the runs (17 runs, 14 heights of appearance), the last frame on
 which an item was still there had it at level y from 0.20 to 1.77, and
 the step that removed it would have taken it to between −0.02 and
-−1.59. An item reaching exactly level y 0 was not seen.
+−1.59.
+
+Exactly 0 counts: an item whose step takes it to level y 0 exactly is
+removed on that frame, and one taken to 1/256 px is still there and is
+removed on the next frame. For an item that appears at a whole level y
+this happens only when `y0` is 511, on frame `a` + 511; the first
+level has no such item.
 
 For example, an item appearing at level y 337 rises for 414 frames: at
 the end of frame `a` + 414 it is at level y about 1.43, and on frame
@@ -251,6 +257,13 @@ and is not drawn from frame 321 on.
 - Rising: 17 runs of rising items from appearing to their removal at
   the top, from 14 heights of appearance, and 2 runs to their removal
   past the window's edge, all following the rule in "Rising" exactly.
+- At the top: 154 runs, 77 with each rising kind, with the item moved
+  partway through its rise (0 to 413 frames after appearing) to between
+  3/256 px below and 3/256 px above the position from which its next
+  step takes it to level y 0 exactly. In all of them the item was
+  removed on the frame "At the top" gives, and in the 22 runs whose step
+  reached level y 0 exactly it was removed on that frame. With removal
+  only below level y 0 instead, 26 runs came out wrong.
 - Lives and the lives display: in every pickup in the runs above, the
   lives went up on `P` by the kind's number of lives, and the shown
   number stepped as above in 189 of the 190 pickups whose steps were
@@ -277,8 +290,12 @@ and is not drawn from frame 321 on.
   knock-out"; rising items only measured with play resuming at the
   level's start); an item taken before an exit stays gone after coming
   back (`exits.md`, "Coming back to the level").
-- Rising items reaching exactly level y 0; rising items while the game
-  is paused or during a knock-out.
+- Rising items while the game is paused or during a knock-out.
+- Entries far below the picture. With the player on the floor near the
+  first level's start (level y 337), an item whose entry was at level y
+  433 appeared as usual, and none appeared from entries at 17 places
+  from level y 434 to 511 (a rising kind at all of them, a still kind at
+  one); how this depends on the view is not covered.
 - How an item is drawn, how the taken item's image flies to the lives
   display (and so `S` exactly), and the sound.
 - Other levels, and how the items in them are chosen.
