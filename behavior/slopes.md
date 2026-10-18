@@ -55,7 +55,8 @@ apply on 1-in-4 slopes exactly as on flat floor, uphill and downhill:
 - Roll speeds and roll lengths are the same as on flat floor, for
   normal and fast rolls, uphill and downhill, rolling right and left.
 - Down held during a roll or the stop after one makes no difference on
-  a slope either (`roll-input.md`, "Down during a roll").
+  a slope either, for either character (`roll-input.md`, "Down during a
+  roll"; `second-character.md`, "Rolls").
 
 ## Turning around on a slope
 
