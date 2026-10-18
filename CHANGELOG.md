@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.144.0
+
+Defeated walkers falling out of the window, and a thrower knocked out by
+a roll while the player is knocked out.
+
+Part of clamber-engine/spec#19 (the first level's remaining entities).
+The issue stays open for the parts not covered yet.
+
+- `behavior/walker-view.md`, new section "Defeated walkers falling out":
+  a walker that was bounced on, rolled into or hit by a thrown object is
+  removed on the first frame its own position is outside the window,
+  checked from a fixed number of frames after the defeat; measurements
+  and edge tests. "Coming back" now also covers walkers hit by a thrown
+  object. Not covered narrowed. Pointers added from `walker.md`,
+  `rolling-into-walkers.md` and `thrown-objects.md` (whose Not covered
+  item on removal is gone). (spec#19)
+- `behavior/thrower.md`, "While the player is knocked out": a thrower
+  knocked out by a roll does the same as one knocked out by a bounce.
+  Not covered narrowed. (spec#19)
+
 ## spec-v0.143.0
 
 An object in the lead's hands at the level end, and a thrower already
