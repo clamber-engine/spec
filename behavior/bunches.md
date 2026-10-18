@@ -192,6 +192,29 @@ row, 6 396 pickups came on turn frames, and every run took the bunch on
 the frame these rules give. Measuring `I` in the new facing on every
 frame of a turn would have given the wrong frame in 3 310 of them.
 
+**Falling without a jump.** When the player walks or runs off a ledge
+(`walk-off.md`), the standing row applies on every frame from the frame
+`E` on which the player leaves the ledge to the landing, on the landing
+frame and on the frames after it, whether the player then stands still,
+walks on or runs on. Unlike
+after a jump, there is no switch to the jump row. `I` is measured in the
+direction the player faces on that frame, also when the player turns in
+the air. This was measured at a ledge without a face, with a floor 176 px
+below it, with the bunch moved to every offset one pixel apart around
+the player on every frame from `E` − 1 to 6 frames after the landing of
+five walk-offs: walking right with the direction held and with it
+released in the air, running right, walking left and releasing the
+direction, and walking right then turning left in the air (about 950 000
+placements). Separately, in 20 916 runs of play by inputs with walk-offs
+from both ends of the ledge, random changes of direction, Action, Down
+and Jump, and the bunch placed once near the edge of the standing row,
+11 669 pickups came in the air during such falls (907 of them while
+turning) and 547 on the landing frame or the 6 frames after it, and
+every run took the bunch on the frame these rules give. Using the jump
+row from `E` + 6 to 3 frames after the landing, as for a jump, would
+have given the wrong frame in 10 312 of them. Walking off a ledge with
+a steep face was not measured.
+
 ### Two characters
 
 With two characters there (`second-character.md`), one leads and the
@@ -289,8 +312,8 @@ is taken.
 - The ranges while bouncing off a walker (`bounce.md`), while being
   carried down a steep slope or a rounded ledge (`steep-faces.md`), while
   passing through a platform (`platforms-from-below.md`), while carrying
-  an object (`carrying.md`), while falling without a jump, and while
-  being hit; the stop after a roll on a slope.
+  an object (`carrying.md`), and while being hit; the stop after a roll
+  on a slope; walking off a ledge with a steep face.
 - Landing on slopes, and a landing followed at once by a crouch, a
   roll, a turn or another jump.
 - When a bunch that hasn't been taken appears and disappears as the
