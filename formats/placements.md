@@ -693,7 +693,7 @@ entry isn't in the window and the condition for its kind holds:
 | Kinds | Removed when the entry isn't in the window and |
 |---|---|
 | `bunch`, `barrel`, `holder`, `restart-barrel`, `sign`, `hidden-bunch`, `hidden-barrel`, `hidden-metal-barrel` | `x` − `V` ≤ −128, or `x` − `V` ≥ 385, or the object isn't in the vertical window |
-| `letter-1` to `letter-4`, `figure`, `animal-crate`, `exit` | always: the object is removed on the first frame on which its entry isn't in the window |
+| `letter-1` to `letter-4`, `figure`, `animal-crate`, `exit`, `wall-exit` | always: the object is removed on the first frame on which its entry isn't in the window |
 
 So an object in the first row that is in the vertical window stays, if
 it was there, while `x` − `V` is from −127 to −32 or from 289 to 384.
@@ -702,21 +702,22 @@ can also remove an object on a frame on which only `U` changes. If it is
 in the margin, it is removed on the first frame on which `y` − `U` is
 less than −31 or more than 256.
 
-Except for exits (below), the vertical window plays no part in
-appearing. Class 1 and class 2 entries appear by `x` alone ("When placed
-objects appear"), even when their objects are far above or below the
-picture.
+Except for exits and open wall exits (below), the vertical window plays
+no part in appearing. Class 1 and class 2 entries appear by `x` alone
+("When placed objects appear"), even when their objects are far above
+or below the picture.
 
 **Exits.** An `exit` is there only while it is in the vertical window
 as well. It appears on the first frame on which its entry is in the
 window and it is in the vertical window, and it is removed on the first
 frame on which either no longer holds, also on a frame on which only
 `U` changes. Exits don't move, so `y` is their entry's level y. In the
-runs, an exit with `y` − `U` of −32 or less, or of 257 or more, was
-never there, and one with `y` − `U` from −27 to 256 was always there
-while its entry was in the window. From −31 to −28 it was there in some
-runs and not in others (see "Not covered"). An exit is not drawn and
-only takes over a player close to it (`../behavior/exits.md`).
+runs, an exit in a class 2 entry (the first level's two `exit` entries
+are class 2) was there on every frame with `y` − `U` from −31 to 256
+while its entry was in the window, and never with −32 or less or 257 or
+more. The same reference in a class 1 entry behaves differently; see
+"Not covered". An exit is not drawn and only takes over a player close
+to it (`../behavior/exits.md`).
 
 The rule doesn't hold before the characters come out of the entrance
 (`../behavior/level-start.md`), when nothing can reach an exit: the
@@ -724,6 +725,27 @@ first level's exit at the left end, at level y 337, was there from
 frame 0 with `U` = 0 (`y` − `U` = 337) and was removed on frame 41, the
 frame the entrance bursts. It appeared again on frame 98, the first
 frame on which `y` − `U` was 256 as the view came down.
+
+**Wall exits.** A closed `wall-exit` (`../behavior/wall-exits.md`)
+follows the table's second row and nothing else. It appears on the
+first frame on which its entry is in the window and is removed on the
+first frame on which its entry isn't. The vertical window plays no part:
+a closed wall exit appears and stays however far above or below the
+picture it is.
+
+An **open** wall exit is there only while it is in the vertical window
+as well, as an `exit` is. It is removed on the first frame on which its
+entry isn't in the window, or `y` − `U` is less than −31 or more than
+256, also on a frame on which only `U` changes. Wall exits don't move,
+so `y` is their entry's level y.
+
+A wall exit that was open comes back **closed**. Once removed, it appears
+again as in "Coming back" below, as a closed wall exit that has to be
+opened again. If it was removed by the vertical window alone, its entry
+is still in the window, so it is back, closed, on the next frame, and it
+then stays whatever `y` − `U` is. In the runs this happened only at the
+first level's first wall exit. Near the second one, the view never rose
+that far while its entry was in the window.
 
 **The entrance.** The `entrance` is removed on frame T, the frame on
 which it throws the characters out (`../behavior/level-start.md`). It
@@ -822,12 +844,34 @@ runs, 32 220 frames. On every frame each object was there exactly when
   above, three seeds each: 30 runs. In 27 of them (226 723 frames) each
   exit was there on exactly the frames "Exits" gives. In the other 3,
   in the class 1 entry with `y` − `U` = −31, it never appeared (see "Not
-  covered"). With the lead standing still and the entry in the window,
-  the exit in the class 2 entry was there down to `y` − `U` = −31 and
-  not at −32; in the class 1 entry it was there down to −27 and not at
-  −28. Put in the class 1 entry with the entry's class changed to 2, the
-  exit was there at −31; put in the class 2 entry with its class changed
-  to 1, it was there at −31 too.
+  covered"). Put in the class 1 entry with the entry's class changed to
+  2, the exit was there at −31; put in the class 2 entry with its class
+  changed to 1, it was there at −31 too.
+- Exits at the top edge: the exit reference in a class 1 entry right of
+  the characters' start, and the same entry with its class changed to 2,
+  at nine heights near the top edge (`y` − `U` from about −35 to −25)
+  as the lead walked right, came back left with the view rising and
+  falling a few px, and stood still: 72 runs per class, 22 050 judged frames each. In the
+  class 2 entry the exit was there on exactly the frames "Exits" gives,
+  1 326 frames at each `y` − `U` from −31 to −29 and none at −32 or
+  below. The class 1 entry followed the description under "Not covered"
+  on every frame. At −31 to −28 it was there on 664 frames and not on
+  4 604, depending on `U` on the frame its entry came into the window.
+- Wall exits: random play near both wall exits of the first level,
+  closed (the real image) and open (copies of the image in which an
+  entry stored just before the wall exit was given a `barrel`'s
+  reference next to the wall, and the barrel was thrown at it), and
+  fixed runs over the open first wall exit that stopped just past the
+  point where the view rises: 280 runs, 375 196 judged frames, stopped
+  at a takeover. Every frame was as "Wall exits" gives. 180 appearances,
+  114 of them outside the vertical window (`y` − `U` from 257 to 363),
+  all closed. Closed wall exits stayed on 9 485 frames outside the
+  vertical window and were removed 86 times, at `x` − `V` from −32 to −35 and
+  289 to 292. Open wall exits stayed on 67 179 frames and were removed
+  47 times by the window (`x` − `V` from −32 to −35, 290) and 8 times by
+  the vertical window alone, each on the first frame with `y` − `U` =
+  257. Each of those 8 was back, closed, on the next frame, and each
+  open wall exit removed by the window came back closed as well.
 - Exits as the view comes down at the start of the level: the first
   level's exit at the left end with its level y changed to 100, 132 and
   168. The exits at 100 and 132 were removed on the first frame with
@@ -1120,12 +1164,15 @@ on each frame: see its `README.md`.
   entries didn't appear outside the vertical window (see "Class 1 and
   class 2 entries in these lists"). Whether that comes from class 2 or
   from the kind of object, and what those objects do, is not covered.
-- Exits with `y` − `U` from −31 to −28: there in some runs and not in
-  others. An exit given a class 1 entry right of the characters' start
-  was never there at −31 or −30, nor at −29 or −28 with the lead
-  standing still; with the lead walking, at −29 it was there in one of
-  two runs. In the first level's class 2 entry at the left end, and in
-  either entry with its class changed, it was there at −31.
+- An `exit` reference in a class 1 entry (the first level has none;
+  its wall exits are another kind). In copies of the image, such an
+  exit appeared only if it was in the vertical window on the first
+  frame on which its entry was in the window. If it wasn't, it didn't
+  appear while the entry stayed in the window, even after `y` − `U`
+  came into the vertical window. On each of those frames one more of
+  the 11 pictures ("How many objects can be there") was taken, until
+  none was free. They were still taken, with no object, 820 frames
+  later, with the view more than 800 px further on.
 - Which class 1 kinds don't appear, or are gone again, outside the
   vertical window, as in "Class 1 and class 2 entries in these lists".
 - What class 8 entries do other than the first level's (which starts

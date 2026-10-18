@@ -82,6 +82,10 @@ in the ground changes. The object is not stopped by the hit: it flies
 or rolls on, and can then break against the rise (`thrown-objects.md`,
 "Breaking against a wall"). The wall exit is then **open**.
 
+An open wall exit doesn't stay open once it has been removed. When it
+appears again it is closed (`../formats/placements.md`, "Wall exits"
+under "When placed objects are removed").
+
 ## When an open wall exit takes over
 
 Let `D` = `xe` − `X` at the end of a frame (how far left of the exit
@@ -399,7 +403,5 @@ on `T` + 17, 14 on `T` + 18 and `T` + 19, and 0 on `T` + 46 and
 - Coming back from the second wall exit's area with two characters, how
   the view moves then, the lead's state on frames 0 to 2, and a lead not
   caught on frame 2.
-- Whether a wall exit opened before is still open when the view comes
-  back to it after it was removed.
 - The second character, and wall exits leading left.
 - How the pieces are drawn, and the sounds.
