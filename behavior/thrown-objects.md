@@ -327,7 +327,8 @@ the frame instead, no pair of limits fits these runs.
 
 The object defeats walkers (`walker.md`, sizes as in
 `walker-contact.md`) that it touches, and flies or rolls on as if they
-weren't there.
+weren't there. An object the player carries defeats large walkers too,
+and breaks ("A carried object" below).
 
 Measured on the first level with the lead character alone, after
 moving one ordinary object in the level's placement list so that it
@@ -467,6 +468,108 @@ area would have ended before they met: on Q + 37 (t = 16) I is −51,
 outside −48 to 28; on Q + 38 (t = 17) it is −45, outside −23 to 27; the
 walker is hit on Q + 43 with I = −18 and U = 8.4375, the object in the
 air after its first bounce.
+
+### A carried object
+
+An object that holds nothing also defeats a **large** walker that it
+meets while the player carries it (`carrying.md`, "Carrying"), and
+breaks. A small walker on the same floor as the player is never
+reached: the object is held too high, and the walker hurts the player
+as usual (`walker-contact.md`; for the object, `knock-out.md`, "An
+object in the hands").
+
+Measured on the first level with the lead character alone, with the
+object moved into the large walkers' patrol as above:
+
+- by inputs: 540 runs of 420 frames. In each the player stood, walked,
+  ran or jumped (three jump heights, and jumps from a run) toward a
+  large walker coming back from the end of its patrol, facing it or
+  turned away from it, with one or both large walkers there. Each run
+  was compared with the same inputs with the walkers taken out. There
+  were 406 hits. On 202 724 frames a walker walking at full speed and
+  the carried object were both there; the rule below gives a hit on
+  exactly the 390 of them that had one. The other 16 hits came while
+  the walker was turning and weren't checked;
+- controlled: 75 844 single frames. Before each frame the walker was
+  put at every whole-pixel offset up to 90 px across from the object.
+  The player stood facing either way, or was on one of the frames of
+  carried jumps of several heights, on flat floor and on a 1-in-4
+  slope. The walker was heading either way. The rule below matches all
+  60 858 frames with a large walker at full speed and no bounce. A
+  small walker was never hit (1 810 frames, with the object 41 to 93 px
+  above it).
+
+#### When the walker is hit
+
+Let **I** be the object's `x` minus the walker's `x`, both rounded
+down. Let **H** be the walker's `y` rounded up minus the object's `y`
+rounded up (positive when the object is higher). Both are taken at the
+end of the frame. A large walker that is walking (not already hit) is
+hit on a frame if the player was carrying the object at the end of
+the frame before, I is within the range below, and H is at most **55**:
+
+| Walker facing | Player facing | I |
+|---|---|---|
+| right | right | −25 to 31 |
+| right | left | −30 to 26 |
+| left | right | −26 to 30 |
+| left | left | −31 to 25 |
+
+Both ends are included. For a player facing right, these are the
+ranges of an object thrown right at t of 17 or more (the table under
+"When a walker is hit"). For a player facing left, they are the same
+ranges turned around and then moved 1 px right, as for the thrower.
+Standing, walking, running and being in the air don't change them.
+The lowest H measured was 11, with the player standing on the walker's
+floor. Hits with H from 11 to 55 were seen; lower values weren't
+measured.
+
+On a frame on which the player bounces off the walker (`bounce.md`),
+the walker isn't hit, even when the ranges hold. This was seen on 6
+frames by inputs and 1 002 controlled frames.
+
+#### What happens on a hit
+
+Call the frame of the hit **K**.
+
+- **The object breaks** on K: it is gone, and its pieces appear as when
+  it breaks against a wall.
+- **The player** isn't carrying any more. Its position and speeds on K
+  and after are those it would have had with the object still carried.
+  In 256 of the 406 runs they stayed the same to the end of the run. In
+  the others they first differed when the player did something that
+  goes differently without an object: starting a jump after K (the jump
+  of a player who carries nothing), picking up another object, or
+  being hurt by the other walker. On the ground it stands, walks or
+  runs without the object from K + 1. In the air it keeps the airborne
+  carrying pose until it lands. No frame is paused.
+- **The walker** moves as under "The walker" above with d = +1,
+  whichever way the player faces: its `vx` becomes −4 on K, it heads
+  left from then on, and the turn at the end of its patrol can still
+  happen on K + 1. This held on all 13 773 frames after the hits, with
+  40 more frames excluded: those came during the pause after a
+  knock-out by the other walker, when nothing moved.
+- **The player can still be hurt on K + 1** by the walker that was
+  hit. A hurt is decided from the positions at the end of the frame
+  before (`walker-contact.md`), and at the end of K the walker still
+  counts as a walking walker. This was seen once by inputs (running at
+  the walker) and on the controlled frames whenever the walker had
+  been put within the hurt range.
+
+#### Example
+
+Computed from the rules above. A large walker heading left at full
+speed on flat floor at `y` = 0 (its patrol's left end further left than
+`x` = 122). The player stands on the same floor facing right, carrying
+the object at `x` = 100, `y` = −40, so H = 40. Speeds in px per frame.
+
+| Frame | Walker `x` | Walker `y` | Walker `vx` | Walker `vy` | I | |
+|---|---|---|---|---|---|---|
+| K − 1 | 127.5 | 0 | −1 | 0 | −27 | outside −26 to 30 |
+| K | 126.5 | 0 | −4 | 0 | −26 | hit; the object breaks |
+| K + 1 | 122.75 | 0 | −3.75 | −6 | | |
+| K + 2 | 119.21875 | −5.5625 | −3.53125 | −5.5625 | | |
+| K + 3 | 115.87890625 | −10.6875 | −3.33984375 | −5.125 | | |
 
 ## Hitting the thrower
 
@@ -760,8 +863,15 @@ again. Speeds in 1/256 px per frame.
   its ranges from the ball's position at the end of the frame, measured
   with one ball falling straight down; whether the turn and the earlier
   position apply to it too wasn't checked); and the second character.
-- A walker walking into an object that the player is carrying (seen to
-  defeat the walker; the object was gone).
+- A carried object and walkers ("A carried object"): small walkers on
+  a floor high enough above the player's to come within reach (their
+  limits for a carried object weren't measured), medium walkers,
+  walkers that are turning or speeding up, H below 11, a `holder`
+  carried into a walker, two walkers in range on the same frame, what
+  happens to the carried object when the player bounces off a walker,
+  and the second character. The ranges are given for the object's
+  position; where a carried object is relative to the player is not
+  covered (`carrying.md`).
 - Places that stop walkers (`walker.md`, "Turning at a barrier"): near
   the one measured, a thrown object moving left was seen to break with
   no wall there, and a carried object was knocked out of the player's

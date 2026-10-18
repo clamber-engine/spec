@@ -303,7 +303,8 @@ player's position on the frame before G:
   player alone who carries an object, what the object does is in
   `knock-out.md`, "An object in the hands"; a carried object meeting
   the thrower or a ball is in `thrown-objects.md`, "Hitting the
-  thrower" and "Hitting a ball").
+  thrower" and "Hitting a ball", and one meeting a large walker in "A
+  carried object").
 - What a thrown object does when it first touches a character. Bouncing,
   rolling and breaking against walls for an object that holds nothing
   are in `thrown-objects.md`; when an object that holds the missing
