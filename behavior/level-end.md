@@ -98,6 +98,31 @@ Right held on the take-off frame passes the marker on the take-off
 frame. With Right not held on either frame, the lead leaves the ground
 and can only pass the marker on landing, as above.
 
+**Hits and bounces.** The frame on which the lead is hurt (`H` in
+`knock-out.md` and `losing-a-character.md`, "The hit frame") never
+passes the marker, even with every rule above met: on `H` the lead
+doesn't move, so a lead on the ground past the marker stays there, with
+Right held, and doesn't pass it. Nor does any later frame of that
+character, since its input is ignored from `H` on (the knock-out, or the
+hit character's flight and run out of the level, go on as usual). So
+when a walker's contact is due to hurt the lead on the next frame
+(`walker-contact.md`, "Being hurt"), Right held on this frame, with the
+rules met, passes the marker and the hurt never happens ("Walkers and
+bunches" below), while Right held from `H` on does nothing.
+
+With the other character there, it becomes the lead after the hit
+(`losing-a-character.md`). It can pass the marker only once it is under
+control again, from its hop's landing ("Control returns" there): during
+its run to the hit spot it was on the ground past the marker with Right
+held and didn't pass it. In the runs, its hop came down on the walker
+that had hurt the hit character and bounced off it; it passed the marker
+on the frame it landed after that bounce, Right held.
+
+A bounce off an enemy (`bounce.md`) is a time in the air like a jump: no
+frame of it passes the marker, including the two frozen frames and
+frames past the marker, and the lead passes it at the earliest on the
+frame it lands, as above.
+
 The boundaries were measured as follows: frames ending 0.13 px left of
 `xm` did not pass the marker, and frames ending 0.26 px right of it did;
 nothing in between was measured. `F` − `ym` of −4 and 4 passed it and −5
@@ -132,6 +157,38 @@ character leading (the first following):
   passes had Down held (61 of them with Action, 11 with Jump), 6 were on
   a take-off frame and 25 on a press frame. Every frame from `T` to
   `F0` + 28 (24 071) was as in "The walk-out" and "The fade".
+
+Hits and bounces were measured at the first level's end, with a medium
+walker that had walked to the wall 15 px right of the marker and stayed
+there (a change made for the test):
+
+- **Hits.** With the marker's entry moved 1 to 11 px left, the lead
+  walked right, let go of Right before the marker and slid past it with
+  nothing held into the walker's reach: 93 runs with the first
+  character alone and 85 with the second following, from 4 slides each,
+  holding Right from one of the frames from the slide's start to `H` +
+  16, or never. With Right first
+  held before `H` the marker was passed on that frame and the lead was
+  never hurt (21 + 13 runs). In the other 72 + 72 runs (Right first
+  held on `H` or later in 68 + 68, never in 4 + 4) the hit character
+  didn't pass it (264 + 459 frames met every rule but came on or after
+  `H`). With the second character following, none of the 221 frames
+  from `H` to its hop's start that met the other rules passed it, and
+  in all 72 of those runs it landed past the marker after the bounce:
+  it passed the marker on that landing frame in the 68 with Right held,
+  and didn't pass it in the 4 with Right never held.
+- **Bounces.** 81 runs with the lead alone jumping onto the walker,
+  Right held, from 21 points with 3 jump lengths, the marker where it
+  was and 6 px left. No frame of the 18 + 18 bounces passed the marker;
+  each of those runs passed it on the frame it landed. Of the others,
+  34 were hurt by the walker and didn't pass it, 4 landed on the higher
+  floor over it and didn't pass it, and 7 passed it on the floor before
+  reaching the walker.
+
+Every frame up to `T` (101 515) was judged by the rules above, with no
+pass from `H` on for the hit character and none before its hop's landing
+for the other character: the marker was passed on exactly the frame
+they give in every run that passed it, and in no other run.
 
 ## The walk-out
 
@@ -248,8 +305,9 @@ walk-out, except that a walker no longer hurts the lead:
   `T` (`walker-contact.md`, "Being hurt": the positions at the end of
   `n` in range) doesn't hurt it, and nothing changes in the walk-out or
   the fade. The lead goes on walking through the walker's place. A
-  walker that hurts the lead on `n` or earlier hurts it as usual; in
-  every such run the lead was knocked back and didn't pass the marker.
+  walker that hurts the lead before `T` hurts it as usual, and the lead
+  doesn't pass the marker on that frame or later ("Hits and bounces"
+  above).
   No bounce off a walker was seen during the walk-out; the lead never
   moves down then.
 - **Bunches are still taken.** A bunch (`bunches.md`) whose offsets
@@ -513,17 +571,16 @@ last frame came 61 frames after `T`.
 
 - Other levels' end markers, and areas other than the first level and
   its room.
-- Passing the marker while being hit or bouncing off an enemy, and
-  Left and Right held together at the room's marker (measured at the
-  first level's end only).
+- Left and Right held together at the room's marker (measured at the
+  first level's end only). Hits and bounces from enemies other than
+  walkers, and a hop that lands without a bounce after losing a
+  character at the marker.
 - The first character's movement during the walk-out when it follows
   the second character.
 - Whether the other character can pass the marker, and the other
   character when it is not following (joining, being carried).
 - Enemies other than walkers, and objects other than bunches and an
-  object in the lead's hands, during the walk-out. A walker hurting the
-  lead on the frame `n` itself (in the runs, every hurt before `T` came
-  before the lead reached the marker).
+  object in the lead's hands, during the walk-out.
 - A bunch's items at the level's end ("A bunch's items at the level's
   end") with two bunches releasing at once, with the second character
   leading, when the level has been finished before, and items counted at
