@@ -64,7 +64,8 @@ The last frame is **Z + 96**: 97 frames from Z, counting Z. After it the
 level ends; what follows (the screen transition, where play resumes, and
 any count of remaining tries) is not covered, as for `knock-out.md`,
 except that play resumes at the level's restart point once it has been
-reached (`restart-barrel.md`).
+reached (`restart-barrel.md`). The lives display from Z on is in
+`count-display.md`, "Losing a life".
 
 In all 32 runs, Z + 96 was the last frame, whatever the input, the way
 the player went in and the speed on the way down.

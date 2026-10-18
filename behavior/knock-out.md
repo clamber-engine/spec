@@ -8,7 +8,8 @@ walker cause damage rather than a bounce is in `walker-contact.md`, and
 when a thrower's ball or the thrower does in `ball-contact.md` and
 `thrower-contact.md`. What
 happens with two characters, and what follows the end of the level, are
-not covered here. Frames are logic frames at 60 Hz, numbered as in a
+not covered here. The lives display from the hit on is in
+`count-display.md`, "Losing a life". Frames are logic frames at 60 Hz, numbered as in a
 trace. `x`, `y` and `vy` are as in a trace: down is positive, speeds in
 px per frame. Measured with a single character touching ground enemies
 from the side: walking or running into them, standing while an enemy
