@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.180.0
+
+2 changes: letter pickup ranges while turning on the ground, and bunch
+pickup ranges while falling without a jump (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/letters.md`: new "Turning" paragraph under "Pickup ranges"
+  and a "Turning on the ground" table row. During a turn on the ground,
+  `U` to `U` + 7, the standing ranges apply on every frame, as for
+  bunches. `I` is measured in the old facing on `U` to `U` + 3 and in
+  the new facing from `U` + 4, also for a new turn on `U` + 8. On the
+  two frames after a turn, the standing ranges apply in the new facing.
+  Not covered is narrowed.
+- `behavior/bunches.md`: new "Falling without a jump" paragraph. With
+  `E` the frame the player leaves the ledge, the standing row applies on
+  every frame of the fall, on the landing frame and after it. There is
+  no switch to the jump row, and `I` is measured in the frame's facing,
+  also when the player turns in the air. Not covered is narrowed, and
+  walking off a ledge with a steep face is added.
+
 ## spec-v0.179.0
 
 Letter pickup ranges while falling without a jump (spec#19).
