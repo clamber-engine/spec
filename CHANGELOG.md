@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.172.0
+
+1 change: rising extra-life items gone untaken, after a knock-out
+(spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/restart-barrel.md`: "What is there again after a knock-out"
+  adds "Extra-life items that went away untaken": a rising extra-life
+  item that went away without being taken (rising out of the level, or
+  past the window's left edge) is there again after the resume, at the
+  level's start and at the restart point, and rises and gives its lives
+  as on a first visit; without a knock-out it stays gone. With the runs
+  that show it. The Not covered item for rising items is narrowed to
+  items taken before the knock-out.
+- `behavior/extra-lives.md`: "Going away untaken" points to the new
+  paragraph, and the Not covered item for items played again keeps only
+  coming back through an exit for items that went away.
+
 ## spec-v0.171.0
 
 1 change: extra-life items going away past the window's left edge
