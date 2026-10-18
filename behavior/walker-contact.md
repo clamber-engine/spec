@@ -180,11 +180,12 @@ every frame: standing, walking, turning, in the air through the whole
 jump, landing and after it. A jump made while carrying never takes the
 airborne pose. With G and Q as in `carrying.md` (the first frame of a
 pick-up, and the frame Action is let go), the player also has the
-carrying pose, on the ground and in the air, on every frame of:
+carrying pose on every frame of:
 
-- a pick-up, G to G + 14;
-- a throw, Q to Q + 42 (also after landing, for the frames of the throw
-  that are left);
+- a pick-up on the ground, G to G + 14 (a pick-up in the air is under
+  "Not covered");
+- a throw, on the ground or in the air, Q to Q + 42 (also after landing,
+  for the frames of the throw that are left);
 - a put-down, Q to Q + 12.
 
 From Q + 43 after a throw and from Q + 13 after a put-down the pose is
@@ -610,7 +611,8 @@ starting while carrying, with Action held in only part of the stretches
 of play (letting go is a throw, or a put-down with Down; pressing it
 again next to the object is a pick-up) and Jump in a sixth of them.
 Of the frames with a walker close (within 60 px across and 70 px up or
-down), 2 322 were in a pick-up, 2 012 in a
+down), 2 322 were in a pick-up (every pick-up in these runs was on the
+ground from start to end), 2 012 in a
 put-down and 11 078 in a throw (2 923 of them in the air), with 139
 hurts and 60 bounces on those frames. 0 mismatches.
 
