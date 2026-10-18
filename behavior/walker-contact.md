@@ -50,10 +50,14 @@ Using the rounded positions, let
   (0 when both stand on the same flat floor; positive when the player is
   higher).
 
-The player's **facing** is as in a trace. The walker's **heading** is the
-way it is moving. All values below were measured with walkers walking at
-full speed (1 px per frame); walkers that are turning, speeding up, stopped
-or frozen are not covered.
+The player's **facing** is as in a trace. The walker's **heading** is its
+facing (`walker.md`) at the moment its position is taken for the rule:
+the end of H − 1 for a hurt, the end of B − 1 for a bounce. A walker
+walking at full speed (1 px per frame) faces the way it is moving, so
+for it the heading is simply its direction. A walker that is speeding
+up, turning or stopped can face one way while it moves the other way or
+doesn't move at all; then its facing counts, not its motion ("Walkers
+that aren't at full speed" below).
 
 ## Being hurt
 
@@ -239,6 +243,38 @@ frame instead of being hurt on the next. In a fall without a jump the
 player is hurt by a walker only from the ground: on the landing frame
 and after it, with the ranges of the pose then.
 
+## Walkers that aren't at full speed
+
+The rules above hold for a walker at any speed: one speeding up from rest
+after it appears, one easing through a turn at the end of its patrol, and
+one stopped at a barrier and speeding up the other way (`walker.md`). The
+ranges and limits are the same; only the walker's position and facing
+at the moments given above count, never its speed or the way it moves.
+
+So during a turn the column of the tables changes on the frame on which
+the walker's facing changes (T + 4 at the end of a patrol, S + 5 at a
+barrier, `walker.md`), not when its `vx` changes sign:
+
+- at the end of a patrol the walker still moves the old way for a few
+  frames after T + 4 while it already faces the new way, and the new
+  column is used from then;
+- at a barrier the walker stands still on S and moves away from the
+  barrier from S + 1, but faces the barrier up to S + 4, and the old
+  column is used until then.
+
+For the small and large walkers the two columns differ by 1 px; for the
+medium walker by 10 px.
+
+For example, a medium walker heading left stops at a barrier on S and
+from S + 1 speeds up to the right, still facing left until S + 5. A
+player standing to its right and facing right is hurt on S + 3 if, at
+the end of S + 2, I is between −26 and 22 (the column for a walker
+heading left; measured up to its upper end there, as the barrier is at
+the floor's end): at I 23 to 32 the player isn't hurt, although those
+offsets hurt next to a medium walker moving right at full speed. A
+player falling onto it on S + 3, facing right, bounces with I up to 32
+(against the walker at the end of S + 2), not up to 42.
+
 ## Examples
 
 Synthetic. Positions are at the end of each frame.
@@ -371,6 +407,38 @@ reach by time since take-off with the standing ranges would have given
 the same results as the pose rule. The differences showed in the
 placements; with the player and the walker on different floors they
 weren't measured by inputs alone.
+
+## Evidence for walkers that aren't at full speed
+
+On the opening floor of the first level, with the first character alone,
+in modified copies of the game in which the walker that first appears
+there is replaced: by a large walker that patrols and turns, by small
+walkers with and without a patrol, and by a medium walker. The walkers
+without a patrol are passed by a jump, walk to a barrier, stop and come
+back. On every frame of the windows in which a walker speeds up from rest
+after it appears, turns at the end of a patrol, or stops at a barrier and
+speeds up the other way, the player was placed at offsets one pixel
+apart (−45 to 45) from the walker, facing right and left: standing
+(hurt), early in a jump (hurt) and falling (bounce). 2 200 frames of
+play, 174 040 placements (60 416 hurts, 37 436 bounces). In 1 548 of
+these frames the walker wasn't moving at full speed the way it faced: in
+64 of them it was moving against its facing, and in 12 it wasn't moving.
+The barrier is at the end of the floor, and placements past it were left
+out (the player can't be there), so at the barrier only the ends of the
+ranges on the side away from it were checked.
+
+The rules of this file with the walker's facing at the end of H − 1 (hurt)
+and B − 1 (bounce): 0 mismatches. The same tables with the walker's
+direction of motion instead: 362 mismatches; with its facing one frame
+later for bounces (end of B) or one frame earlier for hurts (end of
+H − 2): 98.
+
+As a holdout, by inputs alone: 6 000 random runs near the four walkers,
+started in or just before those windows (128 144 frames with a walker
+close; 15 148 of them with a walker not at full speed, including 193
+hurts and 136 bounces). 0 mismatches, except one frame with a walker at
+full speed: a landing frame where the player was in the case listed
+under "Not covered" (which picture shows on the landing frame).
 
 ## In `title-2`
 
@@ -527,9 +595,10 @@ walkers on screen): 0 mismatches.
 
 This list is for `title-1`; `title-2` has its own list above.
 
-- Walkers that aren't walking at full speed (turning, speeding up,
-  stopped at a barrier, frozen). Walkers already bounced on don't touch
-  the player (`walker.md`, "Being bounced on").
+- Walkers that are frozen, and the vertical reach of walkers that aren't at full speed (measured
+  only with the player on the walker's floor or just above it). Walkers
+  already bounced on don't touch the player (`walker.md`, "Being bounced
+  on").
 - Contact while crouching, carrying, after a bounce, or being knocked
   back. Rolls into walkers are in `rolling-into-walkers.md`.
 - Rolling off a ledge onto a walker, and runs off a ledge (a run starts
