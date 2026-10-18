@@ -215,6 +215,32 @@ row from `E` + 6 to 3 frames after the landing, as for a jump, would
 have given the wrong frame in 10 312 of them. Walking off a ledge with
 a steep face was not measured.
 
+**Bouncing off a walker.** Let `B` be the bounce frame (`bounce.md`,
+"The bounce frame"). On `B`, and on every frame from `B` + 3 until the
+player lands, the ranges are `I` −17 to 27 and `D` −7 to 39, whatever
+the height of the bounce, whether Jump is held, and whether the player
+moves or slows in the air. No bunch is taken on the two frozen frames
+`B` + 1 and `B` + 2 (`bounce.md`, "Two frozen frames"). A bunch moved
+into range during them was taken on `B` + 3 when the player was still in
+range at the end of `B` + 3, and not at all otherwise. Up to the frame
+before `B`, the jump ranges apply as usual. On the landing frame and
+after it, the standing row applies, whether the player stands, walks on
+or turns. This was measured on flat ground with the bunch moved to every
+offset one pixel apart around the player on every frame from `B` − 2 to
+5 frames after the landing of six bounces: Jump held, Jump released on
+`B` + 3, a short jump, facing left, moving right through the bounce and
+landing walking, and the same slowing with Left and landing in a turn (2
+315 682 placements); every frame had exactly the ranges these rules
+give, and none on the frozen frames. Separately, in 11 390 runs of play
+by inputs with a bounce (random waits, walks, jump lengths and changes
+of direction and Action in the air), with the bunch placed once
+beforehand near the edge of the ranges, 4 267 pickups came on bounce
+frames (540 of them on `B`) and every run took the bunch on the frame
+these rules give. Using the jump row on bounce frames instead would have
+given the wrong frame in 4 468 of them; the standing row, in 2 987.
+Bounces from a roll, bouncing again before landing, and landing on a
+slope after a bounce were not measured.
+
 ### Two characters
 
 With two characters there (`second-character.md`), one leads and the
@@ -309,13 +335,15 @@ is taken.
 
 - The second character's landings and running state, and its ranges
   in the states listed in the next item.
-- The ranges while bouncing off a walker (`bounce.md`), while being
-  carried down a steep slope or a rounded ledge (`steep-faces.md`), while
-  passing through a platform (`platforms-from-below.md`), while carrying
-  an object (`carrying.md`), and while being hit; the stop after a roll
-  on a slope; walking off a ledge with a steep face.
+- The ranges while being carried down a steep slope or a rounded ledge
+  (`steep-faces.md`), while passing through a platform
+  (`platforms-from-below.md`), while carrying an object (`carrying.md`),
+  and while being hit; the stop after a roll on a slope; walking off a
+  ledge with a steep face.
 - Landing on slopes, and a landing followed at once by a crouch, a
   roll, a turn or another jump.
+- Bounces from a roll, bouncing again before landing, landing on a
+  slope after a bounce, and the second character bouncing.
 - When a bunch that hasn't been taken appears and disappears as the
   view moves.
 - How a bunch is drawn while its items are released, and the path the
