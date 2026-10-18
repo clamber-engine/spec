@@ -40,11 +40,14 @@ case that applies on a frame makes that frame S.
 
 1. **Against a wall.** The wall rule of `thrown-objects.md` ("Breaking
    against a wall"): the move would take `x` into a different column
-   that is a face column of a face rising in the direction it moves, of
-   ground not passable from below, with its floor higher than the
-   object's `y` at the start of the frame. A move of more than one
-   column that passes such a face column breaks it too, even when the
-   new column isn't one (seen 4 times). On S its `x` doesn't change, but
+   that is a face column of a face rising in the direction it moves,
+   with its floor ("The floor of a column" there) higher than the
+   object's `y` at the start of the frame. Whether the face is passable
+   from below makes no difference ("Ground passable from below" below).
+   At solid ground, a move of more than one column that passes such a
+   face column broke it too, even when the new column isn't one (seen 4
+   times; at a passable face this wasn't always so, see "Not covered").
+   On S its `x` doesn't change, but
    its vertical move of this frame ("In the air", steps 1 to 4) still
    happens, in the column of the unchanged `x`, including touching the
    floor there (then its `y` is that floor). The joining character
@@ -81,11 +84,55 @@ case that applies on a frame makes that frame S.
    the end of the frame. On S it is at its moved position.
 
 If none of these happens, it moves on as an object holding nothing
-would. It doesn't touch the lead: in 950 controlled frames with the
-object placed over and around the lead (up to 48 px to either side and
-from 8 px below to 64 px above, at t = 5 and t = 20), it never broke.
+would. That includes "The floor of a column", the lift, and rising
+into ground from below (`thrown-objects.md`, "In the air" and "Ground
+passable from below"). It doesn't touch the lead: in 950 controlled
+frames with the object placed over and around the lead (up to 48 px to
+either side and from 8 px below to 64 px above, at t = 5 and t = 20), it
+never broke.
 `carrying.md` has no throw upward, so it can't fall back onto the
 thrower either.
+
+## Ground passable from below
+
+Ground passable from below (`../formats/level-ground.md`) is met as by an
+object holding nothing (`thrown-objects.md`, "Ground passable from
+below"): it matters only on a frame on which the object rises into the
+ground from below, where solid ground stops it and passable ground
+doesn't. A face of passable ground breaks it as other faces do (case 1).
+
+**Measured** with the same controlled starts as there: a thrown object
+holding the missing character, at a platform's edge on the first level
+whose ground is all passable from below (the edge rises as a face); the
+object was a copy moved in the level's placement list to that part of
+the level, picked up and thrown there (nothing else changed). 7 614
+starts at 6 places from 12 px to 0.5 px before the edge's first column,
+at heights from 10 px below the bottom line of the platform's band to
+10 px above its top, every 0.25 px, with `vx` 3.5, 8 and 14.4375 px
+per frame (896/256, 2048/256, 3696/256) moving right and `vy` −2, 0 and
+2 (−512/256, 0, 512/256), 6 frames each, in the real image and in a
+copy with every surface made not passable from below.
+
+- Real image and copy: 211 of the rising starts differed, each first on
+  a frame on which the object was stopped from below in the copy and
+  rose into the platform's band in the real image; every other start
+  gave the same frames in both.
+- Against the same starts with an object holding nothing: the position
+  and speeds were the same on every frame until this object broke. It
+  broke on every frame on which that object broke (432 of them against
+  the passable face), and also on every frame on which that object
+  bounced (1 431 starts: case 3 above). It never broke on any other
+  frame.
+- Frame by frame, the rules of this file without the sentence on moves
+  of more than one column gave every one of the 24 701 frames that
+  followed a start, in both images, except 140 frames on which a move
+  crossed face columns into a column that isn't one and the object
+  broke (an object holding nothing broke on the same frames). With that
+  sentence, 251 frames would have broken that didn't. So at this edge
+  neither gives every frame (under "Not covered").
+- On every break (3 155 in each image, 1 798 of them on the first frame
+  after the start) the joining character appeared at the object's
+  whole-pixel position.
 
 ## Enemies
 
@@ -214,4 +261,8 @@ Q + 32 and the character appears at (105, 40). The walker's `vx` becomes
 - The view moving on the frame the object leaves the picture (the window
   is taken from the view as in `thrower.md`, but only a still view was
   measured).
+- A move that carries `x` past face columns into a column that isn't
+  one, at a face passable from below: the object broke on 140 controlled
+  frames, on the same frames as an object holding nothing, but not on
+  every such move (the 4 breaks of case 1 were at solid ground).
 - Objects holding the missing character in other levels.
