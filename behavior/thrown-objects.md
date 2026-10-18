@@ -517,8 +517,9 @@ the frame before, I is within the range below, and H is at most **55**:
 
 Both ends are included. For a player facing right, these are the
 ranges of an object thrown right at t of 17 or more (the table under
-"When a walker is hit"). For a player facing left, they are the same
-ranges turned around and then moved 1 px right, as for the thrower.
+"When a walker is hit"). For a player facing left, they are the ranges
+for a player facing right moved 5 px left, as the thrower's left rows
+are its right rows moved 5 px left.
 Standing, walking, running and being in the air don't change them.
 The lowest H measured was 11, with the player standing on the walker's
 floor. Hits with H from 11 to 55 were seen; lower values weren't
