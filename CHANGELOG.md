@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.176.0
+
+1 change: bunch pickup ranges during the Down + Action ground action
+(spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/bunches.md`: the standing row of the pickup ranges also
+  covers the Down + Action ground action. A new "Ground action"
+  paragraph says it applies on every frame from the press frame `G` to
+  `G` + 58: in any direction, at any speed, against the facing, down a
+  slope, and in the air after a ledge. Checks are included. Removed
+  from Not covered.
+- `behavior/letters.md`: letters and bunches now share the ground
+  action's ranges. The "letters only" note is gone.
+
 ## spec-v0.175.0
 
 2 changes: picture hashes and the player's pictures when held still
