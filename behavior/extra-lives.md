@@ -364,6 +364,67 @@ frame 390 on. Had the second item been taken on frame 179 instead, one
 frame after the step to 8 on frame 178, its image would have arrived on
 frame 215 and the number would have shown 9 from that frame.
 
+#### The count reaching 100
+
+The lives display of the count reaching 100 (`count-display.md`,
+"Reaching 100") is the same lives display, and the rules above take in
+its life. Let `S` be the frame of the count's step from 99 to 0. For the
+lives display:
+
+- The new life counts toward the number of lives from `S` + 1 on (on
+  `S` itself the number of lives that the rules compare with is one
+  less).
+- On `S` + 1 the number's height does what an item taken on `S` + 1
+  would do: it starts a lives display as in the table above if none is
+  shown, turns it back if it is moving up, and changes nothing if it is
+  coming in or at y 10.
+- For the steps, the count acts like an item taken on `S` + 1 whose
+  arrival is `S` + 1: it holds no frames.
+- In the last rule above ("Otherwise"), the frame counted from is the
+  first free frame on which the number shown is less than the number of
+  lives and on whose frame before the number was at y 10 and the number
+  shown was less than the number of lives then. For items alone this
+  changes nothing: the frame before an item's arrival is held, with the
+  number at y 10 and short of the lives.
+
+So:
+
+- The count reaching 100 with no lives display shown: as in
+  `count-display.md`. The number comes in on `S` + 8 to `S` + 14 (at
+  y 10 from `S` + 14), `S` + 15 is the frame counted from, and the
+  step comes on `S` + 25.
+- The count reaching 100 while an item's image is on its way, or while
+  steps are still due: the steps come when they would have, with one
+  more step 16 frames after the last.
+- On the frame of the last step `E`: this is like an item taken on
+  `E` + 1 with its arrival on `E` + 1, so the step comes on `E` + 1.
+- Later, with the number at y 10: the step comes on `S` + 12.
+- On `E` + 121, the last frame at y 10: the number doesn't move up on
+  `E` + 122, and the step comes on `S` + 12.
+- While the number moves up (`S` from `E` + 122 to `E` + 130): it turns
+  back on `S` + 1, and the step comes 11 frames after the first frame on
+  which it is at y 10 again. For example, with `S` = `E` + 122 the
+  number is at y 6 on `S` and at 10 on `S` + 1, and the step comes on
+  `S` + 12.
+- On `E` + 131 or later: a new lives display starts, as with no lives
+  display shown.
+- An item taken while the count's lives display is shown, or with its
+  step still due, follows the rules above with the count's life counted
+  in the number of lives.
+
+For example, the player has 5 lives and takes an `extra-life-3` on frame
+147 (the lives become 8); its image arrives on frame 183 and the number
+shows 6, 7 and 8 from frames 193, 209 and 225 (`E` = 225). The count
+goes from 99 to 0 on frame 226 (the lives become 9). Frame 227 is the
+first frame on which the number shown (8) is less than the lives (9),
+but on frame 226 the number shown equalled the 8 lives counted then; so
+the frame counted from is 228, and the number shows 9 from frame 238,
+the 10th free frame after it. It moves up from frame 360 and isn't drawn from frame 366 on.
+Had the count reached 100 on frame 121 instead, before the item, the
+number would have come in on frames 129 to 135 and shown 6 from frame
+146; the item taken on frame 147, the frame after that last step, would
+then have made it show 7, 8 and 9 from frames 183, 199 and 215.
+
 ## More than 99 lives
 
 The number of lives can go past 99, but no lives display shows more
@@ -537,6 +598,19 @@ and is not drawn from frame 321 on.
   runs a walker later reached the player, who stood still after the
   third pickup; those runs were checked up to 20 frames before the lives
   went down (`knock-out.md`).
+- The count reaching 100 with an item ("The count reaching 100"): 856
+  runs in the copy of the image of "Several items", with an `extra-life-3` on the
+  floor taken on frame 147 walking (120 running) and the count set to
+  99 at the start and to 100 on a chosen frame, as a change made for the
+  test: the count's step on every frame from 0 to 460 walking (from 147
+  frames before the pickup to 313 after it), every second frame from 0
+  to 400 running, every fifth frame walking with 9 lives before, and
+  101 runs with two more collectibles counted 1 and 34 frames after the
+  step. On all 796 076 frames the number shown and the number's height
+  were as described. With the count's life counted from `S` instead, 698 runs
+  came out different; without the condition on the frame before, 694.
+  The 500 runs of "Several items" came out the same with that
+  condition.
 - Going away: 24 runs with an item placed near the first level's start
   (12 of an `extra-life-3`, 6 of each rising kind), the view moving
   right past the item by walking, running and pausing at random and then
@@ -565,8 +639,9 @@ and is not drawn from frame 321 on.
 - Taking an item while landing (the frames from `L`, the frame carrying
   `land`, to `L` + 6), turning and the frame after a turn, falling
   without a jump, the stop after a roll, being hit, bouncing, carrying.
-- Taking an item while a lives display from the count reaching 100 or
-  from all four letters is still shown.
+- Taking an item while a lives display from all four letters is still
+  shown, the count reaching 100 more than once in one lives display, and
+  rising items with the count reaching 100.
 - When an item is late ("Late items"), other than the first level's own
   two `extra-life-3` items. In the three-item runs of "Checks" it
   depended on where the items were placed and not on how long the player
