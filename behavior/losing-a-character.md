@@ -160,12 +160,10 @@ Rows from H + 36 (the other character):
   `second-character.md` (walking, running, crouching, jumps, air
   control). Everything else in the other behavior files was measured
   with the first character.
-- The second character being hit or knocked out. One measurement of the
-  second character being knocked out (with no one left) followed the
-  shape of `knock-out.md` but with different frame counts; those counts
-  aren't specified yet.
 - The first character joining as the other character, and hits while
-  the second character is under control with the first one following.
+  the second character is under control with the first one following
+  (the second character knocked out with no one left is in
+  `knock-out.md`, "The second character (`title-1`)").
 - A hit when the other character is already at the hit spot, out of
   view, or facing away from the hit spot when its run begins.
 - Ground or walls between the other character and the hit spot.
