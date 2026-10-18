@@ -407,6 +407,71 @@ and is gone from 675, and letter 4 moves from 670 and is gone from 694
 (`G`). The lives display shows 6 from frame 694, leaves at y 6 on frame
 816 and is not drawn from 822.
 
+### While the player is knocked out
+
+This covers a knock-out (`knock-out.md`: hit with no other character)
+whose hit frame `H` is from `J` − 11 on, before or during the ending.
+`E` is the level's last frame (`knock-out.md`, "Lying still"), and `B`
+is `E` − 122. In the runs `E` was always `H` + 225, so `B` was `H` + 103.
+
+**The four letters** are drawn as in "The four letters" up to `E`, on
+the knock-out's frozen frames too: the knock-out changes nothing there.
+The new life is given on `J` also when `H` comes before `J`.
+
+**Where the lives number is.** Give the number a position `p` on every
+frame, also when it isn't drawn: it is drawn at y `p` when `p` is
+greater than −16, and not drawn otherwise. Without a knock-out, `p` is:
+
+| Frame | `p` |
+|---|---|
+| before `J` | −44 |
+| `J` to `J` + 12 | −40 + 4 × (frame − `J`): −40, −36, …, 8 |
+| `J` + 13 to `G` + 121 | 10 |
+| `G` + 122 to `G` + 130 | 6, 2, −2, −6, −10, −14, −18, −22, −26 |
+| from `G` + 131 | −44 |
+
+which gives the table in "The lives display". With a knock-out, up to
+`H` it is the same, and then:
+
+| Frame | `p` |
+|---|---|
+| `H` + 1 to `H` + 10 | as on `H` |
+| `H` + 11 to `B` + 2 | 4 more than on the frame before, but at most 10 |
+| `B` + 3 | −44 |
+| `B` + 4 to `E` | 4 more than on the frame before, but at most 10 |
+
+So after `H` the number never leaves: from `H` + 11 it comes in from
+wherever it was, turning round if it was leaving, and stays at y 10. It
+isn't drawn on `B` + 3 to `B` + 10, comes in again at y −12 on `B` + 11
+and is at y 10 from `B` + 17 to `E`.
+
+**The number shown** starts as the number of lives before the new life
+and changes twice: it goes down by one on `B` + 3, and up by one on
+`G`′ for the new life, where `G`′ is:
+
+- `H` + 11 when `G` is `H` + 1 to `H` + 10;
+- `B` + 28 when `G` is `B` + 4 to `B` + 17;
+- `G` otherwise.
+
+When `G`′ is `B` + 3 the two changes cancel. So the number shown is the
+number of lives before the new life before the earlier of `B` + 3 and
+`G`′ and again from the later of them on, for every `H`; between them
+it is one more (`G`′ to `B` + 2, when `G`′ comes first) or one less
+(`B` + 3 to `G`′ − 1, when `G`′ comes later). The digits are placed as
+in "The lives display".
+
+**Example.** As in "Example" above (5 lives before the new life, `J` =
+531, `G` = 694), with the player hit on frame 560 (`H`): `E` = 785 and
+`B` = 663. The lives number is at y 10 from 544 with 5, as without the
+hit, and stays there up to 665. It isn't drawn on 666 to 673, comes in
+with 4 at y −12 on 674 and is at y 10 from 680. On 694 (`G`) it becomes
+5, which it shows up to 785.
+
+Hit on frame 819 instead, while the number is leaving (y −6 on 819): it
+stays at y −6 up to 829, is at −2, 2 and 6 on 830 to 832 and at y 10
+from 833, showing 6. `E` = 1044 and `B` = 922: it isn't drawn on 925 to
+932, comes in with 5 at y −12 on 933 and is at y 10 from 939 to 1044.
+
 ### Checks
 
 Each of the four letters was taken last, at its place in the level,
@@ -437,6 +502,20 @@ above, with each letter's lateness taken from the run: 165 936 frames,
 0 different, and in every run each letter was either on time or late
 throughout.
 
+**Knocked out.** Letter 1 was taken last, at its place, with the other
+three already in the set and a walker put on the player on one frame,
+so that the player was hit on the next one: every `H` from `J` − 11 to
+`J` + 300, with no input or with Right held from the frame before `H`,
+and with 1, 5 or 9 lives before (6 runs for each `H`, 1 878 knock-outs).
+On every frame from `H` − 1 to `E` (426 306 frames), where each letter
+was drawn was the same as in a run from the same place without the
+hit, and whether and where the lives number was drawn, its digits and
+the number of lives were as above: 0 different. With one life before,
+the number shown went down to 0 and back to 1; with 9, it went up to 10
+(two digits) before or after going down. Putting the walker on the
+player while the player was still in the air after being placed at the
+letter (`H` up to `J` − 12) gave no hit.
+
 ## Not covered
 
 - With two characters: the second character's landings and running
@@ -448,9 +527,14 @@ throughout.
 - Which letters are late in the ending when the fourth letter is taken
   120 frames or less after another (see "After another letter").
 - Taking the fourth letter on the frame after another.
-- The ending while the player is knocked out, leaves the level or
-  finishes it, or while another lives display (`count-display.md`) is
-  shown.
+- The ending while the player leaves the level or finishes it, or while
+  another lives display (`count-display.md`) is shown. A knock-out with
+  `H` before `J` − 11 (between the pickup and the copy reaching its
+  slot), with 99 lives, with a letter other than letter 1 taken last
+  (only the rules in terms of `G` were checked, with `G` = `J` + 163), or
+  with the fourth letter taken after another ("After another letter");
+  losing a character (`losing-a-character.md`) during the ending; and
+  how the image beside the lives number is drawn during a knock-out.
 - In one setup, with the player rolling from the pickup on, the lives
   display came in 2 frames later than above (y −12 on `J` + 9); why is
   not covered.
