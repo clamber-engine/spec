@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.147.0
+
+Another letter while the letter row is shown, and a barrel put down
+elsewhere in the shared list.
+
+Part of clamber-engine/spec#17 (the first level's layout) and
+clamber-engine/spec#19 (the first level's remaining entities). Both
+issues stay open for the parts not covered yet.
+
+- `behavior/letters.md`: new "Another letter while the row is shown".
+  A second letter (not the fourth) taken before the row's end extends
+  the row; one taken on or after the end brings in a second row while
+  the first slides out. Copies drawn nearer their slot arrive sooner
+  and stay there while the row slides in. Not covered narrowed.
+  (spec#19)
+- `formats/placements.md`, "In lists with sections": new "Objects put
+  down elsewhere". A `barrel` of the shared list put down elsewhere is
+  removed by its own position, its entry places nothing else meanwhile,
+  and it comes back at its entry only when the entry is in both
+  windows. Synthetic example. Not covered narrowed. (spec#17)
+
 ## spec-v0.146.0
 
 Removal of placed objects in lists with sections.
