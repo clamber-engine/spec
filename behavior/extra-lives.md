@@ -82,6 +82,24 @@ rose through it with no change to the rule. It rose the same with the
 player standing still about 180 px away and with the player walking
 toward it and away from it.
 
+**While the game is paused.** A press of the Pause input (`controls.md`)
+pauses the game, and no logic frames run until the pause ends, so a
+trace has no rows for the pause and a rising item doesn't move during
+it. The frame of the press that pauses is an ordinary frame: the item
+rises on it as usual. From the next 60 Hz frame through the frame of the
+press that ends the pause, the item stays where it was at the end of
+that frame. On the frame after that it rises again with the speed it
+had, so in a trace its rise is the same as if there had been no pause.
+An item that would have appeared, or gone past the window's left edge
+("Going away untaken"), on the frame after the pausing press does so on
+the frame after the pause.
+
+In the runs, a second press 33 or more frames (at 60 Hz) after the
+pausing press, with no press in between, ended the pause; one 1 to 32
+frames after it did not, and the game stayed paused. Holding the input
+for 4 frames on either press made no difference, and holding it after
+the press that ended the pause did not pause the game again.
+
 **At the top.** A rising item is removed on the first frame on which its
 level y would be 0 or less: at the end of that frame it is no longer in
 the level. In the runs (17 runs, 14 heights of appearance), the last frame on
@@ -483,6 +501,18 @@ and is not drawn from frame 321 on.
   "Going away untaken" says on every frame. With the left limit 1 px
   further left, 16 frames came out wrong; with the view's position at the
   end of the frame instead of its start, 24.
+- While the game is paused: 7 344 pauses in the first level, started on
+  one of 3 frames at each of 68 points from the level's start on, with
+  Right or nothing held, a `rising-extra-life-1` or `rising-extra-life-2`
+  item in the level on the pausing frame in 6 804 of them, and ended by a
+  press 33 to 204 frames after the pausing press or not ended within 400
+  frames. In every one the trace was the same as with no pause (173 550
+  item frames after the pause compared), and the item didn't move on any
+  of the 1 561 014 frames it was paused. In 626 of them the item appeared
+  or went past the window's left edge on the pausing frame or within 5
+  frames after the pause. A second press from 2 to 101 frames after the
+  pausing press (800 runs) ended the pause exactly when it came 33 or
+  more frames after it.
 
 ## Not covered
 
@@ -510,10 +540,16 @@ and is not drawn from frame 321 on.
   with play resuming at the level's start and at the restart point); an
   item taken before an exit stays gone after coming back (`exits.md`,
   "Coming back to the level").
-- Rising items while the game is paused. During a knock-out: an item
-  that appears on H or later, an item touched by the player, items that
-  stay where they are placed, and the second character being the one
-  hit (`losing-a-character.md`).
+- Rising items during a knock-out: an item that appears on H or later,
+  an item touched by the player, items that stay where they are placed,
+  and the second character being the one hit (`losing-a-character.md`).
+  Pauses started while the player is in a launch barrel or shot from it
+  (`launch-barrel.md`): on some of those frames a press did not pause
+  the game, and some of those pauses changed what followed. A rising
+  item removed at the top next to a pause. Which presses end a pause
+  other than a single second press as above (after a press that did not
+  end it, one 17 frames later did, even sooner than 33 frames after the
+  pausing press), and what the game shows while paused.
 - Entries far below the picture. With the player on the floor near the
   first level's start (level y 337), an item whose entry was at level y
   433 appeared as usual, and none appeared from entries at 17 places
