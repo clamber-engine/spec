@@ -172,6 +172,78 @@ Mirror image when facing left. On flat ground the sequence takes 226
 rows from H to the last frame, plus the 32-frame pause; hits in the air
 or onto lower ground take longer only by the extra flight time.
 
+## The second character (`title-1`)
+
+Everything above was measured with the first character. When the only
+character left is the **second character** (the first one was lost
+earlier, `losing-a-character.md`), a knock-out follows the same rules
+with three frame counts changed:
+
+- From **H to H + 13** (14 frames) the player doesn't move.
+- The 32-frame pause comes between **H + 10** and **H + 11**.
+- The knock-back flight starts on **H + 14**: the launch of H + 11
+  above (`vy` −8 and 0.78125 px per frame away from the facing, so `vy`
+  is −7.5625 after the first frame's increase) happens on H + 14
+  instead, and the flight goes on frame by frame as above.
+- The player lies still on F and the **101** frames after it. **F +
+  101** is the last logic frame of the level.
+
+Everything else is as above: the hit frame, input ignored and facing
+kept from H, the gravity and its cap of 6, the rebounds to −5 and −2,
+the stop on the third landing.
+
+These counts go with the character, not with what happened earlier in
+the level: the first character, left alone after the second character
+was lost, is knocked out with the counts of the sections above (11
+frames, the pause between H + 7 and H + 8, F + 153).
+
+A `holder` in the second character's hands at the end of H − 1 is let go
+and moves from H + 1 exactly as in "An object in the hands".
+
+In a trace: as in "In a trace" above, with H + 13 in place of H + 10
+and H + 14 in place of H + 11.
+
+Hit while walking right on flat ground, relative to the position on
+H − 1 (the rows of "Worked values" three frames later, and a shorter
+rest):
+
+| Frame | `x` | `y` | `vy` | Note |
+|---|---|---|---|---|
+| H to H + 13 | 0 | 0 | 0 | 32-frame pause between H + 10 and H + 11 |
+| H + 14 | −0.78125 | −7.5625 | −7.5625 | launched |
+| H + 15 | −1.5625 | −14.6875 | −7.125 | |
+| H + 31 | −14.0625 | −69.1875 | −0.125 | highest point |
+| H + 48 | −27.34375 | −7 | 6 | |
+| H + 49 | −28.125 | 0 | −5 | first landing |
+| H + 50 | −28.90625 | −4.5625 | −4.5625 | |
+| H + 69 | −43.75 | −8.125 | 3.75 | |
+| H + 70 | −44.53125 | 0 | −2 | second landing |
+| H + 74 | −47.65625 | −3.625 | −0.25 | |
+| H + 75 | −48.4375 | 0 | 0 | third landing (F) |
+| H + 176 | −48.4375 | 0 | 0 | last frame (F + 101) |
+
+Mirror image when facing left. On flat ground the sequence takes 177
+rows from H to the last frame, plus the 32-frame pause.
+
+Measured: 87 knock-outs of the second character alone, from random play
+over the second half of the first level, at four starting points (the
+first character lost to a walker just before, or long before), 75
+facing right and 12 facing left, 51 hit on the ground and 36 in the air
+(15 577 frames from H to the last frame). In every one the player didn't
+move from H to H + 13, the only long frame was the pause between H + 10
+and H + 11 (32 frames at 60 Hz in 86, 31 in 1), and from H + 14 the
+flight followed the rules above to 1/256 px except where the knock-back
+met walls, sloped floors or ground passable from below (the same kinds
+of frames as for the first character, see "Not covered"); the last
+frame was F + 101 in all 87. 20 of them were on flat ground and gave
+exactly the rows of the table. One more run, ending with the player
+lying on a moving object, is not counted. 43 knock-outs of the first
+character, alone after losing the second, all kept the first
+character's counts (F + 153 in 42; in the other the third landing was
+on ground passable from below). One knock-out with a `holder` in the
+second character's hands: 36 frames of the holder's motion, 0
+differences.
+
 ## In `title-2`
 
 Everything in this section was measured on `title-2` only, with the lead
@@ -344,14 +416,18 @@ This list is for `title-1`; `title-2` has its own list above.
 - Protection after a hit: none applies here, since this hit ends the
   level. Protection after a hit with two characters is in
   `protection.md`.
-- Walls, ledges, pits and slopes met during the knock-back flight
+- Walls, ledges, pits, slopes and ground passable from below met during
+  the knock-back flight, with either character
   (measured on a slope only where it didn't change the motion, with the
   landings on the slope's floor height).
 - Hits during a roll or a bounce. Falling out of the level is in
   `falling-out.md`.
+- For the second character: a `barrel` in the hands at the hit, and
+  landing during the flight on a moving object.
 - Objects other than a `barrel` or a `holder` in the hands at the hit,
   hits during a throw other than on the frame after it began, and how
-  walkers and other objects move from H to H + 10.
+  walkers and other objects move from H to H + 10 (H + 13 for the
+  second character).
 - What happens after the last frame: the screen transition and any count
   of remaining tries. Where play resumes after a restart point has been
   reached is in `restart-barrel.md`; otherwise, where play begins.
