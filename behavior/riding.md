@@ -297,7 +297,8 @@ starts on frame 40, because Right is held and the rider faces left.
 - What the animal does to enemies, what happens when the rider is hurt,
   and getting off the animal (a Tandem press, `controls.md`).
 - Objects: carrying, the crate, bonuses and anything touched while
-  riding.
+  riding, other than single collectibles (`collectibles.md`, "Riding the
+  animal").
 - Other animals, and riding with the second character present.
 - How the rider and the animal are drawn (poses, the animal's gait).
 - Trace state names for riding: `traces/VOCABULARY.md` has no names for

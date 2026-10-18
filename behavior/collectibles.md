@@ -146,6 +146,43 @@ until the frame before landing. Its landings are not covered. In one
 case, landing while walking, it took a collectible at `I` = −17 and not
 at −19 on the frame before, 12 frames after landing.
 
+### Riding the animal
+
+While the first character rides the animal (`riding.md`), the ranges
+are the same on every frame of riding, whatever the speed, the vertical
+speed or the time since a take-off:
+
+| State | `I` | `D` |
+|---|---|---|
+| Riding (every part) | −16 to 23 | 7 to 51 |
+
+"Every part" means all the parts of riding in `riding.md`: riding under
+control, turns, a jump's crouch frames, air and landing frames, charges,
+charge ends and settling frames, from the first riding frame after a
+mount (M + 23 in `animal-crate.md`) on. `I` and `D` are taken from the
+rider's `x` and level y as in `riding.md`, in the same way as on foot.
+
+`I` is measured in the facing at the end of the frame, with one
+exception: on frame T + 4 of a turn, where the facing changes
+(`riding.md`, "Riding, and turns"), the range is the one for the facing
+the rider had before. For example, a rider standing still and facing
+left who holds Right from frame 0 turns on frames 0 to 7 and faces right
+from frame 4. On frame 4 it takes a collectible with `X − xc` from −23
+to 16, as when facing left; from frame 5 on, with `X − xc` from −16 to
+23. On steered frames, where the facing follows the held direction at
+once, the facing at the end of the frame counts, as on any other frame.
+
+This was measured with the first character alone, on flat floor, by
+moving a collectible to chosen offsets one pixel apart on every frame
+of scripted rides (417 frames), and along lines across the ranges on
+every frame of 280 random rides (104 557 frames, 471 of them turn frames
+where the facing changes). The rides were near the first level's start,
+with the crate moved there in a modified copy of the game (as in
+`riding.md`), and next to the first level's own crate, unmodified. The
+same method gave the standing and crouching ranges above for a player
+on foot. The view window and the time until the count goes up (below)
+weren't measured separately while riding.
+
 ## The view window
 
 A collectible can only be taken while it is near the view. With `V` the
@@ -384,3 +421,6 @@ This list is for `title-1`; `title-2` has its own list above.
 - The view window's vertical limits.
 - Where other levels' collectibles are in their data. The first
   level's are in `../formats/collectibles.md`.
+- While riding: the view window and the count's timing, slopes and
+  faces, the frames of mounting and getting off, and the other kinds of
+  collectible.
