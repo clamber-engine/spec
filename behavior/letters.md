@@ -453,9 +453,12 @@ and changes twice: it goes down by one on `B` + 3, and up by one on
 - `B` + 28 when `G` is `B` + 4 to `B` + 17;
 - `G` otherwise.
 
-When `G`′ is `B` + 3 the two changes cancel. So from `B` + 28 on, the
-number shown is always the number of lives before the new life. The
-digits are placed as in "The lives display".
+When `G`′ is `B` + 3 the two changes cancel. So the number shown is the
+number of lives before the new life before the earlier of `B` + 3 and
+`G`′ and again from the later of them on, for every `H`; between them
+it is one more (`G`′ to `B` + 2, when `G`′ comes first) or one less
+(`B` + 3 to `G`′ − 1, when `G`′ comes later). The digits are placed as
+in "The lives display".
 
 **Example.** As in "Example" above (5 lives before the new life, `J` =
 531, `G` = 694), with the player hit on frame 560 (`H`): `E` = 785 and
