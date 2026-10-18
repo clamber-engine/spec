@@ -33,6 +33,21 @@ alone, by inputs only except where said:
   touched on the frame the rules give, or not at all when they give no
   frame (607 touches: 285 jumping, 189 rolling, 112 walking, 12
   crouching, 9 others; 366 facing right, 241 facing left).
+- Touching while holding an object: a `barrel`, moved in a copy of the
+  image to rest just left of the restart barrel, picked up and held
+  with Action. Holding it, the player was put at every whole-pixel `I`
+  from −45 to 45 and every `D` from −75 to 75 (the barrel moved 60 px
+  up for the `D` ranges) and run for one frame, on 427 frames of
+  standing, walking and jumping, facing either way, and on full grids
+  for four of those frames (123 630 placements). Then 640 runs of
+  random walking, jumping and standing with Action held toward the
+  barrel from both sides, 56 942 frames: in every run the barrel was
+  touched on the frame the rules give, or not at all when they give no
+  frame (617 touches: 372 in the air, 241 walking, 4 standing; 368
+  facing right, 249 facing left). Each of the 617 runs was played again
+  with the barrel moved away so that it was never touched: on the 61
+  frames from the touch on, the player's position, action, facing and
+  picture and the held object's position were the same in both.
 - Restarting: two knock-outs in a row after touching the barrel, one
   fall-out with both characters, a knock-out with the barrel moved away
   so that it was never touched, and the level finished after touching
@@ -90,6 +105,7 @@ the player has").
 | rolling | −22 to 27 | −30 to 19 | −36 to 30 |
 | crouching | −27 to 18 | −21 to 24 | −29 to 38 |
 | fidget | −14 to 30 | −33 to 11 | −42 to 33 |
+| carrying | −23 to 22 | −25 to 20 | −38 to 34 |
 
 Facing left, every `I` range is the facing-right range turned around:
 from −(high end) − 3 to −(low end) − 3.
@@ -99,10 +115,18 @@ whatever the speed, and with the player on the ground or in the air.
 On the first frame of a crouch started while moving (Down pressed),
 the pose is already crouching.
 
+The pose is **carrying** while the player holds an object
+(`carrying.md`) after its pick-up has ended (from G + 15 on, as frames
+are named there): standing, walking, and in the air. While it lasts it
+is the pose whatever the player is doing; the carrying ranges were the
+same on every frame measured. The held object
+doesn't touch the barrel itself: only the player's position counts.
+
 On the frame it is touched, the barrel breaks (see "Breaking") and the
 level's restart point is reached. Touching it doesn't change the
 player's position, speed, action or facing: a player walking into it
-walks on at 2 px per frame.
+walks on at 2 px per frame. A player holding an object goes on holding
+it, and the object stays where it would have been without the barrel.
 
 The barrel can be touched only once: once touched, it is gone for the
 rest of the visit to the level. With the view moved about 650 px to the
@@ -419,9 +443,11 @@ the barrel is touched on the third, the upright range starting at −24.
   barrel, and where each character is when play resumes with both.
 - A barrel out of the picture: in the measurements the barrel, moved
   up, was never touched once it was 91 px or more above its place.
-- Touching the barrel while bouncing off an enemy, carrying an object,
-  being hit or knocked out, swapping, or during the Down + Action
-  ground action.
+- Touching the barrel while bouncing off an enemy, being hit or
+  knocked out, swapping, or during the Down + Action ground action.
+  While holding an object: during its pick-up (G to G + 14 in
+  `carrying.md`), a throw or a put-down, and holding a `holder` (only
+  a `barrel` was held).
 - After a knock-out ("What is there again after a knock-out"): kinds
   not listed there (among them tyres and `hidden-metal-barrel`), objects
   moved in other ways (thrown without breaking, put down in other
