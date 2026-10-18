@@ -314,8 +314,8 @@ lives before the new life up to `G` − 1, and the new number from `G` on.
 | `G` + 122 to `G` + 127 | 6, 2, −2, −6, −10, −14 |
 | `G` + 128 on | not drawn |
 
-With 99 lives before the new life, the number shown stayed 99, also from
-`G` on.
+With 99 or more lives before the new life, the number shown is 99 also
+from `G` on (`extra-lives.md`, "More than 99 lives").
 
 ### After another letter
 
@@ -408,7 +408,7 @@ throughout.
   120 frames or less after another (see "After another letter").
 - The ending while the player is knocked out, leaves the level or
   finishes it, or while another lives display (`count-display.md`) is
-  shown, and what the extra life with 99 lives does.
+  shown.
 - In one setup, with the player rolling from the pickup on, the lives
   display came in 2 frames later than above (y −12 on `J` + 9); why is
   not covered.
