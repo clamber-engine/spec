@@ -47,7 +47,8 @@ Vectors for "Kinds" in `../../formats/placements.md`.
   `a6ba56c90978aa11c57f493b12e84636df5e08f726485164e53537cc69aaa433`.
 - `kinds-rows.tsv`: made-up kind fingerprint rows for this image, as a
   `locators.md` section would list them.
-- References to look up: `8100`, `9000`, `9010`, `ffe0` and `4000`.
+- References to look up: `8100`, `9000`, `9010`, `ffe0`, `4000`, `9020`
+  and `9030`.
 
 What the data exercises:
 
@@ -77,6 +78,13 @@ image and references.
   objects start with: given settings, the default for the one not given
   (heading of reference `9010`), and `-` for kinds without settings and
   for the reference that matches no row.
+- Input: `kinds-ball-settings-rows.tsv`, a made-up `ball` settings row
+  for one of the two `ball` fingerprints, giving its start `vx` only.
+  Speeds are in 1/256 px per frame; `-` marks a setting not given.
+- Expected output: `kinds-ball-settings.tsv`, the start speeds each
+  reference's objects start with: reference `9020` the given start `vx`
+  and the default start `vy`, reference `9030` (no settings row) both
+  defaults, and `-` for the other kinds.
 
 ## Lists with sections
 

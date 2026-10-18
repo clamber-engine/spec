@@ -238,10 +238,11 @@ image's section, the settings for a kind fingerprint (`../REVIEW.md`,
 reference has that fingerprint starts with those settings. A setting that
 isn't given for a fingerprint takes its default from the table below.
 The settings were measured in play ("How the walker settings were
-measured" below).
+measured" and "How the ball settings were measured" below).
 
 The walker kinds (`small-walker`, `medium-walker` and `large-walker`)
-have three settings. No other kind has settings in this spec yet.
+have three settings, and the `ball` kind two ("Ball settings" below). No
+other kind has settings in this spec yet.
 
 | Setting | Values | Meaning | Default |
 |---|---|---|---|
@@ -315,6 +316,63 @@ walker's `x` to 1/256 px and its facing on every frame of the 15 runs up
 to its first stop at a barrier (24 281 frames, 0 different). Frames on
 which the whole game was held, because the player struck something, are
 left out (2 frames).
+
+#### Ball settings
+
+A `ball` that an entry places (`../behavior/thrower.md`, "Balls placed in
+a level") has two settings, its speeds when it starts. Speeds are in px
+per frame, right and down positive, whole multiples of 1/256, as in
+`thrower.md`.
+
+| Setting | Values | Meaning | Default |
+|---|---|---|---|
+| start `vx` | a speed | The ball's `vx` at its placed position, before its first frame of moves | −1.171875 (−300/256) |
+| start `vy` | a speed | The ball's `vy` at its placed position, before its first frame of moves | −3 (−768/256) |
+
+The defaults are the values measured for the one `ball` reference
+measured (below). The ball appears already one frame on (`thrower.md`):
+on its appearance frame its `vy` is start `vy` + 0.4375, its `x` is the
+placed `x` + start `vx` and its `y` is the placed `y` + start `vy` +
+0.4375. From then on it moves as in `thrower.md`, "Each frame", and its
+`vx` stays start `vx`. Balls that a `thrower` throws have no settings;
+their speeds are in `thrower.md`.
+
+**Example (synthetic).** A fingerprint with start `vx` +0.5 (128/256)
+and start `vy` −2 (−512/256), used by an entry at level x 1000 and level
+y 300, with no floor near: on the frame the ball appears it is at x
+1000.5, y 298.4375 (300 − 2 + 0.4375), with `vy` −1.5625 (−400/256). On
+the next frame, `vy` is −1.125 (−288/256), and it is at x 1001, y
+297.3125.
+
+#### How the ball settings were measured
+
+The first level's one `ball` reference (`locators.md`) was followed in
+play, every logic frame, from its appearance until it was removed or the
+player was knocked out. Its speeds were found from its first two frames:
+start `vx` is its `x` on the appearance frame minus the placed `x`, and
+the same `vx` was checked on the next frame; start `vy` is its `y` on
+the appearance frame minus the placed `y`, less 0.4375, and its `vy` on
+the appearance frame was checked to be start `vy` + 0.4375.
+
+- At its own entry: 14 appearances (the runs in `thrower.md`, and three
+  more approaches along a route through the level). Every one: start
+  `vx` −300/256, start `vy` −768/256.
+- In copies of the image, the reference given to six other class 1
+  entries of the first level, each approached from the level's start
+  along the same route: three entries at a floor's height, two 48 px and
+  161 px above the floor below them, and one 1 px below a floor's top
+  (measured from the floor's height; see "Not covered"). 6 appearances,
+  the same two values every time. So the speeds go with the reference,
+  not the entry or its height.
+- In copies with the reference given to one of those entries at 1 px
+  and 5 px above the floor: the same two values.
+
+With these settings, the rules in `thrower.md` gave the ball's position
+and `vy` to 1/256 px on every frame after its appearance in the copies
+(12 runs, 592 frames), up to its removal (9 runs, each on the frame the
+rules give) or the frame the player was knocked out (3 runs), with no
+difference. Each ball appeared on the first frame whose `V` put its
+placed `x` in the window, as `thrower.md` says.
 
 ### In the first level
 
@@ -456,7 +514,7 @@ An object appears at its entry's position: level x `x` and level y
 the frame they appear, so on that frame they are already a little away
 from it: up to 1 px in the other appearances (a walker's first step is
 1/8 px), and in one more, not counted in the 230, 1.2 px to the left and
-2.6 px higher.
+2.6 px higher (a `ball`, which appears one frame on: "Ball settings").
 
 The objects of one reference were the exception: critters, which fly
 about and appear at the top of the picture rather than at their entry
@@ -1238,8 +1296,18 @@ on each frame: see its `README.md`.
 - Where the placement lists of levels other than the first are in the
   image.
 - The kinds of the references without a kind fingerprint row. Settings
-  of kinds other than the walkers ("Settings"), for example a placed
-  ball's speeds, and any settings of walkers other than the three there.
+  of kinds other than the walkers and the `ball` ("Settings"), and any
+  settings of walkers other than the three there or of balls other than
+  their start speeds.
+- A placed `ball` whose placed position is below the top of a floor. In
+  copies of the image with the first level's `ball` reference given to
+  an entry 1 to 8 px below the top of a floor, the ball appeared as if
+  the entry were at the floor's height. With the entry 9 to 35 px below
+  it, the ball didn't move as `../behavior/thrower.md` says: its `x`
+  stopped changing. Also, given to an entry at level y 97 that was 73 px
+  above the picture (`y` − `U` = −73) on the frame it came into the
+  window, it placed no ball, even after `y` − `U` came up to −31 with the
+  entry still in the window, as with the class 1 `exit` below.
 - What class 2 changes compared with class 1. In the first level's runs,
   class 2 objects appeared and started like class 1 objects, and moving
   a reference from an entry of one class to one of the other changed
