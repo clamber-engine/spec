@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.159.0
+
+Walkers and bunches during the level-end walk-out.
+
+Part of clamber-engine/spec#19 (object behavior), which stays open for
+the parts not covered yet.
+
+- `behavior/level-end.md`, new "Walkers and bunches" under "The
+  walk-out": walkers move as usual from `T` on but no longer hurt the
+  lead, and bunches are still taken with the standing pickup ranges;
+  with a worked example and the runs that show it. Not covered narrowed,
+  plus a new item on items not yet counted by the level's last frame.
+  (spec#19)
+- `behavior/bunches.md`, "A bunch's position": where a bunch placed by a
+  level's placement list is, relative to its entry. (spec#19)
+
 ## spec-v0.158.0
 
 A placed ball appearing while the view moves left.
