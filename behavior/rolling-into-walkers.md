@@ -69,10 +69,20 @@ Defeat ranges for I (both ends included):
 | small | right | −16 to 25 | −17 to 24 |
 | small | left | −24 to 17 | −25 to 16 |
 | large | right | −19 to 28 | −20 to 27 |
-| large | left | not measured | not measured |
+| large | left | −27 to 20 | −28 to 19 |
 
 The large walker's ranges are the small walker's widened by 3 px on each
 side, as for its hurt and bounce ranges.
+
+For the large walker with the player facing left, the ranges were
+found by placement alone: the player placed at every offset from −40 to
+40 from a large walker walking at full speed, heading left and heading
+right, on 62 attack frames of slow and normal rolls to the left (roll
+frames, the frames that end a roll and the first frames of the stop)
+and on 20 other frames (standing and later frames of the stop): 6 642
+placements, 2 976 defeats, every one inside the range above, none
+outside it and none on the other frames. Fast rolls to the left weren't
+measured against the large walker.
 
 The ranges are the same on every attack frame: for slow, normal, fast
 and sped-up rolls (below), on the frames that end a roll, and in the
@@ -279,6 +289,24 @@ ranges for a walker heading right and "Several walkers in range" below:
 0 runs different. The last 5 000 runs, recorded as a holdout: 806 rolls
 with a defeat, 4 004 defeats, 573 chains of six, the limit applying in
 406, 0 runs different.
+
+Chains into large walkers were measured on the same floor with up to
+six large walkers in a row heading left (walkers added to the level, 26
+to 40 pixels apart, each set walking at full speed as it came into
+view): 20 000 runs of random input as in the first set above, about
+4 420 000 logic frames. In the first 15 000 runs, 5 404 rolls defeated
+at least one walker, with 24 062 defeats (23 871 with the player facing
+right, 191 facing left; 298 of the walkers heading right after turning
+at the end of their walk); 3 260 chains had six defeats, and in 2 379
+chains the starting size plus the boosts came to 9 or 10, so the limit
+applied. Every frame matched the rules of this page with the large
+walker's defeat ranges, except in two runs whose roll reached the
+floor's left end (walls and ledges aren't covered here); 197 of the
+defeats were of a walker that wasn't walking at full speed, and for
+those only the player's side was checked. The same rules with no limit,
+or a limit of 7, differ in 2 381 and 2 689 runs. The last 5 000 runs,
+recorded as a holdout: 1 865 rolls with a defeat, 8 276 defeats, 1 130
+chains of six, the limit applying in 814, 0 runs different.
 
 ### Several walkers in range
 
@@ -564,13 +592,13 @@ were recorded after the rules were fixed, as a holdout.
 
 This list is for `title-1`; `title-2` has its own list above.
 
-- The player facing left into the large walker.
 - Walkers that are turning, speeding up, stopped or frozen: their defeat
   range and their motion after the defeat.
 - Walkers on a different floor from the player, and rolls on or off
   ledges, in the air, or jumping out of a roll (a Jump press on K + 3
   starts a jump; what happens next isn't specified).
-- Chains into medium or large walkers longer than two.
+- Fast rolls to the left into the large walker.
+- Chains into medium walkers.
 - Which walker is defeated when several are in range on one frame, and
   when two are defeated on P rather than one.
 - Objects appearing on K + 2 (none were seen), and walkers whose first
