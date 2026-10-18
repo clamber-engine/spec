@@ -181,6 +181,80 @@ let it go. The removal edges, after the move: still there with `y`
 removed at 289; still there with `y` 31.3125 above `U` (rounded down,
 32), removed at 32.25 (rounded down, 33).
 
+### Walkers and bunches
+
+From `T` on, walkers and bunches go on as they would without the
+walk-out, except that a walker no longer hurts the lead:
+
+- **Walkers move as usual.** A walker (`walker.md`) keeps moving as it
+  would if the marker hadn't been passed, at the same position on every
+  frame, until the level is over. So does a
+  walker defeated before `T` (`rolling-into-walkers.md`) as it falls
+  away.
+- **No hurt from `T` on.** A walker whose contact would hurt the lead on
+  `T` (`walker-contact.md`, "Being hurt": the positions at the end of
+  `n` in range) doesn't hurt it, and nothing changes in the walk-out or
+  the fade. The lead goes on walking through the walker's place. A
+  walker that hurts the lead on `n` or earlier hurts it as usual; in
+  every such run the lead was knocked back and didn't pass the marker.
+  No bounce off a walker was seen during the walk-out; the lead never
+  moves down then.
+- **Bunches are still taken.** A bunch (`bunches.md`) whose offsets
+  come into range during the walk-out is taken on that frame, with the
+  ranges of the standing row of "Pickup ranges" there (`I` −15 to 21,
+  `D` −8 to 40), whatever the frame of the walk-out. `X` and `F` are the
+  lead's on that frame, as in "When a bunch is taken" there. Its items
+  are released and reach the count as "Releasing the items" there
+  gives, with `V` the view's position held from `T`, on every frame
+  until the level is over.
+
+For example, take a lead facing right with `x` = `xm` + 0.05 on `T`, and
+a bunch with `xb` = `xm` + 33 and `yb` 20 px above the lead's feet line.
+The lead's `x` is `xm` + 16.05 at the end of `T` + 8 (`I` = −17) and
+`xm` + 18.05 at the end of `T` + 9 (`I` = −15), so the bunch is taken on
+`T` + 9. Its items reach the count on `T` + 26, `T` + 32, `T` + 38, and
+so on every 6 frames until the level is over.
+
+Measured in copies of the image in which the first level's sign entry
+left of the marker was given the reference of a small walker (patrol
+both ways, heading left) or a medium walker (heading right, no patrol),
+or the entry right of the marker the reference of a `bunch`, at chosen
+positions:
+
+- **Walkers moving.** 40 runs in which the lead waited on the last
+  platform for 0 to 60 frames, ran and jumped over a small walker
+  walking left toward it, and came to the marker. Each was compared, on
+  every frame from `T` to the level's last frame, with the same inputs
+  in a copy in which the marker's entry was given an unreachable bunch
+  instead (so the marker was never passed). Every object other than the
+  marker and that bunch had the same position on all 2 459 frames,
+  1 692 of them with the walker there (walking, stopped, or falling
+  after the lead rolled into it). In 3 more runs, medium walkers that
+  had fallen below the level's floor went on walking 1 px per frame
+  through the walk-out and the fade.
+- **Walkers in the way.** A medium walker that had walked to the wall
+  15 px right of the marker and stayed there: 8 approaches (walking,
+  running, waiting, jumping, small steps), each with the same
+  comparison. In the 4 approaches that passed the marker, the lead
+  without the marker was hurt on exactly `T` and the lead with it was
+  not hurt on any frame. In the other 4 the lead was hurt on the same
+  frame in both copies, before reaching the marker. With the marker's
+  entry moved to 10 places from 6 px left to 6 px right of where it was,
+  the walking lead passed it, and wasn't hurt, with the entry where it
+  was or 1 to 6 px left of there (5 places), and was hurt without
+  passing it with the entry 1 to 6 px right of there (5 places).
+- **Bunches.** 24 runs, the lead walking in: bunches with `xb` from
+  `xm` − 7 to `xm` + 58 and `yb` 20 px above the feet line (one taken
+  before `T`, the others during the walk-out, on different frames), and
+  bunches with `xb` = `xm` + 33 and `yb` from 11 px below to 60 px above
+  the lead's feet line on `T`. Every one with `I` and `D` in
+  the standing ranges on a frame from `T` on was taken on the first
+  such frame (found from the frames its items reached the count, 17
+  frames after `P` and every 6 frames after that); a bunch whose `D` was
+  −9 or less, or 41 or more, on every frame with `I` in range was never
+  taken. So the jumping row from `T` + 6 on (`D` 13 to 57) doesn't apply:
+  bunches with `D` from 41 to 59 on those frames stayed there.
+
 ## The fade
 
 The fade starts on the frame after the first frame from `T` on that
@@ -352,7 +426,12 @@ last frame came 61 frames after `T`.
   the second character.
 - Whether the other character can pass the marker, and the other
   character when it is not following (joining, being carried).
-- Enemies and other objects during the walk-out.
+- Enemies other than walkers, and objects other than bunches and an
+  object in the lead's hands, during the walk-out. A walker hurting the
+  lead on the frame `n` itself (in the runs, every hurt before `T` came
+  before the lead reached the marker).
+- Whether a bunch's items that haven't reached the count by the level's
+  last frame are counted.
 - An object in the lead's hands with the second character leading, or
   with the other character following.
 - A lead that is already 240 px or more right of the picture's left

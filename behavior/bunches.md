@@ -34,9 +34,17 @@ counted at once.
 A bunch does not move. Its **position** is a point (`xb`, `yb`) in the
 level. Its image is drawn around that point and spins, so the image's
 size changes from frame to frame. Every frame measured fell inside
-columns `xb` − 13 to `xb` + 15 and rows `yb` − 15 to `yb` + 8. How a bunch
-is stored in a level's data is not covered. A bunch can also come out of
+columns `xb` − 13 to `xb` + 15 and rows `yb` − 15 to `yb` + 8.
+
+A level's placement list (`../formats/placements.md`) places a bunch with
+an entry whose reference's kind is `bunch`: `xb` is 1 px left of the
+entry's level x and `yb` is the entry's level y (see "Positions" there),
+as for letters (`letters.md`). This was checked against "When a bunch is
+taken" below in 24 runs with entries at chosen places
+(`level-end.md`, "Walkers and bunches"). A bunch can also come out of
 a hidden object (`hidden-objects.md`), with its position given there.
+
+During a level's walk-out a bunch is still taken; see `level-end.md`.
 
 ## When a bunch is taken
 
