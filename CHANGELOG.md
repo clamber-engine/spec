@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.143.0
+
+An object in the lead's hands at the level end, and a thrower already
+knocked out while the player is knocked out.
+
+Part of clamber-engine/spec#17 (the first level's layout) and
+clamber-engine/spec#19 (the first level's remaining entities). Both
+issues stay open for the parts not covered yet.
+
+- `behavior/level-end.md`, new section "An object in the lead's hands":
+  a barrel or holder still in the lead's hands when the end marker is
+  passed is let go on the first walk-out frame and falls away without
+  touching anything until it is removed; when it is removed;
+  measurements. Not covered narrowed, with a new item for carrying with
+  the second character leading or the other character following.
+  (spec#17)
+- `behavior/thrower.md`, "While the player is knocked out": a thrower
+  already knocked out and falling stops for 10 frames and then goes on
+  10 frames late, with removal checked against each frame's view. Not
+  covered narrowed. (spec#19)
+
 ## spec-v0.142.0
 
 Finishing a level with the second character leading, and the placed
