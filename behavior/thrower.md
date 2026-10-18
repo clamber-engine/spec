@@ -218,6 +218,53 @@ comes back to the level after an exit:
   the view came to it, one frame on and at the same position as before,
   whether or not it had appeared and been removed before leaving.
 
+## While the player is knocked out
+
+When the player is knocked out (`knock-out.md`, hit frame H), the
+thrower and every ball go on normally on H, then stop on **H + 1 to
+H + 10**: each ball keeps its position and its speeds, no ball is
+thrown (the timetable doesn't advance), and none appears or is removed.
+How the thrower and the balls are drawn then isn't covered. During the 32-frame
+pause between H + 7 and H + 8 nothing moves either (no logic frames
+run). The ball that hit the player stops like the others; this differs
+from walkers, where the one that knocked the player out walks on
+(`walker.md`, "While the player is knocked out").
+
+From **H + 11** everything goes on as if frames H + 1 to H + 10 hadn't
+been there:
+
+- A ball that was there on H is, on H + 10 + `n` (`n` ≥ 1), where it
+  would have been on H + `n` without the knock-out, with the same
+  speeds.
+- The thrower's timetable ("When it throws") is 10 frames late: a throw
+  that would have come on a frame `T` from H + 1 on comes on `T` + 10,
+  in the same direction, and the ball then moves as it would have from
+  `T`.
+
+Leaving the picture and appearing still follow the view of each frame,
+and the view follows the player, who moves differently during a
+knock-out; so a ball may be removed earlier or later than it would have
+been, and a throw near the window's edge may be seen or not
+("A thrown ball").
+
+Measured on the first level: 172 knock-outs near the thrower in random
+play (in 84 of them the player was out of the thrower's own reach,
+`thrower-contact.md`, so a ball hit them), each compared with the same
+play from the frame before H with the hit prevented. On H, all 396
+objects were as without the hit; on H + 1 to H + 10, 3 980 object
+frames showed no change; after that, 220 balls that were there before
+H and 467 balls thrown later were followed for 29 986 ball frames, each
+exactly 10 frames behind the run without the hit, with no difference.
+Each run was compared while the knock-out lasted, until the player in
+the run without the hit was hit or bounced, or the thrower was knocked
+out or removed in either run (removal starts the timetable again).
+Whether a thrown ball is at its start or one frame on, on its throw
+frame, differed between the two runs 131 times: the rule above holds
+for the frame on which it is thrown, not for which of the two it is
+(that is still not covered, "A thrown ball"). 5 throws were seen in one
+run only, each with the ball one frame on outside the other run's
+window.
+
 ## Example
 
 A thrower is at (1000, 300). In column 1000 there are floors at y 301,
@@ -251,8 +298,9 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   on it and rolling into it are in `thrower-contact.md`, balls touching
   the player in `ball-contact.md`, and the ground action knocks it out,
   `ground-action-enemies.md`.
-- How balls and the thrower move while the player is knocked out (balls
-  were seen to stop for several frames).
+- While the player is knocked out: a ball placed in a level (only
+  thrown balls were measured), a thrower already knocked out, and
+  losing a character with two present (`losing-a-character.md`).
 - A ball moving up into a floor from below while not ignoring floors
   (it was seen to jump several px at the floor). This doesn't happen in
   the first level: balls start above the ledge and only bounce while
