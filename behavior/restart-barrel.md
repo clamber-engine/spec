@@ -108,6 +108,21 @@ The barrel can be touched only once: once touched, it is gone for the
 rest of the visit to the level. With the view moved about 650 px to the
 left of it and back, it did not appear again.
 
+**Only the lead touches it.** With both characters there, only the
+character under control (`following.md`) can touch the barrel. The
+follower never touches it, wherever it is.
+
+Measured on the first level with both characters there, first or second
+leading: 80 runs of 600 frames of random standing, walking, running,
+rolls, jumps and crouching around the barrel. Whenever the lead was
+near the barrel, the barrel was moved 100 px up or down, out of the
+lead's reach; otherwise it was at its place. The barrel was at its place
+on 39 492 frames. On 579 of them the follower was where every pose's
+ranges above meet (`I` from −14 to 11, `D` from −29 to 13), in various
+poses, facing either way. The barrel was never touched. In 30 control
+runs the barrel was moved out of the follower's reach instead, and the
+lead touched it in every one.
+
 ## Breaking
 
 On the frame the barrel breaks it is removed. In its place there are
@@ -152,7 +167,9 @@ Once the restart point is reached:
 
 Which characters are there when play resumes is as in `following.md`
 ("When a level begins again"): after the fall-out with both
-characters, both were there, the first leading.
+characters, both were there, the same one leading. Where the follower
+is on each frame of the resume is in `following.md` ("At the restart
+point").
 
 ## Resuming
 
@@ -465,8 +482,6 @@ the barrel is touched on the third, the upright range starting at −24.
 - Other levels, and how to tell where a level's restart point is, or
   that a level has one, from the level's data. For the first level,
   `../formats/level-start.md` gives it.
-- The second character: whether a following character touches the
-  barrel, and where each character is when play resumes with both.
 - A barrel out of the picture: in the measurements the barrel, moved
   up, was never touched once it was 91 px or more above its place.
 - Touching the barrel while bouncing off an enemy, carrying an object,
