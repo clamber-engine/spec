@@ -42,7 +42,8 @@ On H the hit character:
 
 From H on, all input is ignored until T (below). Nothing pauses and
 nothing freezes: there is no pause like the one in `knock-out.md`, and
-enemies keep moving on every frame.
+enemies keep moving on every frame (the thrower and its balls:
+`thrower.md`, "While a character is lost").
 
 ## The hit character
 
