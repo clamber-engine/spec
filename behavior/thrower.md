@@ -318,6 +318,35 @@ followed the rule above in both runs (154 removals in each, from H + 11
 to H + 47 in the knock-out run), and it was never outside the window on
 H + 1 to H + 10.
 
+## While a character is lost
+
+When the player is hit with the other character present
+(`losing-a-character.md`, hit frame H), nothing stops: the thrower and
+every thrown ball go on from H exactly as they would have without the
+hit, on the same frames. Throws come on the timetable's usual frames
+("When it throws"), and each ball moves, bounces and leaves the picture
+as usual. Leaving the picture and appearing still follow the view of
+each frame, which follows the hit character and then the other one, so
+a ball may be removed earlier or later than without the hit, and a
+throw near the window's edge may be seen or not ("A thrown ball").
+
+Measured on the first level: 180 hits with both characters near the
+thrower in random play (in 158 of them the hit character was out of the
+thrower's own reach, `thrower-contact.md`, so a ball hit it), each
+compared with the same play from the frame before H with the hit
+prevented. Each run was compared until the player in the run without
+the hit was hit or bounced, either character in the run with the hit
+was knocked out or bounced, or the thrower was knocked out or removed
+in either run: in 127 runs that was H + 57 or later, in 107 H + 100 or
+later. On all 24 274 frames compared no logic frame was paused and the
+thrower was the same in both runs; 292 balls that were there before H
+and 395 balls thrown later were followed for 26 255 ball frames, each
+on the same frame and the same path in both runs, with no difference.
+Whether a thrown ball is at its start or one frame on, on its throw
+frame, differed between the two runs 54 times, as in "While the player
+is knocked out". 8 throws were seen in one run only, each with the ball
+one frame on outside the other run's window.
+
 ## Example
 
 A thrower is at (1000, 300). In column 1000 there are floors at y 301,
@@ -351,10 +380,13 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   on it and rolling into it are in `thrower-contact.md`, balls touching
   the player in `ball-contact.md`, and the ground action knocks it out,
   `ground-action-enemies.md`.
-- While the player is knocked out: losing a character with two present
-  (`losing-a-character.md`), a placed ball whose appearance would come
-  on H + 1 to H + 10, and a thrower already knocked out that is outside
-  the window on H + 1 to H + 10.
+- While the player is knocked out: a placed ball whose appearance would
+  come on H + 1 to H + 10, and a thrower already knocked out that is
+  outside the window on H + 1 to H + 10.
+- While a character is lost (`losing-a-character.md`): a ball placed in
+  a level and a thrower already knocked out (only thrown balls and a
+  standing thrower were measured), and the second character being the
+  one hit.
 - A ball moving up into a floor from below while not ignoring floors
   (it was seen to jump several px at the floor). This doesn't happen in
   the first level: balls start above the ledge and only bounce while
