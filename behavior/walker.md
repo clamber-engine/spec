@@ -136,6 +136,35 @@ when the walker was first put there (3 311 frames on the ground; on
 192 of those runs a walking walker was put on the player the same way:
 it hurt the player in 161, on the next frame.
 
+## Ground passable from below
+
+Whether ground is passable from below (`../formats/level-ground.md`,
+"Ground passable from below") makes no difference to a walker in
+`title-1`: it walks, turns, follows slopes, falls and lands the same
+way on ground that is passable from below and on ground that isn't. One
+case is not covered (see "Not covered").
+
+Measured in `title-1` by running the same inputs on the first level and
+on a copy of it with every surface made not passable from below:
+
+- 16 runs, each following one walker while the player kept near it
+  (small, medium and large walkers: 11 at their own places in the first
+  level and 5 placed at another place of it), 34,233 frames in all, on
+  flat floor, slopes, a steep face followed down, ledges walked off into
+  a pit, and turns at patrol ends and barriers. The walker's `x`, speed,
+  facing and height were the same in both copies on every frame. In 2
+  of the runs the player differed (it rose into a platform from below,
+  `platforms-from-below.md`); the walker still didn't.
+- In copies with a 160 px wide platform low over a flat floor (the
+  platform's band directly above the floor's band), a walker walked
+  toward the platform's end from the floor, with the platform passable
+  from below and not. With the platform's underside 17 px above the
+  walker's feet the walker walked under it; with the floor's top line
+  just below the platform's band and the platform's end rising from the
+  floor as a steep face, the walker stopped at the face and turned
+  around. Both gave the same frames for either platform (6 pairs of runs,
+  4,846 frames).
+
 ## Examples
 
 Synthetic. A walker heading left at full speed with a patrol range
@@ -335,6 +364,18 @@ This list is for `title-1`; `title-2` has its own list above.
 - Ledges and steep faces: one walker was seen to follow a steep face
   down and fall off its end without turning, then land on the floor
   below; this isn't specified. Walkers on other slopes.
+  A walker meeting a steep face that rises from its floor was seen to
+  stop at it and turn around; how it turns isn't specified.
+- A walker reaching ground whose band is directly above the walker's
+  floor band and whose end is square (no face), with the floor's top
+  line the line just below that band, so that the ground's underside is
+  1 px above the walker's feet. In copies of the image with such
+  ground, the walker went down through its floor from the frame on which
+  it reached the ground's end. If the ground was passable from below it
+  kept walking at its speed while going down; if not, it stopped where
+  it met the ground for 6 frames and then moved back the other way,
+  speeding up, while it went down. This is the only difference being
+  passable from below was seen to make for a walker.
 - What places act as barriers, barriers met heading right, and a walker
   placed past a barrier.
 - When a walker appears and disappears as the view moves is in
