@@ -374,6 +374,27 @@ the picture: with each run's view at the start of that frame, its `Y` −
 249 to 256 in the run without it, where it stayed. It never came back
 in either run.
 
+A thrower already knocked out (`thrower-contact.md`, "The knocked-out
+thrower") goes on the same way: nothing stops its fall, and on every
+frame both runs have it, it is at the same place with the same speeds.
+The removal rule there applies on every frame with each run's own view,
+so it can be removed later than without the hit.
+
+Measured on the first level: 407 different hits while the thrower was
+falling, 3 to 43 frames after the lead knocked it out by bouncing on
+it, with the other character following. The hit was set up by putting a
+ball where the lead was. Each hit was compared with the same play from
+the frame before H with the hit prevented, until the lead in the run
+without the hit was hit or started a new bounce (in 4 runs another ball
+hit it on H) or the thrower was gone in both runs (the other 403). No
+logic frame was paused, and on all 8 804 frames where both runs had the
+thrower it was at the same place with the same speeds. In both runs it
+was inside the window on every frame it was there, and outside it by
+its next position on the frame it was removed (407 removals in each,
+from H + 1 to H + 49 in the run with the hit). Every removal was below
+the picture. The run with the hit removed it on the same frame as the
+other in 12 runs and 1 to 7 frames later in 395.
+
 ## Example
 
 A thrower is at (1000, 300). In column 1000 there are floors at y 301,
@@ -410,9 +431,10 @@ Floor 331 never counted: the ball passed it while ignoring floors.
 - While the player is knocked out: a placed ball whose appearance would
   come on H + 1 to H + 10.
 - While a character is lost (`losing-a-character.md`): a placed ball
-  that appears after H, and a thrower already knocked out (only thrown
-  balls, a placed ball already there on H and a standing thrower were
-  measured), and the second character being the one hit.
+  that appears after H (only thrown balls and a placed ball already
+  there on H were measured), a thrower knocked out by a roll or the
+  ground action (only a bounce was measured), and the second character
+  being the one hit.
 - A ball moving up into a floor from below while not ignoring floors
   (it was seen to jump several px at the floor). This doesn't happen in
   the first level: balls start above the ledge and only bounce while
