@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.179.0
+
+Letter pickup ranges while falling without a jump (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/letters.md`: new "Falling without a jump" paragraph. When
+  the player walks or runs off a ledge, the standing row applies on
+  every frame in the air, on the landing frame and on the frames after
+  it. The fall never switches to the last row, and `I` is measured in
+  the frame's facing, also when the player turns in the air. Checks are
+  included. Not covered is narrowed: landing is now only after a jump
+  and turning only on the ground, and walking off a ledge with a steep
+  face is added.
+
 ## spec-v0.178.0
 
 2 changes: extra-life items around the four-letter ending, and bunch
