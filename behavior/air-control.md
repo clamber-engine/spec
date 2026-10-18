@@ -109,9 +109,10 @@ from T until landing.
 
 In the standing row with Right and Action, only Jump is held on P and
 on T, and Right and Action are held from T + 1 until landing, so the
-speed rule starts from 0 on T + 1. Holding them from T instead would be
-an Action press on the take-off frame, which is still grounded; that
-case is not covered (see `roll-input.md` for presses on the ground).
+speed rule starts from 0 on T + 1. Holding them from T instead (an
+Action press on the take-off frame, see "Action and Down around
+take-off and landing") starts it on T: `vx` is 0.375 on T and the
+distance is 128.37109375 px.
 
 Mirror images (moving left, Left held) give the same distances with the
 sign reversed. A jump with Jump held for 5 frames from P (landing on
@@ -144,6 +145,41 @@ keep facing the way they walked off. At a ledge without a face
 (`walk-off.md`, "Ledges without a face") facing changes only through
 turns, which go on in the air exactly as on the ground
 (`ground-speed.md`, "After a fall or a bounce").
+
+## Action and Down around take-off and landing
+
+**Action pressed on P or T.** An Action press on the take-off frame T,
+or on the press frame P together with the Jump press, starts no roll and
+no ground action, whether Down is held or not. The jump goes on exactly
+as it would without the press; Action counts only as held Action does
+for the target speed (on P the ground target of `ground-speed.md`, from
+T the table above). The one exception: Action pressed on P together with
+Jump, and Down held on P + 1. Then the player crouches on P + 1 instead
+of taking off (`jump-input.md`, "Crouching").
+
+**Down in the air.** Apart from that exception, Down held on any frame
+from T to L + 1 (the frame after the landing frame) changes nothing:
+speed, height, vertical speed, facing and the landing are the same as
+without Down. A press on P with
+Down held still jumps (`jump-input.md`, "Crouching"). From L + 2 on,
+Down makes the player crouch: the first frame D of the crouch
+(`ground-speed.md`, "Crouching") is the first frame from L + 2 on with
+Down held, whether Down was pressed in the air, on L or L + 1, or later.
+
+Example: walking right at +2 with Right held throughout, Jump pressed
+on frame 60 and held (T = 61, landing frame L = 110), Down held from
+frame 62 to 115. `vx` is 2 on frames 110, 111 and 112 (D = L + 2, where
+the target is still the normal one) and 1.75, 1.53125, 1.33984375 on
+113, 114, 115, and it keeps slowing as in `ground-speed.md`
+("Crouching"). With
+Down released on 111 instead, there is no crouch and `vx` stays 2.
+
+Measured from standing, walking and running jumps over flat ground, with
+Down held from T + 1 until L − 20 to L + 30 or pressed from L − 7 to
+L + 7, Down on P or T, and Action pressed on P or T with and without
+Down; and in 2 050 runs of random input (462 857 frames: 6 218 landings,
+3 428 of them with Down held on L or L + 1; 1 772 Action presses on T):
+every frame as described.
 
 ## In `title-2`
 
@@ -303,8 +339,9 @@ This list is for `title-1`; `title-2` has its own list above.
   last airborne frame, and turns that are in progress when the player
   jumps or falls from a face (at a ledge without a face they go on as
   on the ground: `ground-speed.md`, "After a fall or a bounce").
-- Down held in the air.
-- An Action press on the take-off frame T.
+- Down held during falls that don't start with a jump (walking or
+  rolling off a ledge) and during bounces. Down during jumps, and Action
+  pressed on T, are in "Action and Down around take-off and landing".
 - Bounces off entities (see `bounce.md`). Jumps that start from a roll
   are in `roll-speed.md`; falls after rolling off a ledge in
   `rolling-off-ledges.md`.

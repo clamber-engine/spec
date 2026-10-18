@@ -508,8 +508,10 @@ opposite direction always starts a turn (88).
   air or on G.
 - Landing on uneven floor after any of these falls, and bounces off
   anything other than a small walker (`walker-contact.md`).
-- Left and Right held together, Down, walls, carrying, and the second
-  character. On 1-in-4 slopes this section applies unchanged
+- Left and Right held together, walls, carrying, and the second
+  character. Down held on or after the landing frame starts a crouch
+  from L + 2 ("Crouching"); the mode after a crouch is the first item
+  above. On 1-in-4 slopes this section applies unchanged
   (`slopes.md`, "Turning around on a slope"); other slopes are not
   covered.
 
@@ -538,6 +540,15 @@ held **D**:
   that frame as its D, except that the target is 0 on that D as well.
   The new crouch again lasts at least 13 frames and is followed by its
   own U to U + 9.
+- **After a landing**, Down held on the landing frame L or on L + 1
+  starts no crouch: D is the first frame from L + 2 on with Down held
+  (`air-control.md`, "Action and Down around take-off and landing").
+- **Jumping from a crouch**: a Jump press on any crouch frame, or on U to
+  U + 9, starts a jump as on any grounded frame (`jump-input.md`,
+  "Crouching"). On the press frame the target is still the crouch's (0,
+  or on D the one in the table); from the next frame the jump's
+  (`air-control.md`). A Jump press on the first frame Down is held
+  starts no crouch.
 
 Example: walking at +2 with Right held, Down held on frames 40 to 69 and
 Right on throughout. `vx` is 2 on frame 40, 1.75 on 41, 1.53125 on 42, and

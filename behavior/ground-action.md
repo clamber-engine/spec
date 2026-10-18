@@ -52,6 +52,11 @@ changes nothing.
   ignored as without Down, and never starts the ground action. The first
   frame on which a press with Down held starts it is D + 18 after a stop
   and D + 4 after a roll that carried on.
+- **Jump pressed on P too**, or Action pressed on a jump's take-off
+  frame: no ground action; the jump goes on (`air-control.md`, "Action
+  and Down around take-off and landing"). With Down still held on P + 1
+  the jump starts two frames late or not at all (`jump-input.md`,
+  "Crouching").
 - **Second character**: it has no ground action. With the second
   character under control, Down held on the press frame makes no
   difference; the press starts a roll as it would without Down.
@@ -200,9 +205,6 @@ frame	input	x	y	vx	vy	state	ground	facing	events
   during the action.
 - Enemies and hits taken during the action are in
   `ground-action-enemies.md`, with their own "Not covered" list.
-- Jump, Down and Action all pressed on the same frame from standing: a
-  jump starts, but later than a plain jump press. The timing isn't
-  specified.
 - When a turn that the action interrupts resumes, and turns started on
   E + 1 or later while moving.
 - Swap presses from E + 1 on while Down is still held from the action.
