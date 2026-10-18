@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.169.0
+
+1 change: passing the end marker while hit or bouncing off an enemy
+(spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/level-end.md`: new "Hits and bounces" in "When the marker
+  is passed". The hit frame and every later frame of the hit character
+  never pass the marker, so Right held on the frame before a due hurt
+  passes it and the hurt never happens, while Right from the hit frame
+  on does nothing. With the other character there, it can pass the
+  marker only from its hop's landing. A bounce off an enemy is a time in
+  the air: no bounce frame passes the marker, the landing frame can.
+  Evidence included. The "Walkers and bunches" hurt sentence points to
+  the new paragraphs, and the Not covered items for hits and bounces
+  and for a hurt on the frame `n` are replaced by what is still open.
+
 ## spec-v0.168.0
 
 1 change: more than 99 lives (spec#19).
