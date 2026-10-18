@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.156.0
+
+Facing on resuming after a fall-out facing left.
+
+Part of clamber-engine/spec#19 (object behavior), which stays open for
+the parts not covered yet.
+
+- `behavior/restart-barrel.md`, "Resuming": a player that fell out of
+  the level facing left also resumes facing right, and the resumed
+  frames are the same with the same inputs whether the level was left by
+  a knock-out or a fall-out, with the runs that show it. Removed from Not
+  covered. (spec#19)
+
 ## spec-v0.155.0
 
 Facing on resuming after a knock-out facing left.
