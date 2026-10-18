@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.158.0
+
+A placed ball appearing while the view moves left.
+
+Part of clamber-engine/spec#19 (object behavior), which stays open for
+the parts not covered yet.
+
+- `behavior/thrower.md`, "Balls placed in a level": the appearance rule
+  holds with the view moving left too, and "Leaving the picture" applies
+  on the appearance frame, so a ball can be removed on the frame it
+  appears and never be seen; with the runs that show it. Not covered
+  narrowed. (spec#19)
+- `behavior/restart-barrel.md`: new Not covered item for objects of the
+  level whose place comes into the window during a resume. (spec#19)
+
 ## spec-v0.157.0
 
 A placed ball appearing after a character is lost, input on frame 1 of
