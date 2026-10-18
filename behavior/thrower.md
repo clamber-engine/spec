@@ -351,6 +351,29 @@ frame, differed between the two runs 54 times, as in "While the player
 is knocked out". 8 throws were seen in one run only, each with the ball
 one frame on outside the other run's window.
 
+A ball placed in the level ("Balls placed in a level") that is there on
+H goes on the same way: on every frame both runs have it, it is at the
+same place with the same speeds. It is removed by "Leaving the picture"
+with each run's own view at the start of the frame, so it can be
+removed one frame earlier or later than without the hit.
+
+Measured on the first level: 242 hits in random play with both
+characters near the placed ball while it was there (from 47 to 74
+frames after its appearance frame; it was removed after 74), each
+compared with the same play from the frame before H with the hit
+prevented, until the player in the run without the hit was hit or
+bounced, or either character in the run with the hit was knocked out or
+bounced (H + 199 or later in every run, so past the ball's removal).
+No logic frame was paused on the 52 304 frames compared, and on all
+3 379 frames where both runs had the ball it was at the same place with
+the same speeds.
+In 98 runs it was removed on the same frame in both. In the other 144
+the run with the hit removed it one frame earlier, when it went below
+the picture: with each run's view at the start of that frame, its `Y` −
+`W` was 257 to 263 in the run with the hit, where it was removed, and
+249 to 256 in the run without it, where it stayed. It never came back
+in either run.
+
 ## Example
 
 A thrower is at (1000, 300). In column 1000 there are floors at y 301,
@@ -386,10 +409,10 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   `ground-action-enemies.md`.
 - While the player is knocked out: a placed ball whose appearance would
   come on H + 1 to H + 10.
-- While a character is lost (`losing-a-character.md`): a ball placed in
-  a level and a thrower already knocked out (only thrown balls and a
-  standing thrower were measured), and the second character being the
-  one hit.
+- While a character is lost (`losing-a-character.md`): a placed ball
+  that appears after H, and a thrower already knocked out (only thrown
+  balls, a placed ball already there on H and a standing thrower were
+  measured), and the second character being the one hit.
 - A ball moving up into a floor from below while not ignoring floors
   (it was seen to jump several px at the floor). This doesn't happen in
   the first level: balls start above the ledge and only bounce while
