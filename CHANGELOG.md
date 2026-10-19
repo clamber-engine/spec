@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.203.0
+
+Landings on or next to a steep face after a bounce (spec#38,
+differential tests).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/steep-faces.md`, "Landing on or next to a face": now also
+  covers landings after a bounce. New rule: after a bounce the switch
+  frame M is L, so the push and "Can't start toward a rise" apply from
+  L + 1, whatever was held and wherever the landing is. New evidence
+  paragraph; "Not covered" no longer lists bounces and says what the
+  bounce measurements left out.
+
 ## spec-v0.202.0
 
 What a trace shows during the two kinds of walk-out: after the level's
