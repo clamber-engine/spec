@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.188.0
+
+Knocked-out walkers: no contact with the player while falling, and when
+they are removed (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/ground-action-enemies.md`, "The walker": a walker knocked
+  out by the ground action is removed by the rule of `walker-view.md`,
+  "Defeated walkers falling out", with the first falling frame K + 3,
+  and is there on K to K + 2 wherever it is. On flat floor with a still
+  view, a small walker is there for the last time on K + 41. From K it
+  doesn't touch the player: no hurt, no bounce, and rolling into it
+  does nothing. This replaces "when it is removed isn't specified".
+  Includes evidence. Not covered now lists later pause frames during
+  the fall and the second character.
+- `behavior/walker-view.md`: the ground action added to the ways to
+  defeat a walker and to the first-falling-frame table.
+- `behavior/walker-contact.md`: pointer in Not covered.
+
 ## spec-v0.187.0
 
 Walkers hit by the object in the hands during pick-ups, throws and
