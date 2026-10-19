@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.189.0
+
+The characters' sprite palettes in `title-1` (spec#52).
+
+Answers clamber-engine/spec#52.
+
+- `formats/sprites.md`, new section "The characters' palettes
+  (`title-1`)": each character has a leading palette, used while it is
+  the player, and a following palette, used while the other character is
+  the player; a character on its own uses its leading palette. Only a
+  change of player changes the colours, including while flashing and in
+  water (except some darker water areas). In a swap, the new player's
+  colours change on S (the last frame both characters stand still) and
+  the other character's on S + 1. When a character is lost, they change
+  on T and T + 1. Includes an example and evidence. Not covered now
+  lists dimming, areas with changed colours, fades, darker water areas,
+  riding, games with two players and the level map.
+- `formats/locators.md`: four `title-1` rows locating the characters'
+  palettes.
+- `behavior/player-frames.md`: pointer to the new section, replacing its
+  Not covered item about the player's palette.
+
 ## spec-v0.188.0
 
 Knocked-out walkers: no contact with the player while falling, and when
