@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.220.0
+
+The second character's standing pictures over a long stand (spec#38,
+pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`, "Standing still" now has a section for
+  each character. New "Second character" section: from the first frame
+  of a stretch of standing, the second character shows one fixed
+  275-frame loop over and over (`s-stand-1` to `s-stand-22`, then
+  `s-wait-1` to `s-wait-13`, a back-and-forth over `s-wait-14` to
+  `s-wait-17`, and `s-wait-13` back down to `s-wait-1`), the same
+  whatever came before. Every new standing start restarts it. 38 new
+  picture labels with their hashes. The second character's standing
+  pictures fall back to the engine's own art as one group. After the
+  second character's landings, standing goes on as in this list. New
+  evidence bullet from on-screen pictures. "Not covered" now names
+  standing on a slope or at a ledge for either character, and the
+  second character's standing pictures after a bounce.
+
 ## spec-v0.219.0
 
 The first character's standing pictures over a long stand (spec#38,
