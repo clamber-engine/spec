@@ -346,6 +346,39 @@ after each frame:
 
 The player lands on frame 46, 27 frames after L, so D = G + 25 = 71.
 
+**Jumping during the fall** is as in "Jumping during the fall",
+including the two kinds of P there (a hover frame, and an L that isn't
+one), with this character's jump (`second-character.md`, "Values"):
+
+- g(f) is **0.3515625** (90/256) if Jump has been held on every frame
+  from P to f, and 0.4375 otherwise.
+- On T, `vy` becomes **−8.3515625** (−2138/256).
+- From T, the air targets are ±2.25 (576/256), ±3.375 (864/256) with
+  Action held, or 0 (`second-character.md`, "Jumping out of a roll").
+- A press on an L that isn't a hover frame moves the player down by
+  **3.3515625** px on P (3 + g(P), as the first character's 3.28125 is
+  3 + 0.28125), and `vy` ends at 0.00390625.
+
+As for the first character, P is still a roll frame for horizontal
+speed, a press on a hover frame keeps P a hover frame, no frame from T
+on is a hover frame, the jump ends the roll, a move on T that would
+land the player lands them on T, and no stop follows the landing.
+
+Example: the hover example above (L = S + 7, hover frames L to L + 11),
+with Jump pressed on L + 3 and held 12 frames:
+
+| Frame | Moved down by | `vy` after the frame | `vx` after the frame |
+|---|---|---|---|
+| L to L + 2 | 0.00390625 each | 0.00390625 | (roll) |
+| P = L + 3 | 0.00390625 | 0.00390625 | 3.12890625 |
+| T = L + 4 | 0.35546875 | −8.3515625 | 3.01953125 |
+| L + 5 | −8 | −8 | 2.92578125 |
+| L + 6 | −7.6484375 | −7.6484375 | 2.84375 |
+
+On T, `vx` moves toward 2.25 (Right held, Action released). With Jump
+tapped on P alone, T moves the player down by 0.44140625 and L + 5 by
+−7.9140625.
+
 ### Evidence (second character)
 
 Measured on three ledges with a steep face at the top, rolling right,
@@ -371,6 +404,24 @@ the size after a push 3.375 all 65, and without the 25-frame exception
 150. Left out: frames after a roll hit a wall (61 rolls) or knocked out
 a walker on the floor below (29 rolls), and the leave frames of later
 ledges.
+
+Jumps during the fall, on the same three ledges: 8,176 runs (normal,
+slow and fast rolls going right, Action tapped or held, Jump pressed on
+each frame from L to L + 17 and held 1, 5, 12 or 40 frames; 40 of them
+steering back or releasing Right from L + 1; 2,016 from standing starts
+moved by up to 3 px in 1/64 px steps to reach L = S). In 4,869 of them
+Jump was pressed in the fall of a roll (L − S from 0 to 23), and all
+match the rules above with 0 mismatches on 245,385 vertical moves and
+240,522 horizontal speeds, to landing: 1,807 presses on hover frames,
+137 on an L that wasn't one, 88 jumps landing on T, and 8,728 frames
+that would have been hover frames without the press. In all of them the
+roll ends on P and no stop follows the landing. With the first
+character's values instead, runs mismatch: `vy` −7 on T 4,780, held
+gravity 0.28125 4,238, air targets ±2 and ±3 4,196, and the jump rule on
+P instead of a kept hover frame 1,807. Left out: frames after the roll
+or jump knocked out a walker (726 runs), fell into a pit (685) or met a
+wall (246), and 4 runs where rising ground pushed the player up just
+before landing.
 
 ## Trace
 
@@ -622,11 +673,14 @@ This list is for `title-1`; `title-2` has its own list above.
   at S + 29 (not seen: pushed rolls always went off the edge first).
 - Rolls that start in the stop after an earlier roll.
 - The second character: ledges where the ground simply ends, rolling
-  left, jumps pressed during the fall, the conditions of a stopped
+  left, the conditions of a stopped
   frame (only the stops and pushes at the top of one face in "The
   second character" were measured), and the first character following
   it.
 - Rolls that hit a wall or an enemy during the fall or after landing.
-- Jumps pressed during a hover on ledges with a face at the top (the
-  hover jumps above were measured where the ground simply ends).
+- Jumps pressed during a hover on ledges with a face at the top with
+  the first character leading (its hover jumps were measured where the
+  ground simply ends; the second character's on ledges with a face).
+- Jump pressed on S itself when the player also leaves the ground on S
+  (with Action: it gave a jump and no roll).
 - Ledges of other heights where the ground simply ends.
