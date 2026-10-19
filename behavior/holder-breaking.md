@@ -168,10 +168,19 @@ frame: S = K. A small walker on the player's floor never meets it.
   S + 1 to S + 33 ("Everything else waits"), and goes on from S + 34
   without the object: on the ground it stands or walks, and in the air
   it keeps the airborne carrying pose until it lands.
-- **The player isn't hurt by that walker.** With an object that holds
-  nothing, the walker can still hurt the player on K + 1
+- **The player isn't hurt by that walker on S + 1.** With an object
+  that holds nothing, the walker can still hurt the player on K + 1
   (`thrown-objects.md`, "What happens on a hit"); here K + 1 is S + 1,
-  in the wait, and from S + 34 on the walker has been hit.
+  in the wait. That hurt comes on **S + 34** instead, the first frame
+  after the wait, with both characters there now (`losing-a-character.md`):
+  the player is hurt on S + 34 exactly when an object that holds
+  nothing, in the same placement, would have been followed by a hurt on
+  K + 1, and not later either otherwise (from S + 34 on the walker has
+  been hit). In the runs by inputs below the walker never reached the
+  hurt range before it met the object, so no hurt followed; the hurt on
+  S + 34 was seen with walkers placed within it (18 placements while
+  carrying, and 80 during pick-ups, throws and put-downs, "Before it is
+  thrown").
 - **The walker** walks as usual on S, and its `vx` becomes −4 whichever
   way the player faces (d = +1 in `thrown-objects.md`, "The walker").
   It doesn't move from S + 1 to S + 33; it takes its K + 1 step there
@@ -198,7 +207,13 @@ small walker in place of the first walker:
   for all three kinds, compared with the same placements carrying an
   object that holds nothing. The walker met the object on exactly the
   same placements (12 856 large, 8 288 medium, no small), and the player
-  was hurt on none of them.
+  was hurt on none of them on S + 1 (the frames after the wait weren't
+  followed there). Then 20 placements, with a large or medium walker at
+  the object or up to 20 px to either side of it, were followed for 40
+  frames with this object and with an object that holds nothing: 19 had
+  a hit with both; with an object holding nothing the player was hurt on
+  K + 1 in 18 of them, and with this object it was hurt on S + 34 in the
+  same 18, and in no others.
 
 ### The thrower and its balls
 
@@ -242,13 +257,34 @@ to walk again on S + 34, in 7 throws.)
   (`walker-contact.md`; with the lead alone, a knock-out), and the
   object is let go without breaking and falls away, still holding the
   missing character (`knock-out.md`, "An object in the hands").
-- **During a throw** (Q to Q + 21, still in the hands): on **Q + 1 to
-  Q + 20** a walker breaks it, at its position in the hands, by the
-  ranges for t from 1 to 16 (measured: small walker facing left, object
-  thrown right, I from −48 to 28 on each of those frames, with U from 39
-  to 54). Not on Q, and not on Q + 21. The walker is hit as above.
-  Seen in 4 throws by inputs, and on about 1 100 controlled frames
-  moving the walker next to the object.
+- **During a pick-up, a throw or a put-down** (in the hands): a walker
+  of any kind, small ones too, breaks it on exactly the frames and by
+  the ranges on which it would hit an object that holds nothing
+  (`thrown-objects.md`, "During a pick-up, a throw or a put-down"):
+  G + 1 to G + 14 of a pick-up, **Q + 1 to Q + 20** of a throw (the
+  ranges for t from 1 to 16 in the player's facing direction) and Q to
+  Q + 12 of a put-down, at its position in the hands; not on G, not on
+  Q or Q + 21 of a throw, and not from Q + 13 of a put-down. Then, as in
+  "Carried into a walker": the character appears on S at the object's
+  whole-pixel position; the walker walks on S and its `vx` becomes −4
+  whichever way the player faces, and it takes its K + 1 step on
+  S + 34; nothing moves from S + 1 to S + 33; and from S + 34 the player
+  goes on with the frames of the pick-up, throw or put-down that it had
+  left (a pick-up that was hit ends without the object), and a hurt
+  that an object holding nothing would have given on K + 1 comes on
+  S + 34 (as above). Measured with the placements of `thrown-objects.md`
+  ("During a pick-up, a throw or a put-down") with this object: 135 789
+  single frames, on which it broke on exactly the placements where an
+  object holding nothing was hit, on every frame of the three actions
+  (the one difference was a thrown object at t = 3). Of the 324
+  placements followed for 40 frames, the same 138 had a hit; the
+  player was hurt on S + 34 in the same 80 that had a hurt on K + 1 with
+  an object holding nothing, and in no others. 12 more were followed for
+  75 frames: 10 had a hit, and in the 7 of them without a hurt the
+  throws went on to Q + 42 and the put-downs and pick-ups to their last
+  frame. Also seen earlier in 4 throws by inputs,
+  and on about 1 100 controlled frames moving the walker next to the
+  object.
 - **Carried up to a barrier**: the barrier doesn't break it. The lead
   is stopped by the step (`steep-faces.md`, "Stopped by a rise"), but
   the object held out in front reaches beyond it. In the one run, the
@@ -343,10 +379,16 @@ Q + 32 and the character appears at (105, 40). The walker's `vx` becomes
   carried object (`thrown-objects.md`), and whether the player goes on
   from S + 34 with exactly the position and speeds it would have had
   still carrying (only that it doesn't move in the wait was checked).
+  During a pick-up, a throw or a put-down: the cases listed as not
+  covered for an object that holds nothing (`thrown-objects.md`), and
+  the player's position and speeds from S + 34 (only which frames of the
+  action it went on with were checked).
 - Throwers and balls with the object moving left, balls moving sideways,
-  other enemies; walkers other than the small walker facing left with
-  the object moving right (the ranges of `thrown-objects.md` are assumed
-  to hold, as they did for that one).
+  other enemies; walkers hit by the thrown object at t of 4 or more,
+  other than the small walker facing left with the object moving right
+  (the ranges of `thrown-objects.md` are assumed to hold, as they did
+  for that one; at t from 1 to 3 walkers of all three kinds broke it
+  exactly where they were hit by an object that holds nothing).
 - The barrier (case 2, a vertical step): heights more than 55 px above
   the floor there, and a barrier met moving right.
 - Two causes on the same frame, other than the floor and the window
