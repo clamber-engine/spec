@@ -70,6 +70,9 @@ SHA-256 of the image:
 | Placements: the placement list of the area behind the first level's first wall exit | `placements.md` | `fd` | `84d4` |
 | Level start: the start record of the area behind the first level's first wall exit | `level-start.md` | `fc` | `bf38` |
 | View limits: the record of the area behind the first level's first wall exit | `view-limits.md` | `fc` | `919e` |
+| Placements: the placement list of the area behind the first level's second wall exit | `placements.md` | `fd` | `a03c` |
+| Level start: the start record of the area behind the first level's second wall exit | `level-start.md` | `fc` | `bf88` |
+| View limits: the record of the area behind the first level's second wall exit | `view-limits.md` | `fc` | `97ec` |
 | Level map: point tables | `level-map.md` | `fc` | `f47b` |
 | Level map: corner records | `level-map.md` | `c0` | `d13c` |
 
@@ -129,6 +132,7 @@ names" table.
 | `a3917b33a073e05c714b57e8b4ca93dc514015f068d5d3ae7c8e89e64d7bcf08` | `stinger` |
 | `a589d75d56211618a7b72120ff23715bf7dbfce7afe68a106e75170cc54be675` | `end-marker` |
 | `b0b7540b3c061784c8c319b69b0c7db7ed9c67a84d094cefd7b05fa52dcbe7a4` | `small-walker` |
+| `b385c7b245393be6cd321db16e512bdd8b46ece28189f0ea2b5769eed2dd6a51` | `picture-game` |
 | `bc061647de9b607ad9eb002282563c85bb821236cf557781087f987a0ba862aa` | `small-walker` |
 | `c3f159c77315eec82d09dda32bd1ff7a989fa181b9e5c3fbdf127b031f6ef15a` | `rising-extra-life-1` |
 | `c8337d0771ac9e0feb76d90747123b32fba93ad3fe8fc5db12cd8a1a647b5910` | `medium-walker` |

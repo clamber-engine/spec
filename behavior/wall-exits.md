@@ -7,10 +7,8 @@ nothing until a thrown object hits it, which **opens** it, and from then
 on it takes the lead out of the area like an exit, walking into the
 wall. The first level has two, both leading right. This file covers what
 opens a wall exit, when an open one takes over, how the lead walks
-out, and when the area is left, the area behind the first wall exit,
-and how the lead comes back into the first level from the areas behind
-its two wall exits. What is in the area behind the second wall exit is
-not covered.
+out, and when the area is left, the areas behind the two wall exits,
+and how the lead comes back into the first level from them.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. Horizontal
 positions are level x as in `view.md`; vertical positions are **level
@@ -151,9 +149,9 @@ was from `T` + 4 to `T` + 21, mostly `T` + 16 to `T` + 18.
   2`j` have brightness 15 − `j`. It reaches 0 on `F` + 29.
 - **The end.** `F` + 30 is the last frame in the area. The lead goes on
   walking right by 2 px every frame up to it. On the next logic frame,
-  play is in another area: behind the first wall exit, that frame is
-  frame 0 of the area of "The area behind the first wall exit"; what
-  follows the second wall exit is not covered.
+  play is in another area: that frame is frame 0 of the area of "The
+  area behind the first wall exit" or of "The area behind the second
+  wall exit".
 
 ## The area behind the first wall exit
 
@@ -271,11 +269,37 @@ The picture fades in from black as at the start of a level
   480 px right of it; the pictures differed only while the entry's
   object was in the view.
 
+## The area behind the second wall exit
+
+The first level's second wall exit (the one further right) also leads
+to an area of its own. Its placement list, its start record and its
+view-limit record are in `../formats/locators.md`
+(`../formats/placements.md`, "In the area behind the second wall exit";
+`../formats/level-start.md`; `../formats/view-limits.md`, "The area
+behind the second wall exit"). Measured with the lead alone.
+
+- **Arriving.** The logic frame after the wall exit's `F` + 30 is the
+  area's frame 0. The lead walks in from the area's start record toward
+  the right as in `exits.md` ("Walking in"), with the fade-in there, and
+  has control from frame 28.
+- **The view** doesn't move: the picture always shows the same part of
+  the area (`level-ends.md`, "In the area behind the second wall exit").
+- **What is there.** A picture game (`picture-game.md`) and nothing else.
+- **No time limit.** Nothing but the picture game ends the area: with
+  nothing held from frame 0, the lead stood in the area with the game's
+  pictures turning, the same lives and full brightness, for 2 minutes
+  (7 200 frames), after which the run was stopped. A game that isn't
+  decided, or a won figure that isn't taken, leaves the lead there too.
+- **Leaving.** The game ends the area as `picture-game.md` gives ("A
+  lost game", "A won game"). On the logic frame after the area's last
+  frame, play is back in the first level, at frame 0 of "Coming back
+  from the second wall exit's area" below.
+
 ## Coming back from the second wall exit's area
 
-The first level's second wall exit also leads to an area of its own,
-which is not covered either; leaving it brings play back to the first
-level. Frames are counted from 0, the first frame back in the first
+Leaving the area behind the first level's second wall exit ("The area
+behind the second wall exit") brings play back to the first level.
+Frames are counted from 0, the first frame back in the first
 level, and the lead was alone.
 
 The lead starts at the point of the first level's **second wall-return
@@ -440,9 +464,10 @@ on `T` + 17, 14 on `T` + 18 and `T` + 19, and 0 on `T` + 46 and
 - The rolling stop (`roll-speed.md`) and other states not in the table.
 - How far right of the exit the reach goes. In the first level a lead
   can't get there from the left: the rise is in the way.
-- What is in the area behind the second wall exit and what happens
-  there, and what is kept when play comes back to the level from either
-  area.
+- What is kept when play comes back to the level from either area.
+- In the area behind the second wall exit: its ground and pictures,
+  arriving with two characters, and whether the game is there again on
+  a later visit.
 - In the area behind the first wall exit: its ground and pictures, and
   where its single collectibles are stored (`../formats/collectibles.md`);
   arriving with two characters; whether the item there comes back on a

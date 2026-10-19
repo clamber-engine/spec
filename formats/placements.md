@@ -193,6 +193,7 @@ members are looked up by their own references.
 | `bunch` | A bunch | `bunches.md` |
 | `letter-1` to `letter-4` | The letter with that number | `letters.md` |
 | `figure` | A golden figure of an animal, adding to the figure count | `figure.md` |
+| `picture-game` | A picture game: three places with turning pictures of animals | `picture-game.md` |
 | `barrel` | An object that can be carried and holds nothing | `carrying.md`, `thrown-objects.md` |
 | `holder` | An object that can be carried and holds the missing character | `carrying.md`, `holder-breaking.md` |
 | `end-marker` | An end marker: the level's end, or the way out of the first level's room | `level-end.md` |
@@ -568,6 +569,20 @@ rule. When it is removed is not covered.
 
 In a copy of the image with the item's entry moved 100 px left and 20
 px down, the item appeared at the moved position in all 20 runs.
+
+### In the area behind the second wall exit
+
+The area the first level's second wall exit leads to
+(`../behavior/wall-exits.md`, "The area behind the second wall exit")
+has a placement list of its own (`locators.md`). It has 1 entry and no
+sections or groups: a class 2 entry of kind `picture-game`
+(`../behavior/picture-game.md`). Its places were there from the area's
+frame 1 in every run, and none of them went away while the game was
+going on.
+
+In a copy of the image with the entry moved 24 px left and 16 px up,
+the three places were at the moved position in all 40 runs
+(`../behavior/picture-game.md`, "Checks").
 
 ## When placed objects appear
 
