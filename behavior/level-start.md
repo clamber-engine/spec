@@ -151,7 +151,8 @@ fifteenths of full, up to 15 (full from frame 45). Which picture first
 shows each step is not covered.
 
 Where the view is from frame 0 and how it moves through the entrance
-are in `view.md` ("When an area begins").
+are in `view.md` and, for the vertical motion and the view's shake
+after the burst, `view-vertical.md` (both "When an area begins").
 
 ## Coming back from the room
 
