@@ -7,7 +7,8 @@ still: the stop after a roll, the frames after a jump's landing before
 walking, running or standing starts, and a bounce's two frozen frames.
 Also the pictures just before and after these that are needed to place
 them, and the first character's pictures while walking, running and
-turning on the ground, while rolling, and in the air after a bounce.
+turning on the ground and in the air after walking or running off a
+ledge without a face, while rolling, and in the air after a bounce.
 
 ## The pictures
 
@@ -470,7 +471,9 @@ The second character's pictures after B + 4 are not covered.
 
 This section is for the first character only. While it is walking,
 running or turning on the ground (`ground-speed.md`, "Standing, walking
-and running"), its picture follows the stride cycle and the turn:
+and running"), or in the air after walking or running off a ledge
+without a face, where the mode goes on (`ground-speed.md`, "After a fall
+or a bounce"), its picture follows the stride cycle and the turn:
 
 - **Walking**, on a frame in step `s` of the stride cycle (1 to 20):
   `walk-s`, so `walk-1` in step 1, `walk-2` in step 2, and so on.
@@ -488,6 +491,22 @@ its step lasts, so at low speeds most pictures are shown on two or
 three frames in a row, and at higher speeds some on one frame only.
 Nothing else changes the picture: it doesn't depend on what is held or
 on whether the player is speeding up or slowing down.
+
+Leaving the ground at a ledge without a face changes nothing either.
+On every frame of the fall the picture follows the same rules as on the
+ground, from the step or turn frame reached at the edge: the stride
+cycle's steps go on and are shown, a turn started in the air shows the
+turn pictures (mirroring changes on T + 4 in the air as on the ground),
+running started in the air shows `run-1` on its first frame, and the
+landing frame G shows the picture of the step or turn frame it is in.
+No air or landing pictures are shown.
+
+When walking, running or a turn ends in standing (`ground-speed.md`,
+"When a step ends" and "Facing and turns"), on the ground or in the air
+after a ledge without a face, the standing pictures start on the first
+standing frame: `stand-1` × 3, `stand-2` × 3, `stand-3` × 3, `stand-4`
+× 3, `stand-5` × 3, as after a roll's stop. The pictures after these are
+not covered.
 
 For example, the first character standing still on flat floor, with
 Right held from frame 0 on. Walking starts on frame 0; v (|`vx`| after
@@ -619,6 +638,24 @@ steep face, picking something up):
   that kind (3 582 frames), except 4 frames where the previous step's
   picture was still on screen, and 12 frames in a row in one run where
   the match took the picture of another object crossing the player.
+- **Walking off a ledge without a face, first character:** 800 runs of
+  random input on a platform without faces at either end, with a lower
+  floor on one side and a pit on the other (Right, Left or nothing for 1
+  to 30 frames, Action held or let go at about a quarter of the changes,
+  the same input going on in the air; each run to 40 frames after
+  landing or until it fell into the pit), 90 583 logic frames. The mode,
+  step and turn frame were worked out from the inputs and `vx` alone as
+  above, on airborne frames as on grounded ones, from each run's first
+  frame and again from the next standing frame after a roll. In the air,
+  in 226 falls, 4 205 walking, 1 143 running, 771 turning (106 turns
+  started in the air) and 64 standing frames were compared, and 79 runs
+  started in the air; on the floors before and after the falls, 16 199
+  walking, 2 149 running, 3 057 turning and 607 standing frames: 0
+  differences. 300 frames were left out where no picture matched: the
+  player was behind the platform's front, below its top. On the 240
+  flat-floor runs above, the standing pictures from the first standing
+  frame after walking, running or a turn (15 897 frames) also showed
+  no differences.
 
 - **Rolls, first character:** 1 739 rolls on flat floor from standing,
   walking and running starts (slow, normal and fast), with random
@@ -686,10 +723,6 @@ steep face, picking something up):
   isn't in `ground-speed.md`), its roll pictures and its pictures after
   B + 4 of a bounce, and the pictures of every other state, such as pushing
   against a wall or a steep face.
-- Which walking or running picture shows in the air after walking or
-  running off a ledge without a face, where the mode goes on
-  (`ground-speed.md`, "After a fall or a bounce"): walking and running
-  pictures were seen there, but their steps weren't worked out.
 - Why, on 5 frames after bounces, the previous picture was still on
   screen for one frame. The rules above give the usual frame.
 - Why, on 4 frames in random play, a walking or running picture came
