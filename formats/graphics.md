@@ -304,11 +304,10 @@ differ by a multiple of 32 give the same picture. For example, with
 0.09…⌋ = 18, ⌊25.09…⌋ = 25 and ⌊31.34…⌋ = 31.
 
 On some pictures the lowest bands already show the shifts of the next
-frame's `E` and `f` (the shift is worked out while the picture is being
-drawn): band 3 alone, bands 2 and 3, or bands 1 to 3. In a run of 2 708
-pictures this happened on 268 of them (196, 57 and 15 times). Which
-pictures do it is not covered; the rule above, with the frame's own
-`E` and `f`, gives every other picture exactly.
+frame's `E` and `f`: band 3 alone, bands 2 and 3, or bands 1 to 3. In
+a run of 2 708 pictures this happened on 268 of them (196, 57 and 15
+times). Which pictures do it is not covered; the rule above, with the
+frame's own `E` and `f`, gives every other picture exactly.
 
 Synthetic vectors for this section: `../vectors/graphics/` ("Background
 layers of the first level").
@@ -557,11 +556,6 @@ More cases, as bytes, are in `../vectors/graphics/`.
   pixel was different on the backdrop and the far layer, and the
   horizon layer differed only on those same pictures. The views of
   those runs covered `E` from 0 to 4 722 and `T` from 0 to 264.
-- In the same runs the game's horizon map and the tiles it used were
-  the image's horizon block, byte for byte, and its colours per row
-  were those of the two row-colour lists, with the backdrop list's
-  first entry covering 1 row after even frames and 2 rows after odd
-  ones on every picture.
 - The first level's room, entered by the upper exit with the lead alone
   and with two characters: 6 runs of 600 logic frames with made-up input
   (walking, running, jumping and rolling, three runs each way),
