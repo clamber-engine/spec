@@ -63,7 +63,10 @@ A **running frame** is a frame where Action and exactly one of Left or
 Right are held. It counts on the ground and in the air. The frames of a
 roll, from `roll_start` up to and including its `roll_end` frame, never
 count, so holding Action and a direction during a roll doesn't make the
-next roll fast. Frames during the stop after a roll weren't measured.
+next roll fast. Frames of the stop after a roll that ends in a stop,
+up to D + 16, don't count either: Action and a direction held there
+don't make a roll started on D + 17 fast. Frames of the stop from D + 18
+on weren't measured.
 
 The roll is fast if there is a running frame on or after:
 
@@ -139,8 +142,13 @@ frame from S to D, unless it defeats a walker (`rolling-into-walkers.md`).
 frame the speed stays 0 and the player doesn't move. From the next frame
 everything in this spec applies with that frame as the press frame.
 Measured with a direction held throughout. A roll started by a new press
-on D + 17 behaves the same way on its first frame; one started on D + 18
-or later moves on its press frame as usual.
+on D + 17 behaves the same way on its first frame, but its size and
+direction are set on D + 17 itself, by what is held then, as on any press
+frame. For example, facing right with Left held on D + 17 only, it goes
+left as a normal roll from D + 18. One started on D + 18 or later moves
+on its press frame as usual. For a remembered press, the size is set by
+what is held on D + 18, and the roll goes the way the player faces then
+(a direction pressed in the stop turns the player, `roll-input.md`).
 
 ## Jumping out of a roll
 

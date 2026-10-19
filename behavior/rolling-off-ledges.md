@@ -124,7 +124,10 @@ is a **stopped frame** when both hold at its start:
   the frame moves as usual.
 - There is no ground 15 px ahead: in the column floor(x) + 15 when the
   roll goes right, floor(x) − 15 when it goes left (x at the start of
-  the frame). Floor up to 47 px below the player's feet counts as ground
+  the frame). When the frame's steering (`roll-speed.md`) turns a roll
+  that is moving at the start of the frame, the new direction counts:
+  a slow roll turned away from the edge moves on. A stopped roll that
+  is turned pushes off instead (below). Floor up to 47 px below the player's feet counts as ground
   there, and floor 49 px or more below doesn't (48 wasn't measured);
   floor higher than the feet counts (measured up to 64 px higher). At
   the top of a pit whose edge is a short face, a face column 15 px
@@ -179,6 +182,80 @@ E − 1 (so E is the first column without):
   toward 1, and the first frame that starts with floor(x) = E − 15, S + 24
   (`vx` 1.0390625 at its start), is stopped. The player stays there
   until D.
+
+## A roll started in the stop after a roll
+
+After a roll that ends in a stop on the ground, the next roll can start
+on D + 17 (from a press remembered from D − 2 to D + 16, or a new press
+on D + 17) or later (`roll-input.md`, "Starting the next roll"). Call
+its first frame **S′**. Near a ledge where the ground simply ends, that
+roll follows this file with these differences and additions.
+
+**A roll started on D + 17.** It lasts 30 frames on the ground
+(`roll-input.md`). On S′ its speed stays 0 and the player doesn't move
+(`roll-speed.md`); from S′ + 1:
+
+- "Stopping before a ledge" and "Pushing off" apply as usual from
+  S′ + 1, so standing within 15 px of the edge with the direction toward
+  it held on S′ + 1, the roll pushes off at 2 on S′ + 1. With the other
+  direction held on S′ + 1 it turns and pushes off away from the edge
+  at 2 on the same frame.
+- The hover depends on **n = L − S′** like this (n = 0 can't happen):
+
+  | n | Hover frames |
+  |---|---|
+  | 1 to 8 | L and the 9 frames after it |
+  | 9 | L only |
+  | 10 or more | none |
+
+  These are not the values of "The fall": there n = 8 hovers on L only
+  and n = 9 not at all.
+- Everything else is as in "The fall" and "When the roll ends": the
+  roll ends on G + 30 after landing, or on G when G = L + 30, whatever
+  its 30 frames on the ground would have been.
+
+**A roll started on D + 18 or later** is an ordinary roll and follows
+the rest of this file unchanged, with n = L − S′ in "The fall".
+
+**Running in the stop.** Action and a direction held during the stop
+(from D + 1 to D + 16) don't make the next roll fast (`roll-speed.md`,
+"Running recently").
+
+**When the stop carries the player off the edge.** A roll can stop at
+the edge and then push off on its last frames (on D, the roll's speed
+rule still applies, `roll-speed.md`). The stop's first frames then
+carry the player over the edge. The stop goes on in the air with its
+usual speeds (`roll-speed.md`, "When the roll ends": D + 1 and D + 2
+slow down, D + 3 moves one more step, then `vx` is 0 and the player
+falls straight down). The fall is like walking off a ledge: the first
+airborne frame moves down by 3.4375 px, and from then on `vy` increases
+by 0.4375 per frame (never above 8). A remembered press then starts its
+roll on D + 17 in the air:
+
+- S′: `vx` stays 0, and the player falls as on the frame before (`vy`
+  + 0.4375).
+- S′ + 1 to S′ + 9 are hover frames ("The fall"). From S′ + 10 the
+  fall goes on as after any hover.
+- From S′ + 1 the roll's speed rule and steering apply as in the air in
+  "The fall", and the roll ends on G + 30.
+
+Example, rolling right toward an edge whose last column with ground is
+E − 1: standing with floor(x) = E − 10, Action alone on frame 0. Every
+roll frame is stopped and D = 29. Action is pressed again on 34 for one
+frame (remembered, so S′ = 46), and Right is held from 47. Frame 46
+doesn't move; on 47 the roll pushes off at 2, then 2.125, 2.234375,
+2.328125. The player leaves the ground on L = 51 (n = 5), and 51 to 60
+are hover frames.
+
+Example in the air: the same edge, standing with floor(x) = E − 4,
+Action alone on frame 0, so every roll frame is stopped and D = 29.
+Action is pressed again on 28 for one frame, and Right is held from 29
+on. On 29 (D) the roll pushes off at 2; the stop slows to 1.75 on 30
+and 1.53125 on 31, which carries the player off the edge (31 moves down
+by 3.4375 px), and from 32 `vx` is 0 while they fall. The remembered
+press starts the roll on 46 (S′) in the air: 46 falls as usual (`vy`
+6.56640625), 47 to 55 are hover frames while the speed rises toward 3
+(0.375 on 47), and the fall goes on from 56 (`vy` 0.44140625).
 
 ## Jumping during the fall
 
@@ -262,6 +339,30 @@ On two of the ledges with a face, 612 runs with falls of 26 to 45
 frames made by moving the player match the hover and vertical rules on
 2,100 airborne frames (882 hover frames) and the end rule on 159 rolls
 (7 of them after falls of exactly 30 frames).
+
+Rolls started in the stop after a roll: 53,472 runs at the stretch
+without a face, going right and left. The first roll was slow (started
+2 to 90 px from the edge) or normal (78 to 95 px), tapped, and ended in
+a stop on the ground. Action was pressed again on each frame from D − 2
+to D + 25, tapped or held. Left, Right or nothing was held on the press
+frame only, from it on, or from the frame after it, and in 5,088 runs
+toward the edge only from S′ + 1 to S′ + 12. All runs match this file
+with 0 mismatches: the frame each roll starts on, 2,283,936 roll speeds
+(371,458 frames meeting the conditions of "Stopping before a ledge":
+354,838 stopped and 16,620 pushed off, 2,372 of the push-offs by turning
+away), 786,676 airborne vertical moves (99,074 hover frames) and the end
+of 23,352 rolls that went off. On the ground, rolls started on D + 17
+lasted 30 frames (19,844 from remembered presses, 4,756 from new
+presses on D + 17) and later ones 29 (5,152). The rolls on D + 17 that
+went off had n from 1 to 9 in 9,464 runs and 10 or more in 10,140.
+Counting n from S′ + 1 in the usual table instead gives 86 mismatching
+runs, and the usual table with n from S′ gives 1,056. Without the turned
+roll's new direction in "Stopping before a ledge", 26 runs mismatch. If
+Action and a direction held in the stop counted as running, 16,290
+runs would. 40 runs whose stop carried the player off the edge (30 of
+them landed) match "When the stop carries the player off the edge".
+Left out: runs in which the first roll itself went off the edge, and
+runs that walked off the edge before a later press.
 
 Jumps during and around a hover: 5,828 runs at the stretch without a
 face (normal and slow rolls going right and left, Action tapped or held,
@@ -686,7 +787,10 @@ This list is for `title-1`; `title-2` has its own list above.
   carry-on frames (D to D + 3) can be stopped.
 - How long a roll lasts when it is pushed off and still on the ground
   at S + 29 (not seen: pushed rolls always went off the edge first).
-- Rolls that start in the stop after an earlier roll.
+- A roll started in the air from a remembered press ("A roll started in
+  the stop after a roll") that lands exactly 30 frames after S′.
+- The size of a roll started on D + 17 from a remembered press when a
+  direction is held on D + 17 but not on D + 18.
 - The second character: ledges where the ground simply ends, rolling
   left, the conditions of a stopped
   frame (only the stops and pushes at the top of one face in "The
