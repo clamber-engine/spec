@@ -175,6 +175,16 @@ entrance, presses Right just inside the reach and lets go, so the exit
 takes it over while it turns to face right. Jump, Action and Right are
 pressed during the walk-out and change nothing.
 
+In the first level the floor exit is not on the floor: the floor ends
+28 px right of the exit, against a vertical step up
+(`steep-faces.md`), and the exit is at the floor's height inside the
+higher ground beyond the step. The scenario's `requires` line describes
+this. The reference trace doesn't depend on it: the lead is taken over
+before it reaches the step (33 px right of the exit on `T`), and from
+`T` + 1 the walk passes through the ground. A lead that the exit
+didn't take over would be blocked at the step ("Stopped by a rise" in
+`steep-faces.md`) rather than walk off the end of the floor.
+
 ## Where the first level's exits lead
 
 The next area's frames are numbered from **0**, its first logic frame:
