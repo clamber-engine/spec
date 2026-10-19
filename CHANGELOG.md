@@ -2,6 +2,29 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.208.0
+
+The first character's pictures while walking, running and turning, and
+walkers that start above the floor (spec#38, differential tests).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: new section "Walking, running and
+  turning" for the first character: a walking or running picture for
+  each of the 20 stride steps, and two turning pictures by turn frame,
+  all named by picture hash and in the existing fallback group. A worked
+  example of a walk from standing, evidence from the screen and an
+  updated "Not covered" (the second character, pictures in the air
+  after walk-offs, a few late pictures). `behavior/ground-speed.md`
+  points to it.
+- `behavior/walker-view.md`: new section "A start above the floor": the
+  walker moves across as on the floor while it drops, its falling speed
+  grows by 7/16 px per step up to 8 px per frame, and it lands when its
+  feet are less than 5 px above the floor. A synthetic example,
+  evidence and an updated "Not covered". `behavior/walker.md` and
+  `formats/placements.md` point to it.
+
 ## spec-v0.207.0
 
 The vertical view when an area begins and near the left end, and the
