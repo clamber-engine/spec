@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.204.0
+
+Moves on the floor past a steep face's top (spec#38, differential
+tests).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/steep-faces.md`, "Stopped by a rise": a third blocking case.
+  A move that passes over a face column of a rising face and ends in a
+  column that isn't a face column is blocked only when that column's
+  floor is more than 8 px higher than the floor the player was on. New
+  subsection "Moving past a face's top" with the measured cases,
+  evidence and two examples. "Following a face down, or leaving it"
+  lists the 7 px step beyond a face's top among the floors followed;
+  "Evidence (landings)" and "Not covered" are updated to match.
+
 ## spec-v0.203.0
 
 Landings on or next to a steep face after a bounce (spec#38,
