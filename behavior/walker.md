@@ -43,7 +43,109 @@ per frame): full speed on the 32nd frame.
 The walker stays on the floor (a walker whose start is above the floor
 first drops onto it: `walker-view.md`, "A start above the floor"): its
 height is the floor's height at its `x`, on flat floor and on 1-in-4 slopes alike, and slopes don't change
-its speed.
+its speed. It also follows steep faces (`steep-faces.md`, "Columns, faces
+and steps") down and up, 4 px per column, and walks off ledges ("Walking
+off a ledge" below).
+
+## Walking off a ledge
+
+A walker that reaches a ledge walks off it. It doesn't stop or turn at the
+edge: its `vx`, facing and patrol go on by the rules above, in the air as
+on the floor, and only its height changes. "Column" is as in
+`steep-faces.md` ("Columns, faces and steps"): the whole-pixel part of
+`x`. A frame **ends in** the column containing the walker's `x` at the
+end of that frame.
+
+**Leaving the floor.** Call **F** the walker's first frame off the floor:
+
+- the first frame that ends in a column with no floor, or with floor
+  **59 px or more** lower than the floor the walker was on, whether the
+  floor before the drop is flat or the low end of a face;
+- or, on the **lowest column of a face** whose next column on, in the
+  walker's heading, has no floor or floor 59 px or more lower: the second
+  frame in a row that ends in that column. The walker is on the face's
+  lowest column only on the frame that moves it into that column. A
+  walker below full speed (still speeding up, "Walking" above) can end
+  two frames in one column; at full speed it never does, and then F is
+  the first frame beyond the face.
+
+At the low end of a face that meets floor only 1 px lower (the usual
+foot of a face), a walker stays on the floor, however many frames it ends
+in the face's lowest column.
+
+**Falling.** On F the walker moves down by **3 7/16 px** (880/256) from
+the floor it was on. On F + 1 it moves down by **113/256 px**, and on each
+later frame by 7/16 px (112/256) more than on the frame before, but never
+more than **8 px** per frame. This is the same growth and the same limit
+as for a start above the floor (`walker-view.md`, "A start above the
+floor"); only the first two moves differ.
+
+**Landing.** On each frame after F, after the move down: if the walker's
+feet are less than 5 px above the floor of the column its frame ends in,
+or at or below it, its `y` becomes that floor's `y`, as for a start above
+the floor. Only floor that was not above the walker's feet before the
+move counts, so a walker that left the floor inside a face's lowest
+column doesn't land back on that column. From the landing on it walks on
+the floor as before.
+
+### Example: off a flat ledge (synthetic)
+
+A walker at full speed heading right walks on flat floor at `y` = 200
+whose last column is 99. From column 100 the floor is 40 px lower, at
+`y` = 240. `x` and `y` at the end of each frame:
+
+| Frame | `x` | `y` | Moved down | |
+|---|---|---|---|---|
+| 0 | 98.25 | 200 | | on the floor |
+| 1 | 99.25 | 200 | | on the floor, last column |
+| 2 | 100.25 | 203.4375 | 3.4375 | F: off the floor |
+| 3 | 101.25 | 203.87890625 | 0.44140625 | |
+| 4 | 102.25 | 204.7578125 | 0.87890625 | |
+| 5 | 103.25 | 206.07421875 | 1.31640625 | |
+| … | | | | 7/16 more each frame |
+| 12 | 110.25 | 227.5390625 | 4.37890625 | |
+| 13 | 111.25 | 232.35546875 | 4.81640625 | 7.64 px above the floor |
+| 14 | 112.25 | 240 | | the move gave 237.609375: landed |
+
+### Example: the end of a face (synthetic)
+
+A walker heading right, still speeding up, walks down a face whose lowest
+column is 99, at `y` = 200 (column 98 at `y` = 196). Column 100 has no
+floor.
+
+| Frame | `x` | `vx` | `y` | |
+|---|---|---|---|---|
+| 0 | 98.578125 | 0.48046875 | 196 | on column 98 |
+| 1 | 99.12109375 | 0.54296875 | 200 | moved into column 99: on the floor |
+| 2 | 99.71875 | 0.59765625 | 203.4375 | still column 99: F |
+| 3 | 100.36328125 | 0.64453125 | 203.87890625 | |
+
+At full speed the same walker would have moved from column 99 to column
+100 on frame 2 and left the floor there, with the same `y`.
+
+### How it was measured
+
+In the first level and in copies of its image with one walker entry
+given another place, another kind or other settings
+(`../formats/placements.md`): 111 runs, each following one walker from
+the frame it appeared with the player standing away from it, 8 016
+frames in all, of which 1 320 off the floor. Small, medium and large
+walkers, heading left and right, at their own places and moved:
+
+- off ledges at the low end of a face onto floor 59 px lower,
+  heading left and right (three ledges), and off two faces' low ends
+  over a pit, into the pit;
+- off a flat ledge onto floor 175 px lower;
+- 34 runs down three faces that end on floor 1 px lower, 12 of them with
+  two or more frames in the face's lowest column;
+- starts moved 1 px at a time before each face's low end, so that the
+  walker reached it at speeds from 1/8 to 1 px per frame.
+
+On every frame the walker's height was as the rules above give, and no
+walker turned or changed speed at a ledge (the only turns were at the
+ends of patrols). A first move of 3 or 3 1/2 px instead of 3 7/16 gets
+more than 70 frames wrong, and without the rule for a face's lowest
+column 15 frames are wrong.
 
 ## Turning at the end of a patrol
 
@@ -373,9 +475,11 @@ This list is for `title-1`; `title-2` has its own list above.
 - Whether walkers defeated in other ways (`thrown-objects.md`, "Hitting
   walkers", and `rolling-into-walkers.md`) can hurt the player while they
   fall, and the second character touching a walker defeated by a bounce.
-- Ledges and steep faces: one walker was seen to follow a steep face
-  down and fall off its end without turning, then land on the floor
-  below; this isn't specified. Walkers on other slopes.
+- Ledges with drops between 2 and 58 px ("Walking off a ledge" was
+  measured with floor 1 px lower, which is followed, and 59 px or more
+  lower, which isn't), and faces whose lowest column is reached heading
+  up the face. What a walker does at the bottom of a pit, below the
+  level. Walkers on other slopes.
   A walker meeting a steep face that rises from its floor was seen to
   stop at it and turn around; how it turns isn't specified.
 - A walker reaching ground whose band is directly above the walker's
