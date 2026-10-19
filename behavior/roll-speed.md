@@ -137,18 +137,18 @@ D + 4.
 **A fast roll always ends in a stop**, even when Action is held on every
 frame from S to D, unless it defeats a walker (`rolling-into-walkers.md`).
 
-**A roll started by a remembered press** (the 30-frame roll in
-`roll-input.md`, starting on D + 17 of the previous roll): on its first
-frame the speed stays 0 and the player doesn't move. From the next frame
-everything in this spec applies with that frame as the press frame.
-Measured with a direction held throughout. A roll started by a new press
-on D + 17 behaves the same way on its first frame, but its size and
-direction are set on D + 17 itself, by what is held then, as on any press
-frame. For example, facing right with Left held on D + 17 only, it goes
-left as a normal roll from D + 18. One started on D + 18 or later moves
-on its press frame as usual. For a remembered press, the size is set by
-what is held on D + 18, and the roll goes the way the player faces then
-(a direction pressed in the stop turns the player, `roll-input.md`).
+**A roll started on D + 17** (the 30-frame roll in `roll-input.md`,
+from a press remembered in the stop or a new press on D + 17): D + 17 is
+its press frame. Its size and direction are set on D + 17 by what is
+held then, as on any press frame, whether the press was remembered or
+new; on that frame the speed stays 0 and the player doesn't move. From
+D + 18 everything in this spec applies as on the frames after any press
+frame, steering included. For example, facing right with Left held on
+D + 17 only, it goes left as a normal roll from D + 18; with Right held
+on D + 17 and Left from D + 18, it is a normal roll going right that
+turns left on D + 18; with nothing held on D + 17 and Right on D + 18
+only, it is a slow roll made normal on D + 18. One started on D + 18 or
+later moves on its press frame as usual.
 
 ## Jumping out of a roll
 
