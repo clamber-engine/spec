@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.212.0
+
+The first character's pictures after a bounce (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: "A bounce's frozen frames" becomes "A
+  bounce". New subsection for the first character from B + 4 to the
+  landing: `bounce-2` to `bounce-16` for 2 frames each, then all 16
+  pictures in a loop, 2 frames each, until the landing; a second bounce
+  starts the order again. There are no landing pictures: the mode that
+  starts on G shows its own pictures from G. 14 new picture hashes
+  (`bounce-3` to `bounce-16`), a worked example, new evidence and
+  updated "Not covered" items.
+- `behavior/bounce.md`: pointer to the new section.
+
 ## spec-v0.211.0
 
 Steep faces: the push on a blocked frame (spec#38, differential tests).
