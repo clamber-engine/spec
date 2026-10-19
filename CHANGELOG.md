@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.209.0
+
+Walkers walking off a ledge (spec#38, differential tests).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/walker.md`: new section "Walking off a ledge": walkers
+  don't stop or turn at a ledge; when a walker leaves the floor (no
+  floor, or floor 59 px or more lower, with a rule for a face's lowest
+  column before a drop); the fall (3 7/16 px on the first frame, 113/256
+  on the next, then 7/16 more each frame up to 8); and landing as for a
+  start above the floor. Walkers also follow steep faces down and up.
+  Two synthetic examples, evidence and an updated "Not covered".
+  `behavior/walker-view.md` points to it.
+
 ## spec-v0.208.0
 
 The first character's pictures while walking, running and turning, and
