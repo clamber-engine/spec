@@ -5,7 +5,8 @@ Titles: `title-1`, `title-2`
 What happens to the player's motion when they bounce off an enemy, from
 the bounce until they land. Which contacts with a walker cause a bounce
 is in `walker-contact.md`, and with the thrower in `thrower-contact.md`;
-what happens to a walker is in `walker.md`.
+what happens to a walker is in `walker.md`. The player's pictures from
+the bounce to the landing are in `player-frames.md` ("A bounce").
 Frames are logic frames at 60 Hz, numbered as in a trace. `y` and `vy`
 are as in a trace: down is positive, `vy` in px per frame. Measured with
 the lead character on several bounces off ground enemies at different
