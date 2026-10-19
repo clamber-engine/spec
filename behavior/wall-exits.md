@@ -7,9 +7,10 @@ nothing until a thrown object hits it, which **opens** it, and from then
 on it takes the lead out of the area like an exit, walking into the
 wall. The first level has two, both leading right. This file covers what
 opens a wall exit, when an open one takes over, how the lead walks
-out, and when the area is left, and how the lead comes back into the
-first level from the areas behind its two wall exits. What is in those
-areas is not covered.
+out, and when the area is left, the area behind the first wall exit,
+and how the lead comes back into the first level from the areas behind
+its two wall exits. What is in the area behind the second wall exit is
+not covered.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. Horizontal
 positions are level x as in `view.md`; vertical positions are **level
@@ -150,13 +151,41 @@ was from `T` + 4 to `T` + 21, mostly `T` + 16 to `T` + 18.
   2`j` have brightness 15 − `j`. It reaches 0 on `F` + 29.
 - **The end.** `F` + 30 is the last frame in the area. The lead goes on
   walking right by 2 px every frame up to it. On the next logic frame,
-  play is in another area (not covered).
+  play is in another area: behind the first wall exit, that frame is
+  frame 0 of the area of "The area behind the first wall exit"; what
+  follows the second wall exit is not covered.
+
+## The area behind the first wall exit
+
+The first level's first wall exit (the one further left) leads to an
+area of its own. Its placement list, its start record and its
+view-limit record are in `../formats/locators.md`
+(`../formats/placements.md`, "In the area behind the first wall exit";
+`../formats/level-start.md`; `../formats/view-limits.md`, "The area
+behind the first wall exit"). Measured with the lead alone.
+
+- **Arriving.** The logic frame after the wall exit's `F` + 30 is the
+  area's frame 0. The lead walks in from the area's start record toward
+  the right as in `exits.md` ("Walking in"), with the fade-in there, and
+  has control from frame 28.
+- **The view** moves as in `view.md` ("When an area begins", walking
+  in) and within the area's limits as in `level-ends.md`.
+- **What is there.** A `rising-extra-life-1` item
+  (`extra-lives.md`) and, as the area's way out, an end marker.
+- **No time limit.** Nothing was seen to end the area but its end
+  marker: a lead left standing with nothing held stayed in the area, at
+  the same place, with the same lives and full brightness, for 2
+  minutes (7 200 frames), after which the run was stopped.
+- **Leaving.** Passing the end marker takes the lead out as in
+  `level-end.md` ("In the area behind the first wall exit"). On the
+  logic frame after the area's last frame, play is back in the first
+  level, at frame 0 of "Coming back from the first wall exit's area"
+  below.
 
 ## Coming back from the first wall exit's area
 
-The first level's first wall exit (the one further left) leads to an
-area of its own. What is in that area is not covered; walking right
-through it to its right end brings play back to the first level. Frames
+Walking right through the area behind the first wall exit (above) to
+its end marker brings play back to the first level. Frames
 here are counted from 0, the first frame back in the first level, and
 the lead was alone (as in all the runs of this file).
 
@@ -376,6 +405,22 @@ on `T` + 17, 14 on `T` + 18 and `T` + 19, and 0 on `T` + 46 and
 - **Other places.** Each of the two references given, in a copy of the
   image, to a class 1 entry near the first level's start placed a closed
   wall exit there: a lead walking right through it went on.
+- **The area behind the first wall exit.** 800 runs, each holding
+  Right from a lead left of the first wall exit, opened as above, until
+  the area changed, then random inputs biased to the right in the area
+  (from frame 1 in 500 runs, from frame 28 in 300) until the area
+  changed again, then nothing held. In every run the area's frame 0
+  came on the logic frame after the level's last frame, the walk-in was
+  as in "The area behind the first wall exit" (`exits.md`, "Checks"),
+  the end marker was passed and the walk-out, the fade and the last
+  frame were as in `level-end.md` ("In the area behind the first wall
+  exit", 35 890 frames), and the next logic frame was frame 0 of the
+  first level as in "Coming back from the first wall exit's area":
+  the 121 frames after it, with nothing held, were the same in every
+  run (96 800 frames) and as in that section. Every frame of the area
+  from frame 28 to the marker (674 220 frames) was judged by
+  `level-end.md`, "When the marker is passed": the marker was passed on
+  exactly the frame the rules give.
 
 ## Not covered
 
@@ -395,8 +440,15 @@ on `T` + 17, 14 on `T` + 18 and `T` + 19, and 0 on `T` + 46 and
 - The rolling stop (`roll-speed.md`) and other states not in the table.
 - How far right of the exit the reach goes. In the first level a lead
   can't get there from the left: the rise is in the way.
-- What is in the areas behind the wall exits and what happens there,
-  and what is kept when play comes back to the level.
+- What is in the area behind the second wall exit and what happens
+  there, and what is kept when play comes back to the level from either
+  area.
+- In the area behind the first wall exit: its ground and pictures, and
+  where its single collectibles are stored (`../formats/collectibles.md`);
+  arriving with two characters; whether the item there comes back on a
+  later visit; and what decides when the end marker is removed as the
+  view moves left (`../formats/placements.md`, "In the area behind the
+  first wall exit").
 - Coming back from the first wall exit's area with two characters, how
   the view moves then, and which picture the `wall-return-entrance`
   shows. Throws that land after T + 24 or meet a wall or a ceiling.

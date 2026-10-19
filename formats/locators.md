@@ -67,6 +67,9 @@ SHA-256 of the image:
 | Placements: the first level's scene's placement list | `placements.md` | `fd` | `d068` |
 | Level start: the first level's scene's start record | `level-start.md` | `fc` | `c03c` |
 | View limits: the first level's scene's record | `view-limits.md` | `fc` | `a5f2` |
+| Placements: the placement list of the area behind the first level's first wall exit | `placements.md` | `fd` | `84d4` |
+| Level start: the start record of the area behind the first level's first wall exit | `level-start.md` | `fc` | `bf38` |
+| View limits: the record of the area behind the first level's first wall exit | `view-limits.md` | `fc` | `919e` |
 | Level map: point tables | `level-map.md` | `fc` | `f47b` |
 | Level map: corner records | `level-map.md` | `c0` | `d13c` |
 

@@ -544,6 +544,31 @@ each entry's position from the scene's frame 1 on, and none on frame 0
 them moved or went away before the scene's last frame. This held in a
 run with the lead alone and in one with two characters.
 
+### In the area behind the first wall exit
+
+The area the first level's first wall exit leads to
+(`../behavior/wall-exits.md`, "The area behind the first wall exit")
+has a placement list of its own (`locators.md`). It has 2 entries and no
+sections or groups, and both references have a kind row:
+
+- a class 1 entry of kind `rising-extra-life-1`, the same reference as
+  the first level's (`../behavior/extra-lives.md`);
+- a class 2 entry of kind `end-marker`, the same reference as the
+  room's: it is the area's way out (`../behavior/level-end.md`, "In the
+  area behind the first wall exit").
+
+Both objects appear as in "When placed objects appear", with the
+picture's left edge `E` of `../behavior/level-ends.md`: in 800 runs
+through the area with random inputs (lead alone), each of the 800
+appearances of the item and the 913 of the marker came on the first
+frame its entry was in the window, and never earlier. The marker was
+removed 113 times, when the view moved left, its entry then 289 to 421
+px right of the picture's left edge; it appeared again by the same
+rule. When it is removed is not covered.
+
+In a copy of the image with the item's entry moved 100 px left and 20
+px down, the item appeared at the moved position in all 20 runs.
+
 ## When placed objects appear
 
 The window and the view position `V` are as in
