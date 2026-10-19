@@ -386,7 +386,10 @@ In the air it shows `s-jump-1` on T − 1, `s-jump-2` on T and T + 1, then
 here. `s-air-6` is the last picture of the air; the player shows it
 until landing.
 A jump out of a roll pressed on the ground (`roll-speed.md`, "Jumping
-out of a roll") shows the same pictures, with T − 1 the press frame.
+out of a roll") shows the same pictures, with T − 1 the press frame. So
+does a jump out of a roll pressed in the air, during the fall after
+rolling off a ledge (`rolling-off-ledges.md`, "The second character",
+hover frames included), with T − 1 the press frame P.
 
 After a landing on L that comes on the fourth or a later frame showing
 `s-air-6` (every jump measured that lands on the floor it took off from
@@ -404,8 +407,8 @@ From L + 17 the player is standing, walking or running, and shows its
 pictures (standing: `s-stand-1` × 4 first). If Action and exactly one of
 Left or Right are held on L, the player runs from L instead and shows
 running pictures from L, with none of the pictures above. This is the
-same after plain jumps and after jumps out of a roll (`ground-speed.md`,
-"After a landing").
+same after plain jumps and after jumps out of a roll, pressed on the
+ground or in the air (`ground-speed.md`, "After a landing").
 
 ## A bounce
 
@@ -560,6 +563,20 @@ steep face, picking something up):
   53 in random play; 2 094 frames), 0 differences, 144 of them running
   from L. In the same runs, 751 landings after jumps from the floor
   (3 547 frames) matched too.
+- **Jumps out of a roll pressed in the air, second character:** 1 600
+  runs with the second character leading on the three ledges of
+  `rolling-off-ledges.md` ("The second character"): walking right 0 to
+  36 frames, a normal or slow roll (Action tapped or held), Jump pressed
+  on L to L + 20 (about a quarter of the presses during the hover) and
+  held 1 to 40 frames, random input in the air, and random input
+  changed every 1 to 8 frames for 60 frames after the landing. Runs
+  that fell into a pit were cut there. From the press frame to T + 15,
+  and `s-air-6` from its first frame to the landing: 363 jumps, 0
+  differences; 343 more had a frame where the player's picture was not
+  wholly on screen and were left out. Landings on the fourth or a later
+  `s-air-6` frame, compared from L up to the first standing, walking,
+  running or `s-jump-1` picture: 92 (452 frames), 0 differences, 35 of
+  them running from L.
 - **Bounces:** 72 bounces off enemies with the first character leading
   and 21 with the second (295 and 61 frames compared, 65 and 44 left
   out, mostly the enemy in front of the player). All 21 of the second
@@ -662,8 +679,8 @@ steep face, picking something up):
   frame late on screen. The rules above give the usual frame.
 - The second character landing before the fourth frame showing
   `s-air-6`, and when its `s-air-1` ends.
-- The second character's landings after jumps out of a roll pressed in
-  the air, after falls that didn't start with a jump, and after bounces.
+- The second character's landings after falls that didn't start with a
+  jump, and after bounces.
 - The standing pictures after the first ones given above, the second
   character's walking, running and turning pictures (its stride cycle
   isn't in `ground-speed.md`), its roll pictures and its pictures after
