@@ -650,6 +650,15 @@ before the speed rule:
    the left the same holds mirrored: target 0 or less and `vx` 0 or less
    give −1.5 (−384/256), otherwise the push is kept.
 
+On a **blocked** frame the target counts as 0 in rule 3, whatever is
+held. That is a frame blocked in the air (`air-walls.md`, "Blocked"),
+which can be the landing frame, or blocked on the floor ("Stopped by a
+rise"). Such a frame ends with `vx` 0, so when it ends on the floor of a
+face column on or after M, the push becomes ±1.5 at its end. A landing
+that is stopped against the face is its own switch frame (the last rule
+of "The switch frame M"), so the player is carried down from L + 1 even
+with the uphill direction held.
+
 Away from landings (where there is no M to wait for) this gives exactly
 the targets of "Speed on a face": a player can only be moving uphill on
 a face column after a landing.
@@ -740,6 +749,35 @@ falling past the face after a jump (T = frame 0):
   0, so M = 22, and the push becomes −1.5 at its end.
 - Frame 23: target 0 − 384, step −48. The player is carried down.
 
+**A landing blocked against the face, uphill direction held.** Right
+held on every frame, a jump toward the face that lands on it while
+moving uphill (T = frame 0):
+
+| Frame | Held | `x` | Column floor | `y` | `vx` (1/256) | `vy` (1/256) | `ground` |
+|---|---|---|---|---|---|---|---|
+| 18 | R | 106.53515625 | 56 | 29.8125 | 478 | 224 | 0 |
+| 19 | R | 108.41796875 | 48 | 31.125 | 482 | 336 | 0 |
+| 20 = A | R | 110.3125 | 40 | 32.875 | 485 | 448 | 0 |
+| 21 = L = M | R | 110 | 40 | 40 | 0 | 0 | 1 |
+| 22 | R | 109.8125 | 44 | 44 | −48 | 0 | 1 |
+| 23 | R | 109.4609375 | 44 | 44 | −90 | 0 | 1 |
+| 24 | R | 108.96875 | 48 | 48 | −126 | 0 | 1 |
+
+- Frame 20 is A, and `x` is in face column 110: a slide landing.
+- Frame 21: `vx` 485 would take `x` into face column 112, whose floor
+  (32) is above the feet: blocked in the air, `x` 110, `vx` 0, and the
+  player lands on the floor of column 110 (`landing.md`). It ends on a
+  face column with `vx` 0, so M = L = 21.
+- Frame 21 is blocked, so its target counts as 0 although Right is
+  held and the frame started in the air: the push becomes −1.5 at its
+  end.
+- Frame 22 starts on the face, Right points uphill and is ignored:
+  target 0 − 384, step −48, `vx` −48. `x` moves into column 109, 4 px
+  lower: followed. Frame 23: step (−384 + 48) ÷ 8 = −42, `vx` −90.
+
+Without the blocked-frame rule, frame 21's target would be +512 (Right,
+in the air), the push would stay 0, and `vx` would stay 0 on frame 22.
+
 ### Evidence (landings)
 
 Measured with the lead character, by inputs only, objects nearby moved
@@ -786,6 +824,20 @@ at different frames before and during the bounces:
 M = L + 1 would have given 253 and 70 different frames, M = L + 2 749
 in the first set, and the rule "After a jump" counted from the bounce
 frame 584.
+
+The blocked-frame rule of "The push" was checked on both sets above with
+the target taken from the held input alone (Left or Right, ×1.5 with
+Action; 0 when uphill on a frame starting on a face; 0 on a blocked
+frame). Every checked frame matched as before: 3 435 landings in the
+walking runs and 1 378 in the bounce runs, apart from the two moves
+across face columns already counted above. Without that one rule, using
+the held direction on blocked frames gave 250 and 309 more different
+frames, all on L + 1 after a landing blocked against the face with the
+uphill direction held. Of the landings ending on a face column with that
+direction held, the 542 blocked ones (`vx` 0) all had the push on
+L + 1; the 17 still moving downhill on L had none, as rule 3 gives.
+Frames blocked on the floor that ended on a face column (1 196) all had
+the push at their end as well.
 
 ## Jumping on or next to a face
 
