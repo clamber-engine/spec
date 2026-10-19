@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.199.0
+
+Bouncing again before landing, off a second walker during a bounce
+(spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/bounce.md`: new section "Bouncing again before landing". A
+  second bounce B′ follows the bounce rules afresh: the ordinary move on
+  B′, then `vy` −7.125, two frozen frames, and from B′ + 3 the hold
+  counts from B′ + 3 only. Includes a worked example and evidence.
+  "Not covered" is narrowed.
+- `behavior/walker-contact.md`: new subsection "During a bounce". From
+  B + 3 to the landing the "not rising fast" condition doesn't apply,
+  nothing bounces or hurts on the frozen frames, and with two walkers in
+  range on B the other one is checked again from B + 3.
+- `behavior/jump-input.md` ("After a bounce"): after bouncing again, the
+  latest bounce frame counts.
+
 ## spec-v0.198.0
 
 The area behind the first wall exit: arriving, what is placed there, and
