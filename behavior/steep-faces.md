@@ -445,6 +445,16 @@ the column before the frame:
   below, `vy` ends at 0.00390625, and the fall continues as
   `walk-off.md` describes, with horizontal speed by `air-control.md`
   from L + 1 on and the landing rule of `landing.md`.
+- **A face's lowest column at a drop.** When there is no floor beyond a
+  face's lowest column, on its low side, the player is on that column
+  only on the frame that moves them into it. A frame that starts on the
+  floor in that column and ends in the same column is a leave frame L,
+  as in the bullet above: `y` moves down by exactly 3.4375 px from the
+  column's floor and `vy` ends at 0.00390625. A frame that moves them
+  out of the column is decided by the bullets above, as anywhere else.
+  At the usual foot of a face, whose lowest column is 1 px above the
+  floor next to it, this doesn't apply: the player stays on the floor
+  however many frames they spend in the lowest column.
 
 Drops of 9 and 10 px can't happen on a face whose columns are 4 px
 apart and weren't measured. On such a face the rule means: crossing at
@@ -452,6 +462,22 @@ most **2 columns** in a frame keeps the player on the face; crossing 3 or
 more makes them leave it. At the speeds above that depends on the speed
 and on the fraction of `x`, so a player walking onto a face usually
 follows it for a few frames and then leaves it.
+
+The lowest-column rule was measured on two faces with no floor beyond
+their lowest column, in random runs of walking, standing, coasting and
+short jumps (nothing, the downhill or the uphill direction held, 1 to 50
+frames at a time) that ended 6 frames after leaving the ground: a face
+of 4 columns falling to the left (6 500 runs) and a face of 8 columns
+falling to the right (8 500 runs). On the 1 048 391 frames that started
+on the floor in the runs without jumps, every frame's `ground` and `y`
+matched the bullets above, with 0 differences; without the lowest-column
+bullet, 11 differ. Those 11, and 2 more in the runs with jumps, are every
+walking or standing frame that started in a face's lowest column and
+ended in it again: all were moving left, toward the drop, and all left
+the ground with `y` 3.4375 px lower. On the face falling to the right,
+no such frame came up: 2 000 frames ended in its lowest column coming
+from higher up the face, and on none of them did the next frame stay
+in it.
 
 ## Leaving a face onto floor
 
@@ -1323,6 +1349,22 @@ before frame 1:
 From frame 5 on, `vy` and the landing follow `walk-off.md` and
 `landing.md`.
 
+**Carried off a face's lowest column at a drop.** A face falling to the
+left: column 100 at `y` = 15, 101 at 11, 102 at 7, 103 at 3, flat floor
+at `y` = 0 from column 104 on, and no floor left of column 100. Nothing
+held, `x` = 102 and `vx` = 0 before frame 1:
+
+| Frame | `vx` (1/256) | `x` | `y` | `ground` | Note |
+|---|---|---|---|---|---|
+| 1 | −48 | 101.8125 | 11 | 1 | Carried down the face |
+| 2 | −90 | 101.4609375 | 11 | 1 | |
+| 3 | −126 | 100.96875 | 15 | 1 | Into the lowest column: on its floor |
+| 4 | −158 | 100.3515625 | 18.4375 | 0 | Still in that column: leaves (L), `y` + 3.4375 |
+| 5 | −139 | 99.80859375 | 18.87890625 | 0 | Air: normal target 0 |
+
+Without the drop (floor at `y` = 16 left of column 100), frame 4 would
+stay on the floor at `y` = 15.
+
 ## Not covered
 
 - Action held on a face while walking or standing (with or without a
@@ -1372,10 +1414,14 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
   on or next to a face (`ground-speed.md`, "After a landing"): the
   landing checks above took the target speed from the game and tested
   only how the face rules change it.
-- Moving left off the low end of a face that ends at a drop rather than
-  at floor: the player was seen to leave the ground while still over the
-  face's last column. (Moving right off such an end, the rule above
-  holds.)
+- A face's lowest column at a drop ("Following a face down, or leaving
+  it"): walking or standing frames that stay in that column were only
+  seen moving left; floor beyond the column that is 11 px or more lower
+  (only no floor was measured); landings in that column. In runs with Action
+  held at times (rolls and running), the 37 frames that stayed in the
+  column for a second frame (moving left and right, some just after a
+  landing) also left the ground on that frame, but how far they moved
+  down wasn't checked.
 - Leaving a face onto floor while moving right; `facing` on frames off a
   face other than the first four next to it (35 of 948 frames held back
   up the face among the first four but 4 or more columns away didn't
