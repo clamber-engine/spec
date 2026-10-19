@@ -276,6 +276,21 @@ jump rule on P instead (P not kept as a hover frame), 2,299 runs
 mismatch. Frames once the player had moved past the flat floor below
 the stretch, or back under its edge, were left out.
 
+On the three ledges with a face, 6,336 runs by inputs (normal, slow and
+fast rolls going right, Action tapped or held, Jump pressed on each
+frame from L to L + 17 and held 1, 5, 12 or 40 frames) were made, and
+the 4,485 of them that rolled off and were still in the air on P (L − S
+from 1 to 7 and from 9 to 23) match "Jumping during the fall" with 0
+mismatches on 230,981 vertical moves and 219,689 horizontal speeds (L
+excepted, see "The fall"), to landing: 1,200 presses on hover frames,
+139 presses on an L that wasn't a hover frame, and 4,320 frames that
+would have been hover frames without the press. In all of them the roll
+ends on P and no stop follows the landing. With the second character's
+jump values instead (`second-character.md`), or with the jump rule on P
+instead of a kept hover frame, 1,200 to 4,421 runs mismatch. Left out:
+152 runs that fell into a pit, frames after a wall stopped the player,
+and the horizontal speeds of 144 rolls pushed off at the top of a face.
+
 ## The second character
 
 With the second character leading (`second-character.md`), a roll off
@@ -678,9 +693,8 @@ This list is for `title-1`; `title-2` has its own list above.
   second character" were measured), and the first character following
   it.
 - Rolls that hit a wall or an enemy during the fall or after landing.
-- Jumps pressed during a hover on ledges with a face at the top with
-  the first character leading (its hover jumps were measured where the
-  ground simply ends; the second character's on ledges with a face).
+- Jumps pressed during a hover on ledges with a face at the top when
+  L is S or S + 8 (not seen there with the first character leading).
 - Jump pressed on S itself when the player also leaves the ground on S
   (with Action: it gave a jump and no roll).
 - Ledges of other heights where the ground simply ends.
