@@ -478,13 +478,14 @@ right is not covered.
 
 ## Landing on or next to a face
 
-This section covers what happens after a jump lands, or after a fall
-that started by leaving the floor of a face lands (as in "Following a
-face down, or leaving it"), when the player is on a face column on the
-landing frame or reaches one in the frames after it. Here **L** is the
-landing frame, the frame carrying `land` (`landing.md`), not the leave
-frame above. Frames that start in the air, the landing frame included,
-are as in `air-walls.md` and `landing.md`.
+This section covers what happens after a jump lands, after a bounce
+lands (`bounce.md`), or after a fall that started by leaving the floor
+of a face lands (as in "Following a face down, or leaving it"), when
+the player is on a face column on the landing frame or reaches one in
+the frames after it. Here **L** is the landing frame, the frame
+carrying `land` (`landing.md`), not the leave frame above. Frames that
+start in the air, the landing frame included, are as in `air-walls.md`
+and `landing.md`.
 
 After such a landing two of the rules above wait for a **switch frame
 M**, which is L or later:
@@ -505,6 +506,10 @@ carried down.
 ### The switch frame M
 
 **After a fall from a face** (no jump): M = L.
+
+**After a bounce** (`bounce.md`): M = L, whatever was held and wherever
+the landing is, so the push and "Can't start toward a rise" apply from
+L + 1.
 
 **After a jump**, let T be the frame carrying `jump_start`
 (`jump-arc.md`). Let **A**, the **approach frame**, be the first frame
@@ -678,6 +683,24 @@ and 4 819 of 4 821 in the second, and so did the choice between a slide
 and a plain landing. The four others fell into the drop, below the
 floor. The push rule matched on every frame of the runs that wasn't
 part of a roll, or a jump's press frame or T: 589 883 frames.
+
+Landings after a bounce were measured separately, in the first level
+with the lead alone and the walkers in place: one face falling to the
+left, 28 px high (7 columns), with gently sloping floor below it and
+flat floor at its top, and a walker to bounce off on each side of it.
+Random inputs (Left, Right and Jump, and Action in some runs), started
+at different frames before and during the bounces:
+
+- 3 200 runs used to find the rule: 2 185 landings after a bounce, 878
+  of them followed onto or near the face (253 on a face column on L),
+  14 106 frames checked after them;
+- 1 000 further runs with new seeds and start frames: 651 landings, 319
+  near the face (70 on a face column on L), 4 630 frames checked.
+
+`x`, `y`, `vx` and `ground` matched M = L on every checked frame.
+M = L + 1 would have given 253 and 70 different frames, M = L + 2 749
+in the first set, and the rule "After a jump" counted from the bounce
+frame 584.
 
 ## Jumping on or next to a face
 
@@ -1107,10 +1130,12 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
   drop 8 px or more (falls of 3, 4 and 7 px were measured on T). The
   uphill exception in "When the jump takes off" was measured on one face
   (falling to the left, 16 presses).
-- Landings on or next to a face after anything other than a jump or a
-  fall from a face (bounces, falls from ledges without a face, jumps
+- Landings on or next to a face after anything other than a jump, a
+  bounce or a fall from a face (falls from ledges without a face, jumps
   that start in the air; rolls only as in "Rolling on, onto or into a
-  face"), and jumps that take off from a face.
+  face"), and jumps that take off from a face. Landings after a bounce
+  were measured on one face falling to the left, with the lead alone,
+  and none of them after bouncing again before landing.
   Contact with faces and walls while airborne is in `air-walls.md`,
   except falls into pits that carry the player below the floor of the
   column they are in.
