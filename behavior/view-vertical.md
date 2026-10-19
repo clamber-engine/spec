@@ -559,4 +559,5 @@ This list is for `title-1`; `title-2` has its own list above.
   affects the shake. In one run that started next to an object, the
   shake started on P + 36 and started again 24 frames later, and the
   view moved an extra 2/256 px per frame from P to P + 32.
-- Layers that move at other rates than the ground.
+- Layers that move at other rates than the ground, other than the first
+  level's (`../formats/graphics.md`, "The layers").

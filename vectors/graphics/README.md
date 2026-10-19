@@ -82,3 +82,35 @@ the entry's palette row, then the palette set's row and colour the
 pixel takes (4 × palette row + colour number, counted through the set)
 and that colour in hex, or `-`, `-` and `transparent`. The first 176
 rows cover entries 0 to 10 along pixel rows 0 and 5.
+
+## Background layers of the first level (far layer, backdrop, horizon)
+
+For `../../formats/graphics.md`, "The layers". Made with the palette set
+of `palette.hex`.
+
+- `far-place.tsv`: for left edges `E`, top rows `T` and picture pixels
+  (`i`, `j`), the far picture pixel shown ("Where the far layer is").
+- `far-colours.tsv`: palette colours in hex with their red, green and
+  blue values, and the colour the far layer shows instead ("The far
+  layer's colours"): ten chosen colours, then colours 16 to 127 of
+  `palette.hex` (bit 15 cleared).
+- `rows.hex`: two row-colour lists, each followed by `5a 5a` (not part
+  of the list): first a backdrop list (colour number 0; row counts 1, 3,
+  127, 1 and 2), then a horizon list (colour number 1; row counts 68, 1,
+  5 and 24). One entry per line; the line with `00` holds the end byte.
+  `rows.tsv`: for picture rows 0 to 223, the backdrop's colour on the
+  pictures after even frames and after odd frames ("The backdrop"), and
+  the horizon layer's colour for colour number 1.
+- `horizon.hex`: a horizon block: the horizon map (6 lines of 64 bytes,
+  one square row per line) and then six two-plane tiles (one per line).
+  Tile 0 is all 0, tile 1 all colour 1, tile 2 all 2, tile 3 all 3, tile
+  4 a diagonal of colour 1 from the top left and of colour 2 from the
+  top right, tile 5 random. Every entry is palette row 0 with no flip.
+- `horizon-shifts.tsv`: band shifts `s0` to `s3` for view values `E`
+  and `f` ("The horizon layer").
+- `horizon-pixels.tsv`: picture pixels for two views, one after an even
+  frame and one after an odd frame: the horizon picture pixel shown (or
+  `-` outside rows 64 to 111), its colour number, and the colour on
+  screen, using the lists of `rows.hex` and colours 2 and 3 of row 0 of
+  `palette.hex`; transparent horizon pixels and rows outside the horizon
+  show the backdrop.

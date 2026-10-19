@@ -32,8 +32,8 @@ The view has:
   kept to 1/256 px. The picture is drawn with its left edge at `V`
   rounded down to a whole pixel, kept within the level's left and right
   limits (`level-ends.md`, "The picture's left edge"). The ground layer
-  moves exactly with it. Background layers that move at other rates
-  aren't covered.
+  moves exactly with it. The first level's far layer and horizon layer
+  move at other rates (`../formats/graphics.md`, "The layers").
 - a **speed** `S` in px per frame, kept to 1/8192 px per frame.
 
 ## The target
@@ -481,6 +481,7 @@ This list is for `title-1`; `title-2` has its own list above.
   a pit. In all of these the target was seen to stop following the
   rule.
 - The second character leading (`swap.md`).
-- Layers that move at other rates than the ground.
+- Layers that move at other rates than the ground, other than the first
+  level's (`../formats/graphics.md`, "The layers").
 - Which frame's view the picture of a frame is drawn with, relative to
   the sprites drawn in it.

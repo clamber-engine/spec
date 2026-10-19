@@ -4,8 +4,8 @@ Titles: `title-1`
 
 How the first level's background pictures are stored, and how to turn
 them into images: colours and palette rows, tiles, packed tile data,
-tile entries, cell pictures, and the two background layers built from
-them, the one fixed picture of the first level's room, and the three
+tile entries, cell pictures, the first level's background layers and
+backdrop, the one fixed picture of the first level's room, and the three
 layers of the first level's scene (`../behavior/exits.md`, "Where the
 first level's exits lead"). The
 **grid**, its **cells**, **cell words** and **types** are as in
@@ -160,9 +160,10 @@ colour number 0.
 
 ## The layers
 
-The first level's background is two layers in front of a backdrop.
-Both are made from the grid picture, with the level's tile set and
-palette set.
+The first level's background is three layers in front of a backdrop.
+The ground layer and the far layer are made from the grid picture, with
+the level's tile set and palette set; the horizon layer has a map and
+tiles of its own ("The horizon layer").
 
 - The **ground layer** is the grid picture. It moves exactly with the
   view (`view.md`, `view-vertical.md`): grid picture column `c` is at
@@ -174,19 +175,153 @@ palette set.
   directions. In the first level it is the part of the grid picture
   made by the grid's last 16 columns and bands 0 to 7: far picture
   pixel (`x`, `y`) is grid picture pixel (32(`N` − 16) + `x`, `y`),
-  grid picture columns 5 376 to 5 887. How it moves with the view is
-  not covered. The first level's scene takes its far layer from another
+  grid picture columns 5 376 to 5 887. It moves at half the view's
+  speed across and a quarter of it up and down ("Where the far layer
+  is"), and is shown darker than its palette colours ("The far layer's
+  colours"). The first level's scene takes its far layer from another
   part of its grid ("The first level's scene").
+- The **horizon layer** is a strip 48 px tall that stays at the same
+  rows of the picture and moves across in four bands at four rates
+  ("The horizon layer").
+- The **backdrop** shows where no layer draws. Its colour changes from
+  one row of the picture to the next ("The backdrop").
+
+In this section, `E` is the level x of the picture's left edge and `T`
+the level y of its top row, both whole pixels, as the ground layer
+uses them: `E` is the view's position rounded down and kept within the
+level's limits (`view.md`, "The view's state") and `T` likewise
+(`view-vertical.md`). The view's position across is kept to 1/256 px;
+`f` (0 to 255) is its fraction of a pixel in 1/256 px. A picture is
+the one shown after a frame's step, with that frame's `E`, `T` and
+`f`. Picture pixel (`i`, `j`) is column `i` (0 to 255, from the left)
+and row `j` (0 to 223, from the top).
+
+### Where the far layer is
+
+Picture pixel (`i`, `j`) shows far picture pixel
+
+  ((⌊`E` / 2⌋ + `i`) mod 512, (⌊`T` / 4⌋ + 1 + `j`) mod 256).
+
+So when the view moves 2 px across, the far layer moves 1 px, and when
+it moves 4 px up or down, the far layer moves 1 px.
+
+### The far layer's colours
+
+The far layer is never shown in its palette colours. A far-layer pixel
+whose palette colour has red, green and blue values `r`, `g`, `b` (0 to
+31, "Colours") is shown with the values
+
+  ⌊max(0, `r` − 4) / 2⌋, ⌊max(0, `g` − 4) / 2⌋, ⌊max(0, `b` − 4) / 2⌋.
+
+For example, a palette colour with values 31, 10, 3 is shown as 13, 3,
+0. Only the far layer is changed: the ground layer, the horizon layer
+and the backdrop are shown in their own colours.
+
+### Row-colour lists
+
+The backdrop's colours and one of the horizon layer's colours are given
+row by row by a **row-colour list**: entries of 5 bytes, then a byte 0.
+
+| Bytes | Meaning |
+|---|---|
+| 0 | A row count `n`, 1 to 127 |
+| 1, 2 | A colour number, the same in both bytes: 0 in the backdrop's list, 1 in the horizon layer's |
+| 3, 4 | A colour ("Colours") |
+
+A list ends at the first entry whose row count byte is 0; that byte is
+the whole of the last entry. The entries give the rows of the picture
+from row 0 down: the first entry covers its `n` rows, the next entry
+the `n` rows after those, and so on. Rows below the last entry keep the
+last entry's colour. In the first level both lists use only row counts
+of at most 127, so bit 7 of a row count is never set; what it would do
+is not covered.
+
+For example, the list `02 00 00 1f 00`, `01 00 00 e0 03`, `03 00 00 00
+7c`, `00` gives rows 0 and 1 colour 0x001F (red), row 2 0x03E0 (green),
+rows 3 to 5 and every row below them 0x7C00 (blue).
+
+### The backdrop
+
+The backdrop's colour on picture row `j` is the colour the backdrop's
+row-colour list gives row `j`, with one change that alternates from
+frame to frame: on the pictures after the level's frames 0, 2, 4, …
+(even frames) the list's first entry covers its own row count, and on
+the pictures after odd frames it covers one row more, so the whole list
+is one row lower. The rows don't depend on the view: the backdrop
+stays at the same rows of the picture whatever `T` is.
+
+The first level's backdrop list covers 113 rows; its first entry covers
+one row, and its last entry (black) also fills every row below the
+list.
+
+### The horizon layer
+
+The **horizon block** is stored as:
+
+- a **horizon map**: 6 rows of 32 tile entries ("Tile entries"), 384
+  bytes, stored a row at a time, top row first, and left to right in
+  each row: the entry for square column `sx` (0 to 31) and square row
+  `sy` (0 to 5) is bytes 64`sy` + 2`sx` and 64`sy` + 2`sx` + 1;
+- right after the map, the **horizon tiles**: two-plane tiles
+  ("Tiles"), stored as they are, not packed, tile 0 first.
+
+The first level's horizon map uses tiles 0 to 18, palette row 0 only,
+and no entry is raised or flipped. Tile 0 is all colour 0.
+
+The **horizon picture** is 256 × 48 px: the entry for (`sx`, `sy`)
+covers its pixel columns 8`sx` to 8`sx` + 7 and rows 8`sy` to 8`sy` + 7.
+Its colours are those of two-plane tiles ("Colours of two-plane tiles")
+except colour number 1 of an entry with palette row 0, which comes from
+the horizon layer's row-colour list ("Row-colour lists") by picture
+row. So in the first level, a horizon pixel with colour number 1 on
+picture row `j` has the colour the list gives row `j`; colour numbers 2
+and 3 are colours 2 and 3 of the palette set's row 0; colour number 0
+is transparent. Unlike the backdrop's list, this list never moves by a
+row. The first level's horizon list covers 98 rows, its first entry 68
+of them; rows below it keep its last colour.
+
+The horizon picture is at picture rows 64 to 111 whatever the view
+does: picture row `j` shows horizon picture row `j` − 64. Across, it
+repeats every 256 px and is split into four **bands** of picture rows,
+each with its own shift `s`:
+
+| Band `k` | Picture rows | Moves at, of the view's speed |
+|---|---|---|
+| 0 | 64 to 71 | 1/8 |
+| 1 | 72 to 79 | 3/16 |
+| 2 | 80 to 87 | 1/4 |
+| 3 | 88 to 111 | 5/16 |
+
+Picture pixel (`i`, `j`) in band `k` shows horizon picture pixel
+((`i` + `s`ₖ) mod 256, `j` − 64), with
+
+  `s`ₖ = ⌊(`k` + 2) × `E` / 16 + ⌊`f` / 8⌋ / 256⌋ mod 32.
+
+The first level's horizon picture repeats every 32 px across (its map's
+square column `sx` holds the same entry as `sx` + 4), so shifts that
+differ by a multiple of 32 give the same picture. For example, with
+`E` = 100 and `f` = 192 the shifts are ⌊12.5 + 24/256⌋ = 12, ⌊18.75 +
+0.09…⌋ = 18, ⌊25.09…⌋ = 25 and ⌊31.34…⌋ = 31.
+
+On some pictures the lowest bands already show the shifts of the next
+frame's `E` and `f`: band 3 alone, bands 2 and 3, or bands 1 to 3. In
+a run of 2 708 pictures this happened on 268 of them (196, 57 and 15
+times). Which pictures do it is not covered; the rule above, with the
+frame's own `E` and `f`, gives every other picture exactly.
+
+Synthetic vectors for this section: `../vectors/graphics/` ("Background
+layers of the first level").
 
 ## Drawing order
 
 From the back:
 
-1. the backdrop (not covered),
-2. the far layer's tiles whose entry is not raised,
-3. the ground layer's tiles that are not raised,
-4. the far layer's raised tiles,
-5. the ground layer's raised tiles.
+1. the backdrop ("The backdrop"),
+2. the horizon layer ("The horizon layer"),
+3. the far layer's tiles whose entry is not raised,
+4. the ground layer's tiles that are not raised,
+5. the far layer's raised tiles,
+6. the ground layer's raised tiles.
 
 Transparent pixels show what is behind them. Where characters and
 other moving things are drawn in this order is not covered. In the
@@ -238,7 +373,11 @@ starts in the image is in `locators.md` (the grid's row is listed under
 - one palette set of 8 rows; the layers only use rows 1 to 7 apart from
   type 0's empty picture,
 - the picture table (types 0 to 512),
-- the grid (its first 184 columns, `level-ground.md`).
+- the grid (its first 184 columns, `level-ground.md`),
+- the backdrop's row-colour list and the horizon layer's row-colour
+  list ("Row-colour lists"),
+- the horizon block: the horizon map and, right after it, the horizon
+  tiles (tiles 0 to 18 are used).
 
 No tile changed while the first level was played: none in 5 388 frames
 of play from eight places in the level. Changes came only with the
@@ -355,7 +494,8 @@ from a raised entry. Where characters and other moving things are drawn
 in this order is not covered, as in "Drawing order".
 
 On screen, every layer shows the palette set's own colours (the first
-level's far layer, by contrast, was shown darker; see "Not covered").
+level's far layer, by contrast, is shown darker: "The far layer's
+colours").
 
 ## Example (synthetic)
 
@@ -402,6 +542,20 @@ More cases, as bytes, are in `../vectors/graphics/`.
   gave the game's own picture of that layer with no pixel different, at
   six of those positions (256 × 224 px each), always with the one-row
   shift given in "The layers".
+- The first level's backdrop, far layer and horizon layer, in three runs
+  from the level's start: about 450, 670 and 2 710 frames (waiting and
+  walking right, jumps, and a run to the level's right end), every
+  picture after frame 45, 3 830 pictures in all, up to the start of the
+  dimming. Shown together, with the ground layer, characters and objects
+  not drawn, every pixel was as given in "The layers" (by "Where the
+  far layer is", "The far layer's colours", "The backdrop", "The
+  horizon layer" and "Drawing order"), except on the horizon rows of
+  the pictures that showed the next frame's horizon shifts (332 of the
+  3 830; with those shifts, no pixel was different). In the first run
+  each of the three was also shown alone, on 456 pictures each: no
+  pixel was different on the backdrop and the far layer, and the
+  horizon layer differed only on those same pictures. The views of
+  those runs covered `E` from 0 to 4 722 and `T` from 0 to 264.
 - The first level's room, entered by the upper exit with the lead alone
   and with two characters: 6 runs of 600 logic frames with made-up input
   (walking, running, jumping and rolling, three runs each way),
@@ -456,11 +610,15 @@ More cases, as bytes, are in `../vectors/graphics/`.
 - Where other levels' packed tile data, palette sets and picture
   tables start in an image, and which areas other than the first
   level's room have a screen picture.
-- How the far layer moves with the view, including different rates for
-  different rows of the picture.
-- Colours on screen that are not the palette colours: the far layer
-  was shown darker than its palette colours, and the backdrop is a
-  colour that changes from row to row of the picture.
+- How the far layer and the horizon layer move in areas other than the
+  first level.
+- In the first level: the colours of the backdrop and the horizon
+  layer during the dimming (`../behavior/dimming.md`); the picture while
+  the level fades in at its start (the pictures after frames 0 to 44); which
+  pictures show the next frame's horizon shifts ("The horizon layer");
+  `f` while the view's position is outside the level's limits; and
+  whether the backdrop's frame-to-frame alternation keeps the same
+  order after a knock-out or another area.
 - The layer that shows counters and other information.
 - Characters, walkers, objects and other moving things (their tiles,
   palette rows and order against the layers).

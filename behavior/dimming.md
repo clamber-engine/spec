@@ -135,8 +135,9 @@ that step's colours.
 
 - Sprite colours. They change too during the dimming, on frames of the
   same cycle, but not as the table says.
-- The backdrop and the far layer's darker colours
-  (`../formats/graphics.md`, "Not covered") during the dimming.
+- The backdrop's and the horizon layer's colours, and the far layer's
+  darker colours (`../formats/graphics.md`, "The layers"), during the
+  dimming.
 - What class 8 entries in other levels do, and what a class 8 entry's
   `h` and reference mean.
 - The view coming back into the window after the entry has left it.
