@@ -19,6 +19,9 @@ left–right when the player faces left, and facing follows the behavior
 files on every frame below. In the lists, "`stop` × 3" means `stop` on
 3 frames in a row.
 
+The colours each character's pictures are drawn with are in
+`../formats/sprites.md`, "The characters' palettes".
+
 | First character | Picture hash (SHA-256) |
 |---|---|
 | `roll-end` | `bfa91eacc23022b5cf106533b4a0aa3baebcb414263d38c2dc0c774d8e1d1171` |
@@ -304,4 +307,3 @@ steep face, picking something up):
 - The standing pictures after the first ones given above, walking,
   running and roll pictures, the pictures after B + 4 of a bounce, and
   the pictures of every other state.
-- Which sprite palette the player uses (`../formats/sprites.md`).

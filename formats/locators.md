@@ -35,6 +35,10 @@ SHA-256 of the image:
 | Level graphics: the first level's palette set | `graphics.md` | `f9` | `a1dc` |
 | Level graphics: the first level's picture table | `graphics.md` | `d9` | `a3c0` |
 | Sprite frames: the frame table | `sprites.md` | `fb` | `cc9c` |
+| Sprite palettes: the first character's leading palette | `sprites.md` | `fc` | `849a` |
+| Sprite palettes: the first character's following palette | `sprites.md` | `fc` | `84b8` |
+| Sprite palettes: the second character's leading palette | `sprites.md` | `fc` | `8422` |
+| Sprite palettes: the second character's following palette | `sprites.md` | `fc` | `8440` |
 | Placements: the first level's placement list | `placements.md` | `fd` | `95dc` |
 | Single collectibles: the first level's group list | `collectibles.md` | `f8` | `c2ed` |
 | Single collectibles: shape table | `collectibles.md` | `f8` | `d75d` |
