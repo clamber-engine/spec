@@ -39,7 +39,9 @@ the position is above the level's bottom edge `Yb`
 On the first level `Yb` is 512, the bottom of the grid
 (`level-ground.md`). For a walker, the level y is its feet line
 (`../behavior/view-vertical.md`): every walker seen appeared at its
-entry's `h` and walked off along the floor from there.
+entry's `h` and walked off along the floor from there, after first
+dropping onto the floor when `h` was above it
+(`../behavior/walker-view.md`, "A start above the floor").
 
 ## Storage
 

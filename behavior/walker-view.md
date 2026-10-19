@@ -48,8 +48,9 @@ right, that is the frame on which `S − V` first becomes 288 or less. While
 the view moves left, it is the frame on which `S − V` first becomes −31 or
 more.
 
-It appears at its start, on the floor there, at rest (`vx` = 0), with the
-heading it was placed with. It then speeds up and walks as in `walker.md`.
+It appears at its start, at rest (`vx` = 0), with the heading it was
+placed with. A start on the floor is the usual case; a start above the
+floor is in "A start above the floor" below. It then speeds up and walks as in `walker.md`.
 Some walkers take their first step on the frame they appear. Their `x` on
 that frame is already `S − 1/8` (or `S + 1/8` heading right), which is the
 first step of speeding up from rest. Other walkers stay at `S` on that
@@ -59,6 +60,68 @@ to how they are placed (the first step setting, `../formats/placements.md`,
 "Settings"). It doesn't follow from size or heading: both
 were seen among small walkers, and all three large walkers measured
 waited a frame.
+
+### A start above the floor
+
+A walker's start can be higher than the floor under it (its entry's
+height is more than the floor's there, `../formats/placements.md`,
+"Positions"). In the first level one walker starts 9 px above a 1-in-4
+slope. Such a walker appears at its start, in the air, and drops onto
+the floor while it walks:
+
+- **Across**, it moves exactly as it would on the floor: same heading,
+  same first step, same speeding up (`walker.md`).
+- **Down**, it has a falling speed, 0 on the frame it appears. On each
+  frame on which it steps across (from its first step on), the falling
+  speed first grows by **7/16 px per frame** (112/256), but never beyond
+  **8 px per frame**, and then the walker moves down by it.
+- **Landing**: if after that move its feet are **less than 5 px above**
+  the floor of the column containing its new `x`, or at or below that
+  floor, its `y` becomes that floor's `y` on that frame. From then on it
+  stays on the floor as in `walker.md`.
+
+So a start 5 px or less above the floor (in whole px) is on the floor
+after the walker's first step, and a higher start falls for a few frames.
+The 5 px limit lies between 4 15/16 px (landed) and 5 1/16 px (not
+landed); a walker exactly 5 px above the floor after a move wasn't seen.
+
+#### Example (synthetic)
+
+A walker with the first step setting `1` starts at `y` = 288 above flat
+floor at `y` = 300 (12 px up). Down-positive `y`, at the end of each
+frame:
+
+| Frame | Falling speed | `y` | Above the floor |
+|---|---|---|---|
+| 0 (appears) | 0 | 288 | 12 |
+| 1 | 0.4375 | 288.4375 | 11.5625 |
+| 2 | 0.875 | 289.3125 | 10.6875 |
+| 3 | 1.3125 | 290.625 | 9.375 |
+| 4 | 1.75 | 292.375 | 7.625 |
+| 5 | 2.1875 | 294.5625 | 5.4375 |
+| 6 | 2.625 | 300 (landed; the move gave 297.1875) | 0 |
+
+With the first step setting `0` the same rows come one frame earlier
+(the first step is on frame 0). A start 100 px up reaches the 8 px limit
+on its 19th step and lands on its 21st.
+
+#### How it was measured
+
+In copies of the image, the height of two of the first level's walker
+entries was raised:
+
+- a walker on flat floor with first step `0`: 0 to 40 px above the floor
+  in steps of 1 px, 41 to 131 px in steps of 2 px, and 227 px (88
+  starts);
+- the walker on the slope, with first step `1`, heading the way the
+  slope falls: 0 to 40 px above the floor in steps of 1 px (41 starts;
+  its own start is 9 px up).
+
+Each was followed for 40 frames from the frame it appeared, with the
+player standing away from it: its `x`, `vx` and `y` were as the rules
+above give on all 5 160 frames, and `x` and `vx` were the same as for a
+start on the floor. The walker's own start, met in a full run through
+the level, gave the same frames.
 
 ## Being removed
 
@@ -200,6 +263,10 @@ ahead of a view standing at 1500. Its start is far outside the window
   and groups are placed is in `../formats/placements.md`.
 - Walkers far above or below the view. Levels that scroll mostly
   vertically.
+- Walkers whose start is inside the ground, and walkers that touch the
+  player, are touched by an object or meet a wall while they drop after
+  a start above the floor (only drops onto flat floor and a 1-in-4 slope
+  with nothing near were measured).
 - A defeated walker above the picture, and `U` changing while a defeated
   walker falls: in every run measured the view's vertical position stayed
   the same while defeated walkers fell, so whether `U` is taken at the
