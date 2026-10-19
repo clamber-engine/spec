@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.191.0
+
+Rolling off a ledge with the second character leading (spec#17).
+
+Part of clamber-engine/spec#17 (level layout), which stays open for the
+parts not covered yet.
+
+- `behavior/rolling-off-ledges.md`, new section "The second character"
+  (`title-1`): on ledges with a steep face, a roll off the ledge with
+  the second character leading follows the file with that character's
+  roll values (24-frame roll; sizes 1.125, 3.375 and 4.5). A table
+  gives the values that differ from the first character: the hover
+  frames by L − S, the roll's last frame G + 24 (D = G + 25), and D = G
+  for a fall of exactly 25 frames. Each landing starts the count again
+  when the roll goes off another ledge below. After a stopped roll
+  pushes off at the top of a face, holding the roll's direction makes
+  the size 3, not 3.375. Includes two examples and evidence; Not
+  covered lists the second character's remaining gaps.
+- `behavior/second-character.md`: a pointer under "Rolls", and the Not
+  covered item about rolls off ledges narrowed.
+
 ## spec-v0.190.0
 
 Thrown objects pass through both characters (spec#19).
