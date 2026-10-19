@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.210.0
+
+The first character's pictures during a roll (spec#38, differential
+tests).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: new section "A roll" for the first
+  character: nine new picture hashes (`roll-1` to `roll-9`) and a
+  33-frame roll cycle through them, `roll-end` and `stop`, 3 frames
+  each; where the cycle starts over (on S at its second frame, at its
+  first frame for a 30-frame roll started on D + 17 of a stop, on the
+  first airborne frame of a roll off a ledge and on its landing); long
+  falls, stopped rolls, the hold during a walker defeat's pause, boosts,
+  and jumps out of a roll. Two synthetic examples, evidence and an
+  updated "Not covered". `behavior/roll-input.md` points to it.
+
 ## spec-v0.209.0
 
 Walkers walking off a ledge (spec#38, differential tests).
