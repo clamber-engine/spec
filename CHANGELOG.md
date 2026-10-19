@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.211.0
+
+Steep faces: the push on a blocked frame (spec#38, differential tests).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/steep-faces.md`, "The push": on a blocked frame (blocked in
+  the air per `air-walls.md`, which can be the landing frame, or
+  stopped by a rise on the floor), the target counts as 0 in rule 3,
+  whatever is held. So a landing stopped against a face is carried down
+  from L + 1 even with the uphill direction held. New example "A
+  landing blocked against the face, uphill direction held" and new
+  evidence.
+
 ## spec-v0.210.0
 
 The first character's pictures during a roll (spec#38, differential
