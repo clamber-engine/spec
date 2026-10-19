@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.217.0
+
+The second character's jumps out of a roll pressed in the air (spec#38,
+pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`, "Second character": a jump out of a roll
+  pressed in the air, during the fall after rolling off a ledge, shows
+  the same pictures as other jumps, with T − 1 the press frame P (hover
+  frames included); the landing pictures and running from L are the
+  same. New evidence bullet from on-screen pictures; "Not covered"
+  narrowed.
+- `behavior/jump-input.md`, "The second character": M = L and
+  E = L + 2 also after these jumps. New evidence bullet.
+- `behavior/ground-speed.md`, "After a landing": the second character's
+  rule (running on L, otherwise the mode on L + 17) also after these
+  jumps; evidence updated.
+
 ## spec-v0.216.0
 
 The second character's landings after jumps, plain and out of a roll
