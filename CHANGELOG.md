@@ -2,6 +2,32 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.213.0
+
+Steep faces at a drop and the first character's jumps out of a roll
+(spec#38, differential tests and pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/steep-faces.md`: new rule for a face's lowest column when
+  there is no floor beyond it. The player is on that column only on the
+  frame that moves them into it; a frame that starts there and ends in
+  the same column is a leave frame L. The usual foot of a face is
+  unchanged. New measurements, a worked example and an updated "Not
+  covered" item.
+- `behavior/player-frames.md`: a jump out of a roll pressed on the
+  ground shows the same air, landing and standing pictures as any other
+  jump (first character). New evidence; "Not covered" narrowed to roll
+  jumps pressed in the air and the second character's.
+- `behavior/jump-input.md`: the switch frame M and E = M + 2 hold for
+  the first character's jumps out of a roll pressed on the ground; the
+  E = L + 3 exception now covers only the second character's roll jumps
+  and roll jumps pressed in the air.
+- `behavior/ground-speed.md`: after such a landing, running starts on M
+  or the mode on K as for other jumps; the tolerance paragraph now
+  covers only the remaining exceptions.
+
 ## spec-v0.212.0
 
 The first character's pictures after a bounce (spec#38, pictures).
