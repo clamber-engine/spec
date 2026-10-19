@@ -61,8 +61,12 @@ the speed for the frame is worked out (`ground-speed.md`, or the face
 rule below), the player is **blocked** if the move would take `x` into a
 different column that is either:
 
-- a face column of a face that rises in the direction of the move, or
-- beyond a vertical step up in the direction of the move.
+- a face column of a face that rises in the direction of the move,
+- beyond a vertical step up in the direction of the move, or
+- not a face column, with a floor **more than 8 px** higher than the
+  floor of the column the player was in, when the move passes over a
+  face column of a face that rises in the direction of the move ("Moving
+  past a face's top" below).
 
 A blocked frame:
 
@@ -85,6 +89,80 @@ Measured at walking and running speed, and at the low speeds of starting
 from rest, into faces rising to the right and to the left and into the
 vertical step going left; the speed and the fraction of `x` before the
 frame made no difference.
+
+### Moving past a face's top
+
+A move on the floor can pass over a face's highest columns in one frame
+and end in the column beyond them, which isn't a face column (on the
+faces measured, the floor at a face's top is 3 px above its highest
+column). Only the end column counts for the first case above, so such a
+move isn't blocked by it; the third case decides:
+
+- passing over **one** face column, onto floor **7 px** higher: not
+  blocked. The player follows the floor up ("Following a face down, or
+  leaving it": `y` becomes the new column's floor, `ground` stays 1).
+- passing over **two** face columns, onto floor **11 px** higher:
+  blocked, as on any blocked frame.
+
+Floor 9 or 10 px higher can't be reached this way on a face of 4 px per
+column and wasn't measured. A player is only moving up a face after a
+landing ("Landing on or next to a face"), so these moves happen on the
+frames after a landing on one of a face's highest columns, with the
+player still moving uphill fast enough to cross two or three columns in
+a frame.
+
+Measured on a face of 4 columns at the far side of a pit (no floor in
+front of its lowest column, flat floor 3 px above its highest), rising
+to the right, and on its mirror image rising to the left on the pit's
+near side: 3 388 runs of random inputs (directions, Jump, Action) that
+landed on or near one of the faces, 2 104 used to find the rule and
+1 284 with new seeds to test it. On the frames from L + 1 after those
+landings, checked as in "Evidence (landings)" below, 491 moves passed
+over one face column onto floor 7 px higher (463 going right, 28 going
+left) and all followed it; 15 passed over two onto floor 11 px higher
+(11 going right, 4 going left) and all were blocked. All 23 510 checked
+frames (14 800 and 8 710 in the two sets) matched the rules of this page
+with the third case; with the first case alone, exactly those 15
+blocked frames came out wrong. The landing runs of "Evidence (landings)"
+agree: 27 moves over one face column onto floor 7 px higher followed,
+and the 2 over two face columns onto floor 11 px higher were blocked.
+Rolls are blocked by the same rule ("Blocked" under "Rolling on, onto or
+into a face").
+
+Example, relative positions: columns 0 to 3 are a face rising to the
+right with floors at `y` = 15, 11, 7 and 3, there is no floor left of
+column 0, and the floor is at `y` = 0 from column 4 on. Frame numbers
+count from the landing frame L of a jump. "Column floor" is the floor of
+the column containing `x` at the end of the frame.
+
+**Over one face column, followed.** A jump over the pit, Right held:
+
+| Frame | Held | `x` | Column floor | `y` | `vx` (1/256) | `ground` |
+|---|---|---|---|---|---|---|
+| −2 | R | −1.44140625 | – | −5.6875 | 512 | 0 |
+| −1 | R | 0.55859375 | 15 | 0.4375 | 512 | 0 |
+| 0 = L | R | 2.55859375 | 7 | 7 | 512 | 1 |
+| 1 | R | 4.30859375 | 0 | 0 | 448 | 1 |
+| 2 | R | 6.08984375 | 0 | 0 | 456 | 1 |
+
+On frame 1 the player starts on face column 2 with Right held uphill, so
+the target is 0 and `vx` goes from 512 to 448; `x` moves 1.75 px, over
+face column 3, into column 4, and the player steps up 7 px.
+
+**Over two face columns, blocked.** A running jump over the pit:
+
+| Frame | Held | `x` | Column floor | `y` | `vx` (1/256) | `ground` |
+|---|---|---|---|---|---|---|
+| −2 | R A | −3.66015625 | – | 0 | 757 | 0 |
+| −1 | R A | −0.69921875 | – | 7 | 758 | 0 |
+| 0 = L | A | 1.89453125 | 11 | 11 | 664 | 1 |
+| 1 | A | 1 | 11 | 11 | 0 | 1 |
+| 2 | A | 0.8125 | 15 | 15 | −48 | 1 |
+
+On frame 1 `vx` would be 581, taking `x` to 4.1640625: over face columns
+2 and 3 into column 4, 11 px higher, so the frame is blocked. It ends on
+a face column with `vx` 0, so it is the switch frame M, and from frame 2
+the player is carried down the face.
 
 ## Can't start toward a rise
 
@@ -355,7 +433,9 @@ the column before the frame:
   frame, `vy` in a trace is 0. A new column 1 px higher (as at the end
   of a face, or on a gentle slope) is followed the same way, and so is a
   column 4 or 8 px higher that isn't a face column (measured on a
-  platform's top, `platforms-from-below.md`). Other higher floor ahead
+  platform's top, `platforms-from-below.md`), and the floor 7 px higher
+  beyond a face's top reached past one face column ("Moving past a
+  face's top"). Other higher floor ahead
   is blocked (above), makes the player fall through the floor (a
   platform's top more than 8 px up, `platforms-from-below.md`), or is
   not covered.
@@ -669,8 +749,9 @@ before the 64 px face:
   checked, 1 582 from L + 1 to M.
 
 `x`, `y`, `vx` and `ground` matched the rules on every checked frame
-except one in each set, both the case under "Not covered" of a move
-across two face columns. Applying the push and "Can't start toward a
+except one in each set, both a move across two face columns onto the
+floor 11 px higher beyond the face's top; the third case of "Stopped by
+a rise" gives both. Applying the push and "Can't start toward a
 rise" from L + 1 instead would have given 609 and 622 different frames.
 The approach frame was also checked directly against the player's pose,
 which changes on A: it matched in 4 952 of 4 954 jumps in the first set
@@ -1114,11 +1195,9 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
   Contact with faces and walls while airborne is in `air-walls.md`,
   except falls into pits that carry the player below the floor of the
   column they are in.
-- A move on the floor that crosses two face columns of a rising face in
-  one frame and would end on floor beyond them that isn't a face column:
-  the player was blocked in both cases seen, which "Stopped by a rise"
-  as written doesn't give. (For rolls the rule in "Blocked" under
-  "Rolling on, onto or into a face" gives it.)
+- Moves past a face column of a rising face into a column that isn't a
+  face column with floor 9 or 10 px higher, or onto floor beyond a face
+  whose top joins it by a step other than 3 px.
 - Which of standing, walking, running or a turn starts after a landing
   on or next to a face (`ground-speed.md`, "After a landing"): the
   landing checks above took the target speed from the game and tested
