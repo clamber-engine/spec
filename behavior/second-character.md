@@ -191,6 +191,9 @@ match the rules below, and every start and end frame matches.
 | Down makes no difference, roll carrying on | S + 1 to D + 3 | **S + 1 to D + 6** |
 | Down held on the press frame | the ground action | a roll (`roll-input.md`) |
 
+Rolling off a ledge with a steep face: `rolling-off-ledges.md`, "The
+second character".
+
 In detail:
 
 - **Length.** A roll that starts on D + 17 of the previous roll lasts 25
@@ -394,7 +397,8 @@ running speeds), all 3,312 cases mismatch; with the normal gravity in place of 0
 
 ## Not covered
 
-- Rolls on slopes (other than Down held during them), off ledges, into
+- Rolls on slopes (other than Down held during them), off ledges other
+  than those in `rolling-off-ledges.md` ("The second character"), into
   walls or enemies; steering during
   D to D + 6 of a carry-on with a changed input; running frames during
   the stop; presses in the air for other jump heights. This character
