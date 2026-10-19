@@ -95,6 +95,7 @@ player's state (ends included).
 | Rolling | −13 to 21 | −4 to 38 |
 | Jumping, from the take-off frame `T` to `T` + 5 | −15 to 21 | −8 to 40 |
 | Jumping, from `T` + 6 on | −15 to 18 | 13 to 57 |
+| Carrying an object, from the pick-up to the end of a throw or a put-down | −14 to 16 | −8 to 40 |
 
 `T` is the frame carrying `jump_start` (`jump-arc.md`). For the first six
 frames of a jump, starting with `T`, the ranges are the standing ones.
@@ -241,6 +242,42 @@ given the wrong frame in 4 468 of them; the standing row, in 2 987.
 Bounces from a roll, bouncing again before landing, and landing on a
 slope after a bounce were not measured.
 
+**Carrying an object.** While the player carries an object
+(`carrying.md`), the carrying row applies on every frame, whatever the
+player does: during the 15 frames of a pick-up, standing, walking and
+turning with the object, and on every frame of a jump with it, from the
+take-off to the landing and on the frames after the landing. Unlike a
+jump without an object, there is no switch at `T` + 6. Let `Q` be the
+frame on which Action is let go (`carrying.md`, "Throwing"). In a throw,
+the carrying row applies on every frame from `Q` to `Q` + 42, on the
+ground and in the air, also after the object has left the hands on `Q` +
+21; the standing row applies from `Q` + 43. In a put-down, the carrying
+row applies from `Q` to `Q` + 12 and the standing row from `Q` + 13, the
+frame the object is set down (`carrying.md`, "Putting down"). During a
+turn with the object, `I` is measured in the old facing from the turn's
+first frame to its fourth and in the new facing after that, as in
+"Turning". The carrying row holds for both facings, like the others.
+
+This was measured on flat ground with the bunch moved to every offset
+one pixel apart around the player (`I` −29 to 31 facing right, −31 to 29
+facing left, `D` −30 to 80) on every frame of eleven sequences: standing,
+walking, turning and walking on, jumps in place (Jump held and released
+early), while walking and turning in the air, throws standing, walking
+and in the air, and a put-down followed by a new pick-up (501 frames,
+3 392 271 placements). Every frame had exactly the carrying or the
+standing ranges as above. Separately, in 17 199 runs of play by inputs
+while carrying (random directions, jumps, throws, put-downs and new
+pick-ups), with the bunch placed once beforehand near the edge of the
+carrying or the standing row, 12 530 pickups came on carrying frames
+(6 085 in the air, 2 898 during throws, 913 during turns, 186 during
+put-downs, 18 during pick-ups), and every run took the bunch on the
+frame these rules give. Using the standing row on carrying frames
+would have given the wrong frame in 4 787 of them; the jump row from
+the sixth frame in the air, in 3 302. In all of these, a thrown object
+was taken out of play once it had left the hands, so that its landing
+could not affect the player. Picking up in the air, and carrying on
+slopes, were not measured.
+
 ### Two characters
 
 With two characters there (`second-character.md`), one leads and the
@@ -337,9 +374,10 @@ is taken.
   in the states listed in the next item.
 - The ranges while being carried down a steep slope or a rounded ledge
   (`steep-faces.md`), while passing through a platform
-  (`platforms-from-below.md`), while carrying an object (`carrying.md`),
-  and while being hit; the stop after a roll on a slope; walking off a
-  ledge with a steep face.
+  (`platforms-from-below.md`), while carrying an object on a slope or
+  after picking it up in the air (`carrying.md`), and while being hit;
+  the stop after a roll on a slope; walking off a ledge with a steep
+  face.
 - Landing on slopes, and a landing followed at once by a crouch, a
   roll, a turn or another jump.
 - Bounces from a roll, bouncing again before landing, landing on a
