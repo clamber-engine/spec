@@ -806,7 +806,8 @@ This list is for `title-1`; `title-2` has its own list above.
 - Walkers that are frozen, and the vertical reach of walkers that aren't at full speed (measured
   only with the player on the walker's floor or just above it). Walkers
   already bounced on don't touch the player (`walker.md`, "Being bounced
-  on").
+  on"), and neither do walkers knocked out by the ground action
+  (`ground-action-enemies.md`, "The walker").
 - Contact after a bounce, or being knocked back; a crouching player on
   a slope or with the walker on another floor. Carrying: a pick-up in
   the air (only pick-ups on the ground were measured), with the walker on

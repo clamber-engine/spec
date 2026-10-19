@@ -99,7 +99,8 @@ the window again.
 ## Defeated walkers falling out
 
 A defeated walker falls through the floor (`walker.md`, "Being bounced
-on"; `rolling-into-walkers.md`; `thrown-objects.md`, "The walker") and is
+on"; `rolling-into-walkers.md`; `thrown-objects.md`, "The walker";
+`ground-action-enemies.md`, "The walker") and is
 removed when its own position leaves the window. Where its start is
 doesn't matter.
 
@@ -123,6 +124,7 @@ The first falling frame is:
 |---|---|---|
 | a bounce (`walker.md`) or a roll (`rolling-into-walkers.md`), defeat frame B | B, B + 1, B + 2 | B + 3 |
 | a thrown object (`thrown-objects.md`), hit frame K | K, K + 1 | K + 2 |
+| the ground action (`ground-action-enemies.md`), knock-out frame K | K, K + 1, K + 2 | K + 3 |
 
 On the frames before, the walker stayed even when it was far outside
 the window: with `X` − `V` of −200 and 300 on B + 1 and B + 2, and with

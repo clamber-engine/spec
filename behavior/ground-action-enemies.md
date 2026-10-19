@@ -163,8 +163,17 @@ later pause frame:
 - from K + 3, on each frame that isn't a pause frame, its `vy` increases
   by 7/16, up to 8, and it moves by its `vy` and by the `vx` it had on K.
 
-It doesn't land and is removed once out of view. In the runs measured it
-last moved between K + 34 and K + 41; when it is removed isn't specified.
+It doesn't land: it falls through the floor and is removed when it
+leaves the window, as in `walker-view.md`, "Defeated walkers falling
+out", with the first falling frame K + 3. It is there on K, K + 1 and
+K + 2 wherever it is. From K + 3 it is removed on the first frame on
+which, after that frame's move, it is outside the window. On flat floor
+with the view standing still, a small walker is there for the last time
+on K + 41, 95 px below the floor it walked on.
+
+From K on, a knocked-out walker doesn't touch the player. It never hurts
+the player, the player never bounces on it, and rolling into it does
+nothing, on any frame and in any pose, even while it overlaps the player.
 
 ## The thrower
 
@@ -267,6 +276,29 @@ Without the walker, the action would have ended with E on frame 59.
   the walker first, 612 with the hidden object first). Every checked
   placement matched the rules of "Two things in reach", the knock-out
   frames, the pause frames and E, with 0 mismatches.
+- **Knocked-out walkers.** A small walker knocked out after the press
+  on 8 different frames, and a large walker after 12. From every frame
+  K + 1 to K + 41, with 3 input sequences (walking, running, rolling,
+  jumping, nothing held), the knocked-out walker was put on the player
+  before every frame so that it ended each frame on the player's
+  position: 2 460 runs and 51 660 frames, the walker there on 51 633 of
+  them (within 1 px across and 8 px up or down on 42 161), with the
+  player on the ground on 25 433 frames (rolling on 28) and in the air
+  on 26 200. On every frame the player's state, position and speeds were
+  the same as with the walker left where it was. As a control, a walking walker was
+  put on the player in the same way from the same frames, with the
+  same inputs, in runs without the action. It hurt the player on the
+  next frame in 1 980 runs, and it was rolled into on the first frame
+  in 420. The other 60 runs had only one frame.
+- **Removal.** 56 knock-outs by inputs alone (32 small, 24 large walkers;
+  2 198 falling frames), all removed at the bottom edge on the frame the
+  rule gives. A small walker on flat floor was there for the last
+  time on K + 41 in all 32. Controlled: the walker put at chosen places
+  at the end of K to K + 3, K + 10, K + 20 and K + 30, with `X` − `V`
+  (as in `walker-view.md`) from −200 to 300 and in 1 px steps across the
+  side edges, and `y` in 1/16 px steps across the bottom edge, small and
+  large: 855 frames, 0 mismatches. Put outside the window at the end of
+  K, K + 1 or K + 2, it was still there on K + 2 and was removed on K + 3.
 - **The thrower:** 28 placements on its ledge, one pixel apart (15
   knock-outs, 13 hurts before the action).
 
@@ -280,8 +312,9 @@ Without the walker, the action would have ended with E on frame 59.
   different floor from the player, and the action on slopes or at a
   ledge (`ground-action.md`).
 - Inputs on the pause frames (a Jump press, for example).
-- Whether a knocked-out walker can hurt the player while it falls, and
-  when it is removed.
+- Knocked-out walkers on later pause frames (another knock-out during
+  their fall): whether they can be removed then. None happened in the
+  runs measured. Knocked-out walkers and the second character.
 - The thrower: other offsets, the player facing away, whether it can be
   knocked out from below its ledge, what happens to its throws, and
   balls (`thrower.md`).
