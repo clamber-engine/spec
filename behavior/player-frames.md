@@ -196,9 +196,12 @@ The colours each character's pictures are drawn with are in
 file (`../formats/sprites.md`, "Picture hashes"). The pictures of one
 character in one of the sections below ("The stop after a roll", "A jump
 and its landing", "A bounce", "Walking, running and
-turning", "A roll", and the first standing pictures) belong together: if any of their hashes isn't found, the
+turning", "A roll", and "Standing still") belong together: if any of their hashes isn't found, the
 engine shows its own art for that state on those frames, keeping the
-timing given here. A character missing every hash shows the engine's own
+timing given here. The standing pictures form one group: `stand-1` to
+`stand-11` and `wait-1` to `wait-34` fall back together, whether a
+standing frame comes right after walking, a landing, a bounce or a
+roll's stop, or later in the "Standing still" list. A character missing every hash shows the engine's own
 art throughout.
 
 These pictures don't depend on speed, on how high the jump was, or on
