@@ -1,0 +1,18 @@
+# clamber-scenario v1
+id: exit-walk-out
+summary: After the entrance, walk left towards an exit, turn right just inside its reach and let go, so the exit takes over a lead facing right; then press Jump, Action and Right during the walk-out, which change nothing.
+requires: the first level begun from the level map, with its entrance at the start point (behavior/level-start.md); flat floor 185 px below the start point, from 90 px to 360 px right of it, with nothing above it in that span up to the start point's height; an exit (behavior/exits.md) leading left at 60 px right of the start point and 185 px below it, on that floor; no walls or other ground along the throw's path; no entities other than the entrance and the exit within 120 px of the player at any time
+start: the level's first frame (behavior/level-start.md), one character, nothing held before frame 0
+frames: 199
+
+[inputs]
+120-143  L
+144-146  R
+158-163  J
+170-185  A
+175-190  R
+
+[metrics]
+final_x          tol 1
+final_y          tol 0.5
+curve x,y,vx from land for 92 tol 0.25

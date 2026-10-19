@@ -153,6 +153,13 @@ was from `T` + 4 to `T` + 21, mostly `T` + 16 to `T` + 18.
   area behind the first wall exit" or of "The area behind the second
   wall exit".
 
+## In a trace
+
+As in `exits.md` ("In a trace"), with the directions turned around:
+from `T` + 1 up to and including `F` + 30, state `walk`, `ground` 1,
+`vy` 0 and `vx` 2, whatever is held, and no events other than `turn`
+(on `T` + 6 for a lead facing left on `T`).
+
 ## The area behind the first wall exit
 
 The first level's first wall exit (the one further left) leads to an
