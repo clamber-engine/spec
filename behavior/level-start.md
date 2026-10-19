@@ -62,11 +62,7 @@ entrance burst on frame **41**, also with the start record moved.
 From T to T + 38 every input is ignored: `vx` stays 2.375 and nothing
 held (directions, Jump, Action, Down) changes the motion. The lead faces
 right from frame 0 up to and including the landing frame, whatever is
-held. From the frame after the landing, the player is on the ground and
-the usual rules apply (`ground-speed.md`, `jump-input.md`): for example,
-Left held through the throw started a turn on the frame after the
-landing, and Jump held from the landing frame started a jump on the
-frame after it.
+held. What the landing frame starts is in "The landing" below.
 
 On frame T + `n`, relative to the start point, for `n` from 0 to 14:
 
@@ -93,6 +89,49 @@ This is the rule of `air-control.md` with 32 in place of 8, so the speed
 changes four times more slowly than in a jump. With nothing held, the
 speed goes from 2.375 (608/256) to 589/256 on T + 39, then 571/256 on
 T + 40.
+
+### The landing
+
+Call **L** the landing frame (the frame carrying `land`). The landing at
+the end of the throw works like a landing after a bounce off a walker.
+It has no landing frames, and the rules for that case apply with L as
+their landing frame: `ground-speed.md` ("After a fall or a bounce",
+"After a bounce") and `jump-input.md` ("After a bounce"). In short:
+
+- **A mode starts on L itself**, set by what is held on L:
+  - Action and either direction: running at step 1, facing still right,
+    even with Left held;
+  - otherwise Left: a turn starts on L, so facing changes to left on
+    L + 4;
+  - Right: walking at step 1;
+  - nothing: standing.
+
+  From L + 1 the usual rules apply.
+- **Jump** (E = L + 2): a press on L − 10 to L + 1 that is held on
+  every frame up to L + 1 starts a jump on L + 2. A press on L + 2 or
+  later starts a jump on the frame after the press. Nothing else starts
+  one: not a press on L − 11 or earlier, not Jump held without a break
+  since before then (for example since the throw), and not a press
+  released on L or earlier.
+- **Action**: a press on L that is still held on L + 1 starts a roll on
+  L + 1. A press in the air isn't remembered, even if it is held through
+  L: with a direction held it only starts the run on L. A press on
+  L + 1 or later starts a roll on that frame, as on the ground
+  (`roll-input.md`).
+
+Examples, on flat floor with nothing else held:
+
+| Held | What happens |
+|---|---|
+| Left from frame 30 to L + 2 | A turn starts on L. Facing is left from L + 4 |
+| Left on L only | The same: the turn goes on with nothing held |
+| Left on L + 1 only | A turn starts on L + 1. Facing is left from L + 5 |
+| Right with Action from frame 30 on | Running starts on L |
+| Jump from L − 10 to L + 1 | Jump starts on L + 2 |
+| Jump from L − 11 to L + 8 | No jump |
+| Jump on L only | No jump |
+| Jump on L + 1 only | Jump starts on L + 2 |
+| Action on L only | No roll. Standing starts on L |
 
 ### The second character
 
@@ -186,6 +225,28 @@ flat at level y 380. Nothing is held.
 On frame 95 the ground rules apply: with nothing held the speed becomes
 521 − 65 = 456/256 (`ground-speed.md`).
 
+## In a trace
+
+The trace follows the lead.
+
+- **Frames 0 to T − 1**: state `fall`, `ground` 0, `vx` 0, `vy` 0, `x`
+  and `y` those of frame 0, facing right, no events. The characters are
+  hidden and not on the ground; the vocabulary's `fall` covers being in
+  the air without having jumped.
+- **T up to L − 1**: state `fall`, `ground` 0, facing right, no events.
+  In particular there is no `bounce`: nothing is bounced off. `vx` and
+  `vy` are the speeds of "Frame by frame". On T they are already 2.375
+  and −2.375, though the lead only starts moving on T + 1.
+- **L**: event `land`, `ground` 1, `vy` 0. The state is the usual
+  ground state for the row's `vx` and input: `idle` if `vx` is 0,
+  otherwise `run` with Action held and `walk` without. A turn starting
+  on L doesn't add an event; the `turn` event comes on L + 4.
+- **From L + 1**: as anywhere else.
+
+The scenario `../scenarios/entrance-throw.scn` and its reference trace
+cover this. Left is held through the throw and the landing, so the turn
+starts on L. Then the lead walks right and jumps.
+
 ## Checks
 
 A model of the rules above, fed only the inputs of each run, gave the
@@ -203,6 +264,18 @@ Controls: starting the steering on T + 38 or on T + 40, using 16 instead
 of 32, or starting gravity on T + 14 each gave differences on 68 to 168
 frames of 4 runs.
 
+The landing ("The landing"): 80 runs with one character and random
+Left, Right, Jump and Action (Jump or Action, never both, in each run)
+held for 1 to 12 frames at a time from frame 85 to 130, and 28 runs with
+chosen inputs (the examples above and the edges of the Jump window). On
+L, 16 runs started standing, 29 walking, 14 running and 21 a turn. The
+first jump (40 runs) and the first roll (39 runs) up to L + 18 matched
+the rules above, with no differences. Two alternatives each failed: a
+mode starting on L + 1 would make every turn on L a frame late, and
+remembering a held Action press from the air (as after a jump,
+`roll-input.md`, "In the air") would have given 11 rolls that didn't
+happen.
+
 ## Not covered
 
 - Throws that land before T + 39, and entrances whose throw meets a wall
@@ -214,7 +287,7 @@ frames of 4 runs.
   placed objects are removed").
 - The flash and pieces of the burst: their motion and when they are
   removed.
-- What a trace shows on frames 0 to T − 1 and during the throw (states
-  and events).
+- The landing ("The landing") with two characters, and on floor that
+  isn't flat.
 - Inputs pressed before frame 0 (on the level map or while the level
   loads).

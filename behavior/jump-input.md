@@ -182,6 +182,11 @@ the ground again before jumping, were left out. Landings after a second bounce
 flat floor (take-offs from L + 2 to L + 39, or none by then), matched
 with 0 mismatches.
 
+The landing at the end of the entrance throw that begins a level
+follows the same rules, with E = L + 2 (`level-start.md`, "The
+landing"). There, Jump held without a break since before L − 10 starts
+no jump.
+
 ### Landings this doesn't cover
 
 For a landing after a jump that started from a roll, or after a fall

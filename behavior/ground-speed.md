@@ -355,6 +355,9 @@ above.
   - otherwise the opposite direction held: a turn starts on G;
   - forward held: walking at step 1;
   - no direction held: standing.
+- **After the entrance throw** (`level-start.md`, "The landing"): as
+  after a bounce, with the throw's landing frame as G. Facing is right
+  from the start of the throw to G.
 - **Rolling off a ledge**: the roll goes on through the fall and the
   landing (`rolling-off-ledges.md`, "When the roll ends"), and the mode
   after it is as in "After a roll" above, with that file's D.
