@@ -17,11 +17,14 @@ of the level fall (see "The ground used"), so level y is absolute, not
 relative.
 
 This was measured with the first character leading, alone, on the first
-level. It was measured at least 256 px from the level's left end, while
+level. It was measured while
 the player stood, walked, ran, turned, jumped, fell, rolled, used the
 Down + Action ground action, bounced off walkers, picked up and carried
 objects, and walked and fell off ledges onto lower ground. That came to
-279 runs, and 76 396 frames were checked against the rules below.
+279 runs, and 76 396 frames were checked against the rules below, at
+least 256 px from the level's left end. Near the left end and at the
+start of an area the rules were checked on the screen ("Near the left
+end", "When an area begins").
 
 ## The view's state
 
@@ -135,14 +138,21 @@ On each frame, after the player has moved:
    frame. If `D` is from 0 to 31 (the target is less than 1/8 px below
    `V`), `D` counts as 0. A small gap above `V` is not set to 0.
 4. `Q` ← `Q` + ⌊(`D` − `Q`) / `a`⌋.
-5. `V` ← `V` + ⌊`Q` / `b`⌋ / 256 px.
+5. The **step** is ⌊`Q` / `b`⌋ / 256 px, plus the shake's offset on a
+   shake frame ("The ground action's shake", "When an area begins").
+   A step of more than 8 px counts as 8 px, and one of less than −8 px
+   as −8 px. `V` ← `V` + step.
 
 All rounding is down (toward −∞).
 
 These steps matched `V` and `Q` on every checked frame except the shake
 frames (next section). The quick rates were in use on 1017 of them: 109
 with `P` ≥ 208, and 908 falling faster than 6 px per frame. The rule for
-small gaps made a difference on 838.
+small gaps made a difference on 838. The 8 px limit wasn't reached on
+those frames. In the runs of "When an area begins" these rules give a
+step of 8 px on 1 270 frames, all of them while the player is thrown
+out of the entrance; on 381 of them the limit also takes away a shake
+offset.
 
 Because of the rounding, the view doesn't always settle exactly on the
 target. For example, with `D` = 39 and `Q` = 24, `Q` stays 24 and `V`
@@ -152,7 +162,7 @@ doesn't move, 39/256 px above the target.
 
 During the first character's ground action (`ground-action.md`), the
 view shakes. On frame **H** and every 4th frame after it (H, H + 4, …,
-H + 84; 22 frames), an extra offset is added to `V`, after step 5:
+H + 84; 22 frames), an extra offset is added to the step, in step 5:
 
 | Frame | H | H + 4 | H + 8 | H + 12 | H + 16 | H + 20 | … | H + 80 | H + 84 |
 |---|---|---|---|---|---|---|---|---|---|
@@ -165,6 +175,21 @@ includes it, and the view eases back.
 H was 25 to 28 frames after the press frame P (13 runs). Which of these
 it is isn't specified. In those 13 runs all 22 offsets matched this
 pattern exactly.
+
+## Near the left end
+
+The rules above also hold within 256 px of the level's left end. In the
+runs of "When an area begins", 9 131 pictures with `x` below 256 on
+frames under the usual rules (standing, walking, running, turning and
+jumping in place near the left end after the level's start and after walking in, also
+with two characters) showed the ground layer where these rules put it.
+Next to the level's left wall, `ground` can read 1 in the air, as next
+to other walls (see "Not covered").
+
+During the walk-out after the player goes through an exit (`exits.md`,
+"The walk-out"), up to the frame before the view stops ("Leaving the
+area" there), `ground` is 1, as in a trace ("In a trace" there), so `G`
+= `F`. 574 walk-out pictures matched this.
 
 ## Frames on which the view stays still
 
@@ -183,6 +208,96 @@ one: the target, `V` and `Q` keep their values from the end of H − 1.
 It moves again from H + 10 (`view.md`, "Frames on which the view stays
 still", has the measurements; in 129 of those knock-outs the vertical
 motion would have moved on H without the hit).
+
+## When an area begins
+
+Frames here are numbered from the area's first logic frame, frame 0,
+as in `view.md` ("When an area begins"). `x` is the lead's `x`; with
+two characters nothing about the vertical motion changes. The limit
+entry in use is chosen from `x` as in "The level's limits"; a lead left
+of 0 (walking in from the left) uses the first entry.
+
+**Frame 0.** `T` = `F` − 160, then the limits apply as in "The level's
+limits". `V` is `T` + 1/2 px and `Q` = 0. The ground below plays no
+part. So a level that begins with the lead's feet line at 300, under
+an entry with top 0 and bottom 400, has `V` = 140.5 on frame 0, and one
+that begins with the feet line at 120 under the same entry has `V` =
+0.5.
+
+From frame 1 the view follows the rules above ("The target" and
+"Following the target"), except as given below.
+
+**The level's start** (`level-start.md`): the entrance bursts on frame
+41, the characters are thrown out on frame 51 (`T` there), and `G` is
+the landing frame.
+
+| Frames | The view |
+|---|---|
+| 1 to 56 | The target keeps its value from frame 0. The rest of "Following the target" is as usual. |
+| 57 to `G` (the fast frames of `view.md`) | The target is worked out as in case 1 of "The target" (`T` = `F` − 160, as with no ground), then the limits apply. The rates are `a` = 2, `b` = 4, whatever `P` and the limit entry are. |
+| `G` + 1 on | The usual rules. |
+
+The view also **shakes**, from two frames after the entrance bursts:
+on frame 43 and every 4th frame after it (43, 47, …, 135; 24 frames) an
+offset is added to the step, in step 5 of "Following the target":
+
+| Frame | 43 | 47 | 51 | 55 | 59 | 63 | … | 107 | 111 | 115 | 119 | 123 | 127 | 131 | 135 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Offset (px) | +5 | −5 | +2.5 | −2.5 | +1.25 | −1.25 | … | +5/256 | −5/256 | +3/256 | −3/256 | +2/256 | −2/256 | +1/256 | −1/256 |
+
+The size starts at 5 px and every 8 frames becomes half of what it was,
+rounded up to a whole number of 1/256 px: 1280, 640, 320, 160, 80, 40,
+20, 10, 5, 3, 2 and 1 in 1/256 px. The sign alternates, starting
+downward. Like the ground action's shake, it doesn't change `Q`. The
+frames are the same whatever the player does. In a level start without
+input the player lands on frame 107, so the last offsets, from frame
+111, fall on frames that follow the usual rules.
+
+This also applies when the first level begins again from the
+room-return record (`exits.md`).
+
+**Walking in** (`exits.md`, "Walking in"): on frames 1 to 26 the
+target, `V` and `Q` don't change. From frame 27 the usual rules apply.
+
+**Resuming at the restart point** (`restart-barrel.md`): on frames 1 to
+62, while the player is inside the barrel and as it bursts, the target
+keeps its value from frame 0; the rest of "Following the target" is as
+usual. From frame 63 the usual rules apply. The barrel's burst doesn't
+shake the view.
+
+In the room and the scene the picture doesn't move (`level-ends.md`),
+so they are not covered.
+
+**The picture near the top.** On frames on which `V` is from −1 to 0
+(just above a top of 0, after the shake or while the view eases back),
+the picture's top row is row 0 of the level, not −1. `V` was never seen
+below −1.
+
+**Evidence.** 279 runs entering an area from the level map, recorded
+with only the ground layer drawn: 140 level starts (no input, 16 inputs
+held from different frames, 4 with two characters, the start record
+moved to 15 other places, 4 from the room-return record, and 100 with
+random inputs, 20 of them with two characters), 78 walk-ins after the
+scene (12 with set inputs, the scene-return record moved to 15 places,
+50 with random inputs) and 61 restart-point resumes (11 with set
+inputs, 50 with random inputs). For each pair of consecutive pictures,
+the vertical shift of the ground layer was measured and compared with
+the change of the top row that these rules give, worked out from frame
+0 on from the player's `x`, `y` and `ground` in the trace and the
+level's limits alone. All 27 502 pictures in which the ground layer
+could be lined up matched (19 156 level-start, 6 012 walk-in, 2 334
+restart pictures; 6 533 of them in the throw, 1 665 shake frames
+there, 516 shake frames before it). Pictures in which the ground layer
+couldn't be lined up (2 010, for example in the fade-in's darkest
+frames) aren't counted.
+
+Each run was followed until the player left the states covered above
+(for example a knock-out or the ground action) or the area, or, after
+the start, until the player moved sideways in the air, where the
+ground directly below isn't known from a trace. With the start record
+moved 160 px or more to the right, the characters weren't thrown out
+in these runs (11 runs): there the view didn't shake, and those runs
+were followed to frame 51 only.
 
 ## Examples
 
@@ -239,6 +354,50 @@ settled at `F` = 300 (`V` = 140.5, `Q` = 0). `P` is from 64 to 207 and
 | 10 | 380 | 220.5 | 150.58984375 | 9264 |
 | 20 | 460 | 300.5 | 190.61328125 | 21824 |
 | 30 | 540 | 380.5 | 255.71875 | 29845 |
+
+**(d)** A level's start, with made-up numbers: one limit entry, top 0
+and bottom 300, for the whole level. The lead's feet line is 200 on
+frames 0 to 56, rises 3 px per frame on 57 to 66 and falls 9 px per
+frame from 67, and the player lands on ground at 400 on frame 92 (`G`
+= 92).
+
+| Frame | `F` | target | `V` | `Q` | Offset (px) | 8 px limit |
+|---|---|---|---|---|---|---|
+| 0 | 200 | 40.5 | 40.5 | 0 |  |  |
+| 1 | 200 | 40.5 | 40.5 | 0 |  |  |
+| 42 | 200 | 40.5 | 40.5 | 0 |  |  |
+| 43 | 200 | 40.5 | 45.5 | 0 | +5 |  |
+| 44 | 200 | 40.5 | 45.4921875 | −80 |  |  |
+| 47 | 200 | 40.5 | 40.4453125 | −291 | −5 |  |
+| 48 | 200 | 40.5 | 40.42578125 | −273 |  |  |
+| 56 | 200 | 40.5 | 40.28515625 | −290 |  |  |
+| 57 | 197 | 37.5 | 39.79296875 | −502 |  |  |
+| 58 | 194 | 34.5 | 38.8828125 | −929 |  |  |
+| 59 | 191 | 31.5 | 38.75390625 | −1410 | +1.25 |  |
+| 66 | 170 | 10.5 | 19.1015625 | −2907 |  |  |
+| 67 | 179 | 19.5 | 18.35546875 | −1403 | +0.625 |  |
+| 75 | 251 | 91.5 | 62.296875 | 9113 | +0.3125 | yes |
+| 80 | 296 | 136.5 | 102.296875 | 10543 |  | yes |
+| 85 | 341 | 181.5 | 142.296875 | 11827 |  | yes |
+| 91 | 395 | 235.5 | 190.296875 | 13363 | +20/256 | yes |
+| 92 | 400 | 240.5 | 198.296875 | 13107 |  | yes |
+| 93 | 400 | 240.5 | 199.0859375 | 12963 |  |  |
+| 95 | 400 | 240.5 | 200.55859375 | 12664 | −20/256 |  |
+| 99 | 400 | 240.5 | 203.58984375 | 12037 | +10/256 |  |
+| 100 | 400 | 240.5 | 204.3125 | 11875 |  |  |
+| 127 | 400 | 240.5 | 220.0078125 | 7538 | −2/256 |  |
+| 131 | 400 | 240.5 | 221.7578125 | 6974 | +1/256 |  |
+| 135 | 400 | 240.5 | 223.36328125 | 6439 | −1/256 |  |
+| 150 | 400 | 240.5 | 228.34765625 | 4709 |  |  |
+| 200 | 400 | 240.5 | 236.81640625 | 1501 |  |  |
+
+Frame 0: `T` = 200 − 160 = 40, so `V` = 40.5. Frame 43: `D` = 0, so
+`Q` stays 0, and the step is the offset alone, +5 px. Frame 57 is the
+first with the rates 2 and 4: the target is 197 − 160 + 1/2 = 37.5, `D`
+= 37.5 − 40.28515625 px = −713/256 px, `Q` = −290 + ⌊(−713 + 290) / 2⌋
+= −502, and the step is ⌊−502 / 4⌋ = −126/256 px. From frame 74 to 92
+the step is 8 px, the limit; the shake's offsets on 75, 79, 83, 87 and
+91 are taken away by it. From frame 93 the usual rates apply.
 
 ## In `title-2`
 
@@ -531,10 +690,13 @@ This list is for `title-1`; `title-2` has its own list above.
 
 - Other levels and other kinds of level, where the view may move
   differently. Only the first level was measured.
-- Within 256 px of the level's left end, where the view was seen not to
-  follow these rules. The start of a level, after the player falls out
-  of a level, and the end of a level (the view stops while the player
-  walks out).
+- The end of a level (the view stops while the player walks out,
+  `level-ends.md`). Where the view is on the frames of the room and the
+  scene, which don't move the picture.
+- Levels whose entrance bursts on another frame than 41: whether the
+  shake then starts two frames after the burst. In the runs in which
+  the characters weren't thrown out, the view didn't shake.
+- `V` below −1, and the top row then.
 - While the player is knocked out from H + 10 on (`knock-out.md`; H to
   H + 9 are in "Frames on which the view stays still"), loses a
   character (`losing-a-character.md`), throws an object, or the partner
@@ -543,12 +705,14 @@ This list is for `title-1`; `title-2` has its own list above.
   in `view.md`.
 - The second character leading (`swap.md`).
 - Roll defeats (see above).
-- Gaps larger than about 128 px between the target and `V`. They weren't
-  reached, and the view may not move more than a limited distance per
-  frame.
+- Outside the level's start, gaps larger than about 128 px between the
+  target and `V`. They weren't reached; the 8 px limit on the step was
+  only reached in the level's start.
 - In the air against a wall: when the player jumps or falls against a
-  wall, `ground` can read 1 on some frames while the player is in the
-  air, and the target then differed from these rules (81 frames).
+  wall (also the level's left wall), `ground` can read 1 on some frames
+  while the player is in the air, and the target then differed from
+  these rules (81 frames at least 256 px from the left end; also seen
+  next to the level's left wall).
 - Rising up through a platform from below (`platforms-from-below.md`):
   while `ground` is 1 inside the platform, the target used the platform's
   top line as `G` (85 frames, 12 times; once the line changed partway

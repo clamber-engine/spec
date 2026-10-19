@@ -248,8 +248,9 @@ after the scene and into the areas behind the wall exits.
   frames 3`j`, 3`j` + 1 and 3`j` + 2 for `j` from 0 to 14, and 15 from
   frame 45 on.
 - **The view** doesn't change on frames 0 to 26. Where it is on frame 0
-  and how it moves from frame 27 on are in `view.md` ("When an area
-  begins"), measured walking back into the first level. In the room and
+  and how it moves from frame 27 on are in `view.md` and
+  `view-vertical.md` (both "When an area begins"), measured walking back
+  into the first level. In the room and
   the scene the picture doesn't move (`level-ends.md`).
 
 In the scene the lead stops after frame 28 ("The scene"); in the room

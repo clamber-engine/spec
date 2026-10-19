@@ -235,7 +235,9 @@ from frame 64 on made the player jump on the frame after landing.
 On frame 0 the view's position `V` is `xr` − 78.5, so the picture's
 left edge is `xr` − 79 (for `xr` of 128 or more, away from the level's
 ends; `view.md`, "When an area begins"). From frame 1 the view follows
-the usual rules of `view.md`.
+the usual rules of `view.md`. Vertically it stays where it is on frames
+1 to 62 and follows the usual rules from frame 63 (`view-vertical.md`,
+"When an area begins").
 
 The picture fades in from black from frame 4 on.
 
