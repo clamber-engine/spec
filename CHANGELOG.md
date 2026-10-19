@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.186.0
+
+Bunch ranges while being hit (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/bunches.md`: new "Being hit" paragraph under "Pickup
+  ranges". When the player is hit with no other character there
+  (`knock-out.md`), no bunch is taken from the hit frame `H` to the
+  level's last frame. A bunch in range at the end of `H` − 1 is taken on
+  `H` − 1. Not covered now lists being hit only with the other character
+  there (`losing-a-character.md`).
+
 ## spec-v0.185.0
 
 Bunch ranges while carrying an object (spec#19).
