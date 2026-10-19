@@ -141,7 +141,9 @@ start of turns follow `steep-faces.md` ("Turns next to a rise") instead.
 ### Standing, walking and running
 
 This section is `title-1` only. It decides when a turn can start. It has
-no effect on speed: the speed rule applies on every frame.
+no effect on speed: the speed rule applies on every frame. The first
+character's pictures follow it (`player-frames.md`, "Walking, running
+and turning").
 
 Outside a turn, the grounded player is always in one of three **modes**:
 standing, walking or running. After walking off a ledge without a face
