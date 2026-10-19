@@ -2,6 +2,37 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.207.0
+
+The vertical view when an area begins and near the left end, and the
+jump lockout after a jump over a face's top (spec#38, differential
+tests).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/view-vertical.md`: new section "When an area begins": the
+  view's position on frame 0, the held target and fast rates through
+  the level's start, the view's shake after the entrance bursts,
+  walking in, resuming at the restart point, and the picture's top row
+  just above a top of 0. "Following the target": the step, with any
+  shake offset, is limited to 8 px either way. New section "Near the
+  left end": the usual rules hold there, and the walk-out after an exit
+  uses `G` = `F`. A synthetic worked example (d), evidence and an
+  updated "Not covered".
+- `behavior/level-start.md`, `behavior/restart-barrel.md`,
+  `behavior/exits.md`: point to the new section.
+- `behavior/jump-input.md`: new subsection "After a jump over a face's
+  top": after a slide landing onto floor that isn't a face column,
+  M = max(L, A + 3) + 11, so the next jump waits until
+  max(L, A + 3) + 13. With a table, an example and evidence. "Pressing
+  before landing": the window also applies to presses on or after the
+  landing frame.
+- `behavior/steep-faces.md`, "Slide landing": the same M for landings
+  on floor that isn't a face column.
+- `behavior/movement-summary.md`: the "Jump after landing" row mentions
+  the later lockout.
+
 ## spec-v0.206.0
 
 Action presses on a steep face (spec#38, differential tests).
