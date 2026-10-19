@@ -151,6 +151,30 @@ was from `T` + 9 to `T` + 22, mostly `T` + 17 to `T` + 19.
   play is in another area. For the first level's exits, which area that
   is and what happens there is in "Where the first level's exits lead".
 
+## In a trace
+
+The trace follows the lead. Up to and including `T` it shows the lead
+as anywhere else. From `T` + 1 up to and including the area's last
+frame, `F` + 30, every row has:
+
+- state `walk`, `ground` 1 and `vy` 0, whatever is held: inputs have no
+  effect, and the walk takes no account of the ground under it;
+- `vx` −2, and `x` and `y` as in "The walk-out" (on `T` + 1, `vx` is
+  already −2 while `x` hasn't moved yet);
+- no events other than `turn`. A lead facing right on `T` gets `turn`
+  on `T` + 6, when it faces left. There is no `leave_ground` or `land`,
+  also where the walk goes on past the end of the floor or beyond the
+  level's left end.
+
+A trace that reaches the area's last frame ends with it. What a trace
+shows from the next area's first frame on is not covered.
+
+The scenario `../scenarios/exit-walk-out.scn` and its reference trace
+cover this. The lead walks left towards the exit after the level's
+entrance, presses Right just inside the reach and lets go, so the exit
+takes it over while it turns to face right. Jump, Action and Right are
+pressed during the walk-out and change nothing.
+
 ## Where the first level's exits lead
 
 The next area's frames are numbered from **0**, its first logic frame:
@@ -792,6 +816,13 @@ Walking left (`d` = −1) from an other character at 500, the points are
   an `x` fraction of 0.68 it was taken over at `I` 30 but not at 31 or
   32; facing right with a fraction of 0.17, at `I` 29 to 32 but not at
   33 or 34.
+- **In a trace.** Six runs from the level's first frame into the
+  floor exit, with Left alone, Left with Action, short presses of Right
+  just inside the reach (two of them taken over facing right), and Jump,
+  Action, Down and Right pressed during the walk-out, plus a walk-out
+  through each of the two wall exits (`wall-exits.md`): every row from
+  `T` + 1 to the area's last frame was as in "In a trace", and the
+  original's next frame was in the other area.
 
 ## Not covered
 
@@ -840,8 +871,8 @@ Walking left (`d` = −1) from an other character at 500, the points are
   taken over at `I` 29 and 30, the frame before at 32 and 33), riding,
   and the frames of a landing after the landing frame. How far the
   vertical range changes with the lead's state.
-- What a trace shows from `T` on (`../traces/VOCABULARY.md` has no state
-  for the walk-out), and which picture shows each step of the fade.
+- What a trace shows from the first frame of the next area on, and
+  which picture shows each step of the fade.
 - Walkers, thrown objects or other objects meeting the lead during the
   walk-out, and the lead being hurt or knocked out then; an object let
   go in the walk-out meeting a walker; where the let-go object is drawn;

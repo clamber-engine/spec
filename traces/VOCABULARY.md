@@ -9,7 +9,7 @@ rename or reuse a name, since existing traces refer to it.
 | Name | Meaning |
 |---|---|
 | `idle` | Grounded, not moving horizontally |
-| `walk` | Grounded, moving, action not held |
+| `walk` | Grounded, moving, action not held; also an exit's walk-out, whatever is held (`../behavior/exits.md`, "In a trace") |
 | `run` | Grounded, moving, action held |
 | `roll` | Roll attack in progress |
 | `jump` | Airborne and rising after a jump |
