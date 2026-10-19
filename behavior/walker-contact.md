@@ -288,7 +288,8 @@ hold:
 2. the player isn't rising fast: the `vy` the player has on B after this
    frame's gravity, before the bounce replaces it, is **greater than
    −1.25**. A player still rising slowly can bounce (−1.1875 bounces;
-   −1.25 doesn't);
+   −1.25 doesn't) (this condition is dropped during a
+   bounce: "During a bounce" below);
 3. **I** is within the bounce range below, using the player's position
    at the end of B and the walker's position at the end of **B − 1**
    (before its own move on B);
@@ -319,6 +320,50 @@ The bounce doesn't depend on the pose: the ranges and limits above were
 measured with the player in the airborne pose (jumps, falls from a ledge
 with a face) and in the upright pose (falls from a ledge without a face),
 for all three kinds of walker.
+
+### During a bounce
+
+While the player is in the air after a bounce (`bounce.md`), from
+B + 3 up to the landing:
+
+- Condition 2 doesn't apply. The player bounces off another walker on
+  any frame on which conditions 1, 3 and 4 hold, even while rising at
+  the full speed of the bounce (B + 3 is the earliest such frame).
+- On the two frozen frames, B + 1 and B + 2, the player neither bounces
+  nor is hurt, even with another walker within the bounce range. A
+  walker that is within range on them and still within range on B + 3
+  is bounced off on B + 3.
+- The walker already bounced on doesn't touch the player again
+  (`walker.md`, "Being bounced on").
+
+The new bounce is in `bounce.md`, "Bouncing again before landing".
+
+**Two walkers within range on B.** The player bounces off only one of
+them on B. Which one doesn't depend on where they are: for a given pair
+of walkers it was always the same one, whatever their offsets. Which of
+two walkers it is isn't specified. The other one isn't touched on B; from
+B + 3 the rule above applies to it, so the player bounces off it on
+B + 3 if it is within range then.
+
+Measured in `title-1` with the first character alone and two small
+walkers on flat floor:
+
+- 10 000 runs of random input with the walkers 20 to 120 px apart
+  (`bounce.md`, "Evidence for bouncing again"): on all 564 556 airborne
+  frames up to the landing (frozen frames left out) the rules of this
+  section gave a bounce exactly on the 5 715 frames with one, 1 053 of
+  them after a bounce (5 with the player rising at 1.25 px per frame or
+  faster). No walker hurt the player between a bounce and its landing.
+- 34 138 controlled placements of the second walker around four of
+  those bounces (I from −50 to 50, the player moved up or down by −13
+  to 6 px before B): placed within range for the first time on B + 1, B + 2,
+  B + 3, B + 4 or B + 5, or within range on B with the first walker.
+  On the frozen frames the placed walker was never bounced on or
+  touched (6 666 placements); from B + 3 it was bounced on exactly when
+  I was within the bounce range and U was at most 24 (6 587 bounces,
+  25 703 without, 0 mismatches). In the 3 808 placements with both
+  walkers within range on B, exactly one was bounced on, always the same
+  one of the pair. No placement gave a hurt.
 
 ## Falls without a jump
 
@@ -814,7 +859,8 @@ This list is for `title-1`; `title-2` has its own list above.
   already bounced on don't touch the player (`walker.md`, "Being bounced
   on"), and neither do walkers knocked out by the ground action
   (`ground-action-enemies.md`, "The walker").
-- Contact after a bounce, or being knocked back; a crouching player on
+- Contact during a bounce with medium or large walkers (measured with
+  small walkers only: "During a bounce"), or being knocked back; a crouching player on
   a slope or with the walker on another floor. Carrying: a pick-up in
   the air (only pick-ups on the ground were measured), with the walker on
   another floor or on a slope, and bounces with the player pressed against

@@ -82,7 +82,8 @@ Only the hold from B + 3 matters:
   and a press first made on B + 3 counts the same as a hold carried over.
 - Releasing jump, even for one frame, gives 0.4375 for the rest of the
   bounce. Pressing jump on B + 4 or later never gives the lighter
-  gravity, and doesn't start a jump.
+  gravity, and doesn't start a jump (unless the player bounces again:
+  "Bouncing again before landing").
 
 Horizontally, the bounce doesn't change `vx`; from B + 3 on it changes
 as on any other airborne frame. Facing doesn't change from B to the
@@ -142,6 +143,68 @@ bounce (K = 0). Heights are above the floor at the end of each frame.
 | B + 19 | 74.1875 | 0.3125 | |
 | B + 35 | 9.6875 | 7.3125 | |
 | B + 36 | 1.9375 → 0 | 7.75 → 0 | under 5 px and moving down: lands, placed on the floor, `vy` 0, `land` |
+
+## Bouncing again before landing
+
+The player can bounce off another enemy before landing from a bounce
+(when, is in `walker-contact.md`, "Bouncing", "During a bounce"). Call
+the new bounce frame **B′**. Everything above applies to it afresh, with
+B′ in place of B:
+
+1. On B′ the player first moves as on any other frame of the bounce in
+   progress (its gravity, by its own hold), then `vy` is set to
+   **−7.125**. B′ can be as early as B + 3, while the player is still
+   rising fast.
+2. B′ + 1 and B′ + 2 are two frozen frames, for the player and for
+   everything else ("Two frozen frames"), including the enemy bounced
+   on first while it falls.
+3. From B′ + 3 the gravity depends only on the hold from **B′ + 3**:
+   0.28125 while jump is held on every frame from B′ + 3, 0.4375 after
+   any break. How jump was held after the earlier bounce doesn't
+   matter: a hold that broke after B + 3 and starts again on or before
+   B′ + 3, and is still held on B′ + 3, gives the lighter gravity again.
+   K and the `bounce_height` table count from B′ + 3.
+
+Facing still doesn't change until the landing. The trace row for B′
+carries a `bounce` event, and the trace state stays `bounce` up to the
+landing frame. For the landing, the latest bounce is the one that counts
+(`jump-input.md`, "After a bounce": "held without a break since B + 3"
+means since B′ + 3).
+
+Example: the bounce of "Example" above (20 px above flat ground, jump
+not held on B + 3), with a second walker in range on B + 3, and jump
+pressed on B + 6 and held.
+
+| Frame | Height above floor | `vy` | Notes |
+|---|---|---|---|
+| B | 20 | −7.125 | `bounce` |
+| B + 1, B + 2 | 20 | −7.125 | frozen |
+| B + 3 | 26.6875 | −7.125 | moves by −6.6875 (gravity 0.4375), then `bounce`: B′ |
+| B′ + 1, B′ + 2 | 26.6875 | −7.125 | frozen |
+| B′ + 3 (B + 6) | 33.53125 | −6.84375 | jump held from here: gravity 0.28125 |
+| B′ + 4 (B + 7) | 40.09375 | −6.5625 | |
+
+Without the second bounce, the press on B + 6 would not have changed the
+gravity.
+
+### Evidence for bouncing again
+
+Measured in `title-1` with the first character alone, falling onto two
+small walkers 20 to 120 px apart on flat floor:
+
+- 10 000 runs of random input (walking or running at the walkers, one
+  jump onto them, then random presses and releases of jump, and Right,
+  nothing or short presses of Left in the air): 4 902 runs with a bounce,
+  1 077 of them with a second bounce before landing, 5 of those on
+  B + 3. Every frame from the first bounce to the landing (264 555
+  frames) matched the rules above, with 0 mismatches. Counting the hold
+  from the first bounce instead gives 145 mismatches. Facing didn't
+  change in any of them. On the second bounce's frozen frames, none of
+  the 1 580 objects that moved on B′ or B′ + 3 moved or changed facing.
+  420 landings after a second bounce matched `jump-input.md`, "After a
+  bounce" (E = L + 2) for the presses made, with 0 mismatches.
+- When the second bounce can happen: see `walker-contact.md`, "During a
+  bounce".
 
 ## In `title-2`
 
@@ -311,8 +374,11 @@ This list is for `title-1`; `title-2` has its own list above.
   `walker-contact.md`).
 - Bouncing off other kinds of objects (the animal crate is in
   `animal-crate.md`, hidden objects landed on after a long fall in
-  `hidden-objects.md`), bounces from a roll, bouncing again before
-  landing, and the other character.
+  `hidden-objects.md`), bounces from a roll, and the other character.
+- Bouncing again before landing off a medium or large walker or another
+  kind of enemy (measured with two small walkers only), and more than
+  two bounces before landing. The mode on landing after a second bounce
+  (`ground-speed.md`, "After a fall or a bounce") wasn't compared.
 - Whether timed behaviour that doesn't show in an object's position,
   speeds or facing (the thrower's timetable, a walker's turn, a critter's
   path) is also held for the two frozen frames; only those were

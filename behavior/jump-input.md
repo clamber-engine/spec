@@ -165,7 +165,7 @@ however far the player fell after it.
 | Pressed L − 10 to L + 1, held through L + 1 | Jumps on L + 2 |
 | Pressed L − 11 or earlier, held through landing | No jump |
 | Pressed in the air, released on L or earlier | No jump |
-| Held without a break since B + 3 (B is the bounce frame, `bounce.md`) | No jump |
+| Held without a break since B + 3 (B is the bounce frame, `bounce.md`; after bouncing again, the latest bounce frame) | No jump |
 | Pressed on L + 2 or later | Jumps on the frame after the press |
 
 Measured on `title-1` with the lead character: 190 landings after
@@ -177,7 +177,10 @@ player up or down 5 frames after the bounce. Landings were on flat
 floor, on a slope and on one higher floor, 33 to 100 frames after B. 1 909 presses from L − 14 to
 L + 4, held 10 to 13 frames or to the end, matched with 0 mismatches.
 Landings where the player picked up an object with Action held, or left
-the ground again before jumping, were left out.
+the ground again before jumping, were left out. Landings after a second bounce
+(`bounce.md`, "Bouncing again before landing"): 420 in random runs on
+flat floor (take-offs from L + 2 to L + 39, or none by then), matched
+with 0 mismatches.
 
 ### Landings this doesn't cover
 
