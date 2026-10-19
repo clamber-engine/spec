@@ -221,22 +221,28 @@ player is hurt on the next frame, from the positions at the end of the
 frame of the hit. A small walker was never hit by the carried object in
 these measurements (player on its floor or up to 45 px above it), but
 during a pick-up, a throw or a put-down walkers of all three kinds,
-small ones too, were hit by the object in the hands, and there too the
-rule above decided whether the player was hurt on the next frame.
+small ones too, were hit by the object in the hands (frames and ranges
+in `thrown-objects.md`, "During a pick-up, a throw or a put-down"), and
+there too the rule above decided whether the player was hurt on the
+next frame.
 
 The same carrying ranges hold when the object holds the missing
 character (`holder-breaking.md`). But a medium or large walker that
-meets that object breaks it, and then **doesn't hurt the player**: the
-frame after the hit is the first frame of the pause while the character
-joins, and when play goes on the walker has been hit. A walker that
+meets that object breaks it, and then **doesn't hurt the player on the
+next frame**: the frame after the hit is the first frame of the pause
+while the character joins. A hurt that would have come on that frame
+with an ordinary object comes when play goes on instead, with both
+characters there (`holder-breaking.md`, "Carried into a walker"); in
+the other cases the walker has been hit by then. A walker that
 reaches the player from behind without meeting the object hurts as
 above. Measured with the placements of "Evidence for carrying" for all
 three kinds, at two of its three frames and without the extra heights
 in the air (63 336 placements): the walker met the object on exactly
 the same placements as with an ordinary object, and every placement
 without a hit gave the same hurt or bounce as with an ordinary object.
-On the 21 144 placements with a hit the player was never hurt; with an
-ordinary object, 16 020 of them were hurts on the next frame.
+On the 21 144 placements with a hit the player was never hurt on the
+next frame; with an ordinary object, 16 020 of them were hurts on the
+next frame.
 
 ### Poses
 

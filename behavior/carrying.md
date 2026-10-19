@@ -238,6 +238,45 @@ makes no difference either (a throw).
 
 Measured on flat floor only.
 
+## The object in the hands
+
+During a pick-up, a throw and a put-down on the ground, standing on flat
+floor, the object's position on each frame is fixed relative to the
+player's: **ahead** is how many pixels the object's `x` is in front of
+the player's `x` (in the facing direction; negative behind), both with
+the fraction dropped, and **up** how many pixels the object's `y` is
+above the player's, both rounded up. Both are taken at the end of the
+frame. Walkers use this position (`thrown-objects.md`, "During a
+pick-up, a throw or a put-down").
+
+| Frame | Pick-up (G + n) ahead, up | Throw (Q + n) ahead, up | Put-down (Q + n) ahead, up |
+|---|---|---|---|
+| n = 0 | where it lies | 2, 46 | −2, 39 |
+| 1, 2 | 20, 3 | −6, 47 | 4, 38 |
+| 3, 4 | 20, 15 | −18, 48 | 20, 33 |
+| 5, 6 | 20, 27 | −30, 44 | 20, 27 |
+| 7, 8 | 20, 33 | −40, 39 | 20, 15 |
+| 9, 10 | 4, 38 | −38, 39 | 20, 3 |
+| 11, 12 | −2, 39 | −36, 38 | 16, 3 |
+| 13, 14 | −2, 39 | −32, 39 | 16, 3 on n = 13; on the floor from 14 |
+| 15, 16 | carried | −28, 41 | |
+| 17, 18 | | −24, 45 | |
+| 19, 20 | | −7, 54 | |
+| 21 | | 0, 54 | |
+
+So in a throw the object goes back over the player's head and is
+brought forward again, and on Q + 21 it is at the position "The object"
+above gives. In a pick-up it rises in front of the player and is brought
+back to above its head; a put-down is the same in reverse. Where the
+object is carried before Q and from G + 15 depends on the player's
+pose and isn't covered.
+
+Measured in the runs by inputs of `thrown-objects.md` ("During a
+pick-up, a throw or a put-down"), facing either way, on every frame up
+to the first hit or hurt of each run: 13 to 96 runs for each frame and
+facing, all with the values above. The pick-ups were of an object lying
+where a put-down leaves it (16 px in front of the player).
+
 ## Worked examples
 
 All values are computed from the rules above.
@@ -298,8 +337,13 @@ player's position on the frame before G:
 - Picking up with Down or Up held, while being hit with both characters
   there, and Action held during a throw or a put-down with another
   object within reach.
-- Where the object is drawn or how it collides with anything while it is
-  held, and carrying into walls or enemies (when a walker knocks out a
+- Where the object is while it is carried (before Q and from G + 15;
+  during a pick-up, a throw and a put-down on flat ground, see "The
+  object in the hands"; on slopes and in the air it wasn't measured),
+  where it is drawn or how it collides with anything while it is held,
+  and carrying into walls or enemies (walkers meeting the object during
+  a pick-up, a throw or a put-down are in `thrown-objects.md`, "During a
+  pick-up, a throw or a put-down"; when a walker knocks out a
   player alone who carries an object, what the object does is in
   `knock-out.md`, "An object in the hands"; a carried object meeting
   the thrower or a ball is in `thrown-objects.md`, "Hitting the

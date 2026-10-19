@@ -658,6 +658,151 @@ the object at `x` = 100, `y` = −40, so H = 40. Speeds in px per frame.
 | K + 2 | 119.21875 | −5.5625 | −3.53125 | −5.5625 | | |
 | K + 3 | 115.87890625 | −10.6875 | −3.33984375 | −5.125 | | |
 
+#### During a pick-up, a throw or a put-down
+
+With G and Q as in `carrying.md`, the object in the player's hands also
+hits walkers of **all three kinds**, small ones too, on these frames of
+a pick-up, a throw or a put-down on the ground:
+
+| Action | Frames on which it can hit | Ranges |
+|---|---|---|
+| pick-up | G + 1 to G + 14 | as for a carried object, and small walkers below |
+| put-down | Q to Q + 12 | as for a carried object, and small walkers below |
+| throw | Q + 1 to Q + 20 | as for an object thrown in the player's facing direction, t from 1 to 16 |
+
+On the other frames of these actions it hits nothing: not on G (the
+object still lies on the floor), not on Q of a throw, not on Q + 21 of a
+throw (the frame it leaves the hands; from Q + 22 it is a thrown object,
+"When a walker is hit", with t = 1 on Q + 22), and not from Q + 13 of a
+put-down (the object is on the floor; a walker walks through it). Before
+G, and from G + 15 while Action stays held, the rule for a carried
+object above applies.
+
+I and H are as under "When the walker is hit" above, at the end of the
+frame, from the object's position in the hands on that frame
+(`carrying.md`, "The object in the hands"); the player's facing doesn't
+change during these actions. The walker's facing is the one of
+`walker.md`.
+
+**Pick-up and put-down.** A medium or large walker is hit by the ranges
+of I for a carried object (the tables under "When the walker is hit"),
+with the same height limits. A **small** walker is hit when H is at most
+**27** and I is within:
+
+| Walker facing | Player facing | I |
+|---|---|---|
+| right | right | −22 to 28 |
+| right | left | −27 to 23 |
+| left | right | −23 to 27 |
+| left | left | −28 to 22 |
+
+Both ends are included. These are the large walker's ranges narrowed by
+3 px at each end. A small walker was hit with H of 3, 15 and 27 and never
+with H of 33 or more; H from 28 to 32 wasn't measured. On flat floor the
+object is low enough for that on G + 1 to G + 6 of a pick-up and on Q + 5
+to Q + 12 of a put-down. Medium and large walkers were hit at every H
+measured, from 3 (the object just above the floor) to 39.
+
+**Throw.** On Q + 1 to Q + 20 the ranges are those of an object thrown
+in the player's facing direction at t from 1 to 16 ("When a walker is
+hit"), for all three kinds:
+
+| Walker | Walker facing | Player facing | I |
+|---|---|---|---|
+| small | right | right | −47 to 29 |
+| small | right | left | −28 to 48 |
+| small | left | right | −48 to 28 |
+| small | left | left | −29 to 47 |
+| medium | right | right | −45 to 36 |
+| medium | right | left | −26 to 55 |
+| medium | left | right | −55 to 26 |
+| medium | left | left | −36 to 45 |
+| large | right | right | −50 to 32 |
+| large | right | left | −31 to 51 |
+| large | left | right | −51 to 31 |
+| large | left | left | −32 to 50 |
+
+Both ends are included. Each row is the carried range for that walker
+and those facings (for a small walker, the table above) widened 25 px
+toward the back of the player and 1 px toward the front, as the ranges
+of a thrown object for t from 1 to 16 are. The hits on these frames had
+H from 38 to 54 (on flat floor the object in the hands is never more
+than 54 px above the player's floor during a throw), for all three
+kinds, so the height limit of a carried object doesn't apply here: a
+medium walker was hit with H up to 54. The thrown object at t = 1 to 3
+(Q + 22 to Q + 24) hit by the same ranges.
+
+**What happens on a hit.** Call the frame of the hit K.
+
+- **The object breaks** on K, as for a carried object: it is gone, and
+  its pieces appear as when it breaks against a wall. Nothing is thrown
+  or put down.
+- **The player** goes on with the pick-up, throw or put-down exactly as
+  it would have without the walker, to its usual end, with no paused
+  frame: a put-down to its end (`carrying.md`, "Putting down"), a throw
+  to Q + 42 ("Throwing" there), a pick-up to G + 14. A pick-up that was
+  hit ends with nothing in the hands: from G + 15 the player stands or
+  walks without the object. Its position and speeds were the same as
+  with the walker taken out up to the end of the action, and after it
+  for a throw and a put-down.
+- **The walker** moves as under "The walker" above with d = +1
+  whichever way the player faces and whichever way the object is moving
+  in the hands: its `vx` becomes −4 on K, it heads left from then on,
+  and the turn at the end of its patrol can still happen on K + 1 (seen
+  with large walkers placed left of their patrol's left end).
+- **The player can still be hurt on K + 1** by the walker that was hit,
+  as for a carried object: the rules of `walker-contact.md` ("Carrying")
+  decide it from the positions at the end of K.
+
+Measured on the first level with the lead character alone, in copies
+that put an ordinary object on the opening floor and a small, medium or
+large walker in place of the first walker. The player stood on flat
+floor, facing left or right, carrying the object; it then threw it, put
+it down, or put it down and picked it up again. The walker came toward
+the player heading left, or had its heading set to the right 13 frames
+or more before.
+
+- controlled: on every frame from two frames before to 16 frames after
+  the start of each action (to Q + 24 for throws), the walker was put at
+  every whole-pixel offset up to 90 px across from the object just
+  before the frame, on the player's floor: 134 727 single frames, 40 013
+  hits. The rules above give a hit on exactly those frames (pick-ups and
+  put-downs 55 767 frames, 15 060 hits; throws 41 169 frames, 19 360
+  hits; the frames on which nothing is hit 18 672). With the carried
+  ranges on Q + 1 to Q + 20 instead, 7 153 frames disagree; with no hits
+  of small walkers, 2 856. Then 324 of these placements were followed
+  for 40 frames, with the walker at the object or 40 px to either side
+  of it, and compared with the same placement with the walker taken
+  out: 138 had a hit, each followed as above; in 80 of them the player
+  was hurt on K + 1;
+- by inputs alone: 904 runs of 330 frames from the same starts, with
+  nothing moved. The walker walked into the object by itself while the
+  action started on a different frame in each run (every frame, or
+  every second frame, over 50 to 100 frames). The first hit of each run
+  came on the frame the rules give, in all 529 runs with a hit (153
+  during a pick-up or put-down, 135 during a throw, 241 while carrying);
+  the rules gave no hit in any other run (345 runs ended with the player
+  hurt first, 30 with the throw over). With the carried ranges during
+  the throw, 64 runs disagree; with no hits of small walkers, 32.
+
+#### Example
+
+Computed from the rules above. The player stands facing right on flat
+floor at `y` = 0 with `x` = 100 and puts the object down (Q). A small
+walker heads left at full speed (facing left) on the same floor. The
+object's position in the hands is from `carrying.md`, "The object in the
+hands".
+
+| Frame | Object `x` | Object `y` | Walker `x` | I | H | |
+|---|---|---|---|---|---|---|
+| Q + 3 | 120 | −33 | 143.5 | −23 | 33 | H too large for a small walker |
+| Q + 4 | 120 | −33 | 142.5 | −22 | 33 | H too large |
+| Q + 5 | 120 | −27 | 141.5 | −21 | 27 | hit: the object breaks, the walker's `vx` becomes −4 |
+
+The put-down goes on to its end as without the walker, and then
+nothing lies on the floor. The walker moves as under "The walker" from
+K = Q + 5.
+
 ## Hitting the thrower
 
 An object that holds nothing knocks the thrower (`thrower.md`) out when
@@ -918,9 +1063,12 @@ again. Speeds in 1/256 px per frame.
 
 - Hitting a character or other enemies. Walkers: a small walker facing
   right hit by an object moving right, and large walkers hit by an
-  object moving left (the patterns under "When a walker is hit" would
-  give −47 to 29 and −22 to 28 for the first, but this wasn't
-  measured); the object more than 12 px below the walker; walkers that
+  object moving left, at t of 4 or more (at t from 1 to 3, and in the
+  hands during a throw, they were hit by the ranges of "During a
+  pick-up, a throw or a put-down": −47 to 29, −32 to 50 and −31 to 51;
+  the late patterns under "When a walker is hit" would give −22 to 28
+  for the first, but this wasn't measured); medium walkers hit by a
+  thrown object at t of 4 or more; the object more than 12 px below the walker; walkers that
   are still speeding up, outside the picture, or not on the floor; and
   two walkers in range on the same frame (seen once: only one of them
   was hit, and the other one, out of range on the next frame, wasn't).
@@ -953,7 +1101,9 @@ again. Speeds in 1/256 px per frame.
 - A carried object and walkers ("A carried object"): small walkers on
   a floor high enough above the player's to come within reach (their
   limits for a carried object weren't measured), walkers that are
-  turning or speeding up, H below 11 (below 41 for a medium walker),
+  turning or speeding up, H below 11 (below 41 for a medium walker)
+  while carrying (H down to 3 was measured during pick-ups and
+  put-downs),
   how a medium walker moves after a hit by a carried object that holds
   nothing (only its `vx` on K was measured; `holder-breaking.md` has
   the rest for the object holding the missing character), two walkers
@@ -961,6 +1111,14 @@ again. Speeds in 1/256 px per frame.
   the player bounces off a walker, and the second character. The ranges are given for the object's
   position; where a carried object is relative to the player is not
   covered (`carrying.md`).
+- The object in the hands during a pick-up, a throw or a put-down
+  ("During a pick-up, a throw or a put-down"): pick-ups and throws in
+  the air (only the ground was measured), slopes and walkers on another
+  floor, walkers that are turning or speeding up, the height limits
+  during a throw (H above 54 doesn't happen on flat floor), H from 28 to
+  32 for a small walker, a pick-up of an object lying elsewhere than
+  where a put-down leaves it, two walkers in range on the same frame,
+  and the second character.
 - Vertical steps ("Breaking at a vertical step"): steps met moving
   right, steps down, steps of other heights than 64 px, and steps in
   other levels. An object more than 8 px below the floor of its own
