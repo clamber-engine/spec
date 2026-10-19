@@ -407,6 +407,26 @@ walker", 0 mismatches; and about 17 000 controlled single frames in
 which the object's position or speeds were set next to a walker just
 before a frame, to find the limits.
 
+The rows for medium walkers, for a small walker facing right with the
+object moving right and for large walkers with the object moving left
+were measured later, on a copy in which one walker of each kind in turn
+was put in the place of a walker in the level's placement list, on flat
+floor: 10 285 968 controlled single frames, one for each t from 1 to
+44, each kind and each facing of the walker and each direction of the
+throw, with the object put at every whole-pixel `x` from 80 px behind to
+80 px ahead of the walker and every `y` from the walker's floor to
+120 px above it (2 083 424 hits), all as the tables below say, small and
+large walkers' known rows included; and a holdout of 2 484 standing
+throws by inputs at walkers walking freely (put at a distance before or
+during the throw), 23 693 frames on which a walking walker and the
+thrown object were both there, 1 934 hits, every row of both tables
+among them, 0 mismatches. With the change from the larger to the
+smaller area moved one frame earlier or later, 45 048 of the controlled
+frames would differ either way, and 37 (one frame earlier) or 66 (one
+frame later) of the holdout frames. The walkers hit in the holdout (2 261, 741 of
+them medium walkers) moved as "The walker" below says on all 48 662
+frames until they were gone.
+
 ### When a walker is hit
 
 Let **t** be the number of frames since the object left the hands: t =
@@ -424,16 +444,22 @@ the end of the frame. The walker is hit on a frame when it is walking
 | small | left | right | −48 to 28 | −23 to 27 |
 | small | left | left | −29 to 47 | −28 to 22 |
 | small | right | left | −28 to 48 | −27 to 23 |
-| small | right | right | not measured | not measured |
+| small | right | right | −47 to 29 | −22 to 28 |
+| medium | left | right | −55 to 26 | −30 to 25 |
+| medium | left | left | −36 to 45 | −35 to 20 |
+| medium | right | left | −26 to 55 | −25 to 30 |
+| medium | right | right | −45 to 36 | −20 to 35 |
 | large | left | right | −51 to 31 | −26 to 30 |
+| large | left | left | −32 to 50 | −31 to 25 |
+| large | right | left | −31 to 51 | −30 to 26 |
 | large | right | right | −50 to 32 | −25 to 31 |
-| large | either | left | not measured | not measured |
 
 Both ends are included. The height limits are:
 
 | Walker | t from 1 to 16 | t of 17 or more |
 |---|---|---|
 | small | U less than 63 | U less than 30 |
+| medium | U less than 76 | U less than 43 |
 | large | U less than 89 | U less than 56 |
 
 So for its first 16 frames out of the hands (Q + 22 to Q + 37) the
@@ -443,12 +469,19 @@ smaller area whether it is in the air, rising or falling, bouncing or
 rolling. The ranges don't depend on the object's speed or on whether it
 is rising or falling (measured with speeds from 3.5 to 14 px per frame).
 
-Patterns in the measured rows: a large walker's ranges are a small
-walker's widened by 3 px on each side (as for its other ranges in
-`walker-contact.md`); a walker facing right has its ranges 1 px further
-right than facing left; and for an object moving left the ranges are
-those for an object moving right turned around (−27 to 23 from −23 to
-27, and so on) and then moved 1 px left.
+Patterns in the rows: a large walker's ranges are a small walker's
+widened by 3 px on each side (as for its other ranges in
+`walker-contact.md`); a small or large walker facing right has its
+ranges 1 px further right than facing left, a medium walker 10 px (as
+for its ranges in `walker-contact.md`); and each row for an object
+moving left is the row for an object moving right with the walker
+facing the other way, turned around (−28 to 22 from −22 to 28, and so
+on). For medium and large walkers the ranges for t of 17 or more are
+those of a carried object ("A carried object" below) with the player
+facing the way the object moves; for all three kinds the ranges for t
+from 1 to 16 are those for t of 17 or more widened 25 px back and 1 px
+ahead. A medium walker's height limits are a small walker's plus 13 px,
+as for its other heights in `walker-contact.md`.
 
 The walker's facing is the one of `walker.md`: while it turns at the
 end of a patrol, its facing changes on T + 4, and hits on the frames
@@ -501,9 +534,9 @@ bounced walker one frame earlier.
 
 It is removed when it leaves the window, from K + 2 on, as in
 `walker-view.md` ("Defeated walkers falling out"), and it never comes
-back (`walker-view.md`, "Coming back"). Small walkers on flat floor
-were there for the last time on K + 40, 95 px below the floor they had
-been walking on; large walkers on slopes and flat floor between K + 38
+back (`walker-view.md`, "Coming back"). Small and medium walkers on
+flat floor were there for the last time on K + 40, 95 px below the
+floor they had been walking on; large walkers on slopes and flat floor between K + 38
 and K + 42, 79 to 112 px below their floor on K. A walker that was
 already outside the window on K + 2 was there for the last time on
 K + 1.
@@ -590,9 +623,10 @@ the frame before, I is within the range below, and H is at most **55**:
 
 Both ends are included. For a player facing right, these are the
 ranges of an object thrown right at t of 17 or more (the table under
-"When a walker is hit"). For a player facing left, they are the ranges
-for a player facing right moved 5 px left, as the thrower's left rows
-are its right rows moved 5 px left.
+"When a walker is hit"), and for a player facing left those of an
+object thrown left. They are also the ranges for a player facing right
+moved 5 px left, as the thrower's left rows are its right rows moved
+5 px left.
 Standing, walking, running and being in the air don't change them.
 The lowest H measured was 11, with the player standing on the walker's
 floor. Hits with H from 11 to 55 were seen; lower values weren't
@@ -1113,15 +1147,11 @@ again. Speeds in 1/256 px per frame.
   running, rolling, crouching, turning, carrying or being hit as they
   meet it, Action pressed as it meets the lead, slopes, other levels,
   and whether the object is drawn in front of or behind a character.
-- Other enemies. Walkers: a small walker facing
-  right hit by an object moving right, and large walkers hit by an
-  object moving left, at t of 4 or more (at t from 1 to 3, and in the
-  hands during a throw, they were hit by the ranges of "During a
-  pick-up, a throw or a put-down": −47 to 29, −32 to 50 and −31 to 51;
-  the late patterns under "When a walker is hit" would give −22 to 28
-  for the first, but this wasn't measured); medium walkers hit by a
-  thrown object at t of 4 or more; the object more than 12 px below the walker; walkers that
-  are still speeding up, outside the picture, or not on the floor; and
+- Other enemies. Walkers: medium walkers and the rows measured later
+  under "When a walker is hit" on slopes and other floors (they were
+  measured on flat floor only); the object more than 12 px below the
+  walker; walkers that are turning (for medium walkers and the later
+  rows), still speeding up, outside the picture, or not on the floor; and
   two walkers in range on the same frame (seen once: only one of them
   was hit, and the other one, out of range on the next frame, wasn't).
 - How a hit is drawn (something appears where the walker was hit) and
