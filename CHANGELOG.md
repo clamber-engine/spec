@@ -2,6 +2,30 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.193.0
+
+Rolls started in the stop after a roll, near a ledge (spec#17).
+
+Part of clamber-engine/spec#17 (level layout), which stays open for the
+parts not covered yet.
+
+- `behavior/rolling-off-ledges.md`, new section "A roll started in the
+  stop after a roll" (`title-1`): a roll started on D + 17 has its own
+  hover table (by n = L − S′), and stopping and pushing off apply from
+  S′ + 1. Rolls started on D + 18 or later are unchanged. Running in the
+  stop doesn't make the next roll fast. Also covers a stop that carries
+  the player off the edge, after which a remembered press starts the
+  roll in the air. Includes two examples and evidence.
+- `behavior/rolling-off-ledges.md`, "Stopping before a ledge": when
+  steering turns a moving roll, the ground check uses the new direction.
+- `behavior/roll-input.md` (correction): a roll started by a new press
+  on D + 17 also lasts 30 frames.
+- `behavior/roll-speed.md`: stop frames up to D + 16 aren't running
+  frames. A new press on D + 17 sets size and direction on that frame,
+  and a remembered press uses what is held on D + 18.
+- Not covered: "rolls that start in the stop" replaced by two narrower
+  items.
+
 ## spec-v0.192.0
 
 Jumps pressed during a roll's fall off a ledge (spec#17).
