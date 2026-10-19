@@ -79,9 +79,8 @@ earliest frame a jump can start after landing frame L **E**. For a
 landing after a jump, E = **M + 2**, where M is the landing's **switch
 frame** below. M is L or later (up to L + 6 in the measurements below),
 so E is L + 2 or later. This holds for the first character's jumps out
-of a roll pressed on the ground too; the second character's, and jumps
-out of a roll pressed in the air, are an exception (see the end of this
-section).
+of a roll too, whether pressed on the ground or in the air; the second
+character's are an exception (see the end of this section).
 
 ### The switch frame M
 
@@ -164,6 +163,21 @@ The next jump's take-off (presses before and after the landing, as in
 "Pressing before landing") matched E = M + 2 on all 227 landings where
 the player jumped again before doing anything else; E = L + 3 gives 23
 of them wrong.
+
+The first character's jumps out of a roll pressed in the air, during the
+fall after rolling off a ledge (`rolling-off-ledges.md`, "Jumping during
+the fall"), follow the same rule too, with T = P + 1 whether P is a hover
+frame or not. Measured on `title-1`: 154 landings after such jumps from
+rolls off both ends of a raised platform whose ground simply ends
+(normal and slow rolls, Action tapped or held; Jump pressed on L to
+L + 20, some of the presses on a hover frame, and held 1 to 40 frames;
+random input in the air and after the landing), with n of 1, 5 or 7 and
+M of L, L + 2 or L + 4. These jumps often rise above the top of the
+screen; only landings whose pictures could be followed on screen from
+the last air frames on were counted. M matched on all 154. The next
+jump's take-off matched E = M + 2 on all 67 landings where the player
+jumped again before doing anything else and every frame up to the
+take-off was on screen; E = L + 3 gives 46 of them wrong.
 
 ### After a bounce
 
@@ -255,8 +269,7 @@ column, or reach one before the take-off, were left out (see
 ### Landings this doesn't cover
 
 For a landing after a jump that the second character started from a
-roll, or that started from a roll in the air (`rolling-off-ledges.md`),
-or after a fall that didn't start with a jump (walking or rolling off a
+roll (`rolling-off-ledges.md`), or after a fall that didn't start with a jump (walking or rolling off a
 ledge), the spec defines **E = L + 3** unless another file says
 otherwise (after a jump from a roll, M = L + 1). The mode after these
 landings is in `ground-speed.md` ("After a landing", "After a fall or a

@@ -278,9 +278,16 @@ first level) where nothing else started before K: running started on M
 on the 58 with Action and one direction held on M, and on the other 188
 standing, walking or running started on K as above.
 
+The same holds after the first character's jumps out of a roll pressed
+in the air (`rolling-off-ledges.md`, "Jumping during the fall"):
+measured on `title-1` on 30 such landings after rolls off a raised
+platform where nothing else started before K and every frame up to the
+start could be followed on screen, running started on M on the 2 with
+Action and one direction held on M, and on the other 28 standing (9),
+walking (18) or running (1) started on K.
+
 For a landing after a jump that the second character started from a
-roll, or that started from a roll in the air (`jump-input.md`,
-"Landings this doesn't cover"), the spec uses M = L + 1: running on
+roll (`jump-input.md`, "Landings this doesn't cover"), the spec uses M = L + 1: running on
 L + 1, the mode on L + 7. In the original these vary; reference
 comparisons on such landings should allow −1 frame on a run starting
 just after the landing, +3 frames on walking or standing starting after

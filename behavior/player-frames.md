@@ -320,8 +320,10 @@ frames, L, M and n are as in `jump-input.md` ("The switch frame M"), and
 K, the frame walking, running or standing starts, is as in
 `ground-speed.md` ("After a landing").
 
-The pictures below are the same for a jump out of a roll pressed on the
-ground: T − 1 is the press frame P, which shows `jump-1` ("A roll"), and
+The pictures below are the same for the first character's jumps out of a
+roll, pressed on the ground or in the air (`rolling-off-ledges.md`,
+"Jumping during the fall", hover frames included): T − 1 is the press
+frame P, which shows `jump-1` ("A roll"), and
 A, n, M and K are found as for any other jump, so the air pictures, the
 landing pictures and the standing pictures from K follow the same rules.
 
@@ -619,6 +621,18 @@ steep face, picking something up):
   to 7 and M from L to L + 4: 2 716 frames from L compared, 0
   differences. 71 of them were followed to K + 2 standing, and on 83
   running started on M.
+- **Jumps out of a roll pressed in the air, first character:** 549
+  jumps pressed during the fall after rolling off either end of a raised
+  platform whose ground simply ends (normal and slow rolls, Jump pressed
+  on L to L + 20, 266 of them on a hover frame, held 1 to 40 frames,
+  random input in the air and after the landing). The air pictures from
+  P to the landing matched on all of them (26 landed before A). These
+  jumps often rise above the top of the screen; frames where the
+  player's picture was not wholly on screen were left out. 154 landings
+  whose last air frames were on screen were followed until the player
+  did something else, with n of 1, 5 or 7 and M − L of 0, 2 or 4: 700
+  frames from L compared, 0 differences, 5 of them followed to K + 2
+  standing and 5 to running on M.
 
 ## Not covered
 
@@ -631,8 +645,7 @@ steep face, picking something up):
   frame late on screen. The rules above give the usual frame.
 - The second character landing before the fourth frame showing
   `s-air-6`, and when its `s-air-1` ends.
-- Landings after jumps that started from a roll in the air or that the
-  second character started from a roll, after falls that didn't start
+- Landings after jumps that the second character started from a roll, after falls that didn't start
   with a jump, and the second character's landings after bounces.
 - The standing pictures after the first ones given above, the second
   character's walking, running and turning pictures (its stride cycle
