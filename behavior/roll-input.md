@@ -164,9 +164,13 @@ is remembered, even if Action is held for one frame only, and the next
 roll starts on D + 17. A press during the roll before D − 2 is ignored. A
 press on D + 17 or later starts a roll on that frame.
 
-**Exception:** a roll started on D + 17 from a remembered press lasts 30
-frames instead of 29 (S to S + 29, so D = S + 30). Everything in this
-section and the previous one holds with that D.
+**Exception:** a roll started on D + 17 lasts 30 frames instead of 29
+(S to S + 29, so D = S + 30), whether it comes from a remembered press
+or from a new press on D + 17. A roll started on D + 18 or later lasts 29
+frames as usual. Everything in this section and the previous one holds
+with that D. (Measured on flat ground next to a ledge, from 19,844
+remembered presses and 4,756 new presses on D + 17; see
+`rolling-off-ledges.md`, "A roll started in the stop after a roll".)
 
 ## Down during a roll
 
