@@ -93,6 +93,21 @@ limits from a view-limit record of its own
 - Nothing pressed or held has any effect in the scene (`exits.md`, "The
   scene"), so "The player at the ends" doesn't come into play.
 
+## In the area behind the second wall exit
+
+The area behind the first level's second wall exit (`wall-exits.md`)
+takes its limits from a view-limit record of its own
+(`../formats/view-limits.md`, "The area behind the second wall exit").
+As in the scene, `A` = `B` and its one vertical limit entry has `top` =
+`bottom`:
+
+- `E` = `A` on every frame of the area, from its frame 0, so the picture
+  always shows level x `A` to `A` + 255.
+- The picture's top row is at level y `top` on every frame of the area,
+  from its frame 0, except within 34 frames after a Down + Action ground
+  action (`ground-action.md`), when it was up to 1 px higher or 4 px
+  lower; that shake is not covered.
+
 ## Examples
 
 Synthetic, computed from the rules above, with `A` = 64 and `B` = 4800.
@@ -164,6 +179,14 @@ than 82) `vx` is 0 and `x` stays 81.25.
   (`../formats/graphics.md`, "Evidence"). In a copy of the image with
   the scene's record changed, `E` and the top row were the changed
   values on every frame (`../formats/view-limits.md`, "Checks").
+
+- **The area behind the second wall exit.** In the 1 200 runs of
+  `picture-game.md` ("Checks") with the view logged (1 669 769 frames),
+  the view's position `V` (`view.md`) wandered, but `E` was the area's
+  `A` on every frame, and the top row was `top` on every frame except
+  599 frames within 34 frames after a ground action. In a copy of the
+  image with the area's `A` and `B` both lowered by 16, the whole
+  picture was drawn 16 px further right than in the image.
 
 ## Not covered
 

@@ -76,6 +76,16 @@ player's limits follow from `A` and `B` as in
 `../behavior/level-ends.md`, and the view as in `../behavior/view.md`
 and `../behavior/view-vertical.md`.
 
+## The area behind the second wall exit
+
+`locators.md` also gives the record of the area behind the first
+level's second wall exit (`../behavior/wall-exits.md`, "The area behind
+the second wall exit"). As the scene's, it has `A` = `B`, and one
+vertical limit entry, whose `top` and `bottom` are equal. So the view
+can't move either way in the area: its picture's left edge is always `A`
+and its top row `top` (`../behavior/level-ends.md`, "In the area behind
+the second wall exit").
+
 ## Example (synthetic)
 
 Bytes from the record's start, in hex:
@@ -133,6 +143,12 @@ More cases, as bytes, are in `../vectors/view-limits/`.
   Down + Action ground action (`../behavior/ground-action.md`) and up to
   20 frames after it, when it was up to 4 px lower. The entry's `top`
   was never reached.
+- The record of the area behind the second wall exit: in 1 200 runs
+  through the area (`../behavior/picture-game.md`, "Checks"), the
+  picture's left edge was `A` and its top row `top` on every frame but
+  the ones `../behavior/level-ends.md` lists ("Checks"). In a copy of the
+  image with `A` and `B` both lowered by 16, the whole picture was drawn
+  16 px further right.
 
 ## Not covered
 

@@ -182,11 +182,11 @@ on every one of the first 90 frames (see "Checks").
 ## Walking in
 
 When the scene, the room, the level after the scene or the area behind
-the first wall exit (`wall-exits.md`) begins, the characters walk in.
+either wall exit (`wall-exits.md`) begins, the characters walk in.
 Let (`xs`, `ys`) be the point of the area's start record
 (`../formats/level-start.md`), and `d` the direction of the walk: −1
 (left) into the scene and the room, +1 (right) back into the level
-after the scene and into the area behind the first wall exit.
+after the scene and into the areas behind the wall exits.
 
 - **Frames 0 to 26.** On frame `k` the lead is at `x` = `xs` + `d` ×
   (3`k` − 80), `y` = `ys`, with no fraction of a px: it walks 3 px per frame
@@ -194,7 +194,8 @@ after the scene and into the area behind the first wall exit.
   see "Fade-in").
 - **Frame 27.** The lead moves 6 px: `x` = `xs` + 4`d`. In the area
   behind the first wall exit the lead is on the floor on frame 27, 1 px
-  lower than the record's point (`y` = `ys` + 1).
+  lower than the record's point (`y` = `ys` + 1); in the area behind the
+  second, it is on the floor at the record's point (`y` = `ys`).
 - **Frame 28 on.** The player has control. On frame 28 the lead is on
   the ground with a speed of 3 px per frame in the direction `d` (`vx` =
   3`d`, that is ±768/256) and moves by the usual rules
@@ -496,6 +497,16 @@ Walking left (`d` = −1) from an other character at 500, the points are
   frame 0 to 27 (22 400 frames) was as in "Walking in" with `d` = +1,
   the same in every run, and the brightness of frames 0 to 45 as well.
   With nothing held on frame 28 (89 runs), `vx` was 2.625 there.
+- **The area behind the second wall exit.** 3 201 runs through the
+  second wall exit into its area, the lead alone, entering 0 to 60
+  frames after the exit opened, with random inputs or none from frame 1
+  (`picture-game.md`, "Checks"): every frame 0 to 27 (89 628 frames) was
+  as in "Walking in" with `d` = +1, the same in every run, with the
+  brightness of frames 0 to 27 as in "Fade-in". In a copy of the image
+  with the area's start record moved 40 px left, the lead's `x` was 40
+  px less on frames 0 to 27 in all 12 runs, and on frames 0 to 26 its
+  `y` was the same (there is no floor under the lead there: it was
+  already falling on frame 27).
 - **The records decide where.** In a copy of the image with the room's
   start record moved 16 px left, the scene-return record moved 40 px
   right and the room-return record moved to another point, each arrival

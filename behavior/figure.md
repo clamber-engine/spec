@@ -4,7 +4,7 @@ Titles: `title-1`
 
 A **figure** is a small golden image of an animal placed in a level. The
 player takes it by touching it. Each figure taken adds one to the
-**figure count**; it changes neither the collectible count
+**figure count** of its animal; it changes neither the collectible count
 (`collectibles.md`) nor the number of lives. The taken figure is shown
 flying up to the top of the picture, resting there, and leaving. This
 file covers where a figure is, when it is taken, the figure count, and
@@ -173,10 +173,17 @@ after an exit it stays taken (`exits.md`, "Coming back to the level").
 
 ### The figure count
 
-The player has a **figure count**, which goes up by one on `P`. Taking
-the first level's figure with the count at 0 made it 1; with the count
-at 2, it made it 3. What a count of 3 leads to is not covered (see
-"Not covered").
+Each figure is of one of four **animals**, numbered 1 to 4 as in
+`picture-game.md` ("The animals"), and the player has a **figure count**
+for each animal. Taking a figure adds one to its animal's count on `P`,
+and changes no other count. The first level's own figure is of animal
+2; "the count" elsewhere in this file is animal 2's. Taking it with the
+count at 0 made it 1; with the count at 2, it made it 3. What a count of
+3 leads to is not covered (see "Not covered"). The picture game's
+figures (`picture-game.md`, "A won game") can be of any of the four
+animals: taking one of animal 1, 2, 3 or 4, with animal 2's count at 1
+and the others at 0, raised that animal's count by one and left the
+other three as they were.
 
 ### How the taken figure is shown
 
@@ -307,9 +314,10 @@ of 3 leads to (see "Not covered").
 - What a figure count of 3 leads to. In the one case measured, play
   left the level for another area about 260 frames after the third
   figure was taken.
-- Whether the figure count survives losing a life, leaving the level or
-  entering another level, and other kinds of figure (other levels) and
-  whether they share the count.
+- Whether the figure counts survive losing a life, leaving the level or
+  entering another level, and figures in other levels.
+- How a figure from the picture game is shown once it is taken, and
+  whether the counts of animals 1, 3 and 4 lead to anything.
 - How a figure is drawn before it is taken, the exact path of the
   flight, and the sound.
 - Figure counts above 3, and a pickup with the count already at 3.
