@@ -192,14 +192,25 @@ its first frame **S′**. Near a ledge where the ground simply ends, that
 roll follows this file with these differences and additions.
 
 **A roll started on D + 17.** It lasts 30 frames on the ground
-(`roll-input.md`). On S′ its speed stays 0 and the player doesn't move
-(`roll-speed.md`); from S′ + 1:
+(`roll-input.md`). S′ is its press frame, whether the press was
+remembered or new: what is held on S′ sets the roll's size and
+direction (`roll-speed.md`). On S′ its speed stays 0 and the player
+doesn't move; from S′ + 1:
 
+- S′ is a stopped frame when there is no ground 15 px ahead in the
+  direction set on S′ ("Stopping before a ledge"); with ground there it
+  isn't, even though the player doesn't move.
 - "Stopping before a ledge" and "Pushing off" apply as usual from
-  S′ + 1, so standing within 15 px of the edge with the direction toward
-  it held on S′ + 1, the roll pushes off at 2 on S′ + 1. With the other
+  S′ + 1, with the steering of each frame (`roll-speed.md`). So standing
+  within 15 px of the edge, facing it, with the direction toward it
+  held on S′ + 1, the roll pushes off at 2 on S′ + 1. With the other
   direction held on S′ + 1 it turns and pushes off away from the edge
   at 2 on the same frame.
+- Facing the edge there with the direction away from it held on S′
+  only, the roll goes away from the edge as a normal roll. Held away on
+  S′ and toward the edge from S′ + 1, S′ isn't a stopped frame, so
+  S′ + 1 is a stopped frame (the turned roll's new direction counts)
+  and the roll pushes off toward the edge on S′ + 2.
 - The hover depends on **n = L − S′** like this (n = 0 can't happen):
 
   | n | Hover frames |
@@ -237,7 +248,11 @@ roll on D + 17 in the air:
 - S′ + 1 to S′ + 9 are hover frames ("The fall"). From S′ + 10 the
   fall goes on as after any hover.
 - From S′ + 1 the roll's speed rule and steering apply as in the air in
-  "The fall", and the roll ends on G + 30.
+  "The fall". The roll ends on G + 30, except when the player lands
+  exactly 30 frames after S′ (G = S′ + 30): then D = G, as in "When the
+  roll ends" with S′ in place of L. Landings 26 to 35 frames after S′
+  were measured; 29 and 31 end on G + 30. The frame on which the stop
+  carried the player off (1 to 3 frames after D) makes no difference.
 
 Example, rolling right toward an edge whose last column with ground is
 E − 1: standing with floor(x) = E − 10, Action alone on frame 0. Every
@@ -363,6 +378,21 @@ runs would. 40 runs whose stop carried the player off the edge (30 of
 them landed) match "When the stop carries the player off the edge".
 Left out: runs in which the first roll itself went off the edge, and
 runs that walked off the edge before a later press.
+
+Directions around S′ of a roll started on D + 17 from a remembered
+press: 43,624 more runs at the same stretch (the same first rolls,
+Action pressed on each frame from D − 2 to D + 16, tapped or held).
+Toward or away from the edge was held on S′ only; on S′ and from S′ + 2;
+from the press to S′; on S′ with the other direction on S′ + 1 or from
+S′ + 1 on; or nothing on S′ and the direction on S′ + 1 or from S′ + 1
+on. All match this file with 0 mismatches. Setting the size and
+direction on S′ + 1 instead of S′ gives 27,070 mismatching runs, and
+deciding the zone's direction on S′ + 1 without counting S′ as a stopped
+frame gives 4,256. Landings of a roll started in the air: 2,684 runs
+whose stop carried the player off, with the player moved up or down
+during the stop's fall so that the roll landed 26 to 35 frames after S′
+(352 of them exactly 30), match "When the stop carries the player off
+the edge" with 0 mismatches.
 
 Jumps during and around a hover: 5,828 runs at the stretch without a
 face (normal and slow rolls going right and left, Action tapped or held,
@@ -788,9 +818,8 @@ This list is for `title-1`; `title-2` has its own list above.
 - How long a roll lasts when it is pushed off and still on the ground
   at S + 29 (not seen: pushed rolls always went off the edge first).
 - A roll started in the air from a remembered press ("A roll started in
-  the stop after a roll") that lands exactly 30 frames after S′.
-- The size of a roll started on D + 17 from a remembered press when a
-  direction is held on D + 17 but not on D + 18.
+  the stop after a roll") that lands during its hover frames (S′ + 1 to
+  S′ + 9).
 - The second character: ledges where the ground simply ends, rolling
   left, the conditions of a stopped
   frame (only the stops and pushes at the top of one face in "The
