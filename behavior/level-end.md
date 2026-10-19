@@ -39,7 +39,8 @@ marker with an entry. The marker does not move and is not drawn. Its
 kind is `end-marker` ("Kinds" there).
 
 The first level's room has an end marker too: it is the room's way out
-("In the first level's room").
+("In the first level's room"). So has the area behind the first
+level's first wall exit ("In the area behind the first wall exit").
 
 ## When the marker is passed
 
@@ -541,6 +542,39 @@ level was finished and the level map followed.
   marker moved 8, 40 or 100 px left, `T` changed and the fade started
   on the frame after the first frame ending with `X` ≥ 240, as above.
 
+## In the area behind the first wall exit
+
+The area behind the first level's first wall exit (`wall-exits.md`,
+"The area behind the first wall exit") has an end marker too: passing
+it is how the area is left. Everything above holds for it, with the
+picture's left edge of `level-ends.md` (the area's limits are its own,
+`../formats/view-limits.md`), except for the last frame and what
+follows:
+
+- **The fade** starts as in "The fade". In every run the picture's
+  left edge on `T` was the area's right limit, and the lead was less
+  than 240 px right of it on `T`; `F0` came 10 to 17 frames after `T`.
+- **The last frame.** As in the room: the brightness is 0 on `F0` + 28
+  and on `F0` + 29, and `F0` + 29 is the area's last frame. The lead
+  walks on by 2 px on both.
+- **What follows.** The level isn't finished and the level map doesn't
+  follow. On the next logic frame, play is in the first level, at
+  frame 0 of `wall-exits.md`, "Coming back from the first wall exit's
+  area".
+
+### Checks in the area behind the first wall exit
+
+- 800 runs with random inputs biased to the right, the lead alone (see
+  `wall-exits.md`, "Checks"). Every frame from the lead's control to
+  `T` (674 220) was judged by "When the marker is passed": the marker was
+  passed on exactly the frame the rules give, in every run, with `X` −
+  `xm` from 0 to 15 on that frame, 141 times on the landing frame of a
+  jump or fall. Every frame from `T` to the last (35 890, with the
+  random inputs going on) was as in "The walk-out" (position,
+  speed, height, the view) and "The fade" with the change above, the
+  last frame was `F0` + 29 in every run, and the next was the first
+  level's frame 0 there.
+
 ## Example
 
 The marker is at `xm` = 1000, `ym` = 449. The lead walks right on a flat
@@ -569,8 +603,8 @@ last frame came 61 frames after `T`.
 
 ## Not covered
 
-- Other levels' end markers, and areas other than the first level and
-  its room.
+- Other levels' end markers, and areas other than the first level, its
+  room and the area behind its first wall exit.
 - Left and Right held together at the room's marker (measured at the
   first level's end only). Hits and bounces from enemies other than
   walkers, and a hop that lands without a bounce after losing a
@@ -589,5 +623,6 @@ last frame came 61 frames after `T`.
 - An object in the lead's hands with the second character leading, or
   with the other character following.
 - A lead that is already 240 px or more right of the picture's left
-  edge on `T`, other than in the room ("In the first level's room").
+  edge on `T`, other than in the room ("In the first level's room"). In
+  the area behind the first wall exit this wasn't seen.
 - The sound during the walk-out and the fade.

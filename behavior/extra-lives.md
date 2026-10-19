@@ -41,7 +41,8 @@ entry of one of these kinds (`../formats/placements.md`, "Kinds"):
 
 The first level has two `rising-extra-life-1` items, one
 `rising-extra-life-2` and two `extra-life-3`; its room
-(`exits.md`) has one `extra-life-1`. Everything below holds for all four
+(`exits.md`) has one `extra-life-1`, and the area behind its first wall
+exit (`wall-exits.md`) one `rising-extra-life-1`. Everything below holds for all four
 kinds unless it says otherwise. How an item is drawn is not covered.
 
 ## Position
@@ -701,6 +702,14 @@ and is not drawn from frame 321 on.
   `J`, 1 032; with `J` not counting for the height, 771; with the
   number moving up before the letters' step, 335; with the held frames
   starting on `J` + 65 or `J` + 67, 5 each.
+- The `rising-extra-life-1` item in the area behind the first wall
+  exit: 800 runs through the area with random inputs, the lead alone
+  (`wall-exits.md`, "Checks"). The item appeared once in each run.
+  On 217 617 frames from its appearance it rose as in "Rising", at its
+  entry's `x`. It was taken in 103 runs, giving 1 life each; in 102 it
+  rose out of the level, and in 109 it went away past the right edge of
+  the window on the first frame its entry was out of it ("Going away
+  untaken"). No item appeared again after it went away.
 
 ## Not covered
 

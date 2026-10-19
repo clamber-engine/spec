@@ -66,6 +66,16 @@ can't move either way in the scene: its picture's left edge is always
 `A` and its top row always `top` (`../behavior/level-ends.md`, "In the
 first level's scene").
 
+## The area behind the first wall exit
+
+`locators.md` also gives the record of the area behind the first
+level's first wall exit (`../behavior/wall-exits.md`, "The area behind
+the first wall exit"). It has `A` less than `B` and one
+vertical limit entry, usual, with `top` less than `bottom`. The picture's left edge and the
+player's limits follow from `A` and `B` as in
+`../behavior/level-ends.md`, and the view as in `../behavior/view.md`
+and `../behavior/view-vertical.md`.
+
 ## Example (synthetic)
 
 Bytes from the record's start, in hex:
@@ -104,6 +114,25 @@ More cases, as bytes, are in `../vectors/view-limits/`.
 - The vertical limit entries: the checks of
   `../behavior/view-vertical.md` used the entries read from the first
   level's record as above.
+- The record of the area behind the first wall exit: 71 walk-ins into
+  the area, the lead alone, with and without input, 12 651 frames from
+  frame 0 up to the first state those rules leave out: the view on
+  every frame was as
+  `../behavior/view.md` gives ("When an area begins" and the usual
+  rules), with this record's `A` and `B`. In 800 runs through the area
+  the picture's left edge was `B` whenever the lead passed the end
+  marker, and the fade came as `../behavior/level-end.md` gives with
+  that edge ("In the area behind the first wall exit"). In a copy of
+  the image with `A` raised by 40, `B` lowered by 48, the entry's `top`
+  lowered by 16 and its `bottom` by 17, in 20 runs: the view's
+  position on frame 0 was the changed `A` + 1/2; a lead walking right was stopped at the
+  changed `B` + 238 as `../behavior/level-ends.md` gives, short of the
+  end marker, so the area couldn't be left; and the top row of the
+  picture stayed at or above the changed `bottom` (at or above the
+  image's own `bottom` in the image) on every frame except during the
+  Down + Action ground action (`../behavior/ground-action.md`) and up to
+  20 frames after it, when it was up to 4 px lower. The entry's `top`
+  was never reached.
 
 ## Not covered
 

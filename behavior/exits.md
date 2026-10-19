@@ -181,17 +181,20 @@ on every one of the first 90 frames (see "Checks").
 
 ## Walking in
 
-When the scene, the room or the level after the scene begins, the
-characters walk in. Let (`xs`, `ys`) be the point of the area's start
-record (`../formats/level-start.md`), and `d` the direction of the
-walk: −1 (left) into the scene and the room, +1 (right) back into the
-level after the scene.
+When the scene, the room, the level after the scene or the area behind
+the first wall exit (`wall-exits.md`) begins, the characters walk in.
+Let (`xs`, `ys`) be the point of the area's start record
+(`../formats/level-start.md`), and `d` the direction of the walk: −1
+(left) into the scene and the room, +1 (right) back into the level
+after the scene and into the area behind the first wall exit.
 
 - **Frames 0 to 26.** On frame `k` the lead is at `x` = `xs` + `d` ×
   (3`k` − 80), `y` = `ys`, with no fraction of a px: it walks 3 px per frame
   in the direction `d`, facing that way from frame 1 (frame 0 is black,
   see "Fade-in").
-- **Frame 27.** The lead moves 6 px: `x` = `xs` + 4`d`.
+- **Frame 27.** The lead moves 6 px: `x` = `xs` + 4`d`. In the area
+  behind the first wall exit the lead is on the floor on frame 27, 1 px
+  lower than the record's point (`y` = `ys` + 1).
 - **Frame 28 on.** The player has control. On frame 28 the lead is on
   the ground with a speed of 3 px per frame in the direction `d` (`vx` =
   3`d`, that is ±768/256) and moves by the usual rules
@@ -487,6 +490,12 @@ Walking left (`d` = −1) from an other character at 500, the points are
   last, and play went on in the level after it. In some runs the lead
   walked back into the floor exit afterwards and went through the scene
   again.
+- **The area behind the first wall exit.** 800 runs through the
+  first wall exit into its area, the lead alone, 500 of them with random
+  inputs biased to the right from frame 1 and 300 from frame 28: every
+  frame 0 to 27 (22 400 frames) was as in "Walking in" with `d` = +1,
+  the same in every run, and the brightness of frames 0 to 45 as well.
+  With nothing held on frame 28 (89 runs), `vx` was 2.625 there.
 - **The records decide where.** In a copy of the image with the room's
   start record moved 16 px left, the scene-return record moved 40 px
   right and the room-return record moved to another point, each arrival
@@ -798,6 +807,10 @@ Walking left (`d` = −1) from an other character at 500, the points are
   the one run above). Coming back with two characters, other than
   the character freed by a holder broken in the same visit (the other
   runs in "Coming back to the level" had the lead alone).
+- The other character walking into the area behind the first wall
+  exit (only the lead alone was measured there), and the lead's height
+  on frame 27 of other walk-ins where the floor isn't at the record's
+  point.
 - Riding into the exit with anything held during the walk-out or the
   walk-in, or with the second character; whether the animal is drawn
   on frames 0 to T − 1 of the level's start after the room

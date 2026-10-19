@@ -177,7 +177,10 @@ begins again from the room-return record (`exits.md`).
 don't change. Frame 27 is a usual frame except that the base and facing part are
 −79, and from
 frame 28 on the usual rules apply. This was measured walking back into
-the first level after the scene. In the room and the scene the picture
+the first level after the scene, and walking into the area behind the
+first wall exit (`wall-exits.md`), where the lead begins left of the
+area's left limit, so `V` on frame 0 is that limit + 1/2. In the room
+and the scene the picture
 doesn't move (`level-ends.md`), whatever the view's position, so it is
 not covered there.
 
