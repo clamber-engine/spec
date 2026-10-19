@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.194.0
+
+Thrown-object hit ranges for medium walkers and the missing small and
+large walker rows (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/thrown-objects.md`, "When a walker is hit": the missing rows
+  are filled (a small walker facing right with the object moving right,
+  large walkers with the object moving left), and four rows and height
+  limits are added for medium walkers. The patterns paragraph now covers
+  every row: facing shift, mirrored rows for an object moving left, late
+  ranges equal to the carried-object ranges for medium and large
+  walkers, early ranges widened from the late ones.
+- "The walker": medium walkers on flat floor are removed like small ones.
+- "A carried object": the cross-reference to the thrown ranges now also
+  covers a player facing left.
+- New evidence paragraph, and the "Not covered" item is narrowed.
+
 ## spec-v0.193.0
 
 Rolls started in the stop after a roll, near a ledge (spec#17).
