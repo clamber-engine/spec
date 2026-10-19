@@ -431,6 +431,29 @@ item due on `F0` + 29 and plus 0 in the others; up to 10 items were
 never counted. In one run played on into the next level from the map,
 the count was still the same there.
 
+## In a trace
+
+How the frames from the marker to the level's last frame are written in
+a trace (`../traces/FORMAT.md`), with `n` the frame on which the marker
+is passed and `T` = `n` + 1 as in "When the marker is passed":
+
+- `n` is an ordinary row, moved with its own input.
+- `T`: `x` as on `n`, `vx` +2, `vy` 0, `ground` 1, no events. Its state
+  follows the usual rules for a frame on the ground (`walk` in the run
+  below, with Right held).
+- `T` + 1 to `F0` + 28: `ground` 0 and `vx` +2 on every frame, state
+  `fall`: the lead is off the ground without having jumped
+  (`../traces/VOCABULARY.md`). `T` + 1 carries `leave_ground`. `vy` is
+  −0.125 (−32/256, the 1/8 px rise) from `T` + 1 to `F0` − 1 and 0 from
+  `F0` on.
+- No other events, except `turn` on `T` + 5 for a lead that was facing
+  left on `T` ("The walk-out", "Facing").
+- `F0` + 28 is the last row. There are no rows after it.
+
+Checked on one run from the first level's start to its end, the lead
+alone and facing right, Right held: the 62 rows from `T` to `F0` + 28
+were as above, and `x` grew by exactly 2 on each from `T` + 1 on.
+
 ## The second character leading
 
 Everything above holds when the second character is the lead (after a
