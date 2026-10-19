@@ -2,6 +2,30 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.198.0
+
+The area behind the first wall exit: arriving, what is placed there, and
+leaving it (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/wall-exits.md`: new section "The area behind the first wall
+  exit" (arriving, the view, what is there, no time limit, leaving).
+  "The end" now says that the next frame after the first wall exit is
+  the area's frame 0.
+- `behavior/exits.md` ("Walking in"): the area behind the first wall
+  exit is walked into toward the right, with the lead 1 px lower on
+  frame 27. `behavior/view.md`: the view when walking into it.
+- `behavior/level-end.md`: new section "In the area behind the first
+  wall exit". The fade is as in the level and the last frame is `F0` +
+  29 as in the room, then play goes back to the first level.
+- `behavior/extra-lives.md`: the area's `rising-extra-life-1` item.
+- `formats/locators.md`: rows for the area's placement list, start
+  record and view-limit record. `formats/placements.md`,
+  `formats/level-start.md`, `formats/view-limits.md`: the area's
+  entries, start record and view-limit record, and how they appear.
+
 ## spec-v0.197.0
 
 Air-started rolls after a stop: landing on S′ and on hover frames
