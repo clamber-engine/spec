@@ -286,14 +286,29 @@ start could be followed on screen, running started on M on the 2 with
 Action and one direction held on M, and on the other 28 standing (9),
 walking (18) or running (1) started on K.
 
-For a landing after a jump that the second character started from a
-roll (`jump-input.md`, "Landings this doesn't cover"), the spec uses M = L + 1: running on
-L + 1, the mode on L + 7. In the original these vary; reference
-comparisons on such landings should allow −1 frame on a run starting
-just after the landing, +3 frames on walking or standing starting after
-it, and the same on the turn checks that follow. Landings after falls
-that didn't start with a jump, and after bounces, are in "After a fall
-or a bounce" below.
+**The second character.** With the second character as the player, a
+landing after a jump (from standing, walking or running, or out of a
+roll pressed on the ground) on the fourth or a later frame showing
+`s-air-6` (`player-frames.md`, "Second character") has M = L
+(`jump-input.md`, "The second character"), and its K is **L + 17**:
+
+- if Action and exactly one of Left or Right are held on L, running
+  starts on L at step 1, in the held direction;
+- otherwise the mode starts on L + 17 by the input on L + 17, as on K
+  above (running, walking or standing).
+
+Measured on `title-1` from the pictures on screen (the first running,
+walking or standing picture), on landings where nothing else started
+before the mode: after jumps from the floor on flat floor, running on L
+on 183 and a mode on L + 17 on 43 (standing 18, walking 23, running 2);
+after jumps out of a roll on flat floor, 126 and 44 (standing 17,
+walking 25, running 2); in random play through the first level, 96 and
+20. Every one matched. Landings on the third `s-air-6` frame ran on L
+when Action and one direction were held on L (9 measured); their other
+modes, and those of earlier landings, are not covered.
+
+Landings after falls that didn't start with a jump, and after bounces,
+are in "After a fall or a bounce" below.
 
 Example: a standing jump facing right, Jump held for 20 frames, nothing
 else held in the air (M = L + 1, so K = L + 7). In the first case Left
@@ -533,7 +548,7 @@ opposite direction always starts a turn (88).
 - Landing on uneven floor after any of these falls, and bounces off
   anything other than a small walker (`walker-contact.md`).
 - Left and Right held together, walls, carrying, and the second
-  character. Down held on or after the landing frame starts a crouch
+  character (except its landings after jumps, "After a landing"). Down held on or after the landing frame starts a crouch
   from L + 2 ("Crouching"); the mode after a crouch is the first item
   above. On 1-in-4 slopes this section applies unchanged
   (`slopes.md`, "Turning around on a slope"); other slopes are not

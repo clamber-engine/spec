@@ -406,9 +406,9 @@ running speeds), all 3,312 cases mismatch; with the normal gravity in place of 0
 - What the first character does while following a rolling second
   character.
 - Walking off a ledge without a face, and walking or running left off a
-  ledge. Jumping on landing from a press made in the air, and the
-  landing lockout of `jump-input.md` for this character, after jumps
-  and after falls.
+  ledge. Jumping on landing from a press made in the air more than one
+  frame before landing, and the landing lockout after falls. The
+  lockout after jumps is in `jump-input.md` ("The second character").
 - Slopes, steep faces, walls, platforms from below, carrying, bouncing
   off enemies and being hurt, with the second character under control.
 - The swap itself (`S`) is in `swap.md`. The measurements above start

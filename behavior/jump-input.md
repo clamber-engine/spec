@@ -79,8 +79,9 @@ earliest frame a jump can start after landing frame L **E**. For a
 landing after a jump, E = **M + 2**, where M is the landing's **switch
 frame** below. M is L or later (up to L + 6 in the measurements below),
 so E is L + 2 or later. This holds for the first character's jumps out
-of a roll too, whether pressed on the ground or in the air; the second
-character's are an exception (see the end of this section).
+of a roll too, whether pressed on the ground or in the air. The second
+character's landings have their own rule (see "The second character"
+below).
 
 ### The switch frame M
 
@@ -266,16 +267,56 @@ after L out of the window gives 9 wrong. Landings that end on a face
 column, or reach one before the take-off, were left out (see
 `steep-faces.md`, "Jumping on or next to a face").
 
+### The second character
+
+With the second character as the player (`second-character.md`), a
+landing after a jump has no stage frames, whether the jump started from
+standing, walking or running or out of a roll pressed on the ground:
+its switch frame is the landing frame itself, **M = L**, so
+**E = L + 2**. This holds when L comes on the third or a later frame
+showing the last air picture `s-air-6` (`player-frames.md`, "Second
+character"). Every jump measured that lands on the floor it took off
+from is such a landing. When the mode starts after these landings is in
+`ground-speed.md` ("After a landing").
+
+For a landing that comes earlier (before `s-air-6` or on its first or
+second frame), the spec uses E = L + 2 as well. In the original, E was
+L + 2 to L + 4 on these landings; reference comparisons on them should
+allow up to 2 frames later on the next `jump_start`.
+
+Measured on `title-1` with the second character leading and the first
+following:
+
+- 120 jumps on flat floor from standing, walking and running, Jump held
+  1 to 40 frames, then pressed again on L − 1 and held: the next
+  `jump_start` came on L + 2 on all 120. The first character's rule
+  above gives M = L + 1 (n = 6), so E = L + 3, on 114 of them.
+- 800 runs on flat floor, about half plain jumps (standing, walking or
+  running, Jump held 1 to 40 frames) and half jumps out of slow, normal
+  and fast rolls (Jump pressed on a roll frame from the roll's first
+  frame to 23 frames after it, held 1 to 40 frames), with random input
+  in the air and random input changed every 1 to 8 frames for 60 frames
+  after the landing; and random play through the first level from two
+  places. The take-off was read from the pictures on screen (the next
+  `s-jump-1`). On the landings on the third or a later `s-air-6` frame
+  where the player jumped again before doing anything else and stayed
+  on the floor until then, the next take-off matched E = L + 2 (with
+  "Pressing before landing" counting back from it) on all 873: 625 on
+  flat floor (253 of them after jumps out of a roll) and 248 in random
+  play (52 out of a roll). E = L + 3 gives 356 of them wrong, E = L + 1
+  gives 311.
+- 63 earlier landings where the player jumped again (all but 6 of them
+  in random play): E = L + 2 fits 57 of them; the other 6 need L + 3 or
+  L + 4.
+
 ### Landings this doesn't cover
 
-For a landing after a jump that the second character started from a
-roll (`rolling-off-ledges.md`), or after a fall that didn't start with a jump (walking or rolling off a
-ledge), the spec defines **E = L + 3** unless another file says
-otherwise (after a jump from a roll, M = L + 1). The mode after these
-landings is in `ground-speed.md` ("After a landing", "After a fall or a
-bounce"). In the original E varies on these landings
-too. Reference comparisons on them should allow ±1 frame on the
-`jump_start` and on frame counts measured from it.
+For a landing after a fall that didn't start with a jump (walking or
+rolling off a ledge), the spec defines **E = L + 3** unless another
+file says otherwise. The mode after these landings is in
+`ground-speed.md` ("After a fall or a bounce"). In the original E varies
+on these landings too. Reference comparisons on them should allow ±1
+frame on the `jump_start` and on frame counts measured from it.
 
 ## Pressing before landing (buffered jump)
 
