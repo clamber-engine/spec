@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.214.0
+
+The sky during the first level's dimming (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/dimming.md`: new sections "The far layer" and "The backdrop
+  and the horizon layer". Far-layer pixels dim with rows 1 to 7, then
+  are darkened as in `graphics.md`. Each backdrop and horizon-layer
+  row-colour list entry goes in 32 equal steps to a night colour, on the
+  same step frames as rows 1 to 7. The horizon's night colours are
+  black, and the backdrop's are dark blue near the top and black lower
+  down. New made-up examples, a scenario check, evidence from captured
+  pictures, and updated "Not covered" items (where the backdrop's night
+  colours are stored, on which picture a step first shows, horizon
+  colour numbers 2 and 3).
+- `formats/graphics.md`, "Not covered": the dimming item now names only
+  where the backdrop's night colours are stored.
+
 ## spec-v0.213.1
 
 1 change: the ground at the exit in `exit-walk-out` (spec#56).
