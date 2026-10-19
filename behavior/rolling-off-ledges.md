@@ -238,6 +238,102 @@ frames made by moving the player match the hover and vertical rules on
 2,100 airborne frames (882 hover frames) and the end rule on 159 rolls
 (7 of them after falls of exactly 30 frames).
 
+## The second character
+
+With the second character leading (`second-character.md`), a roll off
+a ledge with a steep face at the top follows this file with that
+character's roll values (`second-character.md`, "Rolls": the roll lasts
+24 frames on the ground, and its sizes are 1.125, 3.375 and 4.5 for a
+slow, normal and fast roll), and these values differ:
+
+| Value | First character | Second character |
+|---|---|---|
+| L = S: hover frames after L | L + 1 to L + 8 | **L + 1 to L + 10** |
+| L is a hover frame, and so are the frames after it up to | L + 9, when L is S + 1 to S + 7 | **L + 11**, when L is S + 1 to S + 9 |
+| L is the only hover frame | L = S + 8 | **L = S + 10** |
+| No hover | L ≥ S + 9 | **L ≥ S + 11** |
+| The roll's last frame | G + 29 (D = G + 30) | **G + 24 (D = G + 25)** |
+| Fall length for which D = G | 30 frames (G = L + 30) | **25 frames (G = L + 25)** |
+
+Everything else is as for the first character:
+
+- **The fall.** A frame that isn't a hover frame moves as in "The fall":
+  on L, when L isn't a hover frame, the player moves down by 3.4375 px
+  and `vy` ends at 0.00390625; after the last hover frame (or after L)
+  `vy` increases by 0.4375 per frame up to 8 from 0.00390625, and the
+  landing rule of `landing.md` applies. A hover frame moves the player
+  down by 0.00390625 px with `vy` 0.00390625.
+- **Horizontal speed.** From L + 1 on, `vx` follows the roll's speed
+  rule (`roll-speed.md`) toward the second character's size: 3.375
+  (864/256) for a normal roll, 4.5 (1152/256) for a fast one and 1.125
+  (288/256) for a slow one. Frame L isn't covered here either.
+- **When the roll ends.** However long the roll went on before L and
+  however long the fall is, the roll's last frame is G + 24 and D is
+  G + 25, except that D = G when the fall lasts exactly 25 frames
+  (falls of 24 or 26 frames end at G + 25). If the roll goes off another
+  ledge on the floor below, each landing starts the count again: the
+  rule applies to the last landing, with L the first airborne frame of
+  that fall, and a last fall of exactly 25 frames ends the roll on its
+  landing frame. From D, `second-character.md` ("Rolls") applies: if
+  Action was held on every frame from S to D the roll carries on into
+  running (`roll_end` on D + 6), otherwise it ends in a stop.
+- **Pushing off.** Standing at the top of a face within reach of the
+  edge, a roll from standing with Action alone stayed where it started
+  with `vx` 0 until D = S + 24, and with Right held from S + 1 it pushed
+  off at 2 (512/256) on S + 1 and went over the edge, as in "Stopping
+  before a ledge". After the push the roll's size is 2, and holding the
+  roll's direction makes it 3 (768/256), the first character's normal
+  size, not 3.375. This is the same as a slow roll steered in its own
+  direction (`second-character.md`, "Rolls").
+
+Example: standing about 33 px in front of a ledge with Right held,
+Action pressed on frame 0 and held. The player starts down the face on
+frame 15, leaves the ground on frame 16 and lands on frame 31, 15
+frames later. Frames 0 to 55 are all `roll` (56 frames rather than 24),
+D = 56 = G + 25, and because Action was held throughout, the roll
+carries on into running (`roll_end` on D + 6 = 62). With Action tapped
+on frame 0 instead, `roll_end` is on 56 and the stop follows.
+
+Example of a hover: walking right from standing, Right held, Action
+pressed with Right on frame 12 and released. The player leaves the
+ground on frame 19 (L = S + 7). Below the player's height on L − 1,
+after each frame:
+
+| Frame | Below L − 1 (px) | `vy` |
+|---|---|---|
+| L | 0.00390625 | 0.00390625 |
+| L + 11 | 0.046875 | 0.00390625 |
+| L + 12 | 0.48828125 | 0.44140625 |
+| L + 13 | 1.3671875 | 0.87890625 |
+
+The player lands on frame 46, 27 frames after L, so D = G + 25 = 71.
+
+### Evidence (second character)
+
+Measured on three ledges with a steep face at the top, rolling right,
+the second character under control after a swap and the first character
+following (no position changes before the roll, except where given
+below): normal, slow and fast rolls started standing or walking from
+many distances, Action tapped or held; walking rolls from starts moved
+by up to 3 px in steps of 1/32 or 1/16 px, to find rolls that leave the
+ground on S;
+rolls from standing placed in 1/16 px steps at the top of one face; and
+falls made shorter or longer by moving the player down up to 12 px or up
+to 150 px after L + 4. 1,031 rolls left the ground during the roll (642
+normal tapped, 295 normal held, 41 and 10 slow, 33 and 10 fast; L − S
+from 0 to 23, 36 of them with L = S), and all match the rules above with
+0 mismatches: vertical moves on 23,853 airborne frames (7,265 of them
+hover frames), roll speed on 52,202 frames and the end of 941 rolls,
+150 of them after a last fall of exactly 25 frames and 150 after more
+than one landing; 65 rolls pushed off at the top of the face. With the
+first character's values instead, the runs mismatch: hover frames
+688 rolls, the end 941 (all), sizes 3 and 4 for normal and fast
+rolls 915,
+the size after a push 3.375 all 65, and without the 25-frame exception
+150. Left out: frames after a roll hit a wall (61 rolls) or knocked out
+a walker on the floor below (29 rolls), and the leave frames of later
+ledges.
+
 ## Trace
 
 The fall frames of a roll are `roll` with `ground` 0; `leave_ground` is
@@ -486,8 +582,12 @@ This list is for `title-1`; `title-2` has its own list above.
   carry-on frames (D to D + 3) can be stopped.
 - How long a roll lasts when it is pushed off and still on the ground
   at S + 29 (not seen: pushed rolls always went off the edge first).
-- Rolls that start in the stop after an earlier roll, and the second
-  character.
+- Rolls that start in the stop after an earlier roll.
+- The second character: ledges where the ground simply ends, rolling
+  left, jumps pressed during the fall, the conditions of a stopped
+  frame (only the stops and pushes at the top of one face in "The
+  second character" were measured), and the first character following
+  it.
 - Rolls that hit a wall or an enemy during the fall or after landing.
 - Jumps pressed during a hover (the jumps above were all measured
   without one).
