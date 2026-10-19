@@ -2,6 +2,34 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.200.0
+
+The area behind the first level's second wall exit: arriving there, the
+picture game in it, and leaving it (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/picture-game.md` (new): three places showing pictures of four
+  animals in turn. Covers how the pictures turn, how a lead's jump stops
+  a place, the picture it keeps, when the game is decided, and the
+  timelines of a lost game and of a won game (the places sliding
+  together, the drop and its bounces, the figure, leaving). Includes
+  worked examples and evidence.
+- `behavior/figure.md`: four animals, each with its own figure count;
+  the first level's figure is animal 2.
+- `behavior/wall-exits.md`: new section "The area behind the second
+  wall exit" (arriving, the view, what is there, no time limit,
+  leaving). "The end" and "Not covered" are updated.
+- `behavior/exits.md` ("Walking in"): the walk-in into the area behind
+  the second wall exit, with evidence.
+- `behavior/level-ends.md`, `formats/view-limits.md`: the view in that
+  area doesn't move.
+- `formats/locators.md`: rows for the area's placement list, start
+  record and view-limit record, and the `picture-game` fingerprint row.
+- `formats/placements.md`, `formats/level-start.md`: the area's entry
+  and start record.
+
 ## spec-v0.199.0
 
 Bouncing again before landing, off a second walker during a bounce
