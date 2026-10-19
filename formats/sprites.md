@@ -201,7 +201,8 @@ Where the four palettes are is in `locators.md`:
 
 Apart from the cases under "Not covered", the colours stay the same
 while playing, including while flashing (`../behavior/protection.md`)
-and in water: only a change of player changes them. When the player
+and in water (except in the darker areas under "Not covered"): only a
+change of player changes them. When the player
 changes, the colours change on the frames below. Each is the logic frame
 whose picture first shows the new colours (a picture is shown with its
 logic frame's view, as in "Where the picture is drawn"). Before it, the
@@ -275,17 +276,22 @@ full frames with every byte hashed for one of them.
 - The sprite palette rows the game had in place were found as 30-byte
   runs in the image (colours 1 to 15, in order).
 - The characters' palettes, measured by inputs alone:
-  - **Which palette.** 290 runs of 600 frames from 145 saved positions
-    in `title-1` (levels, water, caves, rooms, with one character and
-    with two), random input including Swap and Tandem presses. Outside
-    the frames where the player changed (6 628 frames), the colours in
-    place for each character's pictures were exactly the palette the
-    table gives on 297 474 frames. On the other 82 frames, one or two at
-    a time while an area was loading, no palette was in place yet.
-    Riding (2 013 frames) is under "Not covered", as are 24 runs (12
-    positions) in which the colours were changed: 22 near the first
-    level's end, where they dim, and 2 in another area, where they were
-    changed throughout.
+  - **Where the four palettes are.** Each character's picture was
+    found on screen with only the sprite layer drawn (as for the picture
+    hashes in `../behavior/player-frames.md`), and the screen colour of
+    each of its colour numbers was read. Frames within 60 frames of a
+    change of player were left out. In the 24 later runs under "On
+    screen", leaving out the three with fades and the two darker water
+    areas, each character showed the same 15 colours on every frame
+    while it was the player (5 831 frames for the first character, 2 036
+    for the second) and another 15 on every frame while the other one
+    was (1 852 and 796 frames; 15 readings of single colour numbers of
+    the second character differed). Each set of 15 colours was then
+    looked for in the image as a 30-byte run of colours 1 to 15 in
+    order, starting anywhere. Each following set was found once. Each
+    leading set was found in several places, all the same colours, one
+    of them directly before the same character's following palette; the
+    rows in `locators.md` give that one and the following one.
   - **On screen.** 23 runs of up to 1 500 frames from 12 saved positions
     with both characters, random play with Swap presses. Each
     character's picture was found on screen (with only the sprite layer
@@ -295,7 +301,16 @@ full frames with every byte hashed for one of them.
     player. Of the others, 226 came during a fade on leaving an area
     ("Not covered"), and 3 were single frames, between frames that
     matched, on which the colours read matched none of the four
-    palettes.
+    palettes. The same check was run later on 24 new runs: 18 runs of
+    up to 600 frames from 18 positions with one character (levels, 4
+    caves, 5 water areas, rooms, carrying and throwing) and 6 runs of up
+    to 1 500 frames from 6 positions with two. With two characters,
+    5 363 of 5 363 picture frames showed the palette given above,
+    including the frames around 7 changes of player. With one, 6 630
+    picture frames of the player showed its leading palette; the other
+    193 came during fades in and out of the whole picture (three runs,
+    around area changes), and in two of the five water areas every
+    frame (857) showed the colours darker (see "Not covered").
   - **When the colours change.** On every frame, the screen pixels
     showing colours found in only one of the four palettes were
     counted. From 13 saved positions with both characters, one run with
@@ -325,8 +340,12 @@ full frames with every byte hashed for one of them.
     dimming (`../behavior/dimming.md`, "Not covered");
   - in areas where the characters are drawn with changed colours
     throughout (seen in one area other than the first level);
-  - while the picture fades out on leaving an area (seen when walking out
-    of an area);
+  - while the picture fades out or in (seen on leaving an area and
+    around other area changes);
+  - in some water areas, where the characters are shown darker
+    throughout: in the two seen, each colour's red, green and blue were
+    half the palette's, rounded down. Which areas these are, and whether
+    other objects are darker too, is not covered;
   - while riding an animal, and in areas where the player is an animal;
   - in games with two players;
   - the picture of both characters on the level map.
