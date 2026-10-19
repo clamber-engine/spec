@@ -81,7 +81,9 @@ the floor while it walks:
   stays on the floor as in `walker.md`.
 
 So a start 5 px or less above the floor (in whole px) is on the floor
-after the walker's first step, and a higher start falls for a few frames.
+after the walker's first step, and a higher start falls for a few frames. A
+walker that walks off a ledge falls with the same growth and limit, from
+a different first move (`walker.md`, "Walking off a ledge").
 The 5 px limit lies between 4 15/16 px (landed) and 5 1/16 px (not
 landed); a walker exactly 5 px above the floor after a move wasn't seen.
 
