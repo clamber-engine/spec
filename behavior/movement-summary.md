@@ -117,6 +117,7 @@ carry on into running until D + 6. Everything else is the same
 | `bounce-walker` | A standing jump onto a walker and a full-height bounce |
 | `slope-dip` | Walking down and up 1-in-4 slopes, a jump from a slope |
 | `swim-strokes` | Swimming in open water: a plain, an Up and a Down stroke, sinking with and without Down, speeding up, slowing down and turning |
+| `entrance-throw` | The start of a level: hidden frames, the throw out of the entrance, steering, a turn starting on the landing frame, then walking and a jump (`title-1`) |
 
 ## Not covered
 

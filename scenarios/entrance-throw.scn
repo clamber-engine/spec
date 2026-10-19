@@ -1,0 +1,16 @@
+# clamber-scenario v1
+id: entrance-throw
+summary: Enter the level through its entrance holding Left from before the throw, steer left once steering starts, land, then walk right and jump.
+requires: the first level begun from the level map, with its entrance at the start point (behavior/level-start.md); flat floor 185 px below the start point, from 100 px to 360 px right of it, with nothing above it in that span up to the start point's height; no walls or other ground along the throw's path; no entities other than the entrance within 120 px of the player at any time
+start: the level's first frame (behavior/level-start.md), one character, nothing held before frame 0
+frames: 200
+
+[inputs]
+30-109   L
+120-199  R
+160-169  J
+
+[metrics]
+final_x          tol 1
+final_y          tol 0.5
+curve x,y,vx from land for 40 tol 0.25
