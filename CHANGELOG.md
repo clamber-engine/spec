@@ -2,6 +2,34 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.202.0
+
+What a trace shows during the two kinds of walk-out: after the level's
+end marker, and through an exit (spec#38, differential tests).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/level-end.md`: new section "In a trace". From the frame
+  after the marker is passed to the level's last frame, the lead is
+  written as `fall` with `ground` 0 (it rises off the floor), with
+  `leave_ground` on the first of those frames, the `vx`/`vy` values on
+  each frame, and `turn` only for a lead that was facing left. There
+  are no rows after the level's last frame.
+- `behavior/exits.md`: new section "In a trace". During an exit's
+  walk-out every row is `walk` with `ground` 1, `vy` 0 and `vx` −2,
+  whatever is held, with no events other than `turn`; the trace ends
+  with the area's last frame. New check bullet; "Not covered" narrowed
+  to the next area's frames.
+- `behavior/wall-exits.md`: new section "In a trace", the same with the
+  directions turned around.
+- `traces/VOCABULARY.md`: `walk` also covers an exit's walk-out,
+  whatever is held.
+- `scenarios/exit-walk-out.scn` and
+  `traces/reference/exit-walk-out.trace` (new, `title-1`): a turn just
+  inside an exit's reach, so the exit takes over a lead facing right,
+  then Jump, Action and Right during the walk-out.
+
 ## spec-v0.201.0
 
 The landing at the end of the entrance throw that begins a level, and
