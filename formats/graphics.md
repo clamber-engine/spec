@@ -612,8 +612,8 @@ More cases, as bytes, are in `../vectors/graphics/`.
   level's room have a screen picture.
 - How the far layer and the horizon layer move in areas other than the
   first level.
-- In the first level: the colours of the backdrop and the horizon
-  layer during the dimming (`../behavior/dimming.md`); the picture while
+- In the first level: where the backdrop's night colours for the
+  dimming are stored (`../behavior/dimming.md`); the picture while
   the level fades in at its start (the pictures after frames 0 to 44); which
   pictures show the next frame's horizon shifts ("The horizon layer");
   `f` while the view's position is outside the level's limits; and
