@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.197.0
+
+Air-started rolls after a stop: landing on S′ and on hover frames
+(spec#17).
+
+Part of clamber-engine/spec#17, which stays open for the parts not
+covered yet.
+
+- `behavior/rolling-off-ledges.md`, "When the stop carries the player
+  off the edge": the landing rule of `landing.md` applies from S′ on,
+  hover frames included, so the roll can land on S′ or on any hover
+  frame. Such landings end the roll on G + 30, as other landings
+  (except G = S′ + 30), and leave horizontal speed unchanged. New
+  evidence, and the item is removed from "Not covered".
+
 ## spec-v0.196.0
 
 Joining: the lead during the wait, in the air and on the ground, input
