@@ -195,9 +195,19 @@ speed (`roll-speed.md`, "Jumping out of a roll"). Vertical motion, with
 
 1. **P**: `vy` increases by g(P) (never above 8) and the player moves
    down by the new `vy`. Since Jump is held on P, g(P) is 0.28125.
+   Two kinds of P are different:
+   - **P is a hover frame** ("The fall"): P stays a hover frame. The
+     player moves down by 0.00390625 px and `vy` ends at 0.00390625.
+   - **P is L and isn't a hover frame**: the player moves down by
+     3.28125 px (instead of 3.4375) and `vy` ends at 0.00390625.
 2. **T**: the player moves down by `vy` + g(T) (that sum also capped at
    8). Then `vy` becomes **−7**: the trace's `vy` on T is −7.
 3. **From T + 1**: `jump-arc.md`, "Each frame after T", with this P.
+
+The jump ends the hover: T is never a hover frame, and neither is any
+frame after it, whatever the table in "The fall" says for those frames.
+So a press on a hover frame takes off from where the hover has held the
+player, with `vy` 0.00390625 at the end of P.
 
 If the move on T would land the player (`landing.md`), they are placed
 on the floor on T, `ground` is 1 on T, and the jump goes on from there
@@ -220,6 +230,21 @@ Jump pressed on P and held 12 frames (P to P + 11):
 On P + 12 Jump is no longer held, so from there `vy` increases by
 0.4375 per frame.
 
+Example of a press during a hover: walking right, Right held, Action
+tapped 7 frames before the player leaves the ground (L = S + 7, hover
+frames L to L + 9). Jump pressed on L + 3 and held 12 frames:
+
+| Frame | Moved down by | `vy` after the frame |
+|---|---|---|
+| L to L + 2 | 0.00390625 each | 0.00390625 |
+| P = L + 3 | 0.00390625 | 0.00390625 |
+| T = L + 4 | 0.28515625 | −7 |
+| L + 5 | −6.71875 | −6.71875 |
+
+With Jump tapped on P alone, T moves down by 0.44140625 and `vy` is
+−6.5625 after L + 5. L + 4 to L + 9 would have been hover frames without
+the press; with it they follow the jump from T on.
+
 ### Evidence (where the ground simply ends)
 
 3,082 runs by inputs at the stretch of ground without a face, 1,040 of
@@ -237,6 +262,19 @@ On two of the ledges with a face, 612 runs with falls of 26 to 45
 frames made by moving the player match the hover and vertical rules on
 2,100 airborne frames (882 hover frames) and the end rule on 159 rolls
 (7 of them after falls of exactly 30 frames).
+
+Jumps during and around a hover: 5,828 runs at the stretch without a
+face (normal and slow rolls going right and left, Action tapped or held,
+L − S from 0 to 19, Jump pressed on each frame from L to L + 13 and held
+1, 5, 12 or 40 frames, some steering back or releasing the direction from
+L + 1) match "Jumping during the fall" with 0 mismatches on 246,195
+vertical moves and 246,768 horizontal speeds, to landing: 2,373 presses
+on hover frames, 128 presses on an L that wasn't a hover frame, and 7,613
+frames that would have been hover frames without the press. In all of
+them the roll ends on P and no stop follows the landing. With the
+jump rule on P instead (P not kept as a hover frame), 2,299 runs
+mismatch. Frames once the player had moved past the flat floor below
+the stretch, or back under its edge, were left out.
 
 ## The second character
 
@@ -589,6 +627,6 @@ This list is for `title-1`; `title-2` has its own list above.
   second character" were measured), and the first character following
   it.
 - Rolls that hit a wall or an enemy during the fall or after landing.
-- Jumps pressed during a hover (the jumps above were all measured
-  without one).
+- Jumps pressed during a hover on ledges with a face at the top (the
+  hover jumps above were measured where the ground simply ends).
 - Ledges of other heights where the ground simply ends.
