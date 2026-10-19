@@ -349,9 +349,11 @@ player's position on the frame before G:
   the thrower or a ball is in `thrown-objects.md`, "Hitting the
   thrower" and "Hitting a ball", and one meeting a large walker in "A
   carried object").
-- What a thrown object does when it first touches a character. Bouncing,
-  rolling and breaking against walls for an object that holds nothing
-  are in `thrown-objects.md`; when an object that holds the missing
+- What a thrown object does when it first touches a character, beyond
+  `thrown-objects.md`, "Meeting a character" (an object that holds
+  nothing passes through both characters). Bouncing, rolling and
+  breaking against walls for an object that holds nothing are in
+  `thrown-objects.md`; when an object that holds the missing
   character breaks, also while carried or during a throw, is in
   `holder-breaking.md`. When some objects break
   the game was seen to stop the player for about half a second; this
