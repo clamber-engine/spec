@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.185.0
+
+Bunch ranges while carrying an object (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/bunches.md`: new "Carrying an object" row in the ranges
+  table and paragraph under "Pickup ranges". The carrying row applies on
+  every frame from the pick-up on, including jumps with the object (no
+  switch at `T` + 6), through `Q` + 42 of a throw and `Q` + 12 of a
+  put-down, with the standing row after that; turns use the old facing
+  for their first four frames. Not covered now lists only carrying on a
+  slope and after a pick-up in the air.
+
 ## spec-v0.184.0
 
 Letter ranges in the stop after a roll, and bunch ranges while
