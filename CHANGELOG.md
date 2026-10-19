@@ -2,6 +2,31 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.216.0
+
+The second character's landings after jumps, plain and out of a roll
+(spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/jump-input.md`: new section "The second character". Its
+  landings after jumps from the floor or out of a roll pressed on the
+  ground have no stage frames: M = L, so E = L + 2, when L comes on the
+  third or a later `s-air-6` frame. Earlier landings use E = L + 2 with
+  a tolerance of up to 2 frames later. "Landings this doesn't cover"
+  now covers only falls.
+- `behavior/ground-speed.md`, "After a landing": for the second
+  character, running on L with Action and one direction held on L,
+  otherwise the mode on K = L + 17. Replaces the tolerance paragraph;
+  "Not covered" narrowed.
+- `behavior/player-frames.md`, "Second character": jumps out of a roll
+  pressed on the ground show the same air and landing pictures as plain
+  jumps. New evidence bullet from on-screen pictures; "Not covered"
+  narrowed.
+- `behavior/second-character.md`: "Not covered" points to the new
+  lockout section.
+
 ## spec-v0.215.0
 
 The first character's jumps out of a roll pressed in the air (spec#38,
