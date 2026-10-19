@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.206.0
+
+Action presses on a steep face (spec#38, differential tests).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/steep-faces.md`: a roll never starts on a frame that starts
+  on a face. New subsection "When a roll starts on a face": a press on
+  the floor on a face, a press in the air whose landing ends on a face
+  column, or a press just after a roll that carried on is carried like a
+  jump press. The roll starts on the first frame off the face if Action
+  is held until then and that frame is no later than 7 frames after the
+  press. A press on the frame that moves onto a face isn't carried. With
+  an example, evidence and two new "Not covered" items.
+- `behavior/roll-input.md`: "On the ground", "In the air" and "Starting
+  the next roll" point to the new rule.
+
 ## spec-v0.205.0
 
 The first level's background apart from the ground layer: far layer,
