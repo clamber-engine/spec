@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.192.0
+
+Jumps pressed during a roll's fall off a ledge (spec#17).
+
+Part of clamber-engine/spec#17 (level layout), which stays open for the
+parts not covered yet.
+
+- `behavior/rolling-off-ledges.md`, "Jumping during the fall"
+  (`title-1`): jumps pressed during a hover. A press on a hover frame
+  keeps that frame a hover frame, and a press on an L that isn't a hover
+  frame moves the player down 3 + g(P). The jump ends the hover: no
+  frame from T on is a hover frame. Includes an example and evidence
+  where the ground simply ends, plus evidence that the same rule holds
+  for the first character on ledges with a face.
+- `behavior/rolling-off-ledges.md`, "The second character": jumps
+  pressed during the fall with the second character leading, using that
+  character's jump values (held gravity 0.3515625, `vy` −8.3515625 on T,
+  air targets ±2.25 / ±3.375 / 0). Includes an example and evidence.
+- Not covered: narrowed to faced-ledge hover jumps with L = S or S + 8,
+  and a new item for Jump pressed on S when the player also leaves the
+  ground on S.
+
 ## spec-v0.191.0
 
 Rolling off a ledge with the second character leading (spec#17).
