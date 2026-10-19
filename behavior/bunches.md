@@ -278,6 +278,30 @@ was taken out of play once it had left the hands, so that its landing
 could not affect the player. Picking up in the air, and carrying on
 slopes, were not measured.
 
+**Being hit.** When the player is hit with no other character there
+(`knock-out.md`), no bunch is taken from the hit frame `H` to the
+level's last frame, whatever the offsets: not on `H`, not on the frozen
+frames around the pause, not during the knock-back flight and its
+landings, and not while lying still. A bunch whose offsets are inside
+the ranges at the end of `H` − 1 has already been taken on `H` − 1, by
+the row for the player's state on that frame. A bunch that is not taken
+stays where it is until the level ends.
+
+This was measured on flat ground with the bunch moved to every offset
+one pixel apart around the player (`I` −29 to 31 facing right, −31 to 29
+facing left, `D` −30 to 80) on every frame from `H` − 2 to the level's
+last frame of four knock-outs: standing while a walker walks into the
+player from in front, the same facing away from it, walking into a
+walker, and with Jump pressed two frames before the hit, on the ground
+(912 frames, 6 175 152 placements). On `H` − 2 and `H` − 1 the standing
+row applied; from `H` on, no placement took the bunch. Separately, in
+7 243 runs of play by inputs (random directions, jumps and crouches until
+a walker hit the player), with the bunch placed once from `H` on at a
+random offset near the standing row from a place the player would reach
+within the next 40 frames, no run took the bunch; using the standing row
+on these frames would have taken it in 5 657 of them. Hits in the air
+and on slopes were not measured.
+
 ### Two characters
 
 With two characters there (`second-character.md`), one leads and the
@@ -375,7 +399,8 @@ is taken.
 - The ranges while being carried down a steep slope or a rounded ledge
   (`steep-faces.md`), while passing through a platform
   (`platforms-from-below.md`), while carrying an object on a slope or
-  after picking it up in the air (`carrying.md`), and while being hit;
+  after picking it up in the air (`carrying.md`), and while being hit
+  with the other character there (`losing-a-character.md`);
   the stop after a roll on a slope; walking off a ledge with a steep
   face.
 - Landing on slopes, and a landing followed at once by a crouch, a
