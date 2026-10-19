@@ -50,7 +50,7 @@ of 1 px in 4 don't change any of this (`slopes.md`).
 | Jump distances | 85.5 px standing with Right, 98 px walking, 147 px running (held to landing) | `air-control.md` |
 | Landing | A falling frame that ends less than 5 px above the floor lands on it | `landing.md` |
 | Modes after landing | No turns for 7 frames, facing follows the input; Action and a direction held run from the frame after landing; otherwise walking or standing from the 7th frame after landing | `ground-speed.md` |
-| Jump after landing | Earliest on the third frame after the landing frame; a press made in the air shortly before, and held, is remembered until then | `jump-input.md` |
+| Jump after landing | Earliest on the third frame after the landing frame (13 or more frames after it when the jump passed low over a face's top); a press made in the air shortly before, and held, is remembered until then | `jump-input.md` |
 | Walking off a ledge | Moves down 3.4375 px on the first airborne frame, then gravity 0.4375 up to 8 | `walk-off.md` |
 | Jumping after leaving a ledge | Where the ground simply ends, a press on the first airborne frame still jumps (take-off on the next frame); no later press does. At a ledge with a face at the top, the last chance is the frame before the player starts down the face | `walk-off.md` |
 
