@@ -247,11 +247,18 @@ roll on D + 17 in the air:
   + 0.4375).
 - S′ + 1 to S′ + 9 are hover frames ("The fall"). From S′ + 10 the
   fall goes on as after any hover.
+- The landing rule of `landing.md` applies on every airborne frame from
+  S′ on, hover frames included: a hover frame moves down, so it lands
+  when it ends less than 5 px above the floor. The player can therefore
+  land on S′ itself or on any hover frame, and the landing is as any
+  other (`ground` 1, `vy` 0, the roll goes on). Horizontal speed is the
+  same as without the landing.
 - From S′ + 1 the roll's speed rule and steering apply as in the air in
   "The fall". The roll ends on G + 30, except when the player lands
   exactly 30 frames after S′ (G = S′ + 30): then D = G, as in "When the
-  roll ends" with S′ in place of L. Landings 26 to 35 frames after S′
-  were measured; 29 and 31 end on G + 30. The frame on which the stop
+  roll ends" with S′ in place of L. Landings 0 to 16 and 26 to 35
+  frames after S′ were measured; all but G = S′ + 30 end on G + 30,
+  including landings on S′ and on hover frames. The frame on which the stop
   carried the player off (1 to 3 frames after D) makes no difference.
 
 Example, rolling right toward an edge whose last column with ground is
@@ -393,6 +400,16 @@ whose stop carried the player off, with the player moved up or down
 during the stop's fall so that the roll landed 26 to 35 frames after S′
 (352 of them exactly 30), match "When the stop carries the player off
 the edge" with 0 mismatches.
+Landings on S′ and during the hover: 1,728 more such runs (stops
+carrying the player off 1, 2 or 3 frames after D, the roll steered
+toward the floor below, Action tapped or held), with the player's
+height set, on one frame from S′ − 1 to S′ + 10, to between 1 and 16 px
+above the floor, including every 1/256 px from 5 to 5.046875. They
+landed 0 to 16 frames after S′ and match this file with 0 mismatches on
+17,340 airborne frames, the frame of each landing and each roll's end.
+The horizontal speeds were the same as in the runs that landed later.
+Without the landing rule on hover frames, 486 runs mismatch (landings
+1 to 9 frames after S′).
 
 Jumps during and around a hover: 5,828 runs at the stretch without a
 face (normal and slow rolls going right and left, Action tapped or held,
@@ -817,9 +834,6 @@ This list is for `title-1`; `title-2` has its own list above.
   carry-on frames (D to D + 3) can be stopped.
 - How long a roll lasts when it is pushed off and still on the ground
   at S + 29 (not seen: pushed rolls always went off the edge first).
-- A roll started in the air from a remembered press ("A roll started in
-  the stop after a roll") that lands during its hover frames (S′ + 1 to
-  S′ + 9).
 - The second character: ledges where the ground simply ends, rolling
   left, the conditions of a stopped
   frame (only the stops and pushes at the top of one face in "The
