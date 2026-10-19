@@ -2,6 +2,29 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.201.0
+
+The landing at the end of the entrance throw that begins a level, and
+what a trace shows during the entrance (spec#38, differential tests).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/level-start.md`: new section "The landing". The throw's
+  landing works like a landing after a bounce: a mode starts on the
+  landing frame itself, set by what is held on it; jumps use the bounce
+  press window; an Action press in the air isn't remembered. This
+  corrects the old sentence, which put the turn and the jump a frame
+  late. Includes examples and evidence. New section "In a trace": the
+  hidden frames and the throw are `fall` with no events, and what the
+  landing row shows. "Checks" and "Not covered" are updated.
+- `behavior/ground-speed.md` ("After a fall or a bounce") and
+  `behavior/jump-input.md` ("After a bounce"): point to the new rule.
+- `scenarios/entrance-throw.scn` and
+  `traces/reference/entrance-throw.trace` (new, `title-1`): Left held
+  through the throw and the landing, then walking right and a jump.
+- `behavior/movement-summary.md`: the scenario's row.
+
 ## spec-v0.200.0
 
 The area behind the first level's second wall exit: arriving there, the
