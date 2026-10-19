@@ -2,6 +2,33 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.187.0
+
+Walkers hit by the object in the hands during pick-ups, throws and
+put-downs (spec#53).
+
+Answers clamber-engine/spec#53.
+
+- `behavior/thrown-objects.md`: new "During a pick-up, a throw or a
+  put-down" under "A carried object". It gives the frames on which the
+  object in the hands can hit walkers of all three kinds (G + 1 to
+  G + 14, Q + 1 to Q + 20 of a throw, Q to Q + 12 of a put-down), and
+  the ranges by walker kind and both facings: carried ranges plus small
+  walkers with H at most 27 in pick-ups and put-downs, early thrown
+  ranges in throws. On a hit the object breaks, the action goes on to
+  its end, the walker's `vx` becomes −4, and a hurt on K + 1 is still
+  possible. Includes evidence and an example.
+- `behavior/carrying.md`: new "The object in the hands", with the
+  object's position relative to the player on each frame of a pick-up,
+  a throw and a put-down on flat ground.
+- `behavior/holder-breaking.md`: the object holding the missing
+  character breaks on the same frames and ranges during pick-ups and
+  put-downs too, and the action then goes on. Correction: a hurt that
+  an ordinary object would give on K + 1 comes on S + 34 with this
+  object.
+- `behavior/walker-contact.md`: pointers, and the same correction in
+  its holder paragraph.
+
 ## spec-v0.186.0
 
 Bunch ranges while being hit (spec#19).
