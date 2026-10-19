@@ -5,8 +5,9 @@ Titles: `title-1`, `title-2`
 A **walker** is the simplest ground enemy: it walks along the floor at a
 steady speed, turns around at the ends of its patrol, and is defeated by
 a bounce (`bounce.md`). This file covers how a walker moves, how it
-turns, how it moves while the player is knocked out, and what happens to
-it when the player bounces off it. Which contacts hurt the player and
+turns, how it moves while the player is knocked out, what happens to
+it when the player bounces off it, and which picture it shows on each
+frame. Which contacts hurt the player and
 which give a bounce, and the sizes of walkers, are in
 `walker-contact.md`. A thrower's balls pass through walkers without
 affecting them (`thrower.md`, "Balls and walkers").
@@ -279,6 +280,188 @@ on a copy of it with every surface made not passable from below:
   around. Both gave the same frames for either platform (6 pairs of runs,
   4,846 frames).
 
+## Pictures
+
+What a walker looks like on each frame in `title-1`. Each picture has a
+label used in this file, and is named by its picture hash
+(`../formats/sprites.md`, "Picture hashes"); it is drawn at the walker's
+position as `../formats/sprites.md` says ("Where the picture is drawn"),
+mirrored left–right when the walker faces left. The picture given for a
+frame is the one on screen with that frame's view. In the lists,
+"`small-turn-1` × 2" means that picture on 2 counted frames in a row.
+Where a rule holds for all three kinds, `walk-1`, `turn-1` and so on
+stand for the kind's own picture (`small-walk-1`, `medium-walk-1`,
+`large-walk-1`).
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `small-walk-1` | `7c2f3d11b44ed8c75cb0b4a354755ea35e683d2971d9231caf9195c0a4d61e31` |
+| `small-walk-2` | `c14309358fa20e3867b39135ccef040ea1da30f80473307d96a7ec3c60fde242` |
+| `small-walk-3` | `4f8962af276eca2e58386fdc53c882488479537c38e00e1841abc1e0ecf126d6` |
+| `small-walk-4` | `1bda657696ee3fd83a858b516581470642acae8a5230babc918605808aa3c9c5` |
+| `small-walk-5` | `91d61b90583ec574b17159f55b46790d42ee0cc23a8d44db0a3e0476287771a3` |
+| `small-walk-6` | `a8c7eebf5b3fc0bfda4868c1e747d7665684b5439c4b49d047697d19ed87b273` |
+| `small-walk-7` | `078ddef65fc92d0119db0313fa0fedf09934456bfb27177fb0737fa1b666091d` |
+| `small-walk-8` | `d25af7a2c33ff23d0eed328dd38b66389453c93679120164e044709114b3f3c9` |
+| `small-turn-1` | `8ff7718048bc0c0b62b5ab9485e7cb9f69e2388be34a3a4be77cf6d17b270b35` |
+| `small-turn-2` | `505bba53bcbbd164a0f6c44fd1a0b102e1d41443b008c4830c84e3d2a78fa6a8` |
+| `small-defeat-1` | `2b4be420f0262628e7932ffdae810c837bcf3c6946b78e56e27a4743899cb0fd` |
+| `small-defeat-2` | `86b8e3529c04fdd7da4b68a20eb4a1cae29295cdc879f41d489f4b91794b7ffd` |
+| `small-defeat-3` | `7cb1eb4ef1c0dc39da09c1faead04331fea290dc20da78bc6a6f1ad81aba037a` |
+| `small-defeat-4` | `af174706dcadc47b06a40eedff1b4ae037a0cd6f0ce0bc6afac1bf87b219125d` |
+| `small-defeat-5` | `954685342eaa1c661d1db1b148b2c6214f7ce79f861c3682403c6531b7db03a2` |
+| `medium-walk-1` | `b9f00146ec22f81aa88115694045b5a270727651bb6a436d5dbe2b89e9b03136` |
+| `medium-walk-2` | `2153ed7d1227729dff8dafc9f5432eacb5e78c5e62eecdf6d4fc193aa1c66937` |
+| `medium-walk-3` | `b385fb7110882bacf89887763016ea3bbe3fcc6f2d0626638d4b6262135e7fd4` |
+| `medium-walk-4` | `44b796d8ad28ec0b6d97c79bbe1c302d92e1a5fbdd5267f933491d3ac5c7881a` |
+| `medium-walk-5` | `a4f35b5640ec9dbe49a961554eb1d497ecb026179cddfc4705f11c4c285cf335` |
+| `medium-walk-6` | `b510026df8a51867ac9f6c115b143a83929d0ddd3fc6cf0a73aee9660738753c` |
+| `medium-walk-7` | `1b35354d10aef54f28f1be7005f28fc42e317f32516653b36499a36ba54e76d1` |
+| `medium-walk-8` | `fd4173a00f0a3624903dccca5d73814d24db663c0f706ebd1060e93d41fa6a65` |
+| `medium-turn-1` | `f5a1114e7a38c079ee222c2343e29a73e03253281395ade40cb03010970d13c9` |
+| `medium-turn-2` | `783ec48e6ceafae4a497669ff8fb103c9f38bbdb76171344af088d86c76f42ef` |
+| `medium-defeat-1` | `e6899d14584604fd418cee6f352334dee4eb0d93c60aca75a39253bb9231dee2` |
+| `medium-defeat-2` | `b23383f3dac11f4f10358d70c82dcee4769427728056fb595cf04e1c9687065c` |
+| `medium-defeat-3` | `aba7eb091a3a227172fda73a05d0c6e1592c396563c7d096dba77a789137946f` |
+| `medium-defeat-4` | `ef9dc6237499d6d5011bd22da12347a58fdbd8c331ddaf6856695fa6803f6633` |
+| `medium-defeat-5` | `8c6387555b75c3cfa97b8e715c79d783b413f91db640951eff4a58d6b79f06d0` |
+| `medium-defeat-6` | `33f1e11c34a34e0107c49b100846a65db5d9cb4758e92708cf35c78cd0fc2d11` |
+| `medium-defeat-7` | `05d12601fe648f2fecd53793f83274e58b857cc8b0ba17bac95ce5b490254b6b` |
+| `medium-defeat-8` | `a97b4a56032e295e0e9b780c3de6bee1ca8580246aa3444fae3aa320ca981a6c` |
+| `large-walk-1` | `14ed81ef1ea7bba1db1fce2cc379e64040887fcafc026fdbd7ce575c5b1d8faa` |
+| `large-walk-2` | `0c2ef61606dab2643cea2c780fe5316d23b3fd7f20d046c345281b2e93aaff5b` |
+| `large-walk-3` | `9d910028b622a7bfaeeadf8deb1fff3b73421cbc211cab585f95df880f38e3f8` |
+| `large-walk-4` | `03cecd10edc0c7212f527146ad1e425119543d392200a00e7c3d8c5d79b36660` |
+| `large-walk-5` | `d9d6f9e74ec96f060be834dadf29653ac94a5b627ae6c1acbaf4839f014e4bf1` |
+| `large-walk-6` | `7fa5ad2771cc3e167a00ea3f6e86d2e1529f975406c90fa6363d579b9a02fb42` |
+| `large-walk-7` | `af780031e38c260a85d9d31da36cd4fb4891944985079ee87c36e1dddfe0fd59` |
+| `large-walk-8` | `5c0db38558cb14d4a43b3b05c8bd53a2fdbec824b9d0c209c048a1030dcf1984` |
+| `large-turn` | `ecfcc4d628ff4760fc0f2a333c2ea9a913b7b1b1ea125294f8d1e6ffe8b2bfcb` |
+| `large-push` | `627cd4edad13098d0231e4dae9b466ac436ed5517b1b5ed30b32277cc94e3c7c` |
+| `large-defeat-1` | `6999c1bed2ea2a494c221f809f669e91d20eba821c1b969e5def1703dd7766d9` |
+| `large-defeat-2` | `799ffb0617d1d884c0470c2c7592709fc4a0de3f65cad6765ad6648054a7795f` |
+| `large-defeat-3` | `ff935e807f2d6cc676cbef2b240fd759df826c794345a17ae578e29dcf0afc2f` |
+| `large-defeat-4` | `1fa57c43315b7ca2004f22f972651dcec31f68aaf2da6650401f9866f68f2294` |
+| `large-defeat-5` | `a5547224867f65f1a6a6386b992b7857621dbb9dd537b2964aa8d7af5524e23a` |
+
+### Counted frames
+
+A walker's pictures step on **counted frames**: every frame it is there
+except
+
+- the frames on which nothing moves: a bounce's two frozen frames
+  (B + 1 and B + 2, "Being bounced on"), and K + 1 and K + 2 after a
+  walker is defeated by a roll (`rolling-into-walkers.md`, "The pause")
+  or by the ground action (`ground-action-enemies.md`);
+- H + 1 to H + 10 while the player is knocked out, for the walkers that
+  don't move then ("While the player is knocked out"; the walker that
+  knocked the player out walks on and its frames count).
+
+On frames that don't count the walker keeps the picture it had.
+
+### Walking
+
+A walking walker shows its kind's 8 walking pictures in order,
+`walk-1` to `walk-8` and then `walk-1` again, each on 4 counted frames.
+The cycle doesn't depend on the walker's speed: it is the same while the
+walker speeds up from rest. A walker that
+appears (`walker-view.md`) shows `walk-1` on its first 3 frames, then
+`walk-2` on the next 4, and so on.
+
+### Turning
+
+A turn's pictures start on **U**, the first frame on which `vx` steps
+toward the new heading: T at the end of a patrol ("Turning at the end of
+a patrol") and S + 1 at a barrier ("Turning at a barrier"; on S itself
+the walking pictures go on). From U, on 8 counted frames:
+
+- small and medium walkers: `turn-1` × 2, `turn-2` × 4, `turn-1` × 2;
+- large walkers: `large-turn` × 8.
+
+The facing changes on the 5th of these frames (T + 4 and S + 5 above), so
+the last 4 are mirrored the other way. The walker then shows `walk-1` on
+the next 4 counted frames and goes on through the cycle as above,
+whichever walking picture it showed before the turn.
+
+### Pushed
+
+A large walker can be pushed: its `vx` jumps to more than 1 px per frame
+without it being defeated (seen when the second character comes down
+onto it, `protection.md`, "Not covered"; the push itself isn't
+specified). From that frame it shows `large-push`, while its speed eases
+back. On the first frame on which its speed is 12/256 px per frame or
+less, it shows `large-walk-1`, and that frame is the first of the 4.
+If the walker then heads away from its facing, its turn doesn't start on
+U: the 8 turn frames start right after those 4 frames of `large-walk-1`,
+and its facing changes on the 5th of them.
+
+### Defeated
+
+From the frame on which a walker is defeated (its `vy` becomes −6: B for
+a bounce, K for a roll, the ground action or a thrown object), it shows
+its kind's list on counted frames, and then keeps the list's last picture
+until it is removed:
+
+- small: `small-defeat-1` × 14, `small-defeat-2` × 3, `small-defeat-3`
+  × 4, `small-defeat-4` × 4, then `small-defeat-5`;
+- medium: `medium-defeat-1` × 14, `medium-defeat-2` × 2, then
+  `medium-defeat-3` to `medium-defeat-7` × 3 each, then
+  `medium-defeat-8`;
+- large: `large-defeat-1` × 14, `large-defeat-2` × 3, `large-defeat-3`
+  × 4, `large-defeat-4` × 4, then `large-defeat-5`.
+
+Its facing doesn't change from that frame on ("Being bounced on").
+
+### Example (synthetic)
+
+A small walker heading left reaches the end of its patrol. It showed
+`small-walk-6` on frames 1 to 4, and the patrol's T is frame 7:
+
+| Frame | Picture | Facing |
+|---|---|---|
+| 5, 6 | `small-walk-7` | left |
+| 7, 8 | `small-turn-1` | left |
+| 9, 10 | `small-turn-2` | left |
+| 11, 12 | `small-turn-2` | right |
+| 13, 14 | `small-turn-1` | right |
+| 15 to 18 | `small-walk-1` | right |
+| 19 to 22 | `small-walk-2` | right |
+
+A large walker bounced on on frame B shows `large-defeat-1` on B, B + 1
+and B + 2 (frozen frames, not counted) and on B + 3 to B + 15 (13 more
+counted frames, 14 in all), then `large-defeat-2` on B + 16 to B + 18.
+
+### Evidence for the pictures
+
+Measured on screen in the first level, by inputs alone: 60 runs of up to
+12 000 frames of random play (walking, running, jumping, rolling,
+bouncing; both characters where the start had two) from 15 places along
+the level. Only the sprites were drawn, and on every frame each walker's
+picture was found on screen at its position, as for the player
+(`player-frames.md`). Frames on which a walker's picture couldn't be
+seen (outside the view, or covered by the player or another object) are
+left out, and so are walkers already there on a run's first frame (where
+they were in the walking cycle can't be known). The frames compared:
+
+| | Frames | As above | Previous picture one frame longer | Other |
+|---|---|---|---|---|
+| walking | 38 155 | 37 702 | 392 | 61 |
+| turning | 530 | 521 | 9 | 0 |
+| facing during a turn | 530 | 530 | | 0 |
+| pushed (large) | 643 | 643 | 0 | 0 |
+| defeated | 2 922 | 2 916 | 5 | 1 |
+
+These came from 374 walkers appearing, 143 turns, 129 defeats and 20
+pushes of large walkers (one followed by a turn). In the "one frame
+longer" column the walker showed, on the first frame of a new picture,
+the picture before it (see "Not covered"). Of the 62 others, 16 showed
+another kind's picture, and the
+rest another picture of the walker's own cycle (7 of them
+`small-walk-5` instead of `small-walk-2`). With "Counted frames" leaving
+out only the bounce and roll frozen frames (the knock-out frames and the
+ground action's pause counted), 6 190 fewer walking frames would
+match.
+
 ## Examples
 
 Synthetic. A walker heading left at full speed with a patrol range
@@ -497,5 +680,14 @@ This list is for `title-1`; `title-2` has its own list above.
   walker placed past a barrier.
 - When a walker appears and disappears as the view moves is in
   `walker-view.md`.
-- Other kinds of enemies, and how walkers look (poses while turning or
-  falling).
+- Other kinds of enemies, and walkers' pictures in `title-2`.
+- Pictures ("Pictures"): on screen a walker sometimes shows its previous
+  picture on one more frame, on the first frame of a new picture
+  (406 of the 42 250 frames compared; it was seen with all three kinds,
+  most often with small walkers). When this happens isn't covered;
+  `../formats/sprites.md` ("Evidence") saw the same with the tiles in
+  place for an object. Small and medium walkers pushed without being
+  defeated (one small walker was seen; it kept its walking picture while
+  pushed). A walker that appears already defeated: one small walker
+  was seen, and it showed the list as if defeated on the frame before
+  it appeared.
