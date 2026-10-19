@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.196.0
+
+Joining: the lead during the wait, in the air and on the ground, input
+during the wait, and joins from objects that break on an enemy (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/following.md`, "Joining": new subsection "The lead during
+  the wait". From S + 1 to S + 33 the lead keeps its position, speeds,
+  facing and action, also in the air, where the flight then ends. From
+  S + 34 it goes on as if nothing had broken, except that input during
+  the wait does nothing (a button pressed then and still held isn't a
+  press on S + 34) and presses made on S or earlier are no longer
+  remembered. Enemies wait too. New evidence covers flights from objects
+  breaking on the floor, a barrier, the edge of the picture, walkers, a
+  ball and the thrower, and the "Not covered" list is updated.
+- `behavior/holder-breaking.md`: "Everything else waits" points to the
+  new subsection, and "Not covered" gains an observation about ground
+  actions breaking a thrown object.
+
 ## spec-v0.195.0
 
 Rolls started on D + 17 in the stop after a roll: size and direction,
