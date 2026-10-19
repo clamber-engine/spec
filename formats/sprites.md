@@ -180,7 +180,51 @@ the view it is shown with (`../behavior/view.md`).
 
 A **sprite palette** is 15 colours, stored in order (30 bytes): colours
 1 to 15 of the palette row it is used as. Colour 0 is not stored; it is
-transparent. Which palette each object uses is not covered.
+transparent. Which palette each object uses is not covered, except for
+the characters (below).
+
+### The characters' palettes (`title-1`)
+
+Each character has two sprite palettes of its own: a **leading**
+palette, which it is drawn with while it is the player (the character
+under control), and a **following** palette, which it is drawn with
+while the other character is the player. A character on its own is the
+player, so it uses its leading palette. Every picture of the character
+(`../behavior/player-frames.md`) is drawn with that one palette. The
+**first** and **second character** are as in `../behavior/swap.md`.
+Where the four palettes are is in `locators.md`:
+
+| Character | While it is the player | While the other one is the player |
+|---|---|---|
+| First character | first character's leading palette | first character's following palette |
+| Second character | second character's leading palette | second character's following palette |
+
+Apart from the cases under "Not covered", the colours stay the same
+while playing, including while flashing (`../behavior/protection.md`)
+and in water: only a change of player changes them. When the player
+changes, the colours change on the frames below. Each is the logic frame
+whose picture first shows the new colours (a picture is shown with its
+logic frame's view, as in "Where the picture is drawn"). Before it, the
+character still shows its old palette:
+
+| How the player changes | The new player's leading palette from | The other character's following palette from |
+|---|---|---|
+| A swap (`../behavior/swap.md`) | S | S + 1 |
+| Losing a character (`../behavior/losing-a-character.md`) | T | T + 1 |
+
+**S** is the last frame of the swap on which both characters stand
+still: in the timeline of `swap.md`, Q + 46 when the first character is
+the player, Q + 45 when it is the player with a Jump press on Q − 1 or
+Q − 2, and Q + 38 when the second character is the player. **T** is as
+in `losing-a-character.md`. Swaps started by Tandem
+(`../behavior/controls.md`) without a Jump press before them change
+colours on the same frames as swaps started by Swap.
+
+Example: the first character is the player, with no Jump press before
+the swap, and Swap is pressed on frame 200, so S is 246. The second
+character keeps its following colours up to frame 245 and shows its
+leading colours from 246. The first character keeps its leading colours
+up to 246 and shows its following colours from 247.
 
 ## Example (synthetic)
 
@@ -230,13 +274,65 @@ full frames with every byte hashed for one of them.
   exactly the tiles its pieces use.
 - The sprite palette rows the game had in place were found as 30-byte
   runs in the image (colours 1 to 15, in order).
+- The characters' palettes, measured by inputs alone:
+  - **Which palette.** 290 runs of 600 frames from 145 saved positions
+    in `title-1` (levels, water, caves, rooms, with one character and
+    with two), random input including Swap and Tandem presses. Outside
+    the frames where the player changed (6 628 frames), the colours in
+    place for each character's pictures were exactly the palette the
+    table gives on 297 474 frames. On the other 82 frames, one or two at
+    a time while an area was loading, no palette was in place yet.
+    Riding (2 013 frames) is under "Not covered", as are 24 runs (12
+    positions) in which the colours were changed: 22 near the first
+    level's end, where they dim, and 2 in another area, where they were
+    changed throughout.
+  - **On screen.** 23 runs of up to 1 500 frames from 12 saved positions
+    with both characters, random play with Swap presses. Each
+    character's picture was found on screen (with only the sprite layer
+    drawn) on 23 559 frames, and the screen colour of each of its
+    colour numbers was read. On 23 330 frames they were exactly the
+    palette given above, including on the frames around each change of
+    player. Of the others, 226 came during a fade on leaving an area
+    ("Not covered"), and 3 were single frames, between frames that
+    matched, on which the colours read matched none of the four
+    palettes.
+  - **When the colours change.** On every frame, the screen pixels
+    showing colours found in only one of the four palettes were
+    counted. From 13 saved positions with both characters, one run with
+    a Swap press on its own and one with a Jump press two frames before
+    it; and 17 runs of up to 1 500 frames of random play from 6
+    positions, with Swap and Tandem presses and hits: 67 changes of
+    player (49 swaps by Swap, 7 by Tandem, 11 characters lost). Every
+    one of the 134 colour changes came on the frame given above.
+  - **Holdout,** written after the rules above: 72 new runs of up to
+    1 500 frames of random play from 12 saved positions, 168 changes of player (85 swaps by
+    Swap, 62 by Tandem, 21 characters lost). 317 colour changes were
+    seen on screen (in the others the character was out of view). 316
+    came on the frame given above. In the other, another object showed
+    a few pixels of the old colours for a while; the character itself
+    changed on time. In one of the 316, a swap whose player had pressed
+    Jump before landing on Q − 4, both characters stood still one frame
+    less than `swap.md` says (S was Q + 45 without a Jump press on Q − 1
+    or Q − 2), and the colours changed on that S and S + 1.
 
 ## Not covered
 
 - Where the sprite palettes are in the image, and which one each object
-  uses. (The frame table is in `locators.md`; it locates the frames.)
+  uses, other than the characters' palettes above. (The frame table is
+  in `locators.md`; it locates the frames.)
+- The characters' colours in some situations:
+  - near the first level's end, where sprite colours change with the
+    dimming (`../behavior/dimming.md`, "Not covered");
+  - in areas where the characters are drawn with changed colours
+    throughout (seen in one area other than the first level);
+  - while the picture fades out on leaving an area (seen when walking out
+    of an area);
+  - while riding an animal, and in areas where the player is an animal;
+  - in games with two players;
+  - the picture of both characters on the level map.
 - Which frames each kind of object shows and when (animation sequences
-  and their timing), which palette each uses, and which objects are
+  and their timing), which palette each uses (other than the
+  characters' palettes above), and which objects are
   mirrored top–bottom. The player's frames in the stop after a roll,
   after a jump's landing and on a bounce's frozen frames are in
   `../behavior/player-frames.md`.
