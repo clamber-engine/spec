@@ -40,8 +40,9 @@ speed on the following frames is 32, 60, 84, 105, 123, 139, 153, 165,
 241, 242, 243, 244, 245, 246, 247, 248, 249 and then 256 (in 1/256 px
 per frame): full speed on the 32nd frame.
 
-The walker stays on the floor: its height is the floor's height at its
-`x`, on flat floor and on 1-in-4 slopes alike, and slopes don't change
+The walker stays on the floor (a walker whose start is above the floor
+first drops onto it: `walker-view.md`, "A start above the floor"): its
+height is the floor's height at its `x`, on flat floor and on 1-in-4 slopes alike, and slopes don't change
 its speed.
 
 ## Turning at the end of a patrol
