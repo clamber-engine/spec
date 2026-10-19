@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.213.1
+
+1 change: the ground at the exit in `exit-walk-out` (spec#56).
+
+Answers clamber-engine/spec#56 (the exit at 60 px isn't on a floor that
+starts at 90 px).
+
+- `scenarios/exit-walk-out.scn`: the `requires:` line now has the floor
+  start at 88 px right of the start point, at a vertical step up
+  (`behavior/steep-faces.md`), with ground at least 64 px higher from
+  56 px to 88 px. The exit at 60 px is at the floor's height inside that
+  higher ground. "Nothing above it" is limited to 88–136 px, the span the
+  lead uses. Inputs, frames, metrics and the reference trace are
+  unchanged.
+- `behavior/exits.md`, "In a trace": says the first level's floor exit
+  is beyond the floor's end and that the reference trace doesn't depend
+  on it. A lead the exit didn't take over would be stopped at the step
+  rather than walk off the end of the floor.
+
 ## spec-v0.213.0
 
 Steep faces at a drop and the first character's jumps out of a roll
