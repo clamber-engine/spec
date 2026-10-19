@@ -9,7 +9,8 @@ Also the pictures just before and after these that are needed to place
 them, and the first character's pictures while walking, running and
 turning on the ground and in the air after walking or running off a
 ledge without a face, while rolling, in the air after a bounce, and
-while standing still.
+while standing still, and the second character's pictures while
+standing still.
 
 ## The pictures
 
@@ -170,6 +171,44 @@ The colours each character's pictures are drawn with are in
 | `s-stop-4` | `183c7d39b26859c048f13e80381738893ab18b8bb73c6c446a42d238f0d2b5cd` |
 | `s-stop-5` | `96d312d91fd5b4aabea2271d5ad6cf667142dbb37228ef558e72f8381d0af7ba` |
 | `s-stand-1` | `c96e37978ef9f66368de70e708e0cb10cc1347e24f43e9222b783defa0221c11` |
+| `s-stand-2` | `3d2ed98a07e2e4f545cb2cb3dc9ea12f273c14b437474e0abddb7916175ba056` |
+| `s-stand-3` | `ecebcd67df650e80459a118f4788661fa6af6fbe6e1ae2e21753f1b1e710b8c6` |
+| `s-stand-4` | `23b2d1a607536da95170e443cf43fbdefaaefe5da16dd4f5d914c33259c88893` |
+| `s-stand-5` | `e31b57b1a769f04a51fa7b459fb26c23795467f7522ed7052a398317cef0dbdd` |
+| `s-stand-6` | `b57ab76627040021aa7d9da22da43942e2803dab699afb20cd232bb504beda78` |
+| `s-stand-7` | `e07eef5810187a69bdf62a7dff419f578f384a125943bb8c1a58f94ee63cb151` |
+| `s-stand-8` | `89dcca59242ac99c8ee9639edd8994b0f49e1d9bc4a8cb9a3819a599f6143b57` |
+| `s-stand-9` | `9dc1f0e63cfaa3e753b425c2015ac28821906b2cb458d49497f21cc288ec96a7` |
+| `s-stand-10` | `90fabea4853a8c10af4388bcaffc8442f78fd40e207313d280b6021ccc937739` |
+| `s-stand-11` | `208ca7b1f8366a5af562a92fddc3f83fae93fd4d2b5c998c326ceb8893d35fd8` |
+| `s-stand-12` | `2c816925a2e8977d623d53f778eca84b6e425c05bb72bc671e0f1bbde33af44e` |
+| `s-stand-13` | `cc722562ca626acba64c949499f797dd3de18f9ddffc90760c0f11f9f1197cfd` |
+| `s-stand-14` | `302ddcaccf6a4eb54278499a299a5af2a76ac2a88f2f0144a715925828753fa6` |
+| `s-stand-15` | `19468a3a669273a3ada59d5c59d18859b690faa7d0476b1ea438cd78fb751c29` |
+| `s-stand-16` | `7f41b1efa5d6ea1b1a77532cd8cd956545cb7a431451ecf28507869210a6686e` |
+| `s-stand-17` | `ce85ec4cef60ea055374bdaff52e08261fd34461a5b00dd896776e284bf43ebb` |
+| `s-stand-18` | `925aa10f752319a35e2d7b5a6a54dc54ebeb72c9700dc0f69902bad7e466754d` |
+| `s-stand-19` | `ee2b0485363cad8b65e77d31ff6fa39c7a3736b7ad4c9e4a208ab4c022d29232` |
+| `s-stand-20` | `34c5eba75562a143b03c9810a966dc01807793f02185a6c0982ee4b5c7a998a6` |
+| `s-stand-21` | `ab40a6fd3cc26b930626ff5795e116506e2d94d467519d620adac877f006813b` |
+| `s-stand-22` | `37e30fd07b8739a541e4e12bea5d619dfa5e500db7ed271015b7d791d7abe51c` |
+| `s-wait-1` | `48a6627ac32d1ee73208a070e65b9b92626530d28723142a66ceb71cc4772035` |
+| `s-wait-2` | `35584fa26c80dc162e31ad8c9504a814160c90e6195c0684f3e2daee79ca949c` |
+| `s-wait-3` | `060e6c9a88e26683575e11517b8c51276d6cf339b76afe37e03fa2145422dbe5` |
+| `s-wait-4` | `bf05928020da5cc65e755a4d52fec8bc19c10acb9f8e19a21bf8ca99dedacbca` |
+| `s-wait-5` | `1f4cb794c518185c5ba8f018356a743bf5b294c6e712618aaf24dd3fc1637b53` |
+| `s-wait-6` | `19f8686513d370e9337ac3e9c0b70ea635b973a325a4aa2c656a16d5e982cc74` |
+| `s-wait-7` | `debd7dcfc47faaae3a9b02129360ff9024b1af26059de7571a530651970425ed` |
+| `s-wait-8` | `7485918dc7eb6de2e6daad362eda80a5b2d8fb721ae11bcc7d749a80724f2e69` |
+| `s-wait-9` | `335ee0f913c171cb7a71b2d25244f6691133c11e887c2641628adb8c1644fc54` |
+| `s-wait-10` | `47ef7c2578a6f5975aedd84e4205187b2f264b0145e1a39c4ee0be3db5fb735f` |
+| `s-wait-11` | `6359e45e83aa7fa3509d7d89ef65ab70b5e6fccecec4c1c58120c046d8aae370` |
+| `s-wait-12` | `72c18aeeee446c94535dd77067dfffe5f86fa286db32ca37705c7f6254d0b7c6` |
+| `s-wait-13` | `f5709cfb4fd3588c53c69576d496dbbde6182e327253d1e94c6e1ad71593669e` |
+| `s-wait-14` | `1577e86bdab5d2114fe29fd014242e96a1e33397fc469478df86615a17ce3568` |
+| `s-wait-15` | `4bf0e08ce812c80380f1310d70efb160a0642c7759000626cf85adee8f6cdf4e` |
+| `s-wait-16` | `34117412cb7d59beb1fbf774773656fd9c55d39046775453495150c4deaa0bfe` |
+| `s-wait-17` | `86db93a8d220f3fe0d76c82b05dec865f25464e89ed3286d6e3a4daaa86f0500` |
 | `s-jump-1` | `171a596201c949c0f31ee4dc50eb5c9f31a63dc03a74224a47c5fdf6df13cfe3` |
 | `s-jump-2` | `7a25d69f9869fcaaa12debb0752478d080e0433bf380e198a429800d45c5c8da` |
 | `s-rise-1` | `dfda6a14e311f0ef690d363d68ab366ed3d6e06ab1d5dc29fcfc82df7ee11b32` |
@@ -201,7 +240,9 @@ engine shows its own art for that state on those frames, keeping the
 timing given here. The standing pictures form one group: `stand-1` to
 `stand-11` and `wait-1` to `wait-34` fall back together, whether a
 standing frame comes right after walking, a landing, a bounce or a
-roll's stop, or later in the "Standing still" list. A character missing every hash shows the engine's own
+roll's stop, or later in the "Standing still" list. So do the second
+character's standing pictures, `s-stand-1` to `s-stand-22` and
+`s-wait-1` to `s-wait-17`. A character missing every hash shows the engine's own
 art throughout.
 
 These pictures don't depend on speed, on how high the jump was, or on
@@ -450,7 +491,8 @@ is such a landing):
 | L + 14 to L + 16 | `s-land-3` |
 
 From L + 17 the player is standing, walking or running, and shows its
-pictures (standing: `s-stand-1` × 4 first). If Action and exactly one of
+pictures (standing: `s-stand-1` × 4 first, going on as in "Standing
+still" with L + 17 as S). If Action and exactly one of
 Left or Right are held on L, the player runs from L instead and shows
 running pictures from L, with none of the pictures above. This is the
 same after plain jumps and after jumps out of a roll, pressed on the
@@ -575,7 +617,9 @@ the end of a landing (`landing.md`) starts at step 1 with `walk-1` or
 
 ## Standing still
 
-This section is for the first character only. S is the first frame of
+### First character
+
+S is the first frame of
 a stretch of standing (`ground-speed.md`, "Standing, walking and
 running"): the first standing frame after walking, running or a turn
 ends, K after a jump's landing, G after a fall or a bounce, and D + 17
@@ -625,6 +669,33 @@ with `D`, a jump with `J` or a roll with `A`) ends the list, and the
 next standing frame is a new S. Holding `U`, the top face button or a
 shoulder (`controls.md`) while standing changes nothing: the list goes
 on where it was.
+
+### Second character
+
+S is as for the first character: the first standing frame after
+walking, running or a turn ends, L + 17 after a jump's landing, and
+D + 17 after a roll's stop. From S, for as long as the player goes on
+standing on flat floor away from a ledge, it shows one 275-frame loop
+over and over, the same whatever came before S:
+
+1. `s-stand-1` to `s-stand-22` × 4 each (88 frames, S to S + 87);
+2. `s-wait-1` to `s-wait-13` × 5 each (65 frames, S + 88 to S + 152);
+3. 70 frames going back and forth between `s-wait-14` and `s-wait-17`
+   (S + 153 to S + 222):
+   - `s-wait-14`, `s-wait-15`, `s-wait-16`, `s-wait-17`, `s-wait-16`,
+     `s-wait-15`, `s-wait-14`, `s-wait-15`, `s-wait-16` × 2 each;
+   - `s-wait-17`, `s-wait-16`, `s-wait-15`, `s-wait-14`, `s-wait-15`
+     × 3 each;
+   - `s-wait-16` × 4, `s-wait-17` × 5, `s-wait-16` × 6, `s-wait-15`
+     × 22;
+4. `s-wait-13` down to `s-wait-1` × 4 each (52 frames, S + 223 to
+   S + 274).
+
+Then the loop starts again with `s-stand-1` on S + 275, S + 550, and so
+on. Its first 4 frames are the `s-stand-1` × 4 given in the sections
+above. As for the first character, the loop starts again from the
+beginning at every new S, and `U`, the top face button or a shoulder
+held while standing changes nothing.
 
 ## Evidence
 
@@ -815,6 +886,16 @@ steep face, picking something up):
   90 850 of them after S + 1102: 1
   difference, where the previous picture was still on screen for one
   frame. The rule above gives the usual frame.
+- **Standing still, second character:** 120 runs on flat floor away
+  from ledges with the second character leading, standing for up to
+  2 998 frames: 131 stretches of standing that started after walking
+  (26), running (36), a turn (30), a roll's stop (19), a jump's landing
+  (15) and other actions (5). Half of the runs had a tap of 1 to 8
+  frames somewhere in the stand: 28 presses of a direction, `D`, `J` or
+  `A` ended standing and the loop started again at the next standing
+  frame; 24 taps of `U`, the top face button or a shoulder changed
+  nothing. 189 172 frames from S compared with the loop in "Standing
+  still", 153 874 of them after the first loop: 0 differences.
 
 ## Not covered
 
@@ -829,13 +910,13 @@ steep face, picking something up):
   `s-air-6`, and when its `s-air-1` ends.
 - The second character's landings after falls that didn't start with a
   jump, and after bounces.
-- The second character's standing pictures after the first ones given
-  above, its walking, running and turning pictures (its stride cycle
+- The second character's walking, running and turning pictures (its stride cycle
   isn't in `ground-speed.md`), its roll pictures and its pictures after
   B + 4 of a bounce, and the pictures of every other state, such as pushing
   against a wall or a steep face.
-- The first character's standing pictures on a slope or at a ledge
-  (teetering).
+- The standing pictures on a slope or at a ledge (teetering), for
+  either character, and the second character's standing pictures after
+  a bounce.
 - Why, on 5 frames after bounces, the previous picture was still on
   screen for one frame. The rules above give the usual frame.
 - Why, on 4 frames in random play, a walking or running picture came
