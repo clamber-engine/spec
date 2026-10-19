@@ -25,7 +25,9 @@ is standing within
 reach of an object that can be carried (then it is picked up instead; see
 `carrying.md`), or the press comes together with a Jump press or on a
 jump's take-off frame (then the jump goes on; `air-control.md`, "Action
-and Down around take-off and landing").
+and Down around take-off and landing"), or P starts on a steep face
+(then the press is carried until the player is off the face;
+`steep-faces.md`, "When a roll starts on a face").
 
 This does not depend on:
 
@@ -68,6 +70,12 @@ roll on that frame, as on the ground.
 Measured for five jump heights, standing and walking; the window doesn't
 change with airtime. A remembered press starts a roll on L + 1 even when
 Down is held (`ground-action.md`).
+
+If L + 1 starts on a steep face (the landing frame ends with the player
+on the floor of a face column, `steep-faces.md`), a press that would start
+a roll on L + 1 doesn't. It is carried until the player is off the face,
+and counts its window from P (`steep-faces.md`, "When a roll starts on a
+face").
 
 ## How a roll ends
 
@@ -131,7 +139,9 @@ no roll on D + 4. It works like a carried jump press:
 
 Until Q the press changes nothing: every frame from D + 1 to Q − 1 is the
 same as if Action had been held without a break from the roll on, with no
-new press. Down held on P or on D + 4 doesn't change any of this.
+new press. Down held on P or on D + 4 doesn't change any of this. This is
+the general rule for a roll that would start on a frame starting on a
+face (`steep-faces.md`, "When a roll starts on a face").
 
 For example, a roll that carried on is being carried down a face falling
 to the right at about 1 px per frame on D to D + 3. Action is released on
