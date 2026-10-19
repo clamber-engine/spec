@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.218.0
+
+The first character's pictures in the air after walking off a ledge
+without a face, and its first standing pictures after walking (spec#38,
+pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`, "Walking, running and turning": after
+  walking or running off a ledge without a face, the pictures follow the
+  same stride-cycle and turn rules in the air as on the ground, through
+  the landing frame, including turns and running that start in the air.
+  When walking, running or a turn ends in standing, on the ground or in
+  the air, `stand-1` to `stand-5` (3 frames each) start on the first
+  standing frame. New evidence bullet from on-screen pictures; the
+  "Not covered" item is removed.
+
 ## spec-v0.217.0
 
 The second character's jumps out of a roll pressed in the air (spec#38,
