@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.190.0
+
+Thrown objects pass through both characters (spec#19).
+
+Part of clamber-engine/spec#19 (entities in the first level), which
+stays open for the parts not covered yet.
+
+- `behavior/thrown-objects.md`, new section "Meeting a character": a
+  thrown object that holds nothing passes through both characters. No
+  hurt or knock-out, the object doesn't break, neither character is
+  pushed, stopped or held up, and the object's path is unchanged. This
+  holds from the frame the object leaves the hands, while the thrower is
+  still in its throw, and with one character or both. In play the
+  object is seldom met at all. Includes evidence. The intro mentions
+  it; Not covered now lists holders, moving characters, Action pressed,
+  slopes, other levels and drawing order instead of "hitting a
+  character".
+- `behavior/carrying.md`: Not covered points to the new section.
+
 ## spec-v0.189.0
 
 The characters' sprite palettes in `title-1` (spec#52).
