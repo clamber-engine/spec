@@ -618,7 +618,11 @@ landing**, otherwise a **plain landing**.
 - **Slide landing.** Let R be the first frame from L or A on, whichever
   is later, that ends on the floor of a column that isn't a face column.
   Then M = R + 11. While the player stays on face columns, there is no
-  such R and only the next rule ends the wait.
+  such R and only the next rule ends the wait. If the player lands on
+  floor that isn't a face column and stays on such floor, M is
+  max(L, A + 3) + 11. This is later than R + 11 when L is A + 1 or A + 2,
+  and it sets when the next jump can start (`jump-input.md`, "After a
+  jump over a face's top").
 
 In every case, M is never later than the first frame from L on that
 ends on the floor of a face column with `vx` 0 or `vx` pointing downhill

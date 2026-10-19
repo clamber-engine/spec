@@ -187,6 +187,56 @@ follows the same rules, with E = L + 2 (`level-start.md`, "The
 landing"). There, Jump held without a break since before L − 10 starts
 no jump.
 
+### After a jump over a face's top
+
+If `x` at the end of the approach frame A is in a face column
+(`steep-faces.md`, "Columns, faces and steps"), the landing is a slide
+landing (`steep-faces.md`, "The switch frame M"). This happens when a
+jump passes low over a rising face and comes down beyond its top. If
+the player lands on floor that isn't a face column and stays on such
+floor, the stage frames above don't apply. Instead:
+
+**M = max(L, A + 3) + 11**, so **E = max(L, A + 3) + 13**.
+
+"Pressing before landing" below applies with this E, window included:
+a press counts only if P ≥ E − 12, and this holds for presses on or
+after L too. E is at least L + 13 here, so a press on L never counts.
+
+| Case (L = A + 3 or later, so E = L + 13) | Result |
+|---|---|
+| Pressed in the air or on L, held | No jump |
+| Pressed L + 1 to L + 12, held through L + 12 | Jumps on L + 13 |
+| Pressed L + 13 or later | Jumps on the frame after the press |
+
+With L = A + 1, E = L + 15. Presses on L + 1 and L + 2, held, give no
+jump; a press on L + 3, held, gives a jump on L + 15.
+
+Example: a running jump toward a face rising to the right, Jump held
+16 frames. The feet first have floor within reach on T + 23, over a
+face column, so A = T + 23. The player lands on L = T + 28 = A + 5, on
+the floor beyond the face's top, and E = L + 13. Jump pressed again on
+T + 20 and held gives no jump. The plain rule would give n = 4, M = L + 2
+and a jump on L + 4. Jump pressed on L + 1 and held gives a jump on
+L + 13.
+
+Measured on `title-1` with the lead character, at two faces of 16
+columns in the first level, one rising to the right and one rising to
+the left. Both have flat floor below them and flat floor 3 px above
+their top column. The runs were random walking and running jumps over
+the face (Jump held 1 to 30 frames, sometimes letting go of the
+direction or holding the other one in the air), each with 1 to 3 more
+presses at random frames around the landing, held 1 to 20 frames or to
+the end. A grid of 180 jumps and a grid of 42 presses from L − 1 to
+L + 5 after landings on A + 1 and A + 2 were added. That gave 2 790
+slide landings on floor that isn't a face column; the take-off frame
+(or no take-off) matched this rule on all of them, and on the 2 708
+plain landings in the same runs. With M as for a plain landing, 1 276
+of these landings are wrong. M = max(L, A + 2) + 11 and
+M = max(L, A + 4) + 11 give 44 and 46 wrong. Leaving presses made
+after L out of the window gives 9 wrong. Landings that end on a face
+column, or reach one before the take-off, were left out (see
+`steep-faces.md`, "Jumping on or next to a face").
+
 ### Landings this doesn't cover
 
 For a landing after a jump that started from a roll, or after a fall
@@ -221,7 +271,9 @@ The window counts back from E, whatever M is.
 | Held continuously since the jump that took off | No jump |
 
 A press on or after the landing frame (P ≥ L) starts a jump on
-max(P + 1, E).
+max(P + 1, E). That needs Jump held up to the frame before, and
+P ≥ E − 12. The window matters when E is more than 12 frames after L,
+as after a jump over a face's top (above).
 
 ## Worked example
 
