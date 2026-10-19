@@ -320,6 +320,11 @@ frames, L, M and n are as in `jump-input.md` ("The switch frame M"), and
 K, the frame walking, running or standing starts, is as in
 `ground-speed.md` ("After a landing").
 
+The pictures below are the same for a jump out of a roll pressed on the
+ground: T − 1 is the press frame P, which shows `jump-1` ("A roll"), and
+A, n, M and K are found as for any other jump, so the air pictures, the
+landing pictures and the standing pictures from K follow the same rules.
+
 **In the air:**
 
 - T − 1: `jump-1`. T and T + 1: `jump-2`. Then `rise-1`, `rise-2`, …,
@@ -603,6 +608,17 @@ steep face, picking something up):
   carried on into running that weren't hidden showed `stop` on the three
   frames before `roll_end` and `walk-1` on the next. On all 967 jumps
   out of a roll, the press frame showed `jump-1`.
+- **Jumps out of a roll, first character:** 716 jumps pressed on the
+  ground during slow, normal and fast rolls: 625 on flat floor (pressed
+  on a roll frame from S to S + 28, Jump held 1 to 40 frames, random
+  input in the air and after the landing) and 91 in random play through
+  the first level. The air pictures from P matched the rule on all of
+  them except 4 in random play that bounced off a walker in the air and
+  then showed the pictures of "A bounce". 557 of the landings (487 and
+  70) were followed until the player did something else, with n from 1
+  to 7 and M from L to L + 4: 2 716 frames from L compared, 0
+  differences. 71 of them were followed to K + 2 standing, and on 83
+  running started on M.
 
 ## Not covered
 
@@ -615,9 +631,9 @@ steep face, picking something up):
   frame late on screen. The rules above give the usual frame.
 - The second character landing before the fourth frame showing
   `s-air-6`, and when its `s-air-1` ends.
-- Landings after jumps that started from a roll, after falls that
-  didn't start with a jump, and the second character's landings after
-  bounces.
+- Landings after jumps that started from a roll in the air or that the
+  second character started from a roll, after falls that didn't start
+  with a jump, and the second character's landings after bounces.
 - The standing pictures after the first ones given above, the second
   character's walking, running and turning pictures (its stride cycle
   isn't in `ground-speed.md`), its roll pictures and its pictures after

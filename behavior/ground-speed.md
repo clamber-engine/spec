@@ -270,7 +270,16 @@ landing frame as those files say; a jump starts on E = M + 2 at the
 earliest. An Action press on L + 1 or a later landing frame starts a
 roll, not a run.
 
-For a landing after a jump that started from a roll (`jump-input.md`,
+A landing after the first character's jump out of a roll pressed on the
+ground follows these rules with M and K as for any other jump
+(`jump-input.md`, "The switch frame M"). Measured on `title-1` on 246
+such landings (213 on flat floor and 33 in random play through the
+first level) where nothing else started before K: running started on M
+on the 58 with Action and one direction held on M, and on the other 188
+standing, walking or running started on K as above.
+
+For a landing after a jump that the second character started from a
+roll, or that started from a roll in the air (`jump-input.md`,
 "Landings this doesn't cover"), the spec uses M = L + 1: running on
 L + 1, the mode on L + 7. In the original these vary; reference
 comparisons on such landings should allow −1 frame on a run starting
