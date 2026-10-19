@@ -194,16 +194,79 @@ The joining character:
   first. From S + 34 it follows the trail (and usually starts to rest
   right away, walking to its rest spot).
 
-When a character joins, the lead doesn't move from S + 1 to S + 33: its position stays as it was
-on S, even in the air, and it carries on from there on S + 34.
+### The lead during the wait
 
-Measured on two joins: one object thrown onto the floor 117 px from the
-lead, with the second character joining, and one thrown against a wall
-next to the lead, with the first character joining again after it was
-lost (start 7 px above the lead's feet line). Every frame of both
-flights matched these rules exactly, and the lead stayed still from
-S + 1 to S + 33 in both and in two more throws (walking held, and a
-jump in progress).
+When a character joins, the lead doesn't move from S + 1 to S + 33, on
+the ground or in the air: its position, its speeds, its facing and what
+it is doing (standing, walking, a jump at any point of its arc, a roll,
+the stop after a roll, a ground action, the end of a throw) stay as they were on S.
+If the lead is in the air on S, (`X1`, `F1`) is that spot in the air and
+the flight above ends there, also in the air.
+
+On S + 34 the lead goes on exactly as it would have gone on from S + 1
+if nothing had broken, given the same input from then on, with two
+exceptions, both about presses:
+
+- **Input from S + 1 to S + 33 does nothing**, but S + 33 is still the
+  frame before S + 34: a press of Jump or Action is a frame where the
+  button is held after a frame where it isn't (`roll-input.md`). So Jump or Action pressed during
+  the wait and still held on S + 34 is not a press on S + 34 or later:
+  no jump, roll or ground action starts from it, on the ground or on the
+  landing (`jump-input.md`, "Pressing before landing"), even if it was
+  pressed on S + 33. A new press is needed. A button pressed and let go
+  during the wait does nothing at all. A button not held on S + 33 and
+  held on S + 34 is a press on S + 34, whatever was held on S.
+- **A press made on S or earlier is no longer remembered on S + 34**: a
+  Jump press in the air waiting for the landing (`jump-input.md`,
+  "Pressing before landing") and an Action press that `roll-input.md`
+  remembers for a later roll start nothing after the wait.
+
+Held buttons work as on any other frame from S + 34: the directions,
+Down, Up, Jump held during a jump and Action held for running are read
+again on S + 34.
+
+Enemies wait too (`holder-breaking.md`, "Everything else waits"), so an
+enemy the lead meets after S + 34 is where the wait left it, not where it
+would have been without the wait.
+
+Measured:
+
+- **The flight.** Exact on every frame of 5 744 joins: the two joins
+  measured first (one object thrown onto the floor 117 px from the lead,
+  with the second character joining, and one thrown against a wall next
+  to the lead, with the first character joining again after it was lost,
+  start 7 px above the lead's feet line); 44 throws by inputs that broke
+  on the floor (40), against the barrier (2) or at the edge of the
+  picture (2); 23 throws at a walker by inputs, 16 of them breaking on
+  it (4 of those in the hands during the throw); 1 throw that broke on a
+  ball; 120 objects set next to the thrower, moving left or right, that
+  broke on it, starting 30 to 91 px to the side of the lead and 132 to
+  182 px above it; and the 5 554 runs below.
+- **The lead.** 5 554 runs on flat floor with the second character
+  joining, random input before, during and after the wait, and the
+  object held where it was in its flight for up to 70 frames (by
+  setting its position) so that S fell anywhere in the lead's jumps: on
+  S the lead was on the ground in 2 802, on the frame a jump started in 122, rising in
+  1 937 and falling in 693. Each was compared over the 70 frames from
+  S + 34 with the same run with no break (the object taken away on
+  S − 1) and the same input from S + 1. The lead didn't move from S + 1
+  to S + 33 in all of them, and all 2 381 runs of the second set of
+  random runs whose input from before S was kept were explained: 2 069
+  went on exactly the same, 309 differed through a press on S + 34 or
+  on S + 1 of the run with no break (the first rule), and 3 through a
+  press remembered from S or before. In the first 3 173 runs, 2 737 went
+  on the same, 427 differed with Jump or Action held on both S + 33 and
+  S + 34, and of the other 9, replayed, 3 were presses on S + 34, 5 were
+  remembered presses, and in 1 the lead's ground action knocked out a
+  walker in the run with no break only (`ground-action.md`).
+- **Presses, one by one.** Jump and Action each pressed on S + 1,
+  S + 10, S + 20, S + 30, S + 32 or S + 33 and held, pressed and let go
+  within the wait, or pressed on S + 34, with the lead standing on S and
+  with it in the air on S and landing 1, 5 or 9 frames after S + 34;
+  and Jump or
+  Action pressed on S or 1 to 13 frames before it and held through the
+  wait, with the lead falling: each case as the rules above give, next
+  to the run with no break with the press 33 frames earlier.
 
 ## When a level begins again
 
@@ -330,7 +393,12 @@ first point (976) and follows the trail from there.
   with both there (at the restart point: "At the restart point"). How
   the characters enter the first level when it begins is in
   `level-start.md`.
-- Joining from an object that breaks on an enemy, joining while the
-  lead is in the air, and input on frames S + 1 to S + 33.
+- Joining: where the joined character goes from S + 34 when the lead
+  was in the air on S (it then stands on the trail at a spot in the air),
+  joins of the first character other than the one above, joins in other
+  levels, ground other than flat floor, Swap pressed during the wait or
+  on S + 34, and the lead in an action other than those listed in "The
+  lead during the wait". Presses made more than 13 frames before S
+  weren't tried.
 - The second character being knocked out with both there, and a level
   finished or fallen out of with only one character.

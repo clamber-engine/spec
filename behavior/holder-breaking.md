@@ -243,8 +243,9 @@ depend on the object's speed (3.5 to 12.7 px per frame). On two frames
 
 ### Everything else waits
 
-From S + 1 to S + 33, while the character joins, the lead (as in
-`following.md`), every walker (hit or not) and the thrower don't move;
+From S + 1 to S + 33, while the character joins, the lead
+(`following.md`, "The lead during the wait", which also says what input
+does then), every walker (hit or not) and the thrower don't move;
 from S + 34 they go on from where they were. (Walkers not hit were seen
 to walk again on S + 34, in 7 throws.)
 
@@ -403,3 +404,15 @@ Q + 32 and the character appears at (105, 40). The walker's `vx` becomes
   holding nothing breaks there too (`thrown-objects.md`, "Breaking
   against a wall"), but this object wasn't measured against one.
 - Objects holding the missing character in other levels.
+- The lead starting a ground action (`ground-action.md`) while the
+  thrown object is in the air. In 13 throws on flat floor, with the
+  action started on any frame from the first one it could start after
+  the throw (1 frame after the object left the hands) to the frame the
+  object would have reached the floor, it broke the object, 70 to 118 px
+  from the lead, and the missing character joined from there: on the
+  action's first frame, but not before the object's 6th frame after
+  leaving the hands (once a frame later). With the object held in the
+  air by setting its position, actions started up to 16 frames after it
+  left the hands broke it on their first frame, and those started 17 or
+  more frames after didn't. Whether this also breaks an object that
+  holds nothing, and its reach, weren't measured.
