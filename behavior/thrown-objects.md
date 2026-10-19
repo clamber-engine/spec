@@ -5,8 +5,9 @@ Titles: `title-1`
 What a thrown object that holds nothing does from the moment it is
 thrown until it is gone: how it bounces on the floor, how it then rolls,
 how it breaks against a wall or at a vertical step, what happens when
-it hits a walker, the thrower or one of the thrower's balls, and when it
-is removed after leaving the picture. `carrying.md` covers the throw itself and the flight up to the
+it hits a walker, the thrower or one of the thrower's balls, that it
+passes through the characters, and when it is removed after leaving the
+picture. `carrying.md` covers the throw itself and the flight up to the
 first touch; this file carries on from there. An object that holds the
 missing character moves the same way until it breaks; when it breaks is
 in `holder-breaking.md`.
@@ -1023,6 +1024,52 @@ part at the end of the frame before.
 The ball is gone at the end of Q + 24. The object goes on to Q + 25 at
 `x` 50.2109375 as it would without the ball.
 
+## Meeting a character
+
+A thrown object passes through both characters as if they weren't
+there. It doesn't hurt or knock out the lead or the other character
+and doesn't break, and neither character is pushed, stopped or held
+up. The object goes on exactly as it would without the characters
+(same speeds, bounces, rolling and breaking), and each character moves
+exactly as it would without the object. This holds from the frame the object leaves the hands (t = 1,
+as in "When a walker is hit") on, while the thrower is still in its
+throw, and with one character or both.
+
+In play a character seldom meets a thrown object at all. It leaves the
+hands above the thrower's head and moves ahead of it faster than a
+character walks or runs: never slower than 3.5 px per frame (896/256),
+against 3 px per frame running. In every throw measured in which the
+lead turned round to throw toward the other character, the other
+character had already gone round behind the lead before the object
+left the hands (`following.md`).
+
+Measured on the first level on the opening flat, with one ordinary
+object moved in the level's placement list as in "Hitting walkers":
+
+- 88 throws by inputs alone with both characters there, the lead
+  turning to face the other character and throwing after holding
+  Action 0 to 39 more frames, while walking (after 2 to 40 frames),
+  in a jump, and before walking after the object: the object never
+  came within 24 px across and 40 px up or down of the other
+  character. In all 11 690 frames both characters moved exactly as in
+  the same run with the object removed as it left the hands, and the
+  object exactly as in the same run with the other character moved
+  100 px away.
+- 29 970 controlled placements (359 640 frames): the object put at a
+  character's position plus −80 to 80 px across and 0 to 66 px above
+  (48 px below to 16 px above for a character in the air), rolling or
+  in the air, moving 3.5 px per frame the way it was thrown, toward the
+  character or away from it, then 12 frames, starting at t = 1, 9 and
+  28 to 60. Characters: the lead alone standing facing the object or
+  away from it and jumping; the lead with the other character there;
+  the other character standing and jumping. On 26 057 of these frames
+  the object's position was within 12 px across of the character's and
+  from 8 px lower to 40 px higher. Each character was compared
+  frame by frame with the same placement with the object removed, and
+  the object with the character moved 200 px away: no differences, and
+  no hurt. As a check, the same placements next to a small walker, at
+  t = 3 and t = 20, hit it in 1 537 of 2 916.
+
 ## Other objects
 
 A thrown object rolls past an object holding the missing character
@@ -1061,7 +1108,12 @@ again. Speeds in 1/256 px per frame.
 
 ## Not covered
 
-- Hitting a character or other enemies. Walkers: a small walker facing
+- Meeting a character ("Meeting a character"): an object that holds
+  the missing character (`holder-breaking.md`), characters walking,
+  running, rolling, crouching, turning, carrying or being hit as they
+  meet it, Action pressed as it meets the lead, slopes, other levels,
+  and whether the object is drawn in front of or behind a character.
+- Other enemies. Walkers: a small walker facing
   right hit by an object moving right, and large walkers hit by an
   object moving left, at t of 4 or more (at t from 1 to 3, and in the
   hands during a throw, they were hit by the ranges of "During a
