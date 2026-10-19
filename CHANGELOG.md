@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.195.0
+
+Rolls started on D + 17 in the stop after a roll: size and direction,
+and air rolls landing 30 frames after S′ (spec#17).
+
+Part of clamber-engine/spec#17, which stays open for the parts not
+covered yet.
+
+- `behavior/roll-speed.md`: a roll started on D + 17, from a remembered
+  or a new press, has D + 17 as its press frame. What is held then sets
+  its size and direction, and steering applies as usual from D + 18.
+  This replaces the earlier rule that a remembered press's size was set
+  on D + 18. New examples cover turning and making a slow roll normal on
+  D + 18.
+- `behavior/rolling-off-ledges.md`, "A roll started in the stop after a
+  roll": when S′ counts as a stopped frame, and the case of a direction
+  held away from the edge on S′ and toward it from S′ + 1. A roll
+  started in the air ends on G when it lands exactly 30 frames after S′,
+  otherwise on G + 30.
+- New evidence paragraph, and the "Not covered" list is updated.
+
 ## spec-v0.194.0
 
 Thrown-object hit ranges for medium walkers and the missing small and
