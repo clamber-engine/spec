@@ -2,6 +2,31 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.205.0
+
+The first level's background apart from the ground layer: far layer,
+horizon layer and backdrop (spec#38, differential tests).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `formats/graphics.md`, "The layers": rewritten as three layers in
+  front of a backdrop. New subsections on where the far layer is (half
+  the view's speed across, a quarter up and down), the far layer's
+  darker colours, row-colour lists (new format), the backdrop's colour
+  per picture row with its frame-to-frame one-row alternation, and the
+  new horizon layer (map and two-plane tiles at fixed picture rows,
+  four bands shifting at different rates with the view). Drawing order
+  puts the backdrop and horizon layer behind the far layer. "The first
+  level's data", "Evidence" and "Not covered" are updated.
+- `formats/locators.md`: rows for the first level's backdrop and
+  horizon row-colour lists and its horizon block.
+- `vectors/graphics/`: synthetic vectors for the far layer's place and
+  colours, row-colour lists, the horizon block, band shifts and horizon
+  pixels, described in the README.
+- `behavior/view.md`, `view-vertical.md`, `dimming.md`: point to the new
+  sections instead of listing these layers as not covered.
+
 ## spec-v0.204.0
 
 Moves on the floor past a steep face's top (spec#38, differential
