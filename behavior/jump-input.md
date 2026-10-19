@@ -271,8 +271,9 @@ column, or reach one before the take-off, were left out (see
 
 With the second character as the player (`second-character.md`), a
 landing after a jump has no stage frames, whether the jump started from
-standing, walking or running or out of a roll pressed on the ground:
-its switch frame is the landing frame itself, **M = L**, so
+standing, walking or running or out of a roll, pressed on the ground or
+in the air (`rolling-off-ledges.md`, "The second character"): its
+switch frame is the landing frame itself, **M = L**, so
 **E = L + 2**. This holds when L comes on the third or a later frame
 showing the last air picture `s-air-6` (`player-frames.md`, "Second
 character"). Every jump measured that lands on the floor it took off
@@ -308,6 +309,15 @@ following:
 - 63 earlier landings where the player jumped again (all but 6 of them
   in random play): E = L + 2 fits 57 of them; the other 6 need L + 3 or
   L + 4.
+- Jumps out of a roll pressed in the air: 1 600 runs on the three
+  ledges of `rolling-off-ledges.md` ("The second character"), normal
+  and slow rolls, Jump pressed on L to L + 20 and held 1 to 40 frames,
+  random input in the air and random input changed every 1 to 8 frames
+  for 60 frames after the landing, read from the pictures on screen as
+  above. On the landings on the third or a later `s-air-6` frame where
+  the player jumped again before doing anything else and stayed on the
+  floor until then, the next take-off matched E = L + 2 on all 97.
+  E = L + 3 gives 41 of them wrong, E = L + 1 gives 32.
 
 ### Landings this doesn't cover
 

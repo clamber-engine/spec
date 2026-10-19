@@ -288,8 +288,9 @@ walking (18) or running (1) started on K.
 
 **The second character.** With the second character as the player, a
 landing after a jump (from standing, walking or running, or out of a
-roll pressed on the ground) on the fourth or a later frame showing
-`s-air-6` (`player-frames.md`, "Second character") has M = L
+roll pressed on the ground or in the air) on the fourth or a later
+frame showing `s-air-6` (`player-frames.md`, "Second character") has
+M = L
 (`jump-input.md`, "The second character"), and its K is **L + 17**:
 
 - if Action and exactly one of Left or Right are held on L, running
@@ -303,9 +304,12 @@ before the mode: after jumps from the floor on flat floor, running on L
 on 183 and a mode on L + 17 on 43 (standing 18, walking 23, running 2);
 after jumps out of a roll on flat floor, 126 and 44 (standing 17,
 walking 25, running 2); in random play through the first level, 96 and
-20. Every one matched. Landings on the third `s-air-6` frame ran on L
-when Action and one direction were held on L (9 measured); their other
-modes, and those of earlier landings, are not covered.
+20; after jumps out of a roll pressed in the air, during the fall after
+rolling off one of the ledges of `rolling-off-ledges.md` ("The second
+character"), 35 and 15 (standing 4, walking 11). Every one matched.
+Landings on the third `s-air-6` frame ran on L when Action and one
+direction were held on L (27 measured); their other modes, and those of
+earlier landings, are not covered.
 
 Landings after falls that didn't start with a jump, and after bounces,
 are in "After a fall or a bounce" below.
