@@ -34,6 +34,9 @@ SHA-256 of the image:
 | Level graphics: the first level's packed tile data | `graphics.md` | `d5` | `8fc0` |
 | Level graphics: the first level's palette set | `graphics.md` | `f9` | `a1dc` |
 | Level graphics: the first level's picture table | `graphics.md` | `d9` | `a3c0` |
+| Level graphics: the first level's backdrop row-colour list | `graphics.md` | `f9` | `96e6` |
+| Level graphics: the first level's horizon row-colour list | `graphics.md` | `f9` | `98ea` |
+| Level graphics: the first level's horizon block | `graphics.md` | `cd` | `f337` |
 | Sprite frames: the frame table | `sprites.md` | `fb` | `cc9c` |
 | Sprite palettes: the first character's leading palette | `sprites.md` | `fc` | `849a` |
 | Sprite palettes: the first character's following palette | `sprites.md` | `fc` | `84b8` |
