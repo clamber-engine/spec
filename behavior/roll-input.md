@@ -11,6 +11,9 @@ The sections below up to "In `title-2`" give the `title-1` values.
 `title-2` is different throughout; "In `title-2`" gives its complete
 values.
 
+The first character's pictures during a roll are in `player-frames.md`
+("A roll").
+
 A **press** of Action is a frame where Action is held after a frame where
 it was not held. Holding Action never starts a second roll by itself; every
 roll needs its own press. Running is Action *held* while moving; a press

@@ -7,7 +7,7 @@ still: the stop after a roll, the frames after a jump's landing before
 walking, running or standing starts, and a bounce's two frozen frames.
 Also the pictures just before and after these that are needed to place
 them, and the first character's pictures while walking, running and
-turning on the ground.
+turning on the ground and while rolling.
 
 ## The pictures
 
@@ -25,6 +25,15 @@ The colours each character's pictures are drawn with are in
 
 | First character | Picture hash (SHA-256) |
 |---|---|
+| `roll-1` | `d1293eefe586b6d7c5a8206301e9732a4b325de17de865693bb031da337f0ad3` |
+| `roll-2` | `22aee199cd0021b2d3aaf0d9a5c94a8ce9b7e2c0cf673a9260f0e57aa82c8507` |
+| `roll-3` | `440441b302e863b5196d6ea694ecbe51741e6cfd1e05b955b858f3cd8b54cf90` |
+| `roll-4` | `2047f847707e77d5cc284d43a5df149c615a53bec99cc9340321a287da1e5352` |
+| `roll-5` | `e0c36ff720d8dcd46f0b558d54e84c3f7e5a1ad038df0a548fba39a54cd7cda8` |
+| `roll-6` | `c1cbbc6557606bbf7e94d694a9b3ed51902ddae2e58c4e53df3de6ae40bc2f30` |
+| `roll-7` | `3ae1e0344b600798af6eb10e4e1a86ddb4a28fd55e3912f8a81b16cf99cd670f` |
+| `roll-8` | `2d7740e2363b34945b5c1a3b8ef8dbde1a8154799757a37a37f63adb0560d0d9` |
+| `roll-9` | `17f2a4a92f37caf7ff88e5412f36496d92b3699ef92f4dac1c9d39d148db4ca1` |
 | `roll-end` | `bfa91eacc23022b5cf106533b4a0aa3baebcb414263d38c2dc0c774d8e1d1171` |
 | `stop` | `3c6fdd12d20a9444c3256170405e94b7d6cf88b1aed7902e3e3aee6c0debf603` |
 | `stand-1` | `004fe43c667649b0d90ef3dea9d56e193e49afdec8f6f6a6568fb56515b744d6` |
@@ -131,7 +140,7 @@ The colours each character's pictures are drawn with are in
 file (`../formats/sprites.md`, "Picture hashes"). The pictures of one
 character in one of the sections below ("The stop after a roll", "A jump
 and its landing", "A bounce's frozen frames", "Walking, running and
-turning", and the first standing pictures) belong together: if any of their hashes isn't found, the
+turning", "A roll", and the first standing pictures) belong together: if any of their hashes isn't found, the
 engine shows its own art for that state on those frames, keeping the
 timing given here. A character missing every hash shows the engine's own
 art throughout.
@@ -140,6 +149,108 @@ These pictures don't depend on speed, on how high the jump was, or on
 what is held, except where a rule below says so. While the player is
 flashing (`protection.md`, "Flashing") the character isn't drawn on some
 frames; on the frames it is drawn, the picture is the one given here.
+
+## A roll
+
+This section is for the first character only. S is the roll's
+`roll_start` frame and D the frame after its last roll frame
+(`roll-input.md`, "How a roll ends"). L and G are the first airborne
+frame and the landing frame of a roll that goes off a ledge
+(`rolling-off-ledges.md`). On the roll frames, S to D − 1, the picture
+follows a **roll cycle** of 33 frames:
+
+| Cycle frame | Picture |
+|---|---|
+| 1 to 3 | `roll-1` |
+| 4 to 6 | `roll-2` |
+| 7 to 9 | `roll-3` |
+| 10 to 12 | `roll-4` |
+| 13 to 15 | `roll-5` |
+| 16 to 18 | `roll-6` |
+| 19 to 21 | `roll-7` |
+| 22 to 24 | `roll-8` |
+| 25 to 27 | `roll-9` |
+| 28 to 30 | `roll-end` |
+| 31 to 33 | `stop` |
+
+Cycle frame 33 is followed by cycle frame 1 again. The cycle starts
+over on these frames, whatever it was showing:
+
+- **S:** cycle frame 2, so `roll-1` shows on S and S + 1 only. Each
+  later picture is shown on 3 frames, and on a roll of 29 frames
+  `roll-end` shows on S + 26 to S + 28, the roll's last three frames.
+- **S of a roll that starts on D + 17 of the stop after another roll**
+  (the 30-frame roll of `roll-input.md`, "Starting the next roll",
+  whether from a remembered press or a new one): cycle frame 1, so
+  `roll-1` shows on S to S + 2 and every later picture one frame later
+  than above. `roll-end` again shows on the roll's last three frames,
+  S + 27 to S + 29. A roll that starts on D + 18 or later starts at
+  cycle frame 2, as above.
+- **L:** cycle frame 1, on the first airborne frame of a roll off a
+  ledge, whether or not the player hovers there.
+- **G:** cycle frame 1, on the landing frame, when the roll goes on
+  after it (D = G + 30). When the player lands on L + 30, D = G and the
+  stop's pictures start on G (below).
+
+In the air the cycle goes on as long as the fall lasts: on a fall of
+more than 30 frames `stop` shows on L + 30 to L + 32 and `roll-1` again
+from L + 33. After a landing the roll ends on G + 29 with `roll-end` on
+G + 27 to G + 29, as on a roll that started on G − 1.
+
+A roll that is stopped (`vx` 0, `rolling-off-ledges.md`, "Stopping
+before a ledge") goes on through the cycle as usual.
+
+**A roll that defeats a walker** (`rolling-into-walkers.md`): the
+picture doesn't change on the two frames of the pause, K + 1 and K + 2,
+and the cycle doesn't move on: from K + 3 every picture comes two frames
+later than it would have without the defeat. A new roll started by the
+boost on P, while the player is still in `roll`, starts at cycle frame 2
+on P, as on S. The three frames that are still `roll` after the roll
+frames, before `roll_end` (D + 2 to D + 4 without a boost, P + 29 to
+P + 31 after one), show `stop`, as when a roll carries on into running
+(below), and walking pictures follow.
+
+**From D:** the roll's stop or its carrying on into running, below.
+
+**A jump out of a roll:** on the press frame P, the frame before the
+jump's T (`roll-speed.md`, "Jumping out of a roll"), the player shows
+`jump-1`, and then the pictures of "A jump and its landing" from T.
+
+For example, standing on the floor with Right held, a normal roll is
+pressed on S and Action is let go; the roll ends in a stop:
+
+| Frames | Picture |
+|---|---|
+| S and S + 1 | `roll-1` |
+| S + 2 to S + 4 | `roll-2` |
+| S + 5 to S + 7 | `roll-3` |
+| … 3 frames each … | … |
+| S + 23 to S + 25 | `roll-9` |
+| S + 26 to S + 28 | `roll-end` |
+| D = S + 29 to D + 2 | `roll-end` (the stop, below) |
+
+A roll off a ledge, measured on the raised stretch where the ground
+simply ends: walking right, Right held, Action tapped on S. The player
+leaves the ground on L = S + 6, hovers, and lands on G = L + 40 =
+S + 46:
+
+| Frames | Picture |
+|---|---|
+| S and S + 1 | `roll-1` |
+| S + 2 to S + 4 | `roll-2` |
+| S + 5 | `roll-3` |
+| L = S + 6 to S + 8 | `roll-1` |
+| S + 9 to S + 32, 3 frames each | `roll-2` to `roll-9` |
+| S + 33 to S + 35 | `roll-end` |
+| S + 36 to S + 38 | `stop` |
+| S + 39 to S + 41 | `roll-1` |
+| S + 42 to S + 44 | `roll-2` |
+| S + 45 | `roll-3` |
+| G = S + 46 to S + 48 | `roll-1` |
+| S + 49 to S + 72, 3 frames each | `roll-2` to `roll-9` |
+| S + 73 to S + 75 | `roll-end` |
+
+D = G + 30 = S + 76, and the stop follows.
 
 ## The stop after a roll
 
@@ -393,6 +504,31 @@ steep face, picking something up):
   picture was still on screen, and 12 frames in a row in one run where
   the match took the picture of another object crossing the player.
 
+- **Rolls, first character:** 1 739 rolls on flat floor from standing,
+  walking and running starts (slow, normal and fast), with random
+  inputs from 20 frames before the roll's end (nothing, either
+  direction, Action, Up, Down and Jump, alone and together), so that
+  many rolls were followed by a roll from a remembered press or a jump
+  out of the roll; 456 rolls in scripted pairs, the second pressed once
+  on D − 2 to D + 17 of the first's stop (228 of them 30-frame rolls
+  started on D + 17); 192 rolls toward the two ends of the raised
+  stretch whose ground simply ends and toward two ledges with a face at
+  the top, from many distances, 64 of them leaving the ground (with and
+  without a hover) and 42 landing during the roll; 305 rolls into a row
+  of small walkers on the first level's opening floor, with 234 defeats
+  and 195 boosts; and 172 rolls in random play through the first level,
+  on its slopes and floors. 65 529 roll frames were predicted from the
+  trace alone (S, L, G, the stop before S, the pause frames and Action
+  for the boost) and compared with the screen, 2 653 left out: 0
+  differences, except 7 rolls in random play: one already under way when
+  the run began, one held by a game pause (`hidden-objects.md`), and 5
+  where the picture was held or started over as after a defeat, in runs
+  that didn't record what the roll met. 2 094 of the frames compared
+  were frames of stopped rolls. After the defeats, all 105 endings
+  carried on into running that weren't hidden showed `stop` on the three
+  frames before `roll_end` and `walk-1` on the next. On all 967 jumps
+  out of a roll, the press frame showed `jump-1`.
+
 ## Not covered
 
 - The first character landing before the approach frame (L < A,
@@ -408,7 +544,7 @@ steep face, picking something up):
   didn't start with a jump, and after bounces.
 - The standing pictures after the first ones given above, the second
   character's walking, running and turning pictures (its stride cycle
-  isn't in `ground-speed.md`), roll pictures, the pictures after B + 4
+  isn't in `ground-speed.md`), its roll pictures, the pictures after B + 4
   of a bounce, and the pictures of every other state, such as pushing
   against a wall or a steep face.
 - Which walking or running picture shows in the air after walking or
@@ -417,3 +553,6 @@ steep face, picking something up):
   pictures were seen there, but their steps weren't worked out.
 - Why, on 4 frames in random play, a walking or running picture came
   one frame late. The rules above give the usual frame.
+- The first character's pictures on a roll started by a boost in the
+  stop after a roll (`rolling-into-walkers.md`, "The boost", P in the
+  stop): the few seen were hidden behind walkers.
