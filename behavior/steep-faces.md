@@ -961,10 +961,64 @@ frames on the floor from S to S + 28; every other rule of `roll-speed.md`,
 held during a roll or the stop after one makes no difference on or next to
 a face either, for either character (`roll-input.md`, "Down during a
 roll"; `second-character.md`, "Rolls"). One rule of
-`roll-input.md` changes on a face: a press just after a roll that carried
-on into running, when the frame after `roll_end` starts on a face, is
-carried like a jump press until the player is off the face
-(`roll-input.md`, "Starting the next roll").
+`roll-input.md` changes on a face: a roll never starts on a frame that
+starts on a face. A press that would start one there is carried like a
+jump press until the player is off the face ("When a roll starts on a
+face" below).
+
+### When a roll starts on a face
+
+Call **S₀** the frame on which `roll-input.md` would start the roll:
+
+- for a press on a frame P on the floor, S₀ = P;
+- for a press made in the air and remembered through the landing
+  (`roll-input.md`, "In the air"), S₀ = L + 1, where L is the landing
+  frame;
+- for a press on D + 2 or D + 3 after a roll that carried on into
+  running, S₀ = D + 4 (`roll-input.md`, "Starting the next roll").
+
+If S₀ starts on a face, no roll starts on S₀. Unlike a jump press, a press
+on the frame that moves the player onto a face from other floor isn't
+carried: that frame doesn't start on the face, and the roll starts on it
+as usual. A press in the air is carried when the landing frame L ends with
+the player on the floor of a face column.
+
+A carried press works like a carried jump press ("When the jump takes
+off"):
+
+- Let **Q** be the first frame after S₀ that starts with the player on
+  the floor on a column that isn't a face column. Walking or coasting off
+  the low end of the face, Q is the first frame that starts beyond its
+  last column; if the player leaves the ground on the face and lands on
+  other floor, Q is the frame after the landing frame.
+- If Action is held on every frame from P to Q and Q ≤ **P + 7**, a roll
+  starts on Q (`roll_start` on Q).
+- Otherwise no roll starts. A new press is needed; a press on Q or later
+  starts a roll on its own frame as usual.
+
+The window counts from the press, also for a press made in the air: a
+press on L − 1 rolls only if the player is off the face by L + 6.
+
+Example: a bounce (`bounce.md`) lands on a face rising to the right whose
+lowest column is c₀ (1 px above the floor at its foot; each column 4 px
+higher than the one before), on its fifth column, with Right held until
+the landing and nothing after it. `x − c₀` and `vx` are at the end of each
+frame:
+
+| Frame | x − c₀ | Floor (px above the foot) | vx | |
+|---|---|---|---|---|
+| L | 4 | 17 | 0 | `land` |
+| L + 1 | 3.8125 | 13 | −0.1875 (−48/256) | carried down |
+| L + 2 | 3.4609375 | 13 | −0.3515625 (−90/256) | |
+| … | | | | |
+| L + 6 | 0.8046875 | 1 | −0.8203125 (−210/256) | |
+| L + 7 | −0.09765625 | 0 | −0.90234375 (−231/256) | at the foot |
+
+L + 7 ends beyond the face's lowest column, so Q = L + 8. With Action
+pressed on L − 1 and held, the frames from L to L + 7 are as in the table
+and no roll starts on L + 8 (Q = P + 9); the player coasts on. With
+Action pressed on L + 1 instead and held, the frames from L to L + 7 are
+the same and the roll starts on L + 8 (Q = P + 7).
 
 ### Steering on a face
 
@@ -1125,6 +1179,34 @@ normal on face frames 2 and 46, a push on uphill rolls 110 and 109, a
 normal size after a push-off 190 and 140, push-offs only from `vx` 0 14
 and 16, no block onto floor more than 8 px higher 1 and 50.
 
+"When a roll starts on a face" was measured separately with the lead
+character, from Action presses (no Jump held from the frame before the
+press to 13 frames after it, no Down from the press to the roll) at two places in the first
+level: a pit with an 8-column face falling into it on one side and a
+4-column face rising out of it on the other, followed by a 16-column face
+rising to the right; and the face falling to the left used for the
+bounce landings in "Evidence (landings)", with walkers in place there:
+
+- random walks, jumps and falls around the pit faces, and the same runs
+  played again with Action taken out and then pressed once from L − 7 to
+  L + 2 around each landing near a face, held 1 to 12 frames or longer:
+  334 presses;
+- bounces off a walker onto, beside and past that face, random
+  directions and Action, and the same two-pass replays: 341 presses;
+- walking and coasting down that face from its top with random
+  directions and Action presses, no landing: 646 presses.
+
+Of these 1 321 presses, 84 were made on the floor on frames starting on
+a face and 85 in the air with a landing ending on a face column. Every
+press matched the rule except 4 (see "Not covered"): a carried press held
+to Q rolled on Q in all 43 cases with Q from P + 1 to P + 7 and in none of
+the 10 with Q = P + 8. The roll rules of `roll-input.md` alone (a roll on
+P, or on L + 1) give 175 wrong presses; carrying a press on the frame that
+moves onto a face as well gives 22; a window of P + 6 or P + 8 gives 15
+and 14. A bounce onto the face at many points with presses from L − 8 to
+L + 12, with and without Jump, gave the same: with Jump pressed together
+with Action, the jump went on and no roll started.
+
 ## Examples
 
 Synthetic floors. `y` is down-positive, as in a trace.
@@ -1192,6 +1274,13 @@ From frame 5 on, `vy` and the landing follow `walk-off.md` and
   onto a face (`ground-action.md`, "At a steep face"). The ground action
   going down a face, against a rising face or a vertical step up, off a
   vertical step down and the jumps during it are in that section too.
+- Air presses remembered through a landing on floor that isn't a face
+  column just after the player passed low over a face's columns in the
+  air (jumping up past a face's top, falling from a face across a pit
+  onto the top of another): in 3 of 24 such landings no roll started on
+  L + 1 (the other 21 followed "In the air"), and one press carried from such a landing on a face's top
+  column started none on Q. Presses with Down held between the press and
+  the roll near a face.
 - Rolls started while the player is carried down a face or on the frames
   just after leaving one (up to about 12 frames): their direction and
   size on S didn't always follow `roll-speed.md` (the held direction
