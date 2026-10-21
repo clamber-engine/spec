@@ -392,6 +392,149 @@ bunch was not measured.
 The count display (`count-display.md`) is shown from the frame the bunch
 is taken.
 
+## Pictures
+
+What a bunch looks like on each frame in `title-1`, from the frame it
+appears until it is taken. It spins: it shows `bunch-1` to `bunch-6` and
+then back down, so one cycle is
+
+    bunch-1, bunch-2, bunch-3, bunch-4, bunch-5, bunch-6,
+    bunch-5, bunch-4, bunch-3, bunch-2
+
+and then `bunch-1` again. Each picture is shown on 6 counted frames
+(below), so a cycle lasts 60 counted frames. Each bunch keeps its own
+cycle, counted from the frame it appears, so bunches are not in step
+with each other.
+
+The pictures are named by their picture hashes
+(`../formats/sprites.md`, "Picture hashes"):
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `bunch-1` | `dd937f5032cea06c1ee2ad953e0663cbc33ed594117d07dcc2240f2f272aef22` |
+| `bunch-2` | `38d6262e7e94129ac3f0bc04df4b036977c5594ebc7e925bd2fcf0e6f6f2d51c` |
+| `bunch-3` | `5e5bdee15de22effc4928e82d070952603b2b85101cfb203576740c460178243` |
+| `bunch-4` | `d4e3d2b554b198bffb1d92c31201fed216e154f2044daba5a1ccbdb41f81eb9a` |
+| `bunch-5` | `b8202d2431494a964555dbed5a73658e4b4fa68f3a72be118235395edd54acb4` |
+| `bunch-6` | `7391473503d443cd367f8b3dccb96fa284b39123483e84cbd1f1085a24470100` |
+
+Each picture is drawn unmirrored, with its origin at (`xb`, `yb`), as
+`../formats/sprites.md` places an origin ("Where the picture is
+drawn"). The picture given for a frame is the one on screen with that
+frame's view.
+
+**When a hash isn't found.** The six hashes belong together: if any of
+them isn't found, the engine shows its own art for a bunch, on the same
+frames and with the same timing as given here.
+
+### Appearing
+
+A bunch is not in the level all the time. It appears as a walker does
+(`walker-view.md`, "The window" and "Appearing"), with its start `S`
+being the entry's level x, `xb` + 1: a bunch that is not in the level
+and hasn't been taken appears on the first frame whose start-of-frame
+view `V` gives
+
+    −31 ≤ S − V ≤ 288
+
+That is always outside the picture, so a bunch is never seen on the
+frame it appears. It also appears on frame 0 after a restart
+(`restart-barrel.md`) when its `S` is in the window then. When a bunch
+is removed again is not covered (see "Not covered"); one that has been
+removed appears again by the same rule, and its cycle starts afresh.
+
+### Counted frames
+
+Call `A` the frame the bunch appears. Its pictures step on **counted
+frames**: every frame from `A` on except the frames on which nothing
+moves, as for walkers (`walker.md`, "Counted frames"):
+
+- B + 1 and B + 2 of a bounce (`bounce.md`, "Everything else on the
+  frozen frames");
+- K + 1 and K + 2 after a walker is defeated by a roll
+  (`rolling-into-walkers.md`, "The pause") or by the ground action
+  (`ground-action-enemies.md`);
+- H + 1 to H + 10 while the first character is knocked out
+  (`knock-out.md`), H + 1 to H + 13 for the second character
+  (`knock-out.md`, "The second character").
+
+On frames that don't count the bunch keeps the picture it had. Pauses
+(`extra-lives.md`, "While the game is paused", and the pause in a
+knock-out) have no frames, so they don't change anything either.
+
+### Which picture
+
+Let `c` be the number of counted frames since `A`, not counting `A`
+itself (so `c` = 0 on `A`). On a frame with count `c` the bunch shows
+entry
+
+    k = ⌊(c + 1) / 6⌋ mod 10
+
+of the cycle above, counting its entries from 0 (`bunch-1`) to 9 (the
+second `bunch-2`). So `bunch-1` is shown on `A` and the 4 frames after it
+(5 frames), and from then on each picture lasts 6 counted frames.
+
+### Once taken
+
+From the frame `P` on which it is taken ("When a bunch is taken"), a
+bunch is not drawn. Only its items are drawn as they are released
+("Releasing the items"; how they look is not covered).
+
+### Example (synthetic)
+
+A bunch appears on frame 100 and the player bounces on a walker on
+frame 120 (`B` = 120), with nothing else frozen:
+
+| Frames | `c` | Picture |
+|---|---|---|
+| 100 to 104 | 0 to 4 | `bunch-1` |
+| 105 to 110 | 5 to 10 | `bunch-2` |
+| 111 to 116 | 11 to 16 | `bunch-3` |
+| 117 to 124 | 17 to 22 | `bunch-4` (121 and 122 don't count) |
+| 125 to 130 | 23 to 28 | `bunch-5` |
+| 131 to 136 | 29 to 34 | `bunch-6` |
+| 137 to 142 | 35 to 40 | `bunch-5` |
+| 143 to 148 | 41 to 46 | `bunch-4` |
+| 149 to 154 | 47 to 52 | `bunch-3` |
+| 155 to 160 | 53 to 58 | `bunch-2` |
+| 161 to 166 | 59 to 64 | `bunch-1` |
+
+If it is taken on frame 140, it shows `bunch-5` up to frame 139 and
+nothing from frame 140 on.
+
+### Evidence for the pictures
+
+Measured on screen in the first level, by inputs alone, with only the
+sprites drawn: 40 runs, 102 544 frames. 24 runs played the level's 8
+recorded routes from its start, each as recorded and twice with Jump and
+Action presses added at random. 10 runs played the first part of one
+route and then walked and ran back and forth at random over about
+1 000 px with two bunches, so that they left the view on both sides and
+came back, with jumps, rolls, crouches, bounces on walkers, roll
+defeats, knock-outs and restarts. 6 runs did the same next to the bunch
+over the pit. The bunches appeared 134 times by the rule above (127 on
+the right, 7 on the left, none otherwise), and 6 more times on a
+restart's frame 0. On every frame each bunch's picture on screen was
+compared with the rule.
+
+| | Frames |
+|---|---|
+| Compared, as the rule gives | 5 797 |
+| Compared, another picture or none | 0 |
+| Taken: compared, no bunch picture drawn | 6 |
+| Left out: partly off the edge of the picture | 2 270 |
+| Left out: another sprite drawn over part of it | 1 454 |
+| Left out: the lives display shown over it during a knock-out | 16 |
+| Left out: last frame before a restart, nothing drawn | 5 |
+
+Bunches were seen whole and as the rule gives after frames that don't
+count in 2 stays with a bounce, 11 with a roll defeat, 11 with the first
+character's knock-out and 1 with the second character's. Bunches that
+were already in the level when a run started part-way through the level
+were left out. On the last frame before a restart nothing was drawn
+where the bunch was (as for single collectibles, `collectibles.md`,
+"Evidence for the pictures").
+
 ## Not covered
 
 - The second character's landings and running state, and its ranges
@@ -407,8 +550,13 @@ is taken.
   roll, a turn or another jump.
 - Bounces from a roll, bouncing again before landing, landing on a
   slope after a bounce, and the second character bouncing.
-- When a bunch that hasn't been taken appears and disappears as the
-  view moves.
-- How a bunch is drawn while its items are released, and the path the
-  flying items take.
+- When a bunch that hasn't been taken is removed as the view moves.
+  In the runs for "Pictures", some bunches were gone on the first frame
+  their `S` was outside the window, others only once `S` − `V` was
+  −128 or less or 385 or more, as for a walker (`walker-view.md`,
+  "Being removed").
+- Whether a bunch's pictures wait while a character joins
+  (`holder-breaking.md`, "Everything else waits"): no bunch was seen
+  whole on screen during or after one.
+- What the released items look like, and the path the flying items take.
 - How bunches are placed in a level's data.
