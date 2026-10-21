@@ -230,6 +230,35 @@ The colours each character's pictures are drawn with are in
 | `s-land-4` | `a5850548dbd60c824d2bfc752768b90da7669043e03cb97efdedfb2abf985e97` |
 | `s-bounce-1` | `aa5af774ce0f14bdff10b1c89725c4107a0c2fa5dffc10d1c4e9c91bfb0520b1` |
 | `s-bounce-2` | `b40d5b5deb112862c4fbd80476cf07c51a7a34b8c2ecdab4b975905b3ce73b7b` |
+| `s-walk-1` | `1b8b325c0f381b276f9ea2f4609878873b66ea5cbedebf2df1829d08a9bc182f` |
+| `s-walk-2` | `96499fdf7c9e8c6b7d6447dd26fc48be53c915a9a47dd8905af0b7ed0dcf480b` |
+| `s-walk-3` | `0cfc6a1c8d877df03ad2b0b284a356c38d73ff936cfc8987c0ecb18e454bcc0a` |
+| `s-walk-4` | `4142d614856b976990d6d55504e2d0075f0633aafe02a4038d7007717d540790` |
+| `s-walk-5` | `830a443f8e7acb7663f1588d54cfdf84e916cde1f7ca08ada8641267af56c4dc` |
+| `s-walk-6` | `8b99f61450196b95a51d04d6cb01849ed6093e50af4b647389d3e8b09806a248` |
+| `s-walk-7` | `fd96adb4432b7c65efe6abf3acd7f55e6a112f6d1de00e8856ed88ae646af26d` |
+| `s-walk-8` | `8e74b9c570040aa2736231af7c5b859884c164a5c6eb87a958a76bdd9cb8e9b1` |
+| `s-walk-9` | `9e554e85898e5d3e1480881ba895f62cbcc9348ea5860dc4dfc5e0651acdef6a` |
+| `s-walk-10` | `2a23302690015e9f3f6ee2423c14e68726590c161101e4d66e13bbe5cf7138f0` |
+| `s-walk-11` | `95d19e026176ae813422e5522d29bd9df28cceb01dae47bd7117e5e65983a39e` |
+| `s-walk-12` | `562c505a9c20e984b90b0b864735435cb37dd92d28bdd90c2f5e14401d384b5f` |
+| `s-walk-13` | `98d3b72615e095bcee2f827841e47dacc78696c787483b7cf3b68fc12ab6c9a1` |
+| `s-walk-14` | `70514667bbcd4fe1c45de80ba93ae13569d4b3610141bc28391c5f3a14ffc611` |
+| `s-walk-15` | `c275da1810f8d4a45c9b3e074e2246db5bf4ff1a9d6738c3a7046580c5ddc050` |
+| `s-walk-16` | `946683f941c1a111cadbdba0987302735476fb90de896cb558e02560f0fee762` |
+| `s-run-1` | `71eeb1b06c7fb41bade0de1d98419a7eacd827e9c600def1818b0025819ce7fb` |
+| `s-run-2` | `7b34599e9e7d96a94ff766022a44cd776e1f8b35e35f9a4f6cad5b1c17c62232` |
+| `s-run-3` | `543fd6e8b127538c5f6e11f5e1b1a174f87d55324d39d29974890aad307ec84d` |
+| `s-run-4` | `2e90b7ca3a1986fe229383e666347bab5eb6f16504d60a474b7dffb39049f0e5` |
+| `s-run-5` | `33e2700832b35f66439a755029c2cce7d011b4a240ce05770ba548b08193c33b` |
+| `s-run-6` | `9a0ac4e329c1ee97efbda34c10c51eb293c8a5ef78356878b6d4163a7ba68732` |
+| `s-run-7` | `42ec7c1d5f506eb2a608ace2bb6c2d102d472bd3d15fac3a46ab465beb2593c1` |
+| `s-run-8` | `d69e3f0325eb5391477402e363e362895d04243ff0dabeba96766bf0cd786cc3` |
+| `s-run-9` | `bd65f6cc03350830cb9c6820b225147abfc4b434d91eb3529e3b07dcf58c42e1` |
+| `s-run-10` | `8f26170857c83e362ef6373ca9cdfd66570b7b2e8851f58e7f0271b7b99d4e63` |
+| `s-run-11` | `32900816039c9988318bdf15d69924f1b915d155e491f1b71f41485de2f1accf` |
+| `s-run-12` | `590976c6ca84686564856f717543173e80e2f6edc9fb7f8a8cec2a74d081de2b` |
+| `s-run-13` | `a67e8517d7a9814202331a4ecd5a132abcf56aad81a70ab30d61bb348cb79d35` |
 
 **When a hash isn't found.** The importer looks for every hash in this
 file (`../formats/sprites.md`, "Picture hashes"). The pictures of one
@@ -242,7 +271,11 @@ timing given here. The standing pictures form one group: `stand-1` to
 standing frame comes right after walking, a landing, a bounce or a
 roll's stop, or later in the "Standing still" list. So do the second
 character's standing pictures, `s-stand-1` to `s-stand-22` and
-`s-wait-1` to `s-wait-17`. A character missing every hash shows the engine's own
+`s-wait-1` to `s-wait-17`. The second character's walking, running and
+turning pictures are `s-walk-1` to `s-walk-16`, `s-run-1` to `s-run-13`
+and, for turns, `s-stand-5` and `s-stand-7`: if any of them isn't
+found, the engine's own art is shown on its walking, running and
+turning frames. A character missing every hash shows the engine's own
 art throughout.
 
 These pictures don't depend on speed, on how high the jump was, or on
@@ -556,7 +589,9 @@ The second character's pictures after B + 4 are not covered.
 
 ## Walking, running and turning
 
-This section is for the first character only. While it is walking,
+### First character
+
+While the first character is walking,
 running or turning on the ground (`ground-speed.md`, "Standing, walking
 and running"), or in the air after walking or running off a ledge
 without a face, where the mode goes on (`ground-speed.md`, "After a fall
@@ -614,6 +649,32 @@ The frames between a roll carried on into walking and the step 1
 picture are in "The stop after a roll". A walk or run that starts at
 the end of a landing (`landing.md`) starts at step 1 with `walk-1` or
 `run-1` in the same way.
+
+### Second character
+
+While the second character is walking, running or turning on flat
+ground (`ground-speed.md`, "The second character's stride cycle"), its
+picture follows its own stride cycle and the turn in the same way:
+
+- **Walking**, on a frame in step `s` of its walking cycle (1 to 16):
+  `s-walk-s`.
+- **Running**, in step `s` of its running cycle (1 to 13): `s-run-s`.
+- **Turning**: `s-stand-5` on T and T + 1, `s-stand-7` on T + 2 to
+  T + 5 and `s-stand-5` on T + 6 and T + 7. Facing, and so the
+  mirroring, changes on T + 4.
+
+As for the first character, the step is the one the frame ends in, the
+step 1 picture shows on the frame walking or running starts (including
+a drop from running to walking at the end of running step 13), and
+nothing else changes the picture. Each step lasts 2 frames at low
+speeds, so most pictures show on two frames in a row. In the example in
+`ground-speed.md` ("The second character's stride cycle"), `s-walk-1`
+shows on frames 0 and 1, `s-walk-2` on 2 and 3, `s-run-1` on 4 and 5,
+`s-run-2` on 6 and 7, `s-run-3` on 8 and 9, `s-run-4` on 10 and 11 and
+`s-run-5` from 12.
+
+When walking, running or a turn ends in standing, the standing pictures
+of "Standing still" start on the first standing frame (S).
 
 ## Standing still
 
@@ -807,6 +868,16 @@ steep face, picking something up):
   that kind (3 582 frames), except 4 frames where the previous step's
   picture was still on screen, and 12 frames in a row in one run where
   the match took the picture of another object crossing the player.
+- **Walking, running and turning, second character:** 240 runs of
+  random input on flat floor with the second character leading (Left,
+  Right or nothing for 1 to 40 frames, half of the runs with Action
+  held; in 120 runs, a run holding Action let go of it for good at a
+  random segment), 146 586 logic frames, a picture matched on every
+  one. From each run's first standing frame on, the mode, step and turn
+  frame were worked out from the inputs and `vx` alone with the rules
+  of `ground-speed.md`, and the picture they give was compared with the
+  screen: 59 394 walking, 22 604 running and 23 741 turning frames
+  (2 978 turns), 0 differences.
 - **Walking off a ledge without a face, first character:** 800 runs of
   random input on a platform without faces at either end, with a lower
   floor on one side and a pit on the other (Right, Left or nothing for 1
@@ -910,8 +981,8 @@ steep face, picking something up):
   `s-air-6`, and when its `s-air-1` ends.
 - The second character's landings after falls that didn't start with a
   jump, and after bounces.
-- The second character's walking, running and turning pictures (its stride cycle
-  isn't in `ground-speed.md`), its roll pictures and its pictures after
+- The second character's walking, running and turning pictures in the
+  air after a ledge and anywhere but flat ground, its roll pictures and its pictures after
   B + 4 of a bounce, and the pictures of every other state, such as pushing
   against a wall or a steep face.
 - The standing pictures on a slope or at a ledge (teetering), for

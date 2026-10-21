@@ -141,9 +141,10 @@ start of turns follow `steep-faces.md` ("Turns next to a rise") instead.
 ### Standing, walking and running
 
 This section is `title-1` only. It decides when a turn can start. It has
-no effect on speed: the speed rule applies on every frame. The first
-character's pictures follow it (`player-frames.md`, "Walking, running
-and turning").
+no effect on speed: the speed rule applies on every frame. Both
+characters' pictures follow it (`player-frames.md`, "Walking, running
+and turning"). The second character's stride cycle is different; see
+"The second character's stride cycle" below.
 
 Outside a turn, the grounded player is always in one of three **modes**:
 standing, walking or running. After walking off a ledge without a face
@@ -233,6 +234,66 @@ only if the turn check changed nothing.
   frame with a turn check, this comes after the check, and only if the
   check started no turn and didn't make the player stand. Before step 1
   of the run has ended, the player keeps running.
+
+#### The second character's stride cycle
+
+With the second character as the player, on flat ground, modes, turns
+and checks work as above except for the stride cycle itself, the steps
+that end with a check, and running with Action released:
+
+- Walking and running each have their own cycle: **16 steps** while
+  walking (step 1 follows step 16) and **13 steps** while running (step
+  1 follows step 13).
+- When walking or running starts, the cycle starts at step 1 and the
+  counter is set to **512**. On each later frame in the same mode the
+  counter goes down by the stride rate below; if the result is 0 or
+  less, the current step ends on that frame and 512 is added.
+
+| Mode | Stride rate (second character) |
+|---|---|
+| Walking | ⌊v/2⌋, but at least 256 |
+| Running | ⌊v/4⌋ + ⌊v/8⌋, but at least 256 |
+
+Walking up to v = 513 and running up to v = 687 the rate is 256, and
+a step lasts exactly 2 frames (the counter goes 512, 256, then ends the
+step). At the second character's top running speed (v = 864,
+`second-character.md`) the rate is 324, so at most one step ends on a
+frame.
+
+| Mode | Turn check at the end of steps | Run check at the end of steps |
+|---|---|---|
+| Walking | 1, 3, 5, 7, 9, 11, 13, 15 | 2, 4, 6, 8, 10, 12, 14, 16 |
+| Running | 3, 5, 7, 9, 11, 13 | none |
+
+The turn check and the run check do what "When a step ends" says, with
+these steps; no step has both.
+
+**Running with Action released** works differently from the first
+character's: the second character can drop from running to walking only
+on the frame running step 13 ends. On that frame, if Action isn't held,
+a direction is held (either one) and v < 640, walking starts at step 1
+(counter 512). This comes before that step's turn check: when it
+applies, no turn starts, even with the opposite direction held.
+Otherwise the turn check is made as usual. On every other frame the
+second character keeps running with Action released, at any speed.
+
+Standing, the end of a turn (including running from T + 8 with Action
+held and v ≥ 512) and the turn itself are the same as for the first
+character.
+
+For example, the second character standing still on flat floor facing
+right, with Right and Action held from frame 0 on. Walking starts on
+frame 0; v (after that frame's speed rule, `second-character.md`) and
+the counter after each frame are:
+
+| Frame | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| v | 108 | 202 | 284 | 356 | 419 | 474 | 522 | 564 | 601 | 633 | 661 | 686 | 708 | 727 |
+| Counter | 512 | 256 | 512 | 256 | 512 | 256 | 512 | 256 | 512 | 256 | 512 | 256 | 503 | 232 |
+| Mode, step | walk 1 | walk 1 | walk 2 | walk 2 | run 1 | run 1 | run 2 | run 2 | run 3 | run 3 | run 4 | run 4 | run 5 | run 5 |
+
+Walking step 2 ends on frame 4 with a run check; Action and a direction
+are held, so running starts there at step 1.
 
 #### After a landing
 
@@ -536,6 +597,27 @@ fall from a face (722 and 562 cases), no speed limit or a limit of 768
 for running on G + 11 (63 and 184), and a bounce pick in which the
 opposite direction always starts a turn (88).
 
+The second character's stride cycle ("The second character's stride
+cycle"), all with the second character leading on flat ground, each run
+checked from its first standing frame using only each frame's inputs
+and `vx`, 0 mismatches in mode, step, turn start or facing:
+
+- 240 runs of random Right, Left and no-direction segments (1 to 40
+  frames), half of them with Action held; in 120 of them a run holding
+  Action let go of it for good at a random segment. 137 254 frames.
+- 160 runs letting go of Action after running at full speed for 60 to
+  100 frames, holding Right or Left. Where running step 13 ended with
+  Action released and a direction held, walking started at v up to 630
+  (132 times, 11 of them with the opposite direction held and no turn),
+  and the player kept running or turned at v from 645 (59 times).
+- 12 runs of that kind with `vx` set, on the frame step 13 ends, to each
+  value from 620 to 660 before the frame: walking started whenever v
+  after the frame was below 640, running went on from 640.
+
+Rules that fail on the same runs: the second character never dropping
+from running to walking (3 runs mismatch), or dropping below v = 768
+(1).
+
 #### Not covered (`title-1` modes)
 
 - Which mode the player is in, and where the stride cycle starts, after
@@ -552,7 +634,9 @@ opposite direction always starts a turn (88).
 - Landing on uneven floor after any of these falls, and bounces off
   anything other than a small walker (`walker-contact.md`).
 - Left and Right held together, walls, carrying, and the second
-  character (except its landings after jumps, "After a landing"). Down held on or after the landing frame starts a crouch
+  character's modes other than on flat ground from standing ("The
+  second character's stride cycle") and after its landings after jumps
+  ("After a landing"). Down held on or after the landing frame starts a crouch
   from L + 2 ("Crouching"); the mode after a crouch is the first item
   above. On 1-in-4 slopes this section applies unchanged
   (`slopes.md`, "Turning around on a slope"); other slopes are not
