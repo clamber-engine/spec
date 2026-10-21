@@ -2,6 +2,30 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.226.0
+
+The second character's pictures and landing frames after a fall from a
+steep face (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: new "A fall from a steep face", "Second
+  character". `s-air-1` from the first frame on the face (F) to G − 1,
+  then 7 landing frames G to G + 6 (`s-air-2` to `s-air-6`, `s-land-1`,
+  `s-land-2`), then the mode starting on G + 7 shows its own pictures.
+  A roll, jump or crouch starting on G + 1 to G + 7 ends the list there.
+  Passing over the face without a frame on it is as at a ledge without
+  a face. No new hashes; fallback with "A jump and its landing". G + 7
+  added as an S in "Standing still"; example, on-screen evidence and an
+  updated "Not covered".
+- `behavior/ground-speed.md`, "After a fall or a bounce": the second
+  character's 7 landing frames after a fall from a steep face, its mode
+  on G + 7, and rolls, jumps (from G + 2) and crouches (from G + 2) on
+  G + 1 to G + 7. Evidence and "Not covered" updated.
+- `behavior/jump-input.md`, "Landings this doesn't cover": the measured
+  case E = L + 2 for these landings.
+
 ## spec-v0.225.0
 
 The thrower's and its balls' pictures (spec#38, pictures).
