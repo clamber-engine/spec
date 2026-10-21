@@ -6,8 +6,9 @@ A **single collectible** is a small item placed in a level that the
 player takes by touching it. Each one taken adds one to the
 **collectible count**. When the count reaches 100, it starts again from
 0 and the player gets one more life. This file covers when a single
-collectible is taken, which ones can be taken depending on the view, and
-when the count goes up. Bunches are in `bunches.md`, letters in
+collectible is taken, which ones can be taken depending on the view,
+when the count goes up and, in `title-1`, how a collectible is drawn.
+Bunches are in `bunches.md`, letters in
 `letters.md` and figures in `figure.md`; other kinds of collectible are
 not covered. Where a level's single collectibles are in its data is in
 `../formats/collectibles.md` (`title-1`).
@@ -41,7 +42,8 @@ Its **position** is the point (`xc`, `yc`) where
 - `yc` is the level y of the image's top row, plus 8.
 
 All collectibles measured had their images at level positions that
-are multiples of 8 px.
+are multiples of 8 px. The pictures a collectible shows are in
+"Pictures".
 
 ## When a collectible is taken
 
@@ -228,6 +230,117 @@ same frame and counts above 100 are not covered.
 
 What the picture shows of the count, and of the new life, is in
 `count-display.md`.
+
+## Pictures
+
+What a single collectible looks like on each frame in `title-1`. It
+spins: it shows a cycle of 8 pictures, `spin-1` to `spin-8` and then
+`spin-1` again, each on 4 frames. All the collectibles go through the
+cycle together, each some steps ahead depending on its place, so
+neighbouring collectibles are out of step.
+
+`spin-1` to `spin-5` are named by their picture hashes
+(`../formats/sprites.md`, "Picture hashes"):
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `spin-1` | `0d5755393804f7cb9f67762181744993b4f633d4154fd4978a446f4c8093a169` |
+| `spin-2` | `a27f8595e019416e29e85bbbdef30e48226f1c7fa3ff7af01016ccd8489d336c` |
+| `spin-3` | `4c35d2f2fb11215c7e1d2aa5cf5fdf4a1c69348c25ccce0149ecc0c54a1f3b5e` |
+| `spin-4` | `3faa41c54976dd2cf69eadf206eb0bbe293cf45bff5d3268f733e396ce7b8860` |
+| `spin-5` | `b1bcaf4d2e059e5705b573a2733f4b1d1da4e4df964a7b90296682e05784a7c9` |
+
+`spin-6`, `spin-7` and `spin-8` are not full frames of the frame table
+(no full frame has their pictures), so they have no picture hash and
+are not named here (see "Not covered").
+
+Each picture is drawn mirrored left–right, with its origin at level x
+`xc` and level y `yc`, as `../formats/sprites.md` places an origin
+("Where the picture is drawn", "Mirroring"). The picture given for a
+frame is the one on screen with that frame's view.
+
+**When a hash isn't found.** The engine shows its own art for `spin-6`
+to `spin-8`, on the frames given below. The five hashes in the table
+belong together: if any of them isn't found, the engine shows its own
+art for the whole cycle. Either way it keeps the timing given here.
+
+### Counting the frames
+
+The pictures follow `C`, the frame's number plus one, with frames
+numbered from the latest frame 0: on frame 0 of a level
+(`level-start.md`) `C` is 1, on frame 1 it is 2, and so on, also while
+the player is knocked out. When play starts again after the player is
+knocked out or falls out (where play resumes, `restart-barrel.md`,
+"Resuming", or from the level's start), the frames are numbered from 0
+again, so `C` is 1 on that frame 0.
+
+A pause (`extra-lives.md`, "While the game is paused") doesn't change
+the count: no frames run during it, and the first frame after it has a
+`C` one more than the frame before it, as if there had been no pause.
+
+### Which picture
+
+For a collectible at (`xc`, `yc`), let
+
+    g = (xc − 8) / 8 + (yc − 9) / 8
+
+These are whole numbers: (`xc` − 8) / 8 and (`yc` − 9) / 8 are the
+column and row of its cell on the 8 px grid of the level, `X`/8 + `c`
+and `Y`/8 + `r` in `../formats/collectibles.md` ("Items"). On a frame
+with count `C` the collectible shows
+
+    spin-k, with k = ((⌊C / 4⌋ + g) mod 8) + 1
+
+So each picture lasts 4 frames, `spin-8` is followed by `spin-1`, and a
+collectible one cell to the right of another, or one cell below it, is
+one step ahead.
+
+### Example (synthetic)
+
+A group at `X` = 96, `Y` = 40 has an item in column 1, row 2, so
+`xc` = 112, `yc` = 65 and `g` = 13 + 7 = 20. From the level's frame 0:
+
+| Frames | `C` | Picture |
+|---|---|---|
+| 0 to 2 | 1 to 3 | `spin-5` |
+| 3 to 6 | 4 to 7 | `spin-6` |
+| 7 to 10 | 8 to 11 | `spin-7` |
+| 11 to 14 | 12 to 15 | `spin-8` |
+| 15 to 18 | 16 to 19 | `spin-1` |
+
+The item in column 2 of the same row (`xc` = 120, `g` = 21) shows
+`spin-6` on frames 0 to 2 and `spin-7` on frames 3 to 6. If the game is
+paused after frame 16, the first frame after the pause is frame 17,
+with `C` = 18: still `spin-1`.
+
+### Evidence for the pictures
+
+Measured on screen in the first level, by inputs alone: 8 recorded
+routes from the level's start (one of them through the exit), each
+played as recorded and 11 more times with Jump, Action and Down presses
+added at random, 96 runs and 224 004 frames in all. In half of them the
+game was paused now and then (71 pauses of 41 to 161 frames at 60 Hz),
+and the random presses led to 181 restarts after the player was knocked
+out or fell out, from the level's start and from the restart point.
+Only the sprites were drawn. The 8 pictures were first taken from the
+screen, at one collectible over 40 frames: drawn mirrored left–right,
+`spin-1` to `spin-5` are exactly the pictures with the hashes above,
+and `spin-6` to `spin-8` match no full frame. Then, on every frame,
+each collectible's 16 × 16 image on screen was compared with them.
+
+| | Sightings |
+|---|---|
+| Compared, as above | 187 722 |
+| Compared, another picture or none | 0 |
+| Left out: partly off the edge of the picture | 25 606 |
+| Left out: another sprite drawn over part of the image | 48 044 |
+| Left out: last frame before a restart, nothing drawn | 208 |
+
+These are 27 of the level's 34 collectibles.
+The compared sightings include 93 on the last frame before a pause or a
+restart. On the last frame before a restart the screen usually showed
+nothing where the collectibles were (the picture of that frame isn't
+shown before play starts again); those sightings are left out.
 
 ## In `title-2`
 
@@ -424,3 +537,14 @@ This list is for `title-1`; `title-2` has its own list above.
 - While riding: the view window and the count's timing, slopes and
   faces, the frames of mounting and getting off, and the other kinds of
   collectible.
+- The pictures of `spin-6`, `spin-7` and `spin-8` ("Pictures"): no full
+  frame of the frame table has them, so they can't be named by a
+  picture hash, and where they are stored is not covered.
+- What is drawn for a collectible after it is taken: the item seen
+  moving toward the count until the count goes up, its path and its
+  pictures; and the last frame on which the taken collectible itself is
+  drawn.
+- The pictures in areas other than the first level's: in the area play
+  went on to after the first level's exit, collectibles showed the same
+  pictures in the same order, but out of step with "Counting the frames" and "Which picture".
+  Other areas weren't reached in the runs.
