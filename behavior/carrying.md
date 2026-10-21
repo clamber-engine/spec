@@ -132,7 +132,10 @@ From G + 15 the player is carrying.
 - **Down and Up** have no effect: the player doesn't crouch and the
   target doesn't change.
 - **Turns** are as in `ground-speed.md` (8 frames, facing changes on the
-  fifth).
+  fifth). A turn starts on the frame the direction opposite to facing is
+  held without the other one, whether the player is standing or moving:
+  there are no turn checks while carrying (`player-frames.md`,
+  "Carrying").
 - **No rolls**: a roll needs an Action press, and Action is held.
 - **Jumps**: a Jump press on P lifts off one frame later than without an
   object. The take-off frame (the row with `jump_start`: `vy` −7, `ground`
