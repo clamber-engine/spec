@@ -2,6 +2,37 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.228.0
+
+How both characters are drawn while crouching on flat floor in
+`title-1`, and the second character's shortest crouch (spec#38,
+pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: new "Crouching" section.
+  - First character: 22 new picture hashes, `crouch-1` to `crouch-22`.
+    Going down on D to D + 12; held from D + 13: `crouch-9` × 17, then
+    a 131-frame sway and `crouch-9` × 144, repeating every 275 frames;
+    getting up on U to U + 8 from `crouch-9` whatever was shown before;
+    U + 9 shows `stand-1` and is the S of "Standing still", with walking
+    or a turn from U + 10.
+  - Second character: 13 new picture hashes, `s-crouch-1` to
+    `s-crouch-13`. Going down on D to D + 8; held from D + 9:
+    `s-crouch-6` × 15, then an 85-frame sway and `s-crouch-6` × 142,
+    repeating every 227 frames; getting up on U to U + 11; U + 12 shows
+    `s-stand-1` and is the S of "Standing still", with walking or a
+    turn from U + 13.
+  - A crouch started again during the getting up begins again from its
+    first picture; the facing doesn't change. Worked examples, fallback
+    groups (each character's crouching pictures fall back together),
+    on-screen evidence and updated "Not covered".
+- `behavior/second-character.md` (correction): the second character's
+  shortest crouch is 9 frames (D to D + 8), not 13, and Down held again
+  on U to U + 12 starts a new crouch. New "Values" rows and a
+  short-press example.
+
 ## spec-v0.227.0
 
 How the single collectibles are drawn in `title-1` (spec#38, pictures).
