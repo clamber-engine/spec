@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.227.0
+
+How the single collectibles are drawn in `title-1` (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/collectibles.md`: new "Pictures" section. A single
+  collectible spins through 8 pictures, `spin-1` to `spin-8`, each on 4
+  frames, drawn mirrored left–right at (`xc`, `yc`). The picture is
+  `spin-k` with k = ((⌊C / 4⌋ + g) mod 8) + 1, where `C` counts frames
+  from the latest frame 0 (level start or restart; pauses don't count)
+  and `g` is the collectible's cell column plus row on the 8 px grid.
+  5 new picture hashes (`spin-1` to `spin-5`). `spin-6` to `spin-8` are
+  no full frame's pictures, so they aren't named. Fallback: the engine's
+  own art for those three, and for the whole cycle if any hash is
+  missing, keeping the timing. Synthetic example, on-screen evidence
+  and new "Not covered" items.
+- `formats/sprites.md`, "Not covered": points to these pictures and
+  notes that some pictures on screen belong to no full frame.
+
 ## spec-v0.226.0
 
 The second character's pictures and landing frames after a fall from a
