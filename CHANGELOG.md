@@ -2,6 +2,32 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.221.0
+
+The walkers' pictures while walking, turning, pushed and defeated
+(spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/walker.md`, new "Pictures" section: 48 labelled pictures for
+  the small, medium and large walker, named by picture hash. Pictures
+  step on counted frames (every frame except those on which nothing
+  moves and those a walker is held during a knock-out). Walking shows 8
+  pictures for 4 counted frames each, whatever the speed; a walker that
+  appears shows `walk-1` on its first 3 frames. A turn shows 8 counted
+  frames of turn pictures with the facing changing on the 5th, then
+  `walk-1` for 4 frames. A pushed large walker shows `large-push` until
+  its speed has eased to 12/256 px per frame or less. Defeat lists start
+  on the frame `vy` becomes -6 and hold the last picture. Each kind's
+  walking, turn, push and defeat pictures fall back to the engine's own
+  art as a group, keeping the stated timing and facing. Synthetic
+  example, on-screen evidence and "Not covered" items (a previous
+  picture shown one frame longer, small and medium walkers pushed
+  without a defeat, a walker that appears already defeated).
+- `formats/sprites.md`, "Not covered": the animation item now points to
+  `behavior/walker.md` for walkers.
+
 ## spec-v0.220.0
 
 The second character's standing pictures over a long stand (spec#38,
