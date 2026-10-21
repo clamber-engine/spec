@@ -2,6 +2,29 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.222.0
+
+The second character's stride cycle, and its walking, running and
+turning pictures (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/ground-speed.md`, new "The second character's stride
+  cycle": separate cycles of 16 walking and 13 running steps, the
+  counter starting at 512, and stride rates of its own (at least 256).
+  It has its own steps with turn and run checks. Running with Action
+  released drops to walking only when running step 13 ends, with a
+  direction held and v < 640, before that step's turn check. Worked
+  example, evidence, rules that fail, and an updated "Not covered".
+- `behavior/player-frames.md`: "Walking, running and turning" is split
+  into first and second character. The second character shows
+  `s-walk-1` to `s-walk-16` and `s-run-1` to `s-run-13` per step, and
+  turns show `s-stand-5`, `s-stand-7`, `s-stand-5` (2, 4, 2 frames)
+  with the facing changing on T + 4. 29 new picture hashes, a fallback
+  group for these pictures, on-screen evidence, and an updated "Not
+  covered".
+
 ## spec-v0.221.0
 
 The walkers' pictures while walking, turning, pushed and defeated
