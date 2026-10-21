@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.224.0
+
+The second character's bounce pictures after B + 4, and what follows
+its landing after a bounce (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: "A bounce" gains "The second character,
+  from B + 4 to the landing". Same order and timing as the first
+  character with its own 16 pictures: `s-bounce-1` on B to B + 3,
+  `s-bounce-2` to `s-bounce-16` two frames each, then a loop of all 16,
+  two frames each, from B + 34. A second bounce starts the order again.
+  No landing pictures: the mode that starts on G shows its own pictures
+  from G (G added as an S in "Standing still"). 14 new picture hashes,
+  a fallback group for the bounce pictures, on-screen evidence, and an
+  updated "Not covered".
+- `behavior/ground-speed.md`, "After a fall or a bounce": the second
+  character, when leading, keeps its facing and gets the same mode on G
+  as the first character after a bounce on flat floor, at step 1 of its
+  own stride cycle.
+
 ## spec-v0.223.0
 
 The second character's roll pictures, and what follows when its roll
