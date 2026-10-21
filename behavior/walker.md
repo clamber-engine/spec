@@ -344,6 +344,17 @@ stand for the kind's own picture (`small-walk-1`, `medium-walk-1`,
 | `large-defeat-4` | `1fa57c43315b7ca2004f22f972651dcec31f68aaf2da6650401f9866f68f2294` |
 | `large-defeat-5` | `a5547224867f65f1a6a6386b992b7857621dbb9dd537b2964aa8d7af5524e23a` |
 
+**When a hash isn't found.** The importer looks for every hash in this
+section (`../formats/sprites.md`, "Picture hashes"). The pictures of one
+kind in one of the lists below belong together: its walking pictures
+(`walk-1` to `walk-8`), its turn pictures, `large-push`, and its defeat
+pictures. If any hash of a list isn't found, the engine shows its own
+art for that kind in that state on the frames the list covers, keeping
+the timing and facing given here (a pushed large walker falling back
+still shows `large-walk-1` from the frame given in "Pushed", if its
+walking pictures were found). A kind missing every hash shows the
+engine's own art throughout.
+
 ### Counted frames
 
 A walker's pictures step on **counted frames**: every frame it is there
