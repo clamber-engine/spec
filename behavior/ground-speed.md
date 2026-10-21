@@ -408,6 +408,16 @@ With D the frame after a roll's last frame, as in `roll-input.md` and
   so with Action and a direction held, running starts at the first run
   check (the end of step 2), and with the opposite direction held a turn
   starts at the first turn check (the end of step 1).
+- **The second character, after carrying on into running**
+  (`second-character.md`, "Rolls": still `roll` from D to D + 5,
+  `roll_end` on D + 6): walking starts on D + 6 at step 1 (counter 512,
+  "The second character's stride cycle"), whatever is held. Facing on
+  D + 6 turns to Left or Right if one of them is held then, without a
+  turn, so with the opposite direction held the player walks that way
+  from D + 6. From D + 7 the walking rules apply. When `vx` is already 0
+  on D + 6 (a roll that stopped, for example at a ledge,
+  `rolling-off-ledges.md`, "Stopping before a ledge", or against a
+  wall), the player is standing on D + 6 instead.
 
 #### After a fall or a bounce
 
