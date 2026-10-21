@@ -355,14 +355,17 @@ full frames with every byte hashed for one of them.
   mirrored top–bottom. The player's frames in the stop after a roll,
   after a jump's landing and on a bounce's frozen frames are in
   `../behavior/player-frames.md`, the walkers' pictures in
-  `../behavior/walker.md` ("Pictures"), and the thrower's and its
-  balls' in `../behavior/thrower.md` ("Pictures").
+  `../behavior/walker.md` ("Pictures"), the thrower's and its
+  balls' in `../behavior/thrower.md` ("Pictures"), and the single
+  collectibles' in `../behavior/collectibles.md` ("Pictures").
 - The tile sets short frames use, and where they come from.
 - What the order adjustment does, and the order objects are drawn in
   (which object is in front of which), and how pictures are ordered
   against the background layers (`graphics.md`).
 - Some things on screen are drawn without frames from the frame table
-  (about 9 % of the pieces shown in the runs above).
+  (about 9 % of the pieces shown in the runs above). Some of their
+  pictures are those of no full frame, such as three of the single
+  collectibles' (`../behavior/collectibles.md`, "Pictures").
 - Collision or hit areas: frames hold none.
 - Why the 19 pieces in "Evidence" were not shown, and frames shown for
   one frame with the previous frame's tiles.
