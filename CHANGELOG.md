@@ -2,6 +2,30 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.223.0
+
+The second character's roll pictures, and what follows when its roll
+carries on into running (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: "A roll" is split into first and second
+  character. The second character's roll follows a list of 25 places
+  (`s-roll-1`, `s-stop-5`, `s-stop-4`, `s-stop-3`, `s-roll-2` one frame
+  each, then `s-roll-3` to `s-roll-12` two frames each; place 25 is
+  followed by place 6). It starts over at place 2 on S and on a boost's
+  P, and at place 1 on S of a roll on D + 17, on L and on G. Pause
+  frames hold the picture. Worked example of a roll off a ledge. After
+  carrying on into running, walking pictures follow from D + 6, or
+  standing pictures from D + 6 when the roll had stopped (added to
+  "Standing still"). 12 new picture hashes, a fallback group for the
+  roll pictures, on-screen evidence, and an updated "Not covered".
+- `behavior/ground-speed.md`, "After a roll": the second character
+  walks from D + 6 at step 1 (counter 512) whatever is held. Facing
+  turns on D + 6 to a direction held then, without a turn. It stands
+  instead when `vx` is already 0.
+
 ## spec-v0.222.0
 
 The second character's stride cycle, and its walking, running and
