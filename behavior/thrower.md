@@ -6,9 +6,9 @@ A **thrower** is an enemy that sits in one place, high up, and throws
 **balls** on a fixed timetable: one to the left, one straight up and one
 to the right. A ball flies, bounces on floors, drops through them after
 a bounce, and is removed once it is outside the picture. This file
-covers where a thrower is, when it throws, and how a ball moves until
-it is gone. When a ball hurts the player is in `ball-contact.md`, and
-when the thrower itself hurts the player or gives a bounce, and what a
+covers where a thrower is, when it throws, how a ball moves until it
+is gone, and which pictures the thrower and its balls show. When a ball
+hurts the player is in `ball-contact.md`, and when the thrower itself hurts the player or gives a bounce, and what a
 bounce does to it, in `thrower-contact.md`. What happens when an object
 the player throws or carries meets the thrower is in
 `thrown-objects.md`, "Hitting the thrower", and when it meets a ball,
@@ -295,7 +295,7 @@ When the player is knocked out (`knock-out.md`, hit frame H), the
 thrower and every ball go on normally on H, then stop on **H + 1 to
 H + 10**: each ball keeps its position and its speeds, no ball is
 thrown (the timetable doesn't advance), and none appears or is removed.
-How the thrower and the balls are drawn then isn't covered. During the 32-frame
+They keep their pictures ("Pictures"). During the 32-frame
 pause between H + 7 and H + 8 nothing moves either (no logic frames
 run). The ball that hit the player stops like the others; this differs
 from walkers, where the one that knocked the player out walks on
@@ -551,6 +551,150 @@ frame "Leaving the picture" gives (3 times it stayed one frame below the
 window on the frame it stopped ignoring floors, as that section says).
 No logic frame was paused on the 43 510 frames compared with the hit.
 
+## Pictures
+
+What the thrower and its balls look like on each frame in `title-1`.
+Each picture has a label used in this file, and is named by its picture
+hash (`../formats/sprites.md`, "Picture hashes"); it is drawn at the
+object's position as `../formats/sprites.md` says ("Where the picture is
+drawn"). The picture given for a frame is the one on screen with that
+frame's view. In the lists, "`sway-2` × 3" means that picture on 3
+counted frames in a row.
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `throw-1` | `d410fe06c00b8db544be70c6ac9cef5d65e61a2b5fedd49a87aa962810ef1c6f` |
+| `throw-2` | `7b5ccb938780e40afb45b840e0d515dbc46ee187de7801af0c66f02034406f12` |
+| `throw-3` | `a5bd700362e4fa1fd048254f465f8ffdc72b2920135cfae1cfe0ccd3f2ceae60` |
+| `throw-4` | `d00ac8a280e97f96c6f0eafab24dfd7f4605d394aa7d03362cfa0c79c99eebd6` |
+| `throw-5` | `4e6dde405a9d0b86f8e468c0d3a3465990166d1a07e26767f2468c359f6f9e0f` |
+| `sway-1` | `3587e909032b77b8315f0c160494e20b6d403a40103d3b26414bb82d635b12ae` |
+| `sway-2` | `dd0fae20fa3ee7578cef1c4cc730f8197518d6583e722734e55587cccfcf7f17` |
+| `sway-3` | `bb797589e4d688274bfe6062735af9d809306a25c21ce98f912ad0d64e17fde6` |
+| `sway-4` | `35b2114280c10bdb81f505aef4944092af56e8d003ac9bc337ce026c925ba88e` |
+| `sway-5` | `9fd9cc1b86dd412e59cfbcd7bf91ac91db54537fe1eb41ff66e71f2ab04a00af` |
+| `thrower-out` | `8ee2d6c579c68d146b963ea03af0fb7828cce78c3af37b023b1c39b3368c2814` |
+| `ball-1` | `df004cb5934ecfc956d97c070155bb6c41f4be8216b26ca6cb75beb345fd6592` |
+| `ball-2` | `21494af77fb93d6f0267709292aa8909d544b71dd4a06ce1a81ddad4d346293b` |
+| `ball-3` | `762145c725dcf626cbc8313e76ad3bb3a68694d4bae817eea1b12f853efd1b11` |
+
+**When a hash isn't found.** The importer looks for every hash in this
+section. The pictures of each of these groups belong together: the
+thrower's pictures before it is knocked out (`throw-1` to `throw-5` and
+`sway-1` to `sway-5`), `thrower-out`, and the ball's pictures (`ball-1`
+to `ball-3`). If any hash of a list isn't found, the engine shows its
+own art for the thrower or the ball on the frames the group covers,
+keeping the timing and mirroring given here.
+
+### The thrower
+
+The thrower is drawn as its picture is, never mirrored (the first
+level's thrower faces left, "When it throws").
+
+Its pictures step on **counted frames**: every frame it is there except
+H + 1 to H + 10 of a knock-out, on which it doesn't move and its
+timetable doesn't advance ("While the player is knocked out"). When the
+second character is the one knocked out (`knock-out.md`, "The second
+character"), the thrower and the balls stood still on H + 1 to H + 13
+in the one such knock-out measured here, and those frames didn't count
+either. On frames that
+don't count the thrower keeps the picture it had.
+
+The pictures go with the timetable. Counted frames from the frame `A`
+the thrower appeared, its pictures repeat every 173 frames, as its
+throws do; with the throw frames `T` of "When it throws":
+
+- on `T` − 2 and `T` − 1: `throw-1`, `throw-2`;
+- from `T`: `throw-3` × 8, `throw-4`, `throw-5`, `sway-1` × 2, `sway-2`
+  × 3, `sway-3` × 4, `sway-2` × 4, `sway-1` × 4 (27 frames, `T` to
+  `T` + 26);
+- then, until `throw-1` before the next throw: after the throw
+  straight up and after the throw to the left, `sway-2` × 2; after the
+  throw to the right, `sway-2` × 7, `sway-3` × 7, `sway-4` × 7, `sway-5`
+  × 36, `sway-4` × 8, `sway-3` × 8, `sway-2` × 8, `sway-1`.
+
+So on `A` it shows `throw-1` (the first throw is on `A` + 2), and the
+173 frames from `A` are 31 for the throw up, 111 for the throw to the
+right and 31 for the throw to the left.
+
+From the frame it is knocked out (B for a bounce, K for a roll,
+`thrower-contact.md`), the thrower shows `thrower-out`, not mirrored,
+until it is removed.
+
+### Balls
+
+A ball's pictures follow its steps `s` (`ball-contact.md`, "The ball's
+turn"), 3 steps each, repeating every 24 steps:
+
+| `s` mod 24 | Picture | Mirroring |
+|---|---|---|
+| 0 to 2 | `ball-1` | none |
+| 3 to 5 | `ball-2` | none |
+| 6 to 8 | `ball-3` | none |
+| 9 to 11 | `ball-2` | top–bottom |
+| 12 to 14 | `ball-1` | top–bottom |
+| 15 to 17 | `ball-2` | both |
+| 18 to 20 | `ball-3` | both |
+| 21 to 23 | `ball-2` | left–right |
+
+The mirroring is the "drawn" column of "The ball's turn": upside down
+is top–bottom, mirrored is left–right. It is the same whichever way the
+ball was thrown. On a frame on which a ball doesn't step it keeps its
+picture.
+
+### Example (synthetic)
+
+A thrower appears on frame 100 and nothing knocks the player out. It
+throws up on 102, right on 133 and left on 244 ("When it throws"):
+
+| Frames | Picture |
+|---|---|
+| 100, 101 | `throw-1`, `throw-2` |
+| 102 to 109 | `throw-3` |
+| 110, 111 | `throw-4`, `throw-5` |
+| 112, 113 | `sway-1` |
+| 114 to 116 | `sway-2` |
+| 117 to 120 | `sway-3` |
+| 121 to 124 | `sway-2` |
+| 125 to 128 | `sway-1` |
+| 129, 130 | `sway-2` |
+| 131, 132 | `throw-1`, `throw-2` |
+| 133 to 140 | `throw-3` |
+
+A ball thrown at its start on 102 shows `ball-1` on 102 to 104
+(`s` 0 to 2), `ball-2` on 105 to 107 and `ball-3` on 108 to 110; if it
+bounces on 109, `ball-3` lasts to 111.
+
+### Evidence for the pictures
+
+Measured on screen in the first level, by inputs alone: 22 runs of up
+to 4 000 frames of random play near the thrower (walking, running,
+jumping, rolling and bouncing on and around its ledge, and walking away
+until it was removed and back), 2 of them with both characters; 31 706
+frames in all. Only the sprites were drawn, and on every frame the
+thrower's and each ball's picture were looked for on screen at the
+object's position, as for the player (`player-frames.md`). The runs
+held 13 appearances of the thrower, 8 knock-outs of it (4 by bounces, 4
+by rolls), 10 knock-outs of the first character, one of the second, and
+228 ball flights followed from their start (44 more, already flying
+when a run began, were left out). A thrower already there on a run's
+first frame (22 times) was placed in its cycle by its first 173 frames.
+
+| | Seen whole | As above | Previous picture one frame longer | Other picture |
+|---|---|---|---|---|
+| thrower | 9 228 | 9 182 | 46 | 0 |
+| knocked-out thrower | 172 | 172 | 0 | 0 |
+| ball | 10 014 | 10 002 | 7 | 5 |
+
+Frames on which the picture couldn't be seen whole are left out of the
+table: the object was outside the picture (5 133 frames), partly
+outside it (1 557), or another picture (the player, a walker, an animal
+or another ball) was drawn over part of it (2 969). On 1 801 of the
+covered frames enough was left to compare the uncovered part: on 1 779
+it fitted the picture given here best, on 22 another picture of the
+same object. 49 frames had no match with nothing seen over them (8 of
+the thrower, 41 of balls).
+
 ## Example
 
 A thrower is at (1000, 300). In column 1000 there are floors at y 301,
@@ -599,4 +743,6 @@ Floor 331 never counted: the ball passed it while ignoring floors.
   falling.
 - Walls and faces in a ball's way (none was met).
 - Throwers facing right, and throwers in other levels.
-- How the thrower and the balls are drawn.
+- Pictures: the thrower's pictures with other throws settings (only the
+  first level's thrower was seen), after a knock-out by the ground
+  action or an object, and the pictures of balls placed in a level.

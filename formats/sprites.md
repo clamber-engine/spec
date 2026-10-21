@@ -354,8 +354,9 @@ full frames with every byte hashed for one of them.
   characters' palettes above), and which objects are
   mirrored top–bottom. The player's frames in the stop after a roll,
   after a jump's landing and on a bounce's frozen frames are in
-  `../behavior/player-frames.md`, and the walkers' pictures in
-  `../behavior/walker.md` ("Pictures").
+  `../behavior/player-frames.md`, the walkers' pictures in
+  `../behavior/walker.md` ("Pictures"), and the thrower's and its
+  balls' in `../behavior/thrower.md` ("Pictures").
 - The tile sets short frames use, and where they come from.
 - What the order adjustment does, and the order objects are drawn in
   (which object is in front of which), and how pictures are ordered
