@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.225.0
+
+The thrower's and its balls' pictures (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/thrower.md`: new "Pictures" section. 14 picture hashes: 10
+  for the thrower before it is knocked out, 1 once it is knocked out,
+  and 3 for the ball, with a fallback for each group. The thrower's
+  pictures go with its throw timetable and repeat every 173 counted
+  frames. It is never mirrored, and it shows one picture from its
+  knock-out until it is removed. The ball's pictures follow its steps
+  from "The ball's turn" in `ball-contact.md`, 3 steps per picture,
+  using that table's mirroring. Includes a synthetic example, on-screen
+  evidence and an updated "Not covered".
+- `formats/sprites.md`: "Not covered" now points to these pictures.
+
 ## spec-v0.224.0
 
 The second character's bounce pictures after B + 4, and what follows
