@@ -453,6 +453,28 @@ above.
   An Action press on G + 1 or a later landing frame starts a roll on
   that frame, as on the ground (`roll-input.md`). Facing during the fall
   itself doesn't change (`air-control.md`).
+
+  The second character, when it is leading, has 7 landing frames
+  instead, **G to G + 6**, with the same rules on them (no mode, facing
+  unchanged, no turn; next to a wall, see "Not covered"), and its mode starts on **G + 7** by the rule
+  above, at step 1 of its own stride cycle ("The second character's
+  stride cycle"), with v the speed after G + 7's speed rule. On the
+  landing frames and on G + 7:
+  - a roll starts on G + 1 from an Action press made in the air and
+    held as in `roll-input.md` ("In the air", with L = G), otherwise
+    on the frame of a new Action press;
+  - a jump starts (`jump_start`) on the frame after the first of
+    G + 1 to G + 7 with Jump held, so on G + 2 at the earliest, for a
+    press on G − 4 or later (`jump-input.md`, "Landings this doesn't
+    cover");
+  - a crouch starts on the first frame from G + 2 on with Down held, as
+    after its jumps.
+
+  When the second character passes over the face at running speed
+  without a frame on it (`walk-off.md`, "Jumping near the edge"), the
+  fall is as at a ledge without a face (the first item above): its mode
+  goes on through the fall and the landing, and there are no landing
+  frames.
 - **After a bounce** (`bounce.md`): there are no landing frames. Facing
   doesn't change from the bounce frame to G, whatever is held. On G
   itself a mode starts:
@@ -633,6 +655,28 @@ Rules that fail on the same runs: the second character never dropping
 from running to walking (3 runs mismatch), or dropping below v = 768
 (1).
 
+The second character falling from a steep face, leading, at the three
+ledges with a steep face at the top used above: 2 200 runs walking
+right onto the face (some after letting go for up to 30 frames), 600 of
+them with random input from the start (Right, Left or nothing for 1 to
+30 frames, Action held or let go), 800 with random input changed every
+1 to 4 frames from 0 to 4 frames before G to G + 14 (directions, Action
+held or pressed, Jump, Down), and 800 with one input held from 0 to 4
+frames before G to G + 14 (Right or Left with or without Action, Action
+alone or nothing), the input in the fall chosen at random. On the 1 385
+landings on floor that isn't part of a face, at least 8 px from a wall
+and staying on the floor to G + 6 (falls of 6 to 40 frames): G to G + 6
+were landing frames on all of them, facing didn't change from the face
+to the end of the landing frames, and what came next matched the rules
+above with 0 mismatches: 377 rolls (246 on G + 1, 149 of them from a
+press made in the air; 229 presses made more than 6 frames before G and
+held gave none), 157 jumps (75 on G + 2), 56 crouches (31 on G + 2), and
+795 mode starts on G + 7 (300 walking, 61 running, 209 turns, 225
+standing). Running started on G + 7 at v from 535 and walking at v up
+to 478 with Action held. 55 runs passed over the face without a frame
+on it; their mode went on through the fall and the landing on every
+frame (857 airborne frames).
+
 #### Not covered (`title-1` modes)
 
 - Which mode the player is in, and where the stride cycle starts, after
@@ -651,7 +695,11 @@ from running to walking (3 runs mismatch), or dropping below v = 768
 - Left and Right held together, walls, carrying, and the second
   character's modes other than on flat ground from standing ("The
   second character's stride cycle") and after its landings after jumps
-  ("After a landing") and its bounces ("After a fall or a bounce"). Down held on or after the landing frame starts a crouch
+  ("After a landing"), its bounces and its falls from a steep face
+  ("After a fall or a bounce"). After the second character's falls from
+  a steep face: landing on the face itself or at or next to its foot,
+  leaving the floor again during the landing frames (off a step), and
+  reaching the floor below the face without leaving the ground. Down held on or after the landing frame starts a crouch
   from L + 2 ("Crouching"); the mode after a crouch is the first item
   above. On 1-in-4 slopes this section applies unchanged
   (`slopes.md`, "Turning around on a slope"); other slopes are not

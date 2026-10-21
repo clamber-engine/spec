@@ -328,6 +328,14 @@ file says otherwise. The mode after these landings is in
 on these landings too. Reference comparisons on them should allow ±1
 frame on the `jump_start` and on frame counts measured from it.
 
+One case is measured: the second character, leading, landing on floor
+that isn't part of a face after walking or running down a steep face
+into a fall, has **E = L + 2**. A press on L − 4 to L + 1 that is held
+through L + 1 starts the jump on L + 2 (earlier presses weren't
+measured); a later press on P starts it on P + 1 (`ground-speed.md`,
+"After a fall or a bounce", with L as G there: 157 jumps from L + 2 to
+L + 8, 0 mismatches).
+
 ## Pressing before landing (buffered jump)
 
 A press made in the air is remembered for a short time, but only while
