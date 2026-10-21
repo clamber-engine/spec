@@ -663,19 +663,19 @@ them with random input from the start (Right, Left or nothing for 1 to
 1 to 4 frames from 0 to 4 frames before G to G + 14 (directions, Action
 held or pressed, Jump, Down), and 800 with one input held from 0 to 4
 frames before G to G + 14 (Right or Left with or without Action, Action
-alone or nothing), the input in the fall chosen at random. On the 1 388
+alone or nothing), the input in the fall chosen at random. On the 1 385
 landings on floor that isn't part of a face, at least 8 px from a wall
 and staying on the floor to G + 6 (falls of 6 to 40 frames): G to G + 6
 were landing frames on all of them, facing didn't change from the face
 to the end of the landing frames, and what came next matched the rules
 above with 0 mismatches: 377 rolls (246 on G + 1, 149 of them from a
 press made in the air; 229 presses made more than 6 frames before G and
-held gave none), 159 jumps (76 on G + 2), 57 crouches (32 on G + 2), and
+held gave none), 157 jumps (75 on G + 2), 56 crouches (31 on G + 2), and
 795 mode starts on G + 7 (300 walking, 61 running, 209 turns, 225
 standing). Running started on G + 7 at v from 535 and walking at v up
-to 478 with Action held. 57 runs passed over the face without a frame
+to 478 with Action held. 55 runs passed over the face without a frame
 on it; their mode went on through the fall and the landing on every
-frame (887 airborne frames).
+frame (857 airborne frames).
 
 #### Not covered (`title-1` modes)
 

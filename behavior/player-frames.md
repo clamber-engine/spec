@@ -1121,19 +1121,19 @@ steep face, picking something up):
 - **Falls from a steep face, second character:** the 2 200 runs at
   three ledges with a steep face at the top in `ground-speed.md`
   ("Evidence", the second character falling from a steep face). On the
-  1 388 landings checked there: `s-air-1` on all 28 271 frames from F
+  1 385 landings checked there: `s-air-1` on all 28 223 frames from F
   to G − 1 (1 to 15 frames on the face, falls of 6 to 40 frames, F
-  reached from walking, running, a turn or standing), 6 900 landing
+  reached from walking, running, a turn or standing), 6 895 landing
   frames with the picture of the table, and the first picture of what
-  came next as in "A fall from a steep face" on all 1 388 (377 rolls,
-  159 jumps, 57 crouches, 795 mode starts on G + 7); then `s-stand-1`
+  came next as in "A fall from a steep face" on all 1 385 (377 rolls,
+  157 jumps, 56 crouches, 795 mode starts on G + 7); then `s-stand-1`
   on the first 4 standing frames (810 frames) and the turn pictures
   (1 584 frames): 0 differences. 43 landing frames were left out where
-  no picture matched. The 57 runs that passed over the face without a
+  no picture matched. The 55 runs that passed over the face without a
   frame on it were checked as in "Walking, running and turning",
   "Second character", from the first walking or running frame after
-  the roll they came out of: 125 frames before the edge, 887 in the air
-  and 1 541 after the landing, 0 differences.
+  the roll they came out of: 123 frames before the edge, 857 in the air
+  and 1 509 after the landing, 0 differences.
 - **Rolls, first character:** 1 739 rolls on flat floor from standing,
   walking and running starts (slow, normal and fast), with random
   inputs from 20 frames before the roll's end (nothing, either
