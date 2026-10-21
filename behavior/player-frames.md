@@ -242,6 +242,20 @@ The colours each character's pictures are drawn with are in
 | `s-land-4` | `a5850548dbd60c824d2bfc752768b90da7669043e03cb97efdedfb2abf985e97` |
 | `s-bounce-1` | `aa5af774ce0f14bdff10b1c89725c4107a0c2fa5dffc10d1c4e9c91bfb0520b1` |
 | `s-bounce-2` | `b40d5b5deb112862c4fbd80476cf07c51a7a34b8c2ecdab4b975905b3ce73b7b` |
+| `s-bounce-3` | `6d00935beacd8d1aa9132aeefcbb5fe1212d862ff399d1c42565d681391d4c1e` |
+| `s-bounce-4` | `337e5a0cb19407f73b9ce127df4d26b57b3dd0af94f8643237799239287a56c2` |
+| `s-bounce-5` | `8aceee657d8fc0c0bb9ab430babf1e1b93572e5d1d2d86fee519da833882fe28` |
+| `s-bounce-6` | `f43c08340af52289063e212bafbea81dab2897593605b90e11f24c25883a0c81` |
+| `s-bounce-7` | `fcb4b92464b38a724435e380537c6d082949c4cc6d113bb25f6f347190491cb1` |
+| `s-bounce-8` | `0aace791815d4b0cbb14e91f535d3514a035a0fa4a388fdc36d0225b637847dd` |
+| `s-bounce-9` | `0aa65508b13d245ae3f29bb0eb15600bbf47ef4c3a423ac6118044838ce87a44` |
+| `s-bounce-10` | `bea4c83e3be641088b82bbf4ce44b6bc5c508bdb8090fe9f50acce4d90d3d434` |
+| `s-bounce-11` | `86bceffe08e6d18e6aba9d84bf2baa893324af2eeb4fcd438390ef711b5fb726` |
+| `s-bounce-12` | `a2a53de5711e1a842dd8e08b87c6b3ba72cd8ad36ae1ececf5c97ebab5c8e5d4` |
+| `s-bounce-13` | `22eddc0614067e72edc56d44e6f033d8b12b7843145de6605610e1dacd0c2617` |
+| `s-bounce-14` | `75e2e9bdc8f8f9382ea757d02926bd639bd04ed2276f71d832af5efc844deb21` |
+| `s-bounce-15` | `bdb86eca5e54140127e549ba52052970ba2a632de159305d8acaf108aa511280` |
+| `s-bounce-16` | `0c1aef55a7181b1fa3480ea66052e869ddffe751ed47d796cde4fff3b6e91dc4` |
 | `s-walk-1` | `1b8b325c0f381b276f9ea2f4609878873b66ea5cbedebf2df1829d08a9bc182f` |
 | `s-walk-2` | `96499fdf7c9e8c6b7d6447dd26fc48be53c915a9a47dd8905af0b7ed0dcf480b` |
 | `s-walk-3` | `0cfc6a1c8d877df03ad2b0b284a356c38d73ff936cfc8987c0ecb18e454bcc0a` |
@@ -290,7 +304,9 @@ found, the engine's own art is shown on its walking, running and
 turning frames. The second character's roll pictures are `s-roll-1` to
 `s-roll-12` and `s-stop-3` to `s-stop-5`: if any of them isn't found,
 the engine's own art is shown on its roll frames (the stop's pictures
-still fall back with "The stop after a roll"). A character missing
+still fall back with "The stop after a roll"). The second character's
+bounce pictures, `s-bounce-1` to `s-bounce-16`, fall back together on
+its bounce frames. A character missing
 every hash shows the engine's own art throughout.
 
 These pictures don't depend on speed, on how high the jump was, or on
@@ -678,7 +694,37 @@ still held. `bounce-1` on B to B + 3, `bounce-2` on B + 4 and B + 5, …
 `bounce-2` on B + 36 and B + 37, `bounce-3` on B + 38 and B + 39,
 `bounce-4` on B + 40, and `walk-1` on G.
 
-The second character's pictures after B + 4 are not covered.
+### The second character, from B + 4 to the landing
+
+The second character's pictures follow the same order and timing with
+its own 16 pictures: `s-bounce-1` on B to B + 3, then `s-bounce-2` to
+`s-bounce-16` for 2 frames each (B + 4 to B + 33), then round
+`s-bounce-1` to `s-bounce-16`, 2 frames each, from B + 34 for as long as
+the player is in the air:
+
+| Frame | Picture |
+|---|---|
+| B to B + 3 | `s-bounce-1` |
+| B + 4 + 2*i*, B + 5 + 2*i* (*i* = 0 to 14) | `s-bounce-`(*i* + 2) |
+| B + 34 + 2*j*, B + 35 + 2*j* (*j* = 0, 1, 2, …) | `s-bounce-`(*j* mod 16 + 1) |
+
+As for the first character, speed, height and input don't change them,
+a second bounce before landing starts the order again from
+`s-bounce-1`, and there are no landing pictures: unlike after its
+jumps, the second character shows none of `s-land-1` to `s-land-4`
+after a bounce. The mode that starts on G (`ground-speed.md`, "After a
+fall or a bounce") shows its own pictures from G:
+
+- running: `s-run-1` on G, then as in "Walking, running and turning",
+  "Second character";
+- walking: `s-walk-1` on G, then as there;
+- a turn: `s-stand-5` on G and G + 1, `s-stand-7` on G + 2 to G + 5,
+  `s-stand-5` on G + 6 and G + 7, as there;
+- standing: the 275-frame loop of "Standing still", "Second character",
+  with G as S (`s-stand-1` × 4 from G).
+
+A roll pressed on G starts on G + 1; its pictures are in "A roll",
+"Second character".
 
 ## Walking, running and turning
 
@@ -829,7 +875,8 @@ on where it was.
 S is as for the first character: the first standing frame after
 walking, running or a turn ends, L + 17 after a jump's landing,
 D + 17 after a roll's stop, and D + 6 when a roll that had stopped
-carries on into running ("The stop after a roll"). From S, for as long
+carries on into running ("The stop after a roll"), and G when it
+stands from the landing after a bounce ("A bounce"). From S, for as long
 as the player goes on standing on flat floor away from a ledge, it
 shows one 275-frame loop over and over, the same whatever came before
 S:
@@ -948,6 +995,28 @@ steep face, picking something up):
   In the random play through the first level above, 40 bounces were seen
   (950 frames in the air): one picture came a frame late, the rest
   matched.
+- **After bounces, second character:** 1 000 runs with the second
+  character leading, bouncing off a small walker coming toward it on
+  flat floor in the first level (an object of the level's list made a
+  small walker for the test), with the same jumps and random input
+  in the air as for the first character. In 600 of the runs (254
+  bounces, in the air for up to 53 frames, so the second round seen from
+  `s-bounce-1` to `s-bounce-10`): 12 383 frames in the air compared, 22
+  left out, 0 differences. On G, 254 landings were compared (86
+  standing, 77 running, 54 walking and 37 turning from G), with the
+  standing pictures followed up to G + 30 and the turn pictures to the end
+  of the turn (622 and 207 frames): 0 differences; the mode on G and
+  the facing kept to G were as in `ground-speed.md` on all 254. In the
+  other 400 runs the player was raised 80 or 110 px a few frames after
+  the bounce, so that the fall lasted up to 67 frames, and the picture
+  was often partly above the screen: of 5 560 frames in the air, 1 369
+  had nothing drawn and 272 matched no picture or another object's;
+  3 915 showed a bounce picture (each of the 16 also seen from B + 34
+  on), and all were the picture given above except 4, all with the
+  player near the top of the screen. 11 of these runs bounced a second
+  time before landing: `s-bounce-1` showed from the new B for 4 frames
+  and the order started again, on every frame where the player's
+  picture was found.
 - **Walking, running and turning, first character:** 240 runs of random
   input on flat floor (Left, Right or nothing for 1 to 40 frames, half
   of the runs with Action held throughout), 146 604 logic frames. From
@@ -1104,15 +1173,14 @@ steep face, picking something up):
 - The second character landing before the fourth frame showing
   `s-air-6`, and when its `s-air-1` ends.
 - The second character's landings after falls that didn't start with a
-  jump, and after bounces.
+  jump, and its bounces off anything but a small walker on flat floor.
 - The second character's walking, running and turning pictures in the
   air after a ledge and anywhere but flat ground, its roll pictures on
-  slopes (rolls were measured on flat floor and off ledges only), its
-  pictures after B + 4 of a bounce, and the pictures of every other state, such as pushing
+  slopes (rolls were measured on flat floor and off ledges only), and
+  the pictures of every other state, such as pushing
   against a wall or a steep face.
 - The standing pictures on a slope or at a ledge (teetering), for
-  either character, and the second character's standing pictures after
-  a bounce.
+  either character.
 - Why, on 5 frames after bounces, the previous picture was still on
   screen for one frame. The rules above give the usual frame.
 - Why, on 4 frames in random play, a walking or running picture came
