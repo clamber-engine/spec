@@ -2,6 +2,30 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.229.0
+
+How bunches are drawn in `title-1` before they are taken (spec#38,
+pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/bunches.md`: new "Pictures" section.
+  - 6 new picture hashes, `bunch-1` to `bunch-6`. A bunch spins up and
+    back down through them (a cycle of 10 entries), each on 6 counted
+    frames, drawn unmirrored at (`xb`, `yb`); each bunch keeps its own
+    cycle, entry ⌊(`c` + 1) / 6⌋ mod 10, so the first picture lasts 5
+    frames.
+  - A bunch appears by the walkers' window with `S` = `xb` + 1 (always
+    outside the picture), or on a restart's frame 0. Counted frames
+    leave out the frames on which nothing moves (a bounce's frozen
+    frames, the pause after a roll or ground-action defeat, a
+    knock-out). From the frame it is taken a bunch is not drawn.
+  - Fallback group, a synthetic example, on-screen evidence and updated
+    "Not covered" (removal as the view moves, joins, how the released
+    items look).
+- `formats/sprites.md`: "Not covered" points to the bunches' pictures.
+
 ## spec-v0.228.0
 
 How both characters are drawn while crouching on flat floor in
