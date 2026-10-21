@@ -463,6 +463,11 @@ above.
   - otherwise the opposite direction held: a turn starts on G;
   - forward held: walking at step 1;
   - no direction held: standing.
+
+  The second character, when it is leading, follows the same rule after
+  its bounces on flat floor: facing kept from the bounce frame to G, and
+  the same mode on G, at step 1 of its own stride cycle ("The second
+  character's stride cycle").
 - **After the entrance throw** (`level-start.md`, "The landing"): as
   after a bounce, with the throw's landing frame as G. Facing is right
   from the start of the throw to G.
@@ -646,7 +651,7 @@ from running to walking (3 runs mismatch), or dropping below v = 768
 - Left and Right held together, walls, carrying, and the second
   character's modes other than on flat ground from standing ("The
   second character's stride cycle") and after its landings after jumps
-  ("After a landing"). Down held on or after the landing frame starts a crouch
+  ("After a landing") and its bounces ("After a fall or a bounce"). Down held on or after the landing frame starts a crouch
   from L + 2 ("Crouching"); the mode after a crouch is the first item
   above. On 1-in-4 slopes this section applies unchanged
   (`slopes.md`, "Turning around on a slope"); other slopes are not
