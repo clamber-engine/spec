@@ -8,9 +8,10 @@ walking, running or standing starts, and a bounce's two frozen frames.
 Also the pictures just before and after these that are needed to place
 them, and the first character's pictures while walking, running and
 turning on the ground and in the air after walking or running off a
-ledge without a face, while rolling, in the air after a bounce, and
-while standing still, and the second character's pictures while
-standing still and when it walks or runs down a steep face into a fall.
+ledge without a face, while rolling, in the air after a bounce, while
+standing still and while crouching, and the second character's
+pictures while standing still and when it walks or runs down a steep
+face into a fall.
 
 ## The pictures
 
@@ -162,6 +163,28 @@ The colours each character's pictures are drawn with are in
 | `wait-32` | `6c17407c7dbb62a0a63132e2c15bd1110aba212074245b2f082d5bdf8ed27a47` |
 | `wait-33` | `dc6e810340ca71af76ef4e3f09b47493cacedab2c22308e1511ec3296ed4fe8f` |
 | `wait-34` | `1545bc738cca010bd6a140d3ed96eb2e4b9ffd9f22175ee3419d5a2180dbe879` |
+| `crouch-1` | `b463402516b70beec1ed9bac32bc635bbe5dfb59af596a8ee95a551d64e4a477` |
+| `crouch-2` | `dd9fc793823c9485409150278ba18cb45fbfca5ae5375ce20d6bc94668252c11` |
+| `crouch-3` | `305ed19c8006d4875b30caf5381cfaac9e5fd1775c2d8fc2d0d8239f6a38155c` |
+| `crouch-4` | `263d6caca9f1d52d6d721e6e8d1125bc5fb5586020f7b3923d73969d06b9b501` |
+| `crouch-5` | `f1a90c2fd870e2df22a68a9eadab38bc4f45b508421185e1ac87eb997b70785d` |
+| `crouch-6` | `9b81f129ce11f64c9f8bdf91faf18b07ae1fd31a6cb39a78be23e323fe47c32d` |
+| `crouch-7` | `9808295f722fd3e78a92be553ece24c47306cfadb29abbf9a741e423221ab659` |
+| `crouch-8` | `d56d6ab0d6e2c7ba4862ba0679422b7998ea6c7aa5fc6fba9bc78c78f76dab9b` |
+| `crouch-9` | `dc4ddf6f773ae8bc87ab64ce4c3fd534d1b8cb733d47a7841a149cdfebe0e698` |
+| `crouch-10` | `c11e24ae51bfec8191aacef63cc6480c8ea379469cd14392bc4ebb99413517ea` |
+| `crouch-11` | `6a737c37bed5006001b8e3d04363329836fea5cea3c5186b2112e367b2e55178` |
+| `crouch-12` | `edc3ea0d338ccb294e4bb8f6fcb7b4671243afbdc1834a2163b0cbcb4f1ef423` |
+| `crouch-13` | `bd8255b5b1b7ccc26e74fd9bf6c1cfc932b4cf0ac7c6abb1fbfe845ad8e56e62` |
+| `crouch-14` | `c34244765304407992061cf5e2e8e0ac7267be840919d600dd7e65fea10ffef5` |
+| `crouch-15` | `e619c72afce8eed5b72087c36f2eba7470d6dddb62605c3725478545df5ebe57` |
+| `crouch-16` | `03a6d3c2abea7edec903acff098570d6997f657e6845065fa97275e26c736721` |
+| `crouch-17` | `19c51ee14af6fa8590358a29c6e15a46d8bf034667274ee910a463e599540743` |
+| `crouch-18` | `e32079c0a52b8fdc34ae74f14cdc719ae12fc08a5ed2687f4fdc9bc753a14e26` |
+| `crouch-19` | `ff4032fc956cf073be57253fed3aa0b325d435869b8ce71ab3aa1175ed8e3ee4` |
+| `crouch-20` | `dec760a482539afb058b936ece72755321b0c23380684e6d4846e5f71b2a892a` |
+| `crouch-21` | `3b814f5a1805cec116cd678ea1fdf2142677c8e6101765866f055d846fe8ba12` |
+| `crouch-22` | `4790466d2a9262931a7444ad7bbcc04ca4035231e399c41cf4adbae63be71383` |
 
 | Second character | Picture hash (SHA-256) |
 |---|---|
@@ -308,7 +331,9 @@ still fall back with "The stop after a roll"). The second character's
 bounce pictures, `s-bounce-1` to `s-bounce-16`, fall back together on
 its bounce frames. Its pictures in "A fall from a steep face" are
 `s-air-1` to `s-air-6`, `s-land-1` and `s-land-2`, and fall back with
-"A jump and its landing". A character missing
+"A jump and its landing". The first character's crouching pictures,
+`crouch-1` to `crouch-22` ("Crouching"), fall back together on its
+crouch and getting-up frames, D to U + 8. A character missing
 every hash shows the engine's own art throughout.
 
 These pictures don't depend on speed, on how high the jump was, or on
@@ -878,10 +903,11 @@ of "Standing still" start on the first standing frame (S).
 S is the first frame of
 a stretch of standing (`ground-speed.md`, "Standing, walking and
 running"): the first standing frame after walking, running or a turn
-ends, K after a jump's landing, G after a fall or a bounce, and D + 17
-after a roll's stop, as in the sections above. From S, for as long as
-the player goes on standing on flat floor away from a ledge, the
-pictures follow one fixed list, the same whatever came before S.
+ends, K after a jump's landing, G after a fall or a bounce, D + 17
+after a roll's stop and U + 9 after a crouch, as in the sections above
+and below. From S, for as long as the player goes on standing on flat
+floor away from a ledge, the pictures follow one fixed list, the same
+whatever came before S.
 
 Two runs of pictures are used in the list. The **sway** (186 frames):
 
@@ -956,6 +982,54 @@ on. Its first 4 frames are the `s-stand-1` × 4 given in the sections
 above. As for the first character, the loop starts again from the
 beginning at every new S, and `U`, the top face button or a shoulder
 held while standing changes nothing.
+
+## Crouching
+
+### First character
+
+D is a crouch's first frame and U the first frame after it, as in
+`ground-speed.md` ("Crouching"): the crouch's frames are D to U − 1, at
+least D to D + 12, and U to U + 8 are the getting-up frames. On flat
+floor, whatever came before D (standing, walking, running or a turn,
+at any speed) and whatever direction is held during the crouch, the
+pictures are:
+
+1. **Going down:** `crouch-1` on D, then `crouch-2`, `crouch-3`,
+   `crouch-4`, `crouch-5`, `crouch-7`, `crouch-8` × 2 each (D + 1 to
+   D + 12). `crouch-6` is not shown here.
+2. **Held**, from D + 13 for as long as the crouch lasts: `crouch-9`
+   × 17 (D + 13 to D + 29), then the **crouch sway** (131 frames)
+   followed by `crouch-9` × 144, over and over. The sway is:
+   - `crouch-10`, `crouch-11`, `crouch-12` × 3 each, `crouch-13` × 17;
+   - `crouch-14`, `crouch-15` × 3 each, `crouch-16` × 17;
+   - `crouch-17` to `crouch-21` × 3 each, `crouch-22` × 17;
+   - `crouch-21` down to `crouch-17` × 3 each, `crouch-16` × 17;
+   - `crouch-15` down to `crouch-10` × 3 each.
+
+   So the sway starts on D + 30, D + 305, D + 580, and so on, every 275
+   frames.
+3. **Getting up:** `crouch-9` on U, whatever was shown on U − 1 (part
+   of the way down, the held `crouch-9` or any sway picture), then
+   `crouch-8` down to `crouch-1`, one frame each (U + 1 to U + 8).
+   `crouch-6` is shown here, on U + 3.
+4. **After:** U + 9 is a standing frame even if a direction is held, and
+   is the S of "Standing still": it shows `stand-1`, and the standing
+   list goes on from there. When a direction is held, walking or a turn
+   starts on U + 10 (`ground-speed.md`), with the pictures of "Walking,
+   running and turning".
+
+A crouch started on U to U + 9 of an earlier one (Down held again,
+`ground-speed.md`) shows its own list from `crouch-1` on its D, wherever
+the getting up had got to. The facing doesn't change during the crouch
+or the getting up.
+
+Example: standing, Down held on frames 20 to 719. `crouch-1` on 20,
+`crouch-2` on 21 and 22, …, `crouch-8` on 31 and 32, `crouch-9` on 33
+to 49, the sway on 50 to 180, `crouch-9` on 181 to 324, the sway again
+from 325 and from 600. Frame 719, the third sway's 120th frame, shows
+`crouch-13`, the first of its 3 frames in the sway's last part
+(`crouch-15` down to `crouch-10`). U = 720 shows `crouch-9`, 721 to 728
+`crouch-8` to `crouch-1`, and 729 `stand-1`.
 
 ## Evidence
 
@@ -1233,6 +1307,22 @@ steep face, picking something up):
   frame; 24 taps of `U`, the top face button or a shoulder changed
   nothing. 189 172 frames from S compared with the loop in "Standing
   still", 153 874 of them after the first loop: 0 differences.
+- **Crouching, first character:** 120 runs on flat floor away from
+  ledges, each from standing, walking, running or walking and turning,
+  then random input held for 1 to 60 frames at a time: Down alone or
+  with a direction (in half of the runs, also some Down holds of 300 to
+  900 frames), a direction alone, or nothing, without Action or Jump.
+  1 197 crouches, started standing still (439), moving at up to 2.34375
+  px per frame (745) and faster, at running speed (13); 257 of them started on the getting-up
+  frames of the one before. 750 lasted into the sway, 65 into its
+  second round and 36 into its third; the longest lasted 1 924 frames.
+  179 503 frames from D to U + 8 compared with "Crouching": 15 558
+  going down, 155 088 held, 8 857 getting up, 0 differences, and the
+  facing never changed. On U + 9, 837 frames showed `stand-1` as a
+  standing frame (495 of them with a direction held); on U + 10 a walk
+  or a turn started in all 474 cases with a direction still held. The
+  standing frames from U + 9 matched "Standing still" (6 159 frames, 0
+  differences).
 
 ## Not covered
 
@@ -1258,6 +1348,11 @@ steep face, picking something up):
   against a wall or a steep face.
 - The standing pictures on a slope or at a ledge (teetering), for
   either character.
+- The crouching pictures of the second character, and the first
+  character's on a slope, at a ledge, while carrying something, and in
+  a crouch that starts on a landing's frames or after a roll. Also the
+  pictures of a jump from a crouch or from its getting-up frames, and of
+  the ground action (Down + Action) started from them.
 - Why, on 5 frames after bounces, the previous picture was still on
   screen for one frame. The rules above give the usual frame.
 - Why, on 4 frames in random play, a walking or running picture came
