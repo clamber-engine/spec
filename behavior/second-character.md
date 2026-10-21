@@ -35,6 +35,8 @@ running with each kind of air input. On every frame of every run, `x`,
 | Gravity otherwise | 0.4375 (112/256) | 0.4375 (112/256), the same |
 | Fastest fall (`vy` cap) | 8 | 8, the same |
 | Crouch: frames with target 0 after Down is released | 10 (U to U + 9) | **13** (U to U + 12) |
+| Crouch: shortest crouch (D to U − 1), even after a shorter press | 13 (D to D + 12) | **9** (D to D + 8) |
+| Crouch: Down held again starts a new crouch on | U to U + 9 | **U to U + 12** |
 
 Everything else in those files applies to the second character
 unchanged:
@@ -90,6 +92,15 @@ falling while Down is held and after it is released, to 0.02734375 on
 frame 97 and 0 on 98. It stays 0 to frame 102 and is 0.28125 again on
 frame 103. Measured with Down held for 30 and 40 frames, from rest, from
 walking speed and from running speed.
+
+Crouching, short press: walking left with Left held, Down also held
+on frame 40 only. The crouch is frames 40 to 48 (D to D + 8), so U is
+49; the target is 0 from 41 to 61 (U + 12), and `vx` grows again from
+62. Down held for 1, 3 or 8 frames gives the same frames; held for 10,
+12 or 14 frames, U is the frame Down is released and `vx` grows again
+from U + 13. Down held again on any of U + 1 to U + 12 after a longer
+crouch started a new 9-frame crouch, with the target 0 on its D as
+well; on U + 13 it started one whose D has the normal target.
 
 ## Jump arc
 
