@@ -2220,8 +2220,9 @@ steep face, picking something up):
   507 while walking, 150 while running, 101 in turns. Without the
   blocked rule all 85 runs that reached the face stopped agreeing at the
   face (the model started or restarted walking where the character
-  stood). Standing frames (32 974) followed "Standing still", 2 frames
-  not found (the last standing frame before a hurt, with no picture of
+  stood). Standing frames (32 974; this corrects an earlier 35 894,
+  which counted runs and frames beyond those compared) followed
+  "Standing still", 2 frames not found (the last standing frame before a hurt, with no picture of
   the player on screen). 14 runs ended on a mode difference
   next to the face, at the end of a turn, or in standing with a speed
   under 48 that was not 0 (listed in "Not covered").
@@ -2252,14 +2253,20 @@ steep face, picking something up):
   stretch of standing, from S on, were compared with the screen against
   "Standing still": first character 85 runs, 367 stretches, 33 065
   frames; second character 88 runs, 437 stretches, 41 944 frames. The
-  counts differ a little from the standing frames named in those
-  entries because that count starts at the first standing frame of a run
-  while this one starts at the first S, which skips a stretch already
-  running at the start of the run. 2 frames differed for the first
-  character and none for the second. Those 2 were each the last
-  standing frame before a hurt, with no picture of the player on screen. Taps of Right while standing against the face ended
-  standing 28 and 28 times and didn't 22 and 30 times; taps of Left
-  ended standing 2 and 1 times.
+  counts differ from the standing frames named in those entries. For
+  the first character that count leaves out each run's first standing
+  frame and the frame on which a comparison stopped on a mode
+  difference, while this one takes them in: 32 974 + 85 + 6 = 33 065
+  (the 6 are stops in which the player was standing). For the second
+  character the wall entry's count starts at the first standing frame
+  of a run and this one at the first S, which skips a stretch already
+  running at the start of the run, so this one is lower. 2 frames
+  differed for the first character and
+  none for the second. Those 2 were each the last standing frame
+  before a hurt, with no picture of the player on screen. Taps of
+  Right while standing against the face ended standing 28 and 28
+  times and didn't 22 and 30 times; taps of Left ended standing 2 and
+  1 times.
 - **Being hurt, first character:** 160 runs of random input (Right
   mostly, with short Jump, Action, Left or nothing segments) in the
   first level, alone, until a walker hurt the character and then 240
