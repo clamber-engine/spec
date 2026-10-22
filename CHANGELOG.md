@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.259.0
+
+The second character on level-map walks over a page edge (spec#38,
+pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/level-map.md`: the end rule's `x` is the position across
+  the pages, so a leg to the right over a page edge follows it. A leg to
+  the left over a page edge (the lead's position on the page wraps
+  during the leg) doesn't always: in 6 of 7 measured walks the other
+  ended on the lead's `x`, in one 24 px to its right; what separates
+  them is under Not covered. The page-change stall now covers walks in
+  both directions. New run F and "Legs over a page edge" in
+  Measurements, with the speeds given per walk.
+
 ## spec-v0.258.0
 
 The second character on level-map legs between places that look
