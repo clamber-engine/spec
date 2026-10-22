@@ -2,6 +2,29 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.261.0
+
+The first character's crouching pictures at a ledge and on a slope
+(spec#38, pictures), and the second character's air pictures after
+`s-air-1` in a jump (spec#61).
+
+Part of clamber-engine/spec#38 and clamber-engine/spec#61, which stay
+open for the parts not covered yet.
+
+- `behavior/player-frames.md`, "Crouching": the first character shows
+  the same crouching pictures at the end of a platform and on a 1-in-4
+  slope (up, down and where it meets flat floor), with the same timing
+  through the getting up. A crouch near a platform's end shows no
+  teetering picture. New Evidence entry; Not covered narrowed to the
+  second character, other slopes and steep faces.
+- `behavior/player-frames.md`, "A jump and its landing", second
+  character: `s-air-1` runs to A − 1 (A the approach frame of
+  `jump-input.md`), then `s-air-2` on A, two frames each of `s-air-3`
+  to `s-air-5`, and `s-air-6` from A + 7, for jumps from the floor and
+  roll jumps pressed on the ground. Air-pressed roll jumps keep the same
+  pictures in the same order; their timing, landings on higher floor
+  and large drops are under Not covered. New Evidence entry.
+
 ## spec-v0.260.0
 
 Both characters' pictures while shot by a launch barrel (spec#38,
