@@ -218,7 +218,9 @@ On every frame from `T` on:
   is over.
 - **Drawn behind the scenery.** From `T` on, the characters are drawn
   behind the level's scenery: at the first level's end they disappear
-  behind the rock face on the right as they walk on.
+  behind the rock face on the right as they walk on. Which pixels are
+  hidden and from which picture: "Moving things and raised tiles" in
+  `../formats/graphics.md`.
 
 ### The other character
 
