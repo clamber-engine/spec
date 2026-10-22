@@ -601,6 +601,17 @@ frames. After the lead's page change, one run showed the other character
 changing one frame later than the lead for the rest of the run, and what
 decides that is not known ("Not covered").
 
+**When the second character leads.** The pictures belong to the
+characters, not to the lead's and the other's places: the names
+`map-lead-1` to `map-lead-10` and `map-other-1` to `map-other-8` follow
+the character (the first, the second), not whether it leads. When the
+second character is the lead, it shows the eight pictures
+`map-other-1` to `map-other-8` as above (cycle 32) and the other
+character, the first, shows the ten pictures `map-lead-1` to
+`map-lead-10` (cycle 40). Positions, legs, facing, page changes and
+the timing of the picture changes follow the rules above unchanged, with
+the second character as the lead.
+
 **Facing.** A character is drawn mirrored left–right (as
 `../formats/sprites.md` says, "Mirroring") exactly when it faces left. It
 faces left from the first frame on which its `x` is less than on the
@@ -642,10 +653,10 @@ Measured on screen in the first level's map (sprites only, as for the
 player, `player-frames.md`). Each run started from a saved emulator state
 on the map (at a new game, or shortly before the first level's end, from
 which the finish and the lead's walk on were played by inputs) and went
-on by inputs alone. Some runs needed more than that, and for those the
-position of the lead and which paths were open were written into the
-running emulator's memory before the inputs began, not reached by play:
-the walks that needed paths not yet open (down to the second stop, with
+on by inputs alone. Some runs needed more than that, and for those a setup
+method (research tools) was used before the inputs began, so that the
+lead stood where the run needed it and the paths not yet open were
+open: the walks that needed paths not yet open (down to the second stop, with
 one and with both characters), and the runs that put the lead beside a
 page edge (the walk onto the next page, with one and with both
 characters). No modified copy of the game was used. Five runs of 400 to
@@ -670,6 +681,25 @@ character's, with one exception: once, after the lead's page change, the
 other character changed its picture one frame later than the lead and
 kept that offset to the end of the run (over 400 frames).
 
+Second character leading: a map reached from a level whose
+second character led to the end was played down the same 1 500-frame
+chain of walks as the first character's (nine walks over the
+neighbouring paths, 13 legs). The other's `x` matched the rule on every
+frame (0 mismatches over 1 486 frames, the one page-change lag frame
+excepted as above). The pictures were looked for on 260 frames of a walk
+down. The lead's were found on all 260, and every one was the picture
+named above for its character. The other's were found on 163, again
+every one the picture named above. Of the 97 frames where they were not
+found, 13 were the video-lag frames at the start, and the other 84 were
+frames on which the two figures stood 16 px or less apart with a height
+difference under 24 px, so that one covered the other: on the 162
+logic frames with the figures further apart the other's picture was
+found on all 162, and on the 85 with them that close on 1. The paths not
+yet open were made open by the setup method, as above.
+Over the whole chain the lead's eight and the other's ten changed in
+order, each on 4 counted frames (739 runs of 4 and three of other
+lengths, at the start and at the page change).
+
 ## Not covered
 
 - Progress other than at a new game and after the first level's first
@@ -680,7 +710,6 @@ kept that offset to the end of the run (over 400 frames).
   a page edge, whether the other ends on the lead's `x` or 24 px to its
   right (6 of 7 measured walks did the first); the other's stalled
   frame in walks over page edges other than the first level's first.
-- The pictures when the second character leads.
 - Which picture the cycles start with when the map appears.
 - What moves the other character's cycle against the lead's at a page
   change.
