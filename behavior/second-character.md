@@ -420,8 +420,10 @@ running speeds), all 3,312 cases mismatch; with the normal gravity in place of 0
   ledge. Jumping on landing from a press made in the air more than one
   frame before landing, and the landing lockout after falls. The
   lockout after jumps is in `jump-input.md` ("The second character").
-- Slopes, steep faces, walls, platforms from below, carrying, bouncing
-  off enemies and being hurt, with the second character under control.
+- Slopes, steep faces, walls, platforms from below, bouncing off
+  enemies and being hurt, with the second character under control.
+  Carrying on flat floor is in `carrying.md` ("The second character");
+  what isn't covered there is listed in its "Not covered".
 - The swap itself (`S`) is in `swap.md`. The measurements above start
   after it has finished.
 - The first character's values when it follows the second.

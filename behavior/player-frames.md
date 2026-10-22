@@ -361,6 +361,34 @@ The colours each character's pictures are drawn with are in
 | `s-crouch-11` | `5a2003778acbb5a8111f7705e062d940a8450351c24fff37d59a1d63d0441289` |
 | `s-crouch-12` | `ee75de33f4f61d734c86b2733e4532b253cb0611f40346e36f0f5db631f7d383` |
 | `s-crouch-13` | `a3b36705e81cc557c92fb22389203ff905864249fc4ce1794317b98c00719483` |
+| `s-pick-1` | `3e3ea2ea2f2ce9b0d6bbf88d0354e67836821c465cbe302eff5dde44178c8794` |
+| `s-pick-2` | `7a7f965eeacdb588a0562033c7ddc88ec3e4e6b0243e536d8efc3c8f57e4d43b` |
+| `s-pick-3` | `47b9bfd4b5d878aa1e884d93be73cf49533440e8b3d6bfb5d9e9e6e998e57257` |
+| `s-pick-4` | `f5b62a0eee7933f28c2afe9611ff164c03297f08b59fc7a8d9d005c732e0b1c6` |
+| `s-pick-5` | `ee17b50e55e4641777085b2d8a2ce2b20f96a5942f71917a8b1805de5ee2be34` |
+| `s-hold` | `dad35cff5d4ba2801b223f2a8836e52b7d97e4c3224ecd5f35f00e4025ca1a9a` |
+| `s-carry-1` | `296f16e88cfb1ad09637f6f8e2336a2439610706eb4c0ea567cbad0d573f03aa` |
+| `s-carry-2` | `9f95797148b2827ee6c9bc86b759a0e6766ef04b8aa0227732a546de6f0cc8a7` |
+| `s-carry-3` | `54724e042a57fe430ee34a3a0df416fccfbf4a2e3e4fbb2926ef804300e735df` |
+| `s-carry-4` | `7ba653bde91158d51c94960bc318fff4d37346058616538d418863efdb4ae507` |
+| `s-carry-5` | `8337e9e6abdbfdebc26d847fc411fb1d09c2c3ee7f51b11790fe6835b00ffb47` |
+| `s-carry-6` | `624a08d8f433d29022860257bcfd08d5b7f4f5e80c0c1f553b189c618195c1a8` |
+| `s-carry-7` | `aeea425e6afbd63d6c61bd7c53d7478a395821e8cdf93508275f2b02627262fa` |
+| `s-carry-8` | `251f21118a708eeada86c5ffa3efae22ad1d1715ddce40ea3623b5ed498baaae` |
+| `s-throw-1` | `518142440da24a1a2d402e956d5de019fd11ba6fef81651cd5abe6ef590c3fce` |
+| `s-throw-2` | `b3d9d1cfe37e269609dcad15ed63506358806d7fce490b0c5b894153ee8b0ed0` |
+| `s-throw-3` | `cb901e46196b751499528e6a10b2824fa24ceccdfa150af49c7824e4fa67c660` |
+| `s-throw-4` | `50e9645e8ad7521700e883cd8625bf265a1fc9704cfebe47a2386281f0df28b7` |
+| `s-throw-5` | `56ef5b78c1cc373c5ae0ffb04ef28da75d067c43df0339abc77e67f5a3f730cc` |
+| `s-throw-6` | `cb12f91b487770048d70ba8dab279da224abce3a47661a6fa17fbc38c36fc5bd` |
+| `s-throw-7` | `eef0523797e51e64fba20ed7066df1d9742dd383ad221375cd2fbd468bf76b8d` |
+| `s-throw-8` | `21b6416c2efbff71cebdf5fb4581aeb02aa2bfed3951a9075e875e6452057e5f` |
+| `s-throw-9` | `9a4cde408b12459a92d34c1b1821e8545f2df729e4b35b624298acb03c7314b5` |
+| `s-throw-10` | `f864beb7dbadef34540497929df6050a2b6668892aefaeeb6e08c6fc1a786415` |
+| `s-throw-11` | `0f8226638dfd549643098515af51f9189e0c63b36fc87cd78a118184a4eb41cf` |
+| `s-throw-12` | `1cc91338b63b82eec99cb34aa291db5d68ce6197d55081dc32340995b57fcdf8` |
+| `s-throw-13` | `0a4b4911968230c159011f604890fd5572973685f185ae75af3c7e238f536f08` |
+| `s-throw-14` | `b88e458bb725281246beb5c629711075d6a5402b1fec6a872e80ca8dcd6d87b2` |
 
 **When a hash isn't found.** The importer looks for every hash in this
 file (`../formats/sprites.md`, "Picture hashes"). The pictures of one
@@ -392,7 +420,10 @@ character's carrying pictures, `pick-1` to `pick-7`, `carry-1` to
 `carry-10`, `carry-turn`, `throw-1` to `throw-19` and `hold-1` to
 `hold-3` ("Carrying"), fall back together on the frames of a pick-up,
 carrying, a throw and a put-down (G to Q + 42, or to Q + 12 for a
-put-down). A character
+put-down). So do the
+second character's, `s-pick-1` to `s-pick-5`, `s-hold`, `s-carry-1` to
+`s-carry-8` and `s-throw-1` to `s-throw-14`, on its frames G to Q + 39,
+or to Q + 9 for a put-down. A character
 missing every hash shows the engine's own art throughout.
 
 These pictures don't depend on speed, on how high the jump was, or on
@@ -1230,6 +1261,71 @@ Example: standing with the object on flat floor, Right held from frame
 So `carry-1` shows on frames 0 to 4, `carry-2` on 5 to 7, `carry-3` on 8
 and 9, `carry-4` on 10 and 11, and `carry-5` from 12.
 
+### Second character
+
+G, Q, J and L are as for the first character, with the second
+character's frames (`carrying.md`, "The second character"). On flat
+floor the pictures are:
+
+1. **The pick-up**, G to G + 9: `s-pick-1` to `s-pick-5` × 2 each,
+   whatever came before G and whatever is held.
+2. **Carrying**, from G + 10 until Q. G + 10 is a frame of standing with
+   the object whatever is held (it is S, below); from G + 11 the player
+   is standing, moving, turning or jumping with the object.
+3. **A throw**, Q to Q + 39: `s-throw-1` on Q, `s-throw-2` × 2 (Q + 1,
+   Q + 2), `s-throw-3` × 3 (Q + 3 to Q + 5), `s-throw-4` × 5 (Q + 6 to
+   Q + 10), `s-throw-5` × 3 (Q + 11 to Q + 13), `s-throw-6` × 2 (Q + 14,
+   Q + 15), `s-throw-7` × 2 (Q + 16, Q + 17), `s-throw-8` × 2 (Q + 18,
+   Q + 19), `s-throw-9` × 3 (Q + 20 to Q + 22), `s-throw-10` × 5 (Q + 23
+   to Q + 27), then `s-throw-11` to `s-throw-14` × 3 each (Q + 28 to
+   Q + 39). From Q + 40 the player isn't carrying: Q + 40 shows
+   `s-stand-1` and is the S of "Standing still" with no direction held,
+   `s-walk-1` with the facing direction held, or the first frame of a
+   turn (`s-stand-5`) with the other one, as in "Walking, running and
+   turning".
+4. **A put-down**, Q to Q + 9: `s-pick-5` down to `s-pick-1` × 2 each,
+   the pick-up's pictures in reverse. Q + 10 shows `s-stand-1`, whatever
+   is held, and is the S of "Standing still".
+
+**Standing with the object** shows `s-hold` on every frame, for as long
+as the player stands (seen up to 400 frames).
+
+**Moving with the object.** The second character's carrying stride has
+8 steps, and each step lasts **3 frames** whatever the speed: from the
+frame moving starts, `s-carry-1` × 3, `s-carry-2` × 3, …, `s-carry-8` ×
+3, then from `s-carry-1` again (every 24 frames). v is |`vx`| in 1/256 px
+per frame after the frame's speed rule.
+
+- **Stand check:** on a frame where step 2 or step 7 ends (the frame on
+  which `s-carry-3` or `s-carry-8` would start; the 7th and 22nd frames of
+  each 24, counting the first frame of moving as the 1st), if v < 48 and
+  neither Left nor Right is held, the player is standing from that frame
+  (that frame is S and shows `s-hold`).
+
+**When each starts** is as for the first character, with G + 11 in place
+of G + 15: on G + 11, on the frame after a turn ends (T + 8) and on
+L + 2 after a jump, a turn starts with the opposite direction held,
+moving starts with forward held, and otherwise the player is standing.
+While standing or moving, the opposite direction held starts a turn on
+that frame (on any step), and while standing, forward held starts moving
+on that frame.
+
+**Turning with the object.** A turn lasts 8 frames, T to T + 7, and
+shows `s-hold` on all of them. Facing, and so the mirroring, changes on
+T + 4.
+
+**Jumping with the object.** From J − 2 to L + 1 the player shows
+`s-carry-2`, whatever was shown before; a change of facing in the air
+changes only the mirroring.
+
+Example: standing with the object on flat floor, Right held on frames 0
+to 29, then nothing. `s-carry-1` shows on 0 to 2, `s-carry-2` on 3 to
+5, …, `s-carry-8` on 21 to 23, `s-carry-1` on 24 to 26, `s-carry-2` on
+27 to 29, `s-carry-3` on 30 to 32, …, `s-carry-7` on 42 to 44. Step 7
+ends on 45 with v = 103, so moving goes on: `s-carry-8` on 45 to 47,
+`s-carry-1` on 48 to 50, `s-carry-2` on 51 to 53. Step 2 ends on 54 with
+v = 34: frame 54 is S and shows `s-hold`.
+
 ## Evidence
 
 Measured in `title-1` by watching the screen. On every logic frame of
@@ -1570,6 +1666,33 @@ steep face, picking something up):
   95 or 97, hundreds to thousands of frames differ in the first 160
   runs.
 
+- **Carrying, second character:** the same kind of runs with the second
+  character under control and the first following: 160 runs of random
+  input and 100 runs of slow drifts. 305 pick-ups, 357 jumps, 3 168
+  turns (2 139 started while moving, on every step of the stride), 919
+  stand checks that made the player stand, 169 throws and 91 put-downs.
+  196 620 frames compared on screen with "Carrying", "Second character":
+  3 050 pick-up frames, 45 501 standing (305 of them G + 10), 101 176
+  moving, 25 189 turning, 14 034 jumping, 6 760 throw and 910 put-down
+  frames. 196 357 showed the picture given. On 9 throw frames the
+  previous picture was still on screen for one frame. On 254 frames of
+  17 of the 18 throws made facing left with `x` below 200 (near the
+  level's left end), the player's picture wasn't found whole on screen
+  from Q + 20 on, so they couldn't be compared; none of the other 151
+  throws had such a frame. After a throw, Q + 40 showed `s-stand-1` (115 throws with
+  nothing held; on 6 more the picture wasn't found whole or was one
+  frame late), `s-walk-1` (25, forward held) or the turn's `s-stand-5`
+  (23, the other direction held); after a put-down, Q + 10 showed
+  `s-stand-1` in all 91, whatever was held. The standing frames from
+  those S matched "Standing still" on 5 823 of 5 859 frames: 2 were one
+  frame late and on 34 the picture wasn't found whole on screen. Standing
+  with the object for 400 frames showed `s-hold` on all of them, and the
+  example above was played in the game and matched frame for frame. With
+  the stand check's limit taken as v < 47 or v < 49, 150 to 479 frames
+  of the slow drifts differ; with stand checks at the end of other
+  steps (3 and 7, 2 and 6, 2 and 8, 1 and 7), 3 818 to 8 049 frames
+  differ.
+
 ## Not covered
 
 - The first character landing before the approach frame (L < A,
@@ -1610,11 +1733,11 @@ steep face, picking something up):
 - The first character's pictures on a roll started by a boost in the
   stop after a roll (`rolling-into-walkers.md`, "The boost", P in the
   stop): the few seen were hidden behind walkers.
-- The carrying pictures of the second character, of the first character
-  on slopes, at ledges, next to walls, walking off a ledge with the
-  object, in a throw or a put-down in the air or during a turn, and of
-  a throw or a put-down started during a jump's last frames (J − 2 to
-  L + 1).
+- The carrying pictures of either character on slopes, at ledges, next
+  to walls, walking off a ledge with the object, in a throw or a
+  put-down in the air or during a turn, and of a throw or a put-down
+  started during a jump's last frames (J − 2 to L + 1); for the second
+  character also a throw started during the pick-up.
 - Why, on 20 frames during or shortly after 13 throws (Q + 27 to
   Q + 58), the previous picture was still on screen for one frame. The
   rules above give the usual frame.
