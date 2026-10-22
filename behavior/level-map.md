@@ -417,9 +417,8 @@ whichever of the two characters led in the level. It was measured with
 the map appearing after the first level with the first and with the
 second character leading, and for 18 other stops, covering the whole
 length of the map from its left end to its right end, with the first
-character leading. For those 18 the level just finished was made to count
-as a different place by changing the running game's state before the
-level ended, as for the open paths. In every one the other was 16 px to
+character leading. For those 18 a setup method (research tools) was used so that the
+level just finished counted as a different place. In every one the other was 16 px to
 the left of the lead at the same height. Where it stands when the map
 appears after a level was left in other ways is not covered.
 
@@ -523,7 +522,7 @@ Results:
   height matched the rule on every frame of each leg, 0 mismatches over
   64 frames per leg. Three legs started with the lead and the other
   placed on the map as at a new game, the other 16 px to the lead's
-  left (by writing the running game's state, as for the open paths); the
+  left (a setup method was used); the
   fourth was walked after finishing the first level, where the map
   appears with the same 16 px gap. The other's end across depends only
   on the lead's leg, and its speed across followed the rule from the
@@ -531,17 +530,16 @@ Results:
   the rule. One of the pairs was also walked there and back after
   finishing the level (the fourth leg and a repeat of another), 0
   mismatches.
-- Run G: two of run F's walks to the left, started with the lead
-  moved along the page (writing the running game's state, as for F) so
-  that its position wrapped on different frames: 24 walks, 16 of one
-  pair and 8 of the other, with the other 24 px to the lead's right at
-  the start.
 - Run F: every pair of neighbouring places in the first level's map whose
   walk goes over a page edge, in both directions: 14 walks. Each was
   started by an input from the first place of the pair, after the lead
-  and the other were placed by writing the running game's state (as for
-  the open paths), the other once 16 px to the lead's left and once 24 px
-  to its right; each walk was run from both starts (28 runs).
+  and the other were placed with a setup method, the other once 16 px to
+  the lead's left and once 24 px to its right; each walk was run from both starts (28 runs).
+- Run G: two of run F's walks to the left, with the lead started at
+  different places along the page (a setup method was used), so that
+  its position wrapped on different frames: 24 walks, 16 of one pair
+  and 8 of the other, with the other 24 px to the lead's right at the
+  start.
 
 **Legs over a page edge** (runs B, C, D and F):
 
