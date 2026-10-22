@@ -398,11 +398,135 @@ Jump were newly pressed on frame 245, the lead would enter the level on
   level's last frame to the map).
 - Two characters at the finish changed none of the timings.
 
+## Pictures
+
+What the characters look like on the map in `title-1`: the lead, and the
+other character when there are two. The pictures are named by their
+picture hashes (`../formats/sprites.md`, "Picture hashes"). The picture
+given for a frame is the one on screen with that frame's view.
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `map-lead-1` | `d04c96c11202572daf17c9452bd108a3e913c1e7804a7d32e7465411e003ee5c` |
+| `map-lead-2` | `624ce46eb019ebc2e0480359824a6c368de59a3b7f94ed322fccbd14e26ea43a` |
+| `map-lead-3` | `1f44c8d65217e4e2dc61d784c748632ff32319e838f12245c8c02e5c31f96f14` |
+| `map-lead-4` | `3be7370c1bb673ad00129964f14522db3e48859051c2011bcd4132f1cd51977a` |
+| `map-lead-5` | `f3be04419a891ddd876982c456dd0ee7b324193099c1fd9ff18be3046e327a72` |
+| `map-lead-6` | `d2f845667dfcb290cfeb5b52220b5252f3c4e27c81fd5756b0b786335e5457d8` |
+| `map-lead-7` | `2d56620e6b88a64c10dca3394bd2f261cd5b102f0e4787fdebb0e813ec7bb1cb` |
+| `map-lead-8` | `f3fda78649ddb25d4ecdd77c7eedd9409a76b78b1c35d009ad4828b7f6d62b4f` |
+| `map-lead-9` | `90042a3a02f9905068dcf7d91449bc6b0fe88d72bed7f21328d32ab3edcb0c7e` |
+| `map-lead-10` | `9f4d8a0c16a19596a82ce47e11cd7a0e9953e25efcc28a7048813905e521b0f2` |
+| `map-other-1` | `70c4929658e8baba52ca2b02fc36903d1d0a61aa8f13e7bd5141a3b1e6d8e9cd` |
+| `map-other-2` | `e4c158c7d2ae49f1cbe9ce97f0ee3a43c56afcf3831f9dfb570564f2bd6c404c` |
+| `map-other-3` | `4a9176f66de94895fff1139c9cf21c12f8b28d4c87a2648f73799284880ab2c0` |
+| `map-other-4` | `fb91e71d2e990b4e82fa5473a44c9fdc95f0098a051daaae0c031de291082b5f` |
+| `map-other-5` | `feeff0479a169ea6a17b8cc582e2e405169b7fd3ae83121b1a71f91f2e4b5604` |
+| `map-other-6` | `2350ffc0ea6ca2713f5e30229bf5f8564d9f91d0e8b4e6befc95c0919adc2153` |
+| `map-other-7` | `612f58cf9802d54c9ffad81af186fe3a442f6c5bd1fbd00b6b27ebe79fae9e24` |
+| `map-other-8` | `b266d2713e5a9834051e67e350f8ad988be5354c3cdc94a3ea5862cd51374f48` |
+
+**Where.** A character's picture is drawn with its origin at (`x` − 1,
+256 − `h`) in the picture, where `x` is the character's whole-pixel
+position on its page (0 to 255, "Pages") and `h` its whole-pixel height.
+It moves with the position, a pixel at a time, as the character walks.
+
+**Which.** The lead shows `map-lead-1` to `map-lead-10` in turn, then
+`map-lead-1` again, each picture on 4 counted frames in a row (lag frames
+aren't counted), so its cycle is 40 counted frames. The other character
+shows `map-other-1` to `map-other-8` in turn, then `map-other-1` again,
+each on 4 counted frames, so its cycle is 32. Both cycles go on all the
+time: they don't depend on whether the character stands or walks, on
+the walk's speed or direction, or on the character's position. While
+both characters are on the lead's page and the lead hasn't changed page
+since the map appeared, the two change their pictures on the same
+frames. After the lead's page change, one run showed the other character
+changing one frame later than the lead for the rest of the run, and what
+decides that is not known ("Not covered").
+
+**Facing.** A character is drawn mirrored left–right (as
+`../formats/sprites.md` says, "Mirroring") exactly when it faces left. It
+faces left from the first frame on which its `x` is less than on the
+frame before, and right from the first frame on which it is more; frames
+on which `x` doesn't change leave the facing as it was, and a page
+change (where `x` jumps from 255 to 0 or back) isn't a change of `x`.
+In the runs, a new game's map showed the lead facing right until its
+first move to the left, and the map after the first level's first finish
+showed the lead, after it had walked on by itself, facing left (the
+direction it had walked). The facing at the start of other maps, and
+after a finish whose walk goes right, was not seen.
+
+**Page changes.** On the pictures for frames `P` − 1 and `P`, for the
+lag frame that follows `P` and for `P` + 1, where `P` is a frame on which
+the lead's position passes onto another page ("Pages"), no lead is drawn.
+The pictures for `P` − 2 and `P` + 2 show it as above, and its cycle goes
+on through the four without a shift (the picture after the page change
+is the one the cycle gives, counting the frames of the page change but
+not the lag frame).
+
+**When a hash isn't found.** The eighteen hashes belong together: if
+any of them isn't found, the engine shows its own art for the characters
+on the map, on the same frames and with the same timing as given here.
+
+### Example
+
+Synthetic. The lead stands at a stop facing right and shows
+`map-lead-9` on frames 10 to 13, `map-lead-10` on 14 to 17 and
+`map-lead-1` on 18 to 21. On frame 20 it starts a walk to the left (its
+`x` is 1 less than on frame 19). Frames 18 and 19 show `map-lead-1` as
+they were, facing right; frames 20 and 21 show `map-lead-1` mirrored
+left–right, and 22 to 25 `map-lead-2` mirrored. When the walk ends at
+frame 80 and the lead stands, it goes on showing the cycle's pictures
+mirrored.
+
+### Measurements
+
+Measured on screen in the first level's map (sprites only, as for the
+player, `player-frames.md`). Each run started from a saved emulator state
+on the map (at a new game, or shortly before the first level's end, from
+which the finish and the lead's walk on were played by inputs) and went
+on by inputs alone. Some runs needed more than that, and for those the
+position of the lead and which paths were open were written into the
+running emulator's memory before the inputs began, not reached by play:
+the walks that needed paths not yet open (down to the second stop, with
+one and with both characters), and the runs that put the lead beside a
+page edge (the walk onto the next page, with one and with both
+characters). No modified copy of the game was used. Five runs of 400 to
+700 frames, a walk down to the second stop, the same walk with both
+characters, a walk back up to the first stop, and a walk onto the next
+page, with one and with both characters. The lead's picture was
+looked for on every frame (2 500 pictures, 2 of them lag frames): 2 490
+were the one given here, 8 were not found (the four page-change
+pictures in each of the two runs that crossed a page, with nothing on
+screen at the lead's position), and on 2 another
+picture of a much larger kind fitted the screen as well. The other
+character's picture was looked for on 1 200 pictures: 1 073 were as
+given, 126 were not found and 1 was one of the large pictures again. Of
+the 126, 86 were frames on which the two characters were less than 17
+px apart horizontally and 10 px vertically, so the lead covered part of
+the other's picture; the other 40 were frames on which the other was on
+the page before the lead's (nothing was on screen at its position
+within the lead's page). Facing agreed with the rule on every found picture
+(3 563). Every picture of the lead
+lasted 4 counted frames after the first, and so did the other
+character's, with one exception: once, after the lead's page change, the
+other character changed its picture one frame later than the lead and
+kept that offset to the end of the run (over 400 frames).
+
 ## Not covered
 
 - Progress other than at a new game and after the first level's first
   finish (`../formats/level-map.md`, "Progress").
-- The second character on the map, and the figures' animation.
+- The second character on the map: where it walks, and where it is
+  when the map appears.
+- The pictures when the second character leads.
+- Which picture the cycles start with when the map appears.
+- What moves the other character's cycle against the lead's at a page
+  change.
+- The other character's picture while it is on another page than the
+  lead's.
+- The facing at the start of other maps, and after a finish whose walk
+  goes right.
 - What follows a press at a place, at the start point, and at link
   points other than the first level's; the time from an entering press
   to the level's first frame.
