@@ -1804,7 +1804,8 @@ steep face, picking something up):
   standing 700 frames: 67 stretches of standing, 42 055 frames, standing
   on floor from 16 px below to level with the floor before the slope.
   88 frames differed, all in the first 39 frames of 2 runs, where the
-  player was off the screen (no picture was found on the walking frames
+  player was off the screen (no picture was found on its walking frames
+  either).
 - **Standing still, second character:** 120 runs on flat floor away
   from ledges with the second character leading, standing for up to
   2 998 frames: 131 stretches of standing that started after walking
