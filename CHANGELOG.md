@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.271.0
+
+Standing next to a steep face: pictures (spec#38).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`, "Standing still": standing on flat floor
+  next to a steep face, within 32 px of its foot, with the direction
+  towards it held or not, shows the usual standing list, for both
+  characters. New Evidence on the same runs and frames as the wall
+  entries; the wall entry's first-character standing count is
+  corrected. Not covered narrowed to other parts of a steep face and to
+  walls that aren't steep faces.
+
 ## spec-v0.270.0
 
 Moving things and raised tiles: the draw order at the level end and
