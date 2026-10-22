@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.247.0
+
+The extra-life items' pictures (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/extra-lives.md`: new "Pictures" section: eight pictures
+  named by picture hash, shared by all four kinds, in a 56-frame cycle
+  counted from the frame the item appears, with nothing drawn at the
+  item's place from the pickup frame. The pictures fall back together
+  to the engine's own art with the same timing. On-screen evidence
+  from 16 runs. "Not covered" updated.
+- `formats/sprites.md`: "Not covered" points to the new section.
+
 ## spec-v0.246.0
 
 The first character's pictures during the ground action (spec#38,
