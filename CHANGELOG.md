@@ -2,6 +2,29 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.232.0
+
+How a thrown object, the flash of its breaking and the pieces are drawn
+in `title-1` (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/thrown-objects.md`: new "Pictures" section.
+  - 33 new picture hashes: `thrown-1` to `thrown-8`, `lying`, `flash-1`
+    to `flash-8`, `piece-a-1` to `piece-a-8`, `piece-b-1` to
+    `piece-b-8`.
+  - In flight from Q + 21: an eight-picture cycle (the first picture × 2,
+    then 3 frames each), unchanged through bounces and rolling, mirrored
+    exactly when the object moves left. An object lying after a put-down
+    shows `lying` from Q + 14, not mirrored.
+  - Breaking: a 19-frame flash of eight pictures, mirrored when the
+    object was moving right; four pieces in two sets of eight pictures
+    (the first × 3, then 4 frames each), never mirrored.
+  - Fallback per group, a synthetic example, on-screen evidence and
+    updated "Not covered".
+- `formats/sprites.md`: "Not covered" points to the new section.
+
 ## spec-v0.231.0
 
 How the second character is drawn, and how its timing and speeds
