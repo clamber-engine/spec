@@ -443,6 +443,13 @@ and fractions, but:
   start) in steps of 1/256 px per frame, as for the lead; its fraction
   carries on from leg to leg and walk to walk like the lead's.
 
+**Straight up and down.** Where two neighbouring places lie straight
+above each other, the lead's leg between them still moves it sideways by
+16 px (it ends 16 px to one side of where it started, whichever way it
+goes), so no leg in the first level's map changes only the height; a
+leg with the lead's `x` the same at both ends was not seen. The other
+walks these legs by the rule above.
+
 After its last leg ends the other stands at that spot until the lead
 walks again. In the runs, each of the other's legs ended before the next
 one began. Its end depends only on the lead's leg, whose end is fixed
