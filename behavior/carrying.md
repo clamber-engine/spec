@@ -8,9 +8,10 @@ first touches something. Frames are logic frames at 60 Hz, numbered as in
 a trace. `x`, `y`, `vx`, `vy` and `facing` are as in a trace: right and
 down are positive, speeds in px per frame. "Left", "Right", "Up", "Down",
 "Jump", "Action" are the neutral inputs `L`, `R`, `U`, `D`, `J`, `A` of
-the scenario format. Measured with the lead character, mostly on flat
-ground, with two different objects that can be carried, both resting on
-the floor at the start.
+the scenario format. Measured with the first character leading, mostly
+on flat ground, with two different objects that can be carried, both
+resting on the floor at the start. The second character's timing and
+speeds are in "The second character".
 
 Speeds are whole multiples of 1/256 px per frame, and this spec writes
 them both ways (768/256 = 3 px per frame). **The speed rule** below means
@@ -331,6 +332,57 @@ player's position on the frame before G:
 | G + 14 | 477 | 22.984375 |
 | G + 15 | 513 | 24.98828125 |
 
+## The second character
+
+With the second character under control (`second-character.md`), a
+pick-up, carrying, a throw and a put-down go as above with these
+differences. G, Q and P are as above; "the speed rule" and its targets
+are as above, with the second character's values where they differ.
+
+| | First character | Second character |
+|---|---|---|
+| Pick-up frames | G to G + 14 | **G to G + 9** |
+| Target 0 from G | to G + 9 | **to G + 10** |
+| Carrying from | G + 15 | **G + 10** (standing on G + 10, whatever is held) |
+| Target while carrying, with a direction | ±3 (768/256) | **±3.375** (864/256), on the ground and in the air |
+| Throw frames | Q to Q + 42 | **Q to Q + 39** |
+| Throw: target 0 | Q to Q + 21 | **Q to Q + 18** |
+| Throw: target follows the input | Q + 22 to Q + 42 | **Q + 19 to Q + 39** (±2.25, 576/256, with a direction) |
+| Free again after a throw | Q + 43 | **Q + 40** |
+| Put-down frames, target 0 | Q to Q + 13 | **Q to Q + 9** |
+| Free again after a put-down | Q + 14 | **Q + 10** |
+
+- **G + 10** is a frame of standing with the object, and the target is
+  still 0 on it whatever is held. From G + 11 the target follows the
+  input, and a held direction starts moving or a turn as from any frame
+  of standing (`player-frames.md`, "Carrying").
+- **Jumps while carrying** take off on P + 2 as above, with the **first
+  character's** jump values, not the second character's: `vy` −7 on the
+  take-off frame, gravity 0.28125 (72/256) while Jump is held since the
+  press and 0.4375 (112/256) otherwise, at most 8. The horizontal target
+  in the air is ±3.375 (864/256) with a direction.
+- **Down and Up** have no effect while carrying, as above.
+- During a throw and a put-down facing doesn't change, even if the
+  other direction is held. After a throw, Q + 40 is a frame of standing,
+  of walking (the facing direction held) or the first frame of a turn
+  (the other one held), as after walking. After a put-down, Q + 10 is a
+  frame of standing whatever is held.
+
+Measured in `title-1` on flat floor with a `barrel`, the first character
+following: 240 runs of random input (pick-ups at the end of a roll,
+running into the object and standing next to it; then standing, moving,
+turns, jumps, Down, each with Action held, ending in a throw or a
+put-down) and 180 runs of slow drifts with the object, 284 028 frames in
+all. On every frame `vx` matched the speed rule with the targets above:
+5 401 pick-up frames (to G + 10), 10 760 throw frames, 1 510 put-down
+frames, 207 051 frames of carrying on the ground and 7 360 frames in the
+air with a direction held. In the air `vy` matched the jump values above
+on all 16 383 frames. With the zero target ending one frame earlier or
+later, 14 to 62 frames differ. Of 466 Jump presses made while carrying on
+the ground outside a landing's frames, all took off on P + 2. Facing
+never changed during a throw or a put-down, also with the other
+direction held.
+
 ## Not covered
 
 - Reach for other objects that can be carried, for an object that is
@@ -370,4 +422,10 @@ player's position on the frame before G:
   moving with Action already held were measured).
 - How a trace's `state` names frames of a pick-up, carrying, a throw or a
   put-down (the vocabulary has no names for them yet).
+- With the second character under control: reach, letting go of Action
+  during the pick-up, Jump and Action during a throw, picking a put-down
+  object up again, when the object leaves the hands and how it moves
+  after a throw, where it is put down, where it is while carried, and
+  everything above that was measured only with the first character
+  (throws in the air, slopes, walls, platforms).
 - The other character.
