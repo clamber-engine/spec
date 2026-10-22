@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.248.0
+
+The signs' pictures and the first character's pictures on a rope
+(spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/signs.md`: new "Pictures" section: three pictures named by
+  picture hash, one per sign reference, constant and never mirrored,
+  falling back to the engine's own art. On-screen evidence from six
+  runs. "Not covered" updated.
+- `behavior/player-frames.md`: new "On a rope" section for the first
+  character: twelve pictures named by picture hash for turning, hanging
+  and climbing, the climbing cycle's timing from the climbing speed, the
+  check at the cycle's end, and the pictures after jumping or sliding
+  off. The rope pictures fall back together. Evidence from 1 080 runs.
+  "Not covered" updated.
+- `behavior/ropes.md`: points to the new pictures section.
+- `formats/sprites.md`: "Not covered" points to the signs' pictures.
+
 ## spec-v0.247.0
 
 The extra-life items' pictures (spec#38, pictures).
