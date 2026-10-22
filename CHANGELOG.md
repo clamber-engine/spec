@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.255.0
+
+The pictures of the hidden objects that are set off by a long fall
+(spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/hidden-objects.md`: a `hidden-barrel` and a
+  `hidden-metal-barrel` are drawn as one picture, `patch`, at their
+  position while they are in the view and not set off (mirrored for the
+  `hidden-barrel`), and not from the set-off frame on. A `hidden-bunch`
+  isn't drawn. New "Pictures" section with the picture hash and a
+  fallback, and a new evidence entry from on-screen observation.
+
 ## spec-v0.254.0
 
 The second character's walking and running pictures when the mode starts
