@@ -1354,9 +1354,10 @@ character: the list doesn't depend on the floor under the character,
 and a crouch started up to the platform's last column shows no
 teetering picture. The one exception seen is in the evidence below: on
 a few frames at a platform another picture was on screen. On a 1-in-4
-slope the same list was seen on the flat floor before it and on the
-way down it; a crouch on the way up the slope or after it is not
-covered.
+slope the same list was seen on the flat floor before it, on the
+way down it from 1 px below its top to the flat bottom, and at the
+bottom; a crouch on the way up the slope or on the flat floor after it
+is not covered.
 
 Example: standing, Down held on frames 20 to 519. `s-crouch-1` on 20,
 `s-crouch-2` on 21 and 22, …, `s-crouch-5` on 27 and 28, `s-crouch-6`
@@ -2335,8 +2336,10 @@ steep face, picking something up):
   down and 1 getting up. No cause was found. On the slope, 422 crouches,
   but the runs were mostly spent before the slope: 409 crouches started
   on the flat floor before it, 12 on the way down and 1 on the flat
-  bottom, none on the way up or on the flat floor after it. 33 870
-  frames compared (32 845 in the crouches that started before the
+  bottom, none on the way up or on the flat floor after it. The 12
+  on the way down started from 1 to 14 px below the top of the slope
+  (its whole drop is 16 px), and their frames reached the flat bottom.
+  33 870 frames compared (32 845 in the crouches that started before the
   slope, 999 on the way down, 26 at the bottom; 3 693 going down, 26 590
   held, 3 587 getting up), 0 differences; 2 305 of them were within the
   first 51 frames of a run, which were compared too and did not differ.
@@ -2530,11 +2533,12 @@ steep face, picking something up):
 - Either character's standing pictures on slopes other than 1-in-4, on
   steep faces and next to a wall, and the 13 and 4 frames named in the
   second character's ledge and slope evidence.
-- The crouching pictures of the second character on the slope beyond
-  its first steps down (no crouch started on the way up or after the
-  slope), and the 11 frames named in its ledge evidence, of either
-  character on slopes other than 1-in-4 or on a steep face, and in a
-  crouch that starts on a landing's frames or after a roll. Also the
+- The crouching pictures of the second character on the way up the
+  slope and on the flat floor after it (no crouch started there), and
+  the 11 frames named in its ledge evidence.
+- Either character's crouching pictures on slopes other than 1-in-4 or
+  on a steep face, and in a crouch that starts on a landing's frames or
+  after a roll. Also the
   pictures of a jump from a crouch or from its getting-up frames.
 - The ground action's pictures (`act-1` to `act-30`) of the second
   character, at a ledge, on a slope, next to a face or a wall, on a
