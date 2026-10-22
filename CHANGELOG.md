@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.277.0
+
+The backdrop's night colour table (spec#60, spec#38).
+
+Part of clamber-engine/spec#60 and clamber-engine/spec#38, which stay
+open for the parts not covered yet.
+
+- `formats/graphics.md`, "Night colour tables": the structure of a
+  backdrop row-colour list's night colour table, with a synthetic vector
+  and how it was found; `formats/locators.md`: the first level's `title-1`
+  row; `behavior/dimming.md`: a pointer to it, and the matching Not
+  covered entry removed.
+
 ## spec-v0.276.0
 
 Which sign fingerprint gets which picture (spec#62, spec#63), and the
