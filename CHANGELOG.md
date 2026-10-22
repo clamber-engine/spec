@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.274.0
+
+The level map's other character after a leftward walk over a page edge,
+and while it is still on the previous page (spec#38).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/level-map.md`, legs over a page edge: in a walk to the left
+  over a page edge, the other character comes to rest on the lead's `x`
+  if the lead's position wraps on or after the frame the other's leg
+  first moves, and 24 px to the lead's right, as for any leg to the
+  left, if it wraps earlier. New Evidence (run G). The evidence for the
+  map now says only that a setup method was used where runs were set up
+  (spec#64).
+- `behavior/level-map.md`, pictures: after a walk to the right over a
+  page edge, the other character isn't drawn while it is out of view on
+  the previous page. It comes in cut off at the screen's left edge, and
+  the whole picture shows from its first position on the new page. New
+  Evidence from one walk. Not covered: the same after a walk to the
+  left.
+
 ## spec-v0.273.0
 
 The first character at the left-hand side of a ledge with a steep face
