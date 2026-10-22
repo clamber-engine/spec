@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.237.0
+
+What the second character shows when hurt, from the hit to the end of
+the level (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: "Being hurt" now has "First character"
+  and "Second character" parts. 17 new picture hashes, `s-hurt-1` to
+  `s-hurt-14` and `s-lie-1` to `s-lie-3`, timed with the second
+  character's knock-out frame counts, with on-screen evidence and
+  updated "Not covered" items. They join the being-hurt fallback group.
+
 ## spec-v0.236.0
 
 What the first character shows when hurt, from the hit to the end of
