@@ -8,8 +8,9 @@ after the player takes a collectible. It is not shown otherwise. When
 the count goes from 99 to 0 and the player gets one more life, the
 number of lives is also shown for a while at the top right, and it is
 shown when the player loses a life by being knocked out or falling out
-of the level. This file covers what the two displays show, where, and on
-which frames.
+of the level, and each time play starts: on a level's first frame and on
+the first frame after a restart. This file covers what the two displays
+show, where, on which frames, and the pictures they are drawn with.
 
 Frames are logic frames at 60 Hz, numbered as in a trace. Positions are
 in px in the picture, from its top-left corner (the picture is
@@ -35,7 +36,7 @@ alone was checked against the rules below (see "Checks").
   8 px wide and 16 px tall, at y 8. One digit (0 to 9) is at x 32. Two
   digits (10 to 99) are at x 32 (tens) and x 40 (units).
 
-How the image and the digits are drawn is not covered.
+The pictures the image and the digits are drawn with are in "Pictures".
 
 ## The number shown
 
@@ -85,8 +86,7 @@ above. In addition, the **lives display** shows the number of lives
 near the top right:
 
 - The number is drawn with the same digits as the count, its digit at
-  x 220. An image is drawn to its left; that image and how it moves are
-  not covered.
+  x 220. An image is drawn to its left (its pictures are in "Pictures").
 - It shows the number of lives before the new life up to `S` + 24, and
   the new number from `S` + 25 on.
 - It slides in from the top and back out:
@@ -110,6 +110,40 @@ The lives display after all four letters are taken is in `letters.md`,
 lives display of an extra-life item is shown, or before an item is
 taken while its own is shown, is in `extra-lives.md`, "The count
 reaching 100".
+
+## When play starts
+
+The lives display is also shown each time play starts: from **frame 0
+of a level** and from **frame 0 after a restart** (after a knock-out
+or a fall-out, `restart-barrel.md`, "Resuming"; frames are numbered
+from 0 again there, as in `collectibles.md`, "Counting the frames").
+Pauses don't count. It shows the number of lives at that moment (so after
+a restart it is the number after the loss), drawn as in "Reaching 100"
+at x 220 for one digit and at x 215 and x 225 for two, and its image to
+the left. It slides in and out like the others, on these frames:
+
+| Frame | Lives number at y |
+|---|---|
+| 0 to 7 | not drawn |
+| 8 to 13 | −12, −8, −4, 0, 4, 8 |
+| 14 to 135 | 10 |
+| 136 to 141 | 6, 2, −2, −6, −10, −14 |
+| 142 on | not drawn |
+
+So it stays at y 10 for 122 frames, 11 fewer than after reaching 100,
+and the slide-in is the same as there. On frame 8 and on frames 140 and
+141 the number is partly above the picture's top edge and only its lowest
+rows are drawn. It starts on the same frames after a restart from the
+level's start and after one from the restart point.
+
+Measured on screen on 395 starts: 128 level starts (entered from the
+map) and 267 restarts after knock-outs and fall-outs. On every frame on
+which no other lives display was shown (after a knock-out or a fall-out,
+after the count reached 100, or after a life was gained by letters or an
+item), the number was drawn at the table's y on 47 976 frames and not
+drawn on the 166 310 frames the table gives none for, and on no frame
+otherwise. How a display that starts while this one is shown, or a
+knock-out during it, shows is not covered.
 
 ## Losing a life
 
@@ -140,7 +174,8 @@ is `F` + 31: 31 frames after the third landing.
 | `G` + 17 to `L` | 10 | after the loss | drawn |
 
 On `G` to `G` + 2 small pieces are drawn around the image's place (the
-burst); how they and the image are drawn and move is not covered. The
+burst); their pictures are not covered (see "Pictures" for the frames
+before `G`). The
 image's top row moves with the number's as it slides in. The second
 display is still at y 10 on the last frame; it doesn't slide out.
 
@@ -162,6 +197,118 @@ display had started 93 frames before `H`, so it would have slid out
 shown" from `H` to `L`: collectibles taken during the knock-back flight
 (`knock-out.md`) start it and are counted as usual, and it is shown up
 to 59 frames after its latest step.
+
+## Pictures
+
+What the two displays' images and digits look like in `title-1`. The
+places and frames are those above; this section gives the pictures. The
+frame count `C` is the one of `collectibles.md` ("Counting the frames"):
+the frame's number plus one, counted from frame 0 of the level or of the
+restart, pauses not counted.
+
+### The count display's image
+
+The image at (16, 8) is the collectible's spinning picture: on frame `C`
+it is `spin-k` with
+
+    k = (⌊C / 4⌋ mod 8) + 1
+
+with `spin-1` to `spin-8`, their hashes and the fallback for the cycle
+as in `collectibles.md` ("Pictures"; `spin-6` to `spin-8` have no
+hash). It is drawn **as the picture is**, not mirrored left–right as
+the collectibles in the level are, with its 16 × 16 square's top-left
+at (16, 8) and its origin 8 px right and 9 px below that
+(`../formats/sprites.md`, "Where the picture is drawn"). The picture
+doesn't depend on when the display started: it keeps to `C`.
+
+### The digits
+
+Each digit 0 to 9 is one fixed picture, 8 px wide and 16 tall, drawn as
+two 8 × 8 halves one above the other: the top half at the y given for
+the number, the bottom half 8 px lower. A digit looks the same in the
+count display and in the lives display, at every place given above. The
+ten pictures are not full frames that `../formats/sprites.md` can
+decode, so they have no hashes: the engine shows its own digits, drawn
+at those places.
+
+### The lives image
+
+The image to the left of the lives number shows one of eight pictures,
+`lives-1` to `lives-8`, in a cycle of 14 steps of 3 frames each. Call
+**`D`** the frame on which the number is first drawn, at y −12
+(frame 8 of "When play starts", `S` + 8 of "Reaching 100", `A` and
+`G` + 11 of "Losing a life"). Step 1 starts on `D` + 7:
+
+| Step | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Picture | `lives-1` | `lives-2` | `lives-3` | `lives-2` | `lives-1` | `lives-4` | `lives-5` | `lives-6` | `lives-7` | `lives-8` | `lives-7` | `lives-6` | `lives-5` | `lives-4` |
+
+Step *s* is shown on frames `D` + 7 + 3(*s* − 1) to `D` + 9 + 3(*s* −
+1), and step 1 follows step 14 again, for as long as the display is shown.
+The three frames before step 1, `D` + 4 to `D` + 6, show the picture of
+step 14 (`lives-4`), except in the display "When play starts":
+
+- on a level's first frame and after a restart that followed a
+  knock-out, `D` + 4 to `D` + 6 show another picture, `lives-9`, and
+  step 1 starts on `D` + 7 as above;
+- after a restart that followed a fall-out, `D` + 4 to `D` + 6 show
+  `lives-4`, and `D` + 7 to `D` + 9 show another picture, `lives-10`,
+  instead of `lives-1`; step 2 starts on `D` + 10 as above.
+
+Before `D` + 4 the image is partly above the picture's top edge. Each
+picture is the whole image. They are not full frames of the frame table, so they have no hashes: the
+engine shows its own art for `lives-1` to `lives-10`, with the timing
+given here. The cycle runs the same in every lives display
+(after the count reached 100, a knock-out or a fall-out, and when play
+starts).
+
+At the end of a knock-out's or a fall-out's first display, the image
+shows three other pictures on `G` − 3 to `G` − 1, one on each frame, and
+the burst's pieces on `G` to `G` + 2 (three more pictures, one on each
+frame); these six are not covered. The image of the second display runs
+the cycle to the last frame.
+
+### Evidence for the pictures
+
+Measured on screen in the first level, with only the sprites drawn, by
+inputs alone: 128 runs, 315 606 frames. The runs were 8 recorded routes
+from the level's start, each played as recorded and 15 more times with
+Jump, Action and Down presses added at random and with a different
+start count and number of lives set for each; in half of them the game
+was paused now and then. 267 restarts and 616 frames in the area after
+the level's exit (left out) were among them. Frames on which the last
+frame before a pause or a stall was shown, and frames with another
+sprite over the image or the digits or part of them above the picture's
+top edge, were left out.
+
+- **The count image.** On 79 727 frames the image was the `spin-k`
+  the rule gives, drawn as the picture is (not mirrored), 0 other (12 119
+  frames with another sprite over it were left out).
+- **Digits.** On 167 385 frames of the count display and 126 175 frames
+  of the lives display each digit's two halves were found: for each of
+  the ten digits and each half, one picture on every frame, in both
+  displays and at every place, and the 20 pictures all different from each
+  other.
+- **The lives image, cycle.** 98 567 frames showed the picture the
+  table gives and 1 069 another (all in the 18 displays named below).
+  Of the 395 starts (128 levels and 267 restarts), 391 lasted to frame 17
+  or later (the other 4 restarts ended first): 335 showed `lives-9` on
+  `D` + 4 to `D` + 6 and 56 showed `lives-4` and `lives-10`, as given,
+  and 390 of the 391 followed the table on every frame compared.
+  Knock-outs and fall-outs (first and second displays): 603 of 609, and
+  10 more lives displays that none of those causes explain, all 10
+  following it. After the count reached 100: 12
+  of 19 (the eight routes share their first parts, so several of these
+  are the same place). In 11 displays one step lasted longer than 3
+  frames, once in a display (5 frames in 8 of them, 15 in 2, 16 in 1),
+  and the steps after it were shifted by the extra frames; what causes it
+  is not known. In 3 more, other pictures were seen on some frames with
+  something else drawn near the image. The 4 displays after a life
+  gained by letters or an item did not follow the table (not covered).
+- **The burst.** In 279 first displays of knock-outs and fall-outs the
+  image's last six frames, `G` − 3 to `G` + 2, were pictures not in
+  the cycle, one per frame (the display's other first displays were not
+  compared there: something else was drawn near the image).
 
 ## Example
 
@@ -231,5 +378,16 @@ frame 342; it isn't shown from frame 343.
   a lives display started while one is still shown (other than with
   extra-life items, `extra-lives.md`, "The count reaching 100"), and 10
   or more lives, other than in "Losing a life".
-- How the images and digits are drawn and animated.
+- The pictures of the digits and of the lives image have no hashes, so
+  what they look like is not covered (the engine draws its own); nor is
+  their colour, nor which of two overlapping images is in front (a taken
+  item's flying copy passes over the digits' place), nor the six burst
+  pictures (`G` − 3 to `G` + 2), `lives-9` and `lives-10` beyond their
+  frames, or why one step of the cycle sometimes lasts longer.
+- The lives display after the four letters or an extra-life item: its
+  image did not follow the cycle's table in the 4 displays seen.
+- A lives display that starts, or a knock-out or fall-out that comes,
+  while the display of "When play starts" is shown; that display for the
+  second character alone, after a game over, in other areas and in other
+  levels.
 - Other levels, and pausing.
