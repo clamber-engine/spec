@@ -17,8 +17,7 @@ The first level holds two signs, near its end, with different pictures
 (one shows an arrow, the other a word). The first level's scene
 (`exits.md`, "The scene") holds a third, with a picture of its own (a
 board with words on it). All three are of the one kind `sign`; the
-picture belongs to the reference, and how a sign is drawn is not
-covered. Measured with the first character leading and alone, using the
+picture belongs to the reference ("Pictures"). Measured with the first character leading and alone, using the
 level's own signs and, in a copy of the image, copies of each of the
 three placed near the level's start (see "Checks").
 
@@ -92,6 +91,41 @@ Placed in the first level, the same reference places a sign that does
 everything above: it appears and is removed at the same distances, and
 it changes nothing in play.
 
+## Pictures
+
+What a sign looks like in `title-1`. Each picture has a label used in
+this file and is named by its picture hash (`../formats/sprites.md`,
+"Picture hashes"); it is drawn at the sign's position as
+`../formats/sprites.md` says ("Where the picture is drawn"). A sign's
+picture is the same on every frame, is never mirrored, and doesn't
+depend on where the sign is or what is near it. Which picture a sign
+has depends on its entry's reference, not on its kind: the three signs
+of the first level and its scene have three different references and
+three different pictures.
+
+| Sign | Picture | Picture hash (SHA-256) |
+|---|---|---|
+| The first level's sign nearer the start (the arrow) | `sign-arrow` | `110f23c18c9c8cf82cec48cdd2ebca015fe391a76f7ce71b964e62a809813980` |
+| The first level's sign nearer the end (the word) | `sign-word` | `2a039daf6c8545e9ade6a6db934c638715c910108dce6a50331b3b50e2e4be9b` |
+| The scene's sign (the board with words) | `sign-scene` | `2e20c598fa6aa63334469cb9a49445140fb9799c69b6db55840c4a79b8c68d06` |
+
+**When a hash isn't found.** The importer looks for every hash in this
+table. If any isn't found, the engine shows its own art for signs,
+keeping the position and removal given above.
+
+Measured by the pictures on screen, with the first character walking
+right and a copy of the image with the entry of one reference on the
+floor at level x 800 (each of the three references, two walks each, six
+runs). The sign was wholly inside the screen and recognisable on 684
+frames per reference in the walk that kept it in view: every one showed
+the picture of the table, unmirrored, and no other. The frames on which
+the sign was partly outside the screen (26 per reference) were not
+compared. In the second walk (399 frames per reference with the sign in
+the window) it was partly outside the screen on every frame, so it
+added nothing.
+The signs in the level's own list were not read on screen; their
+references are the ones in the table.
+
 ## Checks
 
 Each check compared two copies of the image, the same but for one
@@ -142,5 +176,6 @@ until play stopped (a knock-out's fade ends a run).
   window.
 - Enemies other than small walkers, the thrower's balls, the animal and
   riding, and objects other than a thrown barrel meeting a sign.
-- How a sign is drawn, beyond what "What a sign does" says; signs in
-  other levels.
+- Signs in other levels, and the draw order of a sign and other
+  objects beyond what "What a sign does" says. The pictures were read
+  with the first character only.

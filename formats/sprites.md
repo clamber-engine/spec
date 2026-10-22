@@ -367,8 +367,9 @@ full frames with every byte hashed for one of them.
   image and the timing of the digits and the lives image in
   `../behavior/count-display.md` ("Pictures"), and the critters'
   in `../behavior/critter.md` ("Pictures"), the tyres' in
-  `../behavior/tyre.md` ("Pictures"), and the extra-life items' in
-  `../behavior/extra-lives.md` ("Pictures").
+  `../behavior/tyre.md` ("Pictures"), the extra-life items' in
+  `../behavior/extra-lives.md` ("Pictures"), and the signs' in
+  `../behavior/signs.md` ("Pictures").
 - The tile sets short frames use, and where they come from.
 - What the order adjustment does, and the order objects are drawn in
   (which object is in front of which), and how pictures are ordered
