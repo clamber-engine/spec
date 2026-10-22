@@ -420,7 +420,10 @@ character's carrying pictures, `pick-1` to `pick-7`, `carry-1` to
 `carry-10`, `carry-turn`, `throw-1` to `throw-19` and `hold-1` to
 `hold-3` ("Carrying"), fall back together on the frames of a pick-up,
 carrying, a throw and a put-down (G to Q + 42, or to Q + 12 for a
-put-down). So do the
+put-down). The first character's being-hurt pictures, `hurt-1` to
+`hurt-14` and `lie-1` to `lie-4` ("Being hurt"), fall back together on
+every frame from H to the last frame of the level, keeping the timing
+given there. So do the
 second character's, `s-pick-1` to `s-pick-5`, `s-hold`, `s-carry-1` to
 `s-carry-8` and `s-throw-1` to `s-throw-14`, on its frames G to Q + 39,
 or to Q + 9 for a put-down. A character
@@ -1343,6 +1346,61 @@ ends on 45 with v = 103, so moving goes on: `s-carry-8` on 45 to 47,
 `s-carry-1` on 48 to 50, `s-carry-2` on 51 to 53. Step 2 ends on 54 with
 v = 34: frame 54 is S and shows `s-hold`.
 
+## Being hurt
+
+The first character's pictures from the hit to the end of the level
+(`knock-out.md`), alone in the level, hurt by a walker. H is the hit
+frame, L1 and L2 the frames of the first and second landing of the flight
+and F the frame of the third landing, as in `knock-out.md`. The pictures
+are mirrored when the character faces left; facing doesn't change.
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `hurt-1` | `f9c765babbbeadf91ee7c01124b36732dd8e34ed359655f94103e4827ae1b005` |
+| `hurt-2` | `3ae60c86090c5c24af663cafb59d951fbbf2e24ddcbd2c72eb0ba6ceb8b426df` |
+| `hurt-3` | `654c7e700b6978d64e0f822680b1432e8003ad9d205ec444983ec3d4f1a10d46` |
+| `hurt-4` | `1c5aa20cafd2c2313f6c65017f531009b2e5effffee31752e7a3db100636023d` |
+| `hurt-5` | `b2e475276312ecd4b7f3e27065379800efda8ec60e107f75554085347d907029` |
+| `hurt-6` | `623adc7b31ef8427fae1581f7a7f510d94bbabf69089492c790d5f6925f95c26` |
+| `hurt-7` | `244349b60a9af4c471a3dff43073e0d0c8daf3d0049102b73c563f5c2d8c6f76` |
+| `hurt-8` | `50d55398b60ee70096325834335fbb9ea084cbd7f55e3bc3fe588d42acdc6b77` |
+| `hurt-9` | `ef9f40cca69e3c3c8ea219855450d17e0cf5ef087a357ac519b84c73fcfac389` |
+| `hurt-10` | `0cfadd58e7e41582af05237392289c9d15d0b37234351807f89d962b54bba135` |
+| `hurt-11` | `77fc7aa9409369dcb77b6a898edb08641bfc8e761900595605d1eb94b1bbf8d9` |
+| `hurt-12` | `5fede1d92e38b24c8d1ed0f29d24deb5c9d33cdd270abbd205363ce1ea5d15dd` |
+| `hurt-13` | `8b93d93a5896a716e02612c0bda55d234b31ce30a8bbea4c3f385e603d8ccfae` |
+| `hurt-14` | `f9e863914357fcc098884a4b1a6f0d88697173842c7640ebd341a1b9cfa20d38` |
+| `lie-1` | `a43fd6517bb09992476aacd904bb5c078686b1d0672ca5cf12d73107dbad9b05` |
+| `lie-2` | `b6d0fec95941e8035ee23749dc0f7773848c659d8dcd74ab2f0bdb227dfa95cb` |
+| `lie-3` | `bddc8e378bec7650c1b3c175203d2decd9d90a7c960eb1dcdecdb8677cbb86a9` |
+| `lie-4` | `36094f217f2f4349af7d5bd9db27b6d097a42c8a94b397c8735b0f0fe4cf557f` |
+
+The pictures by frame:
+
+| Frames | Picture |
+|---|---|
+| H to H + 9 | `hurt-1` |
+| H + 10 to H + 14 | `hurt-2` |
+| H + 15 to H + 19 | `hurt-3` |
+| H + 20 to H + 24 | `hurt-4` |
+| H + 25 to H + 29 | `hurt-5` |
+| H + 30 to L1 − 1 | `hurt-6` |
+| L1 to L1 + 3 | `hurt-7` |
+| L1 + 4 to L1 + 8 | `hurt-8` |
+| L1 + 9 to L2 − 1 | `hurt-9` |
+| L2 to F − 1 | `hurt-10` |
+| F to F + 27 | `hurt-11` |
+| F + 28 to F + 33 | `hurt-12` |
+| F + 34 to F + 39 | `hurt-13` |
+| F + 40 to F + 45 | `hurt-14` |
+| F + 46 on | `lie-1`, `lie-2`, `lie-3`, `lie-4`, `lie-3`, `lie-2`, each for 3 frames, repeating |
+
+The pictures don't depend on the input, on what the character was doing
+before the hit, or on the speed. They run on one clock from H up to L1,
+and from L1 on on the landings. F is L2 + 5 on flat floor. The last
+logic frame of the level is F + 153, and the picture of that frame is
+not on screen. The 32-frame pause between H + 7 and H + 8 shows `hurt-1`.
+
 ## Evidence
 
 Measured in `title-1` by watching the screen. On every logic frame of
@@ -1502,6 +1560,17 @@ steep face, picking something up):
   not found (flashing after a hurt). 14 runs ended on a mode difference
   next to the face, at the end of a turn, or in standing with a speed
   under 48 that was not 0 (listed in "Not covered").
+- **Being hurt, first character:** 160 runs of random input (Right
+  mostly, with short Jump, Action, Left or nothing segments) in the
+  first level, alone, until a walker hurt the character and then 240
+  more frames of random input; 97 runs had a hit, 92 of them a full
+  flight to the third landing (the other 5 ended before it and were
+  not used), 19 224 logic frames from H to F + 152 compared with the screen, 81
+  differences, all in two runs in which the match took the picture of
+  another figure walking beside the character. 411 frames, 390 of them
+  in H to H + 15, had the character hidden behind the walker and were
+  not compared. H + 30 to L1 − 1 lasted 5 to 17 frames and L1 + 9 to
+  L2 − 1 lasted 11 or 12; every hit was from a walker on flat floor.
 - **Walking, running and turning, second character:** 240 runs of
   random input on flat floor with the second character leading (Left,
   Right or nothing for 1 to 40 frames, half of the runs with Action
@@ -1776,6 +1845,10 @@ steep face, picking something up):
 - Why, on 11 frames of the second character's rolls, the previous
   picture was still on screen for one frame. The rules above
   give the usual frame.
+- The pictures of being hurt of the second character, with both
+  characters in the level, by anything but a walker, on a slope, a
+  face or in the air at the first landing, and when L1 comes before
+  H + 30 (no such flight was measured).
 - The first character's pictures when a bounce ends without a landing
   (catching a rope, being hurt, or a game pause in the air).
 - The first character's pictures on a roll started by a boost in the
