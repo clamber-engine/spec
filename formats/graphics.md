@@ -323,9 +323,70 @@ From the back:
 5. the far layer's raised tiles,
 6. the ground layer's raised tiles.
 
-Transparent pixels show what is behind them. Where characters and
-other moving things are drawn in this order is not covered. In the
-first level only the ground layer has raised tiles.
+Transparent pixels show what is behind them. In the first level only
+the ground layer has raised tiles. Where characters and other moving
+things are drawn in this order is given in "Moving things and raised
+tiles".
+
+## Moving things and raised tiles
+
+**Moving things** here are the two characters and the animal when
+ridden. (Objects and walkers are not covered: "Not covered".) Against the ground layer they
+are in one of two **orders**, and the order is a state of play, not a
+property of a tile or of a thing:
+
+- **In front** (ordinary play). Every pixel of a moving thing is drawn
+  over the ground layer, whether the tile under it is raised or not.
+- **Behind** (a walk-out, below). A pixel of a moving thing is drawn
+  over the ground layer's tiles that are not raised, as in front, but is
+  **hidden wherever a raised tile has a pixel that isn't transparent**.
+  On tiles that are not raised the thing shows as usual. The only
+  per-tile information an importer needs is the tile entry's raised bit
+  ("Tile entries"); the order is the same for the lead, the other
+  character and the animal.
+
+The order is in front except in these walk-outs, where it becomes behind
+at the picture of the frame given and stays behind until the area
+changes:
+
+- **At the end of a level** (`../behavior/level-end.md`): from the
+  picture of `T`, the first frame of the walk-out. The picture of `T` − 1
+  and every earlier one has the moving things in front. With the lead
+  alone, with both characters and with the lead riding the animal, from
+  that picture on every pixel of a moving thing that lies on a pixel of
+  a raised tile that isn't transparent is hidden, the animal and the
+  rider together, with one exception seen: in one run riding the animal,
+  one pixel stayed shown in each of 9 pictures, and why is not known
+  (the other runs had none). Pixels over transparent pixels of raised
+  tiles stay shown.
+- **Through an exit** (`../behavior/exits.md`): from the picture of
+  `T` + 1, where `T` is the frame the exit takes the lead over. The
+  picture of `T` itself still has the moving things in front (the lead
+  and the animal alike when ridden; the other character as well). The
+  rule holds for the exit on the floor near the first level's left end
+  and for the exits in the walls, on foot and ridden, for the pixels
+  over raised-tile pixels that aren't transparent. In these runs no
+  part of a moving thing lay over a transparent pixel of a raised tile,
+  so they show nothing about those pixels: whether the thing shows
+  through them in an exit is not covered.
+
+A moving thing that is not on a raised tile at that picture is not
+changed by it: it is hidden when it comes to one (the other character,
+following the lead's path, was hidden once it reached the raised tiles,
+later than the lead). At the level end, transparent pixels of raised
+tiles hide nothing, as in "Drawing order".
+
+In the exit on the floor near the first level's left end, the lead is
+not drawn at all from the picture of `T` + 19 on, in four runs; that is
+a matter of the walk-out, not of this order. The order changes the
+pixels of the picture only, never positions, events or timing.
+
+For an engine: draw the ground layer's raised tiles over the moving
+things from the picture given until the area changes, and the moving
+things over the ground layer's other tiles throughout. An engine that
+hides a moving thing completely, or hides one kind (the lead but not the
+animal) or all of them one picture early or late, differs from the
+original on the pixels of that picture.
 
 ## Screen pictures
 
@@ -602,6 +663,39 @@ More cases, as bytes, are in `../vectors/graphics/`.
   300), the ground layer matched with the moved view and the front
   layer as before, each with no pixel different, and the far layer
   matched at none of the offsets tried.
+- Moving things against the ground layer's raised tiles, in the first
+  level, by pictures with only the ground layer, only the moving things
+  and both shown (setup method: research tools). Ordinary play: 500
+  frames of walking right from the level's start and 330 frames of
+  waiting and then walking left with jumps, near the floor exit. Of the
+  moving-thing pixels on a raised tile with a pixel that isn't
+  transparent, every one was shown (about 6 600 and 32 650 pixels), and
+  none on a tile that isn't raised was ever hidden, in any run below.
+  Whether a raised tile's pixel is transparent was taken from the tile
+  data (colour number 0), counting a pixel only when it and its eight
+  neighbours agree, because the scroll the pictures were made with is
+  known only at the end of each frame; pixels where they disagree are
+  left out of the counts. Level end, 4 runs from before the marker (the
+  lead alone from two places, both characters, the lead riding the
+  animal), 58 to 61 pictures from the switch in each. Pixels of moving
+  things on a pixel of a raised tile that isn't transparent: hidden from
+  the picture of `T` on in all but 9 (28 651, 46 969, 63 818 and 28 966
+  pixels hidden; the 9 are one pixel in each of 9 pictures of the riding
+  run, always at the same place on screen, shown, and not explained),
+  and all shown before it (400, 53, 2 841 and 80 pixels). Pixels of
+  moving things on a transparent pixel of a raised tile: none was ever
+  hidden, 18, 58, 248 and 31 were shown from the picture of `T` on (and
+  0, 53, 331 and 57 before it); about 3 100 more pixels from the picture
+  of `T` on and 1 000 before it, near the edges of the tiles' shapes,
+  were left out. Exits, 4 runs: the floor exit with
+  the lead alone and with both characters, and the wall exit on foot and
+  ridden, 37 to 47 pictures from the switch: no pixel on a pixel of a
+  raised tile that isn't transparent was shown on the picture of `T` + 1
+  or after, all earlier ones were shown (6 673, 57, 2 677 and 12 071
+  pixels before; 9 129, 14 691, 2 321 and 6 611 hidden). In these runs
+  no moving-thing pixel was on a transparent pixel of a raised tile in
+  any picture, so the exits say nothing about transparent pixels. In
+  each, the last pictures are those just before the area changed.
 
 ## Not covered
 
@@ -620,8 +714,17 @@ More cases, as bytes, are in `../vectors/graphics/`.
   whether the backdrop's frame-to-frame alternation keeps the same
   order after a knock-out or another area.
 - The layer that shows counters and other information.
-- Characters, walkers, objects and other moving things (their tiles,
-  palette rows and order against the layers).
+- Characters, walkers, objects and other moving things: their tiles
+  and palette rows. The order of the characters and the animal against
+  the layers is given for the ground layer's raised tiles; against the far layer, the horizon layer
+  and the backdrop it is not covered.
+- The order of objects and walkers against the raised tiles, in either
+  order; the pixels over transparent pixels of raised tiles in an exit; the order of the characters and the animal against the raised
+  tiles in areas other than the first level's own ground, and in its
+  room and its scene (as the room and the scene sections say); the order
+  in the walk-in at an area's start; other exits than those named in
+  "Moving things and raised tiles"; riding through an exit leading left
+  on the floor.
 - Fades, and the pictures of areas other than the first level, its
   room and its scene.
 - Whether other areas with a screen picture have tile sets of other
