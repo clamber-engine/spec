@@ -1268,10 +1268,10 @@ replaced from S + 3 by the teetering list below, when the player faces
 that end.
 
 Standing on flat floor next to a steep face, within 32 px of its foot,
-with the direction towards it held or not, shows the same list: no
-pushing or other picture was seen (see "Walking, running and turning").
-The one exception is the frame before a walker's hit, on which the
-player is hidden behind the walker.
+with Right held or not (the face was on the right in every run), shows
+the same list: no pushing or other picture was seen (see "Walking,
+running and turning"). The one exception is the last standing frame
+before a hurt, on which the player is not on screen.
 
 Two runs of pictures are used in the list. The **sway** (186 frames):
 
@@ -2220,8 +2220,9 @@ steep face, picking something up):
   507 while walking, 150 while running, 101 in turns. Without the
   blocked rule all 85 runs that reached the face stopped agreeing at the
   face (the model started or restarted walking where the character
-  stood). Standing frames (35 894) followed "Standing still", 2 frames
-  not found (flashing after a hurt). 14 runs ended on a mode difference
+  stood). Standing frames (32 974) followed "Standing still", 2 frames
+  not found (the last standing frame before a hurt, with no picture of
+  the player on screen). 14 runs ended on a mode difference
   next to the face, at the end of a turn, or in standing with a speed
   under 48 that was not 0 (listed in "Not covered").
 - **Walking, running and turning against a wall, second character:**
@@ -2242,16 +2243,23 @@ steep face, picking something up):
   held and walking started on the frame the rules gave as still in the
   turn (listed in "Not covered").
 - **Standing next to a steep face, both characters:** the runs of the
-  two "Walking, running and turning against a wall" entries above, kept
-  within 32 px of the face's foot, in which the lead also stood between
-  walking, running and turning, with Right held against the face or
-  not. The standing frames of each stretch of standing (S included)
-  were compared with the screen against "Standing still": first
-  character 417 stretches, 35 894 frames; second character 554
-  stretches, 51 159 frames. 2 and 4 frames differed, each the last frame
-  before a walker's hit, with no picture of the player on screen. Taps
-  of Right while standing against the face ended standing (31 and 30
-  times) or didn't (22 and 35), as on open floor.
+  two "Walking, running and turning against a wall" entries above, with
+  the face on the right, on the floor within 32 px of its foot (all the
+  floor those runs used). Only the runs and frames those entries
+  compared were used: from each run's first standing frame to its end, a
+  hurt, or the first mode difference, so the 12 runs of the second
+  character that left the floor are out. The standing frames of each
+  stretch of standing, from S on, were compared with the screen against
+  "Standing still": first character 85 runs, 367 stretches, 33 065
+  frames; second character 88 runs, 437 stretches, 41 944 frames. The
+  counts differ a little from the standing frames named in those
+  entries because that count starts at the first standing frame of a run
+  while this one starts at the first S, which skips a stretch already
+  running at the start of the run. 2 frames differed for the first
+  character and none for the second. Those 2 were each the last
+  standing frame before a hurt, with no picture of the player on screen. Taps of Right while standing against the face ended
+  standing 28 and 28 times and didn't 22 and 30 times; taps of Left
+  ended standing 2 and 1 times.
 - **Being hurt, first character:** 160 runs of random input (Right
   mostly, with short Jump, Action, Left or nothing segments) in the
   first level, alone, until a walker hurt the character and then 240
