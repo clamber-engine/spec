@@ -437,8 +437,12 @@ aren't counted), so its cycle is 40 counted frames. The other character
 shows `map-other-1` to `map-other-8` in turn, then `map-other-1` again,
 each on 4 counted frames, so its cycle is 32. Both cycles go on all the
 time: they don't depend on whether the character stands or walks, on
-the walk's speed or direction, or on the character's position. The two
-characters change their pictures on the same frames.
+the walk's speed or direction, or on the character's position. While
+both characters are on the lead's page and the lead hasn't changed page
+since the map appeared, the two change their pictures on the same
+frames. After the lead's page change, one run showed the other character
+changing one frame later than the lead for the rest of the run, and what
+decides that is not known ("Not covered").
 
 **Facing.** A character is drawn mirrored left–right (as
 `../formats/sprites.md` says, "Mirroring") exactly when it faces left. It
@@ -446,8 +450,11 @@ faces left from the first frame on which its `x` is less than on the
 frame before, and right from the first frame on which it is more; frames
 on which `x` doesn't change leave the facing as it was, and a page
 change (where `x` jumps from 255 to 0 or back) isn't a change of `x`.
-A new game starts with the lead facing right, and the lead that walked
-on by itself after a finish stood facing the way it had walked.
+In the runs, a new game's map showed the lead facing right until its
+first move to the left, and the map after the first level's first finish
+showed the lead, after it had walked on by itself, facing left (the
+direction it had walked). The facing at the start of other maps, and
+after a finish whose walk goes right, was not seen.
 
 **Page changes.** On the pictures for frames `P` − 1 and `P`, for the
 lag frame that follows `P` and for `P` + 1, where `P` is a frame on which
@@ -475,22 +482,31 @@ mirrored.
 ### Measurements
 
 Measured on screen in the first level's map (sprites only, as for the
-player, `player-frames.md`), by inputs alone (with the lead's stop and
-the open paths set up where a walk needed them): five runs of 400 to
+player, `player-frames.md`). Each run started from a saved emulator state
+on the map (at a new game, or shortly before the first level's end, from
+which the finish and the lead's walk on were played by inputs) and went
+on by inputs alone. Some runs needed more than that, and for those the
+position of the lead and which paths were open were written into the
+running emulator's memory before the inputs began, not reached by play:
+the walks that needed paths not yet open (down to the second stop, with
+one and with both characters), and the runs that put the lead beside a
+page edge (the walk onto the next page, with one and with both
+characters). No modified copy of the game was used. Five runs of 400 to
 700 frames, a walk down to the second stop, the same walk with both
 characters, a walk back up to the first stop, and a walk onto the next
 page, with one and with both characters. The lead's picture was
 looked for on every frame (2 500 pictures, 2 of them lag frames): 2 490
 were the one given here, 8 were not found (the four page-change
-pictures in each of the two runs that crossed a page), and on 2 another
+pictures in each of the two runs that crossed a page, with nothing on
+screen at the lead's position), and on 2 another
 picture of a much larger kind fitted the screen as well. The other
 character's picture was looked for on 1 200 pictures: 1 073 were as
 given, 126 were not found and 1 was one of the large pictures again. Of
 the 126, 86 were frames on which the two characters were less than 17
 px apart horizontally and 10 px vertically, so the lead covered part of
 the other's picture; the other 40 were frames on which the other was on
-the page before the lead's (nothing was found at its position within
-the lead's page). Facing agreed with the rule on every found picture
+the page before the lead's (nothing was on screen at its position
+within the lead's page). Facing agreed with the rule on every found picture
 (3 563). Every picture of the lead
 lasted 4 counted frames after the first, and so did the other
 character's, with one exception: once, after the lead's page change, the
@@ -501,7 +517,16 @@ kept that offset to the end of the run (over 400 frames).
 
 - Progress other than at a new game and after the first level's first
   finish (`../formats/level-map.md`, "Progress").
-- The second character on the map (where it walks, and where it is when the map appears), the pictures when the second character leads, which picture the cycles start with when the map appears, and what moves the other character's cycle against the lead's at a page change, and the other character's picture while it is on another page than the lead.
+- The second character on the map: where it walks, and where it is
+  when the map appears.
+- The pictures when the second character leads.
+- Which picture the cycles start with when the map appears.
+- What moves the other character's cycle against the lead's at a page
+  change.
+- The other character's picture while it is on another page than the
+  lead's.
+- The facing at the start of other maps, and after a finish whose walk
+  goes right.
 - What follows a press at a place, at the start point, and at link
   points other than the first level's; the time from an entering press
   to the level's first frame.
