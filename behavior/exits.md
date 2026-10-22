@@ -273,12 +273,18 @@ and in the level, play simply goes on.
   had at the end of frame 28, to the end of the scene. Nothing held or
   pressed has any effect. The other character, if there is one, stays
   where it was on frame 27.
-- **Fade-out.** The brightness is 15 on frame 366 and goes down by 1
-  every second frame: frames 365 + 2`j` and 366 + 2`j` have brightness
-  15 − `j`. It is 0 on frames 395 and 396.
-- **Frame 396** is the scene's last frame, whatever was pressed. On the
-  next logic frame, play is back in the first level (frame 0 of
-  "Walking in", walking right from the scene-return record).
+- **Fade-out.** With the first character leading, the brightness is 15
+  on frame 366 and goes down by 1 every second frame: frames 365 + 2`j`
+  and 366 + 2`j` have brightness 15 − `j`. It is 0 on frames 395 and 396.
+  With the second character leading the scene is 30 frames shorter: the
+  brightness is 15 on frame 336, frames 335 + 2`j` and 336 + 2`j` have
+  brightness 15 − `j`, and it is 0 on frames 365 and 366.
+- **The last frame** is frame 396 with the first character leading and
+  frame 366 with the second leading, whatever was pressed. On the next
+  logic frame, play is back in the first level (frame 0 of "Walking
+  in", walking right from the scene-return record). Which character
+  leads is the one in front when the exit takes over; Swap
+  (`swap.md`) pressed during the walk-out is not tried.
 
 The scene's data is in `../formats/graphics.md`,
 `../formats/level-ground.md`, `../formats/placements.md` and
@@ -286,8 +292,109 @@ The scene's data is in `../formats/graphics.md`,
 record in `../formats/level-start.md` ("the scene's start record"), and
 its view in `level-ends.md` ("In the first level's scene"). Of the
 scene's placed objects, one is the room's end marker and one a sign
-(`signs.md`, "The scene's sign"); what the third is, and the pictures
-the characters show in the scene, are not covered.
+(`signs.md`, "The scene's sign"); what the third is is not covered.
+
+### Pictures in the scene
+
+The picture given for a frame is the one on screen with that frame's
+view (`player-frames.md`, "The pictures"), mirrored left–right because
+the characters face left. The pictures are named by their hash
+(`../formats/sprites.md`, "Picture hashes"). Names of the walking and
+standing pictures are those of `player-frames.md`; the pictures the
+leading character shows while it waits in the scene are new:
+
+| First character | Picture hash (SHA-256) |
+|---|---|
+| `scene-1` | `09ef39b8c01b7fe26d276f168402f4167cc9d38db2d473e35004ecf729206e6c` |
+| `scene-2` | `61324a3c3597f2c033b2f41be8ea4322e7334de361bf3156ed6c9d194d2a6714` |
+| `scene-3` | `9de7aa4fc0df89ca063f4b8ae1744d1b70c6be7098c34cba0dfa30ce781d7bf5` |
+| `scene-4` | `c3200e506b8cd41f10ef020a17cf1d9730046ef5f467c674f48234401311c875` |
+| `scene-5` | `c8aff6b3a5ec7727eddf266e3685f5fc79720ed8cf2ec0aaf36e7af9564b7be5` |
+| `scene-6` | `75b72d7f6857b7a546a5fa3168a1b676edc56713608520fc1f67bfe3c1eadc36` |
+| `scene-7` | `3001aefe4304aec30aa3c3603518be0012b7a1593c8131afe7c19548d83b18ad` |
+| `scene-8` | `251acf233ea18fc5c5be4e9c5b3bb0ce2693f40727b9cd037fe23a7411f17bc0` |
+| `scene-9` | `d617e9e7a23f21e47565568e4c910058aae349a7b3ce26910c4dad8cd016fbd8` |
+| `scene-10` | `77ea4b322124a10d212498db7bb0febe00147c417185aea1f08a84987d77cc72` |
+| `scene-11` | `dc5beb6737e0662f8c885247509935d4a5423981cc3eb61c5c4868453d4d3446` |
+| `scene-12` | `29ca7a808f7f46d3d4948256b1a1916cb0ddcd068faf2f42776425e0561edee5` |
+| `scene-13` | `c1b35d450fcfa8afa40be8f43cbc7af596ad0a5ba690a878bc92f5c1caed1285` |
+
+| Second character | Picture hash (SHA-256) |
+|---|---|
+| `s-scene-1` | `49bc050262c27962098bf9f20a8e202d9adb7feaec6a727376436fb61499ef5f` |
+| `s-scene-2` | `d30f00b2a403413af0c3fb335d6b5c19681bd45ea6cd8f38dc0d485ba23860b8` |
+| `s-scene-3` | `6aaaa3f1e08fb1d76affa2007adea12f62c65ec5e578cd6361995e0c7adc226b` |
+| `s-scene-4` | `69023e0cb6ce49e511e5ef182e76773501b4a6ac7f372729f020c9c5e1e01669` |
+| `s-scene-5` | `c617366fc1f4edc54c9f8d780d592c1fd0baa3ef2e1752da2e510b530385c166` |
+| `s-scene-6` | `a85a2454996ff759e0cade447e51188e4bdfa1cedc1a6509731ccc5d1c0311ff` |
+| `s-scene-7` | `80dde04726f742dbb9b0d2fe68af598590372318ad9723abe8c8236eaf100466` |
+| `s-scene-8` | `412e31d60ca329b3697518bb820c1ecda7227379eff1381950f9acc13439fcd1` |
+| `s-scene-9` | `039e43f1462c8f6827ecd3bead24f77108aca4392bfc0bae18029d8e597dde9c` |
+| `s-scene-10` | `14e89b4001c978a96b639dab2e2563e3dddff5edeac844384d79d6a7a2e26088` |
+| `s-scene-11` | `63d05cb4952fa76e26af9aad7b42aa113d3b7a1901d2571d209272a9cfb70d8c` |
+| `s-scene-12` | `47b02752138552e3245077ce6eac48505eb9870a07185229f2cb50681611ce1a` |
+| `s-scene-13` | `f109257406a02a93facd69a051b008850e7dec4d9570df16293ae14dc7f4121c` |
+| `s-scene-14` | `2877ae035ca8163ee1164c7d9043006b92bcc8d1aaef9e1a06ab2c207155a562` |
+| `s-scene-15` | `f2593b8d3a52ffb872bba3115c96825774aa6851fd6ab1964a46ef567ad793eb` |
+| `s-scene-16` | `825a3174a15be4d6c0fef323e5ce6467b1d3bcc93eff410dce76dfb7b9673edf` |
+| `s-scene-17` | `9a47bb5fc16f3417efcb07ff10560bf8929b48794dfc5b5554d47e8b04d9fe63` |
+
+**When a hash isn't found.** The pictures `scene-1` to `scene-13` fall
+back together, and so do `s-scene-1` to `s-scene-17`: if any hash of a
+group isn't found, the engine shows its own art for the leading
+character of that kind on frames 28 to the scene's last, keeping the
+timing given here. The leading character's walking pictures (`run-1`
+to `run-20`, `s-run-1` to `s-run-13`) and the standing pictures of the
+other character follow the fallbacks of `player-frames.md`.
+
+Frames 0 to 2 are black (brightness 0, "Walking in", "Fade-in") and no
+picture is on screen. On the last two frames of each scene the
+brightness is 0 as well and no picture is on screen. Nothing held or
+pressed changes any picture.
+
+**The first character leading** (frames 0 to 396):
+
+- Frames 3 to 27: `run-2` on frame 3, `run-3` on frame 4, then `run-4`
+  to `run-18` in turn, each for 2 frames and 1 frame alternately,
+  starting with `run-4` on frames 5 and 6, `run-5` on frame 7,
+  `run-6` on frames 8 and 9, and so on up to `run-18` on frames 26 and
+  27.
+- Frames 28 to 99: `scene-1` × 7, `scene-2` × 6, `scene-3` × 6,
+  `scene-4` × 21, `scene-5` × 14, `scene-6` × 9, `scene-7` × 9.
+- From frame 100 to frame 394 a list of 62 frames repeats, starting on
+  frames 100, 162, 224, 286 and 348: `scene-8`, `scene-9`, `scene-10`,
+  `scene-11`, `scene-10`, `scene-9`, `scene-8`, each for 6 frames, then
+  `scene-12` × 6, `scene-13` × 8, `scene-12` × 6. The list is cut off
+  where the scene ends: frame 394 is its 47th frame, and frames 395 and
+  396 show nothing.
+
+**The second character leading** (frames 0 to 366):
+
+- Frames 3 to 27: `s-run-2` on frame 3, then in turn, for 2 frames
+  except where noted: `s-run-3` (frames 4 and 5), `s-run-4` (6 and 7),
+  `s-run-5` (1 frame, 8), `s-run-6` (9, 10), `s-run-7`, `s-run-8`,
+  `s-run-9` (1 frame, 15), `s-run-10`, `s-run-11`, `s-run-12`,
+  `s-run-13` (22 and 23), `s-run-1` (1 frame, 24), `s-run-2` (25 and
+  26), `s-run-3` (1 frame, 27).
+- Frames 28 to 129: `s-scene-1` × 4, `s-scene-2` × 19, `s-scene-3` to
+  `s-scene-10` × 3 each, `s-scene-11` × 26, `s-scene-12` × 3,
+  `s-scene-13` × 4, `s-scene-14` × 22.
+- From frame 130, nine rounds `k` = 0 to 8 of 27 − `k` frames each
+  follow: `s-scene-15` × 3, `s-scene-16` × 3, `s-scene-17` × 5,
+  `s-scene-16` × 2, `s-scene-15` × 5, `s-scene-14` × (9 − `k`). Round 0
+  starts on frame 130 and round 8 on frame 318. Then, from frame 337,
+  `s-scene-15` × 3, `s-scene-16` × 3 and `s-scene-17` on frames 343 to
+  362. Frames 365 and 366 show nothing; frames 363 and 364 are dark
+  and were not read.
+
+**The other character** (`following.md`) was read on screen where the
+leading character didn't cover it. The second character behind the
+first: `s-run-1` on frame 27, `s-stand-1` on every frame from 28 to
+394. The first character behind the second: `run-16` to `run-20`,
+then `run-1` to `run-9` on frames 15 to 28, one picture per frame;
+`stand-1` on every frame from 32 to 364. Neither shows the swaying or
+waiting pictures of `player-frames.md`, "Standing still", in the
+scene.
 
 ## Coming back to the level
 
@@ -523,9 +630,32 @@ Walking left (`d` = −1) from an other character at 500, the points are
   no new Action press): `vx` and `x` were as given by `ground-speed.md`
   from `vx` = 3`d` in all of them. In all 400 scenes the lead stood
   still from frame 29, the fade-out was as above, frame 396 was the
-  last, and play went on in the level after it. In some runs the lead
+  last, and play went on in the level after it (the first character
+  leading in all of them). In some runs the lead
   walked back into the floor exit afterwards and went through the scene
   again.
+
+- **The scene's pictures.** 12 runs of the scene, from the frame after
+  the area changed to the scene's last, each read on screen, frame by
+  frame, with the sprite layer alone (the picture of a frame on the next
+  video frame): the first character leading alone (3 runs, one with
+  nothing held and two with random pad inputs), the first leading with
+  the second behind it (3 runs, the lead read in two of them and the
+  follower in one), the second leading with the first behind it (6
+  runs: the second read with nothing held and with three random pad
+  inputs, the first read with nothing held and with one random pad
+  input). 4 505 frames were compared with the lists in "Pictures in the
+  scene" and none differed; no frame was left unmatched but the ones
+  named below. Not compared: the first character behind the second on
+  frames 0 to 14 and 29 to 31, the second behind the first on frames 0
+  to 26 (the figure was beyond the screen's right edge or partly covered
+  by the lead, and what the screen matched there was another picture),
+  and the second character leading on frames 5, 7, 363 and 364. The
+  scene's length by who leads was measured in 4 more runs from the idle
+  state with both characters after the level's entrance: with the
+  first leading (no Swap press, and two presses) the fade began on
+  frame 366, with the second leading (one press, and three) on frame
+  336, each press followed by 80 frames with nothing held before Left was held.
 - **The area behind the first wall exit.** 800 runs through the
   first wall exit into its area, the lead alone, 500 of them with random
   inputs biased to the right from frame 1 and 300 from frame 28: every
@@ -843,7 +973,13 @@ Walking left (`d` = −1) from an other character at 500, the points are
   area is entered (walking in, and which way, or as a level begins) is
   given above only for the first level's areas.
 - The kind of the scene's class 2 entry that isn't the end marker, and
-  the pictures the characters show in the scene ("The scene"). The room's
+  why the scene is 30 frames shorter with the second character leading
+  (whether it is the character or the pictures it shows that decide
+  it, and the scene with the second character alone). The pictures the
+  characters show in the scene on the frames named as not compared in
+  "Checks", the other character's pictures there while it is covered
+  by the lead, and the pictures with something carried, with an animal
+  or after a Swap pressed during the walk-out. The room's
   data is in `../formats/graphics.md`, `../formats/level-ground.md`,
   `../formats/placements.md` and `../formats/level-start.md` ("The
   first level's room" or "the room's start record"), and its view in
