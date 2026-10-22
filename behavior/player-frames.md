@@ -2578,8 +2578,19 @@ steep face, picking something up):
   frames compared, 0 differences). One-frame presses while
   teetering: `U` 4, the top face button 7, a shoulder 13
   kept the list going; a direction started a walk or a turn 9 times,
-  Down a crouch 8, Jump a jump 8 and the roll button a roll 5. Stopping
-  from a run was not tried.
+  Down a crouch 8, Jump a jump 8 and the roll button a roll 5.
+  Stopping from a run: 100 further runs on the same platform, the player
+  put 0 to 6 px from one end, jumping on the spot with the roll button
+  held, then walking toward the other end with the roll button held 8 to
+  45 frames until it was running, then standing 80 frames. Of the 140
+  stretches of standing that began with the player on the floor and
+  lasted to S + 3, 52 followed a run's stop and 87 a landing. The 34
+  that began in the 12 outermost columns of the end the player faced (9
+  after a run's stop) showed `stand-1` on S to S + 2 and the teetering
+  list on all of their 835 frames; the other 106 showed no teetering
+  picture. The rule, with the position taken to the sub-pixel as above,
+  sorted every stretch correctly (0 disagreements), so the limit is the
+  same as after a walk.
 - **Teetering, first character, ledges with a steep face:** two ledge
   tops of the first level, one with a 15 px steep face and a drop below
   it, one with a 64 px steep face down to a lower floor. The player was
