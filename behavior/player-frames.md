@@ -1441,6 +1441,14 @@ way (decided once, facing away from the nearer end, the same inputs),
 and it held after the same five ways of standing: a walk's stop, a
 turn's end, a roll's stop, a landing and a crouch's end.
 
+At the end of a ledge top with a steep face (`steep-faces.md`) the second
+character followed the same two cases as the first character (see the
+rules above): with the face of four columns and a drop below it, it
+teetered standing up to 7 columns before the face's first column (the 12
+outermost columns counted from the face's last column), and not 8 or more
+columns before it; with the 64 px face leading to a lower floor it did not
+teeter on the ledge top. The pictures were those of this section.
+
 ## Crouching
 
 ### First character
@@ -2556,6 +2564,19 @@ steep face, picking something up):
   those runs shows a stretch that speaks against the rule. The pictures
   agreed with the lists throughout (0 differences; one-frame presses
   were not tried).
+- **Teetering, second character, ledges with a steep face:** the same
+  two ledge tops, set up and counted as for the first character (the
+  player 1 to 30 px, then 1 to 16 px, before the face; stretches of 5
+  frames or more after a walk's stop, decided on S + 4). On the ledge
+  with the 15 px face (260 runs, 64 counted on the ledge top): the 56
+  within 0 to 7 columns before the face's first column showed `s-stand-1`
+  on S to S + 3 and the teetering list on all their other frames (2 665
+  frames, no differences); the 8 at 8 to 15 columns before it showed the
+  standing list's actions and none teetered. On the ledge with the 64 px
+  face (160 runs): 37 stretches began on the ledge top (0 to 16 columns
+  before the face; 1 759 frames) and none teetered; 65 more began on
+  the lower floor and are not claimed. The pictures of the standing
+  list on the stretches that did not teeter were not checked here.
 - **Teetering, second character:** the same platform, the second
   character leading, 863 runs with the same kinds of starts as for the
   first character (walks toward the end, turns back, rolls started with
@@ -2931,7 +2952,7 @@ steep face, picking something up):
   whether the face's height or the drop after it decides, which the two
   do not separate), at an
   end with a wall or at a face on the left-hand side, on a slope, the
-  second character at any face, and after a
+  second character at faces other than those two, and after a
   bounce, a fall from a steep face, riding or carrying; after stopping
   from a run (only walks, turns, rolls, landings and crouches were seen
   to end in a stand there); after the player has stepped past the end
