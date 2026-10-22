@@ -666,6 +666,8 @@ the next page, wasn't measured with the two apart ("Not covered").
 **When a hash isn't found.** The eighteen hashes belong together: if
 any of them isn't found, the engine shows its own art for the characters
 on the map, on the same frames and with the same timing as given here.
+The colours the pictures are drawn with are the level map's palette
+(`../formats/sprites.md`, "Sprite palettes").
 
 ### Example
 
