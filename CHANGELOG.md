@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.240.0
+
+The first character's standing pictures at a ledge and on a 1-in-4
+slope (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: "Standing still" now says the standing
+  list is the same on a 1-in-4 slope (going up, going down, or at its flat
+  bottom) and on a platform's last columns of floor after being placed
+  or after a short walk, with no picture for standing near an edge.
+  Teetering after a roll's stop stays in "A roll". New on-screen evidence
+  for the ledge and slope runs. "Not covered" now lists the second
+  character's cases, other slopes, steep faces and walls.
+
 ## spec-v0.239.0
 
 What the count display and the lives display are drawn with, and the
