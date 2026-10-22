@@ -7,7 +7,8 @@ player catches it by jumping into it. Holding it, the player climbs up
 and down, turns from one side of it to the other, jumps off it, or
 slides off its lower end. This file covers the rope's own
 motion, catching, everything the player does while holding a rope, and
-the jump or fall that follows, up to landing or the next catch.
+the jump or fall that follows, up to landing or the next catch. The
+player's pictures on a rope are in `player-frames.md`, "On a rope".
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x` grows to
 the right; `y` and `vy` are as in a trace (down is positive). Positions
@@ -334,4 +335,3 @@ original after 57 real catches.
 - A jump off on the same frame as sliding off the end.
 - Ropes whose end is low enough for the player to reach the ground while
   holding them.
-- The player's pictures on a rope.

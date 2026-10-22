@@ -215,6 +215,18 @@ The colours each character's pictures are drawn with are in
 | `act-28` | `ba9bea1f5047f21798f2c20573962be944187dc47e76679fd1f888acdaa7bb9a` |
 | `act-29` | `d08a157ead1ed7b6ed59b59a93001246efe85cf626b0a0ddff3ecac23833e081` |
 | `act-30` | `2b14322db8bf117b41203b9aa9e7b6aaf2da0efab979a510740d0fa723a96c40` |
+| `rope-hang-1` | `e457b7014286f0d3f1c31d240636cf54a53ff1e6d42e1a2c9f453da9f09d4616` |
+| `rope-hang-2` | `33992e6fdb8a542f7240a0a4bac26204723c4b2a7193c813d98ecb38bcca1f13` |
+| `rope-hang-3` | `23b55e719fde7d9b1e20d28165455d16b6335d523622e2e510f000d4c3b8ae0a` |
+| `rope-hang-4` | `64fbcdc96f2654a1e2761e765f9150ec2253f861bde8d1f59ee81844c99ff6c0` |
+| `rope-turn-1` | `d5717ff11b38aa1ed7eef6fb4cc3eb15b13b7f67ce6a924f62ade0145c78135a` |
+| `rope-turn-2` | `b955311812452b4847963507e303711464dc15ef697208f629c46bf08efdd7ed` |
+| `rope-climb-1` | `d5aff97c81fdb87aeb09a946b7a4cd7b16c929427599ec278fdeca71040f79eb` |
+| `rope-climb-2` | `248f0bf0e34abd243ba5033fb20842f9d40fa1259fb3ad678a90ff0ece05d5df` |
+| `rope-climb-3` | `4b91728e6a111955aa0c85aeccc7bf4236dfb900b0394aff495839850d9e3a1f` |
+| `rope-climb-4` | `852e32b33b3fbd4545d1f2f2c3ba52bff717ed4e1ca27dd71e0ae81809d794ed` |
+| `rope-climb-5` | `4b029f2b1dd49e52c9e98e2af7db63af41e602416fa4b877976a92e8cd7dfdfe` |
+| `rope-climb-6` | `fd60685a4f8e2e9cc5fe66699b137f67ac963bc41e4440f1ffaf271702d5a730` |
 | `pick-1` | `cd27f80530f4cb2a5f226bdaac29c57c6a3c74d5112484665c45313938034e1a` |
 | `pick-2` | `d8daa68b6eafc09b0ad90b121b7d3bb059d99a01e48f129ccfd438ae77b97c9e` |
 | `pick-3` | `715efe520a06bdd4adbdc72993c53f73fb98c46df7d80829d9b69e4404c944c2` |
@@ -446,7 +458,10 @@ its bounce frames. Its pictures in "A fall from a steep face" are
 `crouch-1` to `crouch-22` ("Crouching"), fall back together on its
 crouch and getting-up frames, D to U + 8. The first character's ground action pictures, `act-1` to
 `act-30` ("The ground action"), fall back together on the action's
-frames, P to E − 1. So do the second character's,
+frames, P to E − 1. The first character's rope pictures, `rope-hang-1` to
+`rope-hang-4`, `rope-turn-1`, `rope-turn-2` and `rope-climb-1` to
+`rope-climb-6` ("On a rope"), fall back together on every frame the
+player holds a rope. So do the second character's,
 `s-crouch-1` to `s-crouch-13`, on its frames D to U + 11. The first
 character's carrying pictures, `pick-1` to `pick-7`, `carry-1` to
 `carry-10`, `carry-turn`, `throw-1` to `throw-19` and `hold-1` to
@@ -1280,6 +1295,110 @@ Example: standing, Down and Action pressed on frame 20 and nothing held
 from frame 21. `act-1` on 20, `act-2` on 21 and 22, `act-3` on 23 and
 24, …, `act-30` on 77 and 78; 79 = E shows `stand-1`.
 
+## On a rope
+
+### First character
+
+On every frame that ends with the player holding a rope (`ropes.md`,
+"In a trace": the catch frame and every frame of "Holding a rope"),
+the picture is one of three kinds, whichever way the player faces:
+
+- **Turning** (`ropes.md`, "Turning"; a turn starts on T, its frames are
+  T to T + 7): `rope-turn-1` on T and T + 1, `rope-turn-2` on T + 2 to
+  T + 5, `rope-turn-1` on T + 6 and T + 7. A turn that starts on the
+  catch frame shows these from the catch frame; one that starts on a
+  later frame shows `rope-hang-1` on the catch frame. A turn is shown
+  whatever the player does meanwhile (climbing, nothing, or jumping off
+  on one of its frames).
+- **Hanging:** `rope-hang-1`, `rope-hang-2`, `rope-hang-3`,
+  `rope-hang-4`, `rope-hang-3`, `rope-hang-2`, then `rope-hang-1` again
+  and so on, **9 frames each**. It starts on the catch frame when no
+  turn starts there (the picture is `rope-hang-1` whatever is held on
+  the catch frame), on T + 8 when a turn has ended and neither climbing
+  direction is held on T + 8 (see below), and on the frame a climb ends
+  (see below). It goes on while no climbing direction is held and no
+  turn is on; the player's climbing speed on those frames doesn't
+  matter (a player still moving after Up is released hangs).
+- **Climbing:** `rope-climb-1`, `rope-climb-2`, `rope-climb-3`,
+  `rope-climb-4`, `rope-climb-5`, `rope-climb-6`, `rope-climb-5`,
+  `rope-climb-4`, `rope-climb-3`, `rope-climb-2`, then `rope-climb-1`
+  again (a **cycle** of 10 pictures). It starts on the first frame, not
+  a turn frame, on which a **climbing direction** is held: Down; or Up
+  (Up, or Jump without Left or Right: `ropes.md`, "Holding a rope",
+  step 4), but Up counts only on a frame where step 6 of that list, the
+  top of the view, does not move the player down. Down wins over Up. It
+  starts with `rope-climb-1` on that frame, from hanging (including
+  T + 8 after a turn). The catch frame itself never starts a climb: it
+  shows `rope-hang-1` (or a turn). So a player held down by the top of
+  the view, with Up held, hangs.
+
+A picture of the climbing cycle lasts as long as a **climb counter**
+says. The counter is 512 on the first frame of a climb. On each later
+frame of the climb it goes down by the **climb rate**, with `u` the
+climbing speed of the frame (the magnitude of `vy` in the trace row, in
+1/256 px per frame):
+
+| Moving | Climb rate |
+|---|---|
+| up (`vy` < 0) | ⌊`u`/2⌋ + ⌊`u`/4⌋, but at least 112 |
+| down, or not moving (`vy` ≥ 0) | ⌊`u`/4⌋ + ⌊`u`/8⌋, but at least 112 |
+
+If the result is 0 or less, the picture ends on that frame: 512 is added
+to the counter and the next picture of the cycle is shown from that
+frame. So a picture lasts about 5 frames at a very low speed and 2 at
+the top speeds. A turn stops the cycle: the counter and the cycle start
+again after it (T + 8), as on the first frame of a climb.
+
+The frame on which the last picture of the cycle (the second
+`rope-climb-2`) ends is the cycle's **check** (the counter has run out
+on it, as above):
+
+- with neither climbing direction held on that frame, the player hangs
+  from it: `rope-hang-1` on the frame;
+- with a climbing direction held, the cycle starts again with
+  `rope-climb-1` on the frame, the counter carrying on; but if the
+  direction held is the other one from the one that started the cycle
+  (Up against Down), the counter is 512 instead. The direction that
+  started the cycle is the one held on the frame that started it.
+
+Between checks the held direction changes nothing in the pictures: after
+Up is released, or Down is pressed, the cycle goes on until its check.
+
+Example: a catch on frame C, no turn, nothing held on C, Up held on C + 1
+to C + 45 and nothing after. `rope-hang-1` on C; `rope-climb-1` on C + 1
+to C + 5, `rope-climb-2` on C + 6 to C + 8, `rope-climb-3` on C + 9 and
+C + 10, `rope-climb-4` on C + 11 and C + 12, `rope-climb-5` on C + 13 and
+C + 14, `rope-climb-6` on C + 15 and C + 16, `rope-climb-5` on C + 17 and
+C + 18, `rope-climb-4` on C + 19 and C + 20, `rope-climb-3` on C + 21 and
+C + 22, `rope-climb-2` on C + 23 and C + 24, and `rope-climb-1` again on
+C + 25 (Up is held at the check), … The counter on C + 1 to C + 6 is 512,
+400, 288, 170, 31 and 386 (the speeds, 48, 90, 126, 158, 186 and 210,
+are those of `ropes.md`, "Holding a rope"; the rates 112, 112, 112, 118,
+139 and 157).
+
+#### After the rope
+
+The pictures on the frames after the player has left a rope use the
+jump's `air-3` to `air-6`, `land-1` and `land-2` (the names of "A jump
+and its landing"), in this order:
+
+- **Jumping off** (`ropes.md`, "Jumping off"; the jump starts on P, a
+  frame that doesn't end holding a rope): `land-1` on P, `air-6` on P + 1
+  and P + 2, `air-5` on P + 3 and P + 4, `air-4` on P + 5 and P + 6, then
+  `air-3` on every frame with `vy` ≤ 0 (rising or at the top; `vy` as in
+  the trace row of the frame). From the first frame with `vy` > 0
+  (frame m = 0): `air-4` on m = 0, `air-5` on m = 1 to 3, `air-6` from
+  m = 4 until the landing (the landing's own pictures are not covered).
+  A jump that ends before P + 7 isn't measured.
+- **Sliding off the end** (the fall of `ropes.md`, "After a rope"
+  starting on frame F, the frame after the let-go frame): `land-2` on F,
+  then 2 frames each of `land-1`, `air-6`, `air-5`, `air-4`, `air-3`,
+  `air-4` and `air-5` (F + 1 to F + 14). Later frames and the landing
+  aren't covered.
+
+If the player catches a rope again in the air, the catch frame shows
+`rope-hang-1` (or the turn's picture, if a turn starts on it).
+
 ## Carrying
 
 ### First character
@@ -2057,6 +2176,23 @@ steep face, picking something up):
   in 3 and `turn-a` in 4 (against the facing); their later frames are
   not covered.
 
+- **On a rope, first character:** 1 080 runs of up to 400 logic frames on
+  the second level's two ropes (starting on a rope, or on the ground near
+  one and jumping into it), with random Up, Down, Left, Right, Jump and
+  Action input; 121 305 frames were logged, 28 734 of them holding a rope
+  (9 126 turning, 12 778 climbing and 6 830 hanging, from 253 catches
+  and 285 starts of a climb from hanging; frames of a run's first stretch,
+  where the state was loaded in the middle of a hang or a climb, are
+  left out). All of them showed the picture above. The climbing cycle came
+  to its check 232 times: 68 times with no direction held (hanging from it),
+  104 times with the same direction held (the counter carrying on) and 60 times with the other
+  direction held (the counter 512). With Up held while the top of the
+  view held the player down, the player was hanging on 84 frames that
+  followed a hanging or turning frame (no climb started), and 3 checks
+  ended in hanging. After the rope: 717 jumps off (26 005
+  air frames showed the list) and 315 slides off the end (2 240 frames
+  showed the list; the longest fall measured shows the list up to F + 14).
+
 ## Not covered
 
 - The first character landing before the approach frame (L < A,
@@ -2095,6 +2231,11 @@ steep face, picking something up):
   character, at a ledge, on a slope, next to a face or a wall, on a
   landing's frames or after a roll, with a knock-out on t = 17, and
   the pictures after E when the character was moving on E (beyond E).
+- The rope pictures of the second character and of the follower, the
+  pictures on a rope with a knock-out, a hurt or a game pause, on ropes
+  of other levels and on a rope whose end is low enough to reach the
+  ground, the landing pictures after a jump off or a slide off a rope,
+  a slide-off fall beyond F + 14, and a jump off that ends before P + 7.
 - Why, on 5 frames after bounces, the previous picture was still on
   screen for one frame. The rules above give the usual frame.
 - Why, on 4 frames in random play, a walking or running picture came
