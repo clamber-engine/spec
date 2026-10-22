@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.257.0
+
+Where the second character stands when the level map appears after a
+finished level (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/level-map.md`: new paragraph "When the map appears after a
+  level". After a finished level the other character stands 16 px to the
+  left of the lead at the same height, with both fractions 0, as at a new
+  game, whichever character led. Measured after the first level with
+  either character leading and at 18 other stops across the whole map.
+  Where it stands after a level was left in other ways is not covered.
+
 ## spec-v0.256.0
 
 Where the second character stands and walks on the level map (spec#38,
