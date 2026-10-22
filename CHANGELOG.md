@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.254.0
+
+The second character's walking and running pictures when the mode starts
+after a landing (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: running that starts on L shows `s-run-1`
+  on L, and walking or running that starts on L + 17 shows `s-walk-1` or
+  `s-run-1` there, with the mode's first frame as the first frame of the
+  cycle. New evidence entry from 189 landings compared on screen.
+
 ## spec-v0.253.0
 
 The first character's walking and running pictures when the mode starts
