@@ -443,6 +443,12 @@ and fractions, but:
   start) in steps of 1/256 px per frame, as for the lead; its fraction
   carries on from leg to leg and walk to walk like the lead's.
 
+**Legs with little sideways change.** In the first level's map every leg
+measured changed the lead's `x`, including the legs between places that
+look straight above each other on the map: those moved it 16 to 24 px
+sideways, and the other followed the rule above on them. No leg that
+changes only the height was seen.
+
 After its last leg ends the other stands at that spot until the lead
 walks again. In the runs, each of the other's legs ended before the next
 one began. Its end depends only on the lead's leg, whose end is fixed
@@ -477,9 +483,10 @@ before.
 ### Measurements
 
 Measured in the first level's map with both characters, from the new
-game's map state and by inputs alone; which paths were open was written
-into the running emulator's memory before the inputs began, not reached
-by play (as for the pictures). Every position is that of the character's
+game's map state and by inputs alone (runs A–D; run E below is set up
+differently); which paths were open was written into the running
+emulator's memory before the inputs began, not reached by play (as for
+the pictures). Every position is that of the character's
 sprite on screen, in whole pixels, on every counted frame. Four runs,
 each with the same first two legs (the first walk down from the start
 point):
@@ -509,6 +516,20 @@ Results:
   its right, and moved faster than the rule gives (1 px per frame
   instead of 0.625 in one run, 1.375 instead of 1 in the other). The
   cause isn't known ("Not covered").
+- Run E: four legs, walked in both directions on the two pairs of
+  places with the smallest sideways change (the lead's `x` changed by
+  16 px on three of the legs and 24 px on one). The other's `x` and
+  height matched the rule on every frame of each leg, 0 mismatches over
+  64 frames per leg. Three legs started with the lead and the other
+  placed on the map as at a new game, the other 16 px to the lead's
+  left (by writing the running game's state, as for the open paths); the
+  fourth was walked after finishing the first level, where the map
+  appears with the same 16 px gap. The other's end across depends only
+  on the lead's leg, and its speed across followed the rule from the
+  16 px start in every case, so the starting gap made no difference to
+  the rule. One of the pairs was also walked there and back after
+  finishing the level (the fourth leg and a repeat of another), 0
+  mismatches.
 
 ## Pictures
 
