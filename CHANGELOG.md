@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.252.0
+
+The level map's pictures of the lead and the other character (spec#38,
+pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/level-map.md`: new "Pictures" section: the lead's and the
+  other character's pictures on the map, named by picture hash, where
+  they are drawn, their cycles in counted frames, when the two change
+  together, facing from changes of `x`, the pictures at page changes,
+  and a fallback to the engine's own art. On-screen evidence from five
+  runs in the first level's map; the facing at other maps' starts and
+  the other character's offset after a page change are in "Not
+  covered".
+
 ## spec-v0.251.0
 
 The scene's pictures for each leading character, and its length with
