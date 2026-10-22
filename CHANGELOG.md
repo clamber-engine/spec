@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.238.0
+
+What the animal crate, the flash and smoke when it breaks, and the
+waiting and mounting animal show (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/animal-crate.md`: new "Pictures". 36 new picture hashes for
+  the crate, the smoke, the animal waiting and the animal mounting, plus
+  the flash pictures of `thrown-objects.md`. Timing is in counted frames
+  from the break: the animal's 717-frame waiting sequence, and mounting
+  from M + 2 to M + 21. Includes a fallback for each group, on-screen
+  evidence (including which parts of the waiting sequence were seen),
+  and "Not covered" items.
+- `formats/sprites.md`: "Not covered" points to the new section.
+
 ## spec-v0.237.0
 
 What the second character shows when hurt, from the hit to the end of
