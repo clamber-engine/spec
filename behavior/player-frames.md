@@ -738,6 +738,21 @@ frame P, which shows `jump-1` ("A roll"), and
 A, n, M and K are found as for any other jump, so the air pictures, the
 landing pictures and the standing pictures from K follow the same rules.
 
+The same holds for the first character's jumps out of a crouch or its
+getting-up frames (`jump-input.md`, "Crouching"). The press frame P, with
+Jump pressed on any frame from D + 1 on, whether during the crouch
+(going down or held), on any of U to U + 8, or on U + 9, shows `jump-1`
+in place of the picture the crouch or the getting up would show; the
+frames before P keep the lists of "Crouching" (the last picture shown
+before P is the crouch's or getting up's own, whatever the speed and the
+direction held). T = P + 1, and the air, landing and standing pictures
+follow the rules below with A, n, M and K found as for any other jump
+(Down held on P, a direction, Action or none make no difference to the
+pictures). When Action is pressed on P with Jump and Down is held on P + 1
+(`jump-input.md`, "Crouching"), no jump follows: P shows `jump-1` as
+before, and the crouch that starts on P + 1 shows its own list from
+`crouch-1` on its D = P + 1.
+
 **In the air:**
 
 - T − 1: `jump-1`. T and T + 1: `jump-2`. Then `rise-1`, `rise-2`, …,
@@ -1294,7 +1309,8 @@ pictures are:
 A crouch started on U to U + 9 of an earlier one (Down held again,
 `ground-speed.md`) shows its own list from `crouch-1` on its D, wherever
 the getting up had got to. The facing doesn't change during the crouch
-or the getting up.
+or the getting up. A jump pressed on any of these frames ends the
+list: the press frame shows `jump-1`, as in "A jump and its landing".
 
 The same pictures are shown at the end of a platform and on a 1-in-4
 slope (up or down, and where it meets flat floor): the list above
@@ -2366,6 +2382,26 @@ steep face, picking something up):
   Second character: 156 crouches; 10 815 frames from D to U + 11: 1 403
   going down, 7 998 held, 1 414 getting up, 0 differences; Right held on
   4 180 and Left on 1 773.
+- **Jumps out of a crouch, first character:** 120 runs of up to 1 500
+  frames with the first character on flat floor away from ledges
+  (a stand, a walk or a run, then Down held 0 to 40 frames alone or with
+  a direction, Down released 0 to 12 frames, then Jump pressed 1 to 3
+  frames or held 4 to 40, alone or with Down, a direction or Action,
+  then 40 to 110 frames with nothing, a direction or Down). 1 926 jumps
+  took off: 1 122 pressed on a crouch frame (573 on D + 13 or later,
+  549 on D + 1 to D + 12), 260 on U + 1 to U + 9 (each of the nine at
+  least 20 times) and 544 on other frames (325 standing, 219 moving or
+  turning). Every press frame showed `jump-1`. The crouch and
+  getting-up frames before P matched "Crouching" (43 127 frames from D to
+  U + 8 in the logs, 15 588 going down, 25 691 held, 1 848 getting up, 0
+  differences). Air: 1 925 of 1 926 jumps matched the air pictures
+  for some A; on the other, one frame (T + 16) showed a picture
+  unrelated to the jump while the character's frame was the usual one
+  (not explained). Landing: 1 475 of the 1 925 had a landing not cut
+  by a new press, a crouch or a roll, and all 1 475 matched (1 302 with
+  M = L + 1 and K = L + 7, 106 with M = L and K = L + 9, 67 with M = L and
+  K = L + 10). 24 presses of Jump with Action, each followed by Down on
+  P + 1, did not take off: `jump-1` on P and the crouch's list from P + 1.
 - **Crouching, second character:** 120 runs with the second character
   leading on flat floor away from ledges, with the same kinds of input
   as for the first character. 1 281 crouches, started standing still
@@ -2562,9 +2598,11 @@ steep face, picking something up):
 - Either character's crouching pictures next to a face at the left end
   of the floor, on slopes other than 1-in-4 or
   on a face itself (as opposed to next to it), and in a crouch that
-  starts on a landing's frames or after a roll. Also the pictures of a
-  jump from a crouch or from its getting-up frames, and of the ground
-  action (Down + Action) started from them.
+  starts on a landing's frames or after a roll. Also the pictures of
+  the ground action (Down + Action) started from them, and of the
+  second character's jumps out of a crouch or its getting-up frames.
+  The one frame in "Evidence" (jumps out of a crouch) that showed a
+  picture unrelated to the jump is not explained.
 - The ground action's pictures (`act-1` to `act-30`) of the second
   character, at a ledge, on a slope, next to a face or a wall, on a
   landing's frames or after a roll, with a knock-out on t = 17, and
