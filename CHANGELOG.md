@@ -2,6 +2,18 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.275.0
+
+Teetering after a run's stop, both characters (spec#61, spec#38).
+
+Part of clamber-engine/spec#61 and clamber-engine/spec#38, which stay
+open for the parts not covered yet.
+
+- `behavior/player-frames.md`, teetering evidence: the 12-column rule
+  also holds when the player stops from a run, for the first character
+  and the second. New counted Evidence for each character, replacing
+  "Stopping from a run was not tried"; every run is accounted for.
+
 ## spec-v0.274.0
 
 The level map's other character after a leftward walk over a page edge,
