@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.234.0
+
+What the first character does and shows when walking, running or
+standing against a steep face (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/ground-speed.md`: new "Blocked" mode rule. A frame that ends
+  with speed 0 while the facing direction is held counts as holding no
+  direction, so standing doesn't start walking and a step that reaches a
+  turn check stands. Turning away works as usual.
+- `behavior/player-frames.md`: pictures against a wall or steep face
+  (stride pictures up to the next turn check, then standing pictures, no
+  pushing picture), on-screen evidence, and updated "Not covered" (the
+  second character, walls that aren't steep faces, slopes, and the runs
+  that ended on a mode difference).
+
 ## spec-v0.233.0
 
 How the letters and their sparkles are drawn in `title-1` (spec#38,
