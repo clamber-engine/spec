@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.243.0
+
+The stinger's pictures (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/stinger.md`: new "Pictures" section: four pictures named by
+  picture hash, always drawn mirrored left-right, in a 14-frame cycle
+  counted from the frame the stinger appeared, held while the player is
+  knocked out and started again when the stinger comes back, with a
+  fallback for missing hashes. On-screen evidence from 60 runs.
+
 ## spec-v0.242.0
 
 The second character's pictures when walking, running or turning into a
