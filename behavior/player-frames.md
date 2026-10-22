@@ -1339,15 +1339,17 @@ rules, as seen:
   drifting for a while).
 - Facing away from the nearer end, the standing list is shown whatever
   the position.
-- A steep face (`steep-faces.md`) at the end of the floor counts as
-  floor when a drop follows it: for a face of four columns (15 px
-  down, 4 px per column) at the end of a ledge, with a drop below its
-  last column, the 12 outermost columns were the last 12 columns of
-  face and floor, so the player teetered standing on the ledge top up
-  to 7 columns before the face's first column. Where a steep face (64
-  px down) led on to a lower floor with no drop, the player standing
-  on the ledge top, 0 to 9 columns before the face, did not teeter.
-  Both are first-character measurements.
+- Steep faces (`steep-faces.md`) at the end of a ledge, first
+  character, two cases measured. A face of four columns (15 px down
+  over the four, about 4 px per column) with a drop below its last
+  column: the 12 outermost columns were the last 12 columns of face
+  and floor, so the player teetered standing on the ledge top up to 7
+  columns before the face's first column. A face of 64 px down (4 px
+  per column) leading on to a lower floor with no drop: the player
+  standing on the ledge top, 0 to 9 columns before the face, did not
+  teeter. The two ledges differ in the face's height as well as in
+  whether a drop follows, so which difference matters is not known
+  (see Not covered).
 - It held after each of these ways of standing, the only ones seen to
   start a new S there: a walk's stop, a turn's end, a roll's stop, a
   landing after a jump and a crouch's end (the S of each is given in
@@ -2496,20 +2498,31 @@ steep face, picking something up):
 - **Teetering, first character, ledges with a steep face:** two ledge
   tops of the first level, one with a 15 px steep face and a drop below
   it, one with a 64 px steep face down to a lower floor. The player was
-  put 1 to 30 px before the face (research-only position write while
-  standing), walked toward it for 1 to 20 frames and stood 60 to 100
-  frames (80 runs on each, then 250 on each with the distance 1 to
-  16 px). Of the stretches of standing that began on the ledge top
-  after a walk's stop, on the ledge with the 15 px face 42 were within
-  the 12 outermost columns counted from the face's last column (0 to 7
-  columns before the face's first column): all showed `stand-1` on S to
-  S + 2 and the teetering list on all of their 2 227 frames. The
-  nearest one that did not teeter was 8 columns before the face's first
-  column. On the ledge with the 64 px face 39 stretches began 0 to 9
-  columns before the face's first column and none teetered. The
-  294 stretches of those runs that did not teeter (on the ledge tops
-  and the lower floors) showed the standing list on all of their
-  11 912 frames (0 differences; one-frame presses were not tried).
+  put 1 to 30 px before the face by a setup method, walked toward it
+  for 1 to 20 frames and stood 60 to 100 frames (80 runs on each, then
+  250 on each with the distance 1 to 16 px). Stretches of standing of 5
+  frames or more that began after a walk's stop were counted. On the
+  ledge with the 15 px face, 61 began on the ledge top before the face:
+  the 42 within the 12 outermost columns counted from the face's last
+  column (0 to 7 columns before the face's first column) showed
+  `stand-1` on S to S + 2 and the teetering list on all of their other
+  2 101 frames (2 227 frames in all); the 19 further away (8 to 20
+  columns before the face) showed the standing list on all of their
+  1 472 frames. The nearest one that did not teeter was 8 columns
+  before the face's first column. On the ledge with the 64 px face 47
+  stretches began on the ledge top (0 to 18 columns before the face;
+  39 of them 0 to 9) and 166 on the lower floor after it, and none
+  teetered: the standing list on all of their 10 070 frames. In the
+  other runs no stretch was counted. On the ledge with the 15 px face
+  (330 runs, 61 counted) in 265 the walk took the player down the face
+  or off the ledge before it stopped and in 4 the stand lasted under 5
+  frames. On the ledge with the 64 px face (330 runs, 213 counted) in
+  62 the walk took the player down the face before it stopped, in 50
+  the player was on the face's first columns and still walking when
+  the run ended, and in 5 the stand lasted under 5 frames. None of
+  those runs shows a stretch that speaks against the rule. The pictures
+  agreed with the lists throughout (0 differences; one-frame presses
+  were not tried).
 - **Teetering, second character:** the same platform, the second
   character leading, 863 runs with the same kinds of starts as for the
   first character (walks toward the end, turns back, rolls started with
@@ -2881,7 +2894,9 @@ steep face, picking something up):
   over a face at speed is not covered here either.
 - Teetering of either character at floor ends other than the two of the
   one platform tested (a drop to a lower floor on one side, a pit on the
-  other) and ledges with a steep face other than the two above, at an
+  other) and ledges with a steep face other than the two above (and
+  whether the face's height or the drop after it decides, which the two
+  do not separate), at an
   end with a wall or at a face on the left-hand side, on a slope, the
   second character at any face, and after a
   bounce, a fall from a steep face, riding or carrying; after stopping
