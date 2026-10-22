@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.262.0
+
+The first character's pictures in a fall from a steep face and its
+landing (spec#61).
+
+Part of clamber-engine/spec#61, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`, "A fall from a steep face": new "First
+  character" subsection. `air-0` from F to G − 1, a table of `air-1` to
+  `air-6` and `land-1` to `land-3` on the landing frames G to G + 10,
+  and the mode that starts on G + 11 (or a roll, jump or crouch that
+  starts earlier) with its own pictures. These pictures fall back with
+  "A jump and its landing". In "Standing still", S is G + 11 after a
+  fall from a steep face, and the first standing frame after walking
+  off a ledge without one. New Evidence entry; standing onto the face,
+  landings on a face, next to a wall or leaving the floor again, and the
+  crouch-with-Action case are under Not covered.
+
 ## spec-v0.261.0
 
 The first character's crouching pictures at a ledge and on a slope
