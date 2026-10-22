@@ -1359,6 +1359,15 @@ way down it from 1 px below its top to the flat bottom, and at the
 bottom; a crouch on the way up the slope or on the flat floor after it
 is not covered.
 
+Next to a steep face (`steep-faces.md`) on flat floor the crouch shows
+the same pictures for either character: Down held with the character
+standing against the face, with its direction toward the face held or not,
+and a crouch begun after walking or running into the face, give the same
+lists as on open floor ("Crouching, second character" has the second
+character's). There is no pushing or other face picture while crouching.
+Only a face at the right end of the floor was measured; a face at the
+left end is not covered.
+
 Example: standing, Down held on frames 20 to 519. `s-crouch-1` on 20,
 `s-crouch-2` on 21 and 22, …, `s-crouch-5` on 27 and 28, `s-crouch-6`
 on 29 to 43, the sway on 44 to 128, `s-crouch-6` on 129 to 270, the
@@ -2343,6 +2352,20 @@ steep face, picking something up):
   slope, 999 on the way down, 26 at the bottom; 3 693 going down, 26 590
   held, 3 587 getting up), 0 differences; 2 305 of them were within the
   first 51 frames of a run, which were compared too and did not differ.
+- **Crouching next to a steep face:** 30 runs with the first character
+  and 30 with the second leading, on the flat floor of the standing
+  evidence next to a face at its right end, each up to 500 frames: a
+  stand and a walk right to within 32 px of the face, then Down held 1
+  to 60 frames (alone, with Right or with Left, or tapped), a direction
+  alone, or nothing, 1 to 40 frames each, Left never held while farther
+  than 32 px from the face. First character: 160 crouches (started
+  standing still, walking, running, turning, or in the getting-up
+  frames of an earlier crouch); 10 260 frames from D to U + 8
+  compared with "Crouching": 2 076 going down, 7 071 held, 1 113 getting
+  up, 0 differences; Right held on 4 273 of them and Left on 1 458.
+  Second character: 156 crouches; 10 815 frames from D to U + 11: 1 403
+  going down, 7 998 held, 1 414 getting up, 0 differences; Right held on
+  4 180 and Left on 1 773.
 - **Crouching, second character:** 120 runs with the second character
   leading on flat floor away from ledges, with the same kinds of input
   as for the first character. 1 281 crouches, started standing still
@@ -2536,10 +2559,12 @@ steep face, picking something up):
 - The crouching pictures of the second character on the way up the
   slope and on the flat floor after it (no crouch started there), and
   the 11 frames named in its ledge evidence.
-- Either character's crouching pictures on slopes other than 1-in-4 or
-  on a steep face, and in a crouch that starts on a landing's frames or
-  after a roll. Also the
-  pictures of a jump from a crouch or from its getting-up frames.
+- Either character's crouching pictures next to a face at the left end
+  of the floor, on slopes other than 1-in-4 or
+  on a face itself (as opposed to next to it), and in a crouch that
+  starts on a landing's frames or after a roll. Also the pictures of a
+  jump from a crouch or from its getting-up frames, and of the ground
+  action (Down + Action) started from them.
 - The ground action's pictures (`act-1` to `act-30`) of the second
   character, at a ledge, on a slope, next to a face or a wall, on a
   landing's frames or after a roll, with a knock-out on t = 17, and
