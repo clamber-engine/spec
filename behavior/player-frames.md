@@ -420,7 +420,10 @@ character's carrying pictures, `pick-1` to `pick-7`, `carry-1` to
 `carry-10`, `carry-turn`, `throw-1` to `throw-19` and `hold-1` to
 `hold-3` ("Carrying"), fall back together on the frames of a pick-up,
 carrying, a throw and a put-down (G to Q + 42, or to Q + 12 for a
-put-down). So do the
+put-down). The first character's being-hurt pictures, `hurt-1` to
+`hurt-14` and `lie-1` to `lie-4` ("Being hurt"), fall back together on
+every frame from H to the last frame of the level, keeping the timing
+given there. So do the
 second character's, `s-pick-1` to `s-pick-5`, `s-hold`, `s-carry-1` to
 `s-carry-8` and `s-throw-1` to `s-throw-14`, on its frames G to Q + 39,
 or to Q + 9 for a put-down. A character
