@@ -1822,11 +1822,13 @@ steep face, picking something up):
   character leading, put at a random column of it, walking toward
   either end a few frames or not at all, then standing 700 frames: 55
   stretches of standing, 25 280 frames compared with the loop, 13
-  differences, all on frames of 4 runs where the other character stood
-  within 30 px of the player and the picture on screen was not the
-  loop's but another one, for 1 to 5 frames in a row (the other
-  character stood that close on 97 863 frames, of which 35 differed in
-  this way). 80 runs on the 1-in-4 slopes, walking or running 1 to 60
+  differences, all in 4 runs, on frames where the picture on screen was
+  not the loop's but another one, for 1 to 5 frames in a row. The
+  other character stood within 30 px of the player on 25 272 of the
+  25 280 compared frames (including all 13 that differed), so this
+  does not tell the cases apart, and no cause was found. 11 of the 55
+  stretches stood within 17 px of the platform's right end, 3 of them
+  at its last column, and 6 within 16 px of its left end. 80 runs on the 1-in-4 slopes, walking or running 1 to 60
   frames either way and then standing 700 frames: 67 stretches of
   standing, 39 566 frames, 4 differences, each a single frame of a
   different run, with the player on level floor about 50 to 60 px beyond the
