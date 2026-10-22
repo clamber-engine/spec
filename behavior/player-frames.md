@@ -423,7 +423,8 @@ carrying, a throw and a put-down (G to Q + 42, or to Q + 12 for a
 put-down). The first character's being-hurt pictures, `hurt-1` to
 `hurt-14` and `lie-1` to `lie-4` ("Being hurt"), fall back together on
 every frame from H to the last frame of the level, keeping the timing
-given there. So do the
+given there. So do the second character's, `s-hurt-1` to `s-hurt-14`
+and `s-lie-1` to `s-lie-3` ("Being hurt", "Second character"). So do the
 second character's, `s-pick-1` to `s-pick-5`, `s-hold`, `s-carry-1` to
 `s-carry-8` and `s-throw-1` to `s-throw-14`, on its frames G to Q + 39,
 or to Q + 9 for a put-down. A character
@@ -1348,6 +1349,8 @@ v = 34: frame 54 is S and shows `s-hold`.
 
 ## Being hurt
 
+### First character
+
 The first character's pictures from the hit to the end of the level
 (`knock-out.md`), alone in the level, hurt by a walker. H is the hit
 frame, L1 and L2 the frames of the first and second landing of the flight
@@ -1400,6 +1403,74 @@ before the hit, or on the speed. They run on one clock from H up to L1,
 and from L1 on on the landings. F is L2 + 5 on flat floor. The last
 logic frame of the level is F + 153, and the picture of that frame is
 not on screen. The 32-frame pause between H + 7 and H + 8 shows `hurt-1`.
+
+### Second character
+
+The second character's pictures from the hit to the end of the level,
+alone in the level (the first character was lost earlier), hurt by a
+walker. H, L1, L2 and F are as above, with the second character's
+frame counts (`knock-out.md`, "The second character"): the 32-frame
+pause comes between H + 10 and H + 11, F is L2 + 5 on flat floor and the
+last logic frame of the level is F + 101. Mirrored when facing left.
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `s-hurt-1` | `02768e5122d8334ce66a9336f489e63f7a1b7f17fd55e3a34a35838b75979fba` |
+| `s-hurt-2` | `f98af65913f01832d72b1e6605a376ebbcf061e4e0c19ed31ac26e1e16dfe81b` |
+| `s-hurt-3` | `149edf52239dc253865760f3589cc66622e2f2de92830a0875baf15b5a9f8f21` |
+| `s-hurt-4` | `1a36049f91fe73a48a9061a51887be39c2d86b26df30193466cc22a8b0d77958` |
+| `s-hurt-5` | `b57966f119a06fcd5ebdb15f93291a443ac6134f15faec91f55f599c4d0cae4c` |
+| `s-hurt-6` | `7c8947659c11aeec64ef7cc034bc2cfaab6cdb4bce532c15678edd68e857ff97` |
+| `s-hurt-7` | `a878b4cb6d4088d77f101078d618f8666998f60b0ac56a6e2ff528a14f1d4187` |
+| `s-hurt-8` | `5e68049d22f8722f8cbb52a3bc1f0977b10316d0d2f36750ef9b41ddf3c84a63` |
+| `s-hurt-9` | `d26b52afb6a80c736cb4dd94f58286cd8886a43264e97e8e169217085d57240f` |
+| `s-hurt-10` | `4dcf9fc1a61567982945ca4b8a9bd3510513e058703e39c6a161b18611de54d4` |
+| `s-hurt-11` | `03fa0c32d6e3199b313226284ae1049e96fea60468372fa5cb2189bd6013e3e3` |
+| `s-hurt-12` | `3c000f013be921c729690ef9a9bc238b69f5d64ec170c9f3f905b0a2c1fb7118` |
+| `s-hurt-13` | `23620782d47a66ff45f65784d7366bbeb4d805a518bdf47b9387b60e9f47fe88` |
+| `s-hurt-14` | `87b42ceafd2a9302c6618b003273cd4997f754c211d22580d3e29c5f1cc21c5f` |
+| `s-lie-1` | `bd832dd5ccbcea92f8ae7406ae56156adfb8342ffbdfea21cbdcb526519d0ee8` |
+| `s-lie-2` | `c4b01efbfd6dce4dcde953441d1c053c1eae4b97a25a97cac9244caaf5741eac` |
+| `s-lie-3` | `60c1c19928c11ffa024bba5871026bb5581dcb5169fdd058fbce68fc36850bfa` |
+
+The pictures by frame:
+
+| Frames | Picture |
+|---|---|
+| H to H + 12 | `s-hurt-1` |
+| H + 13 to H + 17 | `s-hurt-2` |
+| H + 18 to H + 22 | `s-hurt-3` |
+| H + 23 to H + 27 | `s-hurt-4` |
+| H + 28 to H + 32 | `s-hurt-5` |
+| H + 33 to L1 − 1 | `s-hurt-6` |
+| L1 to L1 + 3 | `s-hurt-7` |
+| L1 + 4 to L1 + 8 | `s-hurt-8` |
+| L1 + 9 to L2 − 1 | `s-hurt-9` |
+| L2 to F − 1 | `s-hurt-10` |
+| F to F + 11 | `s-hurt-11` |
+| F + 12 to F + 17 | `s-hurt-12` |
+| F + 18 to F + 23 | `s-hurt-13` |
+| F + 24 to F + 29 | `s-hurt-14` |
+| F + 30 to F + 35 | `s-lie-1` |
+| F + 36 to F + 41 | `s-lie-2` |
+| F + 42 to F + 52 | `s-lie-3` |
+| F + 53 to F + 57 | `s-lie-2` |
+| F + 58 to F + 67 | `s-lie-1` |
+| F + 68 to F + 72 | `s-lie-2` |
+| F + 73 to F + 81 | `s-lie-3` |
+| F + 82 to F + 85 | `s-lie-2` |
+| F + 86 to F + 93 | `s-lie-1` |
+| F + 94 to F + 97 | `s-lie-2` |
+| F + 98 to F + 101 | `s-lie-3` |
+
+The picture of F + 101, the last logic frame, is not on screen. The
+pictures don't depend on the input, on what the character was doing
+before the hit, or on the speed. As for the first character they run on
+one clock from H up to L1 and on the landings from then on, with one
+case: when L1 is H + 38, `s-hurt-7` and `s-hurt-8` last 5 frames each
+(L1 to L1 + 4 and L1 + 5 to L1 + 9) and `s-hurt-9` starts on L1 + 10.
+When L1 is H + 40 or later the table above holds; H + 39 was not
+measured. The lying pictures took the same lengths in every flight.
 
 ## Evidence
 
@@ -1571,6 +1642,18 @@ steep face, picking something up):
   in H to H + 15, had the character hidden behind the walker and were
   not compared. H + 30 to L1 − 1 lasted 5 to 17 frames and L1 + 9 to
   L2 − 1 lasted 11 or 12; every hit was from a walker on flat floor.
+- **Being hurt, second character:** 113 runs of random input (Right
+  mostly, with short Jump, Action, Left or nothing segments) in the
+  first level, the second character alone, until a walker hurt it and
+  then to the last logic frame of the level; 18 289 logic frames from H
+  to F + 100 compared with the screen. The picture on screen followed the
+  table on every frame, apart from 30 frames in
+  12 runs on which the match took the picture of another figure drawn
+  over the character. 1 285 frames, 1 260 of them in H to H + 15, had
+  the character hidden behind the walker and were not compared; the 103
+  last frames showed no picture. L1 was H + 38 in 4 runs and H + 40 to
+  H + 60 in the rest; 2 more runs, in which F came later than L2 + 5,
+  were left out; every hit was from a walker on flat floor.
 - **Walking, running and turning, second character:** 240 runs of
   random input on flat floor with the second character leading (Left,
   Right or nothing for 1 to 40 frames, half of the runs with Action
@@ -1845,10 +1928,10 @@ steep face, picking something up):
 - Why, on 11 frames of the second character's rolls, the previous
   picture was still on screen for one frame. The rules above
   give the usual frame.
-- The pictures of being hurt of the second character, with both
+- The pictures of being hurt of the second character with both
   characters in the level, by anything but a walker, on a slope, a
-  face or in the air at the first landing, and when L1 comes before
-  H + 30 (no such flight was measured).
+  face or in the air at the first landing, and when L1 is H + 39 or
+  before H + 38 (no such flight was measured).
 - The first character's pictures when a bounce ends without a landing
   (catching a rope, being hurt, or a game pause in the air).
 - The first character's pictures on a roll started by a boost in the
