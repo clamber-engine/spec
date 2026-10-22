@@ -41,7 +41,7 @@ The first level has one, high up
 near the level's end, above the stiff tyre (`tyre.md`, "The stiff tyre"):
 a tyre jump from that tyre takes the player into it, and the shot
 carries them left through the two `extra-life-3` items there
-(`extra-lives.md`). How a launch barrel is drawn is not covered.
+(`extra-lives.md`). How a launch barrel is drawn: "Pictures".
 
 A launch barrel's **position** (`xb`, `yb`) is its entry's level x and
 level y. It stays there: it doesn't fall, even when placed in the air,
@@ -187,8 +187,7 @@ here or later.
 **The shot.**
 
 - **C + 29:** the barrel **breaks**: it is gone from this frame, and a
-  broken piece appears where it was (how the pieces move and are drawn
-  is not covered). The player faces **right**, whatever the facing
+  flash appears where it was (its picture and motion: "Pictures"). The player faces **right**, whatever the facing
   before. `vx` becomes 0 and `vy` **+8.46484375** (+2167/256, down). The
   player doesn't move on C + 29.
 - **C + 30:** the level y grows by exactly 8.46484375 and `x` doesn't
@@ -208,6 +207,87 @@ A barrel on the floor shoots the player into the floor: they land on
 C + 30.
 
 **Ready again.** Never: once it has broken it is gone.
+
+## Pictures
+
+What a launch barrel, the smoke at a catch and the flash at a shot look
+like on each frame in `title-1`. Each picture has a label used in this
+file and is named by its picture hash (`../formats/sprites.md`, "Picture
+hashes"); it is drawn at the object's position as
+`../formats/sprites.md` says ("Where the picture is drawn"). The picture
+given for a frame is the one on screen with that frame's view. None of
+these is ever mirrored. "C + 4 to C + 6" means those frames and the ones
+between; `n` below is the frame number minus C.
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `rest` | `2dc9b09ee6e8ccecf28eabe2013fe1d77132160fd8f311a561fa13e44b933e7f` |
+| `open-1` | `f0e8b6b1331420b2dac2941c46a37d66fc3412a5ca0561ce75b6820ac09420f9` |
+| `open-2` | `042ef4c5ec23175b6c94593985db721a96cca06f6d5603a4e710bc7b29177e3b` |
+| `open-3` | `35f403dce7a2841db70792f60a595a334f7b1b7d31d68f1e63405ac89961d2e3` |
+| `down-rest` | `f806872ae2b445cb8eb0cdc5453a49b79f336140d775233a55d7224c772428b3` |
+
+The `open` pictures show the barrel more and more open, from `open-1`
+on. The barrel's further opening pictures are under "Not covered".
+
+**When a hash isn't found.** The importer looks for every hash in this
+table. If any isn't found, the engine shows its own art for that kind of
+barrel on every frame, keeping the timing given here. The smoke and the
+flash are those of `animal-crate.md` and `thrown-objects.md` ("Pictures"),
+with the same rule there.
+
+**The `left-launch-barrel`.** Before a catch, and from C + 61 on:
+`rest`. After a catch on C:
+
+| Frames | Picture |
+|---|---|
+| `n` 0 to 3 | `rest` |
+| `n` 4 to 60 | not covered |
+
+A barrel that doesn't catch is `rest` on every frame.
+
+**The `down-launch-barrel`.** Before a catch: `down-rest`. After a catch
+on C:
+
+| Frames | Picture |
+|---|---|
+| `n` 0 to 4 | `down-rest` |
+| `n` 5 to 16 | not covered |
+| `n` 17 to 20 | `open-3` |
+| `n` 21 to 23 | `open-2` |
+| `n` 24 to 26 | `open-1` |
+| `n` 27, 28 | `rest` |
+
+It is gone from `n` 29 ("The barrel that shoots down").
+
+**The smoke.** On C a smoke appears 15 px left of the barrel's position
+and 18.5 px above it, and doesn't move. It shows `smoke-1` on `n` 0 and
+1, then each of `smoke-2` to `smoke-6` for 3 frames (`n` 2 to 4, 5 to 7,
+8 to 10, 11 to 13, 14 to 16), and is gone from `n` 17. The same on both
+kinds.
+
+**The flash.** It appears on the frame of the shot (C + 16 for the
+`left-launch-barrel`, C + 29 for the `down-launch-barrel`, where the
+barrel breaks), at the barrel's `x` and 16 px above its position, and
+moves on that frame and on each frame after by 271/256 px (about
+1.0586 px): to the left for the `left-launch-barrel`, down for the
+`down-launch-barrel`. It shows `flash-1` for 4 frames, then each of
+`flash-2` to `flash-8` for 5 frames, 39 frames in all, and is then gone
+(from C + 55, and from C + 68).
+
+Measured by the pictures on screen, in 4 runs with the first character
+that used only inputs: three walks into a copy of a barrel on the floor
+(the `left-launch-barrel` twice, once with Left held during the hold; the
+`down-launch-barrel` once; 3 catches and 3 shots in all) and a jump past
+the `down-launch-barrel` that didn't catch. On 831 frames the barrel was
+drawn whole and recognisable, 77 flash frames and 33 smoke frames
+likewise, and every one showed the picture given above for that frame. On
+2 frames in which the flash was drawn over the barrel were not
+recognisable as any one picture, and they were not counted. The
+player's picture covers the barrel during the hold, so the
+`left-launch-barrel`'s opening pictures were not seen in these runs, and
+those of the `down-launch-barrel` only from `n` 17 to 26. The timings were
+checked on every frame of all 4 runs.
 
 ## Example
 
@@ -301,10 +381,15 @@ All but the last item are for the `left-launch-barrel`.
 - The catch ranges during the flight (a shot player caught again).
 - When a launch barrel is removed and appears again
   (`../formats/placements.md`, "When placed objects appear").
-- How the barrel and the shot player are drawn, the objects drawn
-  around them, and the sounds.
+- The pictures of the barrel's opening that no run with inputs showed:
+  all of the `left-launch-barrel`'s (`n` 4 to 60) and the
+  `down-launch-barrel`'s from `n` 5 to 16, including the most open
+  ones. For these frames the engine shows its own art.
+- Which of the barrel and the player is drawn in front, how the shot
+  player is drawn, the small objects left along the shot player's path
+  and at the break (too small to be named by a hash), and the sounds.
 - Trace states and events for the frames held and shot.
-- The `down-launch-barrel`'s catch ranges, the broken pieces, and a
+- The `down-launch-barrel`'s catch ranges, and a
   shot player meeting anything but the floor or the `hidden-barrel` on
   the way down.
 - Launch barrels that shoot in other directions or wait for a button;
