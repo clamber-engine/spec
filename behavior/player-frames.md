@@ -1327,9 +1327,11 @@ rules, as seen:
   drifting for a while).
 - Facing away from the nearer end, the standing list is shown whatever
   the position.
-- It holds after any way of standing that starts a new S: a walk's
-  stop, a turn's end, a roll's stop, a landing after a jump and a
-  crouch's end (the S of each is given in the sections above).
+- It held after each of these ways of standing, the only ones seen to
+  start a new S there: a walk's stop, a turn's end, a roll's stop, a
+  landing after a jump and a crouch's end (the S of each is given in
+  the sections above). Other ways of coming to a stand are in "Not
+  covered".
 - Inputs act as in the standing list: `U`, the top face button or a
   shoulder held for a frame changes nothing, and `L`, `R`, `D`, `J` or
   `A` end the standing (a walk or a turn, a crouch, a jump or a roll)
@@ -1405,8 +1407,9 @@ the player stands, by:
    The loop starts again with `s-teeter-7` × 4.
 
 The rest of the rules of the first character's teetering hold in the same
-way (decided once, facing away from the nearer end, the same after any
-stop, the same inputs).
+way (decided once, facing away from the nearer end, the same inputs),
+and it held after the same five ways of standing: a walk's stop, a
+turn's end, a roll's stop, a landing and a crouch's end.
 
 ## Crouching
 
@@ -2401,7 +2404,8 @@ steep face, picking something up):
   began facing an end in its 12 outermost columns, showed the teetering
   pictures and were not part of this comparison (see the entry on
   teetering below); the placed ones, which were not preceded by any
-  other action, showed the standing list. 80 runs on the 1-in-4 slopes going down
+  other action, showed the standing list (whether a placed player
+  teeters is in "Not covered"). 80 runs on the 1-in-4 slopes going down
   and up and the flat bottom between them, the player put at a random
   column from before the slope to after it, then walking or running 1
   to 60 frames either way and standing 700 frames: 67 stretches of
@@ -2430,16 +2434,18 @@ steep face, picking something up):
   stretch 3 981 frames), and the other 999 stretches showed no teetering
   picture. 90 of those 999 were in those
   columns but facing away from the end, in 13 the player slid into the
-  columns after S + 3, and 11 further stretches were left out because
-  the player was past the end of the floor on S + 3 and had turned back.
+  columns after S + 3. 11 further stretches, not counted in the 1 212,
+  were left out because the player was past the end of the floor on
+  S + 3 and had turned back.
   The limit was found with 300 more stretches in which, on S + 1, the
   player's position was set by a setup method to 11 to 13 px from the
   end (150 at each end), walking having stopped before: at the right-hand
   end the farthest teetering one was 12.00 px from the end on S + 3 and
   the nearest one that did not teeter 12.02 px, at the left-hand end
   11.97 and 12.02 px; 178 teetered and all matched the list, and 12
-  more with the position set 3 to 10 px from the end stood 1 800 frames
-  each (21 252 frames, 0 differences). One-frame presses while
+  more with the position set 3 to 10 px from the end ran 1 800 frames
+  each, the last 1 771 of them standing after the walk's stop (21 252
+  frames compared, 0 differences). One-frame presses while
   teetering: `U` 4, the top face button 7, a shoulder 13
   kept the list going; a direction started a walk or a turn 9 times,
   Down a crouch 8, Jump a jump 8 and the roll button a roll 5. Stopping
@@ -2455,9 +2461,9 @@ steep face, picking something up):
   crouch): all 69 showed `s-stand-1` on S to S + 3 and the teetering
   list on all of their 4 609 frames, and the other 383 no teetering
   picture. 41 of those were in those columns but facing away from the
-  end, in 6 the player slid into the columns after S + 4, and 2 further
-  stretches were left out because the player was past the end of the
-  floor. The 80 runs of the entry below, which were checked only on
+  end, in 6 the player slid into the columns after S + 4. 2 further
+  stretches, not counted in the 452, were left out because the player
+  was past the end of the floor. The 80 runs of the entry below, which were checked only on
   frames of the standing loop, hold 10 more such stretches (7 after a
   walk, 3 after a turn) with the teetering list on all of their 6 882
   frames. With the position set by a setup method on S + 1 to 11 to 13 px
