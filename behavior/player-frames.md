@@ -757,18 +757,17 @@ before K:
 | 10 (M = L, L the seventh stage frame) | `land-1` × 4, `land-2` × 3, `land-3` × 3 |
 
 When running starts on M (`ground-speed.md`, "After a landing"), the
-player shows running pictures from M, and `land-1` to `land-3` are not
-shown.
+player shows running pictures from M, starting with `run-1` on M and
+following "Walking, running and turning" from then on, and `land-1` to
+`land-3` are not shown.
 
 **From K:** when the player is standing on K (no direction held, as in
 the question this answers), the standing pictures start as after a
 roll: `stand-1` × 3, `stand-2` × 3, `stand-3` × 3, `stand-4` × 3,
 `stand-5` × 3, going on as in "Standing still" with K as S. When
-walking or running starts on K, its pictures start there with step 1
-(`walk-1` or `run-1`) and follow "Walking, running and turning" from
-then on, with K as the first frame of the cycle. Running that starts on
-M does the same from M: `run-1` on M, in place of the `land-1` to
-`land-3` pictures.
+walking starts on K, its pictures start there with `walk-1` and follow
+"Walking, running and turning" from then on, with K as the first frame
+of the cycle. Running that starts on K isn't covered.
 
 Example: a standing jump on flat ground with Jump pressed on T − 1 and
 held 1 frame (A = T + 20, L = T + 31, n = 6, M = L + 1, K = L + 7, as
@@ -1735,13 +1734,15 @@ steep face, picking something up):
   first level) where walking or running started on a landing frame: 295
   running from M (M = L + 1 on 166, L + 2 on 125 and L + 3 on 4), 410
   walking from K (K = L + 7 on 298, L + 8 on 104 and L + 9 on 8), and 3
-  others. The mode's picture was compared on every frame from the first
-  one while the mode lasted (8 200 frames, 39 left out where no picture
-  was recognised or nothing was drawn), the step following from the
-  frame's inputs and speed alone as in `ground-speed.md`. Every picture
-  matched except two first frames, where the previous picture stayed on
-  screen one frame longer (a running one after `air-6`, a walking one
-  after `land-3`).
+  walking from M (twice M = L + 1, once L + 3). No landing ran from K.
+  The mode's picture was compared on every frame from the first one
+  while the mode lasted (8 200 frames, 39 left out where no picture was
+  recognised or nothing was drawn). The step on each frame was worked
+  out from the inputs and `vx` of the frame as in the entries above,
+  with `vx` taken from the run's trace, not computed from the inputs.
+  Every picture matched except two first frames, where the previous
+  picture stayed on screen one frame longer (a running one after
+  `air-6`, a walking one after `land-3`).
 - **Landings, second character:** 373 landings (188 on flat floor with
   Jump held 1 to 40 frames, 185 in random play), 53 of them running from
   L (4 380 frames), 0 differences.
@@ -2254,6 +2255,8 @@ steep face, picking something up):
   a slide-off fall beyond F + 14, and a jump off that ends before P + 7.
 - Why, on 5 frames after bounces, the previous picture was still on
   screen for one frame. The rules above give the usual frame.
+- Running that starts on K, and walking from M beyond the 3 landings
+  above.
 - Why, on the first frame of the mode in 2 of the 708 landings above,
   the previous picture was still on screen. The rules above give the
   usual frame.
