@@ -225,14 +225,10 @@ between; `n` below is the frame number minus C.
 | `open-1` | `f0e8b6b1331420b2dac2941c46a37d66fc3412a5ca0561ce75b6820ac09420f9` |
 | `open-2` | `042ef4c5ec23175b6c94593985db721a96cca06f6d5603a4e710bc7b29177e3b` |
 | `open-3` | `35f403dce7a2841db70792f60a595a334f7b1b7d31d68f1e63405ac89961d2e3` |
-| `open-4` | `c10325b3f581c53855be026cc56e4997e9a214f657dff5bd0a99ff7b6e4ad08f` |
-| `open-5` | `171e5d48b762f2b15fa995f2069b8d4f2709d591650ada43390d2bd108f347c9` |
-| `open-6` | `e36dcfcaea1e16ed3751a68593be684d9c9e5559b8cc8c21c612fadba291a58e` |
-| `open-7` | `6c75a9ca7f7feab996701a0959b34b5a7b264a73d1a2d84b7bd0ec60b5796396` |
 | `down-rest` | `f806872ae2b445cb8eb0cdc5453a49b79f336140d775233a55d7224c772428b3` |
 
 The `open` pictures show the barrel more and more open, from `open-1`
-to `open-7`.
+on. The barrel's further opening pictures are under "Not covered".
 
 **When a hash isn't found.** The importer looks for every hash in this
 table. If any isn't found, the engine shows its own art for that kind of
@@ -246,13 +242,7 @@ with the same rule there.
 | Frames | Picture |
 |---|---|
 | `n` 0 to 3 | `rest` |
-| `n` 4 to 6 | `open-1` |
-| `n` 7 to 9 | `open-2` |
-| `n` 10 to 12 | `open-3` |
-| `n` 13 to 51 | `open-4` |
-| `n` 52 to 54 | `open-3` |
-| `n` 55 to 57 | `open-2` |
-| `n` 58 to 60 | `open-1` |
+| `n` 4 to 60 | not covered |
 
 A barrel that doesn't catch is `rest` on every frame.
 
@@ -262,10 +252,7 @@ on C:
 | Frames | Picture |
 |---|---|
 | `n` 0 to 4 | `down-rest` |
-| `n` 5 to 7 | `open-7` |
-| `n` 8 to 10 | `open-6` |
-| `n` 11 to 13 | `open-5` |
-| `n` 14 to 16 | `open-4` |
+| `n` 5 to 16 | not covered |
 | `n` 17 to 20 | `open-3` |
 | `n` 21 to 23 | `open-2` |
 | `n` 24 to 26 | `open-1` |
@@ -288,18 +275,19 @@ moves on that frame and on each frame after by 271/256 px (about
 `flash-2` to `flash-8` for 5 frames, 39 frames in all, and is then gone
 (from C + 55, and from C + 68).
 
-Measured by the pictures on screen, in 8 runs with the first character
-(walking into a copy of each barrel on the floor, with and without
-Left held during the hold, a jump past the down barrel that didn't catch,
-and, so that the player's picture isn't in front of the barrel, both
-barrels going through the hold and the shot with the player 118 px away
-set off by a test tool): on 1 138 frames the barrel was drawn whole and
-recognisable, 155 flash frames and 33 smoke frames likewise, and every
-one showed the picture given above for that frame. On 2 frames (the same
-frame in two runs) `open-4` was not recognised, with the flash drawn over
-it, and they were not counted. `open-4` to `open-7` were seen only in the
-runs with the player far away. The timings were checked on every frame of
-all 8 runs.
+Measured by the pictures on screen, in 4 runs with the first character
+that used only inputs: three walks into a copy of a barrel on the floor
+(the `left-launch-barrel` twice, once with Left held during the hold; the
+`down-launch-barrel` once; 3 catches and 3 shots in all) and a jump past
+the `down-launch-barrel` that didn't catch. On 831 frames the barrel was
+drawn whole and recognisable, 77 flash frames and 33 smoke frames
+likewise, and every one showed the picture given above for that frame. On
+2 frames `open-4` of the `left-launch-barrel`'s opening was not
+recognised, with the flash drawn over it, and they were not counted. The
+player's picture covers the barrel during the hold, so the
+`left-launch-barrel`'s opening pictures were not seen in these runs, and
+those of the `down-launch-barrel` only from `n` 17 to 26. The timings were
+checked on every frame of all 4 runs.
 
 ## Example
 
@@ -393,6 +381,10 @@ All but the last item are for the `left-launch-barrel`.
 - The catch ranges during the flight (a shot player caught again).
 - When a launch barrel is removed and appears again
   (`../formats/placements.md`, "When placed objects appear").
+- The pictures of the barrel's opening that no run with inputs showed:
+  all of the `left-launch-barrel`'s (`n` 4 to 60) and the
+  `down-launch-barrel`'s from `n` 5 to 16, including the most open
+  ones. For these frames the engine shows its own art.
 - Which of the barrel and the player is drawn in front, how the shot
   player is drawn, the small objects left along the shot player's path
   and at the break (too small to be named by a hash), and the sounds.
