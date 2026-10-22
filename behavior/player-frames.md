@@ -185,6 +185,36 @@ The colours each character's pictures are drawn with are in
 | `crouch-20` | `dec760a482539afb058b936ece72755321b0c23380684e6d4846e5f71b2a892a` |
 | `crouch-21` | `3b814f5a1805cec116cd678ea1fdf2142677c8e6101765866f055d846fe8ba12` |
 | `crouch-22` | `4790466d2a9262931a7444ad7bbcc04ca4035231e399c41cf4adbae63be71383` |
+| `act-1` | `132ea2d7f9b9bd1f4c392f47cac3d16ad7612ad0550428f031786a505e728dc2` |
+| `act-2` | `a875319d5cc745c697c239014a6cbd282baae31462e1e1be6b6f4917b71b071d` |
+| `act-3` | `c680aeb5206be54685df651b27dad33c75725f966c732bd8cdfc3070da8f1826` |
+| `act-4` | `d901c34c11d903e483f2c74c93e0267fa8684ec6dfcfc79b6d3841c48555c430` |
+| `act-5` | `8ee034f7f435df285f79ba1bfd3840b2ece5822b9c119ec97f7489ca65d0f028` |
+| `act-6` | `50d637da95d9f39468b0c95c84407a607771bcdc0e22bf293e567627df50475c` |
+| `act-7` | `3c31027864e9711c1a9e5e49276fc09ac0ca6e4ec8d0af88fd8ae963351ac8d9` |
+| `act-8` | `d9a50b8dc78369ce5a596e11c39a6dd684c2f9e959894004f0a245f959ac75b4` |
+| `act-9` | `99bacbdb0d686d34247ea9bfed5060c6a3aa3da7663cd5b6418cd26e16de442c` |
+| `act-10` | `5699aa8cdc737c58d003d98467297ff237725206d478dfcecfbb39fd647f9477` |
+| `act-11` | `e950cf16398e1aceaaedc05ece83b79c4dcc6598c90f008d75e421caf2cbb21c` |
+| `act-12` | `8f243b832b1ea541b922a77bf1d81665e58ca172dea5d60a36054370722d06aa` |
+| `act-13` | `9ad913b14df817b9e2d72768388e0b513a95272c26ee79c9d4856058841a7180` |
+| `act-14` | `130b187b53acaf5726ddf165b0437836f7fc1caed3bb87054195ca3eca8b07d1` |
+| `act-15` | `794618c16078f0c322467d4cd573be822526c146dc2232ba2d693d01a703527b` |
+| `act-16` | `e5d5feca522686f5d30584ad8b0d9c24153525cc8b1c9c8f65f894fb28a4995c` |
+| `act-17` | `69f26e266a303ddef066abaf49cfa52b9de76e823ac1c132556dc2d256c7ac31` |
+| `act-18` | `a89e778c790ac82ac2596e9bba19eaf31fea4b9163a6c155d39a04401876a38d` |
+| `act-19` | `d331915f0c80065f5eee3835852f9788b904d20799c038ccfc76f85a7feca9ee` |
+| `act-20` | `24e159ccb25614386c42982523e5236b4024460a200631cc77c074161ab2cfdf` |
+| `act-21` | `34b348f6ea95f652be57bff355b57fcf3e106dcea1c6ab2367902cbe965cd313` |
+| `act-22` | `dd42331e9bfaa090fce986338c09fd371fe4c23e9b47fe856d14a57a31816e7e` |
+| `act-23` | `028b1f7ebc9eaf86e2f659a38c32724d9a12a21ee20b7e1ca8367d58f7d65cdf` |
+| `act-24` | `cf811c45f4a366fbb72bffe99cda7325a78e9964f5bce375ecf33a000203ac99` |
+| `act-25` | `27eb5c3bb0719614258ef9bf75d8c9d295920907ada594f2dc2df733f33f4da6` |
+| `act-26` | `740df8ba5ca48771ace9a2810688f59e3b040c55dd86fbd0268bc3d8849a3ca5` |
+| `act-27` | `e9719a5ed08993a779be5f4fe342000db1e6bff665daa80dbcfc325ffc645ba4` |
+| `act-28` | `ba9bea1f5047f21798f2c20573962be944187dc47e76679fd1f888acdaa7bb9a` |
+| `act-29` | `d08a157ead1ed7b6ed59b59a93001246efe85cf626b0a0ddff3ecac23833e081` |
+| `act-30` | `2b14322db8bf117b41203b9aa9e7b6aaf2da0efab979a510740d0fa723a96c40` |
 | `pick-1` | `cd27f80530f4cb2a5f226bdaac29c57c6a3c74d5112484665c45313938034e1a` |
 | `pick-2` | `d8daa68b6eafc09b0ad90b121b7d3bb059d99a01e48f129ccfd438ae77b97c9e` |
 | `pick-3` | `715efe520a06bdd4adbdc72993c53f73fb98c46df7d80829d9b69e4404c944c2` |
@@ -414,7 +444,9 @@ its bounce frames. Its pictures in "A fall from a steep face" are
 `s-air-1` to `s-air-6`, `s-land-1` and `s-land-2`, and fall back with
 "A jump and its landing". The first character's crouching pictures,
 `crouch-1` to `crouch-22` ("Crouching"), fall back together on its
-crouch and getting-up frames, D to U + 8. So do the second character's,
+crouch and getting-up frames, D to U + 8. The first character's ground action pictures, `act-1` to
+`act-30` ("The ground action"), fall back together on the action's
+frames, P to E − 1. So do the second character's,
 `s-crouch-1` to `s-crouch-13`, on its frames D to U + 11. The first
 character's carrying pictures, `pick-1` to `pick-7`, `carry-1` to
 `carry-10`, `carry-turn`, `throw-1` to `throw-19` and `hold-1` to
@@ -1212,6 +1244,42 @@ Example with a short press: Down held on frame 20 only. `s-crouch-1` on
 29 and 30, `s-crouch-5` to `s-crouch-1` on 31 to 40, and `s-stand-1` on
 41.
 
+## The ground action
+
+### First character
+
+The ground action (`ground-action.md`: Down and Action, pressed on P;
+its frames are P to E − 1 with E = P + 59 and no knock-out) shows
+`act-1` to `act-30`, on flat floor, whatever came before P (standing,
+walking, running, a turn, the getting up from a crouch, or a crouch
+itself) and whatever is held during the action, facing either way:
+
+- `act-1` on P (t = 0, counting frames from P without the pause frames
+  of `ground-action-enemies.md`);
+- `act-n` × 2 for n = 2 to 30, on t = 2n − 3 and 2n − 2 (P + 1 to
+  P + 58).
+
+When a knock-out pauses the action on an attack frame K
+(`ground-action-enemies.md`), K + 1 and K + 2 show the picture of K, so
+that picture is shown on 4 frames. The facing doesn't change during the
+action. A Jump press on a frame Q from P + 1 ends the list on Q: Q shows
+`jump-1`, as in "A jump and its landing".
+
+After the action (`ground-action.md`, "How it ends"): with direction 0
+the character is standing on E, which shows `stand-1` (or `jump-1` when
+Jump is pressed on E). From E + 1 it stands, walks or crouches as usual:
+`crouch-1` on D = E + 1 and the list of "Crouching" from there when Down
+is held; `walk-1` or `turn-a` when a direction is held, as in "Walking,
+running and turning"; with neither, the standing list goes on from
+`stand-1`. A new press of Action with Down held on E + 1 starts another
+action: `act-1` on E + 1. With direction −1 or +1 the character is moving
+at full speed on E, and E shows `walk-1` when it moves the way it faces
+and `turn-a` when it moves against its facing.
+
+Example: standing, Down and Action pressed on frame 20 and nothing held
+from frame 21. `act-1` on 20, `act-2` on 21 and 22, `act-3` on 23 and
+24, …, `act-30` on 77 and 78; 79 = E shows `stand-1`.
+
 ## Carrying
 
 ### First character
@@ -1962,6 +2030,33 @@ steep face, picking something up):
   steps (3 and 7, 2 and 6, 2 and 8, 1 and 7), 3 818 to 8 049 frames
   differ.
 
+- **The ground action, first character:** 120 runs of up to 1 500 frames
+  with the first character leading on flat floor away from ledges
+  (a stand, a walk or a run, then Down held 0 to 40 frames alone or with
+  a direction, Down released 0 to 12 frames, then Action pressed with
+  Down, after Down, before Down or without Down, held 1 to 70 frames,
+  alone or with a direction, then up to 60 frames of nothing, a
+  direction, Down, Action or Jump, and in 40% of the runs a Jump press,
+  then 40 to 110 frames). 1 175 actions started and 24 922 action
+  frames were logged. Of the 1 174 that ended inside the log, 737
+  started on crouch or getting-up frames, 128 standing, 86 after a walk
+  and 223 after other frames. All 1 174 followed the list: 176 ran to E
+  (131 in 59 frames, 45 in 61 after a knock-out) and 998 were ended by a
+  Jump press, which showed `jump-1` on the press frame in all 998. 102
+  actions had a knock-out pause: 100 on t = 25 (`act-14` on 4 frames)
+  and 2 on t = 31 (`act-17`); a knock-out on t = 17 was not measured. Of
+  the action frames, 23 902 showed the listed hash, 991 showed a
+  picture that could not be identified on screen (all on `act-14` to
+  `act-23`, in a stretch of the level where another sprite was drawn
+  over the character) and 29
+  showed the hash of another, smaller picture there. After E, of 175
+  of the 176: 168 had speed 0: `stand-1` on E in 165 and `jump-1` in 3.
+  For the 165, E + 1 showed `crouch-1` in 82 (Down held), `act-1` in 3,
+  the standing list in 50, `walk-1` in 25 and `turn-a` in 3 (a direction
+  held) and `jump-1` in 2. The other 7 moved at full speed on E: `walk-1`
+  in 3 and `turn-a` in 4 (against the facing); their later frames are
+  not covered.
+
 ## Not covered
 
 - The first character landing before the approach frame (L < A,
@@ -1995,8 +2090,11 @@ steep face, picking something up):
   second character's ledge and slope evidence.
 - The crouching pictures of either character on a slope, at a ledge,
   and in a crouch that starts on a landing's frames or after a roll. Also the
-  pictures of a jump from a crouch or from its getting-up frames, and of
-  the ground action (Down + Action) started from them.
+  pictures of a jump from a crouch or from its getting-up frames.
+- The ground action's pictures (`act-1` to `act-30`) of the second
+  character, at a ledge, on a slope, next to a face or a wall, on a
+  landing's frames or after a roll, with a knock-out on t = 17, and
+  the pictures after E when the character was moving on E (beyond E).
 - Why, on 5 frames after bounces, the previous picture was still on
   screen for one frame. The rules above give the usual frame.
 - Why, on 4 frames in random play, a walking or running picture came
