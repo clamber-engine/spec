@@ -2,6 +2,32 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.272.0
+
+Pictures when the second character leads the map, the second character's
+air pictures over higher floor, and the second character teetering at
+ledges with a steep face (spec#38, spec#61).
+
+Part of clamber-engine/spec#38 and clamber-engine/spec#61, which stay
+open for the parts not covered yet.
+
+- `behavior/level-map.md`: when the second character leads the map, the
+  pictures follow the characters (the second's 8-picture cycle as lead,
+  the first's 10-picture cycle as the other), and positions follow the
+  same rules as before. New Evidence, with the frames on which a
+  picture was not found accounted for.
+- `behavior/player-frames.md`, second character's jump: in a jump over
+  higher floor the air pictures start from an approach frame searched
+  from T + 18, used only to choose the pictures. Table and example for
+  A = T + 18. New Evidence. Not covered: walls other than the level's
+  end, pictures after a stop there, and whether the movement's approach
+  frame differs.
+- `behavior/player-frames.md`, teetering: at the two measured ledge tops
+  with a steep face, the second character follows the same two cases as
+  the first (seen after a walk's stop only): it teeters near the four-
+  column face with a drop below, and not on the top before the 64 px face
+  to a lower floor. New Evidence accounts for every run.
+
 ## spec-v0.271.0
 
 Standing next to a steep face: pictures (spec#38).
