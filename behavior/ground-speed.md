@@ -234,6 +234,18 @@ only if the turn check changed nothing.
   frame with a turn check, this comes after the check, and only if the
   check started no turn and didn't make the player stand. Before step 1
   of the run has ended, the player keeps running.
+- **Blocked** (first character, on the ground against a wall or a
+  steep face, `steep-faces.md`): on a frame that ends with v = 0 while
+  the direction the player faces is held, the player is treated as
+  holding no direction for every rule in this section. Standing doesn't
+  start walking (the player stays standing and shows the standing
+  pictures); a walking or running player whose step ends a turn check on
+  such a frame stands from it (no "walking starts again" with forward
+  held, and no run check); a walk or run that has not reached a turn
+  check goes on with its stride cycle unchanged. A frame on which the
+  player moves even a little, so v isn't 0, is not blocked. Holding the
+  opposite direction still starts a turn, and the turn follows the usual
+  rules.
 
 #### The second character's stride cycle
 
