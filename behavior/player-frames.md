@@ -844,6 +844,22 @@ rolling off a ledge (`rolling-off-ledges.md`, "The second character",
 hover frames included), shows the same pictures in the same order, with
 T − 1 the press frame P; when `s-air-1` ends in such a jump is not
 covered (see "Not covered").
+The second character's jumps out of a crouch or its getting-up frames
+(`jump-input.md`, "Crouching") show the same pictures. The press frame
+P, with Jump pressed on D itself, on any later frame of the crouch
+(going down or held), on U, or on any of U + 1 to U + 12, shows
+`s-jump-1` in place of the picture the crouch or the getting up would
+show; the frames before P keep the lists of "Crouching" (the last
+picture shown before P is the crouch's or getting up's own, whatever the
+speed and the direction held). T = P + 1, and the air and landing
+pictures follow the rules here with the landing table below (Down held
+on P, a direction, Action or none make no difference to the pictures).
+When Action is pressed on P with Jump and Down is held on P + 1 and
+Jump is not held on P + 2, no jump follows: P shows `s-jump-1` as
+before, and the crouch that starts on P + 1 shows its own list from
+`s-crouch-1` on its D = P + 1. With Jump still held on P + 2 the jump
+starts on P + 3 (`jump-input.md`); the pictures of P + 2 and of that
+jump are not covered.
 
 After a landing on L that comes on the fourth or a later frame showing
 `s-air-6` (every jump measured that lands on the floor it took off from
@@ -2405,6 +2421,27 @@ steep face, picking something up):
   K = L + 10). 24 presses of Jump with Action, each followed by Down on
   P + 1, did not take off: `jump-1` on P and the crouch's list from P + 1. Jump was
   not held on P + 2 in any of the 24.
+- **Jumps out of a crouch, second character:** 120 runs of up to 1 500
+  frames with the second character leading on flat floor away from
+  ledges, with the same kinds of input as for the first character
+  (a stand, a walk or a run, then Down held 0 to 40 frames alone or with
+  a direction, Down released 0 to 12 frames, then Jump pressed 1 to 3
+  frames or held 4 to 40, alone or with Down, a direction or Action,
+  then 40 to 110 frames with nothing, a direction or Down). 1 963 jumps
+  took off: 129 pressed on D itself, 307 on later crouch
+  frames, 139 with Down pressed again on a getting-up frame, 716 on U,
+  329 on U + 1 to U + 12 (each of the twelve at least 14 times) and
+  343 on other frames. Every press frame showed
+  `s-jump-1`. The crouch and getting-up frames of the runs matched
+  "Crouching" (40 271 frames from D to U + 11 in the logs, 11 665 going
+  down, 26 296 held, 2 310 getting up, 0 differences). Air: all 1 963
+  jumps matched the air pictures for some A. Landing: 1 287 of them had a
+  landing on the fourth or later `s-air-6` frame not cut by a new press,
+  a crouch or a roll, and all 1 287 matched the table and showed the
+  standing or walking pictures (1 280 and 7) on L + 17; none of these
+  runs held Action with a direction on L. 23 presses of Jump with Action,
+  each followed by Down on P + 1, did not take off: `s-jump-1` on P and
+  `s-crouch-1` on P + 1. Jump was not held on P + 2 in any of the 23.
 - **Crouching, second character:** 120 runs with the second character
   leading on flat floor away from ledges, with the same kinds of input
   as for the first character. 1 281 crouches, started standing still
@@ -2602,10 +2639,11 @@ steep face, picking something up):
   of the floor, on slopes other than 1-in-4 or
   on a face itself (as opposed to next to it), and in a crouch that
   starts on a landing's frames or after a roll. Also the pictures of
-  the ground action (Down + Action) started from them, and of the
-  second character's jumps out of a crouch or its getting-up frames,
-  and the pictures of P + 2 and of the jump after it when Jump is held
-  on P + 2 after a press with Action and Down on P + 1.
+  the ground action (Down + Action) started from them, and the
+  landing after a second-character jump out of a crouch when Action and
+  a direction are held on the landing frame (none of the runs held
+  them). Also the pictures of P + 2 and of the jump after it when Jump
+  is held on P + 2 after a press with Action and Down on P + 1.
   The one frame in "Evidence" (jumps out of a crouch) that showed a
   picture unrelated to the jump is not explained.
 - The ground action's pictures (`act-1` to `act-30`) of the second
