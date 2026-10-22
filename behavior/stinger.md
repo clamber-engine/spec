@@ -162,6 +162,51 @@ on which the player doesn't move, `knock-out.md`), and moves on by
 on 54 hits. The 32-frame pause between H + 7 and H + 8 has no logic
 frames.
 
+## Pictures
+
+What a stinger looks like on each frame in `title-1`. Each picture has a
+label used in this file and is named by its picture hash
+(`../formats/sprites.md`, "Picture hashes"); it is drawn at the stinger's
+position as `../formats/sprites.md` says ("Where the picture is drawn").
+The picture given for a frame is the one on screen with that frame's view.
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `wing-1` | `24d164aedac3fff8935db979948dd946d86bfe1d0ec85a13af8efde6eefb8c98` |
+| `wing-2` | `0bf7bf72cbf1d7148418a652f16fd166187e3f1b3edb60a3ae0ffd25e1b7c477` |
+| `wing-3` | `27862880d8a4cec808a45611b92afcbcfecb2641d3b57a76ffeee9eb0aa1d643` |
+| `wing-4` | `78fca5c9198911446e3bb5fcab9655b5e017a58e43b9a95cb7f5b4726e020161` |
+
+**When a hash isn't found.** The importer looks for every hash in this
+section. If any of the four isn't found, the engine shows its own art for
+the stinger on every frame, keeping the timing and mirroring given here.
+
+A stinger is always drawn mirrored left-right, whichever way it moves
+and on whichever side of it the player is.
+
+Its pictures step on **counted frames**: every frame it is in the level
+except H + 1 to H + 10 of a knock-out of the player ("While the player is
+knocked out"), on which it keeps the picture it had. Counted from the
+frame `A` on which it appeared (`i` = 0 on `A`), its pictures repeat every
+14 counted frames, from `i` = 0:
+
+- `wing-1` × 2 (`i` = 0 and 1);
+- then, repeating: `wing-2` × 2, `wing-3` × 2, `wing-4` × 3, `wing-3` × 2,
+  `wing-2` × 2, `wing-1` × 3 (14 frames).
+
+The pictures don't depend on the stinger's settings, its speed or where
+it is. A stinger that was removed and comes back (`Appearing and being
+removed`) starts the list again from its new `A`.
+
+Measured by the pictures on screen: 14 different settings, 60 runs
+(standing still, walking away and back so that stingers were removed and
+came back, walking into the stinger, and jumping near it), 42 000
+frames, 34 knock-outs. In 16 800 frames the stinger was drawn whole on
+screen and recognisable, every one showed the picture above. 4 more
+frames showed another picture, each with another object drawn over part
+of the stinger. On the frames on which it was not wholly inside the
+screen, or other things covered it, it was not counted.
+
 ## Example
 
 Synthetic settings: start (1000, 300), `Rl` = `Rr` = 6, `Ru` = `Rd` =
