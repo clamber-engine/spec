@@ -1227,6 +1227,18 @@ shows on frames 0 and 1, `s-walk-2` on 2 and 3, `s-run-1` on 4 and 5,
 When walking, running or a turn ends in standing, the standing pictures
 of "Standing still" start on the first standing frame (S).
 
+Leaving the ground at a ledge without a face changes nothing, as for the
+first character. On every frame of the fall the picture follows the same
+rules as on the ground, from the step or turn frame reached at the edge:
+the stride cycle's steps go on and are shown, a turn started in the air
+shows the turn pictures (mirroring changes on T + 4 in the air as on the
+ground), running started in the air shows `s-run-1` on its first frame,
+a walk or run that ends in standing in the air starts the standing
+pictures on its first standing frame (S) there, and the landing frame G
+shows the picture of the step, turn or standing frame it is in. No air
+or landing pictures (`s-air-1` to `s-air-6`, `s-land-1`, `s-land-2`) are
+shown in such a fall.
+
 Against a wall or a steep face on flat floor the second character's
 pictures follow these rules in the same way as the first character's
 (see "First character" above): with the mode rules of
@@ -2262,6 +2274,28 @@ steep face, picking something up):
   flat-floor runs above, the standing pictures from the first standing
   frame after walking, running or a turn (15 897 frames) also showed
   no differences.
+- **Walking off a ledge without a face, second character:** 800 runs
+  of random input on the same kind of platform (square ends, a lower
+  floor on one side, a pit on the other, the first character standing
+  or following on it), started at random places, Right, Left or nothing
+  for 1 to 30 frames at a time, Action held or let go at about a quarter
+  of the changes, the same input going on in the air and after the
+  landing, each run to 40 frames after landing or until the character
+  fell into the pit. 255 runs had frames compared in the air. The
+  mode, step and turn frame were worked out from the inputs and `vx`
+  alone with the rules of `ground-speed.md`, on airborne frames as on
+  grounded ones, and again from the next standing frame after any
+  frame where they disagreed with the game (rolls and the landings
+  after them, which these runs don't cover). In the air, 4 546 walking,
+  1 388 running, 895 turning (129 turns started in the air, 90 runs
+  started in the air) and 101 standing frames (the first 88 after a
+  walk, run or turn ends) were compared with the screen; on the floors
+  before and after the falls 12 804 walking, 1 812 running, 2 745
+  turning and 359 standing frames (the first 4 on the platform, the
+  first 88 on the lower floor away from its ends): 0 differences. 102
+  frames showed the first character's picture instead (the characters
+  overlapped) and 125 (10 of them in the air) showed no readable
+  picture; both are left out.
 
 - **Falls from a steep face, first character:** 1 400 runs from three
   ledges with a steep face at the top (the ledges of `ground-speed.md`,
@@ -2802,12 +2836,14 @@ steep face, picking something up):
   with Action).
 - The second character's landings after falls that didn't start with a
   jump, other than its falls from a steep face onto floor that isn't
-  part of a face away from walls; its bounces off anything but a small
+  part of a face away from walls and its walks off a ledge without a
+  face, onto flat floor; its bounces off anything but a small
   walker on flat floor. After a fall from a steep face: landing on a
   face, next to a wall, or leaving the floor again during the landing
   frames, and the crouch's pictures.
 - The second character's walking, running and turning pictures in the
-  air after a ledge and anywhere but flat ground, its roll pictures on
+  air after a ledge with a face, and anywhere but flat ground and the
+  air after a ledge without a face, its roll pictures on
   slopes (rolls were measured on flat floor and off ledges only), and
   the pictures of every other state.
 - Pushing against a wall or a steep face: a wall that isn't a steep
