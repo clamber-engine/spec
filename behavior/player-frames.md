@@ -791,9 +791,28 @@ to L + 8, `stand-1` from L + 9.
 
 In the air it shows `s-jump-1` on T − 1, `s-jump-2` on T and T + 1, then
 `s-rise-1` to `s-rise-7` for 2 frames each (T + 2 to T + 15), then
-`s-air-1` and `s-air-2` to `s-air-6`. When `s-air-1` ends is not covered
-here. `s-air-6` is the last picture of the air; the player shows it
-until landing.
+`s-air-1` and `s-air-2` to `s-air-6`. `s-air-1` is shown on every frame
+from T + 16 up to A − 1, with A the approach frame of `jump-input.md`
+("The switch frame M": the first frame from T + 20 on at whose end
+there is floor within reach below the player), found by the same rule
+for this character. Then:
+
+| Frame | Picture |
+|---|---|
+| A | `s-air-2` |
+| A + 1 and A + 2 | `s-air-3` |
+| A + 3 and A + 4 | `s-air-4` |
+| A + 5 and A + 6 | `s-air-5` |
+| A + 7 until landing | `s-air-6` |
+
+`s-air-6` is the last picture of the air; the player shows it until
+landing. In the jumps measured A was T + 23 or later (T + 23 with Jump
+held 1 frame, T + 35 with it held 40), and a jump that landed on the
+floor it took off from landed 9 to 14 frames after A. Example: Jump
+held 1 frame, A = T + 23, L = T + 37: `s-air-1` on T + 16 to T + 22,
+`s-air-2` on T + 23, `s-air-3` on T + 24 and T + 25, `s-air-4` on T + 26
+and T + 27, `s-air-5` on T + 28 and T + 29, and `s-air-6` on T + 30 to
+L − 1.
 A jump out of a roll pressed on the ground (`roll-speed.md`, "Jumping
 out of a roll") shows the same pictures, with T − 1 the press frame. So
 does a jump out of a roll pressed in the air, during the fall after
@@ -1825,6 +1844,15 @@ steep face, picking something up):
   53 in random play; 2 094 frames), 0 differences, 144 of them running
   from L. In the same runs, 751 landings after jumps from the floor
   (3 547 frames) matched too.
+- **Air pictures after `s-air-1`, second character:** 800 runs with
+  the second character leading on flat floor with a dip of up to 16 px
+  (the jumps of the landing runs above): 396 plain jumps from the floor
+  and 364 jumps out of a roll pressed on the ground, Jump held 1 to 40
+  frames, random input in the air. From T + 16 to the landing, every
+  frame matched the table above, with A found from the player's height
+  above the floor under it: 760 jumps, 0 differences. 26 jumps with no
+  floor under the player known were left out, and so were 14 landings on
+  higher floor (see "Not covered").
 - **Jumps out of a roll pressed in the air, second character:** 1 600
   runs with the second character leading on the three ledges of
   `rolling-off-ledges.md` ("The second character"): walking right 0 to
@@ -2315,7 +2343,12 @@ steep face, picking something up):
 - Why, in two of the cases in "Evidence", the new picture came one
   frame late on screen. The rules above give the usual frame.
 - The second character landing before the fourth frame showing
-  `s-air-6`, and when its `s-air-1` ends.
+  `s-air-6`.
+- The second character's air pictures from T + 16 in a jump that lands
+  on floor higher than the one it took off from (14 such jumps out of a
+  roll showed `s-air-2` 0 to 15 frames after A), in a jump pressed in
+  the air during a fall, and in a jump with the floor below more than
+  16 px lower than the take-off floor.
 - The second character's landings after falls that didn't start with a
   jump, other than its falls from a steep face onto floor that isn't
   part of a face away from walls; its bounces off anything but a small
