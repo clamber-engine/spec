@@ -11,8 +11,8 @@ turning on the ground and in the air after walking or running off a
 ledge without a face, while rolling, in the air after a bounce, while
 standing still and while crouching, and the second character's
 pictures while standing still, while crouching and when it walks or
-runs down a steep face into a fall. Also the first character's pictures
-while held and shot by a launch barrel.
+runs down a steep face into a fall. Also the pictures of both characters
+while shot by a launch barrel.
 
 ## The pictures
 
@@ -1584,6 +1584,21 @@ Example: the barrel catches the character on frame 100 (`left-launch-barrel`). F
 show no character, 116 shows `bounce-1`, 117 `bounce-2`, …, 131 `bounce-16`, 132 `bounce-1`, …, 142
 `bounce-11`; the character lands on 143.
 
+### Second character
+
+With the second character leading, the `left-launch-barrel` shoots them on the same frames (C + 16,
+landing on C + 43). The pictures are the second character's own `s-bounce-1` to `s-bounce-16`
+instead of `bounce-1` to `bounce-16`, in the same order and with the same timing as the first
+character's: `s-bounce-1` on C + 16, `s-bounce-2` on C + 17, …, `s-bounce-16` on C + 31, `s-bounce-1`
+again on C + 32, one picture per frame up to the last flight frame, every picture mirrored (facing
+left). In the flight measured (27 frames, C + 16 to C + 42) that is `s-bounce-1` to `s-bounce-11`
+on C + 32 to C + 42. The `s-bounce-1` to `s-bounce-16` fall back together with the first
+character's in the same way ("The pictures").
+
+The hold frames of both kinds and the shot frame of the `down-launch-barrel` were not checked on
+screen for the second character (the barrel, its smoke and the flash are drawn over the spot, and
+what showed there differed between catches), so they are in "Not covered".
+
 ## Being hurt
 
 ### First character
@@ -2201,6 +2216,17 @@ steep face, picking something up):
   `down-launch-barrel` was covered in all 32 catches. The lengths of the holds (15 and 28 frames)
   and the landing frames are the timings of `launch-barrel.md`.
 
+- **The second character in a launch barrel:** the same setup as for the first character (random
+  play on flat floor, the barrels on the floor ahead, the character set down at a chosen spot and
+  made unhurtable by research tools), with the second character leading. 48 runs of random
+  play with the `left-launch-barrel` and 32 with the `down-launch-barrel`; 42 catches by the
+  `left-launch-barrel` and 32 by the `down-launch-barrel` were used (4 further runs had no picture
+  of the character for much longer than a hold, in another action, and 2 had no catch). Left kind,
+  flight frames C + 16 to C + 42 in the 42 catches (1 134 frames): 521 were found whole on screen
+  and each showed the listed hash (each of the 16 pictures on at least 2 of them, none another
+  picture); the other 613 had another sprite drawn over the character and were **not checked**
+  against the list. The shot frame of the `down-launch-barrel` was covered in all 32 catches.
+
 - **The ground action, first character:** 120 runs of up to 1 500 frames
   with the first character leading on flat floor away from ledges
   (a stand, a walk or a run, then Down held 0 to 40 frames alone or with
@@ -2291,7 +2317,8 @@ steep face, picking something up):
 - The first character's pictures in a launch barrel on the hold frames before the last one (left kind)
   or before the last 12 (down kind), on the shot frame of the `down-launch-barrel`, on the catch frame C and the frames before it,
   on the landing frame and after it, in a flight cut short (by an enemy, a wall or the ceiling) or
-  landing on a slope; the second character's, and two characters'.
+  landing on a slope; the second character's hold frames, shot frame of the `down-launch-barrel`, catch
+  frame and landing, and the second character's in the other cases above; and two characters'.
 - Why, on 5 frames after bounces, the previous picture was still on
   screen for one frame. The rules above give the usual frame.
 - Why, on 4 frames in random play, a walking or running picture came
