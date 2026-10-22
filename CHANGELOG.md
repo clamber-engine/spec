@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.253.0
+
+The first character's walking and running pictures when the mode starts
+after a landing (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: running that starts on M shows `run-1`
+  on M and follows "Walking, running and turning" from there; walking
+  that starts on K shows `walk-1` on K, with K as the first frame of the
+  cycle. New evidence entry from 708 landings compared on screen; running
+  that starts on K, walking from M beyond the three landings seen, and
+  two first frames where the previous picture stayed one frame longer
+  are in "Not covered".
+
 ## spec-v0.252.0
 
 The level map's pictures of the lead and the other character (spec#38,
