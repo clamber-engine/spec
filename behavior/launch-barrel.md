@@ -187,8 +187,7 @@ here or later.
 **The shot.**
 
 - **C + 29:** the barrel **breaks**: it is gone from this frame, and a
-  broken piece appears where it was (how the pieces move and are drawn
-  is not covered). The player faces **right**, whatever the facing
+  flash appears where it was (its picture and motion: "Pictures"). The player faces **right**, whatever the facing
   before. `vx` becomes 0 and `vy` **+8.46484375** (+2167/256, down). The
   player doesn't move on C + 29.
 - **C + 30:** the level y grows by exactly 8.46484375 and `x` doesn't
@@ -398,8 +397,7 @@ All but the last item are for the `left-launch-barrel`.
   player is drawn, the small objects left along the shot player's path
   and at the break (too small to be named by a hash), and the sounds.
 - Trace states and events for the frames held and shot.
-- The `down-launch-barrel`'s catch ranges, the broken piece's picture
-  and motion (the flash above is what it looks like), and a
+- The `down-launch-barrel`'s catch ranges, and a
   shot player meeting anything but the floor or the `hidden-barrel` on
   the way down.
 - Launch barrels that shoot in other directions or wait for a button;
