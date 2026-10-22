@@ -2567,8 +2567,9 @@ steep face, picking something up):
   were not tried).
 - **Teetering, second character, ledges with a steep face:** the same
   two ledge tops, set up and counted as for the first character (the
-  player 1 to 16 px before the face in 200 runs on each ledge and 1 to
-  30 px in 60 more; stretches of standing of 5 frames or more that began
+  player 1 to 16 px before the face in 200 runs on the ledge with the
+  15 px face and 100 on the one with the 64 px face, and 1 to 30 px in
+  60 more on each; stretches of standing of 5 frames or more that began
   after a walk's stop, decided on S + 4). On the ledge with the 15 px
   face (260 runs) 64 stretches began on the ledge top before the face:
   the 56 within 0 to 7 columns before the face's first column showed
@@ -2576,14 +2577,13 @@ steep face, picking something up):
   frames (2 665 frames from S to the end of each stretch, no
   differences); the 8 at 8 to 15 columns before it showed the standing
   list's pictures on all of their 425 frames (no frame showed a
-  teetering picture that the standing list does not also contain, and no
-  frame was in a teetering state). In the other 196 runs no stretch was
+  teetering picture that the standing list does not also contain). In the other 196 runs no stretch was
   counted: in 2 the stand lasted under 5 frames, and in 194 the walk took
   the player off the ledge before any stand (27) or before a stand of 5
   frames began on the top (167). On the ledge with the 64 px face (160
   runs) 37 stretches began on the ledge top (0 to 16 columns before the
   face; 1 759 frames); none teetered, and their pictures were the
-  standing list's on all 1 759 frames (no frame in a teetering state).
+  standing list's on all 1 759 frames.
   65 stretches began on the lower floor after the face and are not
   claimed. In the other 58 runs no stretch was counted: in 4 the stand
   lasted under 5 frames, in 10 no stand began before the run ended (the
