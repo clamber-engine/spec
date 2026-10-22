@@ -417,9 +417,8 @@ whichever of the two characters led in the level. It was measured with
 the map appearing after the first level with the first and with the
 second character leading, and for 18 other stops, covering the whole
 length of the map from its left end to its right end, with the first
-character leading. For those 18 the level just finished was made to count
-as a different place by changing the running game's state before the
-level ended, as for the open paths. In every one the other was 16 px to
+character leading. For those 18 a setup method (research tools) was used so that the
+level just finished counted as a different place. In every one the other was 16 px to
 the left of the lead at the same height. Where it stands when the map
 appears after a level was left in other ways is not covered.
 
@@ -442,7 +441,8 @@ and fractions, but:
   edge counts as a leg to the right although the position on the page
   gets smaller. A leg to the left over a page edge (the lead's position
   on the page wraps from the page's left edge to its right edge during
-  the leg) doesn't always follow this: see "Legs over a page edge".
+  the leg) follows this only if the wrap comes before the other's leg
+  starts to move: see "Legs over a page edge".
   Legs on which the lead's `x` doesn't change are not covered.
 - Its speed across is 4 × (its end − its whole-pixel `x` at the leg's
   start) in steps of 1/256 px per frame, as for the lead; its fraction
@@ -489,9 +489,8 @@ before.
 
 Measured in the first level's map with both characters, from the new
 game's map state and by inputs alone (runs A–D; runs E and F below are set
-up differently); which paths were open was written into the running
-emulator's memory before the inputs began, not reached by play (as for
-the pictures). Every position is that of the character's
+up differently); which paths were open was arranged with a setup method
+before the inputs began, not reached by play (as for the pictures). Every position is that of the character's
 sprite on screen, in whole pixels, on every counted frame. Four runs,
 each with the same first two legs (the first walk down from the start
 point):
@@ -522,7 +521,7 @@ Results:
   height matched the rule on every frame of each leg, 0 mismatches over
   64 frames per leg. Three legs started with the lead and the other
   placed on the map as at a new game, the other 16 px to the lead's
-  left (by writing the running game's state, as for the open paths); the
+  left (a setup method was used); the
   fourth was walked after finishing the first level, where the map
   appears with the same 16 px gap. The other's end across depends only
   on the lead's leg, and its speed across followed the rule from the
@@ -533,9 +532,13 @@ Results:
 - Run F: every pair of neighbouring places in the first level's map whose
   walk goes over a page edge, in both directions: 14 walks. Each was
   started by an input from the first place of the pair, after the lead
-  and the other were placed by writing the running game's state (as for
-  the open paths), the other once 16 px to the lead's left and once 24 px
-  to its right; each walk was run from both starts (28 runs).
+  and the other were placed with a setup method, the other once 16 px to
+  the lead's left and once 24 px to its right; each walk was run from both starts (28 runs).
+- Run G: two of run F's walks to the left, with the lead started at
+  different places along the page (a setup method was used), so that
+  its position wrapped on different frames: 24 walks, 16 of one pair
+  and 8 of the other, with the other 24 px to the lead's right at the
+  start.
 
 **Legs over a page edge** (runs B, C, D and F):
 
@@ -547,8 +550,20 @@ Results:
   leg in every one. In 6 of F's 7 the other came to rest on the lead's
   `x`, with no 24 added, from either start; in the seventh it came to
   rest 24 px to the lead's right, as in a leg not over an edge.
-  Nothing measured separates the seventh from the other six (it wraps
-  like them; "Not covered").
+  What separates them is the frame of the wrap: the seventh wrapped
+  while the other was still waiting to start.
+- The frame of the wrap, `P` as in "Page change", against `a` + 11,
+  the frame on which the other's leg first moves (all counted frames):
+  in F, the seventh had `P` = `a` + 8 and the other six `P` between
+  `a` + 16 and `a` + 42. In G, `P` took the values `a` + 2, 3, 4, 6, 7,
+  8, 9, 10 (twice), 11 (twice), 12, 13 (twice), 15, 16, 17, 21, 27, 31,
+  35, 37, 39 and 40. For every `P` up to `a` + 10 (9 walks) the other
+  came to rest 24 px to the lead's right, and for every `P` from
+  `a` + 11 on (15 walks) on the lead's `x`. So in a leg to the left
+  over a page edge the other's end across is the lead's `x` itself if
+  the wrap comes on the frame the other's leg first moves or later
+  (`P` ≥ `a` + 11), and the lead's `x` plus 24, as for any leg to the
+  left, if it came earlier.
 - The speed across in C and D, with the end across taken as the lead's
   `x` itself and the stalled frame at `P` counted: 1 px per frame in
   one (the other's start 64 px from that end) and 1.375 px per frame in
@@ -706,10 +721,8 @@ lengths, at the start and at the page change).
   finish (`../formats/level-map.md`, "Progress").
 - The second character on the map: where it is when the map appears
   after a level left in other ways than finished; legs on which the
-  lead's `x` doesn't change; what decides, for a walk to the left over
-  a page edge, whether the other ends on the lead's `x` or 24 px to its
-  right (6 of 7 measured walks did the first); the other's stalled
-  frame in walks over page edges other than the first level's first.
+  lead's `x` doesn't change; the other's stalled frame in walks over
+  page edges other than the first level's first.
 - Which picture the cycles start with when the map appears.
 - What moves the other character's cycle against the lead's at a page
   change.
