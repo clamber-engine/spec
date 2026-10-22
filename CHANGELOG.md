@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.239.0
+
+What the count display and the lives display are drawn with, and the
+lives display shown each time play starts (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/count-display.md`: new "When play starts". The lives display
+  is shown from frame 0 of a level and of every restart, with a frame
+  table for the number. New "Pictures": the count image is the
+  collectible's spin picture, not mirrored, timed by frame count. The
+  digits and the lives image have no hashes; the engine draws its own
+  art, using the given timing (the lives image's 14-step cycle and the
+  pictures before it when play starts). Includes on-screen evidence and
+  "Not covered" items.
+- `formats/sprites.md`: "Not covered" points to the new section.
+
 ## spec-v0.238.0
 
 What the animal crate, the flash and smoke when it breaks, and the
