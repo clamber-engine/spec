@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.256.0
+
+Where the second character stands and walks on the level map (spec#38,
+pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/level-map.md`: new section "The other character". At a new
+  game it starts 16 px to the left of the lead. It walks each of the
+  lead's legs 11 counted frames later, with the lead's height and an end
+  across 24 px to the side the lead came from, and the lead's speed
+  rule. It stands still for one frame when the lead passes onto the next
+  page to the right. Includes a synthetic example and measurements from
+  runs on the first level's map. Walks to the left over a page boundary,
+  legs where the lead's `x` doesn't change, and where it stands when the
+  map appears after a level are not covered yet.
+
 ## spec-v0.255.0
 
 The pictures of the hidden objects that are set off by a long fall
