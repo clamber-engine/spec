@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.233.0
+
+How the letters and their sparkles are drawn in `title-1` (spec#38,
+pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/letters.md`: new "Pictures" section.
+  - 4 new picture hashes, `letter-pic-1` to `letter-pic-4`, one per
+    letter, with a shared fallback.
+  - Sparkles: which frames are sparkle frames, where a sparkle is placed
+    around a letter, and its 8-step lifetime. Sparkle pictures have no
+    hash and aren't named; which offsets come is not covered.
+  - A synthetic example, on-screen evidence and updated "Not covered".
+- `formats/sprites.md`: "Not covered" points to the new section.
+
 ## spec-v0.232.0
 
 How a thrown object, the flash of its breaking and the pieces are drawn
