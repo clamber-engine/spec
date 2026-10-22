@@ -2171,16 +2171,28 @@ steep face, picking something up):
   alone or with a direction (1 to 60 frames), Down for 1 to 4 frames, a
   direction alone or nothing, up to 750 frames a run (a platform run
   ended when the character left the platform). At the platform, 413
-  crouches, 144 of them started within 17 px of an end (80 right, 64
-  left); 36 333 frames from D to U + 8 compared with "Crouching": 5 369
-  going down, 28 084 held, 2 880 getting up, 0 differences. On the
-  slope, 564 crouches between x 497 and 749; from the 60th frame of a
-  run on, 44 750 frames (6 119 going down, 34 886 held, 3 745 getting
-  up), 0 differences. The first frames after the placement (3 002
-  crouch frames, up to the 51st of a run) differed in 1 553 frames: the
-  player was not on screen yet or was shown in a different picture
-  while the view caught up with the new position; they were left out.
-  U + 9 showed `stand-1` on every platform crouch checked.
+  crouches, 147 of them started within 17 px of an end (83 right, 64
+  left), 8 of them in the last column of the right-hand end; every
+  frame from D to U + 8 was compared with "Crouching", none left out:
+  36 333 frames (5 369 going down, 28 084 held, 2 880 getting up), 0
+  differences. On U + 9, 269 crouches ended standing still and all 269
+  showed `stand-1` (52 with Right held, 62 with Left held, 155 with
+  nothing). On the slope, the runs started with the player at a random
+  column from before the slope to after it. 564 crouches started on
+  floor from 16 px below to level with the floor before the slope: 97
+  on the flat floor before the slope, 170 going down, 115 on the flat
+  bottom, 135 going up and 47 on the flat floor after it. From the 52nd
+  frame of a run on, 45 312 frames from D to U + 8 were compared (6 231
+  going down, 35 315 held, 3 766 getting up; 7 984 of them in
+  crouches that started before the slope, 13 705 going down, 9 823 at
+  the bottom, 10 939 going up and 2 861 after it), 0 differences. The
+  crouch frames in the first 51 frames of a run (2 440) were left out,
+  because the player was placed at the start of the run and the view
+  was still catching up with it: 1 553 of them differed, the player
+  not being on screen yet or being shown in a different picture, and
+  no frame from the 52nd on differed. On U + 9, 357 crouches from the
+  52nd frame on ended standing still and all 357 showed `stand-1` (the
+  13 earlier ones are left out with the rest of those frames).
 - **Crouching, second character:** 120 runs with the second character
   leading on flat floor away from ledges, with the same kinds of input
   as for the first character. 1 281 crouches, started standing still
