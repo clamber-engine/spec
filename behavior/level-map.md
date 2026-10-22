@@ -602,7 +602,9 @@ changing one frame later than the lead for the rest of the run, and what
 decides that is not known ("Not covered").
 
 **When the second character leads.** The pictures belong to the
-characters, not to the lead's and the other's places. When the
+characters, not to the lead's and the other's places: the names
+`map-lead-1` to `map-lead-10` and `map-other-1` to `map-other-8` follow
+the character (the first, the second), not whether it leads. When the
 second character is the lead, it shows the eight pictures
 `map-other-1` to `map-other-8` as above (cycle 32) and the other
 character, the first, shows the ten pictures `map-lead-1` to
@@ -685,14 +687,18 @@ chain of walks as the first character's (nine walks over the
 neighbouring paths, 13 legs). The other's `x` matched the rule on every
 frame (0 mismatches over 1 486 frames, the one page-change lag frame
 excepted as above). The pictures were looked for on 260 frames of a walk
-down: the lead's were found on all 260 and the other's on 163, and every
-one found was the picture named above for its character (the 97 not found
-were not examined further; in the first character's runs such frames
-were ones where the lead covered the other or the other was on another
-page). The paths not yet open were opened by writing the running
-emulator's memory, as above. Over the whole chain the
-lead's eight and the other's ten changed in order, each on 4 counted
-frames (739 runs of 4 and three of other lengths, at the start and at the page change).
+down. The lead's were found on all 260, and every one was the picture
+named above for its character. The other's were found on 163, again
+every one the picture named above. Of the 97 frames where they were not
+found, 13 were the video-lag frames at the start, and the other 84 were
+frames on which the two figures stood 16 px or less apart with a height
+difference under 24 px, so that one covered the other: on the 162
+logic frames with the figures further apart the other's picture was
+found on all 162, and on the 85 with them that close on 1. The paths not
+yet open were opened by writing the running emulator's memory, as above.
+Over the whole chain the lead's eight and the other's ten changed in
+order, each on 4 counted frames (739 runs of 4 and three of other
+lengths, at the start and at the page change).
 
 ## Not covered
 
