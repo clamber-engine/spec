@@ -43,7 +43,7 @@ The first level has two `rising-extra-life-1` items, one
 `rising-extra-life-2` and two `extra-life-3`; its room
 (`exits.md`) has one `extra-life-1`, and the area behind its first wall
 exit (`wall-exits.md`) one `rising-extra-life-1`. Everything below holds for all four
-kinds unless it says otherwise. How an item is drawn is not covered.
+kinds unless it says otherwise. How an item is drawn: "Pictures".
 
 ## Position
 
@@ -548,6 +548,82 @@ After the level is left through an exit and play comes back to it, a
 rising item that went away untaken is in the level again (`exits.md`,
 "Coming back to the level").
 
+## Pictures
+
+What an extra-life item looks like on each frame in `title-1`. Each
+picture has a label used in this file and is named by its picture hash
+(`../formats/sprites.md`, "Picture hashes"); it is drawn at the item's
+position as `../formats/sprites.md` says ("Where the picture is
+drawn"), with the position of "Position" (a rising item's picture rises
+with it). The picture given for a frame is the one on screen with that
+frame's view. An item is never mirrored.
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `item-1` | `00b714faaa104d329f86bfd9087e74a4019897f24e10646b2fe0a1464cfe86bc` |
+| `item-2` | `5ddab46e4042ada86b660a6627cafe51e37d048f28a6af29320e6ac9515c455a` |
+| `item-3` | `27ab0cf985b07f3ac37a962a4fda48bf213494e9ddaea6baec4a4548f920c19a` |
+| `item-4` | `cc69a39dd4ba8de653bacbd6fb6141967e45eb50bccc004aaba2339faf488ca9` |
+| `item-5` | `1c1ba6799da463bc9415dc2303b04f0de999bde7e66cd5462fc16003264ebe0d` |
+| `item-6` | `01740532d6f866ba10a48706e365f2e4ec6dc18bc7a465283a3837930b318aa0` |
+| `item-7` | `f14a2d4b0c0d4e4247fde938f02b1b11e5bdbdd39af39b3cad57d8253ac6f84d` |
+| `item-8` | `2ab2dd8b5bcb4486b1af9e8296d19c797728ee1f4c5edaa79fe4a1434096c764` |
+
+**When a hash isn't found.** The importer looks for every hash in this
+table. If any isn't found, the engine shows its own art for extra-life
+items on every frame, keeping the timing given here.
+
+All four kinds use the same eight pictures with the same timing. The
+pictures go through a cycle of 56 frames, up through the eight and back
+down. Call `a` the frame the item appears (for a rising item, as in
+"Rising"), `n` the frame number minus `a`, and `j` = (`n` + 1) mod 56:
+
+| `j` | Picture |
+|---|---|
+| 0 to 3 | `item-1` |
+| 4 to 7 | `item-2` |
+| 8 to 11 | `item-3` |
+| 12 to 15 | `item-4` |
+| 16 to 19 | `item-5` |
+| 20 to 23 | `item-6` |
+| 24 to 27 | `item-7` |
+| 28 to 31 | `item-8` |
+| 32 to 35 | `item-7` |
+| 36 to 39 | `item-6` |
+| 40 to 43 | `item-5` |
+| 44 to 47 | `item-4` |
+| 48 to 51 | `item-3` |
+| 52 to 55 | `item-2` |
+
+So an item shows `item-1` on `a`, `a` + 1 and `a` + 2 (three frames:
+the cycle is entered at `j` = 1), then `item-2` on `a` + 3 to `a` + 6,
+`item-3` on `a` + 7 to `a` + 10, and so on up to `item-8` on `a` + 27 to
+`a` + 30, back down to `item-2` on `a` + 51 to `a` + 54, then `item-1`
+on `a` + 55 to `a` + 58 and up again. The cycle starts at `a`, not at a
+fixed frame of the level: in two runs with different walking, the item
+appeared 411 frames apart and showed `item-1` on `a` both times. The
+picture doesn't depend on the kind, the item's height, or where the
+player is.
+
+From `P` (the frame the item is taken, "When an item is taken") nothing
+is drawn at the item's place; the image that flies from there is not
+covered ("What taking an item does").
+
+Measured by the pictures on screen, with the first character and a copy
+of the image with the item on the floor at level x 800. In 8 runs (each
+of the four kinds, with each of two ways of walking right that stopped
+short of the item, so that it appeared on two different frames) the item
+was wholly inside the screen and recognisable on 1 836 frames. 1 808
+showed the picture given above for that frame and 28 showed the picture
+of the frame before (a delay of one frame that the pictures of other
+objects show too, `../formats/sprites.md`, "Evidence"). No frame showed
+another picture. Frames on which the item was partly outside the screen
+(a rising item rose out at the top) or covered by the player were not
+counted. In 8 more runs walking into the item (each kind, two ways of
+walking), the item was taken in 4: nothing was drawn at its place on `P`
+or later; on the frame before `P` the player covers the item, so its
+picture could not be read.
+
 ## Example
 
 A `rising-extra-life-2` item's entry has level x 400 and level y 337.
@@ -713,6 +789,11 @@ and is not drawn from frame 321 on.
 
 ## Not covered
 
+- Pictures: whether the cycle of an item's pictures holds during the
+  frames a rising item doesn't move (the knock-out, "While the player is
+  knocked out"), which of an item and the player is drawn in front, items
+  in the other areas, the second character, and the image that flies to
+  the lives display.
 - The second character, leading or following, and riding the animal
   (`riding.md`).
 - Taking an item while landing (the frames from `L`, the frame carrying
