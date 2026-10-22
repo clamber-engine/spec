@@ -361,7 +361,9 @@ full frames with every byte hashed for one of them.
   bunches' in `../behavior/bunches.md` ("Pictures"), those of thrown
   objects, the flash and the pieces of a breaking in
   `../behavior/thrown-objects.md` ("Pictures"), and the letters' and
-  their sparkles' in `../behavior/letters.md` ("Pictures").
+  their sparkles' in `../behavior/letters.md` ("Pictures"), and the
+  crate's, its smoke's and the animal's before it is ridden in
+  `../behavior/animal-crate.md` ("Pictures").
 - The tile sets short frames use, and where they come from.
 - What the order adjustment does, and the order objects are drawn in
   (which object is in front of which), and how pictures are ordered
