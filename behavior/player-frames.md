@@ -650,7 +650,13 @@ its first frame.
 **The roll carries on into running.** The first character shows `stop`
 on D, D + 1 and D + 2, and the second character `s-stop-1` × 3 then
 `s-stop-2` × 3 from D (D to D + 5). For the first character, the
-walking pictures of "Walking, running and turning" follow. For the
+walking pictures of "Walking, running and turning" follow from D + 3.
+When it is standing on D + 3 instead (a roll that had stopped,
+`ground-speed.md`, "After a roll"), `stand-1` × 3 is shown from D + 3
+and the standing pictures go on as in "Standing still" with D + 3 as S.
+Standing close to the end of the floor shows other pictures (teetering)
+from D + 6, which are not covered (seen at 12 px from the right-hand end
+and at 10 px from the left-hand end, and not at 14 and 12 px). For the
 second, walking starts on D + 6 (`ground-speed.md`, "After a roll") and
 its walking pictures follow from D + 6 ("Walking, running and turning",
 "Second character"), starting with `s-walk-1`. When it is standing on
@@ -1367,6 +1373,17 @@ steep face, picking something up):
   and together), 638 and 644 of them followed to D + 16 (11 676 and
   11 389 frames compared, 10 left out). 0 differences. Carried-on
   rolls: 258 and 251, 0 differences.
+- **Carried-on rolls that had stopped, first character:** 16 runs of
+  slow rolls with Action held to the end (8 starting 1, 3, 6, 9, 10, 12,
+  14 and 15 px from the right-hand end of the floor going right, 8 from
+  the left-hand end going left), no other input, 864 logic frames, every
+  one with a matching picture. `stop` was on screen on D to D + 2 and
+  `stand-1` on D + 3 to D + 5 in all 16. Then `stand-2`, `stand-3` and
+  `stand-4` × 3 each and `stand-5` followed in the 8 runs starting 14 px
+  or more (right) or 12 px or more (left) from the end; in the other 8
+  other pictures (teetering) came from D + 6. The runs with a direction
+  held (`ground-speed.md`, "After a roll") were not watched on the
+  screen.
 - **Landings, first character:** 992 landings after standing, walking
   and running jumps: 186 on flat floor with Jump held 1 to 40 frames
   and 806 in random play through the first level, on the floors met

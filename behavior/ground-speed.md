@@ -420,6 +420,17 @@ With D the frame after a roll's last frame, as in `roll-input.md` and
   so with Action and a direction held, running starts at the first run
   check (the end of step 2), and with the opposite direction held a turn
   starts at the first turn check (the end of step 1).
+- **The first character, after a roll that had stopped** (`vx` 0 on D,
+  for example at a ledge, `rolling-off-ledges.md`, "Stopping before a
+  ledge"): with no direction held from D to D + 3, `vx` stays 0 and the
+  player is standing on D + 3, as the second character is on D + 6,
+  not walking. From D + 4 the standing rules apply: a direction held on
+  that frame starts walking, or a turn if it is the opposite one. When a
+  direction is held on a frame from D to D + 3, the stopped roll
+  pushes off (`rolling-off-ledges.md`, "Pushing off", also away from
+  the edge): on the first such frame `vx` becomes 2 (512/256) in the
+  held direction and facing turns to it; on D + 3 that frame is a
+  walking frame as above.
 - **The second character, after carrying on into running**
   (`second-character.md`, "Rolls": still `roll` from D to D + 5,
   `roll_end` on D + 6): walking starts on D + 6 at step 1 (counter 512,
@@ -611,6 +622,16 @@ turn start or facing:
   K, on every one. The first two sets above took each landing's timing
   from the original; these check that M, and so K, follows from the
   jump.
+- Rolls that had stopped and carried on into running (first
+  character, slow rolls started standing 1 to 15 px from the end of the
+  ground, both directions, Action held to the end): 16 runs with no
+  direction held (8 distances each way): `vx` 0 and standing on D + 3 in
+  all. 128 runs with a direction added on one frame from D to D + 7 and
+  held after (4 distances, both held directions, 8 change frames, both
+  ways to go): `vx` 2
+  in the held direction on the first frame held from D to D + 3 (a
+  walking frame on D + 3), and walking or a turn starting on the first
+  frame held from D + 4, in all.
 
 Falls and bounces ("After a fall or a bounce"), all by inputs with the
 lead character, each checked using only each frame's inputs and `vx`,
