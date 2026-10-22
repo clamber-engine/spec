@@ -2,6 +2,37 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.230.0
+
+How the first character is drawn when picking up, carrying and throwing
+or putting down an object on flat floor in `title-1` (spec#38,
+pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: new "Carrying", "First character"
+  section.
+  - 40 new picture hashes: `pick-1` to `pick-7`, `carry-1` to
+    `carry-10`, `carry-turn`, `throw-1` to `throw-19`, `hold-1` to
+    `hold-3`.
+  - Pick-up on G to G + 14; throw on Q to Q + 42, then `stand-1`,
+    `walk-1` or `turn-a` on Q + 43; put-down on Q to Q + 12 (the
+    pick-up's pictures in reverse), then `stand-1` and S on Q + 13.
+  - Standing with the object: a 42-frame loop of `hold-1` to `hold-3`.
+    Moving with the object: a 10-step carrying stride (counter 512, rate
+    ⌊v/4⌋ + ⌊v/8⌋, at least 96), with a stand check at the end of steps
+    4 and 7 for v < 48 and no direction held. 8-frame turns can start on
+    any frame and show `carry-turn`. Jumps show `carry-1` from J − 2 to
+    L + 1.
+  - Fallback group, a synthetic example, on-screen evidence and updated
+    "Not covered" (the second character carrying, slopes, ledges, walls,
+    throws or put-downs in the air or during a turn, and the frames
+    where a picture showed one frame late).
+- `behavior/carrying.md`: a turn while carrying starts on the frame the
+  opposite direction is held, standing or moving (there are no turn
+  checks while carrying).
+
 ## spec-v0.229.0
 
 How bunches are drawn in `title-1` before they are taken (spec#38,
