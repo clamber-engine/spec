@@ -411,13 +411,16 @@ both fractions 0.
 **When the map appears after a level.** Where the map appears after a
 level was finished (the lead then standing at the place "When the map
 appears" gives), the other stands 16 px to the left of the lead at the
-same height, with the same fractions as at a new game, on the first frame
+same height, with both fractions 0 as at a new game, on the first frame
 on which both are there; this is the same as at a new game. It holds
-whichever of the two characters led in the level. It was measured with the map
-appearing after the first level with the first and with the second
-character leading, and with the lead at 18 other stops (its `x` from 24
-to 236, found by changing which place the level counted as): in every one
-the other was 16 px to the left of the lead at the same height. Where it stands when the map
+whichever of the two characters led in the level. It was measured with
+the map appearing after the first level with the first and with the
+second character leading, and for 18 other stops, covering the whole
+length of the map from its left end to its right end, with the first
+character leading. For those 18 the level just finished was made to count
+as a different place by changing the running game's state before the
+level ended, as for the open paths. In every one the other was 16 px to
+the left of the lead at the same height. Where it stands when the map
 appears after a level was left in other ways is not covered.
 
 **Legs.** The other walks each of the lead's legs ("Walking a path") by
@@ -627,8 +630,8 @@ kept that offset to the end of the run (over 400 frames).
 - Progress other than at a new game and after the first level's first
   finish (`../formats/level-map.md`, "Progress").
 - The second character on the map: where it is when the map appears
-  after a level left in other ways than finished; legs on which the lead's `x` doesn't change;
-  walks to the left over a page boundary; more than one walk to the right
+  after a level left in other ways than finished; legs on which the
+  lead's `x` doesn't change; walks to the left over a page boundary; more than one walk to the right
   over one.
 - The pictures when the second character leads.
 - Which picture the cycles start with when the map appears.
