@@ -601,6 +601,15 @@ frames. After the lead's page change, one run showed the other character
 changing one frame later than the lead for the rest of the run, and what
 decides that is not known ("Not covered").
 
+**When the second character leads.** The pictures belong to the
+characters, not to the lead's and the other's places. When the
+second character is the lead, it shows the eight pictures
+`map-other-1` to `map-other-8` as above (cycle 32) and the other
+character, the first, shows the ten pictures `map-lead-1` to
+`map-lead-10` (cycle 40). Positions, legs, facing, page changes and
+the timing of the picture changes follow the rules above unchanged, with
+the second character as the lead.
+
 **Facing.** A character is drawn mirrored left–right (as
 `../formats/sprites.md` says, "Mirroring") exactly when it faces left. It
 faces left from the first frame on which its `x` is less than on the
@@ -670,6 +679,21 @@ character's, with one exception: once, after the lead's page change, the
 other character changed its picture one frame later than the lead and
 kept that offset to the end of the run (over 400 frames).
 
+Second character leading: a map reached from a level whose
+second character led to the end was played down the same 1 500-frame
+chain of walks as the first character's (nine walks over the
+neighbouring paths, 13 legs). The other's `x` matched the rule on every
+frame (0 mismatches over 1 486 frames, the one page-change lag frame
+excepted as above). The pictures were looked for on 260 frames of a walk
+down: the lead's were found on all 260 and the other's on 163, and every
+one found was the picture named above for its character (the 97 not found
+were not examined further; in the first character's runs such frames
+were ones where the lead covered the other or the other was on another
+page). The paths not yet open were opened by writing the running
+emulator's memory, as above. Over the whole chain the
+lead's eight and the other's ten changed in order, each on 4 counted
+frames (739 runs of 4 and three of other lengths, at the start and at the page change).
+
 ## Not covered
 
 - Progress other than at a new game and after the first level's first
@@ -680,7 +704,6 @@ kept that offset to the end of the run (over 400 frames).
   a page edge, whether the other ends on the lead's `x` or 24 px to its
   right (6 of 7 measured walks did the first); the other's stalled
   frame in walks over page edges other than the first level's first.
-- The pictures when the second character leads.
 - Which picture the cycles start with when the map appears.
 - What moves the other character's cycle against the lead's at a page
   change.
