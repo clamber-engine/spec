@@ -363,7 +363,9 @@ full frames with every byte hashed for one of them.
   `../behavior/thrown-objects.md` ("Pictures"), and the letters' and
   their sparkles' in `../behavior/letters.md` ("Pictures"), and the
   crate's, its smoke's and the animal's before it is ridden in
-  `../behavior/animal-crate.md` ("Pictures").
+  `../behavior/animal-crate.md` ("Pictures"), and the count display's
+  image and the timing of the digits and the lives image in
+  `../behavior/count-display.md` ("Pictures").
 - The tile sets short frames use, and where they come from.
 - What the order adjustment does, and the order objects are drawn in
   (which object is in front of which), and how pictures are ordered
@@ -371,7 +373,9 @@ full frames with every byte hashed for one of them.
 - Some things on screen are drawn without frames from the frame table
   (about 9 % of the pieces shown in the runs above). Some of their
   pictures are those of no full frame, such as three of the single
-  collectibles' (`../behavior/collectibles.md`, "Pictures").
+  collectibles' (`../behavior/collectibles.md`, "Pictures"), and the
+  count display's digits and the lives display's image
+  (`../behavior/count-display.md`, "Pictures").
 - Collision or hit areas: frames hold none.
 - Why the 19 pieces in "Evidence" were not shown, and frames shown for
   one frame with the previous frame's tiles.
