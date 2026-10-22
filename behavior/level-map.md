@@ -489,9 +489,8 @@ before.
 
 Measured in the first level's map with both characters, from the new
 game's map state and by inputs alone (runs A–D; runs E and F below are set
-up differently); which paths were open was written into the running
-emulator's memory before the inputs began, not reached by play (as for
-the pictures). Every position is that of the character's
+up differently); which paths were open was arranged with a setup method
+before the inputs began, not reached by play (as for the pictures). Every position is that of the character's
 sprite on screen, in whole pixels, on every counted frame. Four runs,
 each with the same first two legs (the first walk down from the start
 point):
