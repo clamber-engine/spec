@@ -112,8 +112,9 @@ colour exactly.
   have their own night colour, and every later entry's night colour is
   black. In the first level every night colour has red 0 and green 0,
   and blue 4 or less, never more than the entry before's: a dark blue at
-  the top of the backdrop, black lower down. Where the night colour
-  table is stored is not covered yet.
+  the top of the backdrop, black lower down. The table is stored as a
+  **night colour table** (`../formats/graphics.md`, "Night colour
+  tables"); `../formats/locators.md` gives where the first level's starts.
 
 The rows each entry covers don't change: the backdrop's frame-to-frame
 alternation (`../formats/graphics.md`, "The backdrop") goes on as
@@ -207,8 +208,6 @@ next step's colour on the picture of the frame before a step frame.
 
 - Sprite colours. They change too during the dimming, on frames of the
   same cycle, but not as the table says.
-- Where the backdrop's night colour table is stored in the image, and
-  its colours.
 - On which picture a step first shows, to the frame. In the captured
   pictures, the far layer's colours of a step already showed on the
   picture of the frame before the step frame, the ground layer's colours

@@ -240,6 +240,30 @@ For example, the list `02 00 00 1f 00`, `01 00 00 e0 03`, `03 00 00 00
 7c`, `00` gives rows 0 and 1 colour 0x001F (red), row 2 0x03E0 (green),
 rows 3 to 5 and every row below them 0x7C00 (blue).
 
+### Night colour tables
+
+A backdrop row-colour list that takes part in the dimming
+(`../behavior/dimming.md`) has a **night colour table**, stored apart from
+the list: one colour ("Colours", 2 bytes) for each of the list's first
+`m` entries, in the list's entry order. Entries after the table's last
+have the night colour black. The table has no terminator; `m` is known
+from the level, not from the data. The first level's table has `m` = 71,
+fewer than its list's entries, and lies in the image just before the
+list (`locators.md`).
+
+For example, with `m` = 3 the table `00 10 00 0c 00 00` gives entries 0, 1
+and 2 the night colours 0x1000, 0x0C00 and 0x0000, and every later entry
+black.
+
+How the table was found: the backdrop's colours were read from pictures
+of the first level while it dimmed, one step at a time (setup method:
+research tools), and each entry's final colour and per-step change were
+fitted. The final colours were then searched for, as a run of colours,
+in the image; the run found lies where `locators.md` says, and with it
+as the final colours every picture of 16 runs matched, apart from the
+backdrop's lowest rows showing a step one picture early on some
+pictures (`../behavior/dimming.md`).
+
 ### The backdrop
 
 The backdrop's colour on picture row `j` is the colour the backdrop's
@@ -436,7 +460,8 @@ starts in the image is in `locators.md` (the grid's row is listed under
 - the picture table (types 0 to 512),
 - the grid (its first 184 columns, `level-ground.md`),
 - the backdrop's row-colour list and the horizon layer's row-colour
-  list ("Row-colour lists"),
+  list ("Row-colour lists"), and the backdrop's night colour table
+  ("Night colour tables"),
 - the horizon block: the horizon map and, right after it, the horizon
   tiles (tiles 0 to 18 are used).
 
