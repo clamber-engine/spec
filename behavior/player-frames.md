@@ -1078,9 +1078,10 @@ carries on into running ("The stop after a roll"), G when it
 stands from the landing after a bounce ("A bounce"), G + 7 when it
 stands after a fall from a steep face ("A fall from a steep face"), and
 U + 12 after a crouch ("Crouching"). From S, for as long
-as the player goes on standing on flat floor away from a ledge, it
-shows one 275-frame loop over and over, the same whatever came before
-S:
+as the player goes on standing on flat floor, it shows one 275-frame
+loop over and over, the same whatever came before S, and the same on a
+1-in-4 slope and at a ledge as for the first character, as far as that
+was checked (see "Standing still" above):
 
 1. `s-stand-1` to `s-stand-22` × 4 each (88 frames, S to S + 87);
 2. `s-wait-1` to `s-wait-13` × 5 each (65 frames, S + 88 to S + 152);
@@ -1816,6 +1817,20 @@ steep face, picking something up):
   part of it was on the screen, and in 25 the picture found was a
   different one, followed within 6 frames by the expected picture. In
   every one of the 9 runs the pictures after that matched the list.
+- **Standing at a ledge and on a slope, second character:** 80 runs on
+  the platform without faces of the first character's runs, the second
+  character leading, put at a random column of it, walking toward
+  either end a few frames or not at all, then standing 700 frames: 55
+  stretches of standing, 25 280 frames compared with the loop, 13
+  differences, all on frames of 4 runs where the other character stood
+  within 30 px of the player and the picture on screen was not the
+  loop's but another one, for 1 to 5 frames in a row (the other
+  character stood that close on 97 863 frames, of which 35 differed in
+  this way). 80 runs on the 1-in-4 slopes, walking or running 1 to 60
+  frames either way and then standing 700 frames: 67 stretches of
+  standing, 39 566 frames, 4 differences, each a single frame of a
+  different run, with the player on level floor about 50 to 60 px beyond the
+  slope's far end, where no picture of the player was found on screen.
 - **Standing still, second character:** 120 runs on flat floor away
   from ledges with the second character leading, standing for up to
   2 998 frames: 131 stretches of standing that started after walking
@@ -1943,9 +1958,9 @@ steep face, picking something up):
   ended next to a face on a mode difference (a turn ending with
   forward held, or standing with Right pressed while drifting at a speed
   under 48 but not 0, in which walking did not start).
-- The second character's standing pictures on a slope or at a ledge,
-  and either character's on slopes other than 1-in-4, on steep faces
-  and next to a wall.
+- Either character's standing pictures on slopes other than 1-in-4, on
+  steep faces and next to a wall, and the 13 and 4 frames named in the
+  second character's ledge and slope evidence.
 - The crouching pictures of either character on a slope, at a ledge,
   and in a crouch that starts on a landing's frames or after a roll. Also the
   pictures of a jump from a crouch or from its getting-up frames, and of
