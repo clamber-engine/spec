@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.235.0
+
+What the first character does and shows after a roll that had stopped
+and carried on (spec#57).
+
+Answers clamber-engine/spec#57.
+
+- `behavior/ground-speed.md`: "After a roll". With no direction held,
+  the first character stands on D + 3 (`vx` 0 from D), like the second
+  character on D + 6. A direction held from D to D + 3 pushes off, and
+  from D + 4 the standing rules apply. Evidence with run counts per
+  setup.
+- `behavior/player-frames.md`: `stand-1` × 3 from D + 3, then the
+  standing pictures with D + 3 as S, with on-screen evidence. The
+  pictures shown close to the end of the floor (teetering) stay under
+  Not covered, along with where they were seen.
+
 ## spec-v0.234.0
 
 What the first character does and shows when walking, running or
