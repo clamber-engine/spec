@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.249.0
+
+The launch barrels' pictures (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/launch-barrel.md`: new "Pictures" section: five barrel
+  pictures named by picture hash, their timing for both kinds from the
+  catch frame, and the smoke at a catch and the flash at a shot (using
+  the existing smoke and flash pictures). All of them fall back to the
+  engine's own art. On-screen evidence from four runs that used only
+  inputs. The shot now leaves a flash rather than broken pieces. "Not
+  covered" updated, including the opening pictures no run showed.
+- `formats/sprites.md`: "Not covered" points to the launch barrels'
+  pictures.
+
 ## spec-v0.248.0
 
 The signs' pictures and the first character's pictures on a rope
