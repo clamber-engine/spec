@@ -817,6 +817,12 @@ running pictures from L, with none of the pictures above. This is the
 same after plain jumps and after jumps out of a roll, pressed on the
 ground or in the air (`ground-speed.md`, "After a landing").
 
+Running that starts on L shows `s-run-1` on L, and walking or running
+that starts on L + 17 shows `s-walk-1` or `s-run-1` on L + 17. From
+there the pictures follow "Walking, running and turning", "Second
+character", with the mode's first frame as the first frame of the
+cycle.
+
 ## A bounce
 
 B is the bounce frame (`bounce.md`); for the second character, whose
@@ -1746,6 +1752,19 @@ steep face, picking something up):
 - **Landings, second character:** 373 landings (188 on flat floor with
   Jump held 1 to 40 frames, 185 in random play), 53 of them running from
   L (4 380 frames), 0 differences.
+- **Walking and running after a landing, second character:** 189
+  landings after jumps (flat floor and random play through the first
+  level, from screen records already taken for the entries above)
+  where running started on L
+  (94) or walking (52) or running (43) on L + 17. The mode's picture was
+  compared on every frame from the first one while the mode lasted
+  (3 954 frames; 7 frames in all, counting the starts below, were left
+  out where no picture was recognised or nothing was drawn). The step on each frame was worked out from the inputs and
+  `vx` of the frame as in the entries above, with `vx` taken from the
+  run's trace, not computed from the inputs. Every picture matched.
+  Starts on L + 1 to L + 3 (21) and on other frames (4) were followed
+  too and are not claimed here (370 frames; 2 pictures were shown one
+  frame later on screen).
 - **Landings after jumps out of a roll, second character:** 800 runs
   on flat floor, 398 of them jumping out of slow, normal and fast rolls
   (Jump pressed on a roll frame from the roll's first frame to 23 frames
