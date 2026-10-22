@@ -355,7 +355,8 @@ tiles".
 ## Moving things and raised tiles
 
 **Moving things** here are the two characters and the animal when
-ridden. (Objects and walkers are not covered: "Not covered".) Against the ground layer they
+ridden. (Walkers and objects follow a different rule: "Walkers and
+objects and raised tiles".) Against the ground layer they
 are in one of two **orders**, and the order is a state of play, not a
 property of a tile or of a thing:
 
@@ -411,6 +412,39 @@ things over the ground layer's other tiles throughout. An engine that
 hides a moving thing completely, or hides one kind (the lead but not the
 animal) or all of them one picture early or late, differs from the
 original on the pixels of that picture.
+
+## Walkers and objects and raised tiles
+
+Walkers and objects (`../formats/placements.md`, "Kinds") do not follow
+the **order** of "Moving things and raised tiles". Each **kind** has one
+order against the ground layer's raised tiles, and it does not change
+with the state of play, in particular not at the picture of `T` of a
+level's end:
+
+- **In front**, at every picture: `small-walker`, `medium-walker`,
+  `large-walker`, `thrower`, `bunch`, `barrel`, `holder`, `animal-crate`, `figure`,
+  `restart-barrel` and `down-launch-barrel`. Every pixel is drawn over
+  the ground layer, raised tiles included.
+- **Behind**, at every picture: `tyre` and `sign` (every pixel over a
+  pixel of a raised tile that isn't transparent is hidden). A pixel over
+  a tile that isn't raised, or over a transparent pixel of a raised
+  tile, is drawn as usual; the rule is the one given for "Behind" above.
+- **Partly hidden**, at every picture: `letter-2`. Over a pixel of a
+  raised tile that isn't transparent, about 4 in 5 of its pixels are
+  hidden and the rest shown, before and from the picture of `T` alike;
+  which ones is not covered.
+
+For an engine: keep the order with the kind, a fixed table of the kinds
+above, and apply the level end's change of order to the characters and
+the animal only. An object of a behind kind drawn in front, or of an
+in-front kind hidden from the picture of `T`, differs from the original
+on the pixels over raised tiles.
+
+A `ball`, a `critter` and a `stinger` put on the raised tiles in the
+same way never had a pixel over a pixel of a raised tile that isn't
+transparent, so no order was found for them. Kinds not named (`letter-1`,
+`letter-3`, `letter-4`, the extra lives, the hidden kinds, the exits and
+the entrances) were not tested.
 
 ## Screen pictures
 
@@ -721,6 +755,28 @@ More cases, as bytes, are in `../vectors/graphics/`.
   no moving-thing pixel was on a transparent pixel of a raised tile in
   any picture, so the exits say nothing about transparent pixels. In
   each, the last pictures are those just before the area changed.
+- Walkers and objects against the ground layer's raised tiles, in the
+  first level at its end (setup method: research tools, used to put one
+  object of each kind below on the raised tiles beside the end marker,
+  at the height of the lead's standing place). The level was run to the
+  end with the lead walking right (pictures with only the ground layer,
+  only the moving things and both shown, as in the bullet above). For
+  each kind, the pixels it adds to a run without it, over the 20 pictures
+  before the picture of `T` and the 14 from it (the lead is not yet at
+  the object in them), on pixels of
+  raised tiles that aren't transparent, shown / hidden. Before, then
+  from `T`: `medium-walker` 17 778 / 0 and 11 494 / 0; `small-walker`
+  11 475 / 0 and 7 322 / 0; `thrower` 22 212 / 0 and 15 336 / 0;
+  `barrel` 19 677 / 0 and 12 956 / 0; `holder` 19 822 / 0 and 13 024 /
+  0; `animal-crate` 33 474 / 0 and 21 066 / 0; `figure` 9 538 / 0 and
+  5 846 / 0; `restart-barrel` 19 308 / 0 and 10 887 / 0;
+  `down-launch-barrel` 32 508 / 0 and 22 005 / 0; `bunch` 5 160 / 0 and
+  3 539 / 0; `letter-2` 1 099 / 5 115 and 820 / 3 127; `tyre` 0 / 12 180
+  and 0 / 7 250; `sign` 0 / 13 419 and 0 / 7 044 (the level's other sign
+  was not run); `large-walker` 29 688 / 0 and 18 493 / 0. A `ball`, a
+  `critter` (at two heights) and a `stinger` (at seven heights) added
+  no pixel on raised tiles in either part. Pixels over tiles that
+  aren't raised were never hidden.
 
 ## Not covered
 
@@ -743,8 +799,10 @@ More cases, as bytes, are in `../vectors/graphics/`.
   and palette rows. The order of the characters and the animal against
   the layers is given for the ground layer's raised tiles; against the far layer, the horizon layer
   and the backdrop it is not covered.
-- The order of objects and walkers against the raised tiles, in either
-  order; the pixels over transparent pixels of raised tiles in an exit; the order of the characters and the animal against the raised
+- The order against the raised tiles of the kinds not named in
+  "Walkers and objects and raised tiles", and of walkers and objects in
+  exits and in areas other than the first level's own ground; the
+  pixels over transparent pixels of raised tiles in an exit; the order of the characters and the animal against the raised
   tiles in areas other than the first level's own ground, and in its
   room and its scene (as the room and the scene sections say); the order
   in the walk-in at an area's start; other exits than those named in
