@@ -374,8 +374,8 @@ of the release frame's view and its item still flew.
 
 An item that flies is drawn as a copy of a collectible's image that moves
 to the picture's top left corner, as in `collectibles.md` ("The flying
-copy"), on the 17 frames `R` to `R` + 16 of its release frame `R`
-(the frame before it arrives). With `V` and `W` as above, let
+copy"), on the 17 frames `R` to `R` + 16 of its release frame `R`. With `V`
+and `W` as above, let
 
     sx = xb − V − 9        sy = yb − W − 11
 
@@ -402,7 +402,7 @@ For example, a bunch with `xb` − `V` = 75 and `yb` − `W` = 46 on frame
 Measured with the runs of `collectibles.md` ("Evidence for the flying
 copy"): 267 copies followed the rule on all 17 frames, 2 were cut short
 by a knock-out and followed the rule up to then, none left it
-(4 547 frames; 2 406 showed `spin-1` unmirrored, 2 141 had another sprite
+(4 547 frames; 2 406 showed `spin-1` unmirrored, 2 140 had another sprite
 over the square, and 1 had other pixels of the count display in it, where
 the copy passed through the count display's own place). Which of the two is in
 front there is not covered.
