@@ -2184,10 +2184,8 @@ steep face, picking something up):
 - **The first character in a launch barrel:** random play on flat floor (Right mostly, with short
   Jump, Action, Left and nothing segments, then 120 more frames of random input after the catch),
   with a copy of each barrel kind placed on the floor ahead of the character, in a copy of the
-  image. Two things were done to the running original rather than by input or a changed image: the
-  character was set down at a chosen spot on the floor before play, and on every frame the
-  character's "can be hurt" state was switched off so that nothing hurt them (research tools; the
-  spec rules do not depend on either). 46 catches by the `left-launch-barrel` and 32 by the
+  image. A setup method (research tools) was used so that the character started at a chosen spot
+  on the floor and wasn't hurt during the runs; the spec rules do not depend on it. 46 catches by the `left-launch-barrel` and 32 by the
   `down-launch-barrel`, from 21 and 15 different pictures on the catch frame (walking, running,
   rolling, jumping and others). Left kind, flight frames C + 16 to C + 42 in all 46 catches (1 242
   frames): 332 were found whole on screen and each showed the listed hash (each of the 16 pictures
