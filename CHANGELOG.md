@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.242.0
+
+The second character's pictures when walking, running or turning into a
+steep face on flat floor (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: "Second character" now says that against a
+  wall or a steep face on flat floor its pictures follow the same rules
+  as the first character's, with no pushing picture. New on-screen
+  evidence for the second character against a face. "Not covered" no
+  longer lists the second character, and now lists that evidence's runs
+  that ended on a mode difference and going over a face at speed.
+- `behavior/ground-speed.md`: the "Blocked" rule now holds for either
+  character.
+
 ## spec-v0.241.0
 
 The second character's standing pictures at a ledge and on a 1-in-4
