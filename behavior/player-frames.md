@@ -52,6 +52,28 @@ The colours each character's pictures are drawn with are in
 | `stand-9` | `b24d5ec4033de4bd48f1cf21f22c83d6c83f7d49e4bfc5d8c1cfb657cd779c18` |
 | `stand-10` | `6db11fb56e4b21ec660bca54140e50038126555b0c4761b2a8e1998bd0154d22` |
 | `stand-11` | `753d2ddb1a7487755e95562a7fe7551db0be7043e51daa82bee9eb37e7922614` |
+| `teeter-1` | `f0a9e5b4444f484f6b1dabece744f17cadbb953c28d71d50d4df118a7ee15ada` |
+| `teeter-2` | `ea6ac0e78db695cb54a868d7e6c2e818740c5fa7cd16e9e2116f2aac15694367` |
+| `teeter-3` | `b73c5d039ce5c7ce193a3767d7df073f9b4be0797b310bc0c8e2dae8edcc1875` |
+| `teeter-4` | `de123a4c994344a0d6fcf89da634ad717a562cbaa72fd79c357979c03e6b4df4` |
+| `teeter-5` | `3c7f4bf50621a5ee548699dfada5d3fd05ff405ff1dc64bb2862927274cb736c` |
+| `teeter-6` | `3344a98d306a079af0cd36913a7156cae176766e1a64a66a5eddcc925b698c49` |
+| `teeter-7` | `08d6383bc9c3413313a022882bc1b74859a58ab4418b81aa65b1c0c09fa8eb71` |
+| `teeter-8` | `adbca35b173e87bb0b5b2e047801e64723bbb361c3599e77ec3730bedb402eb9` |
+| `teeter-9` | `064296e774795741ee2840d0adaf2cdd0e7ab5ea912d25e319eb7b342d895c61` |
+| `teeter-10` | `8e8835456b88f58022d08b79fa9197a44651d85ba490351e8feb9cf3b01d4b93` |
+| `teeter-11` | `d204dc85ff4e0e2584683392af1da86d190cd04295b828d6f010beaca5782991` |
+| `teeter-12` | `fe68e744a0d4e5782ab8d2ee25e84ad353fc3a16e86e3bc1b1b0ab9c1c78f7a4` |
+| `teeter-13` | `c470ea00d76066797b045ead44656f361cfd6b1d0201341ce113e16c8836f6f1` |
+| `teeter-14` | `e161fa426d03cd3b5813f27c24a0fb6a84556cfb817670eefb2b38677728c32a` |
+| `teeter-15` | `a6ea8df836706b6719a9a694a1b5863ebcd116ff48988a2f7078bdea8e1f30fd` |
+| `teeter-16` | `3530a447fb28546faaf4d46ae952cbc45bd6b5533f362bdb546a19e8b753125d` |
+| `teeter-17` | `3c71b79018311dcedf4a8b4e86cb366a67ab1a742615d9f5d5b595e2fe013ae4` |
+| `teeter-18` | `c2293a48aaed2ff048ee921d9db866ab44e060ebbf9c5dc3a47671d2fa5c42d5` |
+| `teeter-19` | `f38e2f144cb7018f3ec8e934ce51325a14d3624246c3986cbb9a468b68719f2f` |
+| `teeter-20` | `e4605c757d920f6a924d21b2a4a4f709c2db5f06022f444693bd66d45e3a2401` |
+| `teeter-21` | `97edf1ddd8632c5c838afca3eec8ed44d09a398402e6a2d45676c1c22aedd8fb` |
+| `teeter-22` | `d16004e55ed68d58e337e1a607c0213d9acf19328c5a17585edc9cff17b1291f` |
 | `jump-1` | `f986d24b9b9e34ad53119824008e8ec440beb5cd0fe8293e4d90c2ec620bb330` |
 | `jump-2` | `5c50e91f1e888be1db77135973e61e8da620353da147d580cd38bdeb1610b054` |
 | `rise-1` | `1b977a6e7cd96246b6482be6acd436314c6e97461ef6f78cbccbfcb47d278959` |
@@ -327,6 +349,24 @@ The colours each character's pictures are drawn with are in
 | `s-wait-15` | `4bf0e08ce812c80380f1310d70efb160a0642c7759000626cf85adee8f6cdf4e` |
 | `s-wait-16` | `34117412cb7d59beb1fbf774773656fd9c55d39046775453495150c4deaa0bfe` |
 | `s-wait-17` | `86db93a8d220f3fe0d76c82b05dec865f25464e89ed3286d6e3a4daaa86f0500` |
+| `s-teeter-1` | `12b2719b4d79af53ef25e2c08fe054ec8bb383202c28581ab123ecbf865c126e` |
+| `s-teeter-2` | `3b438c9c3b195d6733275867a6ed37b0b7bd81bf9cb1ef3c5506f6b16d5b1ed4` |
+| `s-teeter-3` | `e70b432390539e6a9874a788f693214cb2ccc6e86d429958af5c20d986ea7717` |
+| `s-teeter-4` | `97bb7f2ea92d398a3f5ebc19d353e7879320b079bde394e71afea751ef84fe9e` |
+| `s-teeter-5` | `745164196edb736a3118a1e0f8551d07225a7b250e14be2785e42be3be9450c9` |
+| `s-teeter-6` | `51e38b017af0b21fe35f4a0a143df671f3a831b771b2ca145c402053bbc5c024` |
+| `s-teeter-7` | `ea8ba818498e81fe0cde176be8bbdb94108c184496d9f1f11b2ea25ec099a3e2` |
+| `s-teeter-8` | `e8f31d23c2f4561a2e008cd86192975edcc6e3f4476da4f9ef0ecef78174a3ce` |
+| `s-teeter-9` | `10d657718f5db5ab50c657caff097e396935ac0cfb2c337639be256c19d1ada0` |
+| `s-teeter-10` | `6829656acc73516fbcbc495cfcdb073d1dd50938bbc46ec88551fe3f44aeef8b` |
+| `s-teeter-11` | `46b7b2e590a8ac2df4a03ae3b2a4316dfdc890ede948c767072d1433136124bf` |
+| `s-teeter-12` | `554d18eb09324c7f67f28d50947279ad9169c88c58c070e68c4b9391e1d7c6a2` |
+| `s-teeter-13` | `ae758e47bdfdc334a9b96240e49f198c6c65350dcb95e376a73a803781845d0e` |
+| `s-teeter-14` | `0c503c3715b0934fc1aade749b0a0e8094127232e339c4b604ffd52604309c3d` |
+| `s-teeter-15` | `50a61303104a441a8f361ab9d0ffcd1cdf35671e5a5f4ab2a0f928d2953b0821` |
+| `s-teeter-16` | `93d30b22e16050874939be740423c4477fa56d6e7d84e4cc1d5df0156e15a7ec` |
+| `s-teeter-17` | `b898ca126279367d0f00492160436c993763f853b3735cd3a54990071ab8d666` |
+| `s-teeter-18` | `c94d6535ec7f6d7fdaac09775f4f96145e78d57a9db3f8da3e2625b140f444d5` |
 | `s-jump-1` | `171a596201c949c0f31ee4dc50eb5c9f31a63dc03a74224a47c5fdf6df13cfe3` |
 | `s-jump-2` | `7a25d69f9869fcaaa12debb0752478d080e0433bf380e198a429800d45c5c8da` |
 | `s-rise-1` | `dfda6a14e311f0ef690d363d68ab366ed3d6e06ab1d5dc29fcfc82df7ee11b32` |
@@ -444,7 +484,11 @@ timing given here. The standing pictures form one group: `stand-1` to
 standing frame comes right after walking, a landing, a bounce or a
 roll's stop, or later in the "Standing still" list. So do the second
 character's standing pictures, `s-stand-1` to `s-stand-22` and
-`s-wait-1` to `s-wait-17`. The second character's walking, running and
+`s-wait-1` to `s-wait-17`. The teetering pictures, `teeter-1` to
+`teeter-22` and `s-teeter-1` to `s-teeter-18`, form one group for each
+character: if any of a character's isn't found, the engine shows its own
+art on that character's teetering frames, keeping the timing given
+here. The second character's walking, running and
 turning pictures are `s-walk-1` to `s-walk-16`, `s-run-1` to `s-run-13`
 and, for turns, `s-stand-5` and `s-stand-7`: if any of them isn't
 found, the engine's own art is shown on its walking, running and
@@ -713,9 +757,9 @@ walking pictures of "Walking, running and turning" follow from D + 3.
 When it is standing on D + 3 instead (a roll that had stopped,
 `ground-speed.md`, "After a roll"), `stand-1` × 3 is shown from D + 3
 and the standing pictures go on as in "Standing still" with D + 3 as S.
-Standing close to the end of the floor shows other pictures (teetering)
-from D + 6, which are not covered (seen at 12 px from the right-hand end
-and at 10 px from the left-hand end, and not at 14 and 12 px). For the
+Standing close to the end of the floor shows the teetering pictures
+from D + 6 ("Standing still", "Teetering at the end of a floor", with
+D + 3 as S). For the
 second, walking starts on D + 6 (`ground-speed.md`, "After a roll") and
 its walking pictures follow from D + 6 ("Walking, running and turning",
 "Second character"), starting with `s-walk-1`. When it is standing on
@@ -1207,12 +1251,9 @@ as in the sections above
 and below. From S, for as long as the player goes on standing on flat
 floor, the pictures follow one fixed list, the same whatever came
 before S. The list is the same on a 1-in-4 slope (`slopes.md`), going
-up or down or at its flat bottom. It is also the same on a platform's
-last columns of floor when the player got there by being placed or by
-walking up to 12 frames, and then stood: no teetering or other picture
-for standing near an edge was seen, whichever way the player faced.
-Teetering after a roll's stop is a separate case (see "A roll"), and
-standing after running up to an edge was not tried.
+up or down or at its flat bottom. Close to the end of a floor it is
+replaced from S + 3 by the teetering list below, when the player faces
+that end.
 
 Two runs of pictures are used in the list. The **sway** (186 frames):
 
@@ -1257,6 +1298,52 @@ next standing frame is a new S. Holding `U`, the top face button or a
 shoulder (`controls.md`) while standing changes nothing: the list goes
 on where it was.
 
+**Teetering at the end of a floor.** Whether the player teeters is
+decided once, on S + 3. It teeters when it is standing on the floor,
+faces an end of the floor where the floor stops (a drop or a pit, with
+no face or wall) and its position, rounded down to a pixel column, is
+one of the 12 outermost columns of floor at that end: for floor on
+columns a to b, columns a to a + 11 when facing left and b − 11 to b
+when facing right. Then S to S + 2 show `stand-1` × 3 as in the list
+above and the standing list is replaced by the teetering list, for as
+long as the player stands:
+
+1. `teeter-1` to `teeter-11` × 4 each (44 frames, S + 3 to S + 46);
+2. from S + 47, a loop of 290 frames over and over, in which the
+   picture steps to the next number up or down, one at a time:
+   `teeter-12` to `teeter-17` last 5 frames each and `teeter-18` to
+   `teeter-22` 3 frames each, except that `teeter-17` lasts 3 frames
+   when reached from `teeter-18`. The steps go up from `teeter-12` to
+   `teeter-17`, down to `teeter-12`, up to `teeter-17`, down to
+   `teeter-12`, up to `teeter-22`, down to `teeter-12`, up to
+   `teeter-22`, down to `teeter-17`, up to `teeter-22`, and down to
+   `teeter-13`; the next loop starts with `teeter-12` again.
+
+The wait of the standing list is never shown while teetering. Further
+rules, as seen:
+
+- If the player is not in those columns on S + 3, the standing list
+  goes on, even if it then slides into them (a stop leaves the player
+  drifting for a while).
+- Facing away from the nearer end, the standing list is shown whatever
+  the position.
+- It held after each of these ways of standing, the only ones seen to
+  start a new S there: a walk's stop, a turn's end, a roll's stop, a
+  landing after a jump and a crouch's end (the S of each is given in
+  the sections above). Other ways of coming to a stand are in "Not
+  covered".
+- Inputs act as in the standing list: `U`, the top face button or a
+  shoulder held for a frame changes nothing, and `L`, `R`, `D`, `J` or
+  `A` end the standing (a walk or a turn, a crouch, a jump or a roll)
+  and the next standing frame is a new S, which teeters or not by
+  where the player is then.
+
+Example: after a walk to the right, the player stands on S facing the
+right-hand end of a platform and 8 px from it. `stand-1` shows on S to
+S + 2, `teeter-1` on S + 3 to S + 6, `teeter-2` on S + 7 to S + 10, and
+so on to `teeter-11` on S + 43 to S + 46; `teeter-12` follows on S + 47
+to S + 51, then `teeter-13` on S + 52 to S + 56, and the loop goes on.
+
 ### Second character
 
 S is as for the first character: the first standing frame after
@@ -1268,8 +1355,8 @@ stands after a fall from a steep face ("A fall from a steep face"), and
 U + 12 after a crouch ("Crouching"). From S, for as long
 as the player goes on standing on flat floor, it shows one 275-frame
 loop over and over, the same whatever came before S, and the same on a
-1-in-4 slope and at a ledge as for the first character, as far as that
-was checked (see "Standing still" above):
+1-in-4 slope as for the first character, as far as that was checked,
+except near the end of a floor, where it teeters from S + 4 (below):
 
 1. `s-stand-1` to `s-stand-22` × 4 each (88 frames, S to S + 87);
 2. `s-wait-1` to `s-wait-13` × 5 each (65 frames, S + 88 to S + 152);
@@ -1289,6 +1376,40 @@ on. Its first 4 frames are the `s-stand-1` × 4 given in the sections
 above. As for the first character, the loop starts again from the
 beginning at every new S, and `U`, the top face button or a shoulder
 held while standing changes nothing.
+
+**Teetering at the end of a floor.** As for the first character, but
+decided on S + 4 with the same rule: the player teeters when it is
+standing on the floor, faces an end of the floor where the floor stops
+and its position, rounded down to a pixel column, is one of the 12
+outermost columns of floor at that end. Then `s-stand-1` × 4 shows on S
+to S + 3 as in the loop above, and the loop is replaced, for as long as
+the player stands, by:
+
+1. `s-teeter-1` to `s-teeter-6` × 6 each (36 frames, S + 4 to S + 39);
+2. from S + 40, a loop of 210 frames over and over, in 7 stretches:
+   - `s-teeter-7` × 4, `s-teeter-8` × 4, `s-teeter-9` × 3,
+     `s-teeter-10` × 3, `s-teeter-11` to `s-teeter-17` × 2 each,
+     `s-teeter-18` × 1 (29 frames);
+   - `s-teeter-7` × 1, `s-teeter-8` to `s-teeter-18` × 2 each
+     (23 frames);
+   - `s-teeter-7`, `s-teeter-8`, `s-teeter-9` × 2 each,
+     `s-teeter-10` to `s-teeter-14` × 3 each, `s-teeter-15` to
+     `s-teeter-18` × 4 each (37 frames);
+   - `s-teeter-6`, `s-teeter-5`, `s-teeter-4` × 4 each, `s-teeter-5`,
+     `s-teeter-6` × 3 each (18 frames);
+   - `s-teeter-18` down to `s-teeter-7` × 2 each (24 frames), twice
+     (48 frames);
+   - `s-teeter-18`, `s-teeter-17`, `s-teeter-16` × 2 each,
+     `s-teeter-15` down to `s-teeter-11` × 3 each, `s-teeter-10` down
+     to `s-teeter-4` × 4 each, `s-teeter-5`, `s-teeter-6` × 3 each
+     (55 frames).
+
+   The loop starts again with `s-teeter-7` × 4.
+
+The rest of the rules of the first character's teetering hold in the same
+way (decided once, facing away from the nearer end, the same inputs),
+and it held after the same five ways of standing: a walk's stop, a
+turn's end, a roll's stop, a landing and a crouch's end.
 
 ## Crouching
 
@@ -1915,7 +2036,7 @@ steep face, picking something up):
   `stand-1` on D + 3 to D + 5 in all 16. Then `stand-2`, `stand-3` and
   `stand-4` × 3 each and `stand-5` followed in the 8 runs starting 14 px
   or more (right) or 12 px or more (left) from the end; in the other 8
-  other pictures (teetering) came from D + 6. The runs with a direction
+  the teetering pictures came from D + 6. The runs with a direction
   held (`ground-speed.md`, "After a roll") were not watched on the
   screen.
 - **Landings, first character:** 992 landings after standing, walking
@@ -2279,8 +2400,12 @@ steep face, picking something up):
   within 16 px of the right-hand or left-hand end of the floor after
   walking, 12 of them walking toward that end, and 3 ended within 1 px
   of the right-hand end (the last column); 5 more were within 16 px
-  after being placed. Running up to the edge, and stopping from a
-  longer walk, were not tried. 80 runs on the 1-in-4 slopes going down
+  after being placed. The frames of 9 of the walked stretches, which
+  began facing an end in its 12 outermost columns, showed the teetering
+  pictures and were not part of this comparison (see the entry on
+  teetering below); the placed ones, which were not preceded by any
+  other action, showed the standing list (whether a placed player
+  teeters is in "Not covered"). 80 runs on the 1-in-4 slopes going down
   and up and the flat bottom between them, the player put at a random
   column from before the slope to after it, then walking or running 1
   to 60 frames either way and standing 700 frames: 67 stretches of
@@ -2292,6 +2417,66 @@ steep face, picking something up):
   part of it was on the screen, and in 25 the picture found was a
   different one, followed within 6 frames by the expected picture. In
   every one of the 9 runs the pictures after that matched the list.
+- **Teetering, first character:** on the platform without faces of the
+  entry above (lower floor to the right, a pit to the left), 1 792 runs
+  with the first character put at a random place 1 to 90 px from either
+  end and then walking toward that end 1 to 40 frames (alone or with the
+  roll button), turning back 1 to 8 frames after a walk, or jumping
+  from standing or after a few frames of walking, then standing 60 to
+  200 frames (12 runs 4 000), and in 600 of them one button pressed for
+  one frame after S + 20. Every stretch of standing that began with the
+  player on the floor and lasted to S + 3 was sorted by the rule in
+  "Teetering at the end of a floor": 1 212 stretches, 213 of them
+  beginning in the 12 outermost columns of the end the player faced
+  (105 after a walk, 15 after a turn, 49 after a roll's stop, 35 after a
+  landing and 9 after a crouch). All 213 showed `stand-1` on S to S + 2
+  and the teetering list on all of their 19 449 frames (the longest
+  stretch 3 981 frames), and the other 999 stretches showed no teetering
+  picture. 90 of those 999 were in those
+  columns but facing away from the end, in 13 the player slid into the
+  columns after S + 3. 11 further stretches, not counted in the 1 212,
+  were left out because the player was past the end of the floor on
+  S + 3 and had turned back.
+  The limit was found with 300 more stretches in which, on S + 1, the
+  player's position was set by a setup method to 11 to 13 px from the
+  end (150 at each end), walking having stopped before: at the right-hand
+  end the farthest teetering one was 12.00 px from the end on S + 3 and
+  the nearest one that did not teeter 12.02 px, at the left-hand end
+  11.97 and 12.02 px; 178 teetered and all matched the list, and 12
+  more with the position set 3 to 10 px from the end ran 1 800 frames
+  each, the last 1 771 of them standing after the walk's stop (21 252
+  frames compared, 0 differences). One-frame presses while
+  teetering: `U` 4, the top face button 7, a shoulder 13
+  kept the list going; a direction started a walk or a turn 9 times,
+  Down a crouch 8, Jump a jump 8 and the roll button a roll 5. Stopping
+  from a run was not tried.
+- **Teetering, second character:** the same platform, the second
+  character leading, 863 runs with the same kinds of starts as for the
+  first character (walks toward the end, turns back, rolls started with
+  the roll button, jumps; one-frame presses in 115 of the runs) and 60 to
+  200 frames of standing after each. Of 452 stretches of standing that
+  began with the player on the floor and lasted to S + 4, 69 began in
+  the 12 outermost columns of the end it faced (56 after a walk, 2
+  after a turn, 8 after a roll's stop, 2 after a landing and 1 after a
+  crouch): all 69 showed `s-stand-1` on S to S + 3 and the teetering
+  list on all of their 4 609 frames, and the other 383 no teetering
+  picture. 41 of those were in those columns but facing away from the
+  end, in 6 the player slid into the columns after S + 4. 2 further
+  stretches, not counted in the 452, were left out because the player
+  was past the end of the floor. The 80 runs of the entry below, which were checked only on
+  frames of the standing loop, hold 10 more such stretches (7 after a
+  walk, 3 after a turn) with the teetering list on all of their 6 882
+  frames. With the position set by a setup method on S + 1 to 11 to 13 px
+  from the end (157 runs, 152 stretches), the farthest teetering one was
+  11.91 px from the end on S + 4 at the right-hand end and the nearest
+  one that did not teeter 12.01 px, at the left-hand end 11.97 and
+  12.00 px; no stretch teetered on S + 3. 100 teetered and matched the
+  list on 27 624 frames; 8 more, set 3 to 10 px from the end and
+  standing 2 070 frames each, matched on all of them (16 560 frames, 0
+  differences, nearly 10 loops). One-frame presses while teetering
+  (few): the top face button 1 and a shoulder 1 kept the list going; a
+  direction started a walk 1 time, Down a crouch 1, Jump a jump 2 and
+  the roll button a roll 1.
 - **Standing at a ledge and on a slope, second character:** 80 runs on
   the platform without faces of the first character's runs, the second
   character leading, put at a random column of it, walking toward
@@ -2303,7 +2488,10 @@ steep face, picking something up):
   25 280 compared frames (including all 13 that differed), so this
   does not tell the cases apart, and no cause was found. 11 of the 55
   stretches stood within 17 px of the platform's right end, 3 of them
-  at its last column, and 6 within 16 px of its left end. 80 runs on the 1-in-4 slopes, walking or running 1 to 60
+  at its last column, and 6 within 16 px of its left end. Frames of
+  stretches that began in the 12 outermost columns facing the end
+  showed the teetering pictures and were not part of this comparison
+  (see the entry on teetering). 80 runs on the 1-in-4 slopes, walking or running 1 to 60
   frames either way and then standing 700 frames: 67 stretches of
   standing, 39 566 frames, 4 differences, each a single frame of a
   different run, with the player on level floor about 50 to 60 px beyond the
@@ -2629,6 +2817,15 @@ steep face, picking something up):
   Right pressed while drifting at a speed under 48 but not 0, in which
   walking did not start). What the second character does when it goes
   over a face at speed is not covered here either.
+- Teetering of either character at floor ends other than the two of the
+  one platform tested (a drop to a lower floor on one side, a pit on the
+  other), at an end with a face or a wall, on a slope, and after a
+  bounce, a fall from a steep face, riding or carrying; after stopping
+  from a run (only walks, turns, rolls, landings and crouches were seen
+  to end in a stand there); after the player has stepped past the end
+  of the floor and turned back; and whether a player that stands in the
+  outermost columns without having stopped there (for example after
+  appearing there) teeters.
 - Either character's standing pictures on slopes other than 1-in-4, on
   steep faces and next to a wall, and the 13 and 4 frames named in the
   second character's ledge and slope evidence.
