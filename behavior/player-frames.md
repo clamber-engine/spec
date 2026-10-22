@@ -1212,6 +1212,12 @@ A crouch started on U to U + 9 of an earlier one (Down held again,
 the getting up had got to. The facing doesn't change during the crouch
 or the getting up.
 
+The same pictures are shown at the end of a platform and on a 1-in-4
+slope (up or down, and where it meets flat floor): the list above
+doesn't depend on the floor under the character, and neither do D + 13,
+the sway's start or U + 9. A crouch close to the end of a platform, up
+to its last column, shows no teetering picture.
+
 Example: standing, Down held on frames 20 to 719. `crouch-1` on 20,
 `crouch-2` on 21 and 22, …, `crouch-8` on 31 and 32, `crouch-9` on 33
 to 49, the sway on 50 to 180, `crouch-9` on 181 to 324, the sway again
@@ -2157,6 +2163,36 @@ steep face, picking something up):
   or a turn started in all 474 cases with a direction still held. The
   standing frames from U + 9 matched "Standing still" (6 159 frames, 0
   differences).
+- **Crouching at a ledge and on a slope, first character:** 80 runs of
+  random input on the platform with a lower floor beyond its right end
+  and a pit beyond its left (placed at a random column, 2 to 20 frames
+  of nothing, then 1 to 12 frames of a direction or nothing), and 80 on
+  the 1-in-4 slope and its flat parts, then random segments of Down
+  alone or with a direction (1 to 60 frames), Down for 1 to 4 frames, a
+  direction alone or nothing, up to 750 frames a run (a platform run
+  ended when the character left the platform). At the platform, 413
+  crouches, 147 of them started within 17 px of an end (83 right, 64
+  left), 8 of them in the last column of the right-hand end; every
+  frame from D to U + 8 was compared with "Crouching", none left out:
+  36 333 frames (5 369 going down, 28 084 held, 2 880 getting up), 0
+  differences. On U + 9, 269 crouches ended standing still and all 269
+  showed `stand-1` (52 with Right held, 62 with Left held, 155 with
+  nothing). On the slope, the runs started with the player at a random
+  column from before the slope to after it. 564 crouches started on
+  floor from 16 px below to level with the floor before the slope: 97
+  on the flat floor before the slope, 170 going down, 115 on the flat
+  bottom, 135 going up and 47 on the flat floor after it. From the 52nd
+  frame of a run on, 45 312 frames from D to U + 8 were compared (6 231
+  going down, 35 315 held, 3 766 getting up; 7 984 of them in
+  crouches that started before the slope, 13 705 going down, 9 823 at
+  the bottom, 10 939 going up and 2 861 after it), 0 differences. The
+  crouch frames in the first 51 frames of a run (2 440) were left out,
+  because the player was placed at the start of the run and the view
+  was still catching up with it: 1 553 of them differed, the player
+  not being on screen yet or being shown in a different picture, and
+  no frame from the 52nd on differed. On U + 9, 357 crouches from the
+  52nd frame on ended standing still and all 357 showed `stand-1` (the
+  13 earlier ones are left out with the rest of those frames).
 - **Crouching, second character:** 120 runs with the second character
   leading on flat floor away from ledges, with the same kinds of input
   as for the first character. 1 281 crouches, started standing still
@@ -2336,8 +2372,9 @@ steep face, picking something up):
 - Either character's standing pictures on slopes other than 1-in-4, on
   steep faces and next to a wall, and the 13 and 4 frames named in the
   second character's ledge and slope evidence.
-- The crouching pictures of either character on a slope, at a ledge,
-  and in a crouch that starts on a landing's frames or after a roll. Also the
+- The crouching pictures of the second character on a slope and at a
+  ledge, of either character on slopes other than 1-in-4 or on a steep
+  face, and in a crouch that starts on a landing's frames or after a roll. Also the
   pictures of a jump from a crouch or from its getting-up frames.
 - The ground action's pictures (`act-1` to `act-30`) of the second
   character, at a ledge, on a slope, next to a face or a wall, on a
