@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.246.0
+
+The first character's pictures during the ground action (spec#38,
+pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: new "The ground action" section: 30
+  pictures named by picture hash for the first character's ground
+  action (Down + Action), given per frame from P, with the pause after
+  a knock-out, a Jump press ending the list, and the pictures on and
+  after E. The new pictures fall back together on the action's frames.
+  On-screen evidence from 120 runs. "Not covered" updated.
+
 ## spec-v0.245.0
 
 The tyre's pictures (spec#38, pictures).
