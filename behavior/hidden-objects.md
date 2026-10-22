@@ -2,8 +2,10 @@
 
 Titles: `title-1`
 
-A **hidden object** is placed in a level like any other object but isn't
-drawn. The player walks, jumps and stands through it, and it never hurts.
+A **hidden object** is placed in a level like any other object. Of its
+three kinds, one isn't drawn and two are drawn as a patch of bare ground
+until they are set off ("Pictures"). The player walks, jumps and stands
+through it, and it never hurts.
 It is **set off** in one of two ways, depending on its kind: by the
 ground action (`ground-action.md`), or by the player coming down onto it
 after a long fall. When it is set off, it releases an **item**. The item
@@ -61,10 +63,11 @@ object with an entry of one of these kinds ("Kinds" there):
 | `hidden-metal-barrel` | a long fall ("Landed on after a long fall") | a metal barrel | +1 (right) |
 
 A hidden object does not move. Its **position** (`xo`, `yo`) is its
-entry's level x and level y (see "Positions" there). It isn't drawn, it
-doesn't stop or hold up the player, and it never hurts. The ground action
-doesn't strike the falling kinds, and landing on a `hidden-bunch` does
-nothing.
+entry's level x and level y (see "Positions" there). A `hidden-bunch`
+isn't drawn; the other two kinds are drawn until they are set off
+("Pictures"). A hidden object doesn't stop or hold up the player, and it
+never hurts. The ground action doesn't strike the falling kinds, and
+landing on a `hidden-bunch` does nothing.
 
 Until it is set off, a hidden object leaves and comes back with the view
 like other placed objects (`../formats/placements.md`). Once it is set
@@ -243,6 +246,33 @@ its last frame (t = 58) and E = 61.
 - Hidden objects and items have no rows of their own in the trace
   vocabulary.
 
+## Pictures
+
+A `hidden-bunch` isn't drawn. A `hidden-barrel` and a `hidden-metal-barrel`
+are drawn on their place, as one picture, `patch`: a patch of bare earth.
+It is named by its picture hash (`../formats/sprites.md`, "Picture
+hashes"):
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `patch` | `01ec3b3ed25553f2b9c2d1e72a8e83400e6fa2bddd384455e453263db4378d9d` |
+
+It is drawn with its origin at the object's position, as
+`../formats/sprites.md` places an origin ("Where the picture is drawn",
+"Mirroring"), on every frame on which the object is in the view and has
+not been set off. The picture given for a frame is the one on screen with
+that frame's view. A `hidden-metal-barrel` shows it as it is, and a
+`hidden-barrel` shows it mirrored left–right. It doesn't change while it
+is shown.
+
+From the set-off frame (B for these kinds) the patch is no longer drawn,
+and doesn't come back, as the object doesn't ("The hidden object"). What
+the place shows from B on is not covered (see "Not covered").
+
+**When a hash isn't found.** The engine shows its own art for the patch:
+a patch of bare ground of about the same size, drawn at the same place,
+with the same mirroring, on the same frames.
+
 ## Evidence
 
 - **Ground action, by placement.** All 19 320 placements fit the ranges
@@ -280,12 +310,35 @@ its last frame (t = 58) and E = 61.
   frozen frames and every item frame matched the rules in every fall.
   Airborne rolls were within the ranges on 28 frames and passed through
   the object every time.
+- **Pictures.** The place was looked at on the screen on each frame, with
+  the entry moved to a place the player walks up to (as in the falls
+  above). Walking past each of the two falling kinds, `patch` was seen
+  whole on 82 frames (`hidden-metal-barrel`) and 84 frames
+  (`hidden-barrel`), mirrored for the second kind only, and partly on 19
+  and 21 more, at the view's edge. 12 falls onto each kind (from 165 to
+  300 px above it, from 25 px to its left to 20 px to its right) gave 373
+  frames each, before the set-off, on which `patch` was seen at the place
+  with the mirroring above, and 18 each on which none of it was on
+  screen, the place being below the bottom of the picture on all of
+  them. On the set-off frame and the two after it, `patch` was seen in
+  none of the 24. Walking past a `hidden-bunch`, nothing was drawn at its
+  place on 184 frames, and the 51 others were the player passing over it.
+  Once, a `hidden-metal-barrel` set off, with the player walking away and
+  back, showed no patch when the place came back into the view. In a run
+  of the first level from its start, the level's own two falling-kind
+  objects were drawn as a picture of the same size (56 × 24 px, 769
+  opaque pixels), the second one mirrored.
 - **Items.** With the object raised 1 to 52 px above its floor, the
   item came down to the floor below. It was put on the floor at 4.75 px
   above it, and not at 5 px, which landed one move later.
 
 ## Not covered
 
+- What the place shows from B on for the falling kinds (a flash, dust and
+  flying bits, then the item), and whether the patch is behind or in front
+  of the player and of other objects.
+- A `hidden-bunch` after it is struck: only the item was looked at, not
+  what else is drawn at its place.
 - Two hidden objects struck on the same attack frame (one pause or two).
 - The ground action on slopes or at a ledge, and other things that might
   strike a hidden object (a roll, a thrown object, the other character,
