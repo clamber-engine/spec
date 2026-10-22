@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.276.0
+
+Which sign fingerprint gets which picture (spec#62, spec#63), and the
+level map characters' palette (spec#59).
+
+Answers clamber-engine/spec#62 and its duplicate clamber-engine/spec#63.
+Part of clamber-engine/spec#59, which stays open for the parts not
+covered yet.
+
+- `behavior/signs.md`, "Pictures": each sign's picture is now given next
+  to its kind fingerprint (the three `sign` rows of `title-1`); the
+  importer takes a placed sign's picture from the row whose fingerprint
+  matched its entry's reference.
+- `formats/sprites.md`: the level map's palette, used by both characters
+  on the level map whichever leads, with its evidence and a Not covered
+  entry (fades, other places' maps); `formats/locators.md`: its `title-1`
+  row; `behavior/level-map.md`: a pointer to it.
+
 ## spec-v0.275.0
 
 Teetering after a run's stop, both characters (spec#61, spec#38).
