@@ -267,7 +267,7 @@ and 18.5 px above it, and doesn't move. It shows `smoke-1` on `n` 0 and
 kinds.
 
 **The flash.** It appears on the frame of the shot (C + 16 for the
-`left-launch-barrel`, C + 29 for the `down-launch-barrel`, when the
+`left-launch-barrel`, C + 29 for the `down-launch-barrel`, where the
 barrel breaks), at the barrel's `x` and 16 px above its position, and
 moves on that frame and on each frame after by 271/256 px (about
 1.0586 px): to the left for the `left-launch-barrel`, down for the
@@ -282,8 +282,8 @@ that used only inputs: three walks into a copy of a barrel on the floor
 the `down-launch-barrel` that didn't catch. On 831 frames the barrel was
 drawn whole and recognisable, 77 flash frames and 33 smoke frames
 likewise, and every one showed the picture given above for that frame. On
-2 frames `open-4` of the `left-launch-barrel`'s opening was not
-recognised, with the flash drawn over it, and they were not counted. The
+2 frames in which the flash was drawn over the barrel were not
+recognisable as any one picture, and they were not counted. The
 player's picture covers the barrel during the hold, so the
 `left-launch-barrel`'s opening pictures were not seen in these runs, and
 those of the `down-launch-barrel` only from `n` 17 to 26. The timings were
