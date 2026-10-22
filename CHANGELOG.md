@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.270.0
+
+Moving things and raised tiles: the draw order at the level end and
+through exits (spec#60 item 2, spec#38).
+
+Part of clamber-engine/spec#60 and clamber-engine/spec#38, which stay
+open for the parts not covered yet.
+
+- `formats/graphics.md`, new "Moving things and raised tiles": in
+  ordinary play the characters and the animal are in front of the
+  ground layer. In the level-end walk-out and in exit walk-outs, from a
+  stated picture on, they are hidden wherever a raised tile's pixel
+  isn't transparent; the one exception seen at the level end is stated.
+  New Evidence; Not covered lists objects and walkers, transparent
+  raised pixels in exits, the room and the scene, and other areas.
+- `behavior/level-end.md`: points to the new section.
+
 ## spec-v0.269.0
 
 The first character teetering at ledges with a steep face (spec#61).
