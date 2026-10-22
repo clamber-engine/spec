@@ -246,7 +246,7 @@ every picture below.
 | Bunches | `bunch-1` to `bunch-6` (`../behavior/bunches.md`) | the shared palette |
 | The flash of a breaking object | `flash-1` to `flash-8` (`../behavior/thrown-objects.md`) | the shared palette |
 | The smoke of a breaking crate | `smoke-1` to `smoke-6` (`../behavior/animal-crate.md`) | the shared palette |
-| Thrown objects, lying objects and the pieces of a breaking | `thrown-1` to `thrown-8`, `lying`, `piece-a-1` to `piece-b-8` (`../behavior/thrown-objects.md`) | the thrown objects' palette |
+| Thrown objects, lying objects and the pieces of a breaking object | `thrown-1` to `thrown-8`, `lying`, `piece-a-1` to `piece-b-8` (`../behavior/thrown-objects.md`) | the thrown objects' palette |
 | The crate | `crate-whole`, `crate-broken-2` (`../behavior/animal-crate.md`) | the crate's palette |
 | The animal before it is ridden | `animal-1` to `animal-22` (`../behavior/animal-crate.md`) | the animal's palette |
 | The first character mounting the animal | `mounting-1` to `mounting-5` (`../behavior/animal-crate.md`) | the first character's leading palette |
@@ -383,8 +383,9 @@ full frames with every byte hashed for one of them.
   video frame after the logic frame that drew it. 302 runs of up to
   1 500 video frames of random play with Swap presses, from 151 saved
   positions (the first level, caves, water areas, rooms, carrying,
-  throwing, riding); the same 302 runs, of up to 600 frames, for the
-  collectibles and the displays, and of 1 500 frames for the sparkles;
+  throwing, riding); the first 600 frames of the same 302 runs for the
+  collectibles and the displays, and all of their frames for the
+  sparkles;
   and 42 runs of 500 logic frames from 14 saved positions with both
   characters for the lives display. Only pictures of the first level before
   the dimming started were used (a run counts as past the dimming from the
@@ -394,8 +395,8 @@ full frames with every byte hashed for one of them.
   colour. Pictures read, of which exact (the rest were darker versions
   of the palette's colours by one common factor, as in a fade, or each
   differed in at least one colour and were not examined further):
-  - letters 13 649, 13 634 exact (15 differed); sparkles 53 163 (with some pixel left to read), of
-    which 52 852 showed only colours among the shared palette's (their
+  - letters 13 649, 13 634 exact (15 differed); sparkles 53 163 (with
+    some pixel left to read), of which 52 852 showed only colours among the shared palette's (their
     pictures are not named: the colours read in a 24 x 24 square around
     each, leaving out the area covered by any other object's picture);
   - bunches 6 004, all exact; flashes 2 179, 2 095 exact, 84 darker;
@@ -424,9 +425,9 @@ full frames with every byte hashed for one of them.
   Then, for each group, the most common colour read per colour number
   was looked for in the image as a 30-byte run, starting anywhere. Small,
   large and medium walkers, the thrower, the crate, the animal, the
-  critters and the stinger each had one place in bank `fc` (the medium
-  and large walkers' and the animal's colours were also found in the
-  level graphics' bank, `f9`, as copies; the first character's leading
+  critters and the stinger each had one place in the image (the medium
+  and large walkers' and the animal's colours were also found in a
+  second place with the same colours; the first character's leading
   colours as in the characters' palettes above). The shared palette's
   group (13 of 15 colour numbers read) was found in three places, equal
   in colours 1 to 13; the thrown objects' (14 of 15) in four places,
@@ -477,7 +478,7 @@ full frames with every byte hashed for one of them.
   balls' in `../behavior/thrower.md` ("Pictures"), the single
   collectibles' in `../behavior/collectibles.md` ("Pictures"), the
   bunches' in `../behavior/bunches.md` ("Pictures"), those of thrown
-  objects, the flash and the pieces of a breaking in
+  objects, the flash and the pieces of a breaking object in
   `../behavior/thrown-objects.md` ("Pictures"), and the letters' and
   their sparkles' in `../behavior/letters.md` ("Pictures"), and the
   crate's, its smoke's and the animal's before it is ridden in
