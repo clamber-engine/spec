@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.251.0
+
+The scene's pictures for each leading character, and its length with
+the second character leading (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/exits.md`: new "Pictures in the scene" section: the walking
+  pictures on frames 3 to 27 and the scene's pictures for each leading
+  character, named by picture hash with their timing, the other
+  character's pictures, and a fallback to the engine's own art.
+  On-screen evidence from 12 runs; the frames that were not read are
+  listed in "Checks" and "Not covered".
+- `behavior/exits.md`: correction: with the second character leading,
+  the scene is 30 frames shorter (the fade starts on frame 336 and the
+  last frame is 366). The 396-frame length holds with the first
+  character leading.
+
 ## spec-v0.250.0
 
 The other objects' sprite palettes in `title-1` (spec#58, part).
