@@ -813,11 +813,14 @@ held 1 frame, A = T + 23, L = T + 37: `s-air-1` on T + 16 to T + 22,
 `s-air-2` on T + 23, `s-air-3` on T + 24 and T + 25, `s-air-4` on T + 26
 and T + 27, `s-air-5` on T + 28 and T + 29, and `s-air-6` on T + 30 to
 L − 1.
+
 A jump out of a roll pressed on the ground (`roll-speed.md`, "Jumping
-out of a roll") shows the same pictures, with T − 1 the press frame. So
-does a jump out of a roll pressed in the air, during the fall after
+out of a roll") shows the same pictures and timing, with T − 1 the press
+frame. A jump out of a roll pressed in the air, during the fall after
 rolling off a ledge (`rolling-off-ledges.md`, "The second character",
-hover frames included), with T − 1 the press frame P.
+hover frames included), shows the same pictures in the same order, with
+T − 1 the press frame P; when `s-air-1` ends in such a jump is not
+covered (see "Not covered").
 
 After a landing on L that comes on the fourth or a later frame showing
 `s-air-6` (every jump measured that lands on the floor it took off from
@@ -1850,8 +1853,9 @@ steep face, picking something up):
   and 364 jumps out of a roll pressed on the ground, Jump held 1 to 40
   frames, random input in the air. From T + 16 to the landing, every
   frame matched the table above, with A found from the player's height
-  above the floor under it: 760 jumps, 0 differences. 26 jumps with no
-  floor under the player known were left out, and so were 14 landings on
+  above the floor under it: 760 jumps, 0 differences. 26 jumps where
+  the player was over a part of the level with no floor height measured
+  were left out, and so were 14 landings on
   higher floor (see "Not covered").
 - **Jumps out of a roll pressed in the air, second character:** 1 600
   runs with the second character leading on the three ledges of
