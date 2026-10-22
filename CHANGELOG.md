@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.245.0
+
+The tyre's pictures (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/tyre.md`: new "Pictures" section: seven pictures named by
+  picture hash for each kind of tyre (the tyre and the stiff tyre),
+  given per frame of the catch (C to C + 14) and of the wobble count,
+  with a fallback for missing hashes. On-screen evidence from 43 runs.
+  `formats/sprites.md` points to it.
+
 ## spec-v0.244.0
 
 The flying copy of a taken collectible, and the critter's pictures
