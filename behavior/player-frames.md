@@ -11,8 +11,8 @@ turning on the ground and in the air after walking or running off a
 ledge without a face, while rolling, in the air after a bounce, while
 standing still and while crouching, and the second character's
 pictures while standing still, while crouching and when it walks or
-runs down a steep face into a fall. Also the pictures of both characters
-while shot by a launch barrel.
+runs down a steep face into a fall, and the first character's when it
+does. Also the pictures of both characters while shot by a launch barrel.
 
 ## The pictures
 
@@ -457,7 +457,12 @@ its bounce frames. Its pictures in "A fall from a steep face" are
 `s-air-1` to `s-air-6`, `s-land-1` and `s-land-2`, and fall back with
 "A jump and its landing". The pictures on the shot and flight frames of a launch barrel ("In a
 launch barrel") are the same `bounce-1` to `bounce-16` and fall back with them: if any of the 16
-isn't found, the engine's own art is shown on those frames, keeping the timing given there. The first character's crouching pictures,
+isn't found, the engine's own art is shown on those frames, keeping the
+timing given there. The first character's pictures in "A fall from a
+steep face" are `air-0` to `air-6` and `land-1` to `land-3`, and fall
+back with "A jump and its landing": if any of them isn't found, the
+engine's own art is shown on F to G + 10, keeping the timing given
+there. The first character's crouching pictures,
 `crouch-1` to `crouch-22` ("Crouching"), fall back together on its
 crouch and getting-up frames, D to U + 8. The first character's ground action pictures, `act-1` to
 `act-30` ("The ground action"), fall back together on the action's
@@ -936,6 +941,61 @@ A roll pressed on G starts on G + 1; its pictures are in "A roll",
 
 ## A fall from a steep face
 
+### First character
+
+This is the first character, leading, walking, running or turning onto
+the steep face at the top of a ledge and following it
+down until it leaves it into a fall (`steep-faces.md`, "Following a
+face down, or leaving it"), then landing on floor that isn't part of a
+face (`ground-speed.md`, "After a fall or a bounce"). F and G are as
+for the second character below: F is the first frame that ends with the
+player on the face, and G the landing frame.
+
+- **F to G − 1:** `air-0`, on the frames on the face and on every frame
+  of the fall, however long it lasts. The stride cycle and the turn
+  pictures stop on F, and no walking or running picture is shown after
+  it. Which way the player faces doesn't change, whatever is held in
+  the air.
+- **G to G + 10** are the landing frames of `ground-speed.md`, with
+  these pictures:
+
+| Frame | Picture |
+|---|---|
+| G | `air-1` |
+| G + 1 | `air-2` |
+| G + 2 | `air-3` |
+| G + 3 | `air-4` |
+| G + 4 | `air-5` |
+| G + 5 | `air-6` |
+| G + 6 | `land-1` |
+| G + 7 and G + 8 | `land-2` |
+| G + 9 and G + 10 | `land-3` |
+
+- **G + 11:** the mode that starts there (`ground-speed.md`, "After a
+  fall or a bounce") shows its own pictures from G + 11: `run-1` or
+  `walk-1` on G + 11 and then as in "Walking, running and turning",
+  "First character"; for a turn `turn-a` on G + 11 and G + 12, as in
+  that section; standing, `stand-1` × 3, `stand-2` × 3 and on as in
+  "Standing still" with G + 11 as S.
+
+A roll, a jump or a crouch that starts on one of G + 1 to G + 11
+(`ground-speed.md`, "After a fall or a bounce") ends the list above on
+that frame and shows its own pictures from it: a roll from `roll-1`
+("A roll"), a jump with `jump-1` on its press frame and then as in "A
+jump and its landing", "First character", a crouch from `crouch-1`
+("Crouching").
+
+Example: walking right onto the face on F, leaving it on F + 2 and
+landing on G = F + 20 with Right still held and no other input.
+`air-0` on F to F + 19, `air-1` to `air-6` on G to G + 5, `land-1` on
+G + 6, `land-2` on G + 7 and G + 8, `land-3` on G + 9 and G + 10, and
+`walk-1` from G + 11.
+
+A walk or run fast enough to pass over the face without ending a frame
+on it is as at a ledge without a face ("Walking, running and turning",
+"First character"): there is no F and none of the pictures above are
+shown.
+
 ### Second character
 
 This is the second character, leading, walking, running, turning or
@@ -1106,8 +1166,10 @@ face fast enough to go over it is not this (it leaves the floor).
 S is the first frame of
 a stretch of standing (`ground-speed.md`, "Standing, walking and
 running"): the first standing frame after walking, running or a turn
-ends, K after a jump's landing, G after a fall or a bounce, D + 17
-after a roll's stop and U + 9 after a crouch, as in the sections above
+ends (also after walking off a ledge that has no face; after one that
+has a face it is G + 11 below), K after a jump's landing, G after a
+bounce, G + 11 after a fall from a steep face, D + 17 after a roll's stop and U + 9 after a crouch,
+as in the sections above
 and below. From S, for as long as the player goes on standing on flat
 floor, the pictures follow one fixed list, the same whatever came
 before S. The list is the same on a 1-in-4 slope (`slopes.md`), going
@@ -2026,6 +2088,29 @@ steep face, picking something up):
   frame after walking, running or a turn (15 897 frames) also showed
   no differences.
 
+- **Falls from a steep face, first character:** 1 400 runs from three
+  ledges with a steep face at the top (the ledges of `ground-speed.md`,
+  "Evidence"), walking right 0 to 60 frames from standing, with Action
+  held from the start in about half of them (a roll, not used), then
+  random 1 to 30-frame stretches of Right, Left, Jump, Down or nothing,
+  Action let go and pressed again, going on in the air and after the
+  landing. On the 464 landings away from walls and faces: `air-0` on
+  all 9 547 frames from F to G − 1 (F reached from walking, running or
+  a turn), the landing frames with the pictures of the table on all
+  4 739 frames compared, and the first picture of what came next as in
+  "A fall from a steep face", "First character", on 463 of the 464
+  (20 rolls, 21 jumps, 12 crouches, 8 + 313 + 43 + 46 mode starts on
+  G + 11 as running, walking, a turn and standing), then `stand-1` and
+  `stand-2` on the first 6 standing frames (214 stretches) and the turn
+  pictures (343 frames): 0 differences; the one other landing had a
+  crouch pressed on G + 10 together with Action, which started a
+  different action not covered here. 12 landing frames in 3 of the runs (G + 7 to G + 10 in two of
+  them, G + 6 to G + 10 in the third, all at the first ledge) were left
+  out: the player's picture on screen could not be read as any picture
+  on those frames, the frame before the first of them and the one after
+  the last showing a picture the table lists. They neither confirm nor
+  contradict the table: the claim is for the 4 739 frames that could be
+  read, and what hid the picture on those 12 wasn't found.
 - **Falls from a steep face, second character:** the 2 200 runs at
   three ledges with a steep face at the top in `ground-speed.md`
   ("Evidence", the second character falling from a steep face). On the
@@ -2383,12 +2468,18 @@ steep face, picking something up):
 - Why, in two of the cases in "Evidence", the new picture came one
   frame late on screen. The rules above give the usual frame.
 - The second character landing before the fourth frame showing
-  `s-air-6`.
+  `s-air-6`, and when its `s-air-1` ends.
 - The second character's air pictures from T + 16 in a jump that lands
   on floor higher than the one it took off from (14 such jumps out of a
   roll showed `s-air-2` 0 to 15 frames after A), in a jump pressed in
   the air during a fall, and in a jump with the floor below more than
   16 px lower than the take-off floor.
+- The first character standing still before it reaches the steep face
+  (no run began the face from standing: it was reached from walking,
+  running or a turn), its falls from a steep face landing on a face,
+  next to a wall, leaving the floor again during the landing frames,
+  and the crouch's pictures after one (a crouch from G + 10 together
+  with Action).
 - The second character's landings after falls that didn't start with a
   jump, other than its falls from a steep face onto floor that isn't
   part of a face away from walls; its bounces off anything but a small
