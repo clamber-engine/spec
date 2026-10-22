@@ -653,10 +653,10 @@ Measured on screen in the first level's map (sprites only, as for the
 player, `player-frames.md`). Each run started from a saved emulator state
 on the map (at a new game, or shortly before the first level's end, from
 which the finish and the lead's walk on were played by inputs) and went
-on by inputs alone. Some runs needed more than that, and for those the
-position of the lead and which paths were open were written into the
-running emulator's memory before the inputs began, not reached by play:
-the walks that needed paths not yet open (down to the second stop, with
+on by inputs alone. Some runs needed more than that, and for those a setup
+method (research tools) was used before the inputs began, so that the
+lead stood where the run needed it and the paths not yet open were
+open: the walks that needed paths not yet open (down to the second stop, with
 one and with both characters), and the runs that put the lead beside a
 page edge (the walk onto the next page, with one and with both
 characters). No modified copy of the game was used. Five runs of 400 to
@@ -695,7 +695,7 @@ frames on which the two figures stood 16 px or less apart with a height
 difference under 24 px, so that one covered the other: on the 162
 logic frames with the figures further apart the other's picture was
 found on all 162, and on the 85 with them that close on 1. The paths not
-yet open were opened by writing the running emulator's memory, as above.
+yet open were made open by the setup method, as above.
 Over the whole chain the lead's eight and the other's ten changed in
 order, each on 4 counted frames (739 runs of 4 and three of other
 lengths, at the start and at the page change).
