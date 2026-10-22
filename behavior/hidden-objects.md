@@ -297,7 +297,12 @@ its last frame (t = 58) and E = 61.
 - When exactly items and the objects they become are removed after
   leaving the view.
 - Whether the player can take a bunch item, or touch a barrel item,
-  while it is in the air.
+  while it is in the air. Once, in the random runs, the player took a
+  `hidden-bunch` item in the air: the count went up by one (not ten),
+  17 frames after the frame a copy first appeared at the item's place on
+  the picture, and the copy flew like a bunch's item
+  (`bunches.md`, "The flying copy of an item") from the item's place.
+  Nothing else about it was measured.
 - The view on K and K + 1 after a strike (for walkers it does nothing,
   `ground-action-enemies.md`).
 - What the metal barrel does once thrown.
