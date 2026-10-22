@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.250.0
+
+The other objects' sprite palettes in `title-1` (spec#58, part).
+
+Part of clamber-engine/spec#58, which stays open for the parts not
+covered yet.
+
+- `formats/sprites.md`: new "The other objects' palettes" section: which
+  sprite palette the letters, sparkles, single collectibles, count and
+  lives displays, bunches, flashes, smoke, thrown objects and pieces, the
+  crate, the animal, the three walker sizes, the thrower and its balls,
+  the critters and the stinger use, and that their colours stay those of
+  their palette within the first level before the dimming. Evidence from
+  screen colours in runs that used only inputs. "Not covered" updated
+  (other objects, other areas, the dimming, fades).
+- `formats/locators.md`: ten rows for those palettes in `title-1`.
+
 ## spec-v0.249.0
 
 The launch barrels' pictures (spec#38, pictures).
