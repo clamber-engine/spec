@@ -385,6 +385,64 @@ none), a Jump press together with Action while slowing down from a run
 on the top (no tyre jump), and a press on the frame of an arrival from
 the air that gave a tyre jump on the next frame (C + 1).
 
+## Pictures
+
+What a tyre looks like on each frame in `title-1`. Each picture has a
+label used in this file and is named by its picture hash
+(`../formats/sprites.md`, "Picture hashes"); it is drawn at the tyre's
+position as `../formats/sprites.md` says ("Where the picture is drawn").
+The picture given for a frame is the one on screen with that frame's
+view.
+
+| Picture | Tyre | Stiff tyre |
+|---|---|---|
+| `rest` | `f4c27ffdd00e7a7baa4176c94f7a5702b34227743f676aa12e85c8eeb1800a63` | `6530c50a6a07ff3a2d0c3eaa7b929b7a5507bea587b5cff145c99c081770797e` |
+| `flat-1` | `858bdd6bfbc75f7cb99b336fb857bda8e295a144836ef1309f7a1f3d20f8cb10` | `df501d2d25de9d5cbd61558a8414f6ed6fa22cba3ed48b6daa49a44b21f869fd` |
+| `flat-2` | `a21e53c8a94caa2183811cc5d2b3d62dc9253fb2420c79a44e57f71add1663f0` | `79817535ea01fd96f8da7a0cf499d68701ee6fc26728994a96bf034631f8373d` |
+| `flat-3` | `3a14f49c6d57c8a5d9deb00e97ee7a2c2986b2fa0c6191d9eb3e4d00ac2a209d` | `7e9c2271147bfb8848e4370a4dd17030860b8e3ba3dc9c35b0ca6db9f9245f91` |
+| `tall-1` | `a45af342e0bdf5861bc5eeb006e2f215ee5a4d32b2d82541a37771021d369972` | `70af0f4833a9ca4cfc017765bd3fc83a36a9cac9db312d8cf907edbb6c40774b` |
+| `tall-2` | `27950a8624fec0e0b2b840845f0a9df9ee98c2af5107bbe109e2730d390f0f78` | `38d39da3695f0165bdb49fe178c4d7f5d811501f964624878ee8728718f8f67f` |
+| `tall-3` | `13141935a72b3d137fc5c7af91ee8d058413919564b6ede3af305527882a4014` | `1095e2abf866aef29e2732c52f96f97f78bd455b12f1b45d97c1246813eaef66` |
+
+The pictures get taller from `flat-3` (the shortest) through `flat-2`,
+`flat-1`, `rest`, `tall-1` and `tall-2` to `tall-3`. The stiff tyre has
+seven pictures of its own, used in the same way with the same timing
+(its top doesn't change, its pictures do).
+
+**When a hash isn't found.** The importer looks for every hash in this
+section. If any isn't found, the engine shows its own art for that kind
+of tyre on every frame, keeping the timing given here. A tyre is never
+mirrored.
+
+The picture on a frame depends only on where the tyre is in its squash
+and wobble (above), counted on that frame:
+
+- before the first catch, and from m = 32 of the wobble on: `rest`;
+- on C, C + 1 and C + 2: `flat-1`; C + 3 to C + 5: `flat-2`;
+  C + 6 to C + 11: `flat-3`; C + 12: `flat-2`; C + 13: `rest`;
+  C + 14: `tall-2`;
+- on L = C + 15, with m = 0 on L, the wobble count m gives
+  - m 0 to 3: `tall-3`; 4, 5: `tall-2`; 6, 7: `tall-1`; 8, 9: `rest`;
+  - m 10, 11: `flat-1`; 12, 13: `flat-2`; 14, 15: `flat-1`; 16, 17: `rest`;
+  - m 18, 19: `tall-1`; 20, 21: `tall-2`; 22, 23: `tall-1`; 24, 25: `rest`;
+  - m 26, 27: `flat-1`; 28, 29: `rest`; 30, 31: `tall-1`.
+
+The wobble count m doesn't advance on a frame on which a ready tyre is
+touched without catching the player (above), and the picture stays as it
+was on those frames. Catching the player at any point of the wobble
+starts the list at C again. On the two frozen frames after a bounce the
+picture stays as it was ("Frozen frames"). The pictures don't depend on
+the tyre's reference, its height or where it is.
+
+Measured by the pictures on screen, in 43 runs (the three placement
+references, the stiff tyre and a raised tyre; standing on the tyre,
+walking past it, and tyre jumps started on 10 different frames after the
+catch), with the first character: in 5 110 frames the tyre was drawn whole and
+recognisable, and every one showed the picture given above for that
+frame; no frame showed another one. Frames on which the tyre was not
+wholly inside the screen, or something covered part of it, were not
+counted.
+
 ## Not covered
 
 - The second character, and two characters on one tyre.
