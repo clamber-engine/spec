@@ -1267,6 +1267,12 @@ up or down or at its flat bottom. Close to the end of a floor it is
 replaced from S + 3 by the teetering list below, when the player faces
 that end.
 
+Standing on flat floor next to a steep face, within 32 px of its foot,
+with the direction towards it held or not, shows the same list: no
+pushing or other picture was seen (see "Walking, running and turning").
+The one exception is the frame before a walker's hit, on which the
+player is hidden behind the walker.
+
 Two runs of pictures are used in the list. The **sway** (186 frames):
 
 - `stand-2`, `stand-3`, `stand-4`, `stand-5` × 3 each, `stand-6` × 10;
@@ -1378,8 +1384,9 @@ stands after a fall from a steep face ("A fall from a steep face"), and
 U + 12 after a crouch ("Crouching"). From S, for as long
 as the player goes on standing on flat floor, it shows one 275-frame
 loop over and over, the same whatever came before S, and the same on a
-1-in-4 slope as for the first character, as far as that was checked,
-except near the end of a floor, where it teeters from S + 4 (below):
+1-in-4 slope and next to a steep face as for the first character,
+as far as that was checked, except near the end of a floor, where it
+teeters from S + 4 (below):
 
 1. `s-stand-1` to `s-stand-22` × 4 each (88 frames, S to S + 87);
 2. `s-wait-1` to `s-wait-13` × 5 each (65 frames, S + 88 to S + 152);
@@ -2234,6 +2241,17 @@ steep face, picking something up):
   difference next to the face, 14 of them where a turn ended with forward
   held and walking started on the frame the rules gave as still in the
   turn (listed in "Not covered").
+- **Standing next to a steep face, both characters:** the runs of the
+  two "Walking, running and turning against a wall" entries above, kept
+  within 32 px of the face's foot, in which the lead also stood between
+  walking, running and turning, with Right held against the face or
+  not. The standing frames of each stretch of standing (S included)
+  were compared with the screen against "Standing still": first
+  character 417 stretches, 35 894 frames; second character 554
+  stretches, 51 159 frames. 2 and 4 frames differed, each the last frame
+  before a walker's hit, with no picture of the player on screen. Taps
+  of Right while standing against the face ended standing (31 and 30
+  times) or didn't (22 and 35), as on open floor.
 - **Being hurt, first character:** 160 runs of random input (Right
   mostly, with short Jump, Action, Left or nothing segments) in the
   first level, alone, until a walker hurt the character and then 240
@@ -2906,7 +2924,8 @@ steep face, picking something up):
   outermost columns without having stopped there (for example after
   appearing there) teeters.
 - Either character's standing pictures on slopes other than 1-in-4, on
-  steep faces and next to a wall, and the 13 and 4 frames named in the
+  a steep face (other than at its foot), next to a wall that isn't a
+  steep face, and the 13 and 4 frames named in the
   second character's ledge and slope evidence.
 - The crouching pictures of the second character on the way up the
   slope and on the flat floor after it (no crouch started there), and
