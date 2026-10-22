@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.273.0
+
+The first character at the left-hand side of a ledge with a steep face
+(spec#61, spec#38).
+
+Part of clamber-engine/spec#61 and clamber-engine/spec#38, which stay
+open for the parts not covered yet.
+
+- `behavior/player-frames.md`, teetering: at the measured left-hand side
+  of a ledge top with a 64 px steep face to a lower floor, the first
+  character doesn't teeter after a walk's stop on the top, as at the
+  right-hand face of the same size. New Evidence accounts for every run.
+  Not covered: other faces on the left-hand side, and right-hand faces
+  other than the two measured.
+
 ## spec-v0.272.0
 
 Pictures when the second character leads the map, the second character's
