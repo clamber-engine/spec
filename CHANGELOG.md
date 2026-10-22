@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.268.0
+
+The second character's pictures in a walk or run off a ledge without a
+face (spec#61).
+
+Part of clamber-engine/spec#61, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`, "Second character": leaving the ground at
+  a ledge without a face changes nothing, as for the first character.
+  Through the fall and on the landing frame the stride, turn, running
+  and standing pictures follow the ground rules, with no air or landing
+  pictures. New Evidence entry; Not covered narrowed to match.
+
 ## spec-v0.267.0
 
 Teetering at the end of a floor, both characters (spec#61).
