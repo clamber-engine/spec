@@ -207,6 +207,73 @@ one copy and not, or elsewhere, in the other in 11 of the 270 runs at
 the second critter, and changed nothing else either. What it is and
 when it appears are not covered.
 
+## Pictures
+
+What a critter looks like on each frame in `title-1`. Each picture has a
+label used in this file and is named by its picture hash
+(`../formats/sprites.md`, "Picture hashes"); it is drawn at the critter's
+position (`x`, `y`) as `../formats/sprites.md` says ("Where the picture
+is drawn"). The picture given for a frame is the one on screen with that
+frame's view.
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `wing-1` | `f5dc4566a5cd0aefdf573d5b3fde4e9df3f20b436d7a67ce22e84a483e7f4dbe` |
+| `wing-2` | `4fb1c6f34cd5b0466291d63064abccb9bb9f0e4058e6615e18b8b2d0654fc488` |
+| `wing-3` | `986fac57723bd4b5141f4529276970ff849a28cbb39c03288ed29d1b32b727a9` |
+| `wing-4` | `e7acc228c0b58aba59dd34a0e00d07c03d21f14db67d8a42994b8b711baf6b9d` |
+| `wing-5` | `8112530ba12148673fcddad550fab64428a60ff128cd0c17a2c015bdab3dd81a` |
+| `wing-6` | `ded3e0d8d279162659dc17197b1ff23a10ca22e22c87d96d3243a08623edbfea` |
+
+**When a hash isn't found.** The importer looks for every hash in this
+section. If any of the six isn't found, the engine shows its own art for
+the critter on every frame, keeping the timing and mirroring given here.
+
+**Mirroring.** On a frame on which it flies, the critter is drawn
+mirrored left–right if its horizontal speed `ux` (after step 1) is
+negative, and not mirrored if `ux` is 0 or positive. On a frame held
+still, and while it is perched, it is drawn as on the frame before.
+
+**Flying.** Its pictures step once on each frame on which it flies.
+Counting those frames from `k` = 0 on the frame `F` on which it
+appeared during play, and again from `k` = 0 on the frame `P` + 360 on
+which it flies again after a perch, the pictures repeat every 10
+frames: `wing-2`, `wing-3`, `wing-4`, `wing-5`, `wing-6`, `wing-5`,
+`wing-4`, `wing-3`, `wing-2`, `wing-1` (`k` mod 10 = 0 to 9). Frames
+held still keep the picture they had and are not counted.
+
+**Perched.** From `P` to `P` + 359, counting `a` = 0 on `P`:
+
+| `a` | Picture |
+|---|---|
+| 0 to 79 | `wing-1` |
+| 80 to 103 | `wing-2` × 6, `wing-3` × 6, `wing-4` × 6, `wing-5` × 6 |
+| 104 to 154 | `wing-6` × 51 |
+| 155 to 178 | `wing-5` × 6, `wing-4` × 6, `wing-3` × 6, `wing-2` × 6 |
+| 179 to 259 | `wing-1` × 81 |
+| 260 to 283 | `wing-2` × 6, `wing-3` × 6, `wing-4` × 6, `wing-5` × 6 |
+| 284 to 334 | `wing-6` × 51 |
+| 335 to 358 | `wing-5` × 6, `wing-4` × 6, `wing-3` × 6, `wing-2` × 6 |
+| 359 | `wing-1` |
+
+On `P` + 360 the flying list starts again at `k` = 0 with `wing-2`. The
+pictures don't depend on the critter's entry, where it is or what the
+player does. A critter that is removed and appears again starts its list
+again from its new `F`.
+
+Measured by the pictures on screen: 18 runs of 2 000 video frames
+(standing still, walking, running and jumping both ways near both
+critters), with 30 appearances during play, 21 perches, and critters
+removed and coming back. On 2 181 frames on which the critter flew and
+was drawn whole on screen and recognisable, 2 114 showed the picture
+above with the mirroring above. The other 67 showed the picture the
+list gives 1 frame earlier (50 frames) or 2 frames earlier (17), and no
+other picture. On 793 perched frames every one showed the picture
+above. Frames on which the critter was not wholly inside the picture
+(2 370), or was covered in part (19), or was not recognised (22), or
+nothing was drawn (15) were not counted. With the list moved on by one
+frame the same check matched 8 of the 2 181 flying frames.
+
 ## Checks
 
 Each "does nothing" check compared two copies of the image, the same but
@@ -295,4 +362,8 @@ runs.
 - The second character, leading or following.
 - Enemies other than small walkers, the thrower's balls, and objects
   other than a thrown barrel meeting a critter.
-- How a critter is drawn; critters in other levels.
+- Critters in other levels.
+- The pictures on the 41 frames at the level's start (the critter is
+  below the picture then, in the first level), and on frames on which a
+  critter appears but is held still; a perch that overlaps frames held
+  still.

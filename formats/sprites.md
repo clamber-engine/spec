@@ -365,7 +365,8 @@ full frames with every byte hashed for one of them.
   crate's, its smoke's and the animal's before it is ridden in
   `../behavior/animal-crate.md` ("Pictures"), and the count display's
   image and the timing of the digits and the lives image in
-  `../behavior/count-display.md` ("Pictures").
+  `../behavior/count-display.md` ("Pictures"), and the critters'
+  in `../behavior/critter.md` ("Pictures").
 - The tile sets short frames use, and where they come from.
 - What the order adjustment does, and the order objects are drawn in
   (which object is in front of which), and how pictures are ordered
