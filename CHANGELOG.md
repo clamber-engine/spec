@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.260.0
+
+Both characters' pictures while shot by a launch barrel (spec#38,
+pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: new section "In a launch barrel". No
+  picture shows during the hold. The `left-launch-barrel` shows
+  `bounce-1` on its shot frame, then `bounce-1` to `bounce-16` one per
+  frame through the flight, repeating. With the second character
+  leading, the same frames show `s-bounce-1` to `s-bounce-16`, mirrored,
+  with the same fallback. Flight frames hidden behind other sprites, the
+  `down-launch-barrel`'s shot frame and the earlier hold frames are under
+  Not covered. New Evidence entries for both characters.
+
 ## spec-v0.259.0
 
 The second character on level-map walks over a page edge (spec#38,
