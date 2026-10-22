@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.236.0
+
+What the first character shows when hurt, from the hit to the end of
+the level (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: new "Being hurt". 18 picture hashes,
+  `hurt-1` to `hurt-14` and `lie-1` to `lie-4`, timed on a fixed clock
+  from the hit H to the first landing and then by the landings, with
+  on-screen evidence and "Not covered" items. These pictures fall back
+  together on every frame from H to the last frame of the level.
+
 ## spec-v0.235.0
 
 What the first character does and shows after a roll that had stopped
