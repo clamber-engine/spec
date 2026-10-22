@@ -358,9 +358,10 @@ full frames with every byte hashed for one of them.
   `../behavior/walker.md` ("Pictures"), the thrower's and its
   balls' in `../behavior/thrower.md` ("Pictures"), the single
   collectibles' in `../behavior/collectibles.md` ("Pictures"), the
-  bunches' in `../behavior/bunches.md` ("Pictures"), and those of thrown
+  bunches' in `../behavior/bunches.md` ("Pictures"), those of thrown
   objects, the flash and the pieces of a breaking in
-  `../behavior/thrown-objects.md` ("Pictures").
+  `../behavior/thrown-objects.md` ("Pictures"), and the letters' and
+  their sparkles' in `../behavior/letters.md` ("Pictures").
 - The tile sets short frames use, and where they come from.
 - What the order adjustment does, and the order objects are drawn in
   (which object is in front of which), and how pictures are ordered

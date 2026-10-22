@@ -42,7 +42,155 @@ level. A level's placement list (`../formats/placements.md`) places each
 letter with an entry; `xl` is 1 px left of the entry's level x and `yl`
 is the entry's level y (see "Positions" there). How to tell that an
 entry places a letter, and which of the four it is, is not covered. How
-a letter is drawn is not covered.
+a letter is drawn is in "Pictures".
+
+## Pictures
+
+What a letter looks like in `title-1`, from the frame it appears until
+it is taken. Letters appear and are removed by the window, as in
+`../formats/placements.md` ("When placed objects appear" and the
+removal table there).
+
+### The letter
+
+A letter shows one picture on every frame it is there: letter 1 (the
+`letter-1` reference in `../formats/placements.md`) shows
+`letter-pic-1`, letter 2 shows `letter-pic-2`, and so on. The picture
+doesn't change while the letter is there.
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `letter-pic-1` | `97f1cd7b0d69aeb8afe3674d1ab1ec2e2e1455a2bf576166a0134fbbb77271dd` |
+| `letter-pic-2` | `e0c16aa33da949afd12713fcb32f3c4a754ec187d7ab7cbd2aa77332f7344835` |
+| `letter-pic-3` | `2b72a3136aa47070e7cf268dd333209e491921482c5f17836d70b1fead420fa4` |
+| `letter-pic-4` | `fb23fa5c51c85954880b6477f55eb6a3c192b3c0d32bd1c8c69281e4f9b6a089` |
+
+The hashes are as in `../formats/sprites.md` ("Picture hashes"). Each
+picture is drawn unmirrored, with its origin at the letter's position
+(`xl`, `yl`), as `../formats/sprites.md` places an origin ("Where the
+picture is drawn"). The picture given for a frame is the one on screen
+with that frame's view.
+
+From the frame `P` on which it is taken, the letter isn't drawn; the
+copy that flies to the letter row is drawn from the picture made on `P`
+("The letter row", "The copy").
+
+**When a hash isn't found.** The four hashes belong together: if any of
+them isn't found, the engine shows its own art for all four letters, on
+the same frames and at the same places.
+
+### Sparkles
+
+While a letter is there, small **sparkles** come and go around it. A
+sparkle is drawn by itself, not as part of the letter's picture.
+
+**Counting the frames.** Frames are numbered from the latest frame 0 as
+in `collectibles.md` ("Counting the frames"): from frame 0 of the level,
+and from 0 again when play starts again after a knock-out or a fall
+out; pauses add no frames.
+
+**When a sparkle comes.** A **sparkle frame** is a frame whose number
+`m` has `m` mod 16 = 14 (frames 14, 30, 46, …), unless it is a frame on
+which nothing moves:
+
+- B + 1 and B + 2 of a bounce (`bounce.md`, "Everything else on the
+  frozen frames");
+- K + 1 and K + 2 after a walker is defeated by a roll
+  (`rolling-into-walkers.md`, "The pause") or by the ground action
+  (`ground-action-enemies.md`);
+- H + 1 to H + 10 while the first character is knocked out
+  (`knock-out.md`), H + 1 to H + 13 for the second character
+  (`knock-out.md`, "The second character");
+- the 33 frames while a freed character joins (`holder-breaking.md`,
+  "Everything else waits").
+
+On a frame on which nothing moves no sparkle comes; the next one comes
+on the next sparkle frame, 16 frames on.
+
+On each sparkle frame, every letter that is there at the end of the
+frame gets one new sparkle. Its **point** is
+
+    (xl + a, yl + b)
+
+where `a` is a whole number from −16 to 15 and `b` a whole number from
+−21 to 10, both chosen at random for each sparkle. So sparkles come
+anywhere in a 32 × 32 px square around the letter's position, reaching
+further above it than below. The numbers don't come equally often: in
+the runs below every value of `a` but 8 and every value of `b` but −14
+came, some more than 50 times as often as others. Which numbers come is not
+covered.
+
+**A sparkle's pictures.** Call `N` the frame a sparkle comes, and let
+`c` be the number of counted frames since `N`, not counting `N` itself
+(so `c` = 0 on `N`). Counted frames are every frame except those on
+which nothing moves (listed above). The sparkle shows step
+
+    s = ⌊c / 5⌋ + 1
+
+of 8 steps, so each step lasts 5 counted frames, and it is gone on the
+frame with `c` = 40: it is drawn on `N` and the 39 counted frames after
+it. It doesn't move.
+
+A sparkle doesn't depend on its letter once it has come: it stays its
+40 counted frames also when the letter is taken or removed in the
+meantime, and the window doesn't remove it.
+
+Since sparkle frames are 16 frames apart and a sparkle lasts 40 counted
+frames, a letter that has been there for a while has two or three
+sparkles at a time.
+
+The 8 steps' pictures are not full frames of the frame table, so they
+have no picture hash and are not named here. Each is centred on the
+sparkle's point and fits in a square from 6 px left of and above the
+point to 6 px right of and below it (13 × 13 px). The sparkle grows from
+step 1 to its largest at step 4 and then shrinks. The engine shows its
+own art for them, on the frames and at the points given here.
+
+### Example (synthetic)
+
+A letter appears on frame 100 and nothing freezes. Sparkle frames are
+110, 126, 142, … (110 mod 16 = 14). The letter gets sparkles on frames
+110, 126 and 142. The sparkle that comes on frame 110 shows step 1 on
+frames 110 to 114, step 2 on 115 to 119, …, step 8 on 145 to 149, and
+is gone from frame 150. If the player bounces with `B` = 120, frames 121
+and 122 don't count: that sparkle shows step 3 on frames 120 to 126 and
+is gone from frame 152. Frame 126 is still a sparkle frame, so the next
+sparkle comes on 126 as before.
+
+If the letter is taken on frame 130, it isn't drawn from 130 on, and
+gets no sparkle on frame 142; the sparkles that came on 110 and 126 go
+on until they end.
+
+### Evidence for the pictures
+
+Measured on screen in the first level, by inputs alone, with only the
+sprites drawn: 44 runs, 101 573 frames. 32 runs played the level's 8
+recorded routes from its start, as recorded and with Jump and Action
+presses added at random. 12 runs played the first part of a route and
+then walked, ran, jumped, rolled and crouched back and forth at random
+around the first or the fourth letter, so that it left the view on both
+sides and came back. Half the runs had pauses (72 in all); there were
+65 restarts after knock-outs and falls, and bounces, roll defeats,
+knock-outs of both characters and joins while letters were there.
+
+- **Letters.** Letters appeared 115 times and were removed 56 times as
+  in `../formats/placements.md`, and were taken 34 times. On 3 220
+  frames a letter was seen whole with only sparkles near it, and each
+  time it showed its picture as above (0 different). Left out: frames
+  with the letter partly or wholly off the edge of the picture, with a
+  character or another object near it, or with a sparkle over it; the
+  frame before a restart, when nothing is drawn. On `P` the letter's
+  picture was never seen at its place.
+- **Sparkles.** 1 218 sparkle frames with a letter there: on 1 203 each
+  letter there got one sparkle, at the place the rule gives (with `a`
+  and `b` in the ranges above); on the other 15, see "Not covered". No
+  sparkle came at a letter on any other frame, including 130 frames
+  with `m` mod 16 = 14 on which nothing moved. 1 135 sparkles were seen
+  from `N` to the end, and on each of 46 752 frames a sparkle showed
+  the step the rule gives and was gone at `c` = 40 (0 different); 42
+  more ended at a restart. Their size on screen was measured on frames
+  with nothing else near them.
+
 
 ## When a letter is taken
 
@@ -635,5 +783,12 @@ letter (`H` up to `J` − 12) gave no hit.
 - In one setup, with the player rolling from the pickup on, the lives
   display came in 2 frames later than above (y −12 on `J` + 9); why is
   not covered.
-- How a letter and the row's images are drawn; the copy's exact path.
+- How the row's images are drawn; the copy's exact path.
+- Sparkles ("Pictures"): on 15 of the 1 218 sparkle frames in the runs,
+  a letter got no sparkle. On 8 of them many other short-lived objects
+  were there (each time the items just released from a bunch, near the
+  second letter); on the other 7 another object came on that same frame
+  (such as on the first frame of a bounce, `B`). When this happens is
+  not covered. Which sparkle is drawn in front when they
+  overlap the letter or each other, and the sparkles' own pictures.
 - Other levels, and whether every level has four letters.
