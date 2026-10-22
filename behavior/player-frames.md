@@ -457,7 +457,12 @@ its bounce frames. Its pictures in "A fall from a steep face" are
 `s-air-1` to `s-air-6`, `s-land-1` and `s-land-2`, and fall back with
 "A jump and its landing". The pictures on the shot and flight frames of a launch barrel ("In a
 launch barrel") are the same `bounce-1` to `bounce-16` and fall back with them: if any of the 16
-isn't found, the engine's own art is shown on those frames, keeping the timing given there. The first character's crouching pictures,
+isn't found, the engine's own art is shown on those frames, keeping the
+timing given there. The first character's pictures in "A fall from a
+steep face" are `air-0` to `air-6` and `land-1` to `land-3`, and fall
+back with "A jump and its landing": if any of them isn't found, the
+engine's own art is shown on F to G + 10, keeping the timing given
+there. The first character's crouching pictures,
 `crouch-1` to `crouch-22` ("Crouching"), fall back together on its
 crouch and getting-up frames, D to U + 8. The first character's ground action pictures, `act-1` to
 `act-30` ("The ground action"), fall back together on the action's
@@ -938,8 +943,8 @@ A roll pressed on G starts on G + 1; its pictures are in "A roll",
 
 ### First character
 
-This is the first character, leading, walking, running, turning or
-standing onto the steep face at the top of a ledge and following it
+This is the first character, leading, walking, running or turning onto
+the steep face at the top of a ledge and following it
 down until it leaves it into a fall (`steep-faces.md`, "Following a
 face down, or leaving it"), then landing on floor that isn't part of a
 face (`ground-speed.md`, "After a fall or a bounce"). F and G are as
@@ -1161,8 +1166,9 @@ face fast enough to go over it is not this (it leaves the floor).
 S is the first frame of
 a stretch of standing (`ground-speed.md`, "Standing, walking and
 running"): the first standing frame after walking, running or a turn
-ends, K after a jump's landing, G after a bounce, G + 11 after a fall
-from a steep face, D + 17 after a roll's stop and U + 9 after a crouch,
+ends (also after walking off a ledge that has no face; after one that
+has a face it is G + 11 below), K after a jump's landing, G after a
+bounce, G + 11 after a fall from a steep face, D + 17 after a roll's stop and U + 9 after a crouch,
 as in the sections above
 and below. From S, for as long as the player goes on standing on flat
 floor, the pictures follow one fixed list, the same whatever came
@@ -2094,11 +2100,17 @@ steep face, picking something up):
   4 739 frames compared, and the first picture of what came next as in
   "A fall from a steep face", "First character", on 463 of the 464
   (20 rolls, 21 jumps, 12 crouches, 8 + 313 + 43 + 46 mode starts on
-  G + 11 as running, walking, a turn and standing), then `stand-1` and `stand-2`
-  on the first 6 standing frames (214 stretches) and the turn pictures
-  (343 frames): 0 differences; the one other landing had a crouch pressed on G + 10
-  together with Action, which started a different action not covered
-  here. 12 landing frames were left out where no picture matched.
+  G + 11 as running, walking, a turn and standing), then `stand-1` and
+  `stand-2` on the first 6 standing frames (214 stretches) and the turn
+  pictures (343 frames): 0 differences; the one other landing had a
+  crouch pressed on G + 10 together with Action, which started a
+  different action not covered here. 12 landing frames in 3 of the runs (G + 7 to G + 10 in two of
+  them, G + 6 to G + 10 in the third, all at the first ledge) were left
+  out: the player's picture on screen could not be read as any picture
+  on those frames, the frame before the first of them and the one after
+  the last showing a picture the table lists. They neither confirm nor
+  contradict the table: the claim is for the 4 739 frames that could be
+  read, and what hid the picture on those 12 wasn't found.
 - **Falls from a steep face, second character:** the 2 200 runs at
   three ledges with a steep face at the top in `ground-speed.md`
   ("Evidence", the second character falling from a steep face). On the
@@ -2462,7 +2474,9 @@ steep face, picking something up):
   roll showed `s-air-2` 0 to 15 frames after A), in a jump pressed in
   the air during a fall, and in a jump with the floor below more than
   16 px lower than the take-off floor.
-- The first character's falls from a steep face landing on a face,
+- The first character standing still before it reaches the steep face
+  (no run began the face from standing: it was reached from walking,
+  running or a turn), its falls from a steep face landing on a face,
   next to a wall, leaving the floor again during the landing frames,
   and the crouch's pictures after one (a crouch from G + 10 together
   with Action).
