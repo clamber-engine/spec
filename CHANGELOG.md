@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.267.0
+
+Teetering at the end of a floor, both characters (spec#61).
+
+Part of clamber-engine/spec#61, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`, "Standing still": new "Teetering at the
+  end of a floor" for the first and second character. When it happens
+  (decided once after a stand begins: on the floor, facing the end
+  where the floor stops, in the 12 outermost columns at that end), the
+  picture list (an intro and a loop, named by hash), what ends it, and
+  the five ways of standing it was seen after. This replaces the
+  earlier statements that standing near an edge shows no teetering
+  picture; the two older Evidence entries now say why. New fallback
+  group, "A roll" pointer updated, new Evidence entries for both
+  characters; other floor ends, stopping from a run and a placed player
+  are under Not covered.
+
 ## spec-v0.266.0
 
 The second character's pictures for a jump out of a crouch or its
