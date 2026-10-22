@@ -1349,6 +1349,15 @@ shows its own list from `s-crouch-1` on its D, wherever the getting up
 had got to. The facing doesn't change during the crouch or the getting
 up.
 
+The same pictures are shown at the end of a platform, as for the first
+character: the list doesn't depend on the floor under the character,
+and a crouch started up to the platform's last column shows no
+teetering picture. The one exception seen is in the evidence below: on
+a few frames at a platform another picture was on screen. On a 1-in-4
+slope the same list was seen on the flat floor before it and on the
+way down it; a crouch on the way up the slope or after it is not
+covered.
+
 Example: standing, Down held on frames 20 to 519. `s-crouch-1` on 20,
 `s-crouch-2` on 21 and 22, …, `s-crouch-5` on 27 and 28, `s-crouch-6`
 on 29 to 43, the sway on 44 to 128, `s-crouch-6` on 129 to 270, the
@@ -2310,6 +2319,27 @@ steep face, picking something up):
   no frame from the 52nd on differed. On U + 9, 357 crouches from the
   52nd frame on ended standing still and all 357 showed `stand-1` (the
   13 earlier ones are left out with the rest of those frames).
+- **Crouching at a ledge and on a slope, second character:** 80 runs
+  on the platform of the first character's runs (a lower floor beyond
+  its right end, a pit beyond its left) with the second character
+  leading, and 80 on the 1-in-4 slope and its flat parts, with the same
+  kinds of input as for the first character (Down alone, with a
+  direction, or tapped, a direction alone, nothing), up to 700 frames a
+  run. Every crouch frame was compared, none left out. At the platform,
+  498 crouches, 70 of them started within 17 px of an end (48 right, 22
+  left); 14 started within 3 px of an end, 7 of them with the player's
+  position at or up to 3 px beyond it. 44 359 frames from D to U + 11 compared with "Crouching": 4 482
+  going down, 35 405 held, 4 472 getting up, 11 differences in 6 runs:
+  on each the picture on screen was another one, the same for all 11,
+  on single frames in the middle of the platform, 5 while held, 5 going
+  down and 1 getting up. No cause was found. On the slope, 422 crouches,
+  but the runs were mostly spent before the slope: 409 crouches started
+  on the flat floor before it, 12 on the way down and 1 on the flat
+  bottom, none on the way up or on the flat floor after it. 33 870
+  frames compared (32 845 in the crouches that started before the
+  slope, 999 on the way down, 26 at the bottom; 3 693 going down, 26 590
+  held, 3 587 getting up), 0 differences; 2 305 of them were within the
+  first 51 frames of a run, which were compared too and did not differ.
 - **Crouching, second character:** 120 runs with the second character
   leading on flat floor away from ledges, with the same kinds of input
   as for the first character. 1 281 crouches, started standing still
@@ -2500,9 +2530,11 @@ steep face, picking something up):
 - Either character's standing pictures on slopes other than 1-in-4, on
   steep faces and next to a wall, and the 13 and 4 frames named in the
   second character's ledge and slope evidence.
-- The crouching pictures of the second character on a slope and at a
-  ledge, of either character on slopes other than 1-in-4 or on a steep
-  face, and in a crouch that starts on a landing's frames or after a roll. Also the
+- The crouching pictures of the second character on the slope beyond
+  its first steps down (no crouch started on the way up or after the
+  slope), and the 11 frames named in its ledge evidence, of either
+  character on slopes other than 1-in-4 or on a steep face, and in a
+  crouch that starts on a landing's frames or after a roll. Also the
   pictures of a jump from a crouch or from its getting-up frames.
 - The ground action's pictures (`act-1` to `act-30`) of the second
   character, at a ledge, on a slope, next to a face or a wall, on a
