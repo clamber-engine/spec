@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.263.0
+
+The second character's crouching pictures at a ledge and on a slope
+(spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`, "Crouching": the second character shows
+  the same crouching pictures at the end of a platform as in the
+  middle, with no teetering picture for a crouch started up to the
+  platform's last column, and on a 1-in-4 slope on the flat floor
+  before it, the way down and the bottom. New Evidence entry; the way
+  up the slope, the flat floor after it and 11 differing frames at the
+  platform are under Not covered, and the Not covered entry is split by
+  character.
+
 ## spec-v0.262.0
 
 The first character's pictures in a fall from a steep face and its
