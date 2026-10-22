@@ -8,7 +8,8 @@ how it breaks against a wall or at a vertical step, what happens when
 it hits a walker, the thrower or one of the thrower's balls, that it
 passes through the characters, and when it is removed after leaving the
 picture. `carrying.md` covers the throw itself and the flight up to the
-first touch; this file carries on from there. An object that holds the
+first touch; this file carries on from there. How the object, the flash
+and the pieces are drawn is under "Pictures". An object that holds the
 missing character moves the same way until it breaks; when it breaks is
 in `holder-breaking.md`.
 
@@ -1140,6 +1141,166 @@ again. Speeds in 1/256 px per frame.
 | Q + 53 | 198.61328125 | 54 | 945 | — | |
 | Q + 54 | — | — | — | — | the move would take `x` to 202.28, a face column whose floor (45) is higher than `y` 54 (9 px higher: the 8 px limit doesn't apply to breaking): breaks |
 
+## Pictures
+
+What a thrown object, the flash of its breaking and the pieces look like
+on each frame in `title-1`. Each picture has a label used in this file,
+and is named by its picture hash (`../formats/sprites.md`, "Picture
+hashes"); it is drawn at the object's position as
+`../formats/sprites.md` says ("Where the picture is drawn"). The picture
+given for a frame is the one on screen with that frame's view. In the
+lists, "`thrown-3` × 3" means that picture on 3 frames in a row.
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `thrown-1` | `dffbba1cff62a012c736224592c0a8fadca18afe2214f162297ac0134e4f3fde` |
+| `thrown-2` | `c92a8c1e15f4f945f909abbda0f77db8f540701bd73cb47acc8ef94119e32201` |
+| `thrown-3` | `45a3cc61edf9748d7f239000853ea106c0f85ac14f7e59e2d9085b580a2ce86b` |
+| `thrown-4` | `301ae4e563e805e57922ea243afbac45695216de5419981e0eb34dccafb56d95` |
+| `thrown-5` | `04103ec10bbce44e0bcd29fd774ecd7228e45963ced11a726510764162310681` |
+| `thrown-6` | `4fa8289060923467eeb33a3fcf490d0edbb0e6c377be83fd7ba151fc459afe88` |
+| `thrown-7` | `e4ff90912475c8c7aa0fbf02ec5df74f688ff5e3930be74fb2fb78a3904bdfd6` |
+| `thrown-8` | `5410c44ee5ef4ea47408a91b4c241a1ce5f9dd5f40eb7fc9f8f15452c5eb2df9` |
+| `lying` | `320bfa3c6f47e7c78fef7288edf4c67eba22226b7a576166dc73bafa41c0fa4a` |
+| `flash-1` | `b213b77efb1188e2193cdf48d559fce95419168d1dbd1809c9cb05bf43223927` |
+| `flash-2` | `f61b79aa0e235fba732c3130dcd90ae160b550affb414736e3de46a97ed51515` |
+| `flash-3` | `9db896b3ef97f1b1d379f453577900afb5f04765214f9fba2ccfa544940559d4` |
+| `flash-4` | `dd99078a645c6bbbbdb3e49e9699d7c8ae2841b3ba7fdc34ed804b26cae8a769` |
+| `flash-5` | `69bf0232695f4e9e2cb4bcbd996cda32750b9eb603da461b83a97f2b2f25c2fa` |
+| `flash-6` | `82c0c90404d6b2ae802feaeecfeaa6bf12d689bd7c45700a8bc4b1d0b4a732fd` |
+| `flash-7` | `0a902c7ba098822d574f29633187e86fc40542de44a3e4523a28e75470543bd7` |
+| `flash-8` | `740e4e552ab1cff9367ba9aca39aefa13090187b4346a589a31a09c356071079` |
+| `piece-a-1` | `f3a0bc5d1d50b4f6ef890b96210fbf29dd8a147a9761f59796238a7a605bc0fa` |
+| `piece-a-2` | `21b2a32f801a1c4dbb3a6cd19554f2b828b62d8c193b2aabb55b1eae4cb828ce` |
+| `piece-a-3` | `b1e69f79e9956f1b372e9962ce11d52958f4370765b79514eca458d403c93e6a` |
+| `piece-a-4` | `fafd64be22207996215b8338fbda8cadd7eaec89ade24b030c9e9e13d71a4a5a` |
+| `piece-a-5` | `8657f24cdc9ded6c6f79eb126a5bb86cb62bfd503be0ce328949839b6601a47f` |
+| `piece-a-6` | `a7f21c7cd173eee57dce4546e15a0bc6dfc7e0084d6f57831f0ce7dabd77af12` |
+| `piece-a-7` | `05eb93d85d80f9e035772af2891ecd74ca2eb9ab2ef0a0b8c7884c242ae41ac8` |
+| `piece-a-8` | `b3ec6168fbae9fd83dbcecf7086f451ba97abd224b68330d20e0baa2bc708fa1` |
+| `piece-b-1` | `ad286133a64af90fe41a0c41b50c93bdece8f991eaa31b8f28e183813e7f6307` |
+| `piece-b-2` | `b76150da63bdb53f5cd6f8c2a9cd3c5a073d0d7fd185596a7c5c7dfa0c61808b` |
+| `piece-b-3` | `18fc829c1c043c4a6360f8fe1a67533d967ffa42e9c9165797cd6d1388786d33` |
+| `piece-b-4` | `59d56135127e4a888cb3b44038ea15b8da61e9c790ec8bb1fc4f762241203a2c` |
+| `piece-b-5` | `33b3efe92ff6820402aa1bd56c5b63051155c6ba244673a966c46c6c8c83e3c4` |
+| `piece-b-6` | `bcc2f6113f52fc5e3ced920f5bb45cb2aca3a41ef0449ac777fb76675e023108` |
+| `piece-b-7` | `0205ddbdb0df0c8b760cd8b309a992a56bfe8649b1dc28aec8eaa75485fcc0bf` |
+| `piece-b-8` | `1e46c9c3a3e39840f7b5aeb0c0f4945af4e20d08f874e827b7f3d97d6de73f8e` |
+
+**When a hash isn't found.** The importer looks for every hash in this
+section. The pictures of each of these groups belong together: the
+object's eight flight pictures (`thrown-1` to `thrown-8`), the eight
+flash pictures, the eight pictures of each set of pieces (`piece-a-1` to
+`piece-a-8`, `piece-b-1` to `piece-b-8`). If any hash of a group isn't
+found, the engine shows its own art for the group, keeping the timing
+and mirroring given here. `lying` stands alone.
+
+### In flight
+
+From the frame the object leaves the player's hands (Q + 21) until it is gone, the object cycles through its eight flight
+pictures. Counting `j` from 0 on Q + 21, the picture on frame Q + 21 +
+`j` is `thrown-`*n* with *n* = 1 + ⌊(`j` + 1) ÷ 3⌋ mod 8: `thrown-1` × 2
+(Q + 21, Q + 22), then `thrown-2` × 3, `thrown-3` × 3, and so on, back to
+`thrown-1` × 3 after `thrown-8` × 3. The cycle goes on unchanged through
+every bounce and through rolling, whatever the object's speeds; a bounce
+or a landing doesn't restart it. An object thrown again after being
+picked up starts a new cycle on its own Q + 21.
+
+The object is mirrored left–right exactly when it is moving left
+(thrown to the left), and drawn as in the table when moving right. It
+doesn't change while the object flies, bounces and rolls.
+
+### Lying
+
+An object put down and lying on the floor shows `lying`, not mirrored,
+from the first frame the player is free again after the put-down (Q + 14,
+`carrying.md`, "The object in the hands") for as long as it lies there,
+whichever way the player faced. The pictures of an object in the hands,
+while it is picked up and while it is put down, are not covered ("Not
+covered").
+
+### Breaking
+
+On the frame an object breaks ("Breaking against a wall", "Breaking at
+a vertical step") it is gone and a **flash** and four **pieces** are
+there in its place, each drawn at its own position. They keep their
+pictures as long as they exist.
+
+- **The flash** shows eight pictures in turn for 19 frames in all, and
+  then is gone: `flash-1` × 2, `flash-2` × 2, `flash-3` × 3, `flash-4` ×
+  2, `flash-5` × 3, `flash-6` × 2, `flash-7` × 3, `flash-8` × 2, from the
+  frame the object is gone. It is mirrored left–right when the object
+  was moving right as it broke, and not mirrored when it was moving
+  left.
+- **The pieces** are numbered 1 to 4 as in `restart-barrel.md`
+  ("Breaking"). Pieces 1 and 2 show the pictures `piece-a-1` to
+  `piece-a-8`, pieces 3 and 4 `piece-b-1` to `piece-b-8`, never
+  mirrored. Counting `j` from 0 on the frame the object is gone, a piece
+  shows picture *n* = 1 + ⌊(`j` + 1) ÷ 4⌋ mod 8 of its set: the first
+  picture × 3, each of the next seven × 4, then the first one × 4 again,
+  round and round until the piece is gone.
+
+### Example (synthetic)
+
+An object thrown to the left leaves the hands on frame 500 and breaks
+against a face on frame 540: it is in the air, bouncing or rolling on
+500 to 539 and gone on 540. The pictures:
+
+| Frames | Picture |
+|---|---|
+| 500, 501 | `thrown-1`, mirrored |
+| 502 to 504 | `thrown-2`, mirrored |
+| 505 to 507 | `thrown-3`, mirrored |
+| 520 to 522 | `thrown-8`, mirrored |
+| 523 to 525 | `thrown-1`, mirrored |
+| 535 to 537 | `thrown-5`, mirrored |
+| 538, 539 | `thrown-6`, mirrored (539 is the last frame in the air) |
+| 540, 541 | `flash-1`, not mirrored |
+| 542, 543 | `flash-2` |
+| 544 to 546 | `flash-3` |
+| 540 to 542 | pieces 1 and 2 `piece-a-1`, pieces 3 and 4 `piece-b-1` |
+| 543 to 546 | pieces 1 and 2 `piece-a-2`, pieces 3 and 4 `piece-b-2` |
+
+Frames 502 to 504 are `thrown-2` because ⌊(`j` + 1) ÷ 3⌋ = 1 for `j` = 2
+to 4, and 535 to 537 are `thrown-5` for `j` = 35 to 37 (⌊36 ÷ 3⌋ = 12,
+12 mod 8 = 4, so *n* = 5). The flash and the pieces start together on
+540 and are counted from there.
+
+### Evidence for the pictures
+
+Measured on screen in the first level, on and around the flat floor where
+a thrown object breaks against a face rising on its left and, further
+right, at a platform's edge. 67 runs of random play with the lead
+character alone, 19 671 frames in all: walking about with the object,
+putting it down or throwing it to either side, picking it up again, and
+walking while it flew, bounced, rolled and broke. In 24 of the runs an
+object thrown to the right was set down nearer the platform's edge on
+its first frame in the air (a write to its position), so that more of
+them broke there. Only the sprites were drawn, and on every frame the
+picture of each object, flash and piece was looked for on screen at its
+position, as for the player (`player-frames.md`). The runs held 62 flights followed from
+the frame the object left the hands and 43 breakings: 28 of an object in
+flight (25 moving left, 3 moving right), 15 of other kinds or where the
+object was not in flight on the frame before.
+
+Rows counted per object and frame; "not seen" is a row where the picture
+was wholly or partly outside the screen, covered by another sprite, or
+not found:
+
+| Picture group | Matched the rules above | Another picture found | Not seen |
+|---|---|---|---|
+| flight | 893 | 0 | 1 513 |
+| flash | 444 | 1 | 372 |
+| pieces | 4 528 | 15 | 2 190 |
+| `lying` | 1 432 | 24 | 1 912 |
+
+In each row with another picture another sprite was across the place, and
+the only picture found there was another one. The flash was mirrored in
+the 3 breakings of an object moving right, and not mirrored in the 18 of
+an object moving left that could be read. Of the 15 other breakings the
+flash was mirrored in 6; nothing was found that tells them apart, and
+this file doesn't say what decides the mirroring there.
+
 ## Not covered
 
 - Meeting a character ("Meeting a character"): an object that holds
@@ -1216,8 +1377,14 @@ again. Speeds in 1/256 px per frame.
 - Faces of other steepness.
 - Rolling off a ledge or down a vertical step, and slopes other than
   1 px per 4 columns.
-- How the pieces of a broken object move and are drawn, and how the
-  object is drawn while bouncing and rolling.
+- How the pieces of a broken object move and how long they last (the
+  flash lasts 19 frames, "Pictures"). How the object is
+  drawn in the hands, while it is picked up and while it is put down; how
+  the flash and pieces look after the other kinds of breaking (against a
+  walker, the thrower or a ball, or an object that holds the missing
+  character), and what decides the flash's mirroring after the breakings
+  that did not follow a flight; and what the second character's thrown
+  objects look like.
 - Objects thrown by the second character.
 - Removal above or below the picture (only horizontal positions were
   measured).
