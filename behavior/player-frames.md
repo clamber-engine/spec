@@ -2582,15 +2582,22 @@ steep face, picking something up):
   Stopping from a run: 100 further runs on the same platform, the player
   put 0 to 6 px from one end, jumping on the spot with the roll button
   held, then walking toward the other end with the roll button held 8 to
-  45 frames until it was running, then standing 80 frames. Of the 140
-  stretches of standing that began with the player on the floor and
-  lasted to S + 3, 52 followed a run's stop and 87 a landing. The 34
-  that began in the 12 outermost columns of the end the player faced (9
-  after a run's stop) showed `stand-1` on S to S + 2 and the teetering
-  list on all of their 835 frames; the other 106 showed no teetering
-  picture. The rule, with the position taken to the sub-pixel as above,
-  sorted every stretch correctly (0 disagreements), so the limit is the
-  same as after a walk.
+  45 frames until it was running, then standing 80 frames. All 100
+  landed; 87 then stood at least 4 frames (a counted stretch) and 13
+  began walking sooner. 99 reached a run: in 52 the stop was followed by
+  a stretch that lasted to S + 3 with the player on the floor in the
+  platform's columns, in 44 the player had run past an end by the stop
+  (21 past the left end, 23 past the right) and was not counted, and in
+  3 the record ended within 3 frames of the stop, after a run past an
+  end. One run never reached a run; its stretch of standing after a walk
+  was counted. So the 140 counted stretches were 87 after a landing, 52
+  after a run's stop and 1 after a walk. The 34 that began in the 12
+  outermost columns of the end the player faced (9 after a run's stop)
+  showed `stand-1` on S to S + 2 and the teetering list on all of their
+  other 835 frames; the other 106 showed no teetering picture. The rule,
+  with the position taken to the sub-pixel as above, sorted every
+  stretch correctly (0 disagreements), so the limit is the same as
+  after a walk.
 - **Teetering, first character, ledges with a steep face:** two ledge
   tops of the first level, one with a 15 px steep face and a drop below
   it, one with a 64 px steep face down to a lower floor. The player was
@@ -2687,17 +2694,24 @@ steep face, picking something up):
   (few): the top face button 1 and a shoulder 1 kept the list going; a
   direction started a walk 1 time, Down a crouch 1, Jump a jump 2 and
   the roll button a roll 1. Stopping from a run: 75 further runs on the
-  same platform, started and counted as for the first character (put 0
-  to 6 px from one end, jumping on the spot with the roll button held,
-  then walking toward the other end with it held 8 to 45 frames until
-  the player was running, then standing 80 frames). 51 stretches of
-  standing began with the player on the floor and lasted to S + 4, 39
-  after a run's stop and 12 after a landing. The 12 that began in the
+  same platform, started as for the first character (put 0 to 6 px from
+  one end, jumping on the spot with the roll button held, then walking
+  toward the other end with it held 8 to 45 frames until the player was
+  running, then standing 80 frames). After the landing, 48 went straight
+  into a run without standing, 15 stood fewer than 5 frames before
+  walking (or before the record ended) and 12 gave a counted stretch.
+  One run never got past the landing. 74 reached a run, 4 of them still
+  running when the record ended; of the other 70 stops, 39 were followed
+  by a stretch that lasted to S + 4 with the player on the floor in the
+  platform's columns, 26 had the player past an end by the stop (13 past
+  each) and were not counted, and 5 had the record end within 4 frames
+  of the stop, after a run past an end. So the 51 counted stretches were
+  39 after a run's stop and 12 after a landing. The 12 that began in the
   12 outermost columns of the end the player faced (7 after a run's
-  stop, 5 after a landing) showed `s-stand-1` on S to S + 3
-  and the teetering list on all of their 477 other frames; the other 39
-  showed no teetering picture. The rule sorted every stretch correctly,
-  so the limit is the same as after a walk.
+  stop, 5 after a landing) showed `s-stand-1` on S to S + 3 and the
+  teetering list on all of their other 477 frames; the other 39 showed
+  no teetering picture. The rule sorted every stretch correctly, so the
+  limit is the same as after a walk.
 - **Standing at a ledge and on a slope, second character:** 80 runs on
   the platform without faces of the first character's runs, the second
   character leading, put at a random column of it, walking toward
