@@ -455,7 +455,9 @@ still fall back with "The stop after a roll"). The second character's
 bounce pictures, `s-bounce-1` to `s-bounce-16`, fall back together on
 its bounce frames. Its pictures in "A fall from a steep face" are
 `s-air-1` to `s-air-6`, `s-land-1` and `s-land-2`, and fall back with
-"A jump and its landing". The first character's crouching pictures,
+"A jump and its landing". The pictures on the shot and flight frames of a launch barrel ("In a
+launch barrel") are the same `bounce-1` to `bounce-16` and fall back with them: if any of the 16
+isn't found, the engine's own art is shown on those frames, keeping the timing given there. The first character's crouching pictures,
 `crouch-1` to `crouch-22` ("Crouching"), fall back together on its
 crouch and getting-up frames, D to U + 8. The first character's ground action pictures, `act-1` to
 `act-30` ("The ground action"), fall back together on the action's
@@ -1562,8 +1564,10 @@ on which the barrel catches (as there):
 
 - **C + 1 to the last hold frame** (C + 15 for the `left-launch-barrel`, C + 28 for the
   `down-launch-barrel`): no picture of the character is drawn. The character is inside the barrel.
-- **The shot frame** (C + 16 for the `left-launch-barrel`, C + 29 for the `down-launch-barrel`):
-  `bounce-1`.
+  Only the last hold frame (left kind) and the last 12 hold frames (down kind) were checked on
+  screen; the earlier hold frames are in "Not covered".
+- **The shot frame of the `left-launch-barrel`** (C + 16): `bounce-1`. The shot frame of the
+  `down-launch-barrel` (C + 29) is in "Not covered".
 - **After the shot**, for the `left-launch-barrel`: the pictures go round `bounce-1` to `bounce-16`
   with **one picture per frame** (not two, as in "A bounce"): `bounce-1` on C + 16, `bounce-2` on
   C + 17, …, `bounce-16` on C + 31, `bounce-1` again on C + 32, and so on, up to the last flight
@@ -1572,8 +1576,7 @@ on which the barrel catches (as there):
   27 flight frames, C + 16 to C + 42, so the pictures are `bounce-1` to `bounce-16` on C + 16 to
   C + 31 and `bounce-1` to `bounce-11` on C + 32 to C + 42. The pictures do not depend on what is
   held, or on what the character was doing before the catch.
-- The `down-launch-barrel` lands the character on C + 30 (`launch-barrel.md`), so `bounce-1` on C + 29
-  is its only flight picture.
+- The `down-launch-barrel` lands the character on C + 30 (`launch-barrel.md`).
 
 The landing frame and the frames after it are not described here.
 
@@ -2180,18 +2183,23 @@ steep face, picking something up):
 
 - **The first character in a launch barrel:** random play on flat floor (Right mostly, with short
   Jump, Action, Left and nothing segments, then 120 more frames of random input after the catch),
-  with a copy of each barrel kind placed on the floor ahead of the lead, in a copy of the image; the
-  lead could not be hurt. 46 catches by the `left-launch-barrel` and 32 by the `down-launch-barrel`,
-  from 21 and 15 different pictures on the catch frame (walking, running, rolling, jumping and
-  others). All 46 holds had no picture for 15 frames and all 32 for 28. In all 46 left flights
-  the pictures followed the list on every frame to C + 42 (1 242 frames). Of these, 910 were not
-  found whole on screen (another sprite was drawn over the character); the others showed the
-  listed hash, each of the 16 pictures on at least 8 frames, and none showed another picture. The
-  `bounce-1` of the `down-launch-barrel` was never found on screen (in all 32 it was covered). On
-  the hold frames, the sprite layer around the barrel was the same in all 32 catches by the
-  `down-launch-barrel` on its last 12 hold frames, whatever picture the character had on C. For
-  the left kind it was the same on the last hold frame in 14 catches from 8 different entry
-  pictures, and in another 13 from 8 others.
+  with a copy of each barrel kind placed on the floor ahead of the character, in a copy of the
+  image. Two things were done to the running original rather than by input or a changed image: the
+  character was set down at a chosen spot on the floor before play, and on every frame the
+  character's "can be hurt" state was switched off so that nothing hurt them (research tools; the
+  spec rules do not depend on either). 46 catches by the `left-launch-barrel` and 32 by the
+  `down-launch-barrel`, from 21 and 15 different pictures on the catch frame (walking, running,
+  rolling, jumping and others). Left kind, flight frames C + 16 to C + 42 in all 46 catches (1 242
+  frames): 332 were found whole on screen and each showed the listed hash (each of the 16 pictures
+  on at least 8 of them, none another picture); the other 910 had another sprite drawn over the
+  character and were **not checked** against the list. Hold frames: the check was on the sprite
+  layer around the barrel, compared between catches (so between different pictures of the character
+  on C), not against a frame with no character there; the barrel and its smoke are drawn over the
+  spot. It was the same in all 32 catches by the `down-launch-barrel` on its
+  last 12 hold frames. For the left kind it was the same on the last hold frame in 14 catches from
+  8 different entry pictures, and in another 13 from 8 others. The shot frame of the
+  `down-launch-barrel` was covered in all 32 catches. The lengths of the holds (15 and 28 frames)
+  and the landing frames are the timings of `launch-barrel.md`.
 
 - **The ground action, first character:** 120 runs of up to 1 500 frames
   with the first character leading on flat floor away from ledges
@@ -2280,7 +2288,8 @@ steep face, picking something up):
   of other levels and on a rope whose end is low enough to reach the
   ground, the landing pictures after a jump off or a slide off a rope,
   a slide-off fall beyond F + 14, and a jump off that ends before P + 7.
-- The first character's pictures in a launch barrel on the catch frame C and the frames before it,
+- The first character's pictures in a launch barrel on the hold frames before the last one (left kind)
+  or before the last 12 (down kind), on the shot frame of the `down-launch-barrel`, on the catch frame C and the frames before it,
   on the landing frame and after it, in a flight cut short (by an enemy, a wall or the ceiling) or
   landing on a slope; the second character's, and two characters'.
 - Why, on 5 frames after bounces, the previous picture was still on
