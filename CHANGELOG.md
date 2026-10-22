@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.241.0
+
+The second character's standing pictures at a ledge and on a 1-in-4
+slope (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: "Standing still", "Second character" now
+  says the standing loop is the same on a 1-in-4 slope and at a ledge as
+  for the first character, as far as that was checked. New on-screen
+  evidence for the second character's ledge and slope runs. "Not
+  covered" now lists the frames in that evidence that differed, and no
+  longer lists the second character's ledge and slope cases.
+
 ## spec-v0.240.0
 
 The first character's standing pictures at a ledge and on a 1-in-4
