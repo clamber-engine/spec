@@ -103,11 +103,18 @@ has depends on its entry's reference, not on its kind: the three signs
 of the first level and its scene have three different references and
 three different pictures.
 
-| Sign | Picture | Picture hash (SHA-256) |
-|---|---|---|
-| The first level's sign nearer the start (the arrow) | `sign-arrow` | `110f23c18c9c8cf82cec48cdd2ebca015fe391a76f7ce71b964e62a809813980` |
-| The first level's sign nearer the end (the word) | `sign-word` | `2a039daf6c8545e9ade6a6db934c638715c910108dce6a50331b3b50e2e4be9b` |
-| The scene's sign (the board with words) | `sign-scene` | `2e20c598fa6aa63334469cb9a49445140fb9799c69b6db55840c4a79b8c68d06` |
+| Sign | Kind fingerprint (`../formats/locators.md`) | Picture | Picture hash (SHA-256) |
+|---|---|---|---|
+| The first level's sign nearer the start (the arrow) | `fc06b850598f866e68da84373087bd70260e200cd74a79edd39e9ee7612b91e3` | `sign-arrow` | `110f23c18c9c8cf82cec48cdd2ebca015fe391a76f7ce71b964e62a809813980` |
+| The first level's sign nearer the end (the word) | `e332f1969a9e6ec35546e8ef037006fd8d1d4bbc9933646879072cc1f3a10009` | `sign-word` | `2a039daf6c8545e9ade6a6db934c638715c910108dce6a50331b3b50e2e4be9b` |
+| The scene's sign (the board with words) | `47a9fc70cf6be73792670830d89523401fe75b8ad5ade692f5fe8d534962429c` | `sign-scene` | `2e20c598fa6aa63334469cb9a49445140fb9799c69b6db55840c4a79b8c68d06` |
+
+The importer gives a placed sign the picture in the row whose
+fingerprint is the one that matched its entry's reference
+(`../formats/placements.md`, "The fingerprint of a reference"). The
+three fingerprints are the three `sign` rows of `title-1` in
+`../formats/locators.md`; each row of this table is one of them and
+each picture belongs to one fingerprint only.
 
 **When a hash isn't found.** The importer looks for every hash in this
 table. If any isn't found, the engine shows its own art for signs,
@@ -123,8 +130,10 @@ the sign was partly outside the screen (26 per reference) were not
 compared. In the second walk (399 frames per reference with the sign in
 the window) it was partly outside the screen on every frame, so it
 added nothing.
-The signs in the level's own list were not read on screen; their
-references are the ones in the table.
+The signs in the level's own list were not read on screen; the
+fingerprints of their entries' references are the ones in the table
+(checked by computing each entry's candidate fingerprints as
+`../formats/placements.md` says).
 
 ## Checks
 
