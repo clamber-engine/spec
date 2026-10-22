@@ -255,12 +255,24 @@ every picture below.
 | Critters | `wing-1` to `wing-6` (`../behavior/critter.md`) | the critters' palette |
 | The stinger | `wing-1` to `wing-4` (`../behavior/stinger.md`) | the stinger's palette |
 | The lives display's image and digits | (`../behavior/count-display.md`) | the first character's palette: the leading one while the first character is the player, the following one while the second character is |
+| The two characters on the level map | `map-lead-1` to `map-lead-10`, `map-other-1` to `map-other-8` (`../behavior/level-map.md`) | the level map's palette |
 
 The **shared palette** is the one letters, sparkles, collectibles, the
 count display, bunches, flashes and smoke use. No picture of these
 objects that is named by a hash uses a colour number above 13. The
 image holds colours 1 to 13 of the shared palette in three places, and
 the thrown objects' palette in four; `locators.md` gives one place for each.
+
+The **level map's palette** is the one both characters on the level map
+use, whichever of them leads and whichever picture they show; it is not
+the characters' own palettes. It is the one palette on the map, and
+`locators.md` gives its place. In the runs (the first level's map, with
+the first character leading, with the second leading, and after the
+first finish; 1627 pictures read on screen, none of them during a fade)
+every colour read for the 18 named map pictures was a colour of this
+palette; the second character's pictures never use colour 4 and the first
+character's use all fifteen. Fades of the map, and the maps of other
+places, are under "Not covered".
 
 Some pictures here are not named by hash (the sparkles, three of the
 collectibles' eight, the count display's digits and the lives display's
@@ -433,8 +445,17 @@ full frames with every byte hashed for one of them.
   in colours 1 to 13; the thrown objects' (14 of 15) in four places,
   all with the same 15 colours.
 
+  The level map's characters were read in the same way on the first
+  level's map from four saved starting points, with random direction
+  presses: 1 336 pictures of the object shown first and 291 of the
+  second, every colour among the map palette's (all 18 named pictures
+  seen). Its colours, taken as a 30-byte run, were found in one place in
+  the image.
+
 ## Not covered
 
+- The map's characters' colours while the map fades in or out, and on
+  the maps of places other than the first level's.
 - Which palette the objects not listed above use (the tyres, the
   extra-life items, the signs, the launch barrels, the flying copy of a
   taken collectible, the animal when ridden, the objects of other
