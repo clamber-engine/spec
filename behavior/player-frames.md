@@ -1019,10 +1019,12 @@ after a roll's stop and U + 9 after a crouch, as in the sections above
 and below. From S, for as long as the player goes on standing on flat
 floor, the pictures follow one fixed list, the same whatever came
 before S. The list is the same on a 1-in-4 slope (`slopes.md`), going
-up or down or at its flat bottom, and at a ledge, up to the last column
-of floor the player can stand on without falling: there is no teetering
-or other picture for standing near an edge, and the player's facing
-changes nothing.
+up or down or at its flat bottom. It is also the same on a platform's
+last columns of floor when the player got there by being placed or by
+walking up to 12 frames, and then stood: no teetering or other picture
+for standing near an edge was seen, whichever way the player faced.
+Teetering after a roll's stop is a separate case (see "A roll"), and
+standing after running up to an edge was not tried.
 
 Two runs of pictures are used in the list. The **sway** (186 frames):
 
@@ -1795,17 +1797,25 @@ steep face, picking something up):
 - **Standing at a ledge and on a slope, first character:** 80 runs on a
   platform without faces at either end (lower floor to the right, a pit
   to the left), the player put at a random column of the platform and
-  walking or running a few frames toward either end, or not at all,
-  then standing 700 frames: 56 stretches of standing, 29 028 frames
-  compared with the list in "Standing still", 0 differences. 80 runs
-  on the 1-in-4 slopes going down and up and the flat bottom between
-  them, the player put at a random column from before the slope to
-  after it, then walking or running 1 to 60 frames either way and
-  standing 700 frames: 67 stretches of standing, 42 055 frames, standing
-  on floor from 16 px below to level with the floor before the slope.
-  88 frames differed, all in the first 39 frames of 2 runs, where the
-  player was off the screen (no picture was found on its walking frames
-  either).
+  walking 0 to 12 frames toward either end, or not at all, then standing
+  700 frames: 56 stretches of standing, 29 028 frames compared with the
+  list in "Standing still", 0 differences. Of the stretches, 15 were
+  within 16 px of the right-hand or left-hand end of the floor after
+  walking, 12 of them walking toward that end, and 3 ended within 1 px
+  of the right-hand end (the last column); 5 more were within 16 px
+  after being placed. Running up to the edge, and stopping from a
+  longer walk, were not tried. 80 runs on the 1-in-4 slopes going down
+  and up and the flat bottom between them, the player put at a random
+  column from before the slope to after it, then walking or running 1
+  to 60 frames either way and standing 700 frames: 67 stretches of
+  standing, 42 055 frames, standing on floor from 16 px below to level
+  with the floor before the slope. 88 frames differed, all in the first
+  54 frames of 9 of the runs, while the view was still moving after the
+  player was placed and the player came into view at the edge of the
+  screen: in 49 of them no picture of the player was found, in 14 only
+  part of it was on the screen, and in 25 the picture found was a
+  different one, followed within 6 frames by the expected picture. In
+  every one of the 9 runs the pictures after that matched the list.
 - **Standing still, second character:** 120 runs on flat floor away
   from ledges with the second character leading, standing for up to
   2 998 frames: 131 stretches of standing that started after walking
