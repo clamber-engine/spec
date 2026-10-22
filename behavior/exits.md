@@ -292,7 +292,7 @@ The scene's data is in `../formats/graphics.md`,
 record in `../formats/level-start.md` ("the scene's start record"), and
 its view in `level-ends.md` ("In the first level's scene"). Of the
 scene's placed objects, one is the room's end marker and one a sign
-(`signs.md`, "The scene's sign"); what the third is is not covered.
+(`signs.md`, "The scene's sign"); the third's identity is not covered.
 
 ### Pictures in the scene
 
@@ -371,8 +371,8 @@ pressed changes any picture.
 **The second character leading** (frames 0 to 366):
 
 - Frames 3 to 27: `s-run-2` on frame 3, then in turn, for 2 frames
-  except where noted: `s-run-3` (frames 4 and 5), `s-run-4` (6 and 7),
-  `s-run-5` (1 frame, 8), `s-run-6` (9, 10), `s-run-7`, `s-run-8`,
+  except where noted: `s-run-3` (frame 4; frame 5 was not read),
+  `s-run-4` (frame 6; frame 7 was not read), `s-run-5` (1 frame, 8), `s-run-6` (9, 10), `s-run-7`, `s-run-8`,
   `s-run-9` (1 frame, 15), `s-run-10`, `s-run-11`, `s-run-12`,
   `s-run-13` (22 and 23), `s-run-1` (1 frame, 24), `s-run-2` (25 and
   26), `s-run-3` (1 frame, 27).
