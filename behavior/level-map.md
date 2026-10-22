@@ -437,8 +437,13 @@ and fractions, but:
   24 if the lead's `x` on that frame is more than on the frame before
   the leg's first frame, and more by 24 if it is less. So when the
   lead has walked to the right, the other stands 24 px to its left, and
-  when it has walked to the left, 24 px to its right. Legs on which
-  the lead's `x` doesn't change are not covered.
+  when it has walked to the left, 24 px to its right. Here `x` is the
+  position across the pages ("Pages"), so a leg to the right over a page
+  edge counts as a leg to the right although the position on the page
+  gets smaller. A leg to the left over a page edge (the lead's position
+  on the page wraps from the page's left edge to its right edge during
+  the leg) doesn't always follow this: see "Legs over a page edge".
+  Legs on which the lead's `x` doesn't change are not covered.
 - Its speed across is 4 × (its end − its whole-pixel `x` at the leg's
   start) in steps of 1/256 px per frame, as for the lead; its fraction
   carries on from leg to leg and walk to walk like the lead's.
@@ -456,13 +461,13 @@ when the lead's leg starts; so the other's whole leg can be worked out
 on frame `a`, 11 frames before it moves.
 
 **Page change.** The other is drawn on its own page ("Pages"). On the
-frame `P` on which the lead's position passes onto the next page *to the
-right* (the frame before the lag frame), the other doesn't move; from
-`P` + 1 its leg goes on as before, one frame later than it would have.
-This was measured in one run only, over the boundary between the two
-pages of the map's first screens. For a walk to the left over a page
-boundary, the other didn't follow the rule above (it ended on the same
-`x` as the lead, 24 px nearer than the rule gives; "Not covered").
+frame `P` on which the lead's position passes onto the other page (the
+frame before the lag frame in a walk to the right; in a walk to the
+left, the first frame after the lead's position on the page has
+wrapped from the page's left edge to its right edge), the other doesn't move if its leg is going on; from `P` + 1 the
+leg goes on as before, one frame later than it would have. This was
+measured over the boundary between the two pages of the map's first
+screens, one walk to the right and two to the left.
 
 ### Example
 
@@ -483,8 +488,8 @@ before.
 ### Measurements
 
 Measured in the first level's map with both characters, from the new
-game's map state and by inputs alone (runs A–D; run E below is set up
-differently); which paths were open was written into the running
+game's map state and by inputs alone (runs A–D; runs E and F below are set
+up differently); which paths were open was written into the running
 emulator's memory before the inputs began, not reached by play (as for
 the pictures). Every position is that of the character's
 sprite on screen, in whole pixels, on every counted frame. Four runs,
@@ -511,11 +516,6 @@ Results:
 - The other at rest: 24 px to the lead's left after each leg to the
   right, 24 px to its right after each leg to the left (all 15 legs of
   A and B). At the new game's map 16 px to its left.
-- The walk to the left over the boundary in C and in D is not in these
-  figures: there the other came to rest on the lead's `x`, not 24 px to
-  its right, and moved faster than the rule gives (1 px per frame
-  instead of 0.625 in one run, 1.375 instead of 1 in the other). The
-  cause isn't known ("Not covered").
 - Run E: four legs, walked in both directions on the two pairs of
   places with the smallest sideways change (the lead's `x` changed by
   16 px on three of the legs and 24 px on one). The other's `x` and
@@ -530,6 +530,30 @@ Results:
   the rule. One of the pairs was also walked there and back after
   finishing the level (the fourth leg and a repeat of another), 0
   mismatches.
+- Run F: every pair of neighbouring places in the first level's map whose
+  walk goes over a page edge, in both directions: 14 walks. Each was
+  started by an input from the first place of the pair, after the lead
+  and the other were placed by writing the running game's state (as for
+  the open paths), the other once 16 px to the lead's left and once 24 px
+  to its right; each walk was run from both starts (28 runs).
+
+**Legs over a page edge** (runs B, C, D and F):
+
+- Walks to the right over an edge (7 in run F, from both starts, and
+  one in B): the other came to rest 24 px to the lead's left, as the
+  rule says, in all 7 of F.
+- Walks to the left over an edge (7 in run F, from both starts; one in
+  each of C and D): the lead's position on the page wrapped during the
+  leg in every one. In 6 of F's 7 the other came to rest on the lead's
+  `x`, with no 24 added, from either start; in the seventh it came to
+  rest 24 px to the lead's right, as in a leg not over an edge.
+  Nothing measured separates the seventh from the other six (it wraps
+  like them; "Not covered").
+- The speed across in C and D, with the end across taken as the lead's
+  `x` itself and the stalled frame at `P` counted: 1 px per frame in
+  one (the other's start 64 px from that end) and 1.375 px per frame in
+  the other (88 px from it), each as the rule gives for its distance.
+  The other's `x` matched on every frame of both runs (0 mismatches).
 
 ## Pictures
 
@@ -652,8 +676,10 @@ kept that offset to the end of the run (over 400 frames).
   finish (`../formats/level-map.md`, "Progress").
 - The second character on the map: where it is when the map appears
   after a level left in other ways than finished; legs on which the
-  lead's `x` doesn't change; walks to the left over a page boundary; more than one walk to the right
-  over one.
+  lead's `x` doesn't change; what decides, for a walk to the left over
+  a page edge, whether the other ends on the lead's `x` or 24 px to its
+  right (6 of 7 measured walks did the first); the other's stalled
+  frame in walks over page edges other than the first level's first.
 - The pictures when the second character leads.
 - Which picture the cycles start with when the map appears.
 - What moves the other character's cycle against the lead's at a page
