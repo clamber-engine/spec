@@ -355,20 +355,26 @@ changes:
   alone, with both characters and with the lead riding the animal, from
   that picture on every pixel of a moving thing that lies on a pixel of
   a raised tile that isn't transparent is hidden, the animal and the
-  rider together; pixels over transparent pixels of raised tiles stay
-  shown.
+  rider together, with one exception seen: in one run riding the animal,
+  one pixel stayed shown in each of 9 pictures, and why is not known
+  (the other runs had none). Pixels over transparent pixels of raised
+  tiles stay shown.
 - **Through an exit** (`../behavior/exits.md`): from the picture of
   `T` + 1, where `T` is the frame the exit takes the lead over. The
   picture of `T` itself still has the moving things in front (the lead
   and the animal alike when ridden; the other character as well). The
   rule holds for the exit on the floor near the first level's left end
-  and for the exits in the walls, on foot and ridden.
+  and for the exits in the walls, on foot and ridden, for the pixels
+  over raised-tile pixels that aren't transparent. In these runs no
+  part of a moving thing lay over a transparent pixel of a raised tile,
+  so they show nothing about those pixels: whether the thing shows
+  through them in an exit is not covered.
 
 A moving thing that is not on a raised tile at that picture is not
 changed by it: it is hidden when it comes to one (the other character,
 following the lead's path, was hidden once it reached the raised tiles,
-later than the lead). Transparent pixels hide nothing, as in "Drawing
-order".
+later than the lead). At the level end, transparent pixels of raised
+tiles hide nothing, as in "Drawing order".
 
 In the exit on the floor near the first level's left end, the lead is
 not drawn at all from the picture of `T` + 19 on, in four runs; that is
@@ -709,11 +715,11 @@ More cases, as bytes, are in `../vectors/graphics/`.
   order after a knock-out or another area.
 - The layer that shows counters and other information.
 - Characters, walkers, objects and other moving things: their tiles
-  and palette rows. Their order against the layers is given for the
-  ground layer's raised tiles; against the far layer, the horizon layer
+  and palette rows. The order of the characters and the animal against
+  the layers is given for the ground layer's raised tiles; against the far layer, the horizon layer
   and the backdrop it is not covered.
 - The order of objects and walkers against the raised tiles, in either
-  order; the order of the characters and the animal against the raised
+  order; the pixels over transparent pixels of raised tiles in an exit; the order of the characters and the animal against the raised
   tiles in areas other than the first level's own ground, and in its
   room and its scene (as the room and the scene sections say); the order
   in the walk-in at an area's start; other exits than those named in
