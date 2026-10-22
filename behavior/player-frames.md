@@ -944,7 +944,8 @@ landing frame G shows the picture of the step or turn frame it is in.
 No air or landing pictures are shown.
 
 Against a wall or a steep face (`steep-faces.md`) on flat floor the
-first character's pictures follow these same rules, with the mode rules
+first character's pictures follow these same rules (the second
+character's follow its own, "Second character" below), with the mode rules
 of `ground-speed.md` ("Blocked"; a blocked frame is one that ends with
 v = 0 while the facing direction is held). A character that walks or runs
 into it keeps its stride cycle and its pictures to the next turn check,
@@ -1006,6 +1007,16 @@ shows on frames 0 and 1, `s-walk-2` on 2 and 3, `s-run-1` on 4 and 5,
 
 When walking, running or a turn ends in standing, the standing pictures
 of "Standing still" start on the first standing frame (S).
+
+Against a wall or a steep face on flat floor the second character's
+pictures follow these rules in the same way as the first character's
+(see "First character" above): with the mode rules of
+`ground-speed.md` ("Blocked", which holds for it too), a character that
+walks or runs into the face keeps its stride cycle and its pictures to
+the next turn check and then stands, one standing against it with the
+direction held shows only standing pictures, and a turn started there
+shows the turn pictures. There is no pushing picture. Running into the
+face fast enough to go over it is not this (it leaves the floor).
 
 ## Standing still
 
@@ -1638,6 +1649,23 @@ steep face, picking something up):
   not found (flashing after a hurt). 14 runs ended on a mode difference
   next to the face, at the end of a turn, or in standing with a speed
   under 48 that was not 0 (listed in "Not covered").
+- **Walking, running and turning against a wall, second character:**
+  100 runs of random input (as for the first character, half of them
+  with Action held throughout) on the same flat floor with a steep face
+  at its right end, the second character leading, 70 668 logic frames.
+  12 runs ended without standing again after leaving the floor at the
+  face (the character went on to the right in the air) and were not
+  used. In the other 88 runs the mode, step and turn frame were worked
+  out as for the first character with the second character's stride
+  cycle (`ground-speed.md`) and the picture compared with the screen
+  from each run's first standing frame on: 5 311 walking, 1 646 running
+  and 4 870 turning frames, 0 differences; 31 190 blocked frames while
+  standing, 430 while walking, 223 while running, 71 in turns. Standing
+  frames (42 058) were not compared here. Without the blocked rule all
+  88 runs stopped agreeing at the face. 22 runs ended on a mode
+  difference next to the face, 14 of them where a turn ended with forward
+  held and walking started on the frame the rules gave as still in the
+  turn (listed in "Not covered").
 - **Being hurt, first character:** 160 runs of random input (Right
   mostly, with short Jump, Action, Left or nothing segments) in the
   first level, alone, until a walker hurt the character and then 240
@@ -1955,11 +1983,13 @@ steep face, picking something up):
   air after a ledge and anywhere but flat ground, its roll pictures on
   slopes (rolls were measured on flat floor and off ledges only), and
   the pictures of every other state.
-- Pushing against a wall or a steep face: the second character, a wall
-  that isn't a steep face, a slope, and the 14 runs of "Evidence" that
-  ended next to a face on a mode difference (a turn ending with
-  forward held, or standing with Right pressed while drifting at a speed
-  under 48 but not 0, in which walking did not start).
+- Pushing against a wall or a steep face: a wall that isn't a steep
+  face, a slope, and the 14 runs of the first character's and the 22 of
+  the second character's in "Evidence" that ended next to a face on a
+  mode difference (a turn ending with forward held, or standing with
+  Right pressed while drifting at a speed under 48 but not 0, in which
+  walking did not start). What the second character does when it goes
+  over a face at speed is not covered here either.
 - Either character's standing pictures on slopes other than 1-in-4, on
   steep faces and next to a wall, and the 13 and 4 frames named in the
   second character's ledge and slope evidence.

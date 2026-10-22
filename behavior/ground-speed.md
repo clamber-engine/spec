@@ -234,7 +234,7 @@ only if the turn check changed nothing.
   frame with a turn check, this comes after the check, and only if the
   check started no turn and didn't make the player stand. Before step 1
   of the run has ended, the player keeps running.
-- **Blocked** (first character, on the ground against a wall or a
+- **Blocked** (either character, on the ground against a wall or a
   steep face, `steep-faces.md`): on a frame that ends with v = 0 while
   the direction the player faces is held, the player is treated as
   holding no direction for every rule in this section. Standing doesn't
