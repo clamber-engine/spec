@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.258.0
+
+The second character on level-map legs between places that look
+straight above each other (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/level-map.md`: new paragraph "Legs with little sideways
+  change". In the first level's map every measured leg changed the
+  lead's `x`, including those between places that look straight above
+  each other (16 to 24 px sideways), and the other followed the existing
+  rule on them. No leg that changes only the height was seen. New run E
+  in Measurements, 0 mismatches.
+
 ## spec-v0.257.0
 
 Where the second character stands when the level map appears after a
