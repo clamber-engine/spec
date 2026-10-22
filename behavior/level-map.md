@@ -634,19 +634,19 @@ not the lag frame).
 
 **The other character on the previous page.** After a walk to the right
 over a page edge the other is still on the previous page for a time
-("Page change"), its position on that page 156 at the page change.
-While it is there it isn't drawn on the new page's screens: they show the lead
-alone (and no figure at all on the four screens of "Page changes"). The other comes into view at the
-screen's left edge, as a picture cut off on the left, when its position
-on the page reaches 248, that is, its origin ("Where") is 9 px left of
-the screen's edge; with its position 245 (12 px left of it) nothing of it is
-in view. A cut-off picture has no hash of its own: a hash is given for a
-frame only when the whole picture is on screen, which it is from the
-frame on which the other's position on the new page is 0. Measured in one
-walk, over the edge between the first level's first two screens
-(from stop 234 to stop 1); a setup method (research tools) was used. A
-walk to the left, which leaves the other on the next page, wasn't
-measured with the two apart ("Not covered").
+("Page change"). It isn't drawn on the new page's screens until its
+position on that page reaches 248, that is, until its origin ("Where") is
+9 px left of the screen's edge: up to position 245 (12 px left of the
+edge) nothing of it is in view, and the screens show the lead alone (and
+no figure at all on the four screens of "Page changes"). From 248 it is
+drawn at the screen's left edge as a picture cut off on the left, and
+from the frame on which its position on the new page is 0 the whole
+picture is on screen. A cut-off picture has no hash of its own: a hash is
+given for a frame only when the whole picture is on screen. Measured in
+one walk, over the edge between the first level's first two screens,
+from the place before the edge to the place after it; a setup method
+(research tools) was used. A walk to the left, which leaves the other on
+the next page, wasn't measured with the two apart ("Not covered").
 
 **When a hash isn't found.** The eighteen hashes belong together: if
 any of them isn't found, the engine shows its own art for the characters
