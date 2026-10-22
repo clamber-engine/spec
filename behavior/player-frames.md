@@ -1374,6 +1374,13 @@ rules, as seen:
   teeter. The two ledges differ in the face's height as well as in
   whether a drop follows, so which difference matters is not known
   (see Not covered).
+- The left-hand side of a ledge top with a steep face, first character,
+  one case measured: a flat top with a face of 64 px down (4 px per
+  column) to its left, leading on to a lower floor with no drop. The
+  player, facing the face after a walk's stop on the top 0 to 14
+  columns from the face's first column (the top's leftmost column), did
+  not teeter, as at the right-hand face of the same size above. Other
+  faces on the left-hand side were not measured.
 - It held after each of these ways of standing, the only ones seen to
   start a new S there: a walk's stop, a turn's end, a roll's stop, a
   landing after a jump and a crouch's end (the S of each is given in
@@ -2627,6 +2634,21 @@ steep face, picking something up):
   the walk took the player down the face before any stand. None of these
   runs shows a stretch that speaks against the rule. One-frame presses
   were not tried.
+- **Teetering, first character, left-hand side of a ledge with a steep
+  face:** a ledge top of the first level with a flat top, a face of 64 px
+  down to its left (4 px per column, 16 columns) and a lower floor at its
+  foot, 64 px below the top. The player was put on the top within 26 px of the face
+  by a setup method, walked left for 1 to 20 frames and stood 60 frames
+  (200 runs). Stretches of standing of 5 frames or more that began after
+  a walk's stop were counted, decided on S + 3. 37 began on the ledge top
+  (0 to 14 columns from its leftmost column), all facing left, and none
+  teetered: the pictures on all 1 843 of their frames were those of the
+  standing list (no frame showed a teetering picture that the standing
+  list does not also contain). In
+  the other 163 runs no stretch began on the top: 65 stood on the lower
+  floor (not counted), in 5 the stand lasted under 5 frames, in 53 the
+  walk took the player down the face before a stand and in 40 the player
+  was still walking on the top or the face when the run ended.
 - **Teetering, second character:** the same platform, the second
   character leading, 863 runs with the same kinds of starts as for the
   first character (walks toward the end, turns back, rolls started with
@@ -3007,8 +3029,10 @@ steep face, picking something up):
   other) and ledges with a steep face other than the two above (and
   whether the face's height or the drop after it decides, which the two
   do not separate), at an
-  end with a wall or at a face on the left-hand side, on a slope, the
-  second character at faces other than those two, and after a
+  end with a wall, at the left-hand side of a ledge with a steep face other
+  than the one measured, at a face on the right-hand side other than the
+  two, on a slope, the second character at faces other than those two,
+  and after a
   bounce, a fall from a steep face, riding or carrying; after stopping
   from a run (only walks, turns, rolls, landings and crouches were seen
   to end in a stand there); after the player has stepped past the end
