@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.266.0
+
+The second character's pictures for a jump out of a crouch or its
+getting-up frames (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`, "A jump and its landing", second
+  character: a jump pressed on any frame from D to U + 12 shows
+  `s-jump-1` on the press frame, the frames before it keep the crouch
+  lists, and the air, landing and standing pictures follow the ordinary
+  jump rules. A Jump + Action press followed by Down, with Jump not held
+  on P + 2, shows `s-jump-1` and then the new crouch's list. New
+  Evidence entry; the held-Jump case and landings with Action and a
+  direction held are under Not covered.
+
 ## spec-v0.265.0
 
 The first character's pictures for a jump out of a crouch or its
