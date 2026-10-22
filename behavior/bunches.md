@@ -370,6 +370,43 @@ rounded down to a whole px. The view position from the end of the frame
 does not fit: in one natural run the bunch had `xb − V` = 8 by the end
 of the release frame's view and its item still flew.
 
+### The flying copy of an item
+
+An item that flies is drawn as a copy of a collectible's image that moves
+to the picture's top left corner, as in `collectibles.md` ("The flying
+copy"), on the 17 frames `R` to `R` + 16 of its release frame `R`
+(the frame before it arrives). With `V` and `W` as above, let
+
+    sx = xb − V − 9        sy = yb − W − 11
+
+`sx` ≥ 0 and `sy` ≥ 0 exactly when the item flies (the two conditions
+above). On frame `R` + `j`, `j` = 0 to 16, the top-left corner of the
+copy's 16 × 16 square is on the picture at
+
+    ( ⌊ sx · (16 − j) / 16 ⌋ ,  ⌊ sy · (16 − j) / 16 ⌋ )
+
+so on `R` it is at (`sx`, `sy`), it moves in a straight line at a steady
+speed (the fraction carried from frame to frame, positions rounded down)
+and is at (0, 0) on `R` + 16, the frame before the count goes up. It
+shows `spin-1` not mirrored (`collectibles.md`, "Pictures") on every
+frame. Copies of several items are on the picture at once, 6 frames apart
+along the same path while the view stands still; each is drawn from the
+place set by the view on its own release frame. The bunch's own image
+is not part of this and is covered under "Pictures".
+
+For example, a bunch with `xb` − `V` = 75 and `yb` − `W` = 46 on frame
+`R`: `sx` = 66 and `sy` = 35. The copy is at (66, 35) on `R`, (61, 32) on
+`R` + 1, (57, 30) on `R` + 2, (33, 17) on `R` + 8, (4, 2) on `R` + 15 and
+(0, 0) on `R` + 16.
+
+Measured with the runs of `collectibles.md` ("Evidence for the flying
+copy"): 267 copies followed the rule on all 17 frames, 2 were cut short
+by a knock-out and followed the rule up to then, none left it
+(4 547 frames; 2 406 showed `spin-1` unmirrored, 2 141 had another sprite
+over the square, and 1 had other pixels of the count display in it, where
+the copy passed through the count display's own place). Which of the two is in
+front there is not covered.
+
 There is no matching edge on the right or at the bottom. Items flew
 from bunches placed up to 999 px right of the picture's left edge and
 up to 260 px below its top. So, as the view scrolls on, a bunch
@@ -558,5 +595,5 @@ where the bunch was (as for single collectibles, `collectibles.md`,
 - Whether a bunch's pictures wait while a character joins
   (`holder-breaking.md`, "Everything else waits"): no bunch was seen
   whole on screen during or after one.
-- What the released items look like, and the path the flying items take.
+- Which is in front where a flying copy and the count display's image overlap, and the copies in areas other than the first level's.
 - How bunches are placed in a level's data.

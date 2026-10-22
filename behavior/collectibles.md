@@ -7,7 +7,8 @@ player takes by touching it. Each one taken adds one to the
 **collectible count**. When the count reaches 100, it starts again from
 0 and the player gets one more life. This file covers when a single
 collectible is taken, which ones can be taken depending on the view,
-when the count goes up and, in `title-1`, how a collectible is drawn.
+when the count goes up and, in `title-1`, how a collectible and its
+flying copy are drawn.
 Bunches are in `bunches.md`, letters in
 `letters.md` and figures in `figure.md`; other kinds of collectible are
 not covered. Where a level's single collectibles are in its data is in
@@ -342,6 +343,74 @@ restart. On the last frame before a restart the screen usually showed
 nothing where the collectibles were (the picture of that frame isn't
 shown before play starts again); those sightings are left out.
 
+## The flying copy
+
+In `title-1`, a collectible taken on frame `P` inside the view window (the first row of "When the count goes
+up", `xc − V` from 8 to 255) has a copy of its image fly from the place
+it was taken to the top left corner of the picture, and the count goes
+up on the frame after the copy's last frame. The collectible itself is
+no longer drawn from `P` + 1 (see "When a collectible is taken").
+
+Let (`sx`, `sy`) be, on frame `P`, the top-left corner of the 16 × 16 square its
+image fills on the picture, with that frame's view:
+
+    sx = xc − 8 − V        sy = yc − 9 − W
+
+(`V` and `W` are the view's position at the end of frame `P`, rounded
+down, `view.md` and `view-vertical.md`; the collectible's image is drawn
+with its origin at (`xc`, `yc`) as in "Pictures", which puts the square's
+top-left corner 8 px left of and 9 px above the origin.) The copy is
+drawn on the 32 frames `P` + `j`, `j` = 1 to 32, with the top-left corner
+of its square at
+
+    ( ⌊ sx · (32 − j) / 32 ⌋ ,  ⌊ sy · (32 − j) / 32 ⌋ )
+
+on the picture. It moves in a straight line at a steady speed, `sx` / 32 px
+to the left and `sy` / 32 px up per frame (the fraction carried from
+frame to frame, positions rounded down), and is at the picture's top left
+corner (0, 0) on `P` + 32. The count goes
+up on `P` + 33, as in "When the count goes up". The copy does not
+follow the view: its place is on the picture, not in the level.
+
+The copy shows the picture `spin-1`, **not mirrored**, on every one of
+its frames, whatever step of the cycle the collectible was in. It is
+drawn like the placed collectibles otherwise (same layer and
+priority as the sprites of "Pictures").
+
+### Example (synthetic)
+
+A collectible's square has its top-left corner at (90, 150) on frame
+`P`. The copy's square is at (87, 145) on `P` + 1, (84, 140) on `P` + 2,
+(81, 135) on `P` + 3, (45, 75) on `P` + 16, (2, 4) on `P` + 31 and
+(0, 0) on `P` + 32. The count goes up on `P` + 33.
+
+### Evidence for the flying copy
+
+Measured on the screen in the first level, with the sprites alone
+drawn, on 128 runs of the kind described under "Evidence for the
+pictures" (8 recorded routes, each played as recorded and 15 more times
+with random presses, half with pauses and many with restarts): 316 026
+frames. Every flying copy was followed frame by frame and compared with
+the rule above.
+
+| | |
+|---|---|
+| Copies that followed the rule on all 32 frames | 1 705 |
+| Copies cut short by a knock-out or fall-out, all on the rule up to then | 7 |
+| Copies that left the rule, or that were not there | 0 |
+| Frames compared | 54 683 |
+| of which: `spin-1` unmirrored | 22 311 |
+| of which: another sprite drawn over the square (left out) | 32 368 |
+| of which: other pixels in the square (left out; the last frame of one copy at (0, 0), in 4 runs of the same route) | 4 |
+| of which: any other picture | 0 |
+
+The copies started from 23 to 212 px right of and from 76 to 204 px
+below the picture's top left corner. Starting places in other parts of
+the picture were not measured. Collectibles taken partly off the left
+edge (`xc − V` from −39 to 7, which never count) and those with `xc − V`
+from 256 to 263 (the count goes up on `P` + 1) were not looked at: whether
+a copy flies for them is not covered.
+
 ## In `title-2`
 
 Everything in this section was measured on `title-2` only, on the first
@@ -540,10 +609,11 @@ This list is for `title-1`; `title-2` has its own list above.
 - The pictures of `spin-6`, `spin-7` and `spin-8` ("Pictures"): no full
   frame of the frame table has them, so they can't be named by a
   picture hash, and where they are stored is not covered.
-- What is drawn for a collectible after it is taken: the item seen
-  moving toward the count until the count goes up, its path and its
-  pictures; and the last frame on which the taken collectible itself is
-  drawn.
+- The flying copy ("The flying copy"): which of it and the count
+  display's image is in front where they overlap, whether it flies when
+  the collectible is taken partly off the left edge or with `xc − V` from
+  256 to 263, its starting places in the parts of the picture not listed,
+  and the copy in other areas.
 - The pictures in areas other than the first level's: in the area play
   went on to after the first level's exit, collectibles showed the same
   pictures in the same order, but out of step with "Counting the frames" and "Which picture".

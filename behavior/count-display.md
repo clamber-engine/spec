@@ -381,7 +381,7 @@ frame 342; it isn't shown from frame 343.
 - The pictures of the digits and of the lives image have no hashes, so
   what they look like is not covered (the engine draws its own); nor is
   their colour, nor which of two overlapping images is in front (a taken
-  item's flying copy passes over the digits' place), nor the six burst
+  item's flying copy, `collectibles.md`, passes over the digits' place), nor the six burst
   pictures (`G` − 3 to `G` + 2), `lives-9` and `lives-10` beyond their
   frames, or why one step of the cycle sometimes lasts longer.
 - The lives display after the four letters or an extra-life item: its
