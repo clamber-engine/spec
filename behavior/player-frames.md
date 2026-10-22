@@ -933,6 +933,17 @@ running started in the air shows `run-1` on its first frame, and the
 landing frame G shows the picture of the step or turn frame it is in.
 No air or landing pictures are shown.
 
+Against a wall or a steep face (`steep-faces.md`) on flat floor the
+first character's pictures follow these same rules, with the mode rules
+of `ground-speed.md` ("Blocked"; a blocked frame is one that ends with
+v = 0 while the facing direction is held). A character that walks or runs
+into it keeps its stride cycle and its pictures to the next turn check,
+and then stands, with the standing pictures starting on the first
+standing frame as below. One standing against it with the direction
+held shows the standing pictures, the waiting ones too, and never a
+walking picture. A turn started there (the opposite direction held)
+shows the turn pictures. There is no pushing picture.
+
 When walking, running or a turn ends in standing (`ground-speed.md`,
 "When a step ends" and "Facing and turns"), on the ground or in the air
 after a ledge without a face, the standing pictures start on the first
@@ -1458,6 +1469,22 @@ steep face, picking something up):
   that kind (3 582 frames), except 4 frames where the previous step's
   picture was still on screen, and 12 frames in a row in one run where
   the match took the picture of another object crossing the player.
+- **Walking, running and turning against a wall, first character:**
+  100 runs of random input (Left, Right or nothing for 1 to 80 frames,
+  half of them with Action held throughout) on flat floor with a steep
+  face at its right end, 58 436 logic frames (31 runs ended early when
+  the character left the floor or was hurt). From each run's first
+  standing frame on, the mode, step and turn frame were worked out with
+  the rules of `ground-speed.md` including "Blocked" and the picture
+  compared with the screen: 5 269 walking, 1 336 running and 3 800
+  turning frames, 0 differences; 24 203 blocked frames while standing,
+  507 while walking, 150 while running, 101 in turns. Without the
+  blocked rule all 85 runs that reached the face stopped agreeing at the
+  face (the model started or restarted walking where the character
+  stood). Standing frames (35 894) followed "Standing still", 2 frames
+  not found (flashing after a hurt). 14 runs ended on a mode difference
+  next to the face, at the end of a turn, or in standing with a speed
+  under 48 that was not 0 (listed in "Not covered").
 - **Walking, running and turning, second character:** 240 runs of
   random input on flat floor with the second character leading (Left,
   Right or nothing for 1 to 40 frames, half of the runs with Action
@@ -1713,8 +1740,12 @@ steep face, picking something up):
 - The second character's walking, running and turning pictures in the
   air after a ledge and anywhere but flat ground, its roll pictures on
   slopes (rolls were measured on flat floor and off ledges only), and
-  the pictures of every other state, such as pushing
-  against a wall or a steep face.
+  the pictures of every other state.
+- Pushing against a wall or a steep face: the second character, a wall
+  that isn't a steep face, a slope, and the 14 runs of "Evidence" that
+  ended next to a face on a mode difference (a turn ending with
+  forward held, or standing with Right pressed while drifting at a speed
+  under 48 but not 0, in which walking did not start).
 - The standing pictures on a slope or at a ledge (teetering), for
   either character.
 - The crouching pictures of either character on a slope, at a ledge,
