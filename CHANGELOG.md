@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.269.0
+
+The first character teetering at ledges with a steep face (spec#61).
+
+Part of clamber-engine/spec#61, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`, "Standing still": two measured cases of
+  a steep face at the end of a ledge, first character. A short face with
+  a drop below it counts as floor (the 12 outermost columns run from the
+  face's last column). On a ledge whose long face leads on to a lower
+  floor, the player did not teeter on the ledge top. Which difference
+  matters (face height or the drop) is not known. New Evidence entry;
+  Not covered updated to match.
+
 ## spec-v0.268.0
 
 The second character's pictures in a walk or run off a ledge without a
