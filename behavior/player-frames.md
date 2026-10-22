@@ -11,7 +11,8 @@ turning on the ground and in the air after walking or running off a
 ledge without a face, while rolling, in the air after a bounce, while
 standing still and while crouching, and the second character's
 pictures while standing still, while crouching and when it walks or
-runs down a steep face into a fall.
+runs down a steep face into a fall. Also the first character's pictures
+while held and shot by a launch barrel.
 
 ## The pictures
 
@@ -454,7 +455,9 @@ still fall back with "The stop after a roll"). The second character's
 bounce pictures, `s-bounce-1` to `s-bounce-16`, fall back together on
 its bounce frames. Its pictures in "A fall from a steep face" are
 `s-air-1` to `s-air-6`, `s-land-1` and `s-land-2`, and fall back with
-"A jump and its landing". The first character's crouching pictures,
+"A jump and its landing". The pictures on the shot and flight frames of a launch barrel ("In a
+launch barrel") are the same `bounce-1` to `bounce-16` and fall back with them: if any of the 16
+isn't found, the engine's own art is shown on those frames, keeping the timing given there. The first character's crouching pictures,
 `crouch-1` to `crouch-22` ("Crouching"), fall back together on its
 crouch and getting-up frames, D to U + 8. The first character's ground action pictures, `act-1` to
 `act-30` ("The ground action"), fall back together on the action's
@@ -1561,6 +1564,35 @@ ends on 45 with v = 103, so moving goes on: `s-carry-8` on 45 to 47,
 `s-carry-1` on 48 to 50, `s-carry-2` on 51 to 53. Step 2 ends on 54 with
 v = 34: frame 54 is S and shows `s-hold`.
 
+## In a launch barrel
+
+### First character
+
+While a launch barrel (`launch-barrel.md`) holds the first character and shoots them, with C the frame
+on which the barrel catches (as there):
+
+- **C + 1 to the last hold frame** (C + 15 for the `left-launch-barrel`, C + 28 for the
+  `down-launch-barrel`): no picture of the character is drawn. The character is inside the barrel.
+  Only the last hold frame (left kind) and the last 12 hold frames (down kind) were checked on
+  screen; the earlier hold frames are in "Not covered".
+- **The shot frame of the `left-launch-barrel`** (C + 16): `bounce-1`. The shot frame of the
+  `down-launch-barrel` (C + 29) is in "Not covered".
+- **After the shot**, for the `left-launch-barrel`: the pictures go round `bounce-1` to `bounce-16`
+  with **one picture per frame** (not two, as in "A bounce"): `bounce-1` on C + 16, `bounce-2` on
+  C + 17, …, `bounce-16` on C + 31, `bounce-1` again on C + 32, and so on, up to the last flight
+  frame before the landing. The character faces left throughout, so every picture is mirrored. In
+  the flight measured (from a barrel standing on the floor, landing on the same floor) there were
+  27 flight frames, C + 16 to C + 42, so the pictures are `bounce-1` to `bounce-16` on C + 16 to
+  C + 31 and `bounce-1` to `bounce-11` on C + 32 to C + 42. The pictures do not depend on what is
+  held, or on what the character was doing before the catch.
+- The `down-launch-barrel` lands the character on C + 30 (`launch-barrel.md`).
+
+The landing frame and the frames after it are not described here.
+
+Example: the barrel catches the character on frame 100 (`left-launch-barrel`). Frames 101 to 115
+show no character, 116 shows `bounce-1`, 117 `bounce-2`, …, 131 `bounce-16`, 132 `bounce-1`, …, 142
+`bounce-11`; the character lands on 143.
+
 ## Being hurt
 
 ### First character
@@ -2185,6 +2217,24 @@ steep face, picking something up):
   steps (3 and 7, 2 and 6, 2 and 8, 1 and 7), 3 818 to 8 049 frames
   differ.
 
+- **The first character in a launch barrel:** random play on flat floor (Right mostly, with short
+  Jump, Action, Left and nothing segments, then 120 more frames of random input after the catch),
+  with a copy of each barrel kind placed on the floor ahead of the character, in a copy of the
+  image. A setup method (research tools) was used so that the character started at a chosen spot
+  on the floor and wasn't hurt during the runs; the spec rules do not depend on it. 46 catches by the `left-launch-barrel` and 32 by the
+  `down-launch-barrel`, from 21 and 15 different pictures on the catch frame (walking, running,
+  rolling, jumping and others). Left kind, flight frames C + 16 to C + 42 in all 46 catches (1 242
+  frames): 332 were found whole on screen and each showed the listed hash (each of the 16 pictures
+  on at least 8 of them, none another picture); the other 910 had another sprite drawn over the
+  character and were **not checked** against the list. Hold frames: the check was on the sprite
+  layer around the barrel, compared between catches (so between different pictures of the character
+  on C), not against a frame with no character there; the barrel and its smoke are drawn over the
+  spot. It was the same in all 32 catches by the `down-launch-barrel` on its
+  last 12 hold frames. For the left kind it was the same on the last hold frame in 14 catches from
+  8 different entry pictures, and in another 13 from 8 others. The shot frame of the
+  `down-launch-barrel` was covered in all 32 catches. The lengths of the holds (15 and 28 frames)
+  and the landing frames are the timings of `launch-barrel.md`.
+
 - **The ground action, first character:** 120 runs of up to 1 500 frames
   with the first character leading on flat floor away from ledges
   (a stand, a walk or a run, then Down held 0 to 40 frames alone or with
@@ -2272,6 +2322,10 @@ steep face, picking something up):
   of other levels and on a rope whose end is low enough to reach the
   ground, the landing pictures after a jump off or a slide off a rope,
   a slide-off fall beyond F + 14, and a jump off that ends before P + 7.
+- The first character's pictures in a launch barrel on the hold frames before the last one (left kind)
+  or before the last 12 (down kind), on the shot frame of the `down-launch-barrel`, on the catch frame C and the frames before it,
+  on the landing frame and after it, in a flight cut short (by an enemy, a wall or the ceiling) or
+  landing on a slope; the second character's, and two characters'.
 - Why, on 5 frames after bounces, the previous picture was still on
   screen for one frame. The rules above give the usual frame.
 - Running that starts on K, and walking from M beyond the 3 landings
