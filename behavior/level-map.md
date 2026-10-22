@@ -421,16 +421,19 @@ and fractions, but:
 - Its end across is the lead's whole-pixel `x` on the frame the leg
   ends (the frame on which both of the lead's axes have arrived), less
   24 if the lead's `x` on that frame is more than on the frame before
-  the leg's first frame, and more by 24 otherwise. So when the lead has
-  walked to the right, the other stands 24 px to its left, and when it
-  has walked to the left, 24 px to its right.
+  the leg's first frame, and more by 24 if it is less. So when the
+  lead has walked to the right, the other stands 24 px to its left, and
+  when it has walked to the left, 24 px to its right. Legs on which
+  the lead's `x` doesn't change are not covered.
 - Its speed across is 4 × (its end − its whole-pixel `x` at the leg's
   start) in steps of 1/256 px per frame, as for the lead; its fraction
   carries on from leg to leg and walk to walk like the lead's.
 
 After its last leg ends the other stands at that spot until the lead
 walks again. In the runs, each of the other's legs ended before the next
-one began.
+one began. Its end depends only on the lead's leg, whose end is fixed
+when the lead's leg starts; so the other's whole leg can be worked out
+on frame `a`, 11 frames before it moves.
 
 **Page change.** The other is drawn on its own page ("Pages"). On the
 frame `P` on which the lead's position passes onto the next page *to the
@@ -444,12 +447,12 @@ boundary, the other didn't follow the rule above (it ended on the same
 ### Example
 
 Synthetic. The lead stands at `x` = 200, height 100, with the other at
-`x` = 176 (the lead last walked to the right). On frame 10 the lead starts a leg to
-(100, 60) with its speed across −400 steps (−1.5625 px) per frame and up −160 steps
-(−0.625 px) per frame; it arrives on frame 74.
-Its `x` on that frame is 100 (fraction 0.4375, 98.4375 put back to 100). The
-lead's `x` on frame 74 is less than on frame 9, so the other's end across
-is 100 + 24 = 124. On frame 21 the other starts its leg: from (176,
+`x` = 176 (the lead last walked to the right); both fractions are 0.
+On frame 10 the lead starts a leg to (100, 60) with its speed across
+−400 steps (−1.5625 px) per frame and up −160 steps (−0.625 px) per
+frame; it arrives on frame 74. Its `x` on that frame is 100 (fraction
+0.4375, 98.4375 put back to 100). The lead's `x` on frame 74 is less
+than on frame 9, so the other's end across is 100 + 24 = 124. On frame 21 the other starts its leg: from (176,
 100) to (124, 60), speed across 4 × (124 − 176) = −208 steps
 (−0.8125 px) per frame. Its `x` after frame 21 is 175.1875, whole 175;
 after frame 85, the 65th frame, 123.1875, which is less than 124: it
@@ -463,23 +466,35 @@ Measured in the first level's map with both characters, from the new
 game's map state and by inputs alone; which paths were open was written
 into the running emulator's memory before the inputs began, not reached
 by play (as for the pictures). Every position is that of the character's
-sprite on screen, in whole pixels, on every counted frame. Runs: the
-first walk down from the start point (700 frames); that walk and the
-walk back up (800 frames); and a chain of nine walks along the first
-level's neighbouring paths, one after the other (1 500 frames).
+sprite on screen, in whole pixels, on every counted frame. Four runs,
+each with the same first two legs (the first walk down from the start
+point):
 
-- 15 legs in 10 different walks (one of them across the page boundary
-  to the right) gave, in the chain run alone, 833 frames of the other
-  moving, with 0 mismatches of its `x` against the rule above and 0 of
-  its height against the lead's 11 frames before (on and after the
-  frame `P` of the walk across the boundary, with the one stalled frame).
-- 2 walks to the left across that boundary (the rest of those runs is
-  left out): the other came to rest on the lead's `x`, not 24 px to its right,
-  and moved faster than the rule gives (1 px per frame instead of 0.625 in
-  one run, 1.375 instead of 1 in the other). The cause isn't known.
-- The other at rest: 24 px to the lead's left after the 7 walks
-  whose last leg went right, 24 px to its right after the 4 whose last
-  leg went left. At the new game's map 16 px to its left.
+- Run A, 800 frames: that walk, then the walk back up. 2 walks, 4 legs.
+- Run B, a chain of nine walks along the first level's neighbouring
+  paths, one after the other, 1 500 frames: 9 walks, 13 legs, one walk
+  across a page boundary to the right. No walk to the left over a
+  boundary.
+- Runs C and D: some of B's first walks, then one walk to the left
+  over the page boundary that B crossed to the right.
+
+Results:
+
+- Runs A and B together hold 15 different legs in 10 different walks
+  (the first walk is in both). In B the other moved on 833 frames and in
+  A on 256, with 0 mismatches of its `x` against the rule above and 0
+  of its height against the lead's 11 frames before, on and after
+  the frame `P` of the walk across the boundary (with its one stalled
+  frame). Those frames include the frames at rest up to 70 frames
+  after each leg. 9 of the 15 legs went right, 6 went left.
+- The other at rest: 24 px to the lead's left after each leg to the
+  right, 24 px to its right after each leg to the left (all 15 legs of
+  A and B). At the new game's map 16 px to its left.
+- The walk to the left over the boundary in C and in D is not in these
+  figures: there the other came to rest on the lead's `x`, not 24 px to
+  its right, and moved faster than the rule gives (1 px per frame
+  instead of 0.625 in one run, 1.375 instead of 1 in the other). The
+  cause isn't known ("Not covered").
 
 ## Pictures
 
