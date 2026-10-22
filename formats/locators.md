@@ -42,6 +42,16 @@ SHA-256 of the image:
 | Sprite palettes: the first character's following palette | `sprites.md` | `fc` | `84b8` |
 | Sprite palettes: the second character's leading palette | `sprites.md` | `fc` | `8422` |
 | Sprite palettes: the second character's following palette | `sprites.md` | `fc` | `8440` |
+| Sprite palettes: the shared palette (letters, collectibles, bunches, flashes, smoke) | `sprites.md` | `fc` | `86f2` |
+| Sprite palettes: the thrown objects' palette | `sprites.md` | `fc` | `872e` |
+| Sprite palettes: the crate's palette | `sprites.md` | `fc` | `8710` |
+| Sprite palettes: the animal's palette | `sprites.md` | `fc` | `8404` |
+| Sprite palettes: the small walkers' palette | `sprites.md` | `fc` | `8a1c` |
+| Sprite palettes: the medium walkers' palette | `sprites.md` | `fc` | `8512` |
+| Sprite palettes: the large walkers' palette | `sprites.md` | `fc` | `85c6` |
+| Sprite palettes: the thrower's palette | `sprites.md` | `fc` | `86d4` |
+| Sprite palettes: the critters' palette | `sprites.md` | `fc` | `894a` |
+| Sprite palettes: the stinger's palette | `sprites.md` | `fc` | `8dbe` |
 | Placements: the first level's placement list | `placements.md` | `fd` | `95dc` |
 | Single collectibles: the first level's group list | `collectibles.md` | `f8` | `c2ed` |
 | Single collectibles: shape table | `collectibles.md` | `f8` | `d75d` |

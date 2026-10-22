@@ -180,8 +180,8 @@ the view it is shown with (`../behavior/view.md`).
 
 A **sprite palette** is 15 colours, stored in order (30 bytes): colours
 1 to 15 of the palette row it is used as. Colour 0 is not stored; it is
-transparent. Which palette each object uses is not covered, except for
-the characters (below).
+transparent. Which palette each object uses is covered for the characters
+and for the objects listed after them (below).
 
 ### The characters' palettes (`title-1`)
 
@@ -226,6 +226,53 @@ the swap, and Swap is pressed on frame 200, so S is 246. The second
 character keeps its following colours up to frame 245 and shows its
 leading colours from 246. The first character keeps its leading colours
 up to 246 and shows its following colours from 247.
+
+### The other objects' palettes (`title-1`)
+
+In the first level, up to the dimming (`../behavior/dimming.md`), each
+object below is drawn with one palette, the same on every frame it is
+drawn and for all of its pictures (the table says where that depends on
+which character is the player). The pictures are those named in the
+object's own file, by their labels. Where the palettes are
+is in `locators.md`. Where the image holds the same colours in more than
+one place, the row gives one of them; any gives the same colours for
+every picture below.
+
+| Objects | Pictures | Palette |
+|---|---|---|
+| Letters | `letter-pic-1` to `letter-pic-4` (`../behavior/letters.md`) | the shared palette |
+| Letters' sparkles | their small pictures (`../behavior/letters.md`) | the shared palette |
+| Single collectibles; the count display's image and digits | `spin-1` to `spin-5` (`../behavior/collectibles.md`); the digits and three of the collectibles' eight pictures are not named | the shared palette |
+| Bunches | `bunch-1` to `bunch-6` (`../behavior/bunches.md`) | the shared palette |
+| The flash of a breaking object | `flash-1` to `flash-8` (`../behavior/thrown-objects.md`) | the shared palette |
+| The smoke of a breaking crate | `smoke-1` to `smoke-6` (`../behavior/animal-crate.md`) | the shared palette |
+| Thrown objects, lying objects and the pieces of a breaking | `thrown-1` to `thrown-8`, `lying`, `piece-a-1` to `piece-b-8` (`../behavior/thrown-objects.md`) | the thrown objects' palette |
+| The crate | `crate-whole`, `crate-broken-2` (`../behavior/animal-crate.md`) | the crate's palette |
+| The animal before it is ridden | `animal-1` to `animal-22` (`../behavior/animal-crate.md`) | the animal's palette |
+| The first character mounting the animal | `mounting-1` to `mounting-5` (`../behavior/animal-crate.md`) | the first character's leading palette |
+| Small, medium and large walkers | `small-*`, `medium-*`, `large-*` (`../behavior/walker.md`), except `large-push` | the small, medium and large walkers' palettes |
+| The thrower and its balls | `throw-*`, `sway-*`, `thrower-out`, `ball-*` (`../behavior/thrower.md`) | the thrower's palette |
+| Critters | `wing-1` to `wing-6` (`../behavior/critter.md`) | the critters' palette |
+| The stinger | `wing-1` to `wing-4` (`../behavior/stinger.md`) | the stinger's palette |
+| The lives display's image and digits | (`../behavior/count-display.md`) | the first character's palette: the leading one while the first character is the player, the following one while the second character is |
+
+The **shared palette** is the one letters, sparkles, collectibles, the
+count display, bunches, flashes and smoke use. No picture of these
+objects that is named by a hash uses a colour number above 13. The
+image holds colours 1 to 13 of the shared palette in three places, and
+the thrown objects' palette in four; `locators.md` gives one place for each.
+
+Some pictures here are not named by hash (the sparkles, three of the
+collectibles' eight, the count display's digits and the lives display's
+image: "Not covered"). Their palette is the one given because the
+colours read on screen for them were all among that palette's, not
+because a named picture matched (the lives display: first character's
+palette, which the evidence below checks against the player).
+
+Within the first level before the dimming, the colours read for an
+object stayed those of its palette from picture to picture; only a change
+of player (the lives display, the mounting pictures) and fades changed
+them. What else changes them is under "Not covered".
 
 ## Example (synthetic)
 
@@ -329,12 +376,84 @@ full frames with every byte hashed for one of them.
     Jump before landing on Q − 4, both characters stood still one frame
     less than `swap.md` says (S was Q + 45 without a Jump press on Q − 1
     or Q − 2), and the colours changed on that S and S + 1.
+- The other objects' palettes, measured by inputs alone. As for the
+  characters, each object's picture was found on screen with only the
+  sprite layer drawn (as for the picture hashes in the object's file),
+  and the screen colour of each of its colour numbers was read on the
+  video frame after the logic frame that drew it. 302 runs of up to
+  1 500 video frames of random play with Swap presses, from 151 saved
+  positions (the first level, caves, water areas, rooms, carrying,
+  throwing, riding); the same 302 runs, of up to 600 frames, for the
+  collectibles and the displays, and of 1 500 frames for the sparkles;
+  and 42 runs of 500 logic frames from 14 saved positions with both
+  characters for the lives display. Only pictures of the first level before
+  the dimming started were used (a run counts as past the dimming from the
+  first frame the view's left edge is at 4 704 or more, or from its first
+  frame when it starts after the dimming has begun). A picture "read
+  exactly" the palette when every colour number read had that palette's
+  colour. Pictures read, of which exact (the rest were darker versions
+  of the palette's colours by one common factor, as in a fade, or each
+  differed in at least one colour and were not examined further):
+  - letters 13 649, 13 634 exact (15 differed); sparkles 53 163 (with some pixel left to read), of
+    which 52 852 showed only colours among the shared palette's (their
+    pictures are not named: the colours read in a 24 x 24 square around
+    each, leaving out the area covered by any other object's picture);
+  - bunches 6 004, all exact; flashes 2 179, 2 095 exact, 84 darker;
+    smoke 2 558, all exact;
+  - thrown objects, lying objects and pieces 43 311, 43 283 exact, 28
+    darker;
+  - the crate 6 561, all exact; the animal 6 010, 6 008 exact (2
+    differed); the first character mounting 1 072, all exact (leading
+    palette of the first character, as it was the player in all of them);
+  - small walkers 8 897, 8 885 exact (12 differed); medium walkers
+    8 502, 8 501 exact (1 differed); large walkers 6 118, 6 113 exact (5
+    darker);
+  - the thrower and its balls 32 749, 32 662 exact, 3 darker, 84 differed;
+  - critters 32 880, 32 394 exact, 476 darker, 10 differed; the stinger
+    1 520, all exact;
+  - single collectibles (the five named pictures) 61 559, 60 343
+    exact (1 216 differed); the count display's image 6 868, 6 851
+    exact (17 differed); the count display's digits 52 026, of which
+    50 682 showed only colours among the shared palette's;
+  - the lives display: on 1 271 frames with both readable, its colours
+    were the first character's leading palette's exactly when the first
+    character's own pictures were, and the following palette's exactly
+    when those were (0 frames disagreed; 319 more frames had no readable
+    first-character picture). No change of player came while it was
+    shown, so when its colours change is not covered.
+  Then, for each group, the most common colour read per colour number
+  was looked for in the image as a 30-byte run, starting anywhere. Small,
+  large and medium walkers, the thrower, the crate, the animal, the
+  critters and the stinger each had one place in bank `fc` (the medium
+  and large walkers' and the animal's colours were also found in the
+  level graphics' bank, `f9`, as copies; the first character's leading
+  colours as in the characters' palettes above). The shared palette's
+  group (13 of 15 colour numbers read) was found in three places, equal
+  in colours 1 to 13; the thrown objects' (14 of 15) in four places,
+  all with the same 15 colours.
 
 ## Not covered
 
-- Where the sprite palettes are in the image, and which one each object
-  uses, other than the characters' palettes above. (The frame table is
-  in `locators.md`; it locates the frames.)
+- Which palette the objects not listed above use (the tyres, the
+  extra-life items, the signs, the launch barrels, the flying copy of a
+  taken collectible, the animal when ridden, the objects of other
+  areas). (The frame table is in `locators.md`; it locates the frames.)
+- The other objects' colours in some situations (the objects in "The
+  other objects' palettes"):
+  - near the first level's end, where their colours change with the
+    dimming (the bunches' 3 517 pictures read then were none of them in
+    the palette's colours);
+  - in other areas: of the pictures read there, the medium walkers' 85
+    were none in the palette's colours (seen in some caves), 10 433 of
+    the letters' 12 251 and 5 607 of the critters' 6 618 were, and
+    nearly all or all of the others' were. Which areas, and which
+    colours instead, is not covered;
+  - while the picture fades out or in;
+  - the `crate-broken-1` and `large-push` pictures, never seen in the
+    runs above;
+  - the animal being ridden, and a second character mounting;
+  - the frames on which the lives display's colours change when the
+    player changes.
 - The characters' colours in some situations:
   - near the first level's end, where sprite colours change with the
     dimming (`../behavior/dimming.md`, "Not covered");
@@ -350,8 +469,7 @@ full frames with every byte hashed for one of them.
   - in games with two players;
   - the picture of both characters on the level map.
 - Which frames each kind of object shows and when (animation sequences
-  and their timing), which palette each uses (other than the
-  characters' palettes above), and which objects are
+  and their timing), and which objects are
   mirrored top–bottom. The player's frames in the stop after a roll,
   after a jump's landing and on a bounce's frozen frames are in
   `../behavior/player-frames.md`, the walkers' pictures in
