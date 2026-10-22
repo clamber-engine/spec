@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.244.0
+
+The flying copy of a taken collectible, and the critter's pictures
+(spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/collectibles.md`, `behavior/bunches.md`: the path and
+  pictures of the flying copy drawn when a single collectible or a
+  bunch item is taken, given as formulas on the picture position with
+  worked examples and on-screen evidence. `behavior/count-display.md`
+  and `behavior/hidden-objects.md` updated to match.
+- `behavior/critter.md`: new "Pictures" section: six pictures named by
+  picture hash, mirroring by horizontal direction, a 10-frame flying
+  cycle and a 360-frame perched list, with a fallback for missing
+  hashes. On-screen evidence from 18 runs. `formats/sprites.md` points
+  to it.
+
 ## spec-v0.243.0
 
 The stinger's pictures (spec#38, pictures).
