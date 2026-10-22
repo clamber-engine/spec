@@ -2,6 +2,38 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.231.0
+
+How the second character is drawn, and how its timing and speeds
+differ, when picking up, carrying and throwing or putting down an object
+on flat floor in `title-1` (spec#38, pictures).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: new "Carrying", "Second character"
+  section.
+  - 28 new picture hashes: `s-pick-1` to `s-pick-5`, `s-hold`,
+    `s-carry-1` to `s-carry-8`, `s-throw-1` to `s-throw-14`.
+  - Pick-up on G to G + 9 (`s-pick-1` to `s-pick-5`, 2 frames each);
+    G + 10 is a frame of standing with the object. Throw on Q to Q + 39,
+    then `s-stand-1`, `s-walk-1` or a turn on Q + 40; put-down on Q to
+    Q + 9 (the pick-up's pictures in reverse), then `s-stand-1` and S on
+    Q + 10.
+  - Standing and 8-frame turns with the object show `s-hold`. Moving
+    with the object: an 8-step carrying stride of 3 frames per step
+    whatever the speed, with a stand check at the end of steps 2 and 7
+    for v < 48 and no direction held. Jumps show `s-carry-2` from J − 2
+    to L + 1.
+  - Fallback group, a worked example, on-screen evidence and updated
+    "Not covered".
+- `behavior/carrying.md`: new "The second character" section: shorter
+  pick-up, throw and put-down, a carrying target of ±3.375 (864/256),
+  and carried jumps with the first character's jump values, taking off
+  on P + 2; plus its own "Not covered" items.
+- `behavior/second-character.md`: "Not covered" points to the new
+  section.
+
 ## spec-v0.230.0
 
 How the first character is drawn when picking up, carrying and throwing
