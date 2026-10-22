@@ -859,10 +859,10 @@ to L + 8, `stand-1` from L + 9.
 In the air it shows `s-jump-1` on T − 1, `s-jump-2` on T and T + 1, then
 `s-rise-1` to `s-rise-7` for 2 frames each (T + 2 to T + 15), then
 `s-air-1` and `s-air-2` to `s-air-6`. `s-air-1` is shown on every frame
-from T + 16 up to A − 1, with A the approach frame of `jump-input.md`
-("The switch frame M": the first frame from T + 20 on at whose end
-there is floor within reach below the player), found by the same rule
-for this character. Then:
+from T + 16 up to A − 1, with A, for the pictures, the first frame from
+T + 18 on at whose end there is floor within reach below the player
+(the same test of "within reach" as the approach frame of
+`jump-input.md`, "The switch frame M"). Then:
 
 | Frame | Picture |
 |---|---|
@@ -880,6 +880,24 @@ held 1 frame, A = T + 23, L = T + 37: `s-air-1` on T + 16 to T + 22,
 `s-air-2` on T + 23, `s-air-3` on T + 24 and T + 25, `s-air-4` on T + 26
 and T + 27, `s-air-5` on T + 28 and T + 29, and `s-air-6` on T + 30 to
 L − 1.
+
+`s-air-2` was never shown before T + 18, including in a jump where
+floor was within reach already on T + 16, so the search for A starts at
+T + 18. This A is used only to choose this character's pictures. The
+approach frame of `jump-input.md`, which starts at T + 20, is the one
+for the jump's movement and its switch frame; these jumps' movement was
+not compared with it (see "Not covered"). With A = T + 18 each picture lasts 2 frames: `s-air-2` on A and A + 1,
+`s-air-3` on A + 2 and A + 3, `s-air-4` on A + 4 and A + 5, `s-air-5` on
+A + 6 and A + 7, `s-air-6` from A + 8. With A = T + 19 or later the table
+above holds. Floor within reach that early happens in a jump over
+higher floor: the 3 jumps measured with A = T + 18 passed over a step
+64 px higher than their take-off floor. The approach frame was T + 18 to
+T + 35 in the 46 jumps measured over it, and the pictures after it follow
+the rule in every one ("Evidence"). Example: A = T + 18, landing on
+the higher floor after T + 26:
+`s-air-1` on T + 16 and T + 17, `s-air-2` on T + 18 and T + 19, `s-air-3`
+on T + 20 and T + 21, `s-air-4` on T + 22 and T + 23, `s-air-5` on T + 24
+and T + 25, `s-air-6` from T + 26.
 
 A jump out of a roll pressed on the ground (`roll-speed.md`, "Jumping
 out of a roll") shows the same pictures and timing, with T − 1 the press
@@ -2137,8 +2155,26 @@ steep face, picking something up):
   frame matched the table above, with A found from the player's height
   above the floor under it: 760 jumps, 0 differences. 26 jumps where
   the player was over a part of the level with no floor height measured
-  were left out, and so were 14 landings on
-  higher floor (see "Not covered").
+  were left out, and so were 14 landings on higher floor (below).
+- **Air pictures over higher floor, second character:** the 14 landings
+  on higher floor left out above, and 32 more from 1 200 further jumps
+  of the same kinds as above (second character leading, plain jumps and
+  jumps out of slow, normal and fast rolls pressed on the ground, Jump
+  held 1 to 40 frames, walking toward a step 64 px high). In all 46 jumps the player
+  was over the step's top when the floor came within reach, between 0
+  and 71 px above it (the distance from the player's feet down to the
+  step's top on the frame A was found).
+  17 landed on the higher floor and 29 ended with the player stopped by
+  the left end of the level (`level-ends.md`) beside the step; their
+  pictures were counted up to the frame the player stopped.
+  All 46 were jumps out of a fast roll; no plain jump or slower roll
+  reached the step. From
+  T + 16 to the landing (787 frames) every picture matched "Second
+  character" with A the first frame from T + 18 on with floor within
+  reach and the 2-frame table when A = T + 18: 46 jumps, 0 differences
+  (3 with A = T + 18, 1 with T + 19, 1 with T + 20, 3 with T + 22, the
+  others T + 23 to T + 35). Using T + 20 as the start fails on the 3 with
+  A = T + 18 (`s-air-2` shown 2 frames early).
 - **Jumps out of a roll pressed in the air, second character:** 1 600
   runs with the second character leading on the three ledges of
   `rolling-off-ledges.md` ("The second character"): walking right 0 to
@@ -2930,11 +2966,17 @@ steep face, picking something up):
   frame late on screen. The rules above give the usual frame.
 - The second character landing before the fourth frame showing
   `s-air-6`, and when its `s-air-1` ends.
-- The second character's air pictures from T + 16 in a jump that lands
-  on floor higher than the one it took off from (14 such jumps out of a
-  roll showed `s-air-2` 0 to 15 frames after A), in a jump pressed in
-  the air during a fall, and in a jump with the floor below more than
-  16 px lower than the take-off floor.
+- The second character's pictures after the player is stopped by the
+  level's end in the air over the higher floor, and a jump against a
+  wall that is not the level's end.
+- Whether the approach frame used for the second character's movement
+  in a jump over higher floor (`jump-input.md`) is T + 18 or T + 20.
+- The second character's air pictures from T + 16 in a plain jump that
+  lands on higher floor (none reached the 64 px step measured), in a
+  jump onto floor higher by any other amount, in a jump pressed in the
+  air during a fall, and in a jump with the floor below more than 16 px
+  lower than the take-off floor. Whether A could be earlier than T + 18:
+  floor was within reach before T + 18 in one jump only.
 - The first character standing still before it reaches the steep face
   (no run began the face from standing: it was reached from walking,
   running or a turn), its falls from a steep face landing on a face,
