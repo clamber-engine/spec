@@ -520,6 +520,49 @@ walker was hit in each, the same one throughout the pair, with 0
 mismatches. With the object moving slowly (about 1.6 px per frame)
 both were hit, the second one on the next frame.
 
+### The second character
+
+With the second character under control (`second-character.md`) the
+object it throws hits walkers by the same rules, the same tables and the
+same height limits. Only the timing differs, because the object leaves
+its hands earlier (`carrying.md`, "The object, second character"): it
+leaves on Q + 18, and **t = 1 on Q + 19**. So the larger area holds from
+Q + 19 to Q + 34 (t from 1 to 16) and the smaller one from Q + 35 on. What
+happens to the walker and to the object after a hit is as above
+("What else happens on a hit", "The walker").
+
+A setup method was used for part of these runs; those situations were
+not observed in ordinary play. With the second character leading, a
+thrown object was a walker's neighbour on single frames at t = 1, 2, 5,
+16, 17, 18 and 25, at every whole pixel from 70 px behind to 70 px ahead
+of the walker and every pixel of height from 0 to 100 above it, for each
+kind, each facing of the walker and the object moving left: 598 122
+frames, 198 270 of them hits, 0 mismatches. With the object moving right,
+the frames at t = 1 and 2 matched too. **From t = 5 on, with the object
+moving right, no walker was hit in that series, and why isn't known**, so
+for the object moving right the tables are confirmed only for t = 1 and 2
+there (and by the throws below for the larger area); the smaller area's
+rows for the object moving right are not confirmed.
+
+Then 2 160 throws with the second character, in which the walkers were
+arranged at a distance before the throw or while the object was in the
+air, walking freely, toward and away from the throw, with both ways of
+throwing and all three kinds: 8 391 frames on which a walking walker and
+the thrown object were both there, 875 hits, among them every row of the
+tables for the object moving left and the larger-area rows for the
+object moving right (the smaller-area rows for the object moving right
+were not reached), 0 mismatches. Frames with the object more than 12 px
+below the walker are left out, as above. With the change of area one frame
+earlier or later, 23 304 of the controlled frames differ either way, and
+15 (earlier) or 28 (later) of the throws' frames; with t = 1 one frame
+earlier, on Q + 18 when the object leaves, 3 of the throws' frames differ.
+
+In a separate check of throws (its 1 225 walkers hit are not comparable
+with the 875 hits above, which count only frames on which a walking
+walker and the object were both there), the walkers hit moved as "The walker" says on all 23 558 frames until they
+were gone, and in 715 throws that hit, the object went on exactly as in a
+throw of the same kind that hit nothing, on 13 612 frames after the hit.
+
 ### What else happens on a hit
 
 - The object goes on exactly as it would have without the walker:
@@ -1413,7 +1456,10 @@ this file doesn't say what decides the mirroring there.
 - Objects thrown by the second character, beyond `carrying.md`, "The
   object, second character": it releases the object on Q + 18, 9 px
   above its `y`, and the air rules and the first bounce above held in
-  the runs there; rolling, breaking, walkers, the thrower, balls and
-  pictures weren't measured with it.
+  the runs there; walkers are under "The second character" under "When a
+  walker is hit" (not covered there: the smaller area's rows for the
+  object moving right, hits while the object is still in the hands, slopes
+  and other floors, two walkers in range on the same frame); rolling,
+  breaking, the thrower, balls and pictures weren't measured with it.
 - Removal above or below the picture (only horizontal positions were
   measured).
