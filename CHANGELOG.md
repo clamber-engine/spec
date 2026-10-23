@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.307.0
+
+Getting off the animal with the second character as the player
+(spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/getting-off.md`, new section "The second character": what
+  differs from the first character when the second character leads
+  (speeds on the press and in the air, the jump-off's own jump values,
+  the longer landing, Down + Action as a roll); everything else is the
+  same. Ordinary play at the level's own animal, a second Tandem press
+  and slopes stay under "Not covered".
+
 ## spec-v0.306.0
 
 Two walkers in range of one thrown object on the same frame (spec#19).
