@@ -2,6 +2,35 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.292.0
+
+The second character coming down on walkers (spec#68); the second
+character at the left-hand side of a steep-face ledge (spec#61); the
+one-life extra-life items' palette and the tyres' colours (spec#38).
+
+Answers clamber-engine/spec#68. Part of clamber-engine/spec#38 and
+clamber-engine/spec#61, which stay open for the parts not covered yet.
+
+- `behavior/walker-contact.md`: new section "The second character". With
+  the second character leading, the small and medium walkers are bounced
+  on and defeated as for the first character, with its own horizontal
+  ranges, upper limits 7 px higher, a bounce `vy` of −8.5 and its two
+  gravities. The large walker isn't defeated and doesn't hurt: the
+  character is thrown back and the walker pushed, with the speeds and
+  frames after it, a synthetic example and evidence (placements and
+  1 104 runs by inputs, 0 mismatches). `walker.md` ("Pushed") and
+  `protection.md` point to it; Not covered items updated.
+- `behavior/player-frames.md`: the second character doesn't teeter at
+  the left-hand side of the ledge top with the 64 px face either, after
+  a walk's stop 0 to 15 columns from the face. Evidence from 200 runs,
+  with frames where the other character covered it left unjudged. Not
+  covered narrowed.
+- `formats/sprites.md`: the one-life extra-life items use their own
+  palette, confirmed by ordinary-play pictures, and the tyres' colours
+  in two areas; `formats/locators.md` gains a locator row for that
+  palette. The two- and three-life items' palettes stay under "Not
+  covered".
+
 ## spec-v0.291.0
 
 Level map: which figure is in front where the two characters overlap,
