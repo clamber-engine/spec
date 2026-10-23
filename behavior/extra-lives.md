@@ -41,7 +41,8 @@ entry of one of these kinds (`../formats/placements.md`, "Kinds"):
 
 The first level has two `rising-extra-life-1` items, one
 `rising-extra-life-2` and two `extra-life-3`; its room
-(`exits.md`) has one `extra-life-1`, and the area behind its first wall
+(`exits.md`) has one `extra-life-1` that is there every time the room
+is entered (`exits.md`, "The upper exit again"), and the area behind its first wall
 exit (`wall-exits.md`) one `rising-extra-life-1`. Everything below holds for all four
 kinds unless it says otherwise. How an item is drawn: "Pictures".
 

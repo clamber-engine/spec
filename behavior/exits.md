@@ -213,6 +213,28 @@ Coming back from the room was checked frame by frame against the level's
 own start: the lead's position, speed, state and facing were the same
 on every one of the first 90 frames (see "Checks").
 
+### The upper exit again
+
+The upper exit takes the lead to the room once in a visit to the level.
+Once the room has been entered, in the rest of the visit the first level
+has no upper exit: a lead walking left at the level's left end is not
+taken over, and is stopped 18 px inside the end as in `level-ends.md`
+("The player at the ends"), in the 900 frames it was held there. This holds
+in the level after the room, and in the level after a visit to the
+scene that followed the room. The room counts as entered whether or not
+the item in it was taken. The floor exit is not used up in this way: it
+leads to the scene each time it is reached. After the scene alone, the
+upper exit is still there and leads to the room.
+
+The upper exit is there again, and leads to the room as before, when the
+level begins again: after a lost life (a fall out of the level or
+another), resuming at the level's start or at the restart point, and
+after the level has been finished and is entered again from the level
+map. The lead has to walk to the left end again. In the room, the `extra-life-1` item (`extra-lives.md`) is
+there every time, whatever happened to it before, and taking it gives
+one life each time. So the room is entered at most once between two
+beginnings of the level, and its item is always there when it is.
+
 ## Walking in
 
 When the scene, the room, the level after the scene or the area behind
@@ -452,6 +474,8 @@ together before leaving: after either exit neither was there when the
 view came back to their places, and holding the lead on their places
 gave no lives. Not taken before the exit, both were there after either
 exit and gave 3 lives each.
+The room's own `extra-life-1` item is not among those that stay gone:
+it is there whenever the room is entered (see "The upper exit again").
 
 There again, as when the level begins:
 
@@ -964,6 +988,28 @@ Walking left (`d` = −1) from an other character at 500, the points are
   through each of the two wall exits (`wall-exits.md`): every row from
   `T` + 1 to the area's last frame was as in "In a trace", and the
   original's next frame was in the other area.
+
+- **The upper exit and the room again.** After taking the room's item
+  and after not taking it, coming back to the level and holding the
+  lead against the left end for 900 frames: no upper exit took it over
+  and it stood stopped at the end (lead alone 2 runs, with the other
+  character following 1 run). After the room and then the scene, 150
+  frames: the same (1 run). With random approaches (a setup method
+  put the lead near the left end, then 400 frames of random inputs,
+  mostly Left), 36 approaches in the
+  level after the room and 24 in the level after room and scene reached
+  the room 0 times; as controls, 15 of 36 approaches at the level's
+  start and 11 of 24 after the scene alone reached it. The room was
+  reached, with the item there and taking it adding one life, in 6 runs
+  that began the level again: after a fall out of the level with the
+  room entered before (lead alone 1, two characters 1), after another
+  lost life with the room entered before (1), after a lost life with the
+  restart point reached and the room entered before (1), after finishing
+  the level with the room entered before and entering it again from
+  the level map (1), and after a lost life with the restart point
+  reached and no room before (1). Random approaches after a fall out of the level reached the
+  room in 11 of 24, and after a resume at the restart point in 12 of 24.
+  Two characters were tried only in the first and the fall-out cases.
 
 ## Not covered
 
