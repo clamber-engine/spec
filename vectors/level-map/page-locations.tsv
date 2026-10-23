@@ -1,0 +1,4 @@
+page	map_bank	map_addr	set_bank	set_addr	palette_bank	palette_addr
+0	c1	0100	c1	0800	f9	8000
+1	c3	1234	c4	0000	f9	9000
+2	ff	e000	c5	4321	f9	8200

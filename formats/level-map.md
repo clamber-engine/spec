@@ -199,6 +199,46 @@ Down neighbours are both 20.
 - If stop 30 also had a Right neighbour 40, which no record names, the
   route from 30 with Right would be just 40.
 
+## The pages' pictures
+
+The map shows one **page picture** at a time (`../behavior/level-map.md`,
+"The map's picture"), the one of the page the lead is on. A page picture
+is a screen picture (`graphics.md`, "Screen pictures") with these
+differences:
+
+- Its tile map has 32 columns and 28 rows of tile entries, 1 792 bytes,
+  stored as a screen map's first 28 rows, so the picture is 256 × 224 px.
+- Its tile set is 896 four-plane tiles, 28 672 bytes, stored as they are
+  and numbered from 0. The entries of the first level's map use tile
+  numbers up to 765, and none has the **raised** bit set.
+- Its palette is one palette set of 8 rows (256 bytes). Colour 0 of
+  every row shows the backdrop, which is colour 0 of row 0, as in
+  "Screen pictures".
+
+Every page of the map has its own tile map, tile set and palette set. The
+image tells where they are in three tables, indexed by the page number,
+0 to 12, the page numbers the point tables use ("The point tables"):
+
+| Table | Entry size | Entry |
+|---|---|---|
+| Tile maps | 4 bytes | a location (`rom-image.md`, "Banks and locations") of the page's tile map, then a byte that is not used |
+| Tile sets | 4 bytes | the same, for the page's tile set |
+| Palette sets | 2 bytes | the address of the page's palette set, low byte first, in the bank of the first page's palette set |
+
+`locators.md` gives the start of each table and the location of the first
+page's palette set. The locations in the tables are in different banks
+for different pages, and the data of different pages isn't stored in
+one run: each page's three parts are read from the places its entries
+give.
+
+### Example
+
+Synthetic: `../vectors/level-map/page-tables.hex` and
+`page-locations.tsv`. The tile-map table's entry for page 1 is the bytes
+`34 12 c3 00`: its tile map is at bank `c3`, address `1234`, and the last
+byte isn't used. A palette-table entry `00 90` for the page, with the
+first page's palette set in bank `f9`, gives bank `f9`, address `9000`.
+
 ## Measurements
 
 - The routes, positions and neighbours were checked on every pair of a
@@ -224,6 +264,12 @@ Down neighbours are both 20.
   neighbour was pressed (128 pairs each time). A walk started exactly
   for the open paths in the tables above: 5 at the new game, 7 after
   the finish, 0 mismatches.
+- Page pictures: the map was started with the lead on each of the 13
+  pages in turn (a setup method (research tools) set the page; no
+  modified copy of the game was used) and, at full brightness, the
+  background layer alone was compared with the page picture rebuilt by
+  the rules above from the three tables' entries for that page: 13 pages
+  of 57 344 px each, 0 differing pixels.
 - Appearance points: measured at three stops (the map at the start, and
   after leaving two levels and one place that isn't a level): `x` 8 px
   to the right of the stop's position, same `h`, fractions 0.
@@ -235,7 +281,9 @@ Down neighbours are both 20.
 - Where the levels of level stops other than the first level's stop are
   in the image. What the places' screens do, and what pressing at the
   start point does.
-- The map's pictures, and the stop names shown on it.
+- The stop names shown on the map, and anything else drawn over the
+  page picture but the two figures (`../behavior/level-map.md`,
+  "The map's picture"). The maps of other titles.
 - The map with a second figure walking with the lead (all measurements
   have the lead alone on the map).
 - The figures' animation and drawing.

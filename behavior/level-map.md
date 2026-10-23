@@ -159,6 +159,62 @@ If a page change happens on frame `P`, no walk can start before
 For example, with the page change on frame 39 and the walk's last frame
 63, a held direction starts the next walk on frame 103.
 
+## The map's picture
+
+The map's picture is the **page picture** of the page that the view
+shows ("Pages"), as `../formats/level-map.md` ("The pages' pictures")
+builds it: 256 × 224 px, the whole screen, and the only background
+layer. It doesn't move or scroll while its page is shown: its pixel
+column `c` and row `r` are at screen column `c` and row `r`, which are
+the picture coordinates of "Pictures" ("Where"). Its transparent pixels
+show the backdrop, colour 0 of row 0 of the page's palette set.
+
+The lead, and the name shown at the top of the screen for the stop the
+lead stands at, are drawn over the picture, in front of all of it: no
+part of the picture is drawn over them. How the other character is
+drawn against the picture wasn't measured ("Not covered").
+
+**A page change.** The picture of the new page replaces the old one at
+once, with no part of the old picture dimmed, and fades in. The picture
+for frame `P` − 1 (`P` as in "Pages") is black: the old picture is
+already gone. From frame `P` the new picture fades in as the map does
+when it appears ("When the map appears"): brightness `j` (15 full, 0
+black) on frames `P` + 2`j` and `P` + 2`j` + 1, for `j` from 0 to 15,
+and 15 from `P` + 32. The lag frame that follows `P` isn't counted, so
+the pictures for `P`, for the lag frame and for `P` + 1 are black as well
+(brightness 0), and `P` + 2 and `P` + 3 are the first dimmed ones. The
+fade changes nothing else: the lead's position, the walk and the rule
+that no walk starts before `P` + 64 are as in "Pages".
+
+### Example
+
+Synthetic. The lead's walk takes its position onto the next page on
+frame 100 (`P` = 100). The pictures for frame 99, for 100, for the lag
+frame after it and for 101 are black. Frames 102 and 103 show the new
+page's picture at brightness 1, frames 104 and 105 at 2, and so on up to
+frames 130 and 131 at 15. From frame 132 the picture is at full
+brightness.
+
+### Measurements
+
+Measured on screen in the first level's map. A setup method (research
+tools) made the map start with the picture of each page in turn and put
+the lead beside a page edge; no modified copy of the game was used.
+
+- The picture on each of the 13 pages, at full brightness and with the
+  background layer alone, was the one `../formats/level-map.md` gives:
+  13 pages of 57 344 px, 0 differing. Drawn over it were 500 to 1 237 px
+  of sprites a page (the lead and the stop's name), all of them
+  as the sprite layer alone draws them: 0 differing.
+- Three page changes were played with the direction held, 200 frames
+  each: from the page numbered 7 to the one numbered 8 and back, and from
+  2 to 1. In each, the screens for frames up to `P` − 2 showed the old
+  picture whole (3 584 of 3 584 sampled pixels), the screen for `P` − 1
+  was a single colour whose channel sum was 0 (black), and from the screen for `P` the picture's
+  brightness, measured as the sum of the screen's colour channels over
+  the new picture's, was `j`/15 to within 0.02 for every frame from `P`
+  to `P` + 40 (`j` as above); the new picture was whole from `P` + 32.
+
 ## When the map appears
 
 When the map appears (at the start, or after leaving a level), the lead
@@ -736,6 +792,16 @@ lengths, at the start and at the page change).
 
 ## Not covered
 
+- What the stop's name looks like and how it is chosen, and anything
+  else drawn over the picture besides the two characters and the name
+  (for example marks along open paths: none was seen in the
+  measured maps).
+- The other character against the picture: whether it is drawn in front
+  of all of the picture as the lead is (every measurement of the
+  picture had the lead alone on the map).
+- The page change while the other character is on the previous page,
+  with a second character walking: the fade was measured with the lead
+  alone.
 - Progress other than at a new game and after the first level's first
   finish (`../formats/level-map.md`, "Progress").
 - The second character on the map: where it is when the map appears

@@ -90,6 +90,10 @@ SHA-256 of the image:
 | View limits: the record of the area behind the first level's second wall exit | `view-limits.md` | `fc` | `97ec` |
 | Level map: point tables | `level-map.md` | `fc` | `f47b` |
 | Level map: corner records | `level-map.md` | `c0` | `d13c` |
+| Level map: the page picture tile-map table | `level-map.md` | `c0` | `e170` |
+| Level map: the page picture tile-set table | `level-map.md` | `c0` | `e13c` |
+| Level map: the page picture palette-set table | `level-map.md` | `c0` | `e1a4` |
+| Level map: the first page's palette set | `level-map.md` | `f9` | `be03` |
 
 ### Kind fingerprints: placement references
 
