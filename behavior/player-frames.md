@@ -250,6 +250,21 @@ The colours each character's pictures are drawn with are in
 | `rope-climb-4` | `852e32b33b3fbd4545d1f2f2c3ba52bff717ed4e1ca27dd71e0ae81809d794ed` |
 | `rope-climb-5` | `4b029f2b1dd49e52c9e98e2af7db63af41e602416fa4b877976a92e8cd7dfdfe` |
 | `rope-climb-6` | `fd60685a4f8e2e9cc5fe66699b137f67ac963bc41e4440f1ffaf271702d5a730` |
+| `swim-1` | `5b5446baa955dbbcecd0274424d88115d7622f270ce586df5b1488fddaaea667` |
+| `swim-2` | `cff859f90724a1a0e79fee41bc6b36086a73c0752841c79758a6fc54d29ab50a` |
+| `swim-3` | `ec8277d3ca0e6768312201d3db4243924bf47fa5f7225fcb37e74feff608e1c5` |
+| `swim-4` | `60ee871167c4f2ac3846f19bd67470aac31bc2d52f21ec58c5f1c485aa2f44e6` |
+| `swim-5` | `ebca381e106119f7b9ea38cebf218f741a2ad9a9a48d62e755d120ac55fad744` |
+| `swim-6` | `a46df6c88d7affa97581b748832d043527ddda32fb684704ae0d16dd4a69b07b` |
+| `swim-7` | `0464246314228b6869640b575ec6a0dd14a6c2756ca6879ac1250fd616e6bb61` |
+| `swim-8` | `8ba8b67c29c6d453f9fd0f52fbcee88d4995bf2d7893510607b0a8ede9bd390e` |
+| `swim-9` | `1b31c1a69b3961f99d4169fb6f6455999d6cb4c49a03a36b9316e1aae0f76fab` |
+| `swim-10` | `5aea94cdb63c0bdd00965ccb6c333c2ce5d8aa97048464fcc211372abcab2f1e` |
+| `swim-11` | `968457668898f6dc157a77d4b08ce1a4a53fe6813fb20eb0903330cfd0cde0b0` |
+| `swim-12` | `24605da0c75659d916def1541c4028c9fdcf2dab0fa29f793f971d16b9de22d4` |
+| `swim-13` | `48b623516e63cf92273cf10e0ffe68c916ef8b1def259ec3449d656fb789566d` |
+| `swim-14` | `0cacd30e3ed27488f53b771fb0024a1d78c7a1f92fa9e819dc7a9414c24f53ff` |
+| `swim-15` | `34a4cc92cefdd42a131d7ad0585638a73cf1f57c0497b7482c60aa4ee8313a6a` |
 | `pick-1` | `cd27f80530f4cb2a5f226bdaac29c57c6a3c74d5112484665c45313938034e1a` |
 | `pick-2` | `d8daa68b6eafc09b0ad90b121b7d3bb059d99a01e48f129ccfd438ae77b97c9e` |
 | `pick-3` | `715efe520a06bdd4adbdc72993c53f73fb98c46df7d80829d9b69e4404c944c2` |
@@ -508,7 +523,9 @@ back with "A jump and its landing": if any of them isn't found, the
 engine's own art is shown on F to G + 10, keeping the timing given
 there. The first character's crouching pictures,
 `crouch-1` to `crouch-22` ("Crouching"), fall back together on its
-crouch and getting-up frames, D to U + 8. The first character's ground action pictures, `act-1` to
+crouch and getting-up frames, D to U + 8. The first character's swimming pictures, `swim-1` to `swim-15`
+("Swimming"), fall back together on every frame with the state `swim`,
+keeping the timing. The first character's ground action pictures, `act-1` to
 `act-30` ("The ground action"), fall back together on the action's
 frames, P to E − 1. The first character's rope pictures, `rope-hang-1` to
 `rope-hang-4`, `rope-turn-1`, `rope-turn-2` and `rope-climb-1` to
@@ -1750,6 +1767,41 @@ and its landing"), in this order:
 
 If the player catches a rope again in the air, the catch frame shows
 `rope-hang-1` (or the turn's picture, if a turn starts on it).
+
+## Swimming
+
+### First character
+
+On every frame on which the player is swimming (`swimming.md`, "In a
+trace": the frames with the state `swim`), whichever way the player faces
+and whatever it touches (open water, the floor, a wall or a ceiling), the
+picture is one of the 15 pictures `swim-1` to `swim-15`, in this order,
+`swim-1` following `swim-15`. A picture lasts as long as the **swim
+counter** says. On the first frame of a picture the counter is the value
+it was reloaded to (below); on every later frame it goes down by the
+**swim rate** of the frame. If the result is 0 or less, the picture ends
+on that frame: 1024 is added to the counter and the next picture is shown
+from that frame.
+
+The swim rate is 256 normally. On a **stroke frame** (a frame on which
+Jump is pressed: `swimming.md`, "Strokes and sinking", whatever is held
+with it) it is 752, and on each of the following frames it is 16 less
+than on the frame before, down to 256 (so 736, 720, ... and 256 from the
+31st frame after the stroke on). A new press restarts it at 752. Nothing
+else changes it: speed, direction, Up, Down, turning, touching the floor
+or a wall, and holding Jump without a new press make no difference. At 256
+a picture lasts 4 frames; right after a stroke 1 or 2.
+
+Example: frame 0 is the first frame of `swim-1`, with the counter 1024;
+nothing is held except Jump pressed on
+frame 2. The rates on frames 1 to 6 are 256, 752, 736, 720, 704 and 688,
+and the counter on frames 0 to 12 is 1024, 768, 16, 304, 608, 928, 240,
+592, 960, 320, 720, 112 and 544. `swim-1` on frames 0 to 2, `swim-2` on 3,
+`swim-3` on 4, `swim-4` on 5 and 6, `swim-5` on 7, `swim-6` on 8 and 9,
+`swim-7` on 10 and 11 and `swim-8` on 12.
+
+Where the cycle stands when swimming starts (on entering an area) is not
+covered; the rules above apply from the frame after.
 
 ## Carrying
 
@@ -3084,6 +3136,15 @@ steep face, picking something up):
   air frames showed the list) and 315 slides off the end (2 240 frames
   showed the list; the longest fall measured shows the list up to F + 14).
 
+- **Swimming, first character:** 200 runs of 300 logic frames of random
+  Up, Down, Left, Right, Jump and Action input, 25 in each of the 8 areas
+  of `title-1` where the player swims (`swimming.md`, "Where the player
+  swims"), 60 000 frames in all, with 2 896 presses of Jump among them. On
+  the screen the picture of the frame was one of `swim-1` to `swim-15`
+  on 59 879 of the 60 000 frames, and the one the rules give on every
+  frame of those. On the other 121 (81 in one area) the screen did not
+  show exactly the picture the rules give (why is not covered).
+
 ## Not covered
 
 - The first character landing before the approach frame (L < A,
@@ -3208,3 +3269,9 @@ steep face, picking something up):
 - Why, on 20 frames during or shortly after 13 throws (Q + 27 to
   Q + 58), the previous picture was still on screen for one frame. The
   rules above give the usual frame.
+- The swimming pictures of the second character (it was not present
+  in the areas measured), of a swimmer who is hurt, knocked out or
+  paused, in `title-2`, and while riding.
+- On 121 frames of swimming (81 in one area, out of 60 000 in 200 runs),
+  the screen did not show exactly the picture the swimming rules give.
+  Why is not covered.

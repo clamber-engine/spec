@@ -309,6 +309,9 @@ Every frame on which the player is swimming has the state `swim`
 and on the floor alike. None of the land states (`idle`, `walk`, `run`,
 `jump`, `fall`, `roll`, ...) appears while swimming.
 
+The first character's pictures while swimming are in `player-frames.md`,
+"Swimming".
+
 - `ground` is 1 on a frame that ends with the player on the floor ("On
   the floor": the landing frame and every resting frame), and 0 on every
   other frame. A wall or a ceiling is not ground, so a frame stopped by
