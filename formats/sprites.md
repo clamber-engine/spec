@@ -462,9 +462,10 @@ full frames with every byte hashed for one of them.
   areas). (The frame table is in `locators.md`; it locates the frames.)
 - The other objects' colours in some situations (the objects in "The
   other objects' palettes"):
-  - near the first level's end, where their colours change with the
-    dimming (the bunches' 3 517 pictures read then were none of them in
-    the palette's colours);
+  - near the first level's end, where the shared palette's colours
+    change with the dimming (`../behavior/dimming.md`, "Sprite colours";
+    the bunches' 3 517 pictures read then were none of them in the
+    palette's colours) and the other palettes' are not covered there;
   - in other areas: of the pictures read there, the medium walkers' 85
     were none in the palette's colours (seen in some caves), 10 433 of
     the letters' 12 251 and 5 607 of the critters' 6 618 were, and
@@ -477,8 +478,9 @@ full frames with every byte hashed for one of them.
   - the frames on which the lives display's colours change when the
     player changes.
 - The characters' colours in some situations:
-  - near the first level's end, where sprite colours change with the
-    dimming (`../behavior/dimming.md`, "Not covered");
+  - near the first level's end, where the colours change with the
+    dimming (`../behavior/dimming.md`, "Sprite colours" gives them for
+    the first character leading, alone);
   - in areas where the characters are drawn with changed colours
     throughout (seen in one area other than the first level);
   - while the picture fades out or in (seen on leaving an area and

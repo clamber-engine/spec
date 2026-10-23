@@ -5,8 +5,8 @@ Titles: `title-1`
 Near the right end of the first level the background's colours change,
 step by step, to darker and bluer ones: the **dimming**. This file says
 when it starts, how fast it goes and which colour every background
-colour has at each step: the palette rows, the far layer, the backdrop
-and the horizon layer. Colours, palette rows and the palette set are
+colour has at each step: the palette rows, the far layer, the backdrop,
+the horizon layer and the sprites' palettes. Colours, palette rows and the palette set are
 as in `../formats/graphics.md`; the placement list, its classes and the
 window are as in `../formats/placements.md`.
 
@@ -120,6 +120,40 @@ The rows each entry covers don't change: the backdrop's frame-to-frame
 alternation (`../formats/graphics.md`, "The backdrop") goes on as
 before, with each entry's colour after the last step taken.
 
+## Sprite colours
+
+Two of the sprites' palettes (`../formats/sprites.md`, "Sprite
+palettes") dim on the same cycle of step frames, but by a rule of their
+own: the shared palette (`../formats/sprites.md`, "The other objects'
+palettes") and the first character's leading palette (the one the
+character is drawn with when leading). Colour 0 is never drawn. Colours 1
+to 15 of the shared palette and 1 to 14 of the first character's change
+by the table below, for steps 1 to 8; the first character's colour 15
+does not follow it (it changes more slowly; not covered), and steps after
+the 8th are not covered.
+
+**Colours.** Take a colour of one of those palettes (not the first
+character's colour 15) with red `R`, green `G` and blue `B` (0 to 31
+each) before step 1. After step `k` (`k` = 0 before step 1, up to 8; the
+steps are those of rows 1 to 7) the colour shows
+
+| Channel | Value after step `k` |
+|---|---|
+| Red | ⌊`R` − `k` × `R` / 64⌋ |
+| Green | ⌊`G` − `k` × ⌊`G` / 2⌋ / 32⌋ |
+| Blue | ⌊`B` + `k` × (`G` − `B`) / 64⌋ |
+
+with ⌊ ⌋ rounding down. So red loses `R` / 64 per step, green ⌊`G` / 2⌋
+/ 32 per step, and blue moves towards `G` by (`G` − `B`) / 64 per step; a
+colour whose blue is already equal to its green keeps its blue. A colour
+with `G` < `B` is not covered.
+
+**Pictures.** A step's colours show on the pictures of the shared
+palette from the picture of the step frame on, and on about half of that
+palette's pixels already on the picture of the frame before. The first
+character's colours show, at the latest, from the picture three frames
+after the step frame; where between is not covered.
+
 ## Example (made-up colours)
 
 A colour with `R` = 20, `G` = 12, `B` = 6: `M` = ⌊60 / 8⌋ = 7, and red
@@ -148,6 +182,11 @@ table: (8, 4, 1) before step 1, (7, 3, 1) after step 1 (from (19, 11,
 6)), (4, 2, 1) after step 16 (from (13, 9, 6)), (1, 1, 1) after step 32
 (from (6, 7, 7)).
 
+A sprite colour with `R` = 20, `G` = 12, `B` = 6: after step 1 (⌊20 −
+20/64⌋, ⌊12 − 6/32⌋, ⌊6 + 6/64⌋) = (19, 11, 6); after step 8 (17, 10,
+6). A white (31, 31, 31): after step 1 (30, 30, 31), after step 8 (27,
+27, 31).
+
 Timing, with the cycle placed (as an engine may choose) so that frames
 1 003, 1 011, 1 019, … are step frames: if T is frame 1 000, step 1 is
 on 1 011 (1 003 is before T + 4) and step 32 on 1 011 + 248 = 1 259. If
@@ -164,7 +203,11 @@ T is frame 999, step 1 is on 1 003 (T + 4).
 - that the far layer, the backdrop and the horizon layer show, on every
   frame, the colours of "The far layer" and "The backdrop and the
   horizon layer" for the last step taken, with the same step frames as
-  rows 1 to 7.
+  rows 1 to 7;
+- that the colours of the shared palette and of the first character's
+  leading palette, on every picture from three frames after a step
+  frame, up to the 8th step, are those of "Sprite colours" for the last
+  step taken, except the first character's colour 15.
 
 It may not check which of the 8 placements of the cycle is used, beyond
 step 1 being on T + 4 to T + 11.
@@ -204,10 +247,43 @@ pixels, 1 131 differed, on 36 pictures, all in the list's lowest
 coloured rows (entries 87 to 97), and each of them already showed the
 next step's colour on the picture of the frame before a step frame.
 
+Sprite colours: the screen with only the sprites drawn, in 16 runs of
+the route used for the rows above, waiting 0 to 15 frames so that the
+steps fell on all 8 positions of the cycle, with the first character
+leading and alone; 140 to 156 pictures per run, 8 to 10 steps each, of
+which steps 1 to 8 were used. For each step the window is the pictures
+from three frames after the step frame to the frame before the next step
+frame: 5 pictures, 640 in all, but 628 because in 8 runs (those with
+exactly 8 steps) the log ends 2 to 5 pictures after step 8's window
+began, so that window is shorter (by 3, 2, 1 and 0 pictures, in two
+runs each). The pairs are a step and a colour (not the first character's
+colour 15) that was on the screen before step 1: 2 688; the colour the
+table gives for that step showed in the window in 2 576. In the other
+112 no picture of the window showed that colour, nor the colour before
+step 1 or one the table gives for an earlier step (one colour with a
+constant 256 or 512 pixels on every picture, from a sprite that did not
+change, was left out). Of those 112, 56 are colours that showed in the
+table's colour in the window of another step in the same run, and 56
+never did after step 1: no pixel of those colours, in any form, showed
+in those windows (whether the sprites using them were off the screen or
+drawn without them is not covered). On the pictures of the windows no pixel showed a colour
+that the table gives for an earlier step only. At step 1, on the
+picture of the step frame and later ones, no pixel of the shared
+palette's earlier colours showed, in any run; on the picture of the
+frame before, 8 089 of
+the 16 759 pixels of the shared palette's earlier colours (16 runs
+together) already showed the new ones.
+
 ## Not covered
 
-- Sprite colours. They change too during the dimming, on frames of the
-  same cycle, but not as the table says.
+- Sprite colours of other palettes than the two in "Sprite colours"
+  (the second character's, the thrown objects', the animal's and the
+  others), of the two with the players' roles the other way round, with
+  an animal ridden, or for a colour with green below blue; the first
+  character's colour 15, which changes more slowly than the table says;
+  on which step frame each palette changes, to the frame; steps after
+  the 8th (including the colours after the last step); the pictures that use a copy of the first character's
+  palette.
 - On which picture a step first shows, to the frame. In the captured
   pictures, the far layer's colours of a step already showed on the
   picture of the frame before the step frame, the ground layer's colours
