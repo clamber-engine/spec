@@ -145,6 +145,32 @@ is placed at 4. Going uphill the hop lands on C + 24 instead of C + 26.
 The charge end starts on C + 28 and lasts 12 frames, and C + 40 is the
 settling frame, as on flat floor.
 
+## The second character
+
+With the second character as the player (leading, the first character
+following), riding on 1-in-4 slopes follows every rule of this file. The
+floor height is taken column by column on the same frames, a jump or hop
+that leaves the floor starts from the higher of the old height and the new
+column's floor, and landings are as in "Landing". The only differences are
+the speed targets of `riding.md` ("The second character"), which apply on
+slopes as on flat floor; the targets, the divisors, the turns, the vertical
+speeds and the steered frames are used as that file gives them.
+
+Observed with a setup method, on the same long flat floor and the same
+1-in-4 slopes as above (no walkers on screen near the slopes): 300 runs of
+random inputs as in `riding.md` with the second character leading and the
+first following, 359 878 frames, 112 337 of them over slope columns. They
+held 5 041 jumps, 5 677 charges, 2 567 hops and 2 063 turns, 1 752
+landings on slope columns, and 606 take-offs whose first airborne frame
+moved into a column of a different height (328 higher, 278 lower). In every
+frame of every run, `x`, `y`, `vx`, `vy`, `ground`, `facing` and the part
+of riding were exactly as the rules give, with the second character's
+targets. With the first character's targets, every run differed from the
+first moving frame.
+
+Not checked: these rules in ordinary play, at the level's own animal and
+slopes, and with the first character leading and the second following.
+
 ## Not covered
 
 - Steep faces (`steep-faces.md`), walls and ledges while riding. The

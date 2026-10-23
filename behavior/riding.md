@@ -122,7 +122,8 @@ exactly as the rules give, with the targets above for the second
 character. Not checked: these rules in ordinary play, at the level's own
 animal without a setup method, with the second character as the player;
 the rider's and the animal's pictures with the second character, getting
-off, and riding on slopes or at walls with the second character.
+off, and riding at walls with the second character. Riding on slopes with
+the second character is in `riding-slopes.md`.
 
 ## Steered frames
 
@@ -670,7 +671,7 @@ starts on frame 40, because Right is held and the rider faces left.
 - Objects: carrying, the crate, bonuses and anything touched while
   riding, other than single collectibles (`collectibles.md`, "Riding the
   animal").
-- Other animals, and the pictures, getting off and slopes or walls
+- Other animals, and the pictures, getting off and walls
   with the second character as the player ("The second character"), and
   those rules in ordinary play.
 - The pictures of the rider and the animal on the first frames after
