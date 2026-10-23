@@ -388,8 +388,9 @@ changes:
   `T` + 1, where `T` is the frame the exit takes the lead over. The
   picture of `T` itself still has the moving things in front (the lead
   and the animal alike when ridden; the other character as well). The
-  rule holds for the exit on the floor near the first level's left end
-  and for the exits in the walls, on foot and ridden, for the pixels
+  rule holds for the exit on the floor near the first level's left end,
+  on foot and ridden, and for the exits in the walls, on foot and
+  ridden, for the pixels
   over raised-tile pixels that aren't transparent. In these runs no
   part of a moving thing lay over a transparent pixel of a raised tile,
   so they show nothing about those pixels: whether the thing shows
@@ -755,6 +756,12 @@ More cases, as bytes, are in `../vectors/graphics/`.
   no moving-thing pixel was on a transparent pixel of a raised tile in
   any picture, so the exits say nothing about transparent pixels. In
   each, the last pictures are those just before the area changed.
+  Riding through the floor exit, 2 exits in one run (the second after
+  coming back from the scene by the same exit), 48 and 47 pictures from
+  the switch: the same, no pixel shown on a raised-tile pixel that
+  isn't transparent on the picture of `T` + 1 or after, all earlier
+  ones shown (16 568 and 1 749 pixels before; 22 706 and 21 629
+  hidden); again none lay over a transparent pixel of a raised tile.
 - Walkers and objects against the ground layer's raised tiles, in the
   first level at its end (setup method: research tools, used to put one
   object of each kind below on the raised tiles beside the end marker,
@@ -806,8 +813,7 @@ More cases, as bytes, are in `../vectors/graphics/`.
   tiles in areas other than the first level's own ground, and in its
   room and its scene (as the room and the scene sections say); the order
   in the walk-in at an area's start; other exits than those named in
-  "Moving things and raised tiles"; riding through an exit leading left
-  on the floor.
+  "Moving things and raised tiles".
 - Fades, and the pictures of areas other than the first level, its
   room and its scene.
 - Whether other areas with a screen picture have tile sets of other
