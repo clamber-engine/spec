@@ -154,6 +154,49 @@ Contact with a stinger never makes the player bounce, also when the
 player comes down onto it from above or rolls into it: it hurts or does
 nothing. The stinger is not affected by the hit.
 
+### The second character under control
+
+When the second character is the one under control, the stinger hurts
+it by the same rule (I and A taken from its own position, the hit on
+**F + 1**), but over a clearly smaller area than the first character's.
+The ranges, measured in steady poses (the pose names are those of
+`ball-contact.md`, except "moving", which is defined here: walking,
+running, rolling and being in the air):
+
+| Pose | I, facing right | I, facing left | A |
+|---|---|---|---|
+| upright | −18 to 22 | −17 to 23 | −22 to 27 |
+| fidget | −18 to 22 | −17 to 23 | −22 to 27 |
+| moving | −24 to 23 | −18 to 29 | −18 to 27 |
+| crouching | −25 to 25 | −20 to 30 | −21 to 14 |
+
+Facing left is the facing-right range turned around and moved in the
+same way as for the first character: from 5 − (high end) to
+5 − (low end). The stinger still flies through floors, still never makes
+the player bounce, and is not affected by the hit.
+
+Upright and facing right, the second character is hurt from 41
+different values of I against 54 for the first: I = −19 doesn't hurt it,
+where I = −21 still hurts the first character.
+
+Measured with a setup method that put a stinger at each offset from the
+player, for each placement frame of 17 pose runs (standing, turning,
+walking and running both ways, rolling, jumping from standing and from a
+walk or run, crouching, fidgeting), by the first frame on which the
+player was hurt. The first character's upright row was measured the same
+way as a control and gave the range in the table above. In each pose
+the range was the same on every frame of the run, apart from the first
+frames after a change of pose (turning, starting to walk, landing),
+where it follows the pose the player is in on that frame.
+
+Checked in ordinary play with the second character leading: 240 runs of
+random inputs (85,503 frames) with a stinger flying on its own near the
+player. The table predicted a hurt on 34 frames, and the player was hurt
+on each of them, one frame later; no hurt by a stinger fell outside the
+ranges. Another 23 hurts came with the stinger far away; the same inputs
+without a stinger hurt the player in the same way (other objects).
+These runs only cover standing, moving and crouching.
+
 ## While the player is knocked out
 
 A stinger moves on H, stays still from **H + 1 to H + 10** (the frames
@@ -243,8 +286,12 @@ on frame 2, I = 976 − 996 = −20 and A = 300 − 303 = −3 (the stinger's
 - Poses not listed in `ball-contact.md`: bouncing, carrying an object,
   being hurt, swapping characters; the ground action after its first
   part, the first frame of crouching, and the air frames of running off
-  an edge (all seen in the random runs, not classified); the second
-  character under control, two characters, and protection
-  (`protection.md`).
+  an edge (all seen in the random runs, not classified); two
+  characters at once, and protection (`protection.md`). For the second
+  character under control, the ground action, the frames of a hop, and
+  the first frames after a change of pose (the ranges follow the pose
+  seen, but no ordinary-play run was checked against the table for them).
+  The second character's table is otherwise checked against ordinary
+  play only for standing, moving and crouching.
 - Contact on the frame a stinger appears.
 - Stingers far above or below the view, and walls.
