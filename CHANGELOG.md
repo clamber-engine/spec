@@ -18,7 +18,7 @@ open for the parts not covered yet.
   stride cycle and the slowing, and an example. Evidence and Not
   covered updated.
 - `behavior/player-frames.md`, teetering: the second character doesn't
-  teeter at the left-hand side of a ledge top with a 128 px steep face.
+  teeter at a ledge top with a 128 px steep face.
   New evidence entry, with where the other character was and which
   frames were judged.
 
