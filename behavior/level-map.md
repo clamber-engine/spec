@@ -503,6 +503,103 @@ Jump were newly pressed on frame 245, the lead would enter the level on
   level's last frame to the map).
 - Two characters at the finish changed none of the timings.
 
+## After a knock-out as the lead alone
+
+What follows the last frame of a level in which the lead, alone, was
+knocked out (`knock-out.md`). Measured on the first level, on a try that
+left tries over and on one that left none.
+
+Frames are counted at 60 Hz from the map's first frame, frame 0, and
+none are left out, as in "After finishing a level".
+
+### With a try left
+
+After the level's last frame the screen stays black. The map's first
+frame came 52 or 53 frames after it, as after a level finished before.
+Those frames are part of no trace.
+
+- **The lead.** On frame 0 it stands at the level's stop, at its
+  appearance point, with both fractions 0 ("When the map appears"). The
+  map fades in as in "Up to the map": brightness `j` on frames 2`j` and
+  2`j` + 1, full from frame 32. The map shows no number of tries.
+- **No still frames.** The frames are all like those of a level finished
+  before.
+- **Pictures.** The lead shows `map-lead-1` on frames 1 to 4 and goes
+  on through the cycle as when the level had been finished before
+  ("Pictures"). The pictures a first finish begins with are not shown.
+- **No walk.** The lead doesn't walk, whatever is held. With nothing
+  held it stayed where it was for over 600 frames, and with each of Up,
+  Down, Left and Right held from frame 64 to frame 300 it stayed too.
+  The level isn't counted as finished: no path from its stop is open, as
+  at the first level's stop in a new game ("A new game", step 6).
+- **Entering again.** From frame 64 on, a new press of a button that
+  enters a level ("Pressing at a stop") makes the lead enter the level
+  again. A press on frame 63 or earlier does nothing. On the frame of
+  the press the map fades out as in "Entering the level again".
+- **How the level begins.** Entered again with no input, the level began
+  as when it is entered from a new game's map (`level-start.md`): the
+  lead's position and action and the level's logic frames were the same
+  on every frame compared. The level's song starts by the rule of
+  `music.md`. The lives display shows the number of tries left after the
+  loss (`count-display.md`, "When play starts").
+
+### With no tries left
+
+When the knocked-out lead had no try left, the map doesn't appear. A
+**game-over picture** (the two characters, with a caption) appears
+instead. Its first frame, frame 0, comes 41 frames after the level's
+last frame, and it fades in with the same brightness steps as the map
+("Up to the map"). Then the picture stays: nothing changed for 2 500
+frames with nothing pressed.
+
+A new press (of `T`, Jump or Pause; Action was not tried) on frame 1
+or later starts a fade-out as in "Entering the level again"
+(brightness 15 − `j` on frames `P` + 2`j` and `P` + 2`j` + 1, black
+from `P` + 30). A press on frame 0 does nothing. What follows the
+fade-out is not covered.
+
+These no-tries-left rules were not checked where the last try was lost
+in ordinary play; see "Measurements" and "Not covered".
+
+### Example
+
+The lead is knocked out as the lead alone with a try left, and the map
+appears. Right is held from frame 64 to frame 70, and Jump is newly
+pressed on frame 80.
+
+| Frame | Held | What happens |
+|---|---|---|
+| 0 to 31 | | fade-in; the lead at the stop's appearance point |
+| 64 to 70 | Right | nothing: no path |
+| 80 | Jump (new press) | the lead enters the level again; fade-out starts |
+| 110 | | black |
+
+### Measurements
+
+- Nine runs ended in a lone lead's knock-out, three from each of three
+  places in the first level (seeded random walks), the lead having lost
+  one try. In each, a second run was made with no tries left (a setup
+  method was used to reach that).
+- Frames from the level's last frame to frame 0: 53 in 7 runs and 52 in
+  2; to the game-over picture, 41 in all 9.
+- No walk: each of the four directions held from frame 64 to frame 300
+  in all 9 runs, and nothing held for 640 frames: the lead stayed in
+  every one.
+- Entering: a press of `T` on frame 63 did nothing and one on frame 64
+  entered in all 9 runs; one run each with a press on frame 30, 65, 66 and 80
+  (nothing; entered, entered, entered).
+- Pictures: three runs of 509 frames each, the same picture on every
+  frame as in that cycle (0 mismatches, 0 mirrored).
+- How the level begins: one run, compared on 700 video frames with
+  entering from a new game's map, with no difference in the lead or the
+  logic frames; the song start (`music.md`) was seen in 6 runs.
+- No tries left: every run here was reached with a setup method, none by
+  losing the last try in ordinary play. Nothing pressed for 2 500 frames
+  (one run); a press of `T` on frame 0 did nothing and presses on frames
+  1, 2, 8, 16, 24, 28, 30, 31, 40, 63, 64, 65 and 100 each started the
+  fade-out (one run each); one run each with Jump and with Pause pressed
+  on frame 305.
+
 ## The other character
 
 When there are two characters, the one that isn't the lead (the
@@ -806,8 +903,9 @@ the finish pictures below are given by frame number alone. The characters are on
 the picture from frame 2. What a character shows first depends on how the
 map appears:
 
-- *When the level had been finished before, and when the map appears
-  again after a new game's first press* ("A new game"): the cycle of
+- *When the level had been finished before, when the map appears
+  again after a new game's first press* ("A new game"), *and after a
+  lone lead's knock-out* ("After a knock-out as the lead alone"): the cycle of
   "Which" starts at frame 1 with its first picture, so `map-lead-1` is
   shown on frames 1 to 4 (seen on 2 to 4), `map-lead-2` on 5 to 8, and so
   on, and the other character's `map-other-1` is shown on the same frames
@@ -1018,8 +1116,9 @@ lead stayed at the link point), as "Pressing at a stop" says.
   than the first level's first.
 - Which pictures the characters show when the map appears after a first
   finish of a level other than the first, and after a level left in other
-  ways; the other character's pictures on the first 157 frames of a
-  first finish (it was covered by the lead); a new game with the
+  ways than finished or a lone lead's knock-out; the other character's
+  pictures on the first 157 frames of a first finish (it was covered by
+  the lead); a new game with the
   second character; what decides how long the first finish's
   pictures last (they ran to frame 161 in every run).
 - What moves the other character's cycle against the lead's at a page
@@ -1033,5 +1132,12 @@ lead stayed at the link point), as "Pressing at a stop" says.
   to the level's first frame.
 - After finishing a level other than the first: which direction is
   given, and the timings.
+- After a knock-out as the lead alone: the rules of "With no tries left"
+  where the last try was lost in ordinary play; levels other than the first, a
+  knock-out of the second character or with both there, a knock-out that
+  loses the last try with a second character, what follows the game-over
+  picture's fade-out, whether a first finish after such a knock-out
+  still has its still frames, and the time from an entering press to the
+  level's first frame.
 - Opposite directions held together.
 - Other titles.
