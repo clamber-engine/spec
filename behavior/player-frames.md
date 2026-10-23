@@ -3069,9 +3069,7 @@ steep face, picking something up):
   than the one measured, at a face on the right-hand side other than the
   two, on a slope, the second character at faces other than those two,
   and after a
-  bounce, a fall from a steep face, riding or carrying; after stopping
-  from a run (only walks, turns, rolls, landings and crouches were seen
-  to end in a stand there); after the player has stepped past the end
+  bounce, a fall from a steep face, riding or carrying; after the player has stepped past the end
   of the floor and turned back; and whether a player that stands in the
   outermost columns without having stopped there (for example after
   appearing there) teeters.
