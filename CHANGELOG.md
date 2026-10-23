@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.295.0
+
+The restart barrel's pictures, its burst and sparkles, and the player's
+pictures on a resume (spec#38).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/restart-barrel.md`: new section "Pictures". The barrel's
+  eight-picture cycle and the twelve nameable sparkle pictures, named by
+  picture hash, with a fallback for each group; the flash and pieces of
+  `thrown-objects.md` when it is touched and on a resume; when and where
+  sparkles appear; and the player's pictures from frame 63 of a resume
+  with no input and with three kinds of input. Evidence from the
+  pictures on screen. Not covered updated.
+
 ## spec-v0.294.0
 
 Teetering at a third ledge with a steep face, first character
