@@ -87,8 +87,7 @@ The ranges were the same on every frame of each pose measured, whatever
 the player's speed (up speeds from 1.6 to 7 px per frame, horizontal
 speeds from −2 to 2), and on every frame of the thrower's flapping. The
 upright ranges were the same on every take-off frame (T to T + 5), for
-the standing pictures (placed in the air) and standing, walking and
-running on the ledge (running measured facing right).
+standing, walking and running on the ledge (running measured facing right).
 
 In play the upright reach in the air applies only to the first frames
 of a jump: walking off a ledge in the upright pose (`walk-off.md`,
@@ -255,6 +254,67 @@ at the end of K + 44 and 258 on K + 45, the frame on which it is
 removed. With the view moving sideways, it can be removed sooner, when
 `xt` leaves the window.
 
+## The second character under control
+
+Observed on the same thrower with the second character under control
+after the swap of `second-character.md` and the first character
+following, with no ball on screen:
+
+- with the player at chosen offsets from the thrower as above (a setup
+  method was used to arrange them): standing, walking and running on
+  the ledge, jumping and falling beside, under and over the thrower,
+  facing right and left, the thrower in open air and at its own place,
+  on every frame of its flapping and around its throws. About 748 000
+  such situations, each followed for one or two frames, and 688
+  landings on the ledge followed frame by frame;
+- in random play with inputs alone, walking, running, rolling,
+  crouching and jumping near the thrower: 700 runs, 69 349 frames,
+  37 892 of them in the poses below with the thrower there. 30 hurts
+  and 11 bounces, every one on the frame the rules give and none on any
+  other (one of the bounces on a frame on which the player's speed was
+  too close to the limit for the log to decide). The frames in other
+  poses (rolling, crouching, the fidget pose) had no hurt, and no
+  bounce was checked on them.
+
+Everything under "Offsets" and "Being hurt" holds except the ranges: a
+hit is decided at the end of H − 1, never on the frame before a throw
+(checked at two throws), not from the positions at the end of a landing
+frame on the ledge (a landing is hurt on L + 2 if still within the
+range), and on the ledge only I is checked. The player is hurt in the
+way of `losing-a-character.md` when the first character is there to
+take over. Everything under "Bouncing" holds too, with the same rule on
+the speed (the `vy` after this frame's gravity greater than −1.25: a
+rise of 1.5625 px per frame at the end of the frame before bounced, one
+of 1.625 did not), the same landing rule on the ledge and the same
+knock-out of the thrower. Different are the ranges, which are narrower
+than the first character's, and the poses:
+
+| Pose | Player facing right, I | Player facing left, I | U in the air |
+|---|---|---|---|
+| standing | −23 to 23 | −22 to 24 | −31 to 16 |
+| moving | −29 to 24 | −23 to 30 | −31 to 12 |
+
+- **Standing** is standing still on the ground.
+- **Moving** is everything else that was measured: walking and running
+  on the ground and on the ledge, the take-off, the rise and the fall
+  of a jump, and the landing frames on the ledge. There is no separate upright
+  range in the first frames of a jump: every frame from take-off on
+  has the moving range, whatever the player's speed.
+
+Facing left, each range is the facing-right range turned around, as in
+"Being hurt". On the ledge (U = −1) only I is checked.
+
+Bounce ranges for the second character:
+
+| Player facing | I | U |
+|---|---|---|
+| right | −38 to 29 | −13 to 34 |
+| left | −28 to 39 | −13 to 34 |
+
+U has a lower end of −13 (the first character's is −20). On the ledge a
+player who would end B less than 5 px above its floor lands instead, as
+for the first character (U below 4).
+
 ## Examples
 
 Synthetic. The thrower is at `x` 1000, its position 300 px above a
@@ -392,6 +452,8 @@ The knocked-out thrower, knocked out by a bounce:
   Contact and removal were measured after a bounce; after a roll or the
   ground action they are taken to be the same, the thrower's motion
   being the same.
-- The other character, and contact while carrying, being hit or during
-  a bounce's frozen frames.
+- The second character rolling into the thrower, crouching, in the
+  fidget pose or using the ground action near it; its landing frames
+  other than those on the ledge. Contact while carrying, being hit or
+  during a bounce's frozen frames, for either character; the follower.
 - Throwers facing right and throwers in other levels.
