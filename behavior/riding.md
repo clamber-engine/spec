@@ -42,6 +42,9 @@ Measured with the first character alone, by inputs only:
   had at the mount, and a Jump press on M + 23 doesn't start a jump
   (M + 22 ended in the air).
 
+Measured with the second character as the player: see "The second
+character" below, for the same floor and the same kinds of run.
+
 ## Parts of riding
 
 At any frame the rider is in one of these parts:
@@ -83,6 +86,43 @@ This is the speed rule of `ground-speed.md` with other targets and, on
 frames that aren't steered, a step of a 32nd of the gap instead of an
 8th. So with N = 32 the speed snaps to the target once the gap is less
 than 32/256 either way. There is no separate braking or turning rate.
+
+## The second character
+
+With the second character as the player (leading, the first character
+following), riding follows every rule of this file except the
+four rows of the table above (the two speed targets for walking and
+the two for charging, each to the right and to the left), which are
+larger:
+
+| Held | Target (second character) |
+|---|---|
+| Right | +2.25 (+576/256) |
+| Left | −2.25 (−576/256) |
+| Right and Action | +3.9375 (+1008/256) |
+| Left and Action | −3.9375 (−1008/256) |
+| No direction | 0 |
+
+The speed rule, the divisors 8 and 32, turns, jumps, the charge and
+the steered frames are as for the first character, with these targets.
+So from rest with Right held the speed goes 18, 35, 51, 67, 82 in
+1/256 px per frame on the first frames (16, 31, 46, 60, 74 for the
+first character), and the vertical speeds of the jump, the hop and the charge are those
+of the first character. With the first
+character as the player and the second character following, the
+rules and targets above hold unchanged.
+
+Observed on the same kind of flat floor as above (a setup method was
+used): 16 runs of random inputs with the second
+character leading (7 577 frames checked, containing 50 jumps from
+riding, 52 turns and 120 charges), and 16 runs with the first character
+leading and the second following (8 000 frames). In every frame of every
+run, `x`, `y`, `vx`, `vy`, `ground`, `facing` and the part of riding were
+exactly as the rules give, with the targets above for the second
+character. Not checked: these rules in ordinary play, at the level's own
+animal without a setup method, with the second character as the player;
+the rider's and the animal's pictures with the second character, getting
+off, and riding on slopes or at walls with the second character.
 
 ## Steered frames
 
@@ -630,7 +670,9 @@ starts on frame 40, because Right is held and the rider faces left.
 - Objects: carrying, the crate, bonuses and anything touched while
   riding, other than single collectibles (`collectibles.md`, "Riding the
   animal").
-- Other animals, and riding with the second character present.
+- Other animals, and the pictures, getting off and slopes or walls
+  with the second character as the player ("The second character"), and
+  those rules in ordinary play.
 - The pictures of the rider and the animal on the first frames after
   the mount (from M + 22 until the first part of riding ends), after a
   charge pressed in a jump, on a jump that starts in the air after a
