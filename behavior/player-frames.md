@@ -1381,7 +1381,7 @@ rules, as seen:
 - Facing away from the nearer end, the standing list is shown whatever
   the position.
 - Steep faces (`steep-faces.md`) at the end of a ledge, first
-  character, three cases measured. A face of four columns (15 px down
+  character, four cases measured. A face of four columns (15 px down
   over the four, about 4 px per column) with a drop below its last
   column: the 12 outermost columns were the last 12 columns of face
   and floor, so the player teetered standing on the ledge top up to 7
@@ -1391,9 +1391,18 @@ rules, as seen:
   teeter. A face of 128 px down (4 px per column) leading on to a lower
   floor 16 columns wide, after which the floor steps down again: the
   player standing on the ledge top, 0 to 9 columns before the face's
-  first column, did not teeter. The short face with a drop teetered and
-  the two taller faces did not, so the face's height, the drop after
-  it, or both may matter; which is not known (see Not covered). The
+  first column, did not teeter. A face of 32 px down (eight columns, 4
+  px per column) leading on to a lower floor 32 columns wide that ends
+  at a wall, with no drop: 100 walks towards the face, of which 61 ended
+  in a stand on the ledge top, 0 to 16 columns before the face's first
+  column (2 929 frames); the other walks went down the face. The
+  player did not teeter in any of those stands, and every picture of
+  the stands in all 100 walks (4 319 frames) was the standing list's, 0
+  mismatches. The short face with a drop teetered and the three taller
+  faces, none with a drop right after the face, did not, so the face's
+  height (15 px against 32 px or more), the drop after it, or both may
+  matter; which is not known (see Not covered). No face of about 15 px
+  without a drop was found in the first level. The
   second character did not teeter at the 64 px or 128 px face either
   (see its section).
 - The left-hand side of a ledge top with a steep face, first character,
@@ -3346,9 +3355,9 @@ steep face, picking something up):
   over a face at speed is not covered here either.
 - Teetering of either character at floor ends other than the two of the
   one platform tested (a drop to a lower floor on one side, a pit on the
-  other) and ledges with a steep face other than the three above (and
+  other) and ledges with a steep face other than the four above (and
   whether the face's height or the drop after it decides, which the
-  three do not separate), at an
+  four do not separate), at an
   end with a wall, at the left-hand side of a ledge with a steep face other
   than the one measured (either character), at a face on the right-hand
   side other than the two, on a slope, the second character at faces other
