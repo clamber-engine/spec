@@ -121,9 +121,10 @@ run, `x`, `y`, `vx`, `vy`, `ground`, `facing` and the part of riding were
 exactly as the rules give, with the targets above for the second
 character. Not checked: these rules in ordinary play, at the level's own
 animal without a setup method, with the second character as the player;
-the rider's and the animal's pictures with the second character, getting
-off, and riding at walls with the second character. Riding on slopes with
-the second character is in `riding-slopes.md`.
+getting off, and riding at walls with the second character. The pictures
+with the second character are in "Pictures with the second character"
+below, and riding on slopes with the second character is in
+`riding-slopes.md`.
 
 ## Steered frames
 
@@ -598,6 +599,192 @@ the 21 384 frames of these 43 runs.
 - **The fall limit.** The limit of 72 px lies between 71.5 and 73.1 px;
   9 jumps went higher than 72 px, with S1 − F from 5 to 10 frames.
 
+## Pictures with the second character
+
+What the animal and the rider look like while the **second character** is
+the player and rides on flat floor, on every frame of the parts above and
+of "Standing and walking", except the first frames after the mount (see
+"Not covered"). The first character, when it is on the level, follows as
+usual.
+
+**The animal** is drawn exactly as in "Pictures" for the first
+character: the same pictures on the same frames in standing, walking,
+turns, jumps, charges and charge ends, and the same mirroring. Nothing in
+this section changes it, with one limitation: on one charge frame of the
+measurements another animal picture than the given one was on screen,
+and that frame is not explained (see "Not covered").
+
+**The rider** is drawn at the same place as for the first character
+("Two pictures a frame": in front of the animal, at the animal's x, d px
+lower, mirrored like the animal), but with the pictures of the second
+character, with timings of their own. They are named by their picture
+hashes like the others:
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `rider2-1` | `0dbb9575884f04a5a16daaebee28e1bd7f2fe3738f79e678f9ad6bf0f073bf77` |
+| `rider2-2` | `14674da2273016d31b8d911320d5fe013f4545d190c70618336b53713d1629cf` |
+| `rider2-3` | `9bf1b3b1576e20c30fd1a3138aa7b8be04bffe7b5fe252502653c56b8abbc5b8` |
+| `rider2-4` | `735b97b200c7dc45c542f1c2cf04130737992f85dcb7a223bad407c9a26a2bfb` |
+| `rider2-5` | `629feec9eed9c918f7eb7b690d7f053deaad0fb73cbdba719b6140f4a438665e` |
+| `rider2-6` | `761aca2755ceee7dc6338d9dfd53749bdad5ce7d0da85a932b69f0f9795e9d51` |
+| `rider2-7` | `15b89a799c22307242e775748f459df25c244094164f3894059eaa1463a7503a` |
+| `rider2-8` | `f3dc1463de87a6402c91c05d937bcfcebd23b524353e352572d556b464397e1e` |
+| `rider2-9` | `a2dc0c2f5943f8f716c99c1881589958e6d160493cb636b31bcb662ee82676a8` |
+| `rider2-10` | `6ec04a5173d827901b9d758ccceff24e02a4e9ce1ee51ce4d3a8a919aab4016d` |
+| `rider2-11` | `9121d214a7b6e02b5020d584d5931ffc34ff738723608a3edb2baa88883c3868` |
+| `rider2-12` | `95faf279cb0034de55c2f7cff49f5d39d40a8f7f8946e9aac14331e43ef0ed24` |
+| `rider2-13` | `542b9c01387d5c19070c939c1ec2d4686a21b7a3c18085933932e7d864350010` |
+| `rider2-14` | `26b6663ace6d7998c0d1a5cc85fc0a027d767a1f378b39d5fb462eb3370cf1fc` |
+
+`rider2-1` to `rider2-5` are the second character's standing pictures,
+`rider2-6` to `rider2-9` its pictures while moving and `rider2-10` to
+`rider2-14` those of a jump and a charge.
+
+**When a hash isn't found.** The importer looks for every hash in the
+table above. The pictures `rider2-1` to `rider2-14` belong together: if
+any hash isn't found, the engine shows its own art for the second
+character's rider, on the frames, at the places and with the mirroring
+given here (the animal's pictures are those of "Pictures" and are not
+affected).
+
+### The second character's rider: height
+
+d is given by the rules of "The rider's height" with these differences:
+
+- A charge sets d to 4 on its first frame C (also for a charge that a
+  Jump and Action press starts in a jump's crouch, in the air or on a
+  landing frame), and d is 4 on C to C + 9 and 1 from C + 10 on.
+- A jump gives d its own values, by the rider's picture ("A jump"
+  below): 2 on P to P + 4 (`rider2-10`), 0 on T to T + 2 and −2 on
+  T + 3 to T + 5 (`rider2-11`), −4 while `rider2-12` is shown, −3 while
+  `rider2-13` is shown in the air, −2 while `rider2-14` is shown, 2 on
+  L to L + 2 (`rider2-13`) and 3 from L + 3 on. After a jump d stays 3
+  until a charge, a turn or a step of walking sets it as above.
+
+Walking and turns set d exactly as for the first character (the same
+steps, the same frames).
+
+### The second character's rider: standing
+
+The animal's pictures are those of "Standing". The rider's pictures play a
+fixed **loop of 166 frames** that advances on every standing frame, and
+after a charge also on the last four frames of the charge (C + 36 to
+C + 39, below), and on no other frame. Its 12 entries, in order, with the number of frames each
+shows:
+
+| Entry | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Picture | `rider2-1` | `rider2-2` | `rider2-3` | `rider2-4` | `rider2-3` | `rider2-2` | `rider2-3` | `rider2-4` | `rider2-5` | `rider2-4` | `rider2-3` | `rider2-2` |
+| Frames | 40 | 8 | 8 | 40 | 8 | 6 | 6 | 6 | 20 | 8 | 8 | 8 |
+
+(Entry 12 is followed by entry 1.) Where the loop starts depends on how
+the standing starts:
+
+- **After walking, a turn or a landing** (S is the first standing
+  frame): at entry 1 with `rider2-1` on S to S + 38 (39 frames, not 40),
+  then `rider2-2` on S + 39 to S + 46, and so on.
+- **After a charge pressed on a frame of standing, walking or turning**
+  (C is its press, as in "A charge" below): `rider2-1` is on C + 36 to
+  C + 75, so on S, which is C + 40, the loop is on the 5th frame of
+  entry 1, and `rider2-1` shows on S to S + 35. After a charge pressed in
+  a jump see "Not covered".
+- **After a jump taken from standing** (the frame before P was a standing
+  frame): the loop doesn't advance during the jump (P to L + 7) and goes
+  on from the position it had on the last standing frame before P. Until
+  the entry that frame was in ends, the rider shows `rider2-11` (the
+  picture of the jump's end) instead of that entry's picture; from the
+  next entry on, the entries' pictures.
+
+The first standing after the mount (M + 22 on) is not covered.
+
+### The second character's rider: walking and turns
+
+The animal's pictures are those of "Walking" and "A turn". The rider's
+**moving cycle** is `rider2-6`, `rider2-7`, `rider2-8`, `rider2-9`,
+`rider2-8`, `rider2-7`, then `rider2-6` again and so on, **6 frames
+each**: with m as in "Walking" (the number of frames since the cycle
+started, from the same start frames as for the first character), the
+picture is the (⌊(m + 1)/6⌋ mod 6)-th of the cycle (the first is number 0),
+so `rider2-6` is shown on the first 5 frames and every later picture on
+6. A turn's frames use the same cycle, which goes on through a turn that
+starts while walking.
+
+### The second character's rider: a jump
+
+With P, T, L, F and S1 as in "A jump" (F is the first frame that ends
+with the rider moving down), the rider's pictures are `rider2-10` on P to
+P + 4, `rider2-11` on T to T + 5, `rider2-12` from T + 6 until F − 1,
+`rider2-13` from F until S1 − 2, `rider2-14` from S1 − 1 until L − 1,
+`rider2-13` on L to L + 2 and `rider2-11` on L + 3 to L + 7. When S1 =
+F + 2 (a low jump), `rider2-13` is shown on F alone.
+
+For the jump of "Example of a jump" (P = 0, T = 5, F = 22, S1 = 24, L =
+36): `rider2-10` on 0 to 4, `rider2-11` on 5 to 10, `rider2-12` on 11 to 21,
+`rider2-13` on 22, `rider2-14` on 23 to 35, `rider2-13` on 36 to 38 and
+`rider2-11` on 39 to 43; d is 2 on 0 to 4, 0 on 5 to 7, −2 on 8 to 10,
+−4 on 11 to 21, −3 on 22, −2 on 23 to 35, 2 on 36 to 38 and 3 on 39 to
+43.
+
+### The second character's rider: a charge
+
+For a charge pressed on a frame of standing, walking or turning, with C
+as in "A charge": `rider2-10` on C and C + 1, `rider2-11` on C + 2 to
+C + 4, `rider2-12` on C + 5 to C + 7, `rider2-13` on C + 8 to C + 10,
+`rider2-14` on C + 11 to C + 26, `rider2-13` on C + 27 to C + 29,
+`rider2-12` on C + 30 to C + 32, `rider2-11` on C + 33 to C + 35 and
+`rider2-1` from C + 36 on, the first entry of the standing loop, until
+the standing or walking that follows starts. In every charge that
+nothing interrupted the charge end began on C + 28, the earliest frame
+"The charge" allows, so the standing or walking that follows started on
+C + 40 (the settling frame, E + 12).
+
+For a charge that starts in a jump's crouch, in the air or on a landing
+frame, the rider's pictures are not covered.
+
+### Evidence for the second character's pictures
+
+Measured on the flat floor of a modified copy of the game (as above),
+with the sprites alone drawn, by inputs alone, with the second character
+leading and the first character off screen (a setup method was used):
+
+- 18 runs of random play (directions, Up, Down, Jump and Action, pressed
+  and held for random lengths) from a riding state, 12 505 logic frames,
+  with 63 turns, 170 jumps, 203 charges and 156 starts of walking;
+- 16 scripted runs of 6 856 frames in all, as for the first character: a
+  jump taken from standing at each of 12 places of the rider's standing
+  loop followed by standing, and a stop of the walk, a turn and a charge
+  each followed by standing.
+
+What was seen on screen on the 19 361 frames of these 34 runs:
+
+- **The animal's picture and its mirroring.** The rules above give the
+  animal a picture on 17 221 frames. It was identified on screen on
+  17 173 of them: it was the one given on 17 172, and on one frame the
+  picture found was another one (a charge frame). On the other 48 frames
+  (43 in charges, 5 in jumps) another sprite hid too much of it. The
+  mirroring was the one given on all 17 173.
+- **The rider's picture.** The rule gives it on 9 914 frames (standing,
+  walking, turns, jumps, and charges pressed on a frame of standing,
+  walking or turning; the first standing after the mount excluded), and it
+  was the one given on all of them. The rider's mirroring was the one
+  given on all 17 139 frames on which the rider was identified,
+  including 5 418 frames of charges pressed in a jump, for which the
+  picture is not covered (the rule for the other charges gave the picture
+  on 4 421 of them and another on 997, "Not covered").
+- **The rider's height d.** The rule gives d on 13 291 frames; the rider
+  was drawn at that height below the animal on all of them.
+- **Which comes next.** After 6 384 standing frames, 202 first riding
+  frames and 1 132 frames on which a step of the walk ended, standing,
+  walking or a turn followed as the rules in "Standing and walking" say,
+  as for the first character.
+
+24 further runs (19 349 frames) with the first character following next
+to the animal and in view: the rider's picture was the one given on all 7
+324 frames of the rules above identified on screen, and d the one given.
+The animal's pictures were identified there on fewer frames, the first
+character often hiding part of it.
+
 ## Examples
 
 All values were measured on flat floor, with positions made relative.
@@ -671,11 +858,20 @@ starts on frame 40, because Right is held and the rider faces left.
 - Objects: carrying, the crate, bonuses and anything touched while
   riding, other than single collectibles (`collectibles.md`, "Riding the
   animal").
-- Other animals, and the pictures, getting off and walls
-  with the second character as the player ("The second character"), and
-  those rules in ordinary play.
+- Other animals, getting off and walls with the second character as the
+  player ("The second character"), and those rules in ordinary play.
+- With the second character as the player ("Pictures with the second
+  character"): the rider's pictures, and the standing after them, for a
+  charge pressed in a jump's crouch, in its air frames or on its landing
+  frames (the rule for the other charges gave the picture on 4 421 of 5
+  418 such frames); the first frames after the mount; slopes, walls and
+  ledges, hurt or knocked off, and the animal hitting an enemy; and
+  the animal's pictures with the first character in view, which hid
+  part of it on many frames.
 - The pictures of the rider and the animal on the first frames after
-  the mount (from M + 22 until the first part of riding ends), after a
+  the mount (from M + 22 until the first part of riding ends), the
+  animal's picture on one charge frame (another picture than the given
+  one was seen there; no cause found), after a
   charge pressed in a jump, on a jump that starts in the air after a
   hop, on slopes, at walls and ledges, while hurt or knocked off, and
   when the animal hits an enemy. In a charge pressed in a jump's crouch,
