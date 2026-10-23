@@ -534,8 +534,12 @@ appeared (the lead standing at the appearance point of "When the map
 appears"): all three are walks upwards. Two of them were walked (Run H);
 the lead's `x` changed on each, by 16 px to the right, and the other
 followed the rule. Why these changed when the places' positions suggested
-otherwise isn't explained. The third wasn't walked, so whether a leg with
-an unchanged `x` comes up in the first level's map is not settled.
+otherwise isn't explained. The third was walked only from its start place
+(a setup method was used; Run I), not from the point where the map has
+just appeared: it moved the lead 24 px to the right and the other
+followed the rule. No leg with an unchanged `x` was found in the first
+level's map, but this leg wasn't walked under the condition that made it
+a candidate.
 
 After its last leg ends the other stands at that spot until the lead
 walks again. In the runs, each of the other's legs ended before the next
@@ -629,6 +633,13 @@ Results:
   lead's `x` changed by 16 px to the right on both, the other came to
   rest 24 px to its left, and its `x` and height matched the rule on
   every frame, 0 mismatches over 64 frames per leg.
+
+- Run I: the third candidate of "Legs with little sideways change",
+  walked upwards from its start place (the lead and the other placed
+  there; a setup method was used). The lead's `x` changed by 24 px to
+  the right and its height by 88 px, the other came to rest 24 px to its
+  left, and its `x` and height matched the rule on every frame, 0
+  mismatches over 64 frames.
 
 **Legs over a page edge** (runs B, C, D and F):
 
@@ -949,8 +960,9 @@ agreed. No character was mirrored on any frame.
   finish (`../formats/level-map.md`, "Progress").
 - The second character on the map: where it is when the map appears
   after a level left in other ways than finished; legs on which the
-  lead's `x` doesn't change (one candidate leg in the first level's map
-  not walked); the other's stalled frame in walks over page edges other
+  lead's `x` doesn't change (none was found in the first level's map; the
+  third candidate leg wasn't walked from where the map has just
+  appeared); the other's stalled frame in walks over page edges other
   than the first level's first.
 - Which pictures the characters show when the map appears after a first
   finish of a level other than the first, and after a level left in other
