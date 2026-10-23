@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.289.0
+
+Sprites: the colours of the animal and the first character while it
+rides, leading and alone (spec#38).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `formats/sprites.md`: two new rows in "The other objects' palettes".
+  While the first character, leading and alone, rides the animal, the
+  animal's body uses the animal's palette and the character on it uses
+  its leading palette; riding changes neither, and things drawn over the
+  body show their own colours. Measured on screen in rides of ordinary
+  play and further rides. Riding while not leading or with the second
+  character present stays under "Not covered".
+- `behavior/player-frames.md`: the "Not covered" item on the ground
+  action's pictures now names the first character, as the second has no
+  ground action.
+
 ## spec-v0.288.0
 
 The level map: the lead's pictures during a new game's fade-out at the
