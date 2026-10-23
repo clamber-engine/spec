@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.316.0
+
+The second character's reach when picking up, and a correction to
+letting go of Action with Down held during a pick-up (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/carrying.md`, new section "Reach and letting go of Action,
+  second character": reach for a `barrel` is the same as the first
+  character's; checked in random play.
+- Correction, both characters: letting go of Action during a pick-up
+  while Down is held doesn't start the throw on that frame. The throw
+  waits for the first frame without Down, or the pick-up becomes a
+  put-down if Down stays held to the end. This replaces "whether or not
+  Down is held"; the definition of Q notes the exception.
+- "Not covered" updated (the `holder` with the second character,
+  pressing Action while moving, Down or Up held at the start of a
+  pick-up).
+
 ## spec-v0.315.0
 
 The second character's thrown object against walkers (spec#19).
