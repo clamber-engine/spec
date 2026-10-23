@@ -1832,6 +1832,33 @@ the exception under Left or Right):
   pictures from there. Down held from L + 1: `crouch-1` on L + 2. Action
   not held on L, Action and Right held from L + 1: `roll-1` on
   L + 1. In each case the list is left on that frame.
+- With Left or Right held on L and nothing held from L + 1: the same
+  list F to F + 29 and the standing pictures from F + 30, whichever side
+  was held and whatever else was held on L.
+
+**After jumping off, with Left or Right held on L.** The player is
+running from L (`ground-speed.md`, "After a landing"), at the speed the
+jump had on L, and its pictures are the running pictures of "Walking,
+running and turning": `run-1` on L, the step the frame ends in on each
+later frame, the stride counter set to 256 on L. With nothing held from
+L + 1 the running slows down as `ground-speed.md` says, and the
+standing pictures start on the first standing frame (`stand-1` × 3, …
+as there). The frames that show each picture depend on the speed on L:
+at 10 to 167 (1/256 px per frame) `run-1` shows on L to L + 2 and
+`stand-1` from L + 3; at 194 to 278, `run-1` × 3 and `run-2` × 3 then
+`stand-1` from L + 6; at 307 to 529, `run-1` to `run-4` over 11 frames
+and `stand-1` from L + 11; at 542 to 768, `run-1` to `run-6` over 15 or
+16 frames and `stand-1` from L + 15 or L + 16. These frame counts are
+not extra rules: they follow from the stride cycle that starts on L and
+from the slowing, so an engine that applies `ground-speed.md` gets them
+(a step lasts 2 or 3 frames, depending on the speed). The speeds between
+those ranges (168 to 193, 279 to 306 and 530 to 541) did not occur; the
+ranges above are where the number of frames changes.
+
+Example: the player lands with Left held on L at a speed of 408, then
+nothing is held. `run-1` shows on L to L + 2, `run-2` on
+L + 3 to L + 5, `run-3` on L + 6 and L + 7, `run-4` on L + 8 to L + 10,
+and `stand-1` from L + 11.
 
 ## Swimming
 
@@ -3232,6 +3259,13 @@ steep face, picking something up):
   pictures on F + 20 and F + 21 were a walking and a turning start 10
   frames earlier than the rule says (the exception stated under Left or
   Right; 33 runs of that kind were checked in all and 32 matched).
+  With Left or Right held on L: 82 jumping-off landings showed the
+  running pictures above, frame for frame (speeds 10 to 768, both sides,
+  Action, Jump, Down and Up held or not on L; the speed on L was the
+  player's horizontal movement from L − 1 to L on screen, in 1/256 px;
+  up to the first walk-off or the waiting pictures, and 4 left out for being shorter than 8
+  frames), and 87 slide-off landings (nothing held from L + 1) showed
+  the list and the standing pictures.
 
 - **Swimming, first character:** 200 runs of 300 logic frames of random
   Up, Down, Left, Right, Jump and Action input, 25 in each of the 8 areas
@@ -3331,10 +3365,12 @@ steep face, picking something up):
   pictures on a rope with a knock-out, a hurt or a game pause, on ropes
   of other levels and on a rope whose end is low enough to reach the
   ground, the landing pictures after a jump off or a slide off a rope
-  with Left or Right held on L (or Action held on L, or the walking,
-  running and turning pictures after F + 30, and the pictures on F + 20
-  to F + 29 with the side the player doesn't face held, which differed in
-  1 run of 33), jump-offs under 25 frames
+  with Left or Right held on L and anything held from L + 1, the
+  pictures after a slide-off landing with Left or Right on L and a
+  direction held later, the walking, running and turning
+  pictures after F + 30, the pictures on F + 20 to F + 29 with the side
+  the player doesn't face held, which differed in 1 run of 33, jump-offs
+  under 25 frames
   in the air, slide-off landings outside F + 4 to F + 13, and a jump
   off that ends before P + 7.
 - The first character's pictures in a launch barrel on the hold frames before the last one (left kind)
