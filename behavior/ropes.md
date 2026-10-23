@@ -322,9 +322,62 @@ in the air after a rope up to landing or the next catch, 2 641
 `jump_release`). The example's rows were also reproduced in the
 original after 57 real catches.
 
+## The second character
+
+With the second character leading, every rule in this file holds as
+written, with two differences, both in the air after a rope:
+
+- **Air speed.** The targets are the second character's
+  (`second-character.md`, "Values"): wherever "After a rope" gives ±3
+  (run memory set, or Action held), the target is ±3.375 (±864/256), and
+  where it gives ±2, the target is ±2.25 (±576/256). The speed rule is
+  the same (step = (target − speed) ÷ 8 rounded toward zero, the target
+  at once when the step is 0).
+- **Gravity in a jump off.** While Jump has been held on every frame
+  since P, gravity is 0.28125 (72/256), the first character's value, and
+  not the 0.3515625 of a jump from the ground in
+  `second-character.md`. Otherwise it is 0.4375 as for the first
+  character. The jump-off speed of "Jumping off" is the same: `vy` is
+  −6.125 with no Up or Down held, −6.3125 with Up, and so on.
+
+The rope's motion, the reach and the catching rules, holding, climbing,
+turning, sliding off, the run memory and the trace rows are those of the
+first character. In particular a jump from the ground (with the second
+character's own take-off and arc) is caught by the same reach.
+
+### Example
+
+Holding a rope, facing left; Jump and Left pressed on frame P and held,
+Action not held:
+
+| Frame | `vy` | `vx` |
+|---|---|---|
+| P | −6.125 | 0 |
+| P + 1 | −5.84375 | −0.421875 |
+| P + 2 | −5.5625 | −0.7890625 |
+| P + 3 | −5.28125 | −1.109375 |
+
+After sliding off the end with Left held and neither Action held nor the
+run memory set ("After a rope" gives target −2), the second character's
+`vx` on the frames after the let-go frame is −0.28125, −0.52734375,
+−0.7421875; with the run memory set it is −0.421875, −0.7890625,
+−1.109375.
+
+Measured with the second character leading and the first following, on
+the two ropes of the second level, in 220 runs of random input (120
+starting on a rope, 100 starting on the ground near the ropes): 28 754
+frames on a rope (157 jumps off, 44 slides off the end, 130 frames held
+down by the top of the view, 1 567 turning frames), 5 785 frames in the
+air after a rope, 115 catches out of 17 482 jump frames. Every frame
+matched, except those after one jump that met a wall (walls in the air
+are in `air-walls.md`), which were not checked. The same kind of runs
+with the first character leading (220 runs) matched the rules of the
+rest of this file.
+
 ## Not covered
 
-- The second character holding a rope, and the follower on ropes.
+- The follower on ropes: what the character that isn't leading does while
+  the lead holds a rope or swings from it.
 - Enemies and other contacts while holding a rope.
 - Other kinds of objects the player can hold (the second level has at least one
   more kind, not identified); ropes in other levels.
