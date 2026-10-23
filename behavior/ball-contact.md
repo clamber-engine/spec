@@ -260,6 +260,33 @@ Which pose the player has, measured with the second character:
 - **Crouching**: from the first frame Down is held on the ground, and on
   the first 12 frames on which Down is no longer held (the recovery);
   the standing range follows.
+- **Teetering** (`player-frames.md`, "Standing still", "Second
+  character"): the walking range, from the first frame with a teetering
+  picture (`s-teeter-1`, S + 4) through the whole teetering loop, for as
+  long as the player teeters. The frames before it, S to S + 3, have the
+  standing range. A turn away from the ledge has the standing range from
+  its first frame, and a jump the airborne range from its press frame, as
+  elsewhere.
+- **Walking off a ledge with a face**: the walking range on every frame
+  from F, the first frame that ends on the face, through the fall and the
+  landing frames G to G + 6 (`player-frames.md`, "A fall from a steep
+  face", "Second character"). On G + 7, when the player is standing
+  again, it has the standing range, and with Left still held and the
+  player walking on it has the walking range.
+
+Teetering and walking off a ledge with a face were measured at one
+ledge, the left-hand end of a floor, with the player facing left (the
+ranges for facing right are those of the table, turned around, and were
+not measured). With a setup method used to arrange the situations (a
+ball one pixel apart from the player in every position around them at the
+end of a frame, with the player standing still at the ledge, walking,
+jumping, or turning at it, and the fall ending on the floor 145 px
+below), the edges were those of the table on every frame seen:
+629 frames with the player teetering (every picture `s-teeter-1` to
+`s-teeter-18`, over the first 250 frames of a teeter),
+325 on the face, in the fall and on its landing frames, and the
+standing range on the frames after them. The vertical range was that of
+walking: on the ground its low end was not measured, as above.
 
 A ball hitting the second character hurts it with the same result as a
 hit on the first character in the same situation: with the first
@@ -271,11 +298,13 @@ character following, the second character is lost as in
 - The ground action meeting balls. Thrown and carried objects meeting
   balls are in `thrown-objects.md`, "Hitting a ball", and in
   `holder-breaking.md`.
+- These teetering and walk-off ranges were seen only in arranged
+  situations, not in play by inputs alone with balls coming at the
+  player.
 - Poses not listed above: bouncing (`bounce`), carrying an object,
   being hurt, swapping characters. For the second character under
-  control, also: teetering at a ledge, the ground action, walking off
-  ledges and landing from them, carrying an object, and the first frames
-  after a swap.
+  control, also: the ground action, walking off ledges without a face,
+  carrying an object, and the first frames after a swap.
 - Exactly when the airborne pose ends after a landing and when it
   starts before a walk-off, beyond the cases listed; when the standing
   pose starts after slowing down.
