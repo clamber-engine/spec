@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.312.0
+
+The second character against balls when teetering and walking off a
+ledge, at the animal crate, and walkers and the follower (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/ball-contact.md`: the second character's pose list gains
+  teetering and walking off a ledge with a face (both with the walking
+  range); measured in arranged situations only, which "Not covered" now
+  says.
+- `behavior/following.md`, new section "Walkers and the follower": walkers
+  neither hurt nor bounce the follower, which repeats a bounce of the
+  lead along the trail. Corrects the two places that said the follower
+  was hurt by or bounced off a walker; "Not covered" narrowed to the
+  frames after a repeated bounce.
+- `behavior/animal-crate.md`, new section "The second character": its
+  range for breaking the crate and its bounce speed differ from the first
+  character's; the animal and the mount ranges are the same. Evidence
+  with 160 random runs; the unchecked cases are under "Not covered".
+
 ## spec-v0.311.0
 
 Where the second character takes a bunch while running and in its
