@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.291.0
+
+Level map: which figure is in front where the two characters overlap,
+with the second character leading (spec#38, spec#59).
+
+Part of clamber-engine/spec#38 and clamber-engine/spec#59, which stay
+open for the parts not covered yet.
+
+- `behavior/level-map.md`: with the second character leading, the other
+  character (the first) is in front where the two overlap, as with the
+  first character leading. Measured on screen with the sprite layer
+  alone at 8 distances on either side of the lead (21 screens). Other
+  places than the first level's stay under "Not covered".
+
 ## spec-v0.290.0
 
 The first character's ground action pictures at a ledge and on a slope
