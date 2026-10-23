@@ -732,8 +732,8 @@ the medium walker there is no lower limit but the landing rule, as for the
 first character (a rising player bounces from U 0). For the large walker
 U must be at least **10**: a second character in the air with U from 0 to
 9 above a large walker's floor is hurt on the next frame, as by any other
-contact (`knock-out.md`; the second character's hurt ranges are not
-specified). The ranges did not change with U (measured at three heights
+contact (`knock-out.md`; the second character's hurt ranges are in
+"Being hurt (second character)" below). The ranges did not change with U (measured at three heights
 for each kind).
 
 ### Bouncing off a small or medium walker
@@ -789,6 +789,92 @@ the jump input not held:
 
 Facing left instead, with the walker heading left, gives `vx` 2.0 and the
 walker's speed 4.0 to the left.
+
+### Being hurt (second character)
+
+When the second character leads, "Being hurt" holds as written for the
+hit frame H and the offsets at the end of H − 1 (a hit is decided one
+frame ahead), with the ranges, the reach and the poses below instead of
+the first character's. A hit by a walker is a hit like any other
+(`knock-out.md`, `losing-a-character.md`).
+
+**Poses.** The poses are those of `ball-contact.md` ("The second
+character under control": standing and the fidget pose; walking, running
+and jumping; crouching, with the frames at the end of a crouch), with the
+same frames at which they change. Unlike the first character, the second
+has no separate range for the first frames of a jump or for the fall: a
+jump has the walking and running ranges from the frame of the jump press
+on. The fidget pose has the standing ranges.
+
+**Ranges.** Ranges of **I** (both ends included), laid out as for the
+first character. Standing (and the fidget pose):
+
+| Walker | Player facing | Walker heading left | Walker heading right |
+|---|---|---|---|
+| small | right | −16 to 14 | −15 to 15 |
+| small | left | −15 to 15 | −14 to 16 |
+| medium | right | −23 to 12 | −13 to 22 |
+| medium | left | −22 to 13 | −12 to 23 |
+| large | right | −19 to 17 | −18 to 18 |
+| large | left | −18 to 18 | −17 to 19 |
+
+Walking, running and jumping:
+
+| Walker | Player facing | Walker heading left | Walker heading right |
+|---|---|---|---|
+| small | right | −22 to 15 | −21 to 16 |
+| small | left | −16 to 21 | −15 to 22 |
+| medium | right | −29 to 13 | −19 to 23 |
+| medium | left | −23 to 19 | −13 to 29 |
+| large | right | −25 to 18 | −24 to 19 |
+| large | left | −19 to 24 | −18 to 25 |
+
+Crouching:
+
+| Walker | Player facing | Walker heading left | Walker heading right |
+|---|---|---|---|
+| small | right | −23 to 17 | −22 to 18 |
+| small | left | −18 to 22 | −17 to 23 |
+| medium | right | −30 to 15 | −20 to 25 |
+| medium | left | −25 to 20 | −15 to 30 |
+| large | right | −26 to 20 | −25 to 21 |
+| large | left | −21 to 25 | −20 to 26 |
+
+**Reach.** On the ground, the player and the walker on the same floor
+(measured with U 0), in every pose. In the air, in the walking, running
+and jumping pose, U at most **9** (small walker), **22** (medium walker)
+or **35** (large walker): 2 px lower than the first character's. Measured
+for a character rising at 2 to 6 px per frame, at jump presses made 3
+to 20 frames before. A character that is falling or rising slowly meets
+the bounce ranges above first.
+
+### Example (second character, hurt)
+
+Synthetic. The second character stands facing right, and a small walker
+heading left is at I = 14 at the end of frame H − 1 (and both are on
+the same floor): it is hurt on H. At I = 15 it is not. Walking
+instead, it is hurt for I from −22 to 15, so at I = 15 it is, and at I =
+−23 it is not. Crouching it is hurt for I from −23 to 17.
+
+### Evidence for being hurt (second character)
+
+With a setup method, with the second character leading on the flat of the
+first level and a walker of each kind coming toward it, as under "Evidence
+for the second character": the character stood at whole-pixel offsets from
+the walker, one pixel apart from −70 to 70 (141 offsets), for each
+combination of the three kinds of walker, the four combinations of facing
+and heading, and the poses standing, walking, running and crouching, and
+the fidget pose for some of them; and rising in the air at several speeds
+in the walking and jumping poses, at every height from level with the walker
+to above the reach. The same setup method with the first character gave its
+table again. By inputs alone: 1 200 scripts of
+random held inputs (Right, Left, Down, jump) of 260 frames for each of
+the three kinds (four seeds of 300), 2 643 hurts in all, each on exactly
+the frame the rules above give, and no other frame hurt (131 000 frames
+checked while a walker was within 80 px; 0 mismatches). Turning, rolling
+and the fidget pose did not occur in these runs. With the first
+character's table for every pose, 869 to 1 015 frames per seed were
+wrong.
 
 ### Evidence for the second character
 
@@ -993,8 +1079,10 @@ This list is for `title-1`; `title-2` has its own list above.
   the ground, with the player and the walker on the same floor).
 - Walkers above the player (U below −6 on the ground, below −4 in the
   air), and the lower end of the vertical reach in the air.
-- The second character's hurt ranges against walkers, its pictures and
-  trace state when thrown back, and a thrown-back second character meeting
+- The second character's hurt ranges against walkers while turning,
+  rolling, carrying an object, teetering, walking off a ledge or after a
+  swap, the lower end of its reach in the air, and its pictures and
+  trace state when hurt or thrown back, and a thrown-back second character meeting
   another walker. Walkers that aren't at full speed in these contacts.
   Hits while two characters are present, other than the second character
   leading into a walker from above ("The second character").
