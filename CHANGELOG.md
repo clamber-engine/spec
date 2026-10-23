@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.320.0
+
+Two walkers in range of one thrown object, and teetering at a steep face
+with no drop (spec#19, spec#61).
+
+Part of clamber-engine/spec#19 and clamber-engine/spec#61, which stay
+open for the parts not covered yet.
+
+- `behavior/thrown-objects.md`, "Two walkers in range on the same frame":
+  the one-hit-per-frame rule (the other walker hit on the next frame if
+  still in range, the same one of a pair first) also holds with the
+  object moving left, and for two medium walkers in both directions.
+  Small walkers, mixed pairs and medium walkers heading right are in
+  "Not covered".
+- `behavior/player-frames.md`, teetering at a steep face: a fourth ledge,
+  a 32 px face onto a lower floor with no drop, first character: no
+  teetering. Whether the face's height or the drop after it decides is
+  still in "Not covered".
+
 ## spec-v0.319.0
 
 Pressing Action within reach while moving, both characters, and the
