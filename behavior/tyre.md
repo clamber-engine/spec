@@ -9,7 +9,7 @@ player can make from a squashed tyre. Frames are logic frames at 60 Hz,
 numbered as in a trace. `x` grows to the right; `y` and `vy` are as in a
 trace (down is positive, `vy` in px per frame).
 
-Measured with the first character alone, on a tyre standing on flat
+Measured with the first character, on a tyre standing on flat
 ground and on one placed 50 px above it, with random walking, running,
 rolling and jumping on, onto, under and past it (about 140 000 frames,
 1 150 catches, 470 throws), and with scripted inputs one frame apart for
@@ -443,9 +443,36 @@ frame; no frame showed another one. Frames on which the tyre was not
 wholly inside the screen, or something covered part of it, were not
 counted.
 
+## The second character
+
+The second character, while under control, is caught, carried, thrown
+and given the tyre jump by exactly the rules above; nothing in this file
+depends on which character the player is. Compared with the first
+character, on a tyre on flat ground:
+
+- Touch range, standing still: every I from −24 to 22 touched when
+  facing right and every I from −26 to 20 when facing left, and none
+  outside, in steps of 1 px (the first character gave the same limits).
+- Walking into a tyre: the catch, the 15 frames on the squashed tyre,
+  the put-back heights and the throw (`vy` of −6, then gravity as for the
+  first character) were the same frame for frame over the first 22
+  frames after the catch;
+  only the horizontal speed differs, since the characters walk at
+  different speeds.
+- Jump pressed while walking on (presses 3, 9, 14 and 15 frames after
+  the catch): the tyre jump started on the same frames and the heights and
+  `vy` along it matched the first character's rows frame for frame.
+- Arriving from the air in a jump: caught and placed on the top the same
+  way as the first character, frame for frame.
+
+Checked only with the tyre that squashes. The wobble, rolling,
+the stiff tyre and an upside-down tyre were not run with the second
+character.
+
 ## Not covered
 
-- The second character, and two characters on one tyre.
+- Two characters on one tyre, and the second character rolling, on the
+  stiff tyre or on an upside-down tyre.
 - For the stiff tyre: a Jump press together with Action on the top, and
   a press on the frame of an arrival from the air (one case each in
   "Measurements of the stiff tyre"); the stiff tyre in other areas.
