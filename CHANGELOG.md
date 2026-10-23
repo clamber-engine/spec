@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.285.0
+
+The sprites' colours during the first level's dimming, after step 8
+(spec#38).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/dimming.md`: "Sprite colours" extended from steps 1-8 to
+  steps 1-32 for the colours that stay on the screen, from two
+  full-length runs with screen-only evidence (counts per run). Scenario
+  checks past step 8 test only that the table's colours show. Not
+  covered: the colours that stop showing in a run, and pixels of
+  earlier steps' colours at some later steps.
+
 ## spec-v0.284.0
 
 The level map: the other character against the picture (spec#59,
