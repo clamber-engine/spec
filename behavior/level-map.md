@@ -675,6 +675,37 @@ given for a frame is the one on screen with that frame's view.
 | `map-other-6` | `2350ffc0ea6ca2713f5e30229bf5f8564d9f91d0e8b4e6befc95c0919adc2153` |
 | `map-other-7` | `612f58cf9802d54c9ffad81af186fe3a442f6c5bd1fbd00b6b27ebe79fae9e24` |
 | `map-other-8` | `b266d2713e5a9834051e67e350f8ad988be5354c3cdc94a3ea5862cd51374f48` |
+| `map-lead-finish-1` | `0e9a0893656a47577598fde6f06a4666700f6b32a1016873a358a4dc5f4e9e16` |
+| `map-lead-finish-2` | `86b8a6f76a899398f2e756ba68bc86ea1ac9c82c01cfea90b9255bdbfa8be9f2` |
+| `map-lead-finish-3` | `28e14d5f93ca9765f98e4b95fb518efb9b25162789944b06c030ff5d6fd33e60` |
+| `map-lead-finish-4` | `b723e18c62d93dd163fe6dd826a5da9a24d8ed52170ca3176b9a6795fb705cdf` |
+| `map-lead-finish-5` | `997ad879bf2543529ed8a18695f799c52a76f8039a7188c200edc1bfb56d8ba6` |
+| `map-lead-finish-6` | `bf776bf48204dbb0db0750f6101e93159b01b836bed7c6e99848f0d40e6a8cbd` |
+| `map-lead-finish-7` | `3b80bb3862c080c7294ca5eb6b9abd080c932b81c7ee24251d871a20038a1afe` |
+| `map-lead-finish-8` | `b4db8907f2ce92edfbc370946fb64e69a93c0f13fb7fb4794d970d44ee3deff3` |
+| `map-lead-finish-9` | `c86fcefcc1d39e3026e75442f797a1d0571ccf773bfccfbe32172205e6784d85` |
+| `map-lead-finish-10` | `a0a19ca32fcb0b5cdfcf801de63ecf94cc9bb11c0ffdb54d1b70ea429b049105` |
+| `map-lead-finish-11` | `e90170600442f1f7416f2b83ba5ad936fdda85c72bb0ffe9cbc7c15c5470a811` |
+| `map-other-finish-1` | `0fd451df8a014bf791b370fdbddaf584d88bbb3e77d4eb6e7195b1301f5003e8` |
+| `map-other-finish-2` | `8d67b9fa4dc5e17940cbf1437cad136a3d35f08d0a7974bacc1d7dd45c416cc4` |
+| `map-other-finish-3` | `4378267b16e19877da0e85fb876d4a13bf3d683a2d96fc62343ee84a2e3cf11a` |
+| `map-other-finish-4` | `9dcdd705577f69e9c458eb7dad5a10c5efdbd8d1ad64bfff43d39ab76f29858b` |
+| `map-other-finish-5` | `0a94ed0c9589a8d4f618d62fd367dd836fc0178a3a5005248b69bc574f4d8212` |
+| `map-other-finish-6` | `cf788812e5bc0a443a1cfeed3b93e14aa8aaeb039b4114708aabc1f0fe3faae4` |
+| `map-other-finish-7` | `22955006d275fce3e605de48b8320c363ea6f50fca6c68c75af68401db6ca88a` |
+| `map-other-finish-8` | `7198c9feb1ecc36540d7049c197f5ffeb19525e131f329a7c7f47137473bd6b4` |
+| `map-other-finish-9` | `6fc8a0928158f4f206032ef1d24d41f008209bdc34bc76a8cc53123bd604c60d` |
+| `map-other-finish-10` | `3a4a7b92a3413717ecb48f6a2a38fd09e733cdcce41e9e01a76d97ab327c6926` |
+| `map-other-finish-11` | `b3fc77a98f178973358c5c5332af87ab937fff2bce63fb78fd8b8d5f9e7aee8d` |
+| `map-start-1` | `ddc0355dffabe444a1f5b7c0c0293bcdfbdb6c1514341f3a116ad4faadd06753` |
+| `map-start-2` | `e9e9e812ce528dd004336be296165e850051f4fc364cbee14e596921ad88022b` |
+| `map-start-3` | `37df88582985aaa0efb966c94592cabcd621c174fda785c88bb8ee72e255ffc9` |
+| `map-start-4` | `40c0273c31f3ff0630d1e88e9e6192d07f48f78ee5d3e8298136a22f24686b67` |
+| `map-start-5` | `3260617f228e045afbaa9e3ff824062b0ee9efce102e752c52de06496dc73e6b` |
+| `map-start-6` | `66c3ed8f19a6b86b094a7daba3885a26a47d8d9aa8a7b25208d77bfe98ff98e0` |
+| `map-start-7` | `752b0759437f2e627a19eb5d92a8c42d166d25e5c09f25cb58620f8427bc571d` |
+| `map-start-8` | `e04409d35f39a6ea7731cc010a708ec0ba02bd8ab04acad673cdb54811dfc870` |
+| `map-start-9` | `2021ebbb70e00956135ed0df51ff0a7ef4b7604652f9dcfe531b5bbba719bc45` |
 
 **Where.** A character's picture is drawn with its origin at (`x` − 1,
 256 − `h`) in the picture, where `x` is the character's whole-pixel
@@ -683,10 +714,10 @@ It moves with the position, a pixel at a time, as the character walks.
 
 **Which.** The lead shows `map-lead-1` to `map-lead-10` in turn, then
 `map-lead-1` again, each picture on 4 counted frames in a row (lag frames
-aren't counted), so its cycle is 40 counted frames. The other character
+aren't counted, nor are the still frames after a first finish), so its cycle is 40 counted frames. The other character
 shows `map-other-1` to `map-other-8` in turn, then `map-other-1` again,
 each on 4 counted frames, so its cycle is 32. Both cycles go on all the
-time: they don't depend on whether the character stands or walks, on
+time from the frames given in "When the map appears" on: they don't depend on whether the character stands or walks, on
 the walk's speed or direction, or on the character's position. While
 both characters are on the lead's page and the lead hasn't changed page
 since the map appeared, the two change their pictures on the same
@@ -704,6 +735,50 @@ character, the first, shows the ten pictures `map-lead-1` to
 `map-lead-10` (cycle 40). Positions, legs, facing, page changes and
 the timing of the picture changes follow the rules above unchanged, with
 the second character as the lead.
+
+**When the map appears.** Frames are numbered as in "A new game" and
+"After finishing a level" (all frames, none left out): frame 0 is the
+map's first frame, the one on which the fade-in starts, and the picture
+is black on frames 0 and 1. When the map appears again after a new
+game's press, frame 0 is `W`. "Counted frames" in "Which" are these
+frames without the lag frames, and after a first finish also without the
+still frames; none of the frames 1 to 161 were lag frames in the runs, so
+the finish pictures below are given by frame number alone. The characters are on
+the picture from frame 2. What a character shows first depends on how the
+map appears:
+
+- *When the level had been finished before, and when the map appears
+  again after a new game's first press* ("A new game"): the cycle of
+  "Which" starts at frame 1 with its first picture, so `map-lead-1` is
+  shown on frames 1 to 4 (seen on 2 to 4), `map-lead-2` on 5 to 8, and so
+  on, and the other character's `map-other-1` is shown on the same frames
+  when there are two. With the second character leading the same holds
+  for its pictures, `map-other-1` first.
+- *When a level is finished for the first time* (the case with 50 still
+  frames, "Still frames"): from frame 1 to frame 161 the lead shows the
+  pictures `map-lead-finish-1` to `map-lead-finish-11` (the second
+  character, `map-other-finish-1` to `map-other-finish-11`), not those of
+  "Which". For *i* from 0 to 77 it shows, on frames 1 + 2*i* and
+  2 + 2*i*, picture *k* + 1 of them when *k* = *i* mod 14 is 0 to 7 and
+  picture 15 − *k* when *k* is 8 to 13, so the pictures 1, 2 up to 8,
+  7 down to 2, 1, 2 and so on follow one another, each on 2 frames.
+  Picture 8 of the last run up (*i* = 77) is on frame 155 only; then
+  `map-lead-finish-9` is shown on frames 156 and 157,
+  `map-lead-finish-10` on 158 and 159 and `map-lead-finish-11` on 160 and
+  161. On frame 162 the lead shows `map-lead-1`, and goes on showing it
+  through the still frames (163 to 212) and on frames 213 to 215; its 4
+  counted frames are 162 and 213 to 215, and `map-lead-2` is shown from
+  frame 216 on, with the cycle of "Which" going on from there. With two
+  characters the other character's pictures were found only on frames 158
+  to 161, where they were its pictures 10 and 11 (the same numbers as the
+  lead's); on the frames before, they were not found.
+- *At a new game, before the first walk* ("A new game"): the lead shows
+  nine pictures of their own, `map-start-1` to `map-start-9`, in turn
+  and then `map-start-1` again, each on 4 counted frames from frame 1
+  (`map-start-1` on frames 1 to 4, seen on 2 to 4). They go on while the
+  lead walks to the link point and stands there.
+
+A character is not mirrored on any of these frames.
 
 **Facing.** A character is drawn mirrored left–right (as
 `../formats/sprites.md` says, "Mirroring") exactly when it faces left. It
@@ -741,9 +816,16 @@ from the place before the edge to the place after it; a setup method
 (research tools) was used. A walk to the left, which leaves the other on
 the next page, wasn't measured with the two apart ("Not covered").
 
-**When a hash isn't found.** The eighteen hashes belong together: if
+**When a hash isn't found.** The eighteen hashes of `map-lead-1` to
+`map-lead-10` and `map-other-1` to `map-other-8` belong together: if
 any of them isn't found, the engine shows its own art for the characters
 on the map, on the same frames and with the same timing as given here.
+The same holds for the other thirty-one ("When the map appears"),
+`map-lead-finish-1` to `map-lead-finish-11`, `map-other-finish-1` to
+`map-other-finish-11` and `map-start-1` to `map-start-9`: if any of the
+pictures of one of these sets isn't found, the engine shows its own art
+for the whole set, on the same frames; the other sets keep their
+pictures.
 The colours the pictures are drawn with are the level map's palette
 (`../formats/sprites.md`, "Sprite palettes").
 
@@ -757,6 +839,16 @@ they were, facing right; frames 20 and 21 show `map-lead-1` mirrored
 left–right, and 22 to 25 `map-lead-2` mirrored. When the walk ends at
 frame 80 and the lead stands, it goes on showing the cycle's pictures
 mirrored.
+
+Synthetic. A level is finished for the first time. The picture is black
+on frames 0 and 1, the lead shows `map-lead-finish-1` on frame 2 (as
+on frame 1, which is black), `map-lead-finish-2` on 3 and 4, and so on up
+to `map-lead-finish-8` on 15 and 16, then `map-lead-finish-7` on 17 and
+18 down to `map-lead-finish-1` on 29 and 30 and `map-lead-finish-2` on 31
+and 32. It shows `map-lead-finish-8` on 155 alone, `map-lead-finish-9` on
+156 and 157, `map-lead-finish-10` on 158 and 159, `map-lead-finish-11` on
+160 and 161, and `map-lead-1` on frames 162 to 215 (50 of them still),
+then `map-lead-2` on 216 to 219.
 
 ### Measurements
 
@@ -811,6 +903,26 @@ Over the whole chain the lead's eight and the other's ten changed in
 order, each on 4 counted frames (739 runs of 4 and three of other
 lengths, at the start and at the page change).
 
+Where the pictures start: the map was run from its first frame, with
+the pictures found on screen as above, in 11 runs. A level finished for the
+first time: the first character leading alone (1 run), with the second
+character as the other (1), the second character leading with the first
+as the other (1), and the first character leading alone at three other
+stops than the first level's (3; the stop was made different by a setup
+method, so these are not real finishes at those stops). The lead's pictures were found on all of
+1 325 frames from frame 2 on and agreed with "When the map appears"
+(frames 2 to 161 the eleven finish pictures, 162 on the cycle's); the
+other character's were found on 58 of 221 frames with the first
+character leading and on 2 of 239 with the second leading, never differing
+from the rule (the rest were covered by the lead). Finished before
+(made so by a setup method, which reproduced the second finish's gate
+and absence of still frames): the first character alone (216 frames), with
+the second as the other (77 frames; the other found on 39), the second
+leading (145; the other found on 4): all agreed. New game: 250 frames of
+the nine start pictures (frames 2 to 251), with the map shown again after
+the press at the link point (76 frames of the cycle of "Which") all
+agreed. No character was mirrored on any frame.
+
 ## Not covered
 
 - What the stop's name looks like and how it is chosen, and anything
@@ -830,7 +942,13 @@ lengths, at the start and at the page change).
   lead's `x` doesn't change (one candidate leg in the first level's map
   not walked); the other's stalled frame in walks over page edges other
   than the first level's first.
-- Which picture the cycles start with when the map appears.
+- Which pictures the characters show when the map appears after a first
+  finish of a level other than the first, and after a level left in other
+  ways; the other character's pictures on the first 157 frames of a
+  first finish (it was covered by the lead); a new game with the
+  second character, and the pictures of the lead during the new game's
+  fade-out at the link point; what decides how long the first finish's
+  pictures last (they ran to frame 161 in every run).
 - What moves the other character's cycle against the lead's at a page
   change.
 - The other character's picture while it is on another page than the
