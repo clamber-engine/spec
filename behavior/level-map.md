@@ -178,6 +178,8 @@ distances from the lead measured ("Measurements").
 **Where the two characters overlap**, the other character is in front:
 every pixel of the other character's picture shows, and the lead's
 pixels under it don't, on whichever side of the lead the other stands.
+This holds with the second character leading as well: the other is then
+the first character, and it is the one in front.
 
 **A page change.** The picture of the new page replaces the old one at
 once, with no part of the old picture dimmed, and fades in. The picture
@@ -238,6 +240,20 @@ the lead beside a page edge; no modified copy of the game was used.
   overlapping distances (16, 12, 8, 4 px left, 0, and 4 px right): at
   most 9 fewer than the overlap in each, the pixels where both were the
   same colour.
+- The same with the second character leading, at the same place and with
+  the other put at the same height as the lead (a setup method), and the
+  screens taken 20, 25 and 33 frames after the placement (the map
+  walks the lead away a little later, so these are earlier than above).
+  The lead's pixels and the other's were found as above, with the other
+  70 px to either side. Distances of the other from the lead: 40, 24, 8
+  px to its left, and 8 and 24 px to its right in all three, and 16 px
+  to the left, 0 px and 4 px to the right in the first two (21 screens).
+  The pictures overlapped by 7 to 9 px at 24 px to the left, 79 to 83 at
+  16, 122 to 132 at 8, 51 to 55 at 0 and 7 to 15 at 4 px to the right;
+  at the other distances they didn't overlap. Of the other's pixels, 0
+  were different on any of the 21 screens. Of the lead's, 6 to 9, 75 to
+  81, 113 to 119, 43 to 46 and 6 to 14 px were different at those five
+  overlapping distances: at most 13 fewer than the overlap in each.
 - Three page changes were played with the direction held, 200 frames
   each: from the page numbered 7 to the one numbered 8 and back, and from
   2 to 1. In each, the screens for frames up to `P` − 2 showed the old
@@ -988,7 +1004,7 @@ lead stayed at the link point), as "Pressing at a stop" says.
   (for example marks along open paths: none was seen in the
   measured maps).
 - Which of the two characters is in front where they overlap at other
-  places than the first level's, and with the second character leading.
+  places than the first level's.
 - The page change while the other character is on the previous page,
   with a second character walking: the fade was measured with the lead
   alone.
