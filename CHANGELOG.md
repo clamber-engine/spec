@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.317.0
+
+Signs with two characters, and the second character's Jump and Action
+during a throw (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/signs.md`, new section "Two characters": a sign changes
+  nothing for a pair of characters, whichever leads, and appears and is
+  removed at the same distances; checked in random play. The scene with
+  the second character leading and swaps near a sign are in "Not
+  covered".
+- `behavior/carrying.md`, "The second character": Jump and Action
+  during a throw follow the first character's table three frames
+  earlier, to match the throw's length. Measured for a throw from
+  standing on flat floor with no direction held; throws in the air, a
+  held direction and random play are in "Not covered".
+
 ## spec-v0.316.0
 
 The second character's reach when picking up, and a correction to
