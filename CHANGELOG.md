@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.306.0
+
+Two walkers in range of one thrown object on the same frame (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/thrown-objects.md`, "When a walker is hit": with two large
+  walkers in range on the same frame, only one is hit on that frame and
+  the other on the next frame if still in range; which one is hit first
+  is always the same for a pair, whatever the offsets. Other walker
+  kinds, the object moving left and other floors stay under "Not
+  covered".
+
 ## spec-v0.305.0
 
 The level map after a knock-out as the lead alone (spec#70), and two
