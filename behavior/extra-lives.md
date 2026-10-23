@@ -199,6 +199,33 @@ where it is placed (`D` = 40) doesn't take it: 40 is outside −29 to 35.
 If the player jumps straight up from there with `I` from −20 to 20, the
 item is taken on `T` + 6 at the latest, since `D` is then from −8 to 52.
 
+### Landing
+
+A jump lands on frame `L`, the frame carrying `land`
+(`landing.md`). The jumping row (the last row of the table) applies on
+`L` and goes on for some frames after it; from the first frame after
+that the standing row applies, whatever the player then does. The ranges
+on these frames are exactly those two rows, with no frame in between.
+
+Measured with the player facing right, jumping in place on flat floor
+and taking nothing else, with Jump held for 1 to 40 frames:
+
+| Jump held for (frames) | Jumping row up to | Standing row from |
+|---|---|---|
+| 1 to 7, and 16 to 40 | `L` + 3 | `L` + 4 |
+| 10 to 13 | `L` + 5 | `L` + 6 |
+| 8, 9, 14 and 15 | `L` + 6 | `L` + 7 |
+
+For holds of 1, 4, 10, 20 and 30 frames the jump was also started from
+standing on each of eight different frames (0 to 7 frames of waiting);
+the rows ended on the same frame after `L` every time. Why 8 to 15
+frames of Jump make the jumping row last longer is not known.
+
+For example, an item 45 px above the feet line (`D` = 45, `I` = 0) is taken by a player who jumps in place with Jump
+held for 4 frames up to and including `L` + 3, since the jumping row
+reaches `D` = 52, and not from `L` + 4, where the standing row stops at
+35.
+
 ### The second character leading
 
 With the second character as the player (`second-character.md`), `I`,
@@ -217,10 +244,18 @@ first character. A jump has one row: the ranges are the same on the
 take-off frame `T`, on every frame of the air, whatever the vertical
 speed and whether Jump is held or not, and there is no switch at `T` + 6.
 
+**Landing.** After a jump the second character's one row for moving
+and jumping goes on through the landing frame `L` and the 16 frames
+after it, and the standing row of the table applies from `L` + 17 (the
+first frame on which it is standing again). In the runs the player
+jumped in place facing right on flat floor with Jump held for 1, 4, 10,
+20 and 30 frames, each started on eight different frames after a still
+start; `L` + 17 was the switch every time. Unlike the first character,
+the length of the hold made no difference.
+
 The following character takes nothing: with either character leading,
 the item is taken exactly when the leading character is in its own
-ranges, and not when only the follower is in its own. Landings and the
-frames after them are not covered for the second character.
+ranges, and not when only the follower is in its own.
 
 ## What taking an item does
 
@@ -687,6 +722,21 @@ and is not drawn from frame 321 on.
   and it gave no other. 47 more pickups were in states not covered
   (landing, turns, hits, other actions). The second character's ranges
   were not checked in ordinary play at the level's own items.
+- Landing: 6 grids of placements (both characters, jumps in place held
+  4, 10 and 20 frames, every frame from before the landing to well after
+  it, 55 × 111 offsets per frame; a setup method was used to reach the
+  situation; on each frame the item was seen at each offset from the
+  player): on every frame the taken placements were exactly one of the
+  two rows. Holds of 1 to 40
+  frames were tested with four offsets per frame for the first
+  character, and eight start frames for five of the holds for each
+  character. In 240 runs of random input with the second character
+  leading (99 312 frames, 27 735 of them in the states of the table and
+  the landing, 83 pickups), every pickup was on a frame the table gives
+  and none on another. The first
+  character's landing rows, including the longer rows after 8 to 15
+  frames of Jump, were not checked in ordinary play; they rest on the
+  grids above.
 - By inputs only: 2 000 runs of random input (walking, running,
   crouching, rolling, jumping, the ground action, standing) with an item
   near the first level's start: `extra-life-3` 60 px above the floor and
@@ -835,12 +885,16 @@ and is not drawn from frame 321 on.
   knocked out"), which of an item and the player is drawn in front, items
   in the other areas, the second character, and the image that flies to
   the lives display.
-- The second character's landings and the frames after them, the
-  second character riding the animal (`riding.md`), and the pictures,
-  the lives and the lives display with the second character.
-- Taking an item while landing (the frames from `L`, the frame carrying
-  `land`, to `L` + 6), turning and the frame after a turn, falling
-  without a jump, the stop after a roll, being hit, bouncing, carrying.
+- The second character riding the animal (`riding.md`), and the
+  pictures, the lives and the lives display with the second character.
+- Landing other than after a jump in place facing right on flat floor
+  ("Landing"): jumps while moving, facing left, landings on a lower
+  floor or a slope, landings onto the ground action or a roll, the
+  second character's other jump lengths than 1, 4, 10, 20 and 30
+  frames, and why the first character's jumping row lasts longer after
+  holds of 8 to 15 frames. Also turning and the frame after a turn,
+  falling without a jump, the stop after a roll, being hit, bouncing,
+  carrying.
 - The count reaching 100 more than once in one lives display, and rising
   items with the count reaching 100. With the four-letter ending ("The
   four-letter ending"): a letter other than letter 1 taken last, late
