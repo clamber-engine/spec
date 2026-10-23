@@ -20,7 +20,8 @@ player's `vy` used for that frame's move is greater than 0. "Right",
 format.
 
 Measured on the first level's crate with the first character alone, by
-inputs only except where said:
+inputs only except where said (the second character is in "The second
+character"):
 
 - Ranges: the player was put at every whole-pixel offset around the
   crate, and around the animal, one pixel apart, in the air, facing
@@ -186,6 +187,76 @@ Call the frame the player mounts **M**.
   M + 23). Riding is in `riding.md`. After a mount while the animal hops,
   the frames M + 23 to M + 39 were the same as after a mount on the
   standing animal with the same inputs.
+
+## The second character
+
+When the second character is under control, the crate and the animal
+work as above, with two differences: the range for breaking the crate,
+and the bounce speed. Everything else (the frame of breaking, the
+bounce frames, the animal coming out on B + 18 and its hop, the mount
+ranges and what follows the mount) is the same as for the first
+character.
+
+**Breaking the crate.** Conditions 1 and 2 are those of "Breaking the
+crate". Condition 3 uses these ranges (`I` and `D` at the end of the
+frame, after the move, as in "Breaking the crate"):
+
+| Facing | `I` |
+|---|---|
+| right | −38 to 26 |
+| left | −28 to 36 |
+
+and `D` within **5 to 43** (the first character's is 5 to 36). The
+left range is the right one turned around and moved 2 px to the left,
+as for the first character.
+
+What was seen, with a setup method used to bring the second character
+to each situation: the second character falling onto the crate at every
+whole-pixel offset around it, facing each way, up to 70 px above it.
+The ranges above were the same when it fell at 0.125, 3 and 8 px per
+frame, and when it was in the jump, walking or standing pose. The last
+two poses were seen only with the setup method; whether they occur in
+ordinary play was not checked. A second character rising in a jump never
+broke the crate, and neither did one rolling in the air. The `D` range
+was seen up to 70 px above the crate, so its high end is not cut by the
+area covered.
+
+**The bounce.** On B the second character bounces as in `bounce.md`,
+with `vy` set to **−8.5** instead of −7.125, as off a walker
+(`walker-contact.md`, "The second character"); the two frozen frames
+and the gravity from B + 3 follow it.
+
+**The animal.** It comes out on B + 18 and hops as in "The animal
+comes out". The second character mounts it on the same ranges as the
+first, facing right `I` −27 to 19, facing left −26 to 20, `D` 5 to
+45 + `k`, in a jump or after a bounce off the crate (seen at every
+offset, facing both ways, with a setup method; the animal standing).
+M, and the frames from M on, are as in "Mounting the animal".
+
+**The character not under control.** In the random runs below, no
+character that was not under control was seen to break the crate or
+mount the animal, except as the second item below says.
+
+Random runs of walking, running, jumping, rolling and crouching around
+the crate, starting on either side of it, 160 in all:
+
+- Second character under control: 80 runs, 15 579 frames, 42 breaks and
+  40 mounts. In 79 of the runs (14 987 frames, 41 breaks, 39 mounts)
+  every break and mount was on the frame these rules give. The 80th run
+  is the exception: the crate broke while both characters were more than
+  200 px from it, and what broke it was not examined; that run's break
+  and its mount are in the totals but not in the 79.
+- First character under control, second following: 80 runs, 27 474
+  frames, 79 breaks and 72 mounts. All but 5 of the breaks were on the
+  frames the first character's rules give. The 5 were by the second
+  character, each after the first had been lost
+  (`losing-a-character.md`) and the second was alone and under control.
+  Whether those 5 were on the frames the second character's rules give
+  was not checked.
+
+Riding with the second character, the second character mounting while
+the animal hops, and its pictures when it breaks the crate or mounts,
+are not covered.
 
 ## Pictures
 
@@ -444,8 +515,12 @@ begins on the 23rd frame after the mount, with `y` = 400.
 - A crate not standing on the floor, and an animal coming out above the
   floor. Mounting while the animal hops was measured falling after a
   bounce only, not in a jump.
-- The second character: whether a following character breaks the crate
-  or mounts the animal.
+- The second character's pictures when it breaks the crate or mounts,
+  and its mounting while the animal hops.
+- The second character's breaks of the crate when it is alone after the
+  first was lost: the frames were not checked against its ranges. The
+  one random run in which something else broke the crate far from both
+  characters.
 - Breaking the crate while bouncing off an enemy, carrying an object,
   being hit, swapping, or during the Down + Action ground action; and
   objects thrown at the crate or the animal.
