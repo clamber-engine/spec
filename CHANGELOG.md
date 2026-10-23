@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.318.0
+
+The second character's rider pictures, and a held direction during a
+throw for both characters (spec#19, spec#72).
+
+Part of clamber-engine/spec#19 and clamber-engine/spec#72, which stay
+open for the parts not covered yet.
+
+- `behavior/riding.md`, new section "Pictures with the second
+  character": the animal is drawn as for the first character; the rider
+  has its own 14 pictures, its own standing loop (166 frames), moving
+  cycle, jump and charge timings and heights. One unexplained animal
+  picture on a charge frame, the first frames after the mount, a charge
+  pressed in a jump, slopes and walls are in "Not covered".
+- `behavior/carrying.md`, "The second character": a direction held from
+  the release frame, forward or back, changes none of the Jump/Action
+  press frames of the throw table for either character, nor the frame
+  the throw ends; it changes only what the free player does afterwards.
+  Throws in the air and random play are still in "Not covered".
+
 ## spec-v0.317.0
 
 Signs with two characters, and the second character's Jump and Action
