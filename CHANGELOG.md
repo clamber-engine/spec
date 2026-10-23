@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.303.0
+
+The second character's throw, pick-up and put-down (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/carrying.md`, "The object, second character": the object
+  leaves the hands on Q + 18, 9 px above the player's `y` (rounded
+  toward the floor in the air), with the first character's release
+  speeds and flight rules; a frame-by-frame table of where the object
+  is in the hands during a pick-up, a throw and a put-down on the
+  ground.
+- `behavior/thrown-objects.md`: "Not covered" now points to the
+  second character's release and lists what is still unmeasured.
+- "Not covered" lists one put-down whose first frame differed, and
+  slopes, the air and other starting positions in the hands.
+
 ## spec-v0.302.0
 
 The second character under control meeting thrower balls (spec#19).
