@@ -552,11 +552,31 @@ last frame, and it fades in with the same brightness steps as the map
 ("Up to the map"). Then the picture stays: nothing changed for 2 500
 frames with nothing pressed.
 
+The picture is the game-over picture of `../formats/level-map.md`
+("The game-over picture"): 256 × 224 px, the whole screen, placed as the
+map's picture is ("The map's picture"), its pixel column `c` and row `r`
+at screen column `c` and row `r`. The two characters and the caption are
+in it. Nothing else is drawn: no sprite, no other layer. Song 15 plays
+while it shows (`music.md`).
+
 A new press (of `T`, Jump or Pause; Action was not tried) on frame 1
-or later starts a fade-out as in "Entering the level again"
+or later starts a fade-out; call the frame of the press `P`. From frame
+30 on the picture is at full brightness, and for a press on frame 30 or
+later the fade-out is the one of "Entering the level again"
 (brightness 15 − `j` on frames `P` + 2`j` and `P` + 2`j` + 1, black
-from `P` + 30). A press on frame 0 does nothing. What follows the
-fade-out is not covered.
+from `P` + 30). A press during the fade-in starts the fade-out at the
+brightness the fade-in had reached. For a press on frame 8, 16, 24 or
+28 the picture is black from frame 2`P`; for a press on frame 1 it is
+black on frame 3. A press on frame 0 does nothing.
+
+Let `B` be the first frame on which the picture is black after the
+press, as just given. After the fade-out the game leaves the map's
+screens: the screen stays black until `B` + 65, and from `B` + 66
+another screen fades in, taking 3 frames for each brightness step and at
+full brightness from `B` + 110. The sound changes while the screen is
+black (`music.md`): song 15 is cut on `B` + 1 or `B` + 2, and another
+song starts on `B` + 59 or `B` + 60. What the other screen shows and
+does, and which song it is, is not covered.
 
 These no-tries-left rules were not checked where the last try was lost
 in ordinary play; see "Measurements" and "Not covered".
@@ -599,6 +619,13 @@ pressed on frame 80.
   1, 2, 8, 16, 24, 28, 30, 31, 40, 63, 64, 65 and 100 each started the
   fade-out (one run each); one run each with Jump and with Pause pressed
   on frame 305.
+- After the fade-out: a press on each of frames 8, 16, 24, 28, 30, 31,
+  63 and 100 (one run each), with the pictures taken to the other
+  screen's full brightness: `B` as above in every run, the other
+  screen's first picture 66 frames after `B` and full brightness 110
+  after it. A press on frame 1 (one run): black on frame 3, the other
+  screen's first picture on frame 69. The song's cut and start were
+  also timed with presses on frames 1, 40 and 100 (one run each).
 
 ## The other character
 
@@ -1136,7 +1163,8 @@ lead stayed at the link point), as "Pressing at a stop" says.
   where the last try was lost in ordinary play; levels other than the first, a
   knock-out of the second character or with both there, a knock-out that
   loses the last try with a second character, what follows the game-over
-  picture's fade-out, whether a first finish after such a knock-out
+  picture's fade-out beyond its first frames, presses on the other
+  frames below 30 (2 to 7, 9 to 15, 17 to 23, 25 to 27 and 29), whether a first finish after such a knock-out
   still has its still frames, and the time from an entering press to the
   level's first frame.
 - Opposite directions held together.

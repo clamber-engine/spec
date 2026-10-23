@@ -23,6 +23,7 @@ is fully black (brightness 0, scale of `level-end.md`).
 | The level map | 12 |
 | The tune after finishing the first level | 26 |
 | The tune when the lead alone is knocked out | 17 |
+| The game-over picture | 15 |
 | A screen before a game starts | 9 (`../formats/sound.md`, measurements) |
 
 Coming back to the first level from the scene, the room or a wall area
@@ -43,6 +44,7 @@ song:
 |---|---|
 | 0 | 70 |
 | 12 | 47 (after finishing a level that was finished before) |
+| 15 | 36 |
 | 16 | 48 |
 | 17 | 30 |
 | 23 | 31 |
@@ -103,6 +105,19 @@ the fade of the level's end (`level-end.md`).
   again only when the level is entered again, by the rule above for
   entering a level.
 
+- **Knocked out as the lead alone with no tries left.** The level's
+  song and song 17 go as in the previous rule, up to the level's last
+  frame. Then song 17 is cut on the 37th frame before the game-over
+  picture's frame 0 (`level-map.md`, "With no tries left"), and song 15
+  starts 36 frames after the cut, on the frame before frame 0. Song 15
+  goes on for as long as the picture stays (700 frames were followed;
+  whether it repeats is not covered). A press starts the fade-out; with `B` the frame on
+  which the picture is black (`level-map.md`), song 15 is cut on
+  `B` + 1 or `B` + 2 and another song starts 58 frames after the cut.
+  Measured in three runs (the cut and start of song 15, and, with a
+  press on frame 1, 40 and 100 in one run each, its cut and the start of
+  the other song). Which song that is, is not covered.
+
 ## The still frames on the map
 
 After a first finish the map stands still on its frames 163 to 212
@@ -132,6 +147,10 @@ method was used to reach the situations where noted.
 - Knocked out as the lead alone: five runs (the last three followed to
   the map's song: cut on `H` + 9, `H` + 9 and `H` + 10, start on `H` + 39
   in all three), all from one place in the first level.
+- Knocked out as the lead alone with no tries left (a setup method was
+  used to reach the situation): three runs in the first level, followed through
+  the game-over picture, with a press in three of them (frames 1, 40
+  and 100, one run each).
 
 ## Not covered
 
@@ -140,7 +159,7 @@ method was used to reach the situations where noted.
 - Songs on the level map for other maps, and screens reached from the
   map other than levels.
 - Songs after a knock-out of the lead with a second character, of the
-  second character, or of the last character; a knock-out when no tries
-  are left; a knock-out after a restart point was reached.
+  second character, or of the last character; a knock-out after a
+  restart point was reached.
 - The finishing tune with two characters at the end.
 - The sound effects.

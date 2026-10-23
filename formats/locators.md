@@ -95,6 +95,9 @@ SHA-256 of the image:
 | Level map: the page picture tile-set table | `level-map.md` | `c0` | `e13c` |
 | Level map: the page picture palette-set table | `level-map.md` | `c0` | `e1a4` |
 | Level map: the first page's palette set | `level-map.md` | `f9` | `be03` |
+| Level map: the game-over picture's tile map | `level-map.md` | `f8` | `7728` |
+| Level map: the game-over picture's tile set | `level-map.md` | `c4` | `68aa` |
+| Level map: the game-over picture's palette set | `level-map.md` | `f9` | `b7e3` |
 
 ### Kind fingerprints: placement references
 

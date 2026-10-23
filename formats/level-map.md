@@ -239,6 +239,19 @@ Synthetic: `../vectors/level-map/page-tables.hex` and
 byte isn't used. A palette-table entry `00 90` for the page, with the
 first page's palette set in bank `f9`, gives bank `f9`, address `9000`.
 
+## The game-over picture
+
+The picture that appears when no tries are left (`../behavior/level-map.md`,
+"With no tries left") is a page picture ("The pages' pictures"): a tile
+map of 32 columns and 28 rows, a tile set of 896 four-plane tiles and a
+palette set of 8 rows, with the rules given there. Its tile map uses tile
+numbers up to 543, and none has the raised bit set. The two characters
+and the caption are all in this one picture: no sprite is drawn over it,
+and it has no other layer.
+
+Its tile map, tile set and palette set are located in `locators.md` and
+are read as for a page picture.
+
 ## Measurements
 
 - The routes, positions and neighbours were checked on every pair of a
@@ -270,6 +283,12 @@ first page's palette set in bank `f9`, gives bank `f9`, address `9000`.
   background layer alone was compared with the page picture rebuilt by
   the rules above from the three tables' entries for that page: 13 pages
   of 57 344 px each, 0 differing pixels.
+- Game-over picture: with the last try lost (a setup method was used
+  to reach the situation) and the game-over picture shown at full brightness, the
+  background layer alone was compared with the picture rebuilt from the
+  three locations in `locators.md`: 57 344 px, 0 differing pixels. The
+  sprite layer alone, and the second background layer alone, were
+  entirely black on that frame.
 - Appearance points: measured at three stops (the map at the start, and
   after leaving two levels and one place that isn't a level): `x` 8 px
   to the right of the stop's position, same `h`, fractions 0.
