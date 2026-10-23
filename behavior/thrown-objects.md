@@ -1385,6 +1385,10 @@ this file doesn't say what decides the mirroring there.
   character), and what decides the flash's mirroring after the breakings
   that did not follow a flight; and what the second character's thrown
   objects look like.
-- Objects thrown by the second character.
+- Objects thrown by the second character, beyond `carrying.md`, "The
+  object, second character": it releases the object on Q + 18, 9 px
+  above its `y`, and the air rules and the first bounce above held in
+  the runs there; rolling, breaking, walkers, the thrower, balls and
+  pictures weren't measured with it.
 - Removal above or below the picture (only horizontal positions were
   measured).

@@ -383,6 +383,83 @@ the ground outside a landing's frames, all took off on P + 2. Facing
 never changed during a throw or a put-down, also with the other
 direction held.
 
+### The object, second character
+
+- **Leaving the hands: Q + 18.** On that frame the object's `x` is the
+  player's `x` with the fraction dropped, its `y` is **9 px** above the
+  player's `y` rounded up to a whole pixel (the rounding toward the
+  floor that the first character's 54 px also uses; `y` grows downward):
+  on the ground that is 9 px above `y`, and in the air a player at `y`
+  100.25 releases the object at `y` 92 (101 - 9), 8.75 px above the
+  exact `y`, while at `y` 100 it is 91. Its `vx` is 16 (4096/256) in the facing direction and its `vy` is +1
+  (moving down), and it hasn't moved yet. It is thrown in the direction
+  the player faces on Q. Nothing else changes these: not the player's
+  speed, Up, Left or Right pressed on Q, or whether the player is in the
+  air.
+- **Flight.** From Q + 19 the object moves by the first character's
+  rules ("The object" above: the speed rule toward 3.5 in the throw
+  direction, `vy` + 0.4375 up to 8, then the move), and the worked
+  example "A thrown object" applies with Q + 18 in place of Q + 21. It
+  starts only 9 px above the player's `y`, so on flat floor it touches
+  the floor within a few frames; touching, bouncing and rolling are in
+  `thrown-objects.md`.
+
+**In the hands.** On the ground, with the player's `y` the same as on
+the two frames before (so not on a slope, in a take-off or a landing),
+ahead and up are as defined in "The object in the hands" (at the end of
+the frame; a negative up is below the player's `y`). At the start of a
+pick-up the object lay from 7 px behind to 13 px in front of the player
+and 0 or 3 px above its `y`; the table starts one frame later:
+
+| Frame | Pick-up (G + n) ahead, up | Throw (Q + n) ahead, up | Put-down (Q + n) ahead, up |
+|---|---|---|---|
+| n = 0 | where it lies (above) | 8, 11 | 12, 8 |
+| 1 | 12, −8 | 4, 13 | 12, 8 |
+| 2 | 16, −7 | 4, 13 | 14, 3 |
+| 3 | 16, −7 | −7, 11 | 14, 3 |
+| 4 | 16, −1 | −7, 11 | 16, −1 |
+| 5 | 16, −1 | −7, 11 | 16, −1 |
+| 6 | 14, 3 | −16, 9 | 16, −7 |
+| 7 | 14, 3 | −16, 9 | 16, −7 |
+| 8 | 12, 8 | −16, 9 | 12, 3 |
+| 9 | 12, 8 | −16, 9 | 12, 3 |
+| 10 | carried | −16, 9 | on the floor there |
+| 11 to 13 | | −15, 9 | |
+| 14, 15 | | −12, 9 | |
+| 16 to 18 | | 0, 9 | |
+
+(On Q + 18 the object is released at 0, 9.) On the ground rows where
+the player's `y` did change, `ahead` was the same and `up` was the
+same or 1 px more, never less. So the object goes up in
+front of the player and over its head in a pick-up and comes back in a
+throw, as for the first character, but much lower: it is never more
+than 13 px above the player's `y`, and below it for part of the
+pick-up and put-down. In a put-down the object is 12 px in front of the
+player and 3 px above the floor on Q + 9 and rests there from Q + 10.
+
+Throws, pick-ups and put-downs of "The object, second character" were
+measured in `title-1` with the second character leading, by inputs
+alone, from a start prepared with a setup method (an object ahead on the
+opening floor): 300 runs of a pick-up, random carrying (standing,
+walking either way, jumps) and a throw or a put-down with Up, Left,
+Right or Down held on Q or nothing. In 245 throws the object left the
+hands on Q + 18 every time, at the player's `x` with the fraction
+dropped and 9 px above the player's `y` on the ground (178 throws); in the
+air (67) it was 9 px above the player's `y` rounded up to a whole
+pixel (for example `y` 100.25 gave 92), thrown in the
+facing direction on Q every time. Over the flights, `vx` followed the
+speed rule toward 3.5 on all 5 674 frames; 831 frames before the first
+touch matched the air rules in position and both speeds, and at all 188
+first touches that were bounces `vy` became minus half the fall speed,
+rounded down. The positions in the hands held in all rows on the ground with the
+player's height unchanged for three frames, except the first frame of
+one put-down (object 12 px behind the player): 300 pick-ups, 108 to 178
+throws for each of Q to Q + 18 and 44 to 46 put-downs for each frame;
+the other ground rows (172 of the throw rows) had the same `ahead` and
+an `up` of 1 px more in some.
+The same runs with the first character leading (74 throws) gave
+Q + 21 and 54 px every time and the first character's table above.
+
 ## Not covered
 
 - Reach for other objects that can be carried, for an object that is
@@ -416,6 +493,10 @@ direction held.
 - Putting down on slopes or near walls (on a slope the object was seen to
   end up elsewhere than the rule above), and putting down in the air.
 - Jump or Action on Q + 13 of a put-down.
+- With the second character, the first frame of a put-down: in one
+  put-down the object was 12 px behind the player on that frame instead
+  of the table's value. What set that put-down apart wasn't found, so
+  the table has this one exception.
 - Facing during a throw in the air, and throwing or putting down during
   a turn.
 - Pressing Action within reach while moving (only standing presses and
@@ -424,8 +505,8 @@ direction held.
   put-down (the vocabulary has no names for them yet).
 - With the second character under control: reach, letting go of Action
   during the pick-up, Jump and Action during a throw, picking a put-down
-  object up again, when the object leaves the hands and how it moves
-  after a throw, where it is put down, where it is while carried, and
-  everything above that was measured only with the first character
-  (throws in the air, slopes, walls, platforms).
+  object up again, where the object is while carried and in the hands
+  on slopes and in the air, a pick-up of an object lying elsewhere than
+  where a put-down leaves it, and everything above that was measured
+  only with the first character (slopes, walls, platforms).
 - The other character.
