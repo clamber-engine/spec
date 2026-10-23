@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.282.0
+
+The level map's characters' first pictures when the map appears
+(spec#59, spec#38).
+
+Part of clamber-engine/spec#59 and clamber-engine/spec#38, which stay
+open for the parts not covered yet.
+
+- `behavior/level-map.md`, "Pictures": new "When the map appears", with
+  31 new picture hashes. The characters show from frame 2. After a level
+  finished before, and when the map appears again after a new game's
+  first press, the ordinary cycle starts on frame 1. After a first finish
+  a separate set of 11 pictures per character plays on frames 1 to 161,
+  then the ordinary cycle goes on with the still frames left out of the
+  count. At a new game the lead shows nine pictures of its own. Each set
+  has a fallback; there is a worked example. Not covered: the other
+  character's finish pictures before frame 158.
+
 ## spec-v0.281.0
 
 The level map's other character on legs with an unchanged x (spec#65).
