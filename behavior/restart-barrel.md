@@ -536,6 +536,135 @@ right at 2 px per frame on a floor at level y 409 (`D` = −9). Frames
 end with `x` = 973.5 (`I` = −27), 975.5 (`I` = −25), 977.5 (`I` = −23):
 the barrel is touched on the third, the upright range starting at −24.
 
+## Pictures
+
+What the barrel, its burst and the player look like in `title-1`. Each
+picture has a label used in this file and is named by its picture hash
+(`../formats/sprites.md`, "Picture hashes"); it is drawn at the
+object's position as `../formats/sprites.md` says ("Where the picture is
+drawn"). The picture given for a frame is the one on screen with that
+frame's view. Measured with the first character.
+
+| Picture | Hash |
+|---|---|
+| `barrel-1` | `562e07d3e5eb26cd3fc9223e22190faf009870fd8e2cf0bd90ffa0bf79a789ca` |
+| `barrel-2` | `309f680c2c481950e3dbd36f9e17da192aa9782641dff8433015cbaadc7e1b06` |
+| `barrel-3` | `442a5452fce74126fd3f1005208d55408d56964d9ef904e2694bfcd1a052f3da` |
+| `barrel-4` | `8c87a6022438563fd58fa298b1fad5b8b70a08c38e71bf7ea2a851fce355415d` |
+| `barrel-5` | `c0dd7ecbfa7b37f5b26c64679e9a5edaed72437d8c3693413f8f0d7d631c314c` |
+| `barrel-6` | `0cea18fcf7d5ee110c7ea68ffa46dd90f3e5fc82a51c204eb4edc14980006d57` |
+| `barrel-7` | `e786986fb2d112f1608d5aaeefb989ddf358630114c89e2e05e4f679ed18d465` |
+| `barrel-8` | `2b572c77efb704e87c769015de1d4f4305b13f712a5ebd26d4e9d3970d440c30` |
+| `sparkle-3` | `7776428202573c17811467a0c4f422b576b00c8918e0cbac5f130c3cc8175a50` |
+| `sparkle-4` | `f07b75e93852d7444d095ddb831c34def31f52069e674664fbc494e23c1b4383` |
+| `sparkle-5` | `114d3728fb1de82f6b7fa1d4959cf4f32deae355e325839f197e230e153dbf2a` |
+| `sparkle-6` | `5c960746e43782515b9b2d94abd499e7365ab10f95305f0f5109b31823e2a6f0` |
+| `sparkle-7` | `bbdaffcfbd4be1922f1945a36fd8634cd32a93800429c36693d69c878cca7b96` |
+| `sparkle-8` | `906a05bc5b6b7ba817905b62010c28560bd10e97ca9b096817fed96a57deb071` |
+| `sparkle-9` | `642748ee41edc5e4f8bc5ecd6e3176c6afb26f227fb8e894a409a3c64bd45369` |
+| `sparkle-10` | `e5681aa759c2cd7835443834292b841c526264e96d83886ad95904255e4e3e9e` |
+| `sparkle-11` | `f17a682f5c784b6ba87ac43ac3194209fe21b6e0595d4a2a45185603912cc425` |
+| `sparkle-12` | `5c1ee43fce6eaf21600b6e686ebcd3abb12886a233791dbfb3b879725d71464e` |
+| `sparkle-13` | `7c20d31f4b9bdbc6c8345e88ae42a6a057af5d1e1c230937f1d487d5badf2e14` |
+| `sparkle-14` | `1bd25301bb04aaff29f3ddbd6432559453021882edeb347151460d544fb48678` |
+
+The flash and the pieces are those of `thrown-objects.md` ("Pictures"):
+`flash-1` to `flash-8` and `piece-a-1` to `piece-a-8`, `piece-b-1` to
+`piece-b-8`. Of the sparkle's 15 pictures, `sparkle-1`, `sparkle-2` and
+`sparkle-15` are the first two and the last; they have too few opaque
+pixels to be named, so only `sparkle-3` to `sparkle-14` are in the table.
+
+**When a hash isn't found.** The importer looks for every hash in this
+section. The eight `barrel` pictures belong together, and so do
+the twelve `sparkle` pictures. If any hash of a group isn't found, the
+engine shows its own art for the group, keeping the timing given here.
+The sparkle's three unnamed pictures are always the engine's own, drawn
+at the places given below.
+
+### The barrel
+
+- **Standing in the level, not touched:** the eight pictures in turn,
+  `barrel-1` to `barrel-8`, 2 frames each, round and
+  round. It is never mirrored. The cycle ran on while the barrel was far
+  from the player and was in the same step in runs that began at different
+  places; which frame it is tied to is not covered.
+- **Touched in the level:** on the frame it is touched ("Breaking") it is
+  no longer drawn. The flash and the pieces are drawn from that frame:
+  `flash-1` × 2, `flash-2` × 2, `flash-3` × 3, `flash-4` × 2, `flash-5` × 3,
+  `flash-6` × 2, `flash-7` × 3, `flash-8` × 2, then gone; the pieces as in
+  `thrown-objects.md` ("Breaking"), counting `j` from 0 on that frame. The
+  flash is not mirrored.
+- **On a resume:** from frame 1 to 61 the barrel is `barrel-1` on
+  every frame, shaking or not (the shake only moves it, "Resuming"); the
+  pictures of the cycle above are not shown. On frame 62 it is no longer
+  drawn, and the flash (`flash-1` on frame 62) and the pieces are drawn as
+  above, not mirrored, with the same timing.
+
+Measured by the pictures on screen: in 7 runs, 1 979 frames of the
+standing barrel in the level showed the picture that the cycle above gives
+for that frame's step, and no frame showed another one (24 more frames
+were not counted because the barrel was not wholly on the screen). On a
+resume, in 11 runs the barrel was `barrel-1` on each of frames 4
+to 61 (frames 1 to 3 are black). The flash and the pieces showed the
+pictures above on every frame on which they were recognisable.
+
+### The sparkles
+
+After the barrel is touched in the level, **sparkles** appear near the
+place where it was; none appear on a resume (none in 896 frames of two
+resumes). A sparkle shows `sparkle-1` to `sparkle-15` in turn, 2 frames
+each (30 frames in all), then is gone, never mirrored. It is drawn at the
+barrel's position plus an offset, from 3 px left to 11 px right and from
+7 to 20 px above it; each sparkle keeps its offset. The offsets seen, as
+(px right, px above): (+7, 13), (+11, 9), (+11, 12), (−3, 7), (+6, 20),
+(−2, 10) and (−1, 13).
+
+Counting `n` from 0 on the frame the barrel is touched, a sparkle starts
+on one of the frames 4, 20, 36, 44, 52, 60 and 68 and on no others
+(12 runs of 500 to 900 frames). Which of them start a sparkle, and which
+offset each one has, differed between runs: the one at n = 20 started in
+every run and always had the offset (+7, 13), and each run had 4 to 6
+sparkles in all. What decides that is not covered. In 3 runs with the
+player standing near, 193 frames of sparkles showed the picture this
+list gives, and none showed another one; on 167 more no sparkle picture
+could be recognised (partly outside the screen, or covered), and they
+were not counted.
+
+### The player
+
+On frame 0 the picture is black ("Resuming") and the player is not drawn
+from frame 1 to frame 62. From frame 63 the player shows the pictures of
+its action, as if that action had begun before frame 63:
+
+- **No input.** The list of `player-frames.md` ("Standing still", first
+  character) with its index counted from 0 for `stand-1` on the first
+  frame S: the picture on frame `f` is the one at index `f` + 143, as if S
+  were frame −143. So `wait-2` is shown on frames 63 to 65 (the list's position on 58 to
+  61 would be `wait-1`; nothing is drawn then), `wait-3` on 66 to 69, and so on through the
+  wait, the later `stand-1` and the sway, to the second wait. This is the
+  case while the player is still in the air on frames 63 to 70, and after
+  the landing. It held on every frame measured (1 573 frames in 2
+  runs, one after a knock-out and one after a fall-out, up to frame
+  about 890, none differing).
+- **Right held from frame 63, nothing else:** `walk-1` on 63 to 65,
+  `walk-2` on 66 to 68, `walk-3` on 69 and 70, `walk-4` on 71 to 73,
+  and on as in "Walking, running and turning" for walking begun on frame 63
+  (observed up to frame 86, "Measured" below).
+- **Left held from frame 63** (the player faces right on frame 63): a turn
+  begun on frame 63: `turn-a` on 63 and 64, `turn-b` on 65 to 68, `turn-a` on
+  69 and 70, `walk-1` from 71 ("Walking, running and turning").
+- **Right held from frame 1 too:** `walk-2` on 63 and 64, `walk-3` on 65
+  to 67, `walk-4` on 68 and 69; the walking steps count from frame 1.
+
+Measured by the pictures on screen: each of the three cases with input in
+1 run of a resume, on frames 63 to 86 (24 frames each, 72 in all); on every
+frame the picture was the one listed, none differing. The Right runs
+left the floor on frame 87, so later frames were not compared. The cases
+with input were not observed after both ways of resuming.
+
+The pictures with no input are the same after a knock-out and after a
+fall-out.
+
 ## Not covered
 
 - Other levels, and how to tell where a level's restart point is, or
@@ -570,9 +699,10 @@ the barrel is touched on the third, the upright range starting at −24.
   places came into the window on frames 76 to 81, with the player walking
   left from frame 63 (the ball also with the player running), both
   appeared on frame 82, not on the frame their place came in.
-- The fade-in, the sounds, how the
-  pieces and the flash are drawn, where they start, when they are
-  removed, and whether they touch anything.
-- On which frame the picture first shows the broken barrel after it is
-  touched.
+- The fade-in, the sounds, where the pieces and the flash start, when
+  they are removed, and whether they touch anything.
+- The pictures with the second character there, other levels, which frame
+  the standing barrel's cycle is tied to, which frames start a sparkle,
+  and the player's pictures on a resume with other input than the cases in
+  "The player".
 - How play begins at the level's start.
