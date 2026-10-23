@@ -23,7 +23,8 @@ as in `ground-action-enemies.md`. **B** is a bounce frame as in
 `bounce.md`.
 
 Measured on the first level with the first character alone, by inputs
-except where said:
+except where said. The second character leading was measured separately
+("The second character").
 
 - **Being struck by the ground action.** The player was put at every
   whole-pixel offset around a hidden object, one pixel apart, at the end
@@ -154,6 +155,36 @@ B is a bounce frame: the player bounces as in `bounce.md`, from B. It
 moves on B as on any other airborne frame, then `vy` becomes −7.125. It
 doesn't move on B + 1 and B + 2. From B + 3 the bounce's gravity rule
 applies.
+
+## The second character
+
+The second character leading (`second-character.md`) has no ground
+action, so it never strikes a `hidden-bunch`. Its roll doesn't strike
+one either, at any offset up to 70 px from it.
+
+It sets off a `hidden-metal-barrel` by a long fall as the first
+character does, with rules 1 to 3 and the bounce unchanged (it bounces
+as in `bounce.md`, with this character's values), but with other ranges
+for rules 4 and 5:
+
+| Player facing | `I` |
+|---|---|
+| right | −38 to 28 |
+| left | −28 to 38 |
+
+`D` is from **−20 to 27.875**. As for the first character, `I`'s range
+doesn't depend on `D`.
+
+These are not the first character's ranges mirrored or shifted by a
+common amount, and the first character's must not be applied to the
+second: `I` spans 67 values instead of 71, and `D` reaches just under
+28 px above the object (the first character: just under 21) and 20 below
+it (27). An importer should use these ranges for a `hidden-barrel` too,
+as a default; it was not measured with this character (see "Not
+covered").
+
+These ranges were found in arranged situations only; that they hold in
+ordinary play was not checked (see "Not covered").
 
 ## The item
 
@@ -310,6 +341,22 @@ with the same mirroring, on the same frames.
   frozen frames and every item frame matched the rules in every fall.
   Airborne rolls were within the ranges on 28 frames and passed through
   the object every time.
+- **The second character, by placement.** With a setup method used to
+  bring the player to each situation. Near a `hidden-bunch`: 25 380
+  placements, every whole-pixel offset from −70 to 70 (141), facing
+  either way, at the end of each of the first 45 frames of a Down +
+  Action press (which rolled), with a direction held (12 690) and
+  without (12 690). None was a strike. For falls, a
+  `hidden-metal-barrel` seen with the second character falling from
+  175 px above it, beside it, then at the offsets and end heights `D`
+  below, `D` in steps of 1/8 px. It bounced for `D` from −20 to 27.875
+  and not at −20.125 or 28. At `D` = −20, 0, 12.5 and 27.5, each facing,
+  the horizontal range was −38 to 28 (right) and −28 to 38 (left) over
+  offsets −46 to 46. Started at rest 160 px above the object it passed
+  through, from 160.5 px it bounced, as for the first character. The
+  same method on the first character gave the ranges above (`D` −27 to
+  20.875, `I` −28 to 42 right and −42 to 28 left). All of this was
+  seen only in these arranged situations; ordinary play was not checked.
 - **Pictures.** The place was looked at on the screen on each frame, with
   the entry moved to a place the player walks up to (as in the falls
   above). Walking past each of the two falling kinds, `patch` was seen
@@ -341,8 +388,13 @@ with the same mirroring, on the same frames.
   what else is drawn at its place.
 - Two hidden objects struck on the same attack frame (one pause or two).
 - The ground action on slopes or at a ledge, and other things that might
-  strike a hidden object (a roll, a thrown object, the other character,
-  an animal).
+  strike a hidden object (a roll of the first character, a thrown
+  object, an animal). The second character's roll doesn't strike a
+  `hidden-bunch`, and it has no ground action (see "The second
+  character").
+- The second character as the follower, in a roll in the air over a
+  falling kind, or falling onto a `hidden-barrel` (the ranges above are
+  a default there), and any of its ranges in ordinary play.
 - A player rising, or bouncing again before landing, when it meets a
   falling kind. Coming down onto one while riding an animal.
 - Items whose arc meets a wall, a slope, a step or a pit. Only flat
