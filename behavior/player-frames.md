@@ -1632,6 +1632,13 @@ action: `act-1` on E + 1. With direction −1 or +1 the character is moving
 at full speed on E, and E shows `walk-1` when it moves the way it faces
 and `turn-a` when it moves against its facing.
 
+At the end of a platform and on a 1-in-4 slope (up or down, and where it
+meets flat floor) the list is the same: the pictures don't depend on the
+floor under the character. When the action carries the character past the
+end of a platform it stays in the action in the air (`ground-action.md`) and the
+list goes on unchanged, `act-n` on the same frames, whether the floor is
+under it or not.
+
 Example: standing, Down and Action pressed on frame 20 and nothing held
 from frame 21. `act-1` on 20, `act-2` on 21 and 22, `act-3` on 23 and
 24, …, `act-30` on 77 and 78; 79 = E shows `stand-1`.
@@ -2996,6 +3003,39 @@ steep face, picking something up):
   in 3 and `turn-a` in 4 (against the facing); their later frames are
   not covered.
 
+- **The ground action at a ledge and on a slope, first character:** 80
+  runs on the platform with a lower floor beyond its right end and a pit
+  beyond its left, and 80 on the 1-in-4 slope and its flat parts
+  (placed at a random column, 2 to 20 frames of nothing, then 1 to 12
+  frames of a direction or nothing; then random segments of Action with
+  Down, Down before or after it, Action alone, a direction, Down alone,
+  Jump or nothing, each pressed 1 to 3 or 4 to 70 frames, alone or with
+  a direction, up to 700 frames a run; a platform run ended when the
+  character was in the air below the platform). At the platform, 95
+  actions and 5 087 action frames: 62 ran to E, 3 were ended by a Jump
+  press and 30 were cut off by the end of the run while the character
+  was falling. 29 of them were in the air for part of the action, up to
+  21 frames in a row (609 frames). All followed the list, with 0
+  differences between the hash on screen and the listed picture. On the
+  slope, 179 actions and 9 641 action frames, started on the dip's first
+  slope (47), on its flat part between the slopes (24), on its second
+  slope (57), on the flat floor before it (19, 5 of them within 8 px of
+  the foot of the first slope) and on the flat floor after it (32); 143
+  ran to E (41, 15, 46, 15 and 26 of those five places; the character
+  moved during the action in 40 of the 179 and stood still in the
+  rest), 13 were ended by a Jump press, 1 by a knock-out and 22 were
+  cut off by the end of the run; from the 50th frame of a run on, 0
+  differences in 9 589 frames except 1 frame (the press frame of one
+  action, which still showed the picture of the frame before). In the
+  first 49 frames of a run the player was not always on screen or was
+  shown in another picture while the view caught up with the placement
+  (52 of 776 frames); those were left out. Of the 205 actions that ran
+  to E, 203 were followed by a logged frame: 186 had speed 0 on E and
+  showed `stand-1` there; the other 17 moved at full speed on E and
+  showed the walking or turning picture that "After the action" gives, 0
+  differences from the screen. The other 2 ended with the run's log
+  right after their last action frame, so E was not seen.
+
 - **On a rope, first character:** 1 080 runs of up to 400 logic frames on
   the second level's two ropes (starting on a rope, or on the ground near
   one and jumping into it), with random Up, Down, Left, Right, Jump and
@@ -3092,10 +3132,12 @@ steep face, picking something up):
   The one frame in "Evidence" (jumps out of a crouch) that showed a
   picture unrelated to the jump is not explained.
 - The first character's ground action pictures (`act-1` to `act-30`)
-  at a ledge, on a slope, next to a face or a wall, on a landing's
+  on slopes other than 1-in-4, next to a face or a wall, on a landing's
   frames or after a roll, with a knock-out on t = 17, and the pictures
-  after E when the character was moving on E (beyond E). The second
-  character has no ground action.
+  after E when the character was moving on E (beyond E), and the
+  pictures of the fall after the action if it ends past a platform's
+  end, beyond the frames measured. The second character has no ground
+  action.
 - The rope pictures of the second character and of the follower, the
   pictures on a rope with a knock-out, a hurt or a game pause, on ropes
   of other levels and on a rope whose end is low enough to reach the
