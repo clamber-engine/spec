@@ -183,8 +183,8 @@ frames of play.
 - Sound effects: which sounds the first level plays, when, and how they
   are stored.
 - Effects applied to the mixed sound (echo and others).
-- Songs other than the first level's, how the game picks other songs
-  (for example in rooms entered from the first level), and what is in
-  place before the first song of a game.
+- Other levels' songs, and what is in place before the first song of a
+  game. Which songs play in the places the first level leads to is in
+  `../behavior/music.md`.
 - Sample set 27, which no song has.
 - Other titles.

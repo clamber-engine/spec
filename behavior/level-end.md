@@ -650,4 +650,5 @@ last frame came 61 frames after `T`.
 - A lead that is already 240 px or more right of the picture's left
   edge on `T`, other than in the room ("In the first level's room"). In
   the area behind the first wall exit this wasn't seen.
-- The sound during the walk-out and the fade.
+- The sound effects during the walk-out and the fade. The level's song
+  plays unchanged to the last frame (`music.md`).

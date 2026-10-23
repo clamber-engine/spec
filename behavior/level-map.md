@@ -303,7 +303,8 @@ stays 15 from frame 32 on.
 The first time a level is finished, frames 163 to 212 are **still**:
 the picture doesn't change and nothing on the map happens. That is 50
 frames. When the level had been finished before, there are no still
-frames.
+frames. The map's song is silent on all of them but the last, 212, which is the
+frame it is first heard on (`music.md`).
 
 ### The gate
 
@@ -752,7 +753,6 @@ lengths, at the start and at the page change).
   points other than the first level's; the time from an entering press
   to the level's first frame.
 - After finishing a level other than the first: which direction is
-  given, and the timings. What the still frames are for (the picture
-  just stops).
+  given, and the timings.
 - Opposite directions held together.
 - Other titles.
