@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.279.0
+
+Which song plays where (spec#59, spec#38), and riding through the floor
+exit against the raised tiles (spec#60, spec#38).
+
+Part of clamber-engine/spec#59, clamber-engine/spec#60 and
+clamber-engine/spec#38, which stay open for the parts not covered yet.
+
+- `behavior/music.md` (new): which song plays in the first level, the
+  places it leads to, on the level map and for the tunes; every change of
+  song as cut, silence and start, with the silent time per new song; when
+  the cut comes for entering a level, the exits, finishing a level and a
+  knock-out; and how the map's still frames line up with the silence.
+  `behavior/level-map.md`, `behavior/level-end.md` and `formats/sound.md`
+  point to it, with their Not covered entries narrowed.
+- `formats/graphics.md`, "Moving things and raised tiles": the exit rule
+  now also measured for the ridden animal through the floor exit, and
+  the matching Not covered entry removed.
+
 ## spec-v0.278.0
 
 Walkers and objects against the raised tiles (spec#60, spec#38).
