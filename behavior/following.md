@@ -29,8 +29,8 @@ rolling, crouching, jumps held 1 to 20 frames with and without a
 direction, and reversals. On every one of the 49 195 frames checked,
 the follower's whole-pixel position and its way of moving (trail or
 resting, below) match these rules. Runs were checked up to the frame
-the lead is hurt or falls out of the level, or the follower itself
-lands on a walker (see "Not covered").
+the lead is hurt or falls out of the level, or the follower repeats a
+bounce of the lead ("Walkers and the follower").
 
 ## The order within a frame
 
@@ -158,6 +158,38 @@ On the frames when nothing but the count of frames goes on (the two
 frozen frames after a bounce, `bounce.md`, and the pause after a roll
 defeats a walker, `rolling-into-walkers.md`), the follower doesn't move
 and nothing is added to the trail.
+
+## Walkers and the follower
+
+A walker (`walker.md`) has no effect on the follower. It neither hurts it
+nor gives it a bounce, whatever the follower is doing and wherever the
+walker is, and it walks on as if the follower weren't there. Only the
+lead is hurt or bounces (`walker-contact.md`, `knock-out.md`).
+
+When the lead bounces off a walker, the follower goes through the same
+stretch of the trail later, so it rises and falls where the lead did,
+in the pictures of a bounce, although no walker may be near it.
+
+Measured on the first level, with the second character leading and the
+first following. A setup method arranged the situations; what was seen
+on screen is described here. A walker heading left at full speed was
+seen at every whole-pixel offset from the follower, from 45 px to its
+left to 30 px to its right (45 px for the small walker), for 3 or 4
+frames at each: with the follower standing at rest, with the walker level
+with its feet and up to 10 px below them; and with the follower in the
+air on the spot where the lead had jumped while walking away (the lead
+about 50 px away), on each frame from the 51st to the 68th after the
+lead took off, with the small walker on the floor under it and up to
+44 px below its feet, and with the medium and the large walker
+(`walker-contact.md`, "Kinds of walker") on the floor under it on three
+of those frames. The follower's position and way of moving were the same
+as without the walker in every case. The lead, with a walker at the same
+offsets from it, was hurt at the offsets `walker-contact.md` gives; with
+the walker near the follower only, it was not. A small walker that
+walked through the follower at rest on its own didn't change it either,
+and then hurt the lead on reaching it. In the 161 runs by inputs of this
+file's first paragraph the follower was never hurt, and in each of the 23
+runs where it showed a bounce, the lead had shown it earlier.
 
 ## Joining
 
@@ -331,11 +363,11 @@ walking, running, jumps and crouching from frame 63. On 16 666 of the
 (trail or resting) matched these rules. The other 413 frames were in 3
 runs. In each, the first difference was 1 px in x while the follower
 rested on sloped ground (see "Not covered"), and the other differences
-came from it. 21 runs stopped when the follower was hurt by a walker and
-one when it bounced off one. The facing differed on 103 frames: 62 of
-them within 10 frames of one of the follower's take-offs or landings, as
-in "Facing", and 41 on turns, while it rested or walked, that came on
-other frames than "Facing" gives (see "Not covered"). In 30 more runs
+came from it. 21 runs stopped when the lead was hurt by a walker and
+one when the follower repeated the lead's bounce off one. The facing
+differed on 103 frames: 62 of them within 10 frames of one of the
+follower's take-offs or landings, as in "Facing", and 41 on turns, while
+it rested or walked, that came on other frames than "Facing" gives (see "Not covered"). In 30 more runs
 (falling out from 5 places, with each lead, no input, Right from frame 1
 or Right from frame 63), both characters were at the restart point on
 frame 0 of the resume.
@@ -373,9 +405,13 @@ first point (976) and follows the trail from there.
 
 ## Not covered
 
-- The follower landing on or touching enemies (it can bounce off a
-  walker while following, and the rules above then stop holding), and
-  enemies touching it.
+- Enemies other than walkers touching the follower, and thrown objects
+  breaking on it.
+- The follower after it has repeated a bounce of the lead: its position
+  and way of moving were checked only up to that frame (see the opening
+  paragraph and "Walkers and the follower"). In runs that went on past
+  it, most showed differences of a few pixels later, which weren't
+  looked into, so the rules above aren't claimed for those frames.
 - The lead carrying an object, swapping, being hurt, bouncing off an
   enemy (beyond the pause frames), or in any action other than those in
   the runs above (standing, walking, running, rolling, crouching,
