@@ -2,6 +2,30 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.293.0
+
+The upper exit and the room's item when the room is reached again
+(spec#67); the first character's pictures while swimming (spec#38).
+
+Answers clamber-engine/spec#67. Part of clamber-engine/spec#38, which
+stays open for the parts not covered yet.
+
+- `behavior/exits.md`: new section "The upper exit again". Once the room
+  has been entered, the first level has no upper exit for the rest of
+  the visit (also after the scene that followed the room); it is there
+  again when the level begins again (after a lost life, resuming at the
+  level's start or the restart point, and after the level is entered
+  again from the level map). The room's `extra-life-1` item is there on
+  every entry and gives one life each time. Evidence in "Checks";
+  `extra-lives.md` points to it.
+- `behavior/player-frames.md`: new section "Swimming". The first
+  character's 15 swimming pictures, named by picture hash, and the
+  cycle's timing (a counter reloaded by 1024 and a rate of 256 per frame,
+  raised to 752 by each stroke and falling by 16 a frame), with a
+  synthetic example, a fallback for the pictures, and evidence from 200
+  runs in the 8 areas where the player swims. Not covered updated;
+  `swimming.md` points to it.
+
 ## spec-v0.292.0
 
 The second character coming down on walkers (spec#68); the second
