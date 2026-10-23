@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.314.0
+
+The second character against balls: rolls with Down held and swaps
+(spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/ball-contact.md`: a roll the second character starts with
+  Down held (it has no ground action) has the rolling range, facing right
+  and facing left; new section on swaps: the player can't be hurt from
+  the press frame until control returns, and the other character is hurt
+  from the return frame on by its standing range. Measured in arranged
+  situations only, which the text and "Not covered" say.
+
 ## spec-v0.313.0
 
 The second character with throwers, hidden objects and critters
