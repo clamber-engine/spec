@@ -52,6 +52,13 @@ So, in practice:
   starts a roll as usual, `roll-input.md`; if the roll then reaches the
   object with Action still held, the roll ends and the pick-up starts as
   above.)
+- **Pressing Action within reach while moving** is the same: the
+  pick-up starts on the press frame and no roll starts, whatever the
+  player was doing on the frame before (walking, walking at full
+  speed, sliding after the direction was let go, turning, or walking
+  away from the object), and whichever direction is held on the press
+  frame (none, the facing one or the other). A press out of reach
+  while moving starts a roll on the press frame, as when standing.
 - **Landing** within reach with Action held, the pick-up starts on the
   frame after the landing frame. A jump's take-off frame still ends with
   `ground` 1, so a player who takes off within reach with Action held
@@ -108,6 +115,24 @@ rule above, and none started on any other frame. The same check with the
 player's facing taken from f − 1 on every frame, or from f on every
 frame, misses pick-ups; with either X range made 1 px narrower or wider
 on one side, it misses dozens.
+
+Presses while moving, for each character, were measured in `title-1` with a
+`barrel`, from a start prepared with a setup method. Starts: after 3, 12 or
+40 frames of walking, 40 frames of walking and then 2 or 6 frames with no
+direction (sliding), 2 or 6 frames with the other direction (turning), or 4
+or 8 frames of walking away from the object. In each start the object was
+at each X from −40 to 46 (−46 to 40 for the second character) at the
+player's height, and Action was pressed for the first time on the next
+frame with no direction, the facing direction or the other direction held.
+Of the 2 349 runs per character, the 1 242 within reach all started the
+pick-up on the press frame, and in the others a roll started on the press
+frame (some rolls reached the object with Action held and ended in a
+pick-up on a later frame, as above). Reach was taken from the facing and
+positions at the end of the frame before. No run differed from the rule,
+for either character. These runs used one kind of object, in the first
+level, at the player's height; other kinds and heights, and presses while
+moving in ordinary play, and any random-input check of presses while
+moving with the second character, were not measured (see "Not covered").
 
 ### During the pick-up
 
@@ -556,6 +581,8 @@ Q + 21 and 54 px every time and the first character's table above.
   moving (thrown, bouncing or rolling), and with two objects within reach
   at once. The `holder`'s look while it is carried and after it is put
   down, and for a `holder` already there on the level's first frame.
+- Pressing Action within reach while moving for other kinds of object, at
+  other heights, and in ordinary play beyond the random-input runs.
 - Picking up with Down or Up held, while being hit with both characters
   there, and Action held during a throw or a put-down with another
   object within reach.
@@ -589,14 +616,11 @@ Q + 21 and 54 px every time and the first character's table above.
   the table has this one exception.
 - Facing during a throw in the air, and throwing or putting down during
   a turn.
-- Pressing Action within reach while moving (only standing presses and
-  moving with Action already held were measured).
 - How a trace's `state` names frames of a pick-up, carrying, a throw or a
   put-down (the vocabulary has no names for them yet).
 - With the second character under control: the reach for a `holder`
   (it holds the missing character, so none lies on the level while both
-  are there), pressing Action within reach while moving, Down or Up held
-  while the pick-up starts, Jump and Action during a throw in the air
+  are there), Down or Up held while the pick-up starts, Jump and Action during a throw in the air
   (the table above is for a throw from standing on flat floor, with or
   without a direction held; no random-input check), picking a put-down
   object up again, where the object is while carried and in the hands
