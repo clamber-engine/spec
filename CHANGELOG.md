@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.296.0
+
+The music after a knock-out of the lead alone (spec#69).
+
+Answers clamber-engine/spec#69.
+
+- `behavior/music.md`: "Knocked out as the lead alone" now says the
+  frames are video frames from the hit frame with the knock-out pause
+  counted, where the cut and the start fall relative to trace rows, and
+  the one-frame judgement of a cut or start against the table. It also
+  covers what follows the knock-out tune: it plays on while the lead
+  falls and lies still, is cut just after the level's last frame, and
+  the map's song starts on the map that follows; the level's song starts
+  again only on entering the level again. Measurements and Not covered
+  updated.
+
 ## spec-v0.295.0
 
 The restart barrel's pictures, its burst and sparkles, and the player's
