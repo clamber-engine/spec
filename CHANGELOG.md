@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.280.0
+
+The level map's page pictures and the page change (spec#59, spec#38).
+
+Part of clamber-engine/spec#59 and clamber-engine/spec#38, which stay
+open for the parts not covered yet.
+
+- `formats/level-map.md`, "The pages' pictures" (new): each map page's
+  picture as a screen picture with its own tile map, tile set and palette
+  set, found through three per-page tables, with a synthetic example
+  (`vectors/level-map/page-tables.hex`, `page-locations.tsv`).
+  `formats/locators.md` gains rows for the three tables and the first
+  page's palette set.
+- `behavior/level-map.md`, "The map's picture": the lead and the stop
+  name drawn in front of the picture, and what the screen shows at a page
+  change (a black frame, then the new picture fading in), with a worked
+  example. Not covered: the other character against the picture.
+
 ## spec-v0.279.0
 
 Which song plays where (spec#59, spec#38), and riding through the floor
