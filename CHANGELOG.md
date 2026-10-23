@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.319.0
+
+Pressing Action within reach while moving, both characters, and the
+palettes of the second character riding (spec#19, spec#73).
+
+Answers clamber-engine/spec#73. Part of clamber-engine/spec#19, which
+stays open for the parts not covered yet.
+
+- `behavior/carrying.md`, "Picking up": a press of Action within reach while
+  moving (walking, at full speed, sliding, turning or walking away, with
+  any direction held) starts the pick-up on the press frame with no
+  roll, for both characters; out of reach a roll starts as when
+  standing. Other kinds of object, other heights and ordinary play are
+  in "Not covered".
+- `formats/sprites.md`, palettes: while the second character rides,
+  leading, the animal's body keeps the animal's palette and `rider2-1`
+  to `rider2-14` use the second character's leading palette. A few
+  unidentified body pictures, ordinary-play rides, other floors and the
+  first character's colours are in "Not covered".
+
 ## spec-v0.318.0
 
 The second character's rider pictures, and a held direction during a
