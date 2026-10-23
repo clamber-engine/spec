@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.300.0
+
+The second character leading on ropes (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/ropes.md`, "The second character": the rope rules hold as
+  written with the second character leading, except the air-speed
+  targets after a rope (the second character's) and the gravity while
+  Jump is held in a jump off (the first character's). Synthetic example;
+  checked in random-input runs of ordinary play. Not covered narrowed to
+  the follower on ropes.
+
 ## spec-v0.299.0
 
 The second character under control against stingers and on tyres
