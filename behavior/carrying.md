@@ -271,8 +271,16 @@ a put-down, as in "During the pick-up".
   dropped, and 3 px above the floor. From Q + 14 it rests on the floor
   there and doesn't move.
 - **Picking it up again**: an Action press within reach on Q + 14 or later
-  picks it up on the press frame. An Action press on Q + 2 to Q + 13 that
+  picks it up on the press frame. An Action press on Q + 1 to Q + 13 that
   is still held on Q + 14 picks it up on Q + 14.
+- **Jump during the put-down**: a Jump press on Q to Q + 13 does nothing,
+  now or later, whether it is let go at once or held through Q + 14. A
+  Jump press on Q + 14 or later is a jump as in `jump-input.md`
+  (take-off on the next frame).
+- **Action during the put-down** pressed and let go before Q + 14:
+  nothing. Pressed on Q + 1 to Q + 13 and still held on Q + 14: the
+  pick-up above. Action cannot be pressed on Q itself, since it is let
+  go on that frame.
 
 Measured on flat floor only.
 
@@ -383,8 +391,8 @@ are as above, with the second character's values where they differ.
 | Throw: target 0 | Q to Q + 21 | **Q to Q + 18** |
 | Throw: target follows the input | Q + 22 to Q + 42 | **Q + 19 to Q + 39** (±2.25, 576/256, with a direction) |
 | Free again after a throw | Q + 43 | **Q + 40** |
-| Put-down frames, target 0 | Q to Q + 13 | **Q to Q + 9** |
-| Free again after a put-down | Q + 14 | **Q + 10** |
+| Put-down frames, target 0 | Q to Q + 13 | **Q to Q + 10** |
+| Free again after a put-down | Q + 14 | **Q + 11** |
 
 - **Letting go of Action during the pick-up** is as for the first
   character, with the second character's frames: a throw on the frame
@@ -407,7 +415,18 @@ are as above, with the second character's values where they differ.
   other direction is held. After a throw, Q + 40 is a frame of standing,
   of walking (the facing direction held) or the first frame of a turn
   (the other one held), as after walking. After a put-down, Q + 10 is a
-  frame of standing whatever is held.
+  frame of standing whatever is held (the target is still 0 on it); a held
+  direction starts moving or a turn on Q + 11.
+- **Jump and Action during a put-down** follow the first character's
+  rules ("Putting down") three frames earlier: Jump pressed on Q to
+  Q + 10 does nothing, a press on Q + 11 or later is a jump with the
+  second character's own values; Action pressed on Q + 1 to Q + 10 and
+  still held on Q + 11 picks the object up on Q + 11, and a press on
+  Q + 11 or later picks it up on the press frame. One exception was seen
+  in the only setup tried: Jump pressed on Q and held through Q + 11
+  gave a jump on Q + 11 (held for fewer frames, or pressed on Q + 1 and
+  held, nothing). The first character, the same press held for 100
+  frames, did not jump.
 - **Jump and Action during a throw** follow the first character's table
   ("Jump and Action during the throw") three frames earlier, to match the
   throw's length:
@@ -575,6 +594,20 @@ an `up` of 1 px more in some.
 The same runs with the first character leading (74 throws) gave
 Q + 21 and 54 px every time and the first character's table above.
 
+Jump and Action during a put-down were measured in `title-1` with each
+character leading, from a start prepared with a setup method, on flat
+floor: the object picked up and carried, Action let go on Q with Down
+held (and kept held through the whole run), then one press of Jump or of Action, lasting one frame or held, on
+each of Q + 0 (Jump) or Q + 1 (Action) to Q + 17 with no other input
+(70 runs for each character, and 8 more for the second character's
+Jump held from Q for 1 to 20 frames). Every run matched the rules above.
+The frame on which a held direction (the facing one, or the opposite
+one) starts moving was measured in separate runs, with Down held from
+before and with Down first pressed on Q: Q + 14 for the first character
+and Q + 11 for the second, the same in both. For the second character
+the table gave Q + 10 before this measurement; on Q + 10 the player is
+standing and does not move.
+
 ## Not covered
 
 - Reach for other objects that can be carried, for an object that is
@@ -609,11 +642,17 @@ Q + 21 and 54 px every time and the first character's table above.
   isn't specified.
 - Putting down on slopes or near walls (on a slope the object was seen to
   end up elsewhere than the rule above), and putting down in the air.
-- Jump or Action on Q + 13 of a put-down.
 - With the second character, the first frame of a put-down: in one
   put-down the object was 12 px behind the player on that frame instead
   of the table's value. What set that put-down apart wasn't found, so
   the table has this one exception.
+- With the second character, Jump pressed on Q and held through Q + 11
+  gave a jump on Q + 11 in the only setup tried; what causes it isn't
+  known (the first character did not jump).
+- Jump and Action during a put-down were measured with a single press
+  and no other input, on flat floor in one level, with Down held
+  throughout; no random-input check and no ordinary-play check. A press
+  after the put-down has ended (later than Q + 17) wasn't measured.
 - Facing during a throw in the air, and throwing or putting down during
   a turn.
 - How a trace's `state` names frames of a pick-up, carrying, a throw or a
@@ -623,7 +662,8 @@ Q + 21 and 54 px every time and the first character's table above.
   are there), Down or Up held while the pick-up starts, Jump and Action during a throw in the air
   (the table above is for a throw from standing on flat floor, with or
   without a direction held; no random-input check), picking a put-down
-  object up again, where the object is while carried and in the hands
+  object up again other than the presses in "Putting down" and the
+  second character's paragraph on Jump and Action during a put-down, where the object is while carried and in the hands
   on slopes and in the air, a pick-up of an object lying elsewhere than
   where a put-down leaves it, and everything above that was measured
   only with the first character (slopes, walls, platforms).
