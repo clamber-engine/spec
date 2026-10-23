@@ -17,15 +17,16 @@ downward, measured from the top of the level. The player's **feet line**
 its top-left corner (the picture is 256 × 224 px, `view.md`,
 `view-vertical.md`).
 
-Everything here was measured with the first character leading and
-alone. The pickup ranges were measured with a copy of an item placed
-near the first level's start in a copy of the image, 60 px above the
-floor there: the player was placed at offsets from it one pixel apart,
-in poses reached by inputs only (standing, walking, running, crouching,
-rolling, the Down + Action ground action, and frames of jumps from
-take-off to well after the top, Jump held or released early), facing
-right and facing left, and the item was or wasn't taken on the next
-frame. The rules were then checked by inputs alone (see "Checks").
+Everything here was measured with the first character leading and alone,
+except "The second character leading". The pickup ranges were measured
+with a copy of an item placed near the first level's start in a copy of
+the image, 60 px above the floor there: the player was placed at offsets
+from it one pixel apart, in poses reached by inputs only (standing,
+walking, running, crouching, rolling, the Down + Action ground action,
+and frames of jumps from take-off to well after the top, Jump held or
+released early), facing right and facing left, and the item was or
+wasn't taken on the next frame. The rules were then checked by inputs
+alone (see "Checks").
 
 ## Kinds
 
@@ -197,6 +198,29 @@ For example, a player standing on a floor 40 px below an item that stays
 where it is placed (`D` = 40) doesn't take it: 40 is outside −29 to 35.
 If the player jumps straight up from there with `I` from −20 to 20, the
 item is taken on `T` + 6 at the latest, since `D` is then from −8 to 52.
+
+### The second character leading
+
+With the second character as the player (`second-character.md`), `I`,
+`D` and the facing rule are as above, with `X` and `F` the second
+character's, and the item is taken on the same frames under the same
+two conditions. Only the ranges differ:
+
+| State | `I` | `D` |
+|---|---|---|
+| Standing, and the frames of a turn | −17 to 13 | −31 to 33 |
+| Walking, running, rolling (the Down + Action ground action is a roll for this character), jumping | −23 to 14 | −27 to 33 |
+| Crouching (Down held on the ground) | −24 to 16 | −30 to 20 |
+
+Facing left they are 3 px further left than the mirror image, as for the
+first character. A jump has one row: the ranges are the same on the
+take-off frame `T`, on every frame of the air, whatever the vertical
+speed and whether Jump is held or not, and there is no switch at `T` + 6.
+
+The following character takes nothing: with either character leading,
+the item is taken exactly when the leading character is in its own
+ranges, and not when only the follower is in its own. Landings and the
+frames after them are not covered for the second character.
 
 ## What taking an item does
 
@@ -647,6 +671,22 @@ and is not drawn from frame 321 on.
   copy, 1 of each rising kind and 4 of an `extra-life-1` copy, in all
   the poses above and both facings), 959 040 placements, 210 951 of them
   taken: every one taken or not as the ranges say.
+- The second character leading and the first following, 61 grids of
+  placements in the poses of the table, facing right and left (a setup
+  method was used to reach the situation: the item 60 px above the floor
+  near the first level's start, the second character in each pose): 413
+  031 placements, 134 537 of them taken, every one taken or not as the
+  table says. In 14 more grids the item stood at one-pixel offsets from
+  the following character, 188 034 placements: taken exactly when the
+  leading character was in its ranges. The same placements with the first
+  character leading gave the first character's ranges above.
+- The second character leading, 200 runs of random input (71 878 frames)
+  with the item 60 px above the floor near the first level's start (a
+  setup method was used to reach that situation); in 21 351 frames in the
+  states of the table, all 39 pickups were on the frames the table gives,
+  and it gave no other. 47 more pickups were in states not covered
+  (landing, turns, hits, other actions). The second character's ranges
+  were not checked in ordinary play at the level's own items.
 - By inputs only: 2 000 runs of random input (walking, running,
   crouching, rolling, jumping, the ground action, standing) with an item
   near the first level's start: `extra-life-3` 60 px above the floor and
@@ -795,8 +835,9 @@ and is not drawn from frame 321 on.
   knocked out"), which of an item and the player is drawn in front, items
   in the other areas, the second character, and the image that flies to
   the lives display.
-- The second character, leading or following, and riding the animal
-  (`riding.md`).
+- The second character's landings and the frames after them, the
+  second character riding the animal (`riding.md`), and the pictures,
+  the lives and the lives display with the second character.
 - Taking an item while landing (the frames from `L`, the frame carrying
   `land`, to `L` + 6), turning and the frame after a turn, falling
   without a jump, the stop after a roll, being hit, bouncing, carrying.
