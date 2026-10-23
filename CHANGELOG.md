@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.288.0
+
+The level map: the lead's pictures during a new game's fade-out at the
+link point (spec#38, spec#59).
+
+Part of clamber-engine/spec#38 and clamber-engine/spec#59, which stay
+open for the parts not covered yet.
+
+- `behavior/level-map.md`: the new game's nine start pictures go on, in
+  the same cycle and timing, from the press at the link point through
+  the last frame before the two black frames; none is shown on the black
+  frames. Measured on screen in 21 runs; removed from "Not covered".
+
 ## spec-v0.287.0
 
 The level map: which character is in front where the two overlap
