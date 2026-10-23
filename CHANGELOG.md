@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.321.0
+
+Landings while taking an extra-life item, and Jump and Action during a
+put-down (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/extra-lives.md`, new "Landing": after a jump in place the
+  jumping row goes on for 3 to 6 frames after the landing, depending on
+  how long Jump was held, then the standing row applies. For the second
+  character the one row goes on through `L` + 16. Other landings stay in
+  "Not covered".
+- `behavior/carrying.md`, "Putting down": Jump and Action pressed during
+  a put-down, for both characters (nothing until the player is free,
+  and a held Action picks the object up again on the free frame).
+  Correction: the second character's put-down lasts to Q + 10, and it is
+  free from Q + 11 (was Q + 9 and Q + 10). An Action press on Q + 1 that
+  is still held picks the object up again too.
+
 ## spec-v0.320.0
 
 Two walkers in range of one thrown object, and teetering at a steep face
