@@ -250,6 +250,8 @@ every picture below.
 | The crate | `crate-whole`, `crate-broken-2` (`../behavior/animal-crate.md`) | the crate's palette |
 | The animal before it is ridden | `animal-1` to `animal-22` (`../behavior/animal-crate.md`) | the animal's palette |
 | The first character mounting the animal | `mounting-1` to `mounting-5` (`../behavior/animal-crate.md`) | the first character's leading palette |
+| The animal's body while the first character, leading and alone, rides it | every picture the animal's body shows from the end of the mounting on: standing, walking, turning, jumping, charging and landing (`../behavior/riding.md`) | the animal's palette |
+| The first character, leading and alone, sitting on the animal | every picture it shows there, `mounting-1` to `mounting-5` included (`../behavior/riding.md`) | the first character's leading palette |
 | Small, medium and large walkers | `small-*`, `medium-*`, `large-*` (`../behavior/walker.md`), except `large-push` | the small, medium and large walkers' palettes |
 | The thrower and its balls | `throw-*`, `sway-*`, `thrower-out`, `ball-*` (`../behavior/thrower.md`) | the thrower's palette |
 | Critters | `wing-1` to `wing-6` (`../behavior/critter.md`) | the critters' palette |
@@ -273,6 +275,12 @@ every colour read for the 18 named map pictures was a colour of this
 palette; the second character's pictures never use colour 4 and the first
 character's use all fifteen. Fades of the map, and the maps of other
 places, are under "Not covered".
+
+While the animal is ridden by the first character, leading and alone, the body and the character on it keep these
+two palettes on every picture: riding changes neither, and the body does
+not take the character's colours. Other things drawn over the body, such
+as the puffs of the shared palette, show their own colours over it; the
+body's own pixels keep the animal's.
 
 Some pictures here are not named by hash (the sparkles, three of the
 collectibles' eight, the count display's digits and the lives display's
@@ -418,6 +426,22 @@ full frames with every byte hashed for one of them.
   - the crate 6 561, all exact; the animal 6 010, 6 008 exact (2
     differed); the first character mounting 1 072, all exact (leading
     palette of the first character, as it was the player in all of them);
+  - the animal ridden by the first character, alone and leading (random
+    inputs, each ride ending when riding ended or after 700 frames). In 4
+    rides of ordinary play, started from a saved point partway through a
+    ride: the character on it 2 676 pictures, every pixel in the first
+    character's leading palette; the body 2 596 pictures, of which 2 542
+    showed only the animal's palette's colours and 54, in the landing, jump
+    and charge pictures, showed at some pixels one of four other colours,
+    in each case one of the shared palette's colours 6 to 9 (the greys of
+    the puffs). In 24 further rides, for which a setup method was used (3
+    seeded runs of 8 rides from four saved starting points): the character
+    on it 7 801 pictures, every pixel in the leading palette; the body 7 537
+    pictures, of which 7 325 showed only the animal's palette's colours
+    (colour 13 was never read) and 212, in the same kinds of pictures,
+    showed the same four greys at some pixels. Pictures read just before a
+    mount or after a ride were the character's own, not the body's, and are
+    left out;
   - small walkers 8 897, 8 885 exact (12 differed); medium walkers
     8 502, 8 501 exact (1 differed); large walkers 6 118, 6 113 exact (5
     darker);
@@ -474,7 +498,9 @@ full frames with every byte hashed for one of them.
   - while the picture fades out or in;
   - the `crate-broken-1` and `large-push` pictures, never seen in the
     runs above;
-  - the animal being ridden, and a second character mounting;
+  - a second character mounting, and the second character riding; the
+    first character riding while not leading, or with the second character
+    present;
   - the frames on which the lives display's colours change when the
     player changes.
 - The characters' colours in some situations:
@@ -489,7 +515,8 @@ full frames with every byte hashed for one of them.
     throughout: in the two seen, each colour's red, green and blue were
     half the palette's, rounded down. Which areas these are, and whether
     other objects are darker too, is not covered;
-  - while riding an animal, and in areas where the player is an animal;
+  - areas where the player is an animal (the first character riding,
+    leading and alone, uses its leading palette, see the table above);
   - in games with two players;
   - the picture of both characters on the level map.
 - Which frames each kind of object shows and when (animation sequences
