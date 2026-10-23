@@ -19,8 +19,8 @@ positive). The player's **feet line** `F` is as in `view-vertical.md`.
 `A` of the scenario format. Speeds are whole multiples of 1/256 px per
 frame, and this file writes them both ways where it matters.
 
-Everything here was measured with the first character leading and
-alone: on a copy of the barrel placed near the first level's start in a
+Everything here, except "The second character", was measured with the
+first character leading and alone: on a copy of the barrel placed near the first level's start in a
 copy of the image (on the floor, and 40, 60 and 75 px above it), and on
 the first level's own barrel. The catch ranges were measured by placing
 the player at offsets from the barrel one pixel apart, as for
@@ -96,6 +96,15 @@ is caught when `I` first reaches −24, from either side. A barrel whose
 position is up to 32 px above the floor catches a player walking under
 it.
 
+**A long stand.** The standing row doesn't hold on every standing
+frame. With S the first standing frame after walking (`ground-speed.md`),
+the first character standing on flat floor is caught with `I` from −14
+to 30 and `D` from −33 to 36 on the frames S + 239 to S + 418, and by
+the standing row on S to S + 238 and on S + 419 to S + 453, the end of
+the stand measured (both facings; facing left as in "Offsets"). Later
+frames of a longer stand were not measured. The second character has no such change ("The second
+character").
+
 ## The catch frame
 
 On C the player has moved as usual. Then `vx` and `vy` become 0 and the
@@ -152,6 +161,40 @@ speed ÷ 32, rounded toward zero). With Left held it goes −2167/256 →
 
 A barrel on the floor shoots the player along the floor; they land on
 C + 40, the first frame with gravity.
+
+## The second character
+
+With the second character leading, a `left-launch-barrel` catches, holds
+and shoots on the same frames as above (C, C + 1, the hold to C + 15,
+the shot on C + 16, no gravity to C + 39, ready again from C + 63) and
+the player lands on the same frame; `vy`, the level y and `facing` follow the
+rules above on every frame. Two things differ: the catch ranges, and the
+horizontal target in the flight.
+
+**Catch ranges.** `I`, `D`, the facings and the 3 px rule are as in
+"Being caught". Ends are included.
+
+| State | `I` | `D` |
+|---|---|---|
+| Standing, from S (the first standing frame after walking, `ground-speed.md`) on | −21 to 17 | −36 to 30 |
+| Walking and running, including the frames of a stop before S; rolling (the second character has no Down + Action ground action, `roll-input.md`); jumping, on every frame from the take-off frame `T` on | −27 to 18 | −32 to 30 |
+| Crouching | −28 to 20 | −35 to 17 |
+
+So a standing second character is caught over a range 6 px narrower in `I`
+at the left end than a walking one, and reaches 4 px further up. Unlike the first character's,
+the jump has one row: it doesn't change at `T` + 6, and a barrel
+stays in reach for the whole jump. The standing row held on every
+frame from S for as long as it was measured (331 frames), whatever the
+pictures shown (`player-frames.md`, "Standing still").
+
+**The flight.** Step 1 of "The flight" has the target **−3.375**
+(−864/256) with Left held and **+3.375** (+864/256) with Right held;
+with neither it is 0 as above. Everything else in the flight is as for the first
+character, the gap still being divided by 32 and rounded toward zero.
+For example, with nothing held `vx` goes −2167/256 → −2100/256 on C + 40
+as above; with Left held, −2167/256 → −2127/256 (C + 40) → −2088/256 →
+−2050/256 → …; with Right held, −2167/256 → −2073/256 → −1982/256 →
+−1894/256 → ….
 
 ## Ready again
 
@@ -344,6 +387,23 @@ All but the last item are for the `left-launch-barrel`.
   the same held from C + 20 on, compared with no input: the hold and the
   shot were the same in every case, and from C + 40 only Left and Right
   (with or without Action) changed the flight.
+- **The second character leading** (the `left-launch-barrel`). Catch
+  ranges: a setup method was used to put the barrel, for each pose, at
+  offsets from the lead one pixel apart, once along `I` at `D` = 0 and
+  once along `D` at `I` = 0, and whether the lead was caught was read
+  from the screen: standing, walking after 1 to 30 frames, running, rolling,
+  crouching, jumps of 1 to 45 frames with Jump held, in both facings
+  (about 40 states), and the standing row on each of 331 frames of one
+  stretch of standing. The same scans with the first character gave
+  every row of the table in "Catch ranges" (standing, walking, running,
+  the ground action, crouching, rolling and the jump rows) and so
+  checked the method. The flight: with nothing held, Left held and
+  Right held, with the barrel on the floor and 60 px above it: `vx` followed
+  the rule with ±3.375 on all 42 flight frames of the three
+  raised runs, and `vy`, the level y, `facing` and the landing frame were the
+  same as the first character's in all six runs.
+- The first character's long stand: the same scans on each frame of a
+  stand of 454 frames, once facing right and once facing left.
 - **The `down-launch-barrel`.** The first level's own barrel, in 301
   runs coming back from the second wall exit's area with random inputs
   (`wall-exits.md`), and in 33 runs in copies of the image with the
@@ -364,8 +424,15 @@ All but the last item are for the `left-launch-barrel`.
 
 ## Not covered
 
-- The second character, and two characters: what the other character
-  does while the lead is held or shot.
+- The second character's catch ranges and flight target, and the first
+  character's long stand, were measured with the setup method above and
+  not checked in runs of ordinary play (the first character's other rules
+  were).
+- Two characters: what the other character does while the lead is
+  held or shot. The second character's catches in states not in its
+  table (landing frames, turning, the stop after a roll, falling without
+  a jump, carrying an object, the air after a tyre jump, and others),
+  and the `down-launch-barrel` with the second character.
 - Catches in states not in the table (166 in the runs): landing frames,
   turning and the frame after a turn, the stop after a roll, falling
   without a jump, carrying an object, and others. In three catches
