@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.311.0
+
+Where the second character takes a bunch while running and in its
+landings (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/bunches.md`: the second character's table gains running
+  (the walking row, facing either way), and a new rule "Landing, second
+  character leading" gives the row on the landing frames after a jump
+  onto the floor it started from; one late pickup seen in random play is
+  stated as a limitation. Evidence added; "Not covered" narrowed.
+
 ## spec-v0.310.0
 
 Riding on slopes with the second character as the player (spec#19).
