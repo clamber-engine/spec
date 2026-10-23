@@ -53,6 +53,7 @@ SHA-256 of the image:
 | Sprite palettes: the thrower's palette | `sprites.md` | `fc` | `86d4` |
 | Sprite palettes: the critters' palette | `sprites.md` | `fc` | `894a` |
 | Sprite palettes: the stinger's palette | `sprites.md` | `fc` | `8dbe` |
+| Sprite palettes: the one-life item palette | `sprites.md` | `fc` | `8878` |
 | Sprite palettes: the level map's palette | `sprites.md` | `f9` | `bfc5` |
 | Placements: the first level's placement list | `placements.md` | `fd` | `95dc` |
 | Single collectibles: the first level's group list | `collectibles.md` | `f8` | `c2ed` |

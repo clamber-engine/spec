@@ -252,6 +252,7 @@ every picture below.
 | The first character mounting the animal | `mounting-1` to `mounting-5` (`../behavior/animal-crate.md`) | the first character's leading palette |
 | The animal's body while the first character, leading and alone, rides it | every picture the animal's body shows from the end of the mounting on: standing, walking, turning, jumping, charging and landing (`../behavior/riding.md`) | the animal's palette |
 | The first character, leading and alone, sitting on the animal | every picture it shows there, `mounting-1` to `mounting-5` included (`../behavior/riding.md`) | the first character's leading palette |
+| The one-life extra-life items | `extra-life-1`, `rising-extra-life-1` (`../behavior/extra-lives.md`) | the one-life item palette |
 | Small, medium and large walkers | `small-*`, `medium-*`, `large-*` (`../behavior/walker.md`), except `large-push` | the small, medium and large walkers' palettes |
 | The thrower and its balls | `throw-*`, `sway-*`, `thrower-out`, `ball-*` (`../behavior/thrower.md`) | the thrower's palette |
 | Critters | `wing-1` to `wing-6` (`../behavior/critter.md`) | the critters' palette |
@@ -264,6 +265,11 @@ count display, bunches, flashes and smoke use. No picture of these
 objects that is named by a hash uses a colour number above 13. The
 image holds colours 1 to 13 of the shared palette in three places, and
 the thrown objects' palette in four; `locators.md` gives one place for each.
+
+The **one-life item palette** is the palette the one-life extra-life
+items use (`../behavior/extra-lives.md`, "Kinds"), all fifteen colour
+numbers, in the first level before the dimming. `locators.md` gives a
+place for it.
 
 The **level map's palette** is the one both characters on the level map
 use, whichever of them leads and whichever picture they show; it is not
@@ -458,6 +464,27 @@ full frames with every byte hashed for one of them.
     when those were (0 frames disagreed; 319 more frames had no readable
     first-character picture). No change of player came while it was
     shown, so when its colours change is not covered.
+  - the one-life extra-life items (`../behavior/extra-lives.md`), in
+    ordinary play of the first level and of one other area where such
+    items are placed (24 runs of up to 2 000 frames, the player moving
+    right more often than not, and 8 runs of 500 frames from a saved
+    position in the first level): 175 pictures showed only colours of
+    that palette, 0 others. In further runs of up to 600 frames of
+    random play, for which a setup method was used (2 seeds from each of
+    9 saved positions), 1 311 more pictures of the same items were read,
+    476 of them rising and 835 not; every one showed exactly one colour
+    per colour number, the same on every picture (colour numbers
+    1 to 15 all read);
+  - the tyres, in two areas other than the first level (which has none),
+    entered at their start and played with the player moving right more
+    often than not (2 seeds of 2 000 video frames each): in the first,
+    1 038 pictures, 969 of them in one set of twelve colours (colour
+    numbers 1 to 12; 13 to 15 never read), 69 darker
+    versions of it; in the second, 226 pictures, 183 in one set of eleven
+    colours (colour numbers 2 to 12), 43 darker. All
+    seven tyre pictures were read in each. The first area's colours were
+    found in the image as a 24-byte run in one place; the second area's
+    were not found, with ten colours as a run, anywhere in it;
   Then, for each group, the most common colour read per colour number
   was looked for in the image as a 30-byte run, starting anywhere. Small,
   large and medium walkers, the thrower, the crate, the animal, the
@@ -480,10 +507,16 @@ full frames with every byte hashed for one of them.
 
 - The map's characters' colours while the map fades in or out, and on
   the maps of places other than the first level's.
-- Which palette the objects not listed above use (the tyres, the
-  extra-life items, the signs, the launch barrels, the flying copy of a
-  taken collectible, the animal when ridden, the objects of other
-  areas). (The frame table is in `locators.md`; it locates the frames.)
+- Which palette the two-life and three-life extra-life items use: their
+  pictures were read only in runs from a setup method (476 and 1 732
+  pictures, one colour per colour number on every picture), with
+  only 4 partly hidden two-life pictures and no three-life picture
+  read in ordinary play.
+- Which palette the objects not listed above use (the signs, the launch
+  barrels, the flying copy of a taken collectible, the objects of other
+  areas). The tyres' colours differ between areas (see "Evidence"); which
+  areas use which, and where the second area's come from, is not
+  covered. (The frame table is in `locators.md`; it locates the frames.)
 - The other objects' colours in some situations (the objects in "The
   other objects' palettes"):
   - near the first level's end, where the shared palette's colours
