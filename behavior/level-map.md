@@ -819,7 +819,12 @@ map appears:
   nine pictures of their own, `map-start-1` to `map-start-9`, in turn
   and then `map-start-1` again, each on 4 counted frames from frame 1
   (`map-start-1` on frames 1 to 4, seen on 2 to 4). They go on while the
-  lead walks to the link point and stands there.
+  lead walks to the link point and stands there, and through the
+  fade-out that follows the press there ("A new game", step 4): every
+  frame from the press `P` to `P` + 29 shows the next picture of the
+  same cycle, with the same timing, and none is found on the two black
+  frames `P` + 30 and `P` + 31. From `W` the map shows the cycle of
+  "Which", from `map-lead-1`.
 
 A character is not mirrored on any of these frames.
 
@@ -966,6 +971,16 @@ the nine start pictures (frames 2 to 251), with the map shown again after
 the press at the link point (76 frames of the cycle of "Which") all
 agreed. No character was mirrored on any frame.
 
+The new game's fade-out: 21 runs from the same new game, with a new
+press of Jump (17 runs), Action (2) or another button (2) on the first
+frame on which a press acts or on one of 1 to 39 frames later, each played
+through the fade-out and the map's next appearance. The lead's picture
+was found on all 3 516 frames from frame 2 to `P` + 29 in the runs, every
+time the cycle's picture for its frame (0 mismatches), and on none of the
+two black frames. Two more runs, with Jump pressed on the one and on the
+two frames before the first acting one, did not start the fade-out (the
+lead stayed at the link point), as "Pressing at a stop" says.
+
 ## Not covered
 
 - What the stop's name looks like and how it is chosen, and anything
@@ -989,8 +1004,7 @@ agreed. No character was mirrored on any frame.
   finish of a level other than the first, and after a level left in other
   ways; the other character's pictures on the first 157 frames of a
   first finish (it was covered by the lead); a new game with the
-  second character, and the pictures of the lead during the new game's
-  fade-out at the link point; what decides how long the first finish's
+  second character; what decides how long the first finish's
   pictures last (they ran to frame 161 in every run).
 - What moves the other character's cycle against the lead's at a page
   change.
