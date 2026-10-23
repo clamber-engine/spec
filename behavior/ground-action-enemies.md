@@ -119,7 +119,9 @@ One action knocks out **at most one walker**:
   they are: for a given pair of walkers it was always the same one,
   whatever their offsets, including when the other one was nearer to the
   player. Which of two walkers it is isn't specified. This holds with
-  the player facing either way and with the walkers heading either way.
+  the player facing either way, with the walkers heading either way, and
+  with two medium walkers, two large walkers, or a medium and a large
+  walker (the kind doesn't decide which one).
 - **After a walker has been knocked out,** the rest of that action's
   attack frames knock out nothing and strike no hidden object, even
   when a walker or a hidden object is in range on them, and there is no
@@ -288,7 +290,21 @@ Without the walker, the action would have ended with E on frame 59.
   there was one pause, and in every situation it was the same walker,
   also with the two walkers exchanged (heading right, facing left).
   These were not checked in
-  ordinary play. Every checked
+  ordinary play.
+  Two medium walkers, two large walkers, and a medium and a large
+  walker in either order were also observed in situations arranged with
+  a setup method, with the player facing right, at the moment the
+  action reached them: the walkers from 100 px in front of the player's
+  position to 25 px behind it, in steps of 1 px for each (15 876
+  situations for each of four combinations: two medium, two large,
+  medium then large, large then medium; the same for the two same-kind
+  combinations with the walkers exchanged). Never two were knocked out,
+  there was one pause, the same walker in every situation, and when the
+  two were in range on different attack frames the one in range first
+  was knocked out and the other not. With the other walker out of reach
+  and coming into range in a second action 63 frames later, that second
+  action knocked it out (2 871 situations each for medium and large
+  walkers). These were not checked in ordinary play. Every checked
   placement matched the rules of "Two things in reach", the knock-out
   frames, the pause frames and E, with 0 mismatches.
 - **Knocked-out walkers.** A small walker knocked out after the press
@@ -321,8 +337,8 @@ Without the walker, the action would have ended with E on frame 59.
 
 - Which of two walkers in range on the same attack frame is knocked out.
   Two things in reach with the large or medium walker and with the
-  thrower; two walkers facing left or heading right in ordinary play,
-  where they came into reach by themselves; two hidden objects in reach
+  thrower; two walkers of any kind in ordinary play, where they came
+  into reach by themselves; two hidden objects in reach
   of one action (`hidden-objects.md`).
 - Walkers that are turning, speeding up, stopped or frozen, walkers on a
   different floor from the player, and the action on slopes or at a
