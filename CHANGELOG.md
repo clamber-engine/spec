@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.310.0
+
+Riding on slopes with the second character as the player (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/riding-slopes.md`, new section "The second character": the
+  slope rules apply unchanged with the second character leading, with
+  only the speed targets of `riding.md`; evidence and what is not
+  checked. `behavior/riding.md` no longer lists slopes with the second
+  character as unchecked.
+
 ## spec-v0.309.0
 
 The second character's hurt ranges against walkers, by pose (spec#19).
