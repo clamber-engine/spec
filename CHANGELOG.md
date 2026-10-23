@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.309.0
+
+The second character's hurt ranges against walkers, by pose (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/walker-contact.md`, new section "Being hurt (second
+  character)": hurt ranges for the three walker kinds standing or
+  fidgeting, walking, running or jumping, and crouching; the reach on
+  the ground and in the air; an example and the evidence. "Not covered"
+  is narrowed to the poses and situations not measured.
+
 ## spec-v0.308.0
 
 The game-over picture, its song and what follows (spec#71), and taking
