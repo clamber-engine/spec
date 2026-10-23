@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.294.0
+
+Teetering at a third ledge with a steep face, first character
+(spec#61).
+
+Part of clamber-engine/spec#61, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: a third steep-face ledge for the first
+  character: a 128 px face (4 px per column) down to a lower floor. The
+  player standing on the ledge top 0 to 9 columns before the face did
+  not teeter (83 stretches of 300 runs, pictures checked on screen).
+  The three cases measured still don't separate the face's height from
+  the drop after it; Not covered updated.
+
 ## spec-v0.293.0
 
 The upper exit and the room's item when the room is reached again
