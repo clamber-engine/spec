@@ -318,6 +318,18 @@ runs.
   rules above say (the critter is gone on the frame of its removal,
   so there `X` was taken as its x on the frame before plus its speed
   then, give or take 1 px: 440 of the 443 removals needed no margin), but for the one removal above the picture.
+- **The second character leading.** The second critter, from a start
+  near it with the second character leading and the first following,
+  with the critter at its usual height and, using a setup method, flying
+  at two lower heights around the lead: 30 runs per height of 900 frames of random inputs as for the
+  first character, 26 971 frames per height, with the lead within 32 px
+  of the critter horizontally and from 16 px below to 48 px above it on
+  1 100, 2 069 and 2 297 of them. The characters, lives and counts never
+  differed, and other objects differed only as said in "What a
+  critter does". The 30 plain random walks (900 frames each) gave 39 appearances and 37 removals, and on every frame
+  the critter was there exactly when "Appearing" and the removal rule
+  say. So those rules, and that a critter changes nothing, hold with
+  the second character leading.
 - **The kind.** The critter's reference given, in a copy of the image,
   to a class 1 entry near the level's start in place of its own placed
   a critter there, which appeared at the top of the picture and flew as
@@ -359,7 +371,10 @@ runs.
   above or below the view.
 - The second object that appeared near the second critter (see "What
   a critter does").
-- The second character, leading or following.
+- The second character leading at the level's start, the critter's
+  flight rules with the second character leading (only its appearing,
+  removal and effect on play were checked), and the first character
+  leading with the second following.
 - Enemies other than small walkers, the thrower's balls, and objects
   other than a thrown barrel meeting a critter.
 - Critters in other levels.
