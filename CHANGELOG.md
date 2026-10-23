@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.313.0
+
+The second character with throwers, hidden objects and critters
+(spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/thrower-contact.md`, new section "The second character under
+  control": its hurt and bounce ranges against the thrower (narrower than
+  the first character's, two poses), with the rest of the thrower rules
+  unchanged; evidence in arranged situations and in random play by
+  inputs alone. Drops a setup remark from the first character's ranges.
+- `behavior/hidden-objects.md`, new section "The second character": it
+  has no ground action and its roll doesn't strike a `hidden-bunch`; its
+  long-fall ranges for a `hidden-metal-barrel` differ from the first
+  character's (also the default for a `hidden-barrel`). Measured in
+  arranged situations only, which "Not covered" says.
+- `behavior/critter.md`: appearing, removal and that a critter changes
+  nothing hold with the second character leading (random runs); "Not
+  covered" narrowed.
+
 ## spec-v0.312.0
 
 The second character against balls when teetering and walking off a
