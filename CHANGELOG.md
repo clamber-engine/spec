@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.302.0
+
+The second character under control meeting thrower balls (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/ball-contact.md`, the second character: the timing rules
+  hold unchanged; the reach has three ranges instead of five, and the
+  pose timeline is shorter (no fidget range of its own, no upright
+  phase before the air, a 17-frame landing recovery and a 12-frame
+  crouch recovery).
+- Checked in 400 runs of ordinary play near the thrower. "Not covered"
+  lists teetering, the ground action, walking off edges and the first
+  frames after a swap.
+
 ## spec-v0.301.0
 
 The second character leading into launch barrels, and the first
