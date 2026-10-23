@@ -26,7 +26,9 @@ Frame names used here:
 
 - **G**: the first frame of a pick-up.
 - **Q**: the first frame on which Action is not held while the player
-  holds an object (during a pick-up or after it).
+  holds an object (during a pick-up or after it) (with one exception: during a
+  pick-up, Down held on that frame moves Q to a later frame, see "During
+  the pick-up").
 - **P**: the press frame of a jump, as in `jump-input.md`.
 
 ## Picking up
@@ -122,7 +124,13 @@ The pick-up lasts **15 frames**, G to G + 14. Starting on the ground:
 - A Jump press doesn't jump, and holding Jump on doesn't make a jump
   later (measured with Jump pressed on G + 2 and held for 20 frames).
 - Letting go of Action on any of G + 1 to G + 14 is a throw with Q on that
-  frame ("Throwing"), whether or not Down is held.
+  frame ("Throwing"), unless Down is held on that frame. With Down held,
+  nothing changes on that frame: the pick-up goes on as above, and the
+  throw starts, with Q, on the first later frame on which Down isn't held
+  (the first frame of carrying, G + 15, still counts as the pick-up for
+  this). If Down is held on every frame up to and including G + 15, there
+  is no throw: the pick-up ends as usual and the object is put down from
+  G + 16 ("Putting down", with Q = G + 16).
 
 From G + 15 the player is carrying.
 
@@ -226,7 +234,8 @@ on the object: see `thrown-objects.md` and "Not covered".
 If Down is held on Q while the player is on the ground, the object is put
 down instead of thrown. Down can be pressed on Q or held from earlier. In
 the air, Down on Q makes no difference (a throw). During a pick-up, Down
-makes no difference either (a throw).
+held on the frame where Action is let go delays the throw, or turns it into
+a put-down, as in "During the pick-up".
 
 - **Q to Q + 13**: the target speed is 0 whatever is held, and the speed
   rule applies.
@@ -352,6 +361,13 @@ are as above, with the second character's values where they differ.
 | Put-down frames, target 0 | Q to Q + 13 | **Q to Q + 9** |
 | Free again after a put-down | Q + 14 | **Q + 10** |
 
+- **Letting go of Action during the pick-up** is as for the first
+  character, with the second character's frames: a throw on the frame
+  itself on G + 1 to G + 9 and on G + 10, and with Down held on that frame
+  the throw waits for the first frame without Down (G + 10 counts as the
+  pick-up for this); with Down held on every frame up to and including
+  G + 10, the object is put down from G + 11. The throw's timing after Q
+  is the table's.
 - **G + 10** is a frame of standing with the object, and the target is
   still 0 on it whatever is held. From G + 11 the target follows the
   input, and a held direction starts moving or a turn as from any frame
@@ -382,6 +398,36 @@ later, 14 to 62 frames differ. Of 466 Jump presses made while carrying on
 the ground outside a landing's frames, all took off on P + 2. Facing
 never changed during a throw or a put-down, also with the other
 direction held.
+
+### Reach and letting go of Action, second character
+
+**Reach** for a `barrel` is the same for the second character as for the
+first, in the same terms ("Reach"): X from −7 to 38 facing right and −33
+to 12 facing left, E from −22 to 32, with the same facing rule. The pick-up
+starts on the same frames as for the first character ("Picking up"): a
+press while standing within reach starts it on the press frame without a
+roll, and moving into the object with Action held starts it on the frame
+after the first frame that ends within reach.
+
+Letting go of Action during the pick-up is in the list above ("Letting go
+of Action during the pick-up"); a direction held does not change it.
+
+Measured in `title-1` with the second character leading, from a start
+prepared with a setup method (an object on the opening floor), for a
+`barrel` only (the `holder` is not covered here, below). The player stood
+still, facing each way, at every X from −50 to 50 and every E from −40 to
+30 from the object, just before a frame with Action pressed: every
+position gave the ranges above. Then 600 runs of
+random input (standing, walking, running, rolls, turns and jumps, with
+Action held or not; 214 528 frames), both facings at the start: all 366
+pick-ups started on the frame the rule predicts, and no other frame
+started one. For letting go of Action, runs with Action let go on each of
+G + 1 to G + 17 and Down held on 0, 1, 2, 3, 5, 8 or 99 frames from that
+frame, or on every frame from G + 1, with no direction or either one held
+(408 runs for each character): in all of them the throw or put-down
+started on the frame the rule gives, and in the throws the object left the
+hands on the frame the throw's timing gives (Q + 21 for the first
+character and Q + 18 for the second).
 
 ### The object, second character
 
@@ -503,8 +549,10 @@ Q + 21 and 54 px every time and the first character's table above.
   moving with Action already held were measured).
 - How a trace's `state` names frames of a pick-up, carrying, a throw or a
   put-down (the vocabulary has no names for them yet).
-- With the second character under control: reach, letting go of Action
-  during the pick-up, Jump and Action during a throw, picking a put-down
+- With the second character under control: the reach for a `holder`
+  (it holds the missing character, so none lies on the level while both
+  are there), pressing Action within reach while moving, Down or Up held
+  while the pick-up starts, Jump and Action during a throw, picking a put-down
   object up again, where the object is while carried and in the hands
   on slopes and in the air, a pick-up of an object lying elsewhere than
   where a put-down leaves it, and everything above that was measured
