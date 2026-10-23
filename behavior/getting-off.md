@@ -387,6 +387,65 @@ turned around:
 
 `D` is 5 to 45 in every case. A hop never gets on the animal ("The hop").
 
+## The second character
+
+With the second character as the player (leading, with the first
+character following), getting off follows every rule above except the
+ones in this table. Everything else is the same: the press, the hop's `vy` of −6 plus the frame's gravity on P
+and its gravities (0.28125 and 0.4375), the rise of 38.1875 px and the
+landing on P + 25 from the floor, facing, the animal and getting on
+again.
+
+| | First character | Second character |
+|---|---|---|
+| `vx` on P (riding speed rule, `riding.md`, "The second character") | targets ±2, ±3.5 | targets ±2.25 (576/256), ±3.9375 (1008/256) |
+| `vx` from P + 1 (air control, `second-character.md`) | targets ±2, ±3 | targets ±2.25 (576/256), ±3.375 (864/256) |
+| Jump-off, gravity on P and while Jump stays held | 0.28125 | **0.3515625** (90/256), so `vy` on P is −5.6484375 |
+| Jump-off, `vy` on the take-off frame P + 1 | −7 | **−8.3515625** (−2138/256) |
+| Jump-off, gravity once Jump is released | 0.4375 | 0.4375, the same |
+| Landing frames after a hop | L to L + 8 | **L to L + 16** |
+| Mode on foot, if nothing has started (Action and a direction held: running, as above) | L + 9 | **L + 17** |
+| Action press with Down held on a landing frame | the ground action | a roll (`roll-input.md`) |
+
+The jump-off is the second character's own jump (`second-character.md`,
+"Values" and "Jump arc") from P + 1 on. With Jump held for 1 frame and Right or Left
+held from P + 1, the player lands on P + 39; with Jump held for 2
+frames, on P + 39; for 5 frames, on P + 41; for 10 frames, on P + 42;
+for 30 frames, on P + 47. Jumps, rolls started by an Action press and
+crouches on the landing frames follow the lists in "Landing" with L + 17
+in place of L + 9; the jump rule is E = L + 2 as given there.
+
+Measured on the same flat floor as above, with the second character
+leading and the first following, starting each run with the animal and
+the second character standing there (a setup method was used to reach
+that situation):
+
+- 600 runs of random riding inputs with one Tandem press on a random
+  frame (the same inputs as for the first character, without a second
+  press), and random inputs after the press;
+- 240 runs with Tandem and Jump pressed together on a frame from 2 to 31
+  frames into a run of Right, Left or nothing, Jump held 1 to 30 frames,
+  Right, Left or nothing held from P + 1, with or without Action.
+
+In every frame from the press until the frame the player's own on-foot
+play started (12 696 hop frames in 384 hops, and 9 687 jump-off frames in
+245 jump-offs, until landing or mounting), `x`, `y`, `vx`, `vy`,
+`ground`, `facing`, and whether the player was getting off, were exactly
+as the rules give, and so were the animal's `x`, `y` and landing. The
+frame and kind of the start of on-foot play were too, except in the 11
+random runs listed below: on L + 17, 11 times standing, 10 walking and 13
+turning; and on earlier landing frames, jumps, rolls, crouches and
+running as the lists in "Landing" give. Not checked: these rules in
+ordinary play, at the level's own animal.
+
+Not covered here: Tandem pressed again after P with the first
+character following (it starts a swap, `swap.md`; the runs above had no
+second press); in the 11 runs that differed, a crouch did not start on the
+landing frame the first character's rule gives (6 runs) and an Action
+press on a landing frame did not start a roll (5 runs); Down + Action
+pressed together with Tandem; pictures of the hop with the second
+character; slopes, faces, ledges and walls.
+
 ## Not covered
 
 - Tandem with Down held and an Action press on the floor: the player was
@@ -404,7 +463,7 @@ turned around:
 - Slopes, steep faces, ledges and walls: getting off near them, the
   animal falling past a ledge, and a hop landing on other ground.
 - What the animal does when it leaves the view and comes back, enemies
-  and other objects meeting it, and the second character.
+  and other objects meeting it.
 - What happens after a knock-off (`riding-walkers.md`): whether the
   animal running off can be got on again.
 - How the hop, the jump-off and the animal are drawn, and the sounds.
