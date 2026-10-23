@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.290.0
+
+The first character's ground action pictures at a ledge and on a slope
+(spec#38).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/player-frames.md`: the ground action's picture list is the
+  same at the end of a platform and on a 1-in-4 slope (up, down and
+  where it meets flat floor). When the action carries the character past
+  a platform's end it goes on in the air with the list unchanged.
+  Measured on screen in 160 runs; other slopes and the fall after such
+  an action stay under "Not covered".
+
 ## spec-v0.289.0
 
 Sprites: the colours of the animal and the first character while it
