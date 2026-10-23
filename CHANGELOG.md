@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.278.0
+
+Walkers and objects against the raised tiles (spec#60, spec#38).
+
+Part of clamber-engine/spec#60 and clamber-engine/spec#38, which stay
+open for the parts not covered yet.
+
+- `formats/graphics.md`, "Walkers and objects and raised tiles": each
+  walker and object kind has one fixed order against the ground layer's
+  raised tiles, unchanged at a level's end. The in-front kinds (now
+  including `large-walker`), the behind kinds (`tyre`, `sign`) and
+  `letter-2`, which is partly hidden. Kinds with no order found or not
+  tested are listed, with evidence and narrowed Not covered entries.
+
 ## spec-v0.277.0
 
 The backdrop's night colour table (spec#60, spec#38).
