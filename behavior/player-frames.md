@@ -1379,7 +1379,8 @@ rules, as seen:
   column) to its left, leading on to a lower floor with no drop. The
   player, facing the face after a walk's stop on the top 0 to 14
   columns from the face's first column (the top's leftmost column), did
-  not teeter, as at the right-hand face of the same size above. Other
+  not teeter, as at the right-hand face of the same size above. The
+  second character did not teeter there either (see its section). Other
   faces on the left-hand side were not measured.
 - It held after each of these ways of standing, the only ones seen to
   start a new S there: a walk's stop, a turn's end, a roll's stop, a
@@ -1473,7 +1474,10 @@ and a drop below it, it teetered standing 0 to 7 columns before the face's
 first column (the 12 outermost columns counted from the face's last
 column), and not 8 to 15 columns before it; with the 64 px face leading to
 a lower floor it did not teeter on the ledge top (0 to 16 columns before
-the face). The pictures were those of this section.
+the face). The pictures were those of this section. At the left-hand side
+of a ledge top with a 64 px face, as measured for the first character, it
+did not teeter either, standing on the top 0 to 15 columns from the face's
+first column after a walk's stop.
 
 ## Crouching
 
@@ -2674,6 +2678,33 @@ steep face, picking something up):
   floor (not counted), in 5 the stand lasted under 5 frames, in 53 the
   walk took the player down the face before a stand and in 40 the player
   was still walking on the top or the face when the run ended.
+- **Teetering, second character, left-hand side of a ledge with a steep
+  face:** the ledge top and the 64 px face of the first character's entry
+  above, with the second character leading and the first character a few
+  steps behind it (16 to 40 px to its right). The second character was put
+  on the top, then walked left and right, turned and stopped as in that
+  entry, and each stand was judged on S + 4, as for the second character
+  elsewhere in this section (the first character's was judged on S + 3).
+  200 runs; in the lines below "the player" is the second character. 37
+  stretches began on the ledge top (0 to 15 columns from its leftmost
+  column), all facing left after a turn and a walk. The other character
+  covered part of the leading one on screen whenever it was less than about
+  25 px behind (637 of the 1 791 frames), so those frames were not judged by
+  picture. On the 1 154 frames 25 px or more behind, 1 153 showed the
+  standing list's picture. Of the 37 stretches, 36 had such an uncovered
+  frame on or after S + 4, and all of those showed the standing list's
+  picture there and none showed a teetering picture on any uncovered
+  frame; the 37th had the other character within 25 px on every frame from
+  S + 4 on and so cannot be judged by picture (it is not counted as
+  "none teetered"). The one uncovered frame that differed was in a stretch
+  on S + 1 or S + 2, during the slide after the turn's end, and showed a
+  picture that is neither in the standing list nor a teetering one; why
+  was not found. The 2 other frames that differed from the standing list
+  were covered frames. In the other 163 runs no stretch began on the top:
+  53 stood on the lower floor (not counted), in 6 the stand lasted under 5
+  frames, in 70 the walk took the player down the face before a stand and
+  in 34 the player was still walking on the top or the face when the run
+  ended.
 - **Teetering, second character:** the same platform, the second
   character leading, 863 runs with the same kinds of starts as for the
   first character (walks toward the end, turns back, rolls started with
@@ -3106,9 +3137,9 @@ steep face, picking something up):
   whether the face's height or the drop after it decides, which the two
   do not separate), at an
   end with a wall, at the left-hand side of a ledge with a steep face other
-  than the one measured, at a face on the right-hand side other than the
-  two, on a slope, the second character at faces other than those two,
-  and after a
+  than the one measured (either character), at a face on the right-hand
+  side other than the two, on a slope, the second character at faces other
+  than those three, and after a
   bounce, a fall from a steep face, riding or carrying; after the player has stepped past the end
   of the floor and turned back; and whether a player that stands in the
   outermost columns without having stopped there (for example after
