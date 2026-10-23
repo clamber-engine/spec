@@ -175,6 +175,10 @@ part of the picture is drawn over them. The other character is drawn
 the same way: no part of the picture is drawn over it, at the
 distances from the lead measured ("Measurements").
 
+**Where the two characters overlap**, the other character is in front:
+every pixel of the other character's picture shows, and the lead's
+pixels under it don't, on whichever side of the lead the other stands.
+
 **A page change.** The picture of the new page replaces the old one at
 once, with no part of the old picture dimmed, and fades in. The picture
 for frame `P` − 1 (`P` as in "Pages") is black: the old picture is
@@ -216,8 +220,24 @@ the lead beside a page edge; no modified copy of the game was used.
   brightness, 90 frames after the placement. Of 905 to 1 428 px of
   sprites each (121 178 in all; the characters and the place's name)
   every one was, with the picture off, the same colour as with it on:
-  0 differing. Which of the two characters is in front where they
-  overlap, including at 0 px, was not measured.
+  0 differing.
+- The two characters overlapping, at one place (the first level's, with
+  the other put by a setup method at the same height as the lead). The screen with the sprite layer alone
+  was taken with the other 70 px to the left and 70 px to the right of the lead
+  (90 frames after the placement, and 30 more), which gives the lead's
+  pixels (those the same in both) and the other's (those that change),
+  and then with the other at 24, 16, 12, 8 and 4 px to the left of the
+  lead, at 0 px (both at the same place), and 4, 8, 12, 16 and 24 px
+  to the right, 90
+  frames after the placement. The two characters' pictures overlapped
+  by 17 to 97 px for the other 16 to 4 px to the left, 0 px, and
+  4 px to the right (6 distances); at 24 px to the left and
+  from 8 px to the right they didn't overlap. Of the other's pixels, 0
+  were different on the screen in every one of the 11 distances. Of the
+  lead's, 35, 67, 88, 76, 45 and 15 px were different at the 6
+  overlapping distances (16, 12, 8, 4 px left, 0, and 4 px right): at
+  most 9 fewer than the overlap in each, the pixels where both were the
+  same colour.
 - Three page changes were played with the direction held, 200 frames
   each: from the page numbered 7 to the one numbered 8 and back, and from
   2 to 1. In each, the screens for frames up to `P` − 2 showed the old
@@ -952,7 +972,8 @@ agreed. No character was mirrored on any frame.
   else drawn over the picture besides the two characters and the name
   (for example marks along open paths: none was seen in the
   measured maps).
-- Which of the two characters is drawn in front where they overlap.
+- Which of the two characters is in front where they overlap at other
+  places than the first level's, and with the second character leading.
 - The page change while the other character is on the previous page,
   with a second character walking: the fade was measured with the lead
   alone.
