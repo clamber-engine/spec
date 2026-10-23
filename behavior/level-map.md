@@ -500,7 +500,8 @@ and fractions, but:
   on the page wraps from the page's left edge to its right edge during
   the leg) follows this only if the wrap comes before the other's leg
   starts to move: see "Legs over a page edge".
-  Legs on which the lead's `x` doesn't change are not covered.
+  Legs on which the lead's `x` doesn't change are not covered: see
+  "Legs with little sideways change".
 - Its speed across is 4 × (its end − its whole-pixel `x` at the leg's
   start) in steps of 1/256 px per frame, as for the lead; its fraction
   carries on from leg to leg and walk to walk like the lead's.
@@ -510,6 +511,19 @@ measured changed the lead's `x`, including the legs between places that
 look straight above each other on the map: those moved it 16 to 24 px
 sideways, and the other followed the rule above on them. No leg that
 changes only the height was seen.
+
+Every pair of neighbouring places in the first level's map was looked at
+in the positions and neighbours of `../formats/level-map.md`. The legs
+whose two end places lie at the same `x` are the two vertical pairs of
+Run E; walked from where the lead stood, they moved it 16 to 24 px, as
+said above. Three more legs were picked as ones that might leave the
+lead's `x` unchanged when walked from a place where the map has just
+appeared (the lead standing at the appearance point of "When the map
+appears"): all three are walks upwards. Two of them were walked (Run H);
+the lead's `x` changed on each, by 16 px to the right, and the other
+followed the rule. Why these changed when the places' positions suggested
+otherwise isn't explained. The third wasn't walked, so whether a leg with
+an unchanged `x` comes up in the first level's map is not settled.
 
 After its last leg ends the other stands at that spot until the lead
 walks again. In the runs, each of the other's legs ended before the next
@@ -596,6 +610,13 @@ Results:
   its position wrapped on different frames: 24 walks, 16 of one pair
   and 8 of the other, with the other 24 px to the lead's right at the
   start.
+
+- Run H: two walks upwards from the appearance point of a place, to a
+  place whose position is 8 px to the right of that point (the lead and
+  the other placed as at a new game; a setup method was used). The
+  lead's `x` changed by 16 px to the right on both, the other came to
+  rest 24 px to its left, and its `x` and height matched the rule on
+  every frame, 0 mismatches over 64 frames per leg.
 
 **Legs over a page edge** (runs B, C, D and F):
 
@@ -806,8 +827,9 @@ lengths, at the start and at the page change).
   finish (`../formats/level-map.md`, "Progress").
 - The second character on the map: where it is when the map appears
   after a level left in other ways than finished; legs on which the
-  lead's `x` doesn't change; the other's stalled frame in walks over
-  page edges other than the first level's first.
+  lead's `x` doesn't change (one candidate leg in the first level's map
+  not walked); the other's stalled frame in walks over page edges other
+  than the first level's first.
 - Which picture the cycles start with when the map appears.
 - What moves the other character's cycle against the lead's at a page
   change.
