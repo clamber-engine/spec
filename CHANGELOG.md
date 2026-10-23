@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.304.0
+
+Riding as the second character, and two walkers in reach of one ground
+action with the player facing left or the walkers heading right
+(spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/riding.md`, "The second character": with the second
+  character as the player, riding follows the same rules with larger
+  target speeds for walking and charging; with the second character
+  following, nothing changes. Its pictures, getting off, slopes and
+  walls, and ordinary play at the level's own animal are under "Not
+  covered".
+- `behavior/ground-action-enemies.md`, "Two things in reach": one
+  action still knocks out at most one of two small walkers, always the
+  same one of a pair, with the player facing either way and the walkers
+  heading either way. Ordinary play is under "Not covered".
+
 ## spec-v0.303.0
 
 The second character's throw, pick-up and put-down (spec#19).
