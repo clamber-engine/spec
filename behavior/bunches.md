@@ -319,14 +319,24 @@ own ranges apply:
 | State | `I` | `D` |
 |---|---|---|
 | Standing | −12 to 11 | −10 to 38 |
-| Walking, rolling | −18 to 12 | −6 to 38 |
+| Walking, running, rolling | −18 to 12 | −6 to 38 |
 | Crouching (Down held on the ground) | −19 to 14 | −9 to 25 |
 | Jumping, from the take-off frame `T` until it lands | −18 to 12 | −6 to 38 |
 
 Its jumps have one row: unlike the first character's, there is no
 change at `T` + 6, and none with speed. With the second character
-leading, Down + Action gives a roll and uses the rolling row. Its
-landings are not covered.
+leading, Down + Action gives a roll and uses the rolling row. Running
+uses the walking row, facing either way, from the frame it starts.
+
+**Landing, second character leading.** After a jump that lands on
+frame `L` on the floor it started from, the jumping row (the same as the
+walking row) applies on `L` and on every frame to `L` + 16, the 17 frames
+in which the second character still shows its landing
+(`player-frames.md`). From `L` + 17 the row is that of what it is
+doing: the standing row if it stands, the walking row if it walks or
+runs, the crouching row if Down is held. In one observed case a pickup
+came one frame later than these rules give (see "Not covered"), so the
+ranges may be applied one frame early in some situations.
 
 For example, the second character standing facing left takes a bunch
 with `xb − X` from −12 to 11, so with `X` from `xb` − 11 to `xb` + 12.
@@ -344,6 +354,22 @@ leading (261 630 placements), it was taken on exactly the placements
 that put it inside the lead's ranges. 54 773 of those placements put it
 inside the follower's own ranges and outside the lead's; none of them
 took it.
+
+For the landing, with a bunch at each offset one pixel apart, observed
+separately on each frame from 3 frames before `L` to 21 frames after it,
+after a jump with Jump held for 10 frames (69 825 observations): the
+offsets at which it was taken were exactly the walking row up to `L` + 16
+and exactly the standing row from `L` + 17. Running was observed the same
+way after a roll chain with Action and Right held, on 24 frames (the last
+20 of them running; 54 700 observations), and facing left on 2 frames: the
+walking row exactly. In random play (600 runs of 600 frames, the second
+character leading, a bunch at a random offset from it on a random
+frame from 0 to 20 after each landing) these rules predicted 671
+pickups on frames in standing, walking, running, rolling, jumping and
+crouching states, 229 of them within 16 frames after a landing. The
+game took 670 of them on the frame predicted and no others; the one
+left over came one frame later than predicted, on a frame on which
+neither character moved. That case is not explained; see "Not covered".
 
 Separately, play by random inputs alone was checked against the rules,
 at a bunch and at a letter, with each character leading: 543 287
@@ -574,8 +600,13 @@ where the bunch was (as for single collectibles, `collectibles.md`,
 
 ## Not covered
 
-- The second character's landings and running state, and its ranges
-  in the states listed in the next item.
+- The second character's landings other than after a jump onto the
+  floor it started from (onto lower floor, after a bounce, onto a
+  slope), its running with Action released, and its ranges in the
+  states listed in the next item.
+- One pickup in random play came one frame after the frame the
+  second character's rules give, on a frame on which neither character
+  moved; what makes it late is not known.
 - The ranges while being carried down a steep slope or a rounded ledge
   (`steep-faces.md`), while passing through a platform
   (`platforms-from-below.md`), while carrying an object on a slope or
