@@ -128,13 +128,16 @@ own: the shared palette (`../formats/sprites.md`, "The other objects'
 palettes") and the first character's leading palette (the one the
 character is drawn with when leading). Colour 0 is never drawn. Colours 1
 to 15 of the shared palette and 1 to 14 of the first character's change
-by the table below, for steps 1 to 8; the first character's colour 15
-does not follow it (it changes more slowly; not covered), and steps after
-the 8th are not covered.
+by the table below, for steps 1 to 32 (the dimming's last step); the
+first character's colour 15 does not follow it (it changes more slowly;
+not covered). A colour is only seen while a sprite using it is on the
+screen; steps 9 to 32 are covered for the colours that stayed on the
+screen (see "Evidence"), and pixels of earlier steps' colours also showed
+at some steps (see "Not covered").
 
 **Colours.** Take a colour of one of those palettes (not the first
 character's colour 15) with red `R`, green `G` and blue `B` (0 to 31
-each) before step 1. After step `k` (`k` = 0 before step 1, up to 8; the
+each) before step 1. After step `k` (`k` = 0 before step 1, up to 32; the
 steps are those of rows 1 to 7) the colour shows
 
 | Channel | Value after step `k` |
@@ -207,7 +210,10 @@ T is frame 999, step 1 is on 1 003 (T + 4).
 - that the colours of the shared palette and of the first character's
   leading palette, on every picture from three frames after a step
   frame, up to the 8th step, are those of "Sprite colours" for the last
-  step taken, except the first character's colour 15.
+  step taken, except the first character's colour 15. (Past the 8th
+  step, pictures showed earlier steps' colours too, see "Not covered",
+  so tests check only the table's colours showing, not the others'
+  absence.)
 
 It may not check which of the 8 placements of the cycle is used, beyond
 step 1 being on T + 4 to T + 11.
@@ -274,6 +280,26 @@ frame before, 8 089 of
 the 16 759 pixels of the shared palette's earlier colours (16 runs
 together) already showed the new ones.
 
+Steps 9 to 32: two of those runs went on to the last step, waiting 0 and
+15 frames, with the same pictures and windows (the last window of the
+second run has 3 pictures, as its log ends 3 pictures after step 32's
+window began; the first run's has 5). The pairs are a step from 9 to 32
+and a colour (not the first character's colour 15) that was on the screen
+before step 1: 21 colours, so 504 per run, 1 008 in all, on 238 pictures.
+The table's colour for the step showed in the window in 380 (first run)
+and 374 (second run) of them. Of the others, 6 colours per run stopped
+showing for good from some step on, and no earlier or later table colour
+of theirs showed either: in the first run one colour first missing at
+step 9 and five at step 13, in the second one at step 9 and five at
+step 12 (24 + 5 × 20 = 124 and 24 + 5 × 21 = 129 pairs); a sprite using
+them leaving the screen is the likely cause, not established. In the
+second run one more pair is missing: another colour, one of those that
+stayed, at step 26 only (shown at steps 25 and 27; 129 + 1 = 130). So 15
+colours showed the table's colour at every step from 9 to 32 in the
+first run and 14 in the second. The
+view stopped moving from step 25 on in both runs (its right limit), and
+the sprites' colours still followed the table up to step 32.
+
 ## Not covered
 
 - Sprite colours of other palettes than the two in "Sprite colours"
@@ -281,9 +307,13 @@ together) already showed the new ones.
   others), of the two with the players' roles the other way round, with
   an animal ridden, or for a colour with green below blue; the first
   character's colour 15, which changes more slowly than the table says;
-  on which step frame each palette changes, to the frame; steps after
-  the 8th (including the colours after the last step); the pictures that use a copy of the first character's
-  palette.
+  on which step frame each palette changes, to the frame; the colours
+  after the last step; the pictures that use a copy of the first
+  character's palette; why the 6 colours per run stop showing; why, at
+  steps 10, 11, 13 and 15 to 18, pixels of colours the table gives only
+  for earlier steps showed on every picture of the window (768, 1 280,
+  256, 512, 768, 1 280 and 768 pixels per picture, the same in both runs;
+  at no other step from 9 to 32), nor which sprites they belong to.
 - On which picture a step first shows, to the frame. In the captured
   pictures, the far layer's colours of a step already showed on the
   picture of the frame before the step frame, the ground layer's colours
