@@ -118,10 +118,10 @@ protection gives no event and changes no field.
 - Which contacts hurt the second character in general: its reach
   against a walker isn't specified (`walker-contact.md` covers the
   first character).
-- Coming down onto the large walker with the second character: it
-  doesn't hurt and doesn't bounce, and the two are pushed apart. This
-  also happens during protection. It isn't specified yet, and neither is
-  whether it changes when protection ends.
+- Coming down onto the large walker with the second character: the
+  two are pushed apart (`walker-contact.md`, "The second character"),
+  also during protection. Whether the push changes when protection ends
+  isn't specified.
 - Contacts with the other character while it stands still, from H to
   H + 36.
 - Protection when the first character takes over from the second.

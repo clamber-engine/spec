@@ -699,6 +699,120 @@ hurts and 136 bounces). 0 mismatches, except one frame with a walker at
 full speed: a landing frame where the player was in the case listed
 under "Not covered" (which picture shows on the landing frame).
 
+## The second character (`title-1`)
+
+When the second character leads (`second-character.md`), coming down on a
+walker works as in "Bouncing", with its own horizontal ranges and upper
+limits, and with one difference by kind: the small and the medium walker
+are bounced on and defeated as for the first character, but the **large
+walker is not**. The second character is **thrown back** from it, and
+neither of them is defeated or hurt. Everything else in "Bouncing" holds
+as written: the conditions on frame **B**, the offsets (**I**, **U**) and
+their moments, the rise limit (condition 2: `vy` after gravity greater
+than −1.25, found with both gravities of the second character, −1.25
+itself not bouncing), the landing rule, and "During a bounce".
+
+Ranges of **I** for the second character (both ends included), laid out
+as for the first character:
+
+| Walker | Player facing | Walker heading left | Walker heading right |
+|---|---|---|---|
+| small | right | −31 to 20 | −30 to 21 |
+| small | left | −21 to 30 | −20 to 31 |
+| medium | right | −38 to 18 | −28 to 28 |
+| medium | left | −28 to 28 | −18 to 38 |
+| large | right | −34 to 23 | −33 to 24 |
+| large | left | −24 to 33 | −23 to 34 |
+
+For the large walker these are the ranges of the throw-back.
+
+**U** is at most **31** (small walker), **44** (medium walker) or **57**
+(large walker): 7 more than for the first character. For the small and
+the medium walker there is no lower limit but the landing rule, as for the
+first character (a rising player bounces from U 0). For the large walker
+U must be at least **10**: a second character in the air with U from 0 to
+9 above a large walker's floor is hurt on the next frame, as by any other
+contact (`knock-out.md`; the second character's hurt ranges are not
+specified). The ranges did not change with U (measured at three heights
+for each kind).
+
+### Bouncing off a small or medium walker
+
+As in `bounce.md` and `walker.md` ("Being bounced on"), with these values
+different: on B, `vy` is set to **−8.5** (not −7.125). B + 1 and B + 2
+are frozen. From B + 3 the gravity is **0.4375**, or **0.3515625** if the
+jump input is held on every frame from B (`second-character.md`: the
+second character's two gravities).
+
+### Thrown back by a large walker
+
+On B (the conditions above, with the large walker's ranges), after the
+second character has moved on B as on any airborne frame:
+
+- its `vy` is set to **−3.0**, whatever it was before (measured from
+  rising at 1.5 to falling at 6), and its `vx` to **2.5 px per frame away
+  from the way it faces** (to the left if it faces right) if the walker's
+  heading is the opposite of its facing, **2.0** if the heading is the
+  same as its facing. The walker was walking at full speed (1 px per
+  frame) in these measurements;
+- the walker is not defeated. On B it moves as it did; then its speed is
+  set to **4 px per frame in the direction the second character faces**,
+  whatever its own heading. On each later frame its speed loses an eighth
+  (the fraction dropped) and it moves by the new speed: 3.5, 3.0625,
+  2.6797, … px per frame. B + 36 is the first frame on which its speed is
+  12/256 px per frame or less; from B + 37 it walks by its heading again
+  (`walker.md`, "Pushed", has its pictures and its turn);
+- nothing is frozen: B + 1 and B + 2 are ordinary frames for both.
+
+In the air the second character's `vx` stays as above whatever direction
+is held, and the gravity is **0.4375**, or **0.3515625** if the jump
+input is held on every frame from B. On the ground the state goes on
+through the frame **L** + 16, where L is the landing frame (the first
+frame on which the character is on the floor); `vx` eases from L + 1 as
+usual toward the speed of the direction held (`second-character.md`). Jump
+or the action pressed on L + 1 or later takes effect on that frame, Down
+pressed on L + 2 or later does; a press on L or before has no effect and
+isn't kept. The pictures and the trace state are not specified.
+
+### Example (second character)
+
+Synthetic. The second character faces right and is falling when it meets
+a large walker heading left within the ranges and the upper limit, with
+the jump input not held:
+
+| Frame | Character `vy` | Character `vx` | Walker speed |
+|---|---|---|---|
+| B | −3.0 | −2.5 | 4.0 (right) |
+| B + 1 | −2.5625 | −2.5 | 3.5 |
+| B + 2 | −2.125 | −2.5 | 3.0625 |
+| B + 3 | −1.6875 | −2.5 | 2.6797 |
+
+Facing left instead, with the walker heading left, gives `vx` 2.0 and the
+walker's speed 4.0 to the left.
+
+### Evidence for the second character
+
+By placement, with the second character leading on the flat of the first
+level (the other character following) and a walker of each kind coming
+toward it, as for `rolling-into-walkers.md` ("The second character"): the
+second character put at whole-pixel offsets one pixel apart, falling at
+3 px per frame unless said, in the four combinations of facing and
+heading (1 692 placements for the ranges), at every height from below the
+walker's top to above the upper limit, at several rising and falling speeds
+around the rise limit, with and without the jump input held, and with the
+character facing both ways and the walker heading both ways for the
+throw-back. The same tool with the first character on the first walker
+gave the table of "Bouncing" and the first character's upper limit.
+By inputs alone: 1 104 runs (46 jump timings × the three kinds × walker
+heading left or right × walking or running × jump held for 25 or 6
+frames), each stopped at its first bounce, throw-back or hurt and checked
+against the rules above: 191 bounces, 115 throw-backs, 551 hurts, 247
+passes over, 0 mismatches. With the first character's ranges for the
+same runs, 3 or 4 runs per kind were wrong (heading left, running, jump
+held 25 frames). The frames after the throw-back (`vy`, `vx`, the walker's speed and L + 16) were measured
+on placements and on runs of the second character landing on a large walker
+by inputs alone.
+
 ## In `title-2`
 
 Everything in this section was measured on `title-2` only, with the lead
@@ -879,6 +993,10 @@ This list is for `title-1`; `title-2` has its own list above.
   the ground, with the player and the walker on the same floor).
 - Walkers above the player (U below −6 on the ground, below −4 in the
   air), and the lower end of the vertical reach in the air.
-- The other character, and hits while two characters are present.
+- The second character's hurt ranges against walkers, its pictures and
+  trace state when thrown back, and a thrown-back second character meeting
+  another walker. Walkers that aren't at full speed in these contacts.
+  Hits while two characters are present, other than the second character
+  leading into a walker from above ("The second character").
 - Other kinds of enemies. The medium walker on slopes (its contact was
   measured on flat floor only).

@@ -397,9 +397,9 @@ whichever walking picture it showed before the turn.
 ### Pushed
 
 A large walker can be pushed: its `vx` jumps to more than 1 px per frame
-without it being defeated (seen when the second character comes down
-onto it, `protection.md`, "Not covered"; the push itself isn't
-specified). From that frame it shows `large-push`, while its speed eases
+without it being defeated (when the second character comes down
+onto it: `walker-contact.md`, "The second character", gives the push
+and its speeds). From that frame it shows `large-push`, while its speed eases
 back. On the first frame on which its speed is 12/256 px per frame or
 less, it shows `large-walk-1`, and that frame is the first of the 4.
 If the walker then heads away from its facing, its turn doesn't start on
