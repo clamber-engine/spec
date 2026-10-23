@@ -252,6 +252,8 @@ every picture below.
 | The first character mounting the animal | `mounting-1` to `mounting-5` (`../behavior/animal-crate.md`) | the first character's leading palette |
 | The animal's body while the first character, leading and alone, rides it | every picture the animal's body shows from the end of the mounting on: standing, walking, turning, jumping, charging and landing (`../behavior/riding.md`) | the animal's palette |
 | The first character, leading and alone, sitting on the animal | every picture it shows there, `mounting-1` to `mounting-5` included (`../behavior/riding.md`) | the first character's leading palette |
+| The animal's body while the second character, leading, rides it | every picture the animal's body shows while it is ridden, on the frames covered by "Pictures with the second character" (`../behavior/riding.md`) | the animal's palette |
+| The second character, leading, sitting on the animal | `rider2-1` to `rider2-14` (`../behavior/riding.md`) | the second character's leading palette |
 | The one-life extra-life items | `extra-life-1`, `rising-extra-life-1` (`../behavior/extra-lives.md`) | the one-life item palette |
 | Small, medium and large walkers | `small-*`, `medium-*`, `large-*` (`../behavior/walker.md`), except `large-push` | the small, medium and large walkers' palettes |
 | The thrower and its balls | `throw-*`, `sway-*`, `thrower-out`, `ball-*` (`../behavior/thrower.md`) | the thrower's palette |
@@ -287,6 +289,16 @@ two palettes on every picture: riding changes neither, and the body does
 not take the character's colours. Other things drawn over the body, such
 as the puffs of the shared palette, show their own colours over it; the
 body's own pixels keep the animal's.
+
+The same holds while the second character rides, leading: the body keeps
+the animal's palette and the rider `rider2-1` to `rider2-14` is drawn
+with the second character's leading palette, not its following palette
+and not the first character's. The first character was off screen in the
+runs, so what colours it has there is not covered. The runs were all
+from one place on flat floor and used a setup method; no rides of ordinary
+play were read. A few body pictures (6 in 7 916) showed another colour of
+the animal's own palette at some pixels; which pictures these were was not
+identified, so the body rule above is exact only for the others.
 
 Some pictures here are not named by hash (the sparkles, three of the
 collectibles' eight, the count display's digits and the lives display's
@@ -448,6 +460,15 @@ full frames with every byte hashed for one of them.
     showed the same four greys at some pixels. Pictures read just before a
     mount or after a ride were the character's own, not the body's, and are
     left out;
+  - the animal ridden by the second character, leading (a setup method was
+    used: 3 seeded runs of 5 rides from one saved point of a ride, on
+    flat floor, the first character off screen, random inputs, each ride
+    ending when riding ended or after 700 frames): the rider 7 925
+    pictures, every pixel in the second character's leading palette and
+    none of them in its following palette; the body 7 916 pictures, of
+    which 7 910 showed only the animal's palette's colours at the right
+    colour numbers and 6 showed at some pixels (112 in all) another colour
+    of the animal's palette instead (which pictures was not identified);
   - small walkers 8 897, 8 885 exact (12 differed); medium walkers
     8 502, 8 501 exact (1 differed); large walkers 6 118, 6 113 exact (5
     darker);
@@ -531,9 +552,14 @@ full frames with every byte hashed for one of them.
   - while the picture fades out or in;
   - the `crate-broken-1` and `large-push` pictures, never seen in the
     runs above;
-  - a second character mounting, and the second character riding; the
-    first character riding while not leading, or with the second character
-    present;
+  - a second character mounting; the second character riding while it is
+    not leading; the first character riding while not leading, or with
+    the second character present;
+  - the second character riding in ordinary play, on a slope or on any
+    floor other than the flat one used (only one starting place on flat
+    floor was read), and which body pictures showed another colour of the
+    animal's palette; the first character's colours while the second
+    character rides;
   - the frames on which the lives display's colours change when the
     player changes.
 - The characters' colours in some situations:
