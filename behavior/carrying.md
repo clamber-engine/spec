@@ -401,6 +401,15 @@ are as above, with the second character's values where they differ.
   every frame (`x` and action), and the first 8 frames of the jump match
   those of a free player's jump.
 
+  A direction held from Q on, forward or back, changes none of the
+  press frames of this table (nor of the first character's): the same
+  presses give the same results on the same frames, and the throw ends
+  on the same frame. The direction does move the player in the late
+  part of the throw, as the table says; apart from that, what it changes
+  is what the free player does (walking or a turn from the frame the
+  player is free again, Q + 40 for the second character and Q + 43 for
+  the first, instead of standing).
+
 Measured in `title-1` on flat floor with a `barrel`, the first character
 following: 240 runs of random input (pick-ups at the end of a roll,
 running into the object and standing next to it; then standing, moving,
@@ -506,10 +515,17 @@ on flat floor with no direction held: a throw from standing, then one
 press of Jump or of Action, lasting one frame or held, on each of Q + 0
 to Q + 50 (204 runs). Results are as in the table for every press frame
 at both ends of each range and between. The same runs with the first
-character reproduced the first character's table. Throws in the air and
-presses with a direction held weren't measured, nor was random input;
-the table is the rule for the case measured and is assumed, not shown,
-for the others.
+character reproduced the first character's table. Throws in the air
+weren't measured, nor was random input; the table is the rule for the
+case measured and is assumed, not shown, for the others.
+
+The same 204 runs were repeated for each character with a direction
+held from Q on, in the facing direction and in the opposite one (816
+runs in all). The jump, the roll and the held-Action roll started on
+the same frames as with no direction, for each character, and so did
+the frames on which the throw ended; apart from the throw's own
+following of the input, only the walking or turn from the frame the
+player was free again (Q + 40 and Q + 43) differed.
 
 Throws, pick-ups and put-downs of "The object, second character" were
 measured in `title-1` with the second character leading, by inputs
@@ -580,9 +596,9 @@ Q + 21 and 54 px every time and the first character's table above.
 - With the second character under control: the reach for a `holder`
   (it holds the missing character, so none lies on the level while both
   are there), pressing Action within reach while moving, Down or Up held
-  while the pick-up starts, Jump and Action during a throw in the air or
-  with a direction held (the table above is for a throw from standing on
-  flat floor with no direction held; no random-input check), picking a put-down
+  while the pick-up starts, Jump and Action during a throw in the air
+  (the table above is for a throw from standing on flat floor, with or
+  without a direction held; no random-input check), picking a put-down
   object up again, where the object is while carried and in the hands
   on slopes and in the air, a pick-up of an object lying elsewhere than
   where a put-down leaves it, and everything above that was measured
