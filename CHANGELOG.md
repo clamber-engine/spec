@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.298.0
+
+The first character's pictures on landing after a rope with a direction
+held on the landing frame (spec#38), and the second character at a
+ledge with a 128 px steep face (spec#61).
+
+Part of clamber-engine/spec#38 and clamber-engine/spec#61, which stay
+open for the parts not covered yet.
+
+- `behavior/player-frames.md`, "Landing after a rope": with Left or
+  Right held on L, a slide off shows the same 30-frame list, and a jump
+  off is running from L, with the running pictures and then the
+  standing pictures. Frame counts by speed range, which follow from the
+  stride cycle and the slowing, and an example. Evidence and Not
+  covered updated.
+- `behavior/player-frames.md`, teetering: the second character doesn't
+  teeter at the left-hand side of a ledge top with a 128 px steep face.
+  New evidence entry, with where the other character was and which
+  frames were judged.
+
 ## spec-v0.297.0
 
 Riding on flat floor: standing, walking and the pictures of the animal
