@@ -4,7 +4,8 @@ Titles: `title-1`
 
 After mounting the animal (`animal-crate.md`), the player **rides** it.
 This file covers riding on flat floor: horizontal speed, turning,
-jumping, and the **charge** that an Action press starts. Getting on is
+jumping, the **charge** that an Action press starts, standing and
+walking, and how the animal and the rider are drawn. Getting on is
 in `animal-crate.md`; platforms passable from below are in
 `platforms-from-below.md` ("Riding"); everything else about riding is
 listed under "Not covered".
@@ -229,6 +230,333 @@ the hop leaves the floor on C + 11 and lands on C + 26, the charge end
 is C + 28 to C + 39, and C + 40 is the settling frame. The hop's
 highest point is 16.3125 px above the floor, reached on C + 19.
 
+## Standing and walking
+
+On the floor, outside a turn, a jump, a charge and a charge end, the
+rider is **standing** or **walking**. Nothing above depends on which:
+speed, turns, jumps and the charge follow the sections above either way.
+The difference is in the pictures ("Pictures"), and in when a turn, a
+jump or a charge ends in one or the other.
+
+Below, **forward** is the direction the rider faces at the start of the
+frame, **opposite** the other one, "held" means held alone (not with the
+other direction), and `v` is |`vx`| in 1/256 px per frame after the
+frame's speed rule.
+
+**Which one comes next.** The **first riding frame** is the frame after
+a turn's 8 frames (T + 8), after a jump's landing frames (L + 8) and
+the settling frame (E + 12) after a charge end. A Jump or Action press
+that starts a jump or a charge, and the opposite direction held (a turn,
+"Riding, and turns"), come first, as the rules above say. Otherwise:
+
+- on a **first riding frame**: walking starts on it if forward is held,
+  or if `v` is 224 or more (7/8 px per frame) even with nothing held, and
+  standing starts if not. A rider still moving fast after a charge or a
+  jump therefore goes on walking, and one slower than that, with nothing
+  held, stands. (Measured: 223 and less stood, 224 and more walked);
+- **while standing**: forward held starts walking on that frame, at any
+  speed;
+- **while walking**: see "The stride" and "Stand check".
+
+On a steered frame (the settling frame after a steered charge, the
+landing frames of a jump) facing is the direction held and no turn
+starts ("Steered frames"): "forward" is then the direction held.
+
+The first frame of a stretch of walking, and the first frame of a stretch
+of standing, are called W and S in what follows.
+
+**The stride.** A walking rider goes through a cycle of 15 **steps**,
+numbered 1 to 15; step 1 follows step 15. Each step begins with a change
+of the animal's picture or of the rider's height ("Pictures"), so every
+step boundary can be seen on screen. A **stride counter** is a compact way
+to give how many frames each step lasts at any speed (the durations were
+read from the pictures at many constant speeds):
+
+- On W the stride starts at step 1 with the counter at 768. Nothing else
+  happens on that frame.
+- On each later frame of walking, the counter goes down by the **stride
+  rate**, ⌊`v`/2⌋ + ⌊`v`/4⌋ but at least 192. If the result is 0 or less,
+  the step **ends** on that frame: the length of the next step is added
+  to the counter and the next step begins, on that frame; this is
+  repeated while the counter is still 0 or less (at the top speeds, a
+  rate above 256 can let steps 14 and 15 end on the same frame).
+  Steps 1 to 13 are 768 long, step 14 is 512 long and step 15 is 256 long.
+
+At speeds below 256 a step of 768 lasts 4 frames; at 2 px per frame
+(`v` = 512, rate 384) it lasts 2 frames. The stride goes on, and only its
+step is used (the rider's height, "Pictures"), on the first frame of a
+turn that starts while walking; the pictures of a turn don't use it.
+
+**Stand check.** On a frame on which step 4 or step 15 ends, if `v` is
+less than 48: with neither Left nor Right held the rider is standing from
+that frame (that frame is S); with forward held, walking starts again on
+that frame (step 1, counter 768, as on W; the rider's moving cycle and
+height start again too, "Pictures"). Otherwise, and on the ends of the
+other steps, nothing happens: the walk goes on.
+Examples (flat floor, facing left, from standing, Left held on frames 0
+to n − 1, nothing else): n = 1 to 4 — step 4 ends on frame 16 with `v`
+below 48 (0 for n = 1 and 2, 32 for 3, 47 for 4) and the rider stands from
+frame 16; n = 5 — `v` is 56 on frame 16, the walk goes on, and step 15
+ends on frame 56 with `v` 0: standing from frame 56 on.
+
+## Pictures
+
+What the animal and the rider look like in `title-1` while the first
+character rides on flat floor, on every frame of the parts above and of
+"Standing and walking", except the first frames after the mount (see
+"Not covered"). Each picture has a label used in this file and is named
+by its picture hash (`../formats/sprites.md`, "Picture
+hashes"). The picture given for a frame is the one on screen with that
+frame's view.
+
+**Two pictures a frame.** Every frame of riding draws two pictures at
+the player's position (`../formats/sprites.md`, "Where the picture is
+drawn"): the **animal**, and the **rider** sitting on it, drawn in front
+of it. Both are mirrored left to right when the player faces left on the
+frame (the facing of the trace row), and not mirrored when it faces
+right; so they change side on T + 4 of a turn. The rider's picture is
+drawn at the same x as the animal's and **d** px lower (higher when d is
+negative), whatever the picture. d is not always the same: "The rider's
+height" below.
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `ride-turn-1` | `a0595a49c3c1183235f903b8e8b9d9b34e8aec212a0881d743b27830270a9be6` |
+| `ride-turn-2` | `b440b9aaf02b8650060e59932ed9e139523fc3adc87013ae66a9d3546c4f69a5` |
+| `ride-walk-1` | `2dc178093a660f193147d1be9f89288da6721dfac942a9bbc3c675650ee513e3` |
+| `ride-walk-2` | `76ccb53a372574e0e28ed0c8eb9d2729e53862750d64cd5053930bbe99d869f2` |
+| `ride-walk-3` | `d4f16256b0d7cd952acca54fdcb7a4ef51e785d7329ea803802eb00b868e3fb0` |
+| `ride-walk-4` | `e0a9af4c20472158ad65e9ac8a894111e5398d40fae614f71afa34312f6504da` |
+| `ride-walk-5` | `02da78bbd0e6feca3f29e7823c5053a48280f19204b9fadaa8d051cbcc3927b5` |
+| `ride-walk-6` | `fbebe9b78353e757eafdd7ef44188e19c44999b2aa9329aa8e561f3d2b74147c` |
+| `ride-walk-7` | `b291ca739da734c67efe8700f1e89bd629ef8e0e8f841757b5658c8938e9961f` |
+| `ride-walk-8` | `d60cd3363b16540bf6ad807712698383b7bde0181d986b06d2953562822a341d` |
+| `ride-walk-9` | `78bfb9511837b9a6d34c743307143d36215060f4e31adf15d26ff21f8f316eab` |
+| `ride-walk-10` | `242e56b5f9cd582e8088369c9ffdcf70c0f95be2147492a557a7bc3a32bf0047` |
+| `ride-walk-11` | `7dba37ac220a0a7881b8d1208a45f8302c4bd536071df4d0d416ddf6fa0de76a` |
+| `ride-walk-12` | `3ffde9faa94179aca5092006b8cd5ea1a2147d749a1509ec46a61dd28e6e8a8a` |
+| `ride-walk-13` | `cb8fcccc5cbb32e99223f68e98e321457c591d4e837e25c26a85741099fb57aa` |
+| `ride-walk-14` | `2097ef108d081845e73bf9fa81436713fc9ebba013e1970e96f9505bedea78d0` |
+| `ride-jump-1` | `52d9a7388ca7e6ee5cc82bf4ee80e58e95640c58c8194a88787d76d4c46254c7` |
+| `ride-jump-2` | `4a50f25290a0b598a5770e7375f8cd3355d11f97ce2ba6a77cb45aa44c57e5f8` |
+| `ride-jump-3` | `05bebab3d565d8fdec2de21ad9788f2eabfdde27bb98a942310715a19b4a033c` |
+| `ride-jump-4` | `cbc131072843658cb65c086863cd313d817c67712064628415cee07ca687c7b3` |
+| `ride-jump-5` | `1e37672c9744686d2b83d61b9d27424024516fcc3852f377120c5ef40750f612` |
+| `ride-jump-6` | `7a63d107cdfd03b89ee2d62cc688c5224733408c1e7650984dc97e8554378b7e` |
+| `ride-charge-1` | `d5df73140d1cc8da94265d2f7884c9790c4e50b6c6f918942fa0862c1a582bc8` |
+| `ride-charge-2` | `fab9a5b428406375577de12800fa720f396f365e25e10dc16cdb2b7b69fac4fd` |
+| `rider-1` | `f3af9ff72667449efbba318d5e0e7a2d8ba8eaf34d4f648a3c8da95988c59c27` |
+| `rider-2` | `45dd0e320db5edb2137e9868afa6e1ce00c059aa35c259ec8944c4af5e46772c` |
+| `rider-3` | `ab6af9981f24ac29d213380609b7ee7a35570ca239f1728db291acae79bdc5cd` |
+| `rider-4` | `785e0c9185ba5a202e86f37e950554bd9e9f07f47204801cdde2b96cdc0d5241` |
+| `rider-5` | `bbf7403935646d00b2c77fb0b0cc081b40e14bc6ef17989ceaf7553835345007` |
+| `rider-6` | `ff335196c29d3bc5c78b462e7d9df4468724a8d79527054e7993b6a398397d6b` |
+| `rider-7` | `2543bfa471dc15c59af069d3d032d419c3ab9868b2408f72d1489650c6a4915d` |
+| `rider-8` | `b3a5694010d6e0af7edd1bca90ef47ed3dc0ce9a7fce07b484976db7a9e614a2` |
+| `rider-9` | `4014b48ab6c89d8abe78979caea6c770cc6467e1700496c8f7838dd8e309e2d8` |
+| `rider-10` | `c8601d211a37c5529927f7fe2442d9dd938d6ea1a6c8e24d3213772c81897c1b` |
+| `rider-11` | `bc8b3b1a6872f5d9139dc2d017d96007d4fc95f72788e5a3f4c023abbb198d29` |
+| `rider-12` | `751303c886d46a4785d65aad3a0326bb6a6dc3b7eac97d886e07adb7eb9c4312` |
+| `rider-13` | `31b0e7b55c5c2b64ad504a1c83c9f4d6ec6c11d9bfe8b131568483ba5af874eb` |
+| `rider-14` | `46a1bf38d323a3d1ca18f469c93e0dfd0f62de96d7041ed4e5929bdfce7e6c87` |
+| `rider-15` | `1ac54e1052bec52495c098dd8f6bed3dc782508eb1393af0ccaabdebebd2d05d` |
+| `rider-16` | `dabcb8239729663951a60e3fe5e44f26d33b9bd42397e5dcbb587d76c36eb28e` |
+
+The animal's pictures while standing are `animal-1` to `animal-6` of
+`animal-crate.md` ("Pictures", the animal waiting). `rider-1`, `rider-9`,
+`rider-10` and `rider-11` are the pictures `mounting-5`, `mounting-4`,
+`mounting-3` and `mounting-2` of that file.
+
+**When a hash isn't found.** The importer looks for every hash in the
+table above and for `animal-1` to `animal-6`. The animal's pictures
+(`ride-turn-1` to `ride-charge-2`, with `animal-1` to `animal-6`) belong
+together, and so do the rider's (`rider-1` to `rider-16`): if any hash of
+a group isn't found, the engine shows its own art for the group, on the
+frames, at the places and with the mirroring given here.
+
+### The rider's height
+
+d changes only like this:
+
+- On every frame of walking, d is the value of the current step in the
+  table below. On the first frame of a turn that starts while walking,
+  it is the value of the step the stride is in after that frame's counter
+  update (the stride goes on for that one frame, "The stride").
+- d becomes 1 on the first frame of a charge (also a charge that a
+  Jump and Action press starts in a jump's crouch), on the first frame of
+  a turn that doesn't start from walking (from standing, a jump or a
+  charge end), and on the frame after a turn's 8th frame (T + 8), also
+  when a turn starts again on it. A turn that a jump or a charge
+  interrupts doesn't set d on the next frame (a charge sets 1 as said).
+- Everywhere else d stays as it was. So after a walk the rider keeps
+  the d of its last step through a jump, a landing and standing, until a
+  charge or a turn sets 1 or the next walk sets its step's value.
+
+| Step | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| d | 1 | 1 | 0 | 0 | −1 | −2 | −2 | −3 | −3 | −3 | −2 | −2 | −1 | 0 | 1 |
+
+### Standing
+
+From S, the animal's pictures are `animal-1`, `animal-2`, `animal-3`,
+`animal-4`, `animal-5`, `animal-6`, `animal-5`, `animal-4`, `animal-3`,
+`animal-2`, then `animal-1` again and so on, **6 frames each**: a cycle
+of 60 frames.
+
+The rider's pictures play a fixed **loop of 284 frames** that advances
+on every standing frame, and only on those. Its 14 entries, in order,
+with the number of frames each shows:
+
+| Entry | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Picture | `rider-6` | `rider-7` | `rider-8` | `rider-1` | `rider-8` | `rider-7` | `rider-6` | `rider-7` | `rider-8` | `rider-1` | `rider-2` | `rider-3` | `rider-4` | `rider-5` |
+| Frames | 58 | 10 | 10 | 10 | 10 | 10 | 58 | 10 | 10 | 10 | 10 | 58 | 10 | 10 |
+
+(Entry 14 is followed by entry 1.) Where the loop starts depends on how
+the standing starts:
+
+- **On S, in general** (after walking, a turn, a landing or a charge
+  end): at entry 10, with `rider-1` on S to S + 8 (9 frames, not 10),
+  `rider-2` on S + 9 to S + 18, `rider-3` on S + 19 to S + 76, and so
+  on.
+- **After a jump taken from standing** (the frame before P was a
+  standing frame): the loop doesn't advance during the jump (P to
+  L + 7) and goes on from the position it had on the last standing frame
+  before P. Until the entry that frame was in ends, the rider shows
+  `rider-9` (the picture of the jump's end) instead of that entry's
+  picture; from the next entry on, the entries' pictures.
+  Example: a jump from standing taken on the 30th frame of entry 1 (so 28
+  frames of it are left) shows `rider-9` on L + 8 to L + 35 and then
+  `rider-7`.
+
+The first standing after the mount (M + 22 on) is not covered.
+
+### Walking
+
+The animal's picture on a frame of walking is that of the current step
+("Standing and walking"): step 1 `ride-walk-1`,
+2 `ride-walk-2`, 3 `ride-walk-3`, 4 `ride-walk-4`, 5 `ride-walk-5`,
+6 `ride-walk-6`, 7 `ride-walk-7`, 8 `ride-walk-8`, 9 `ride-walk-9`,
+10 `ride-walk-10`, 11 `ride-walk-11`, 12 `ride-walk-12`, 13
+`ride-walk-13`, and steps 14 and 15 both `ride-walk-14` (told apart by
+the rider's height, 0 and 1).
+
+The rider's pictures on frames of walking and of a turn follow the
+**rider's moving cycle**: `rider-14`, `rider-15`, `rider-16`,
+`rider-15`, then `rider-14` again and so on. Let m be the number of
+frames since the cycle **started**, m = 0 on the start frame: the picture
+is the (⌊(m + 1)/8⌋ mod 4)-th of the cycle (the first is number 0). So
+`rider-14` is shown on the first 7 frames, and every later picture on 8
+frames. The cycle starts on W (also when walking starts again at a stand
+check), on a turn's first frame when the frame before wasn't walking or
+turning (from standing, a jump, a charge or a charge end), and on T + 8
+of a turn (also when a turn starts on it). It doesn't start again when a
+turn starts while walking: the cycle goes on through the turn.
+
+### A turn
+
+On the frames T to T + 7 of a turn the animal's pictures are
+`ride-turn-1` on T and T + 1, `ride-turn-2` on T + 2 to T + 5 and
+`ride-turn-1` on T + 6 and T + 7. The rider's pictures are those of its
+moving cycle above.
+
+### A jump
+
+With P, T, L as in "Jumping", the animal's pictures are `ride-jump-1` on
+P to P + 4, `ride-jump-2` on T to T + 2, `ride-jump-3` on T + 3 to
+T + 5 and `ride-jump-4` from T + 6 until the frame before the **fall
+frame** S1, then `ride-jump-5` from S1 until L − 1, `ride-jump-6` on L
+to L + 2 and `ride-jump-1` on L + 3 to L + 7. The rider's are
+`rider-9` on P to P + 4, `rider-10` on T to T + 2, `rider-11` from T + 3
+until S1 − 1, `rider-12` from S1 until L − 1, `rider-13` on L to L + 2
+and `rider-9` on L + 3 to L + 7.
+
+S1 is the later of two frames: F + 2, where F is the first frame that
+ends with the rider moving down (`vy` > 0); and W1 + 1, where W1 is the
+first frame from F on that ends with the rider at most 72 px above the
+floor of the take-off (the limit lies between 71.5 and 73.1 px). In a
+jump whose highest point is no higher than 72 px (Jump held for 15
+frames or fewer, measured), W1 = F and S1 = F + 2. A higher jump has its
+highest point more than 72 px up, and S1 comes when the fall has brought
+the rider down to 72 px: 5 to 10 frames after F in the jumps measured.
+
+### A charge
+
+From the frame C of the charge's press, the animal's pictures are
+`ride-charge-1` on C to C + 9 and `ride-charge-2` from C + 10 until the
+frame before the charge end. A charge end's 12 frames, E to E + 11, show
+`ride-walk-10` on E to E + 2, `ride-walk-11` on E + 3 to E + 5,
+`ride-walk-13` on E + 6 to E + 8 and `ride-walk-14` on E + 9 to E + 11.
+
+The rider's pictures, for a charge pressed on a frame of standing,
+walking or turning (the rest is not covered): `rider-9` on C to C + 5,
+`rider-10` on C + 6 to C + 8, `rider-11` on C + 9 to C + 32, `rider-10`
+on C + 33 to C + 37, and `rider-9` from C + 38 on, until the standing or
+walking that follows starts.
+
+For a charge that starts in a jump's crouch, in the air or on a landing
+frame, the animal's pictures are as above, and the rider's pictures are
+not covered.
+
+### Example of a jump
+
+Jump pressed on frame 0 only, from standing (P = 0), the jump landing on
+frame 36 (T = 5, F = 22, W1 = F, S1 = 24, L = 36): animal `ride-jump-1`
+on 0 to 4, `ride-jump-2` on 5 to 7, `ride-jump-3` on 8 to 10,
+`ride-jump-4` on 11 to 23, `ride-jump-5` on 24 to 35, `ride-jump-6` on 36
+to 38 and `ride-jump-1` on 39 to 43; rider `rider-9` on 0 to 4,
+`rider-10` on 5 to 7, `rider-11` on 8 to 23, `rider-12` on 24 to 35,
+`rider-13` on 36 to 38 and `rider-9` on 39 to 43. Standing starts on 44.
+
+### Evidence for the pictures
+
+Measured in the first level on the flat floor of a modified copy of the
+game (as above), with the sprites alone drawn, by inputs alone:
+
+- 27 runs of random play (directions, Up, Down, Jump and Action, pressed
+  and held for random lengths) from three riding states, 14 544 logic
+  frames, with 64 turns, 184 jumps, 231 charges, 164 starts of walking
+  and 42 of standing;
+- 16 scripted runs of 6 840 frames in all: a jump taken from standing at
+  each of 12 places of the rider's standing loop followed by 400 standing
+  frames, and a stop of the walk, a turn and a charge each followed by
+  standing.
+
+Everything below is what was seen on screen and in the positions, on
+the 21 384 frames of these 43 runs.
+
+- **The animal's picture and its mirroring.** The rules above give the
+  animal a picture on 18 689 frames. It was identified on screen on
+  17 742 of them and was the one given on all of them; on the other 947
+  another sprite hid too much of it (296 in charges, 470 in jumps, 101
+  standing, 58 walking, 22 in turns). The mirroring was the one given on
+  the 17 742.
+- **The rider's picture.** The rule gives it on 12 621 of the 18 689
+  frames (standing, walking, turns whose moving cycle was known, jumps and
+  charges pressed on a frame of standing, walking or turning), and it was
+  the one given on all of them. The other 6 068 are not covered: 6 032
+  frames of charges pressed in a jump (the rule for the other charges
+  gave the picture on 5 011 of them and another on 1 021, "Not covered"),
+  and 36 frames of turns at the start of a run, where the phase of the
+  moving cycle wasn't known. The rider's mirroring was the one given on
+  18 653 frames (the 12 621 and the 6 032).
+- **The rider's height d.** The rule gives d on 15 372 frames (the rest
+  are frames before the run's first walk, turn or charge, when d is not
+  known); the rider was drawn at that height below the animal on all
+  of them.
+- **Which comes next.** After 6 405 standing frames, 226 first riding
+  frames and 1 497 frames on which a step of the walk ended, standing,
+  walking or a turn followed as the rules in "Standing and walking" say.
+  Standing and walking were told apart by their pictures. The limit of 224 was
+  measured on further runs (random play, taps of Left, jumps held for 1
+  to 40 frames, charges followed by different speeds) with `v` from the
+  positions on the first riding frame from 183 to 331: 223 and below
+  stood, 224 and above walked. Over all runs, 173 stand checks were
+  seen: 19 ended in standing, 2 started walking again with forward held
+  and 152 went on, with `v` of 48 or more.
+- **The fall limit.** The limit of 72 px lies between 71.5 and 73.1 px;
+  9 jumps went higher than 72 px, with S1 − F from 5 to 10 frames.
+
 ## Examples
 
 All values were measured on flat floor, with positions made relative.
@@ -303,6 +631,16 @@ starts on frame 40, because Right is held and the rider faces left.
   riding, other than single collectibles (`collectibles.md`, "Riding the
   animal").
 - Other animals, and riding with the second character present.
-- How the rider and the animal are drawn (poses, the animal's gait).
+- The pictures of the rider and the animal on the first frames after
+  the mount (from M + 22 until the first part of riding ends), after a
+  charge pressed in a jump, on a jump that starts in the air after a
+  hop, on slopes, at walls and ledges, while hurt or knocked off, and
+  when the animal hits an enemy. In a charge pressed in a jump's crouch,
+  in its air frames or on its landing frames, the animal's pictures are
+  those of "Pictures", but the rider's depend on something not found:
+  the rule for a charge from standing, walking or turning gave them on
+  5 011 of 6 032 such frames. Whether the animal's standing loop is the same near the
+  walls of the measured floor, with the second character present and
+  with another animal.
 - Trace state names for riding: `traces/VOCABULARY.md` has no names for
   the crouch, the charge or the charge end yet.

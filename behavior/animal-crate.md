@@ -183,7 +183,7 @@ Call the frame the player mounts **M**.
 - **From M + 23** the player rides the animal: `y` is `yc` (the
   fraction is dropped) and the player is on the ground, also after a
   mount while the animal hops (the player then moves down to `yc` on
-  M + 23). Riding is not covered. After a mount while the animal hops,
+  M + 23). Riding is in `riding.md`. After a mount while the animal hops,
   the frames M + 23 to M + 39 were the same as after a mount on the
   standing animal with the same inputs.
 
@@ -350,7 +350,8 @@ The animal's pictures from M + 2 to M + 21:
 They are mirrored left to right when the player faces left on M, and
 not mirrored when the player faces right. The animal stays where it
 was (`xc`, and `yc` − `k`, "Mounting the animal"). Which pictures are
-shown on M and M + 1, and from M + 22 on, is not covered.
+shown on M and M + 1, and from M + 22 until the first part of riding
+ends, is not covered; the pictures of riding itself are in `riding.md`.
 
 ### Evidence for the pictures
 
@@ -433,9 +434,10 @@ begins on the 23rd frame after the mount, with `y` = 400.
 
 ## Not covered
 
-- Riding: everything from M + 23 on (moving, turning, jumping, what the
-  animal does to enemies, being knocked off). Getting off and getting on
-  again are in `getting-off.md`.
+- Riding: everything from M + 23 on except `riding.md` (moving,
+  turning, jumping, the charge, standing, and their pictures on flat
+  floor), that is slopes, walls, what the animal does to enemies, being
+  knocked off. Getting off and getting on again are in `getting-off.md`.
 - Other levels, other crates, and the kind of animal: the first level's
   crate holds one animal; how a crate's animal is chosen, and other
   animals, are not covered.
@@ -458,6 +460,7 @@ begins on the 23rd frame after the mount, with `y` = 400.
   the crate is broken by a falling object (the broken crate stood 4 px
   to the left in the two cases seen) or by the second character; the
   sounds.
-- The animal's pictures on M and M + 1 and from M + 22 on (riding), and
-  the animal's pictures when it comes back after leaving the view.
+- The animal's pictures on M and M + 1 and from M + 22 until the first
+  part of riding ends (the later ones are in `riding.md`, "Pictures"),
+  and the animal's pictures when it comes back after leaving the view.
 - The trace state of the player while mounting.
