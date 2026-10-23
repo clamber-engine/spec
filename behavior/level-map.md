@@ -171,8 +171,9 @@ show the backdrop, colour 0 of row 0 of the page's palette set.
 
 The lead, and the name shown at the top of the screen for the stop the
 lead stands at, are drawn over the picture, in front of all of it: no
-part of the picture is drawn over them. How the other character is
-drawn against the picture wasn't measured ("Not covered").
+part of the picture is drawn over them. The other character is drawn
+the same way: no part of the picture is drawn over it, at the
+distances from the lead measured ("Measurements").
 
 **A page change.** The picture of the new page replaces the old one at
 once, with no part of the old picture dimmed, and fades in. The picture
@@ -206,6 +207,17 @@ the lead beside a page edge; no modified copy of the game was used.
   13 pages of 57 344 px, 0 differing. Drawn over it were 500 to 1 237 px
   of sprites a page (the lead and the stop's name), all of them
   as the sprite layer alone draws them: 0 differing.
+- Both characters on the map: at 18 places of the first level's map
+  (every third of the places with a position), with the lead at the
+  place and the other (a setup method placed it) at the same height as
+  the lead and at six horizontal distances from it: 40, 24 and 8 px to
+  its left, 0 px (both characters at the same place), and 8 and 24 px
+  to its right. 18 places times 6 distances is 108 screens at full
+  brightness, 90 frames after the placement. Of 905 to 1 428 px of
+  sprites each (121 178 in all; the characters and the place's name)
+  every one was, with the picture off, the same colour as with it on:
+  0 differing. Which of the two characters is in front where they
+  overlap, including at 0 px, was not measured.
 - Three page changes were played with the direction held, 200 frames
   each: from the page numbered 7 to the one numbered 8 and back, and from
   2 to 1. In each, the screens for frames up to `P` − 2 showed the old
@@ -929,9 +941,7 @@ agreed. No character was mirrored on any frame.
   else drawn over the picture besides the two characters and the name
   (for example marks along open paths: none was seen in the
   measured maps).
-- The other character against the picture: whether it is drawn in front
-  of all of the picture as the lead is (every measurement of the
-  picture had the lead alone on the map).
+- Which of the two characters is drawn in front where they overlap.
 - The page change while the other character is on the previous page,
   with a second character walking: the fade was measured with the lead
   alone.
