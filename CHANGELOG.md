@@ -2,6 +2,31 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.297.0
+
+Riding on flat floor: standing, walking and the pictures of the animal
+and the rider; the first character's pictures on landing after a rope
+(spec#38).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/riding.md`: new section "Standing and walking": when a
+  rider stands or walks, the 15-step stride and how long each step
+  lasts at each speed, the stand check, and what follows a turn's end,
+  a landing and a charge end. New section "Pictures": the animal's and
+  the rider's pictures, named by picture hash with a fallback for each
+  group, for standing, walking, a turn, a jump and a charge, and the
+  rider's height above the animal. Examples, evidence from the pictures
+  and positions on screen, and Not covered.
+- `behavior/animal-crate.md`: points to `riding.md` for riding and
+  narrows its Not covered lists.
+- `behavior/player-frames.md`, "Landing after a rope": the first
+  character's pictures after a jump off and a slide off a rope. This
+  covers the 30-frame list after a slide off, what nothing held, Jump,
+  Down, Action and a direction from L + 1 lead to, and one run with a
+  direction held that differed. Evidence and Not covered updated.
+
 ## spec-v0.296.0
 
 The music after a knock-out of the lead alone (spec#69).
