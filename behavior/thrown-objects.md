@@ -403,8 +403,9 @@ and jumping, at every few frames as the walker came nearer, toward
 walkers heading both ways, and from both sides), 417 hits, and 10 856
 frames on which a walking walker and the thrown object were both
 there, checked against the rules below with one mismatch (two walkers
-in range on the same frame, "Not covered"); 10 897 frames of hit walkers checked against "The
-walker", 0 mismatches; and about 17 000 controlled single frames in
+in range on the same frame, since explained under "When a walker is
+hit"); 10 897 frames of hit walkers checked against "The walker", 0
+mismatches; and about 17 000 controlled single frames in
 which the object's position or speeds were set next to a walker just
 before a frame, to find the limits.
 
@@ -495,6 +496,29 @@ were seen with the object up to 12 px lower than the walker (U down to
 
 One object can hit several walkers, each on its own frame (seen with
 both large walkers in 67 throws).
+
+**Two walkers in range on the same frame.** Only one of them is hit on
+that frame. If the other one is still in range on the next frame, it is
+hit then. Which one is hit first doesn't depend on where the walkers
+are or on which is nearer: for a given pair of walkers it was always the
+same one, whether the other walker stood anywhere from 20 px to the
+left to 20 px to the right of it. Which of two walkers it is isn't
+specified. This held for the early and the late area (t from 1 to 19).
+Measured with two large walkers and the object moving right only; the
+other cases are under "Not covered".
+
+A setup method was used to arrange these situations; they were not
+observed in ordinary play. Two large walkers stood on flat floor, the
+second one 20, 8, 0 (on top of the first), −8 or −20 px from the first.
+The object reached them at every second pixel of position from 60 px
+to the left to 60 px to the right of the first walker, in the early and
+the late area (t = 1, 5, 13 and 19), and with the two walkers
+exchanged (t = 5, offsets −20, 0 and 20). In 747 situations both
+walkers were in range on the frame the object reached them. Each was
+compared with the situation observed with a single walker: exactly one
+walker was hit in each, the same one throughout the pair, with 0
+mismatches. With the object moving slowly (about 1.6 px per frame)
+both were hit, the second one on the next frame.
 
 ### What else happens on a hit
 
@@ -1313,8 +1337,9 @@ this file doesn't say what decides the mirroring there.
   measured on flat floor only); the object more than 12 px below the
   walker; walkers that are turning (for medium walkers and the later
   rows), still speeding up, outside the picture, or not on the floor; and
-  two walkers in range on the same frame (seen once: only one of them
-  was hit, and the other one, out of range on the next frame, wasn't).
+  two walkers in range on the same frame other than two large walkers
+  with the object moving right (medium and small walkers, the object
+  moving left, a walker on another floor).
 - How a hit is drawn (something appears where the walker was hit) and
   how the hit walker is drawn while it falls.
 - The thrower ("Hitting the thrower"): throwers facing right; an object
