@@ -1393,7 +1393,9 @@ rules, as seen:
   player standing on the ledge top, 0 to 9 columns before the face's
   first column, did not teeter. The short face with a drop teetered and
   the two taller faces did not, so the face's height, the drop after
-  it, or both may matter; which is not known (see Not covered).
+  it, or both may matter; which is not known (see Not covered). The
+  second character did not teeter at the 64 px or 128 px face either
+  (see its section).
 - The left-hand side of a ledge top with a steep face, first character,
   one case measured: a flat top with a face of 64 px down (4 px per
   column) to its left, leading on to a lower floor with no drop. The
@@ -2796,6 +2798,25 @@ steep face, picking something up):
   began below the ledge top (the walk took the player down the face
   before it stopped), in 3 the stand lasted under 5 frames and in 1 no
   stand began. One-frame presses were not tried.
+- **Teetering, second character, a ledge with a 128 px steep face:** the
+  ledge top and face of the first character's entry above, set up and
+  counted the same way (the player 1 to 16 px before the face by a setup
+  method, walked toward it for 1 to 8 frames, stood 60 frames; 3 sets of
+  100 runs), each stand decided on S + 4. 77 stretches of standing of 5
+  frames or more began on the ledge top after a walk's stop, 0.1 to 11.2
+  columns before the face's first column (3 526 frames), and none
+  teetered. The other character followed 4 to 47 px behind the player
+  on every frame from S + 4 on. Each of the 77 stretches had a picture judged on S + 4
+  and every later frame: 3 218 frames in all, each matching the second
+  character's standing list (none left out, 0 differences), and none
+  showed a teetering picture. The same check on every frame from S to the
+  end of each stand, 4 633 frames, covered the 313 stretches the sets
+  gave on the top and below it (the 77 above with their 3 526 frames, and
+  236 more, mostly lower down). In the other runs no stretch was
+  counted on the top: in 218 the first stand began below the ledge top
+  (the walk took the player down the face before it stopped) and in 5 the
+  stand lasted under 5
+  frames. One-frame presses were not tried.
 - **Teetering, second character, ledges with a steep face:** the same
   two ledge tops, set up and counted as for the first character (the
   player 1 to 16 px before the face in 200 runs on the ledge with the
