@@ -82,9 +82,26 @@ the fade of the level's end (`level-end.md`).
   starts on `M` − 3, with `M` 53 frames
   after `E`.
 - **Knocked out as the lead alone.** `H` is the lead's hit frame
-  (`knock-out.md`): the level's song is cut on `H` + 9 or `H` + 10 and
-  song 17 starts
-  on `H` + 39 or `H` + 40, in two runs. What follows is not covered.
+  (`knock-out.md`). These frames are video frames counted from `H` (`H`
+  is frame 0), so the 32-frame pause of `knock-out.md` (video frames
+  `H` + 8 to `H` + 39) is counted. The level's song is cut on `H` + 9 or
+  `H` + 10 and song 17 starts on `H` + 39 or `H` + 40. A frame on which
+  a cut or a start happens is judged to within one frame, so the silent
+  time here is 29 to 31 frames, which agrees with the table's 30. In a
+  trace, which has no rows for the pause, the cut comes between the rows
+  `H` + 7 and `H` + 8. A start on `H` + 39 comes between the same rows;
+  a start on `H` + 40 is on the row `H` + 8, the first row after the
+  pause.
+
+  Song 17 goes on while the lead falls and lies still. No voice sounds
+  from `H` + 254 and nothing else is started. The level's last logic
+  frame is `H` + 225 (`F` + 153 in `knock-out.md`), video frame `H` + 257.
+  Song 17 is cut on the second or third video frame after it (`H` + 259
+  or `H` + 260), and the map's song (12) starts 47 or 48 frames after
+  that cut (`H` + 307), on the map that follows; the table's 47 holds
+  within the same one-frame judgement. The level's song starts
+  again only when the level is entered again, by the rule above for
+  entering a level.
 
 ## The still frames on the map
 
@@ -112,7 +129,9 @@ method was used to reach the situations where noted.
 - Entering a level from the map: the cut on `P` + 36 in every run (all
   the entering runs).
 - Leaving through a wall exit and coming back: one run each, as above.
-- Knocked out as the lead alone: two runs.
+- Knocked out as the lead alone: five runs (the last three followed to
+  the map's song: cut on `H` + 9, `H` + 9 and `H` + 10, start on `H` + 39
+  in all three), all from one place in the first level.
 
 ## Not covered
 
@@ -121,6 +140,7 @@ method was used to reach the situations where noted.
 - Songs on the level map for other maps, and screens reached from the
   map other than levels.
 - Songs after a knock-out of the lead with a second character, of the
-  second character, or of the last character; what follows song 17.
+  second character, or of the last character; a knock-out when no tries
+  are left; a knock-out after a restart point was reached.
 - The finishing tune with two characters at the end.
 - The sound effects.
