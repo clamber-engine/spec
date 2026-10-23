@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.305.0
+
+The level map after a knock-out as the lead alone (spec#70), and two
+medium or two large walkers in reach of one ground action (spec#19).
+
+Answers clamber-engine/spec#70. Part of clamber-engine/spec#19, which
+stays open for the parts not covered yet.
+
+- `behavior/level-map.md`, "After a knock-out as the lead alone": with
+  a try left, the black time before the map, where the lead stands and
+  its pictures, the fade-in, no walk and no open path, when a press
+  enters the level again and that the level then begins as from a new
+  game's map. With no tries left, the game-over picture, its fade-in
+  and the presses that start its fade-out; these were not checked
+  where the last try was lost in ordinary play ("Not covered").
+- `behavior/ground-action-enemies.md`, "Two things in reach": the rule
+  for two small walkers now also covers two medium walkers, two large
+  walkers, and a medium and a large walker: one is knocked out, always
+  the same one whatever the offsets.
+
 ## spec-v0.304.0
 
 Riding as the second character, and two walkers in reach of one ground
