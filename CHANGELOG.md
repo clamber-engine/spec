@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.283.0
+
+The sprites' colours during the first level's dimming (spec#38).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/dimming.md`: new "Sprite colours". The shared palette and
+  the first character's leading palette dim on the background rows'
+  cycle of step frames, by a rule of their own (per channel, with
+  worked examples), for steps 1 to 8. The first character's colour 15
+  is excepted. Says which picture first shows a step, with screen-only
+  evidence, scenario checks and Not covered (later steps, other
+  palettes, the other character, colours with green below blue).
+- `formats/sprites.md`: the Not covered entries on the dimming point to
+  the new section.
+
 ## spec-v0.282.0
 
 The level map's characters' first pictures when the map appears
