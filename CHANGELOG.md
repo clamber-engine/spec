@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.315.0
+
+The second character's thrown object against walkers (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/thrown-objects.md`, new section "The second character" under
+  "When a walker is hit": the same tables and height limits as for the
+  first character, with the timing shifted because the object leaves
+  earlier (t = 1 on Q + 19, the larger area through Q + 34); walker and
+  object after a hit as for the first character. Measured in arranged
+  situations only. The smaller area's rows for the object moving right
+  and a few other cases are listed in "Not covered".
+
 ## spec-v0.314.0
 
 The second character against balls: rolls with Down held and swaps
