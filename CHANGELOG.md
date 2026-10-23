@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.287.0
+
+The level map: which character is in front where the two overlap
+(spec#38, spec#59), and a stale `player-frames.md` "Not covered" item
+removed (spec#61).
+
+Part of clamber-engine/spec#38, clamber-engine/spec#59 and
+clamber-engine/spec#61, which stay open for the parts not covered yet.
+
+- `behavior/level-map.md`: where the two characters overlap, the other
+  character is in front, on either side of the lead. Measured on screen
+  at the first level's place, 11 distances. Not covered: other places,
+  and the second character leading.
+- `behavior/player-frames.md`: teetering after a run's stop is no longer
+  listed under "Not covered"; the Evidence already covers it for both
+  characters.
+
 ## spec-v0.286.0
 
 The level map: the third candidate leg with an unchanged `x` (spec#65).
