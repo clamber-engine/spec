@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.286.0
+
+The level map: the third candidate leg with an unchanged `x` (spec#65).
+
+Part of clamber-engine/spec#65, which stays open for the parts not
+covered yet.
+
+- `behavior/level-map.md`: the third candidate leg of "Legs with little
+  sideways change" was walked from its start place (new Run I). The
+  lead's `x` changed and the other followed the rule. No leg with an
+  unchanged `x` was found in the first level's map. Not covered: this
+  leg walked from where the map has just appeared.
+
 ## spec-v0.285.0
 
 The sprites' colours during the first level's dimming, after step 8
