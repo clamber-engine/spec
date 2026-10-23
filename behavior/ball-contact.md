@@ -260,6 +260,11 @@ Which pose the player has, measured with the second character:
 - **Crouching**: from the first frame Down is held on the ground, and on
   the first 12 frames on which Down is no longer held (the recovery);
   the standing range follows.
+- **Down held when Action is pressed**: the second character has no
+  ground action (`ground-action.md`), so the press starts a roll, and
+  the rolling range holds from the roll's first frame to its end, with
+  the standing range or, with Down still held, the crouching range
+  after it.
 - **Teetering** (`player-frames.md`, "Standing still", "Second
   character"): the walking range, from the first frame with a teetering
   picture (`s-teeter-1`, S + 4) through the whole teetering loop, for as
@@ -273,6 +278,19 @@ Which pose the player has, measured with the second character:
   face", "Second character"). On G + 7, when the player is standing
   again, it has the standing range, and with Left still held and the
   player walking on it has the walking range.
+
+Rolls started with Down held were measured facing right, in rolls begun
+from a crouch after standing still and after walking. With a setup
+method used to arrange the situations (a ball one pixel apart from the
+player in every position around them at the end of a frame), the edges
+were those of the table on every frame of the rolls, which
+lasted about 40 frames each, and on the frames after them. A roll
+facing left was measured the same way once, begun from a crouch after
+walking left and stopping: its edges were the facing-right edges turned
+around as for the other poses (rolling −12 to 16, crouching −14 to 17),
+on every frame of the roll and the crouch after it. These rolls were
+all arranged situations; the ranges were not checked in play by inputs
+alone with balls coming at the player.
 
 Teetering and walking off a ledge with a face were measured at one
 ledge, the left-hand end of a floor, with the player facing left (the
@@ -293,6 +311,37 @@ hit on the first character in the same situation: with the first
 character following, the second character is lost as in
 `losing-a-character.md`.
 
+## Swapping characters
+
+With two characters, a swap (`swap.md`) pressed on Q returns control on
+E. Using F as in "When a ball hurts", for either character as the player
+and a ball at any position:
+
+- the player is hurt on F + 1 for F up to Q − 1 by the ranges above;
+  for F from Q to E − 1 no ball hurts it;
+- the other character, which becomes the player on E, is not hurt for F
+  up to E − 1, and is hurt on F + 1 from F = E on, by the ranges of the
+  pose it has on F: the standing range when no input is held on E (the
+  upright range of the table for the first character, "The second
+  character under control" for the second).
+
+These hold for a swap with the first character as the player (E =
+Q + 79, or Q + 78 with a Jump press on Q − 1) and with the second
+character as the player (E = Q + 72).
+
+Measured with a setup method used to arrange the situations: a ball one
+pixel apart from the character in every position around it at the end of
+each frame, from before the press to after control returned, with the
+player standing still when it pressed. Four swaps were seen: the first
+character as the player, then the second character as the player on a
+second press; the first character as the player on a press at a later
+frame; and the first character as the player with a Jump press on the
+frame before. On every frame the first frame of the protected span and
+the first frame on which the other character could be hurt were those
+above, and the ranges on E and the frames after it were the standing
+ones. The swaps were arranged situations as well: they were not checked
+in play by inputs alone with balls coming at the player.
+
 ## Not covered
 
 - The ground action meeting balls. Thrown and carried objects meeting
@@ -301,10 +350,16 @@ character following, the second character is lost as in
 - These teetering and walk-off ranges were seen only in arranged
   situations, not in play by inputs alone with balls coming at the
   player.
+- Rolls with Down held and swaps in play by inputs alone with balls
+  coming at the player (seen only in arranged situations).
 - Poses not listed above: bouncing (`bounce`), carrying an object,
-  being hurt, swapping characters. For the second character under
-  control, also: the ground action, walking off ledges without a face,
-  carrying an object, and the first frames after a swap.
+  being hurt. For the second character under control, also: walking
+  off ledges without a face and carrying an object.
+- Swapping characters: balls arriving in play during a swap (the
+  protected span was seen only with balls at fixed positions around the
+  character, none thrown at it), a swap press on the frame a ball hurts, protection
+  (`protection.md`) around a swap, a swap with input held on E, and a
+  swap started in other poses than standing.
 - Exactly when the airborne pose ends after a landing and when it
   starts before a walk-off, beyond the cases listed; when the standing
   pose starts after slowing down.
