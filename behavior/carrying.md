@@ -383,6 +383,23 @@ are as above, with the second character's values where they differ.
   of walking (the facing direction held) or the first frame of a turn
   (the other one held), as after walking. After a put-down, Q + 10 is a
   frame of standing whatever is held.
+- **Jump and Action during a throw** follow the first character's table
+  ("Jump and Action during the throw") three frames earlier, to match the
+  throw's length:
+
+  | Input | Result |
+  |---|---|
+  | Jump pressed on Q + 19 to Q + 39 | A jump with the **second character's own** values (`jump-input.md`; not the first character's values used while carrying), take-off on the next frame. The throw ends. |
+  | Jump pressed before Q + 19 | Nothing, now or later. |
+  | Action pressed on Q + 19 to Q + 39 | A roll starts on the press frame. The throw ends. |
+  | Action pressed on Q + 12 to Q + 18 and still held on Q + 19 | A roll starts on Q + 19. |
+  | Action pressed on Q + 12 to Q + 18 and let go before Q + 19 | Nothing. |
+  | Action pressed on Q + 1 to Q + 11 | Nothing, even if held through Q + 19. |
+
+  A press on Q + 40 or later is an ordinary press of a free player. The
+  roll started this way matches a roll started by a free player on
+  every frame (`x` and action), and the first 8 frames of the jump match
+  those of a free player's jump.
 
 Measured in `title-1` on flat floor with a `barrel`, the first character
 following: 240 runs of random input (pick-ups at the end of a roll,
@@ -483,6 +500,17 @@ than 13 px above the player's `y`, and below it for part of the
 pick-up and put-down. In a put-down the object is 12 px in front of the
 player and 3 px above the floor on Q + 9 and rests there from Q + 10.
 
+The Jump and Action table of this section was measured in `title-1` with
+the second character leading, from a start prepared with a setup method,
+on flat floor with no direction held: a throw from standing, then one
+press of Jump or of Action, lasting one frame or held, on each of Q + 0
+to Q + 50 (204 runs). Results are as in the table for every press frame
+at both ends of each range and between. The same runs with the first
+character reproduced the first character's table. Throws in the air and
+presses with a direction held weren't measured, nor was random input;
+the table is the rule for the case measured and is assumed, not shown,
+for the others.
+
 Throws, pick-ups and put-downs of "The object, second character" were
 measured in `title-1` with the second character leading, by inputs
 alone, from a start prepared with a setup method (an object ahead on the
@@ -552,7 +580,9 @@ Q + 21 and 54 px every time and the first character's table above.
 - With the second character under control: the reach for a `holder`
   (it holds the missing character, so none lies on the level while both
   are there), pressing Action within reach while moving, Down or Up held
-  while the pick-up starts, Jump and Action during a throw, picking a put-down
+  while the pick-up starts, Jump and Action during a throw in the air or
+  with a direction held (the table above is for a throw from standing on
+  flat floor with no direction held; no random-input check), picking a put-down
   object up again, where the object is while carried and in the hands
   on slopes and in the air, a pick-up of an object lying elsewhere than
   where a put-down leaves it, and everything above that was measured
