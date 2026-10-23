@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.301.0
+
+The second character leading into launch barrels, and the first
+character's long stand (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/launch-barrel.md`, "The second character": catches, holds
+  and shots on the same frames as the first character, with its own
+  catch ranges for standing, moving/rolling/jumping and crouching, and a
+  flight target of ±3.375 with a direction. Worked flight examples.
+- `behavior/launch-barrel.md`, "A long stand": the first character's
+  standing catch range changes partway through a long stand.
+- Measured with a setup method; "Not covered" states these rules
+  weren't checked in ordinary play, and lists the second character's
+  remaining states and the `down-launch-barrel`.
+
 ## spec-v0.300.0
 
 The second character leading on ropes (spec#19).
