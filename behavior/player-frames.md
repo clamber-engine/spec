@@ -1760,16 +1760,78 @@ and its landing"), in this order:
   `air-3` on every frame with `vy` ≤ 0 (rising or at the top; `vy` as in
   the trace row of the frame). From the first frame with `vy` > 0
   (frame m = 0): `air-4` on m = 0, `air-5` on m = 1 to 3, `air-6` from
-  m = 4 until the landing (the landing's own pictures are not covered).
+  m = 4 until the landing (the landing: "Landing after a rope" below).
   A jump that ends before P + 7 isn't measured.
 - **Sliding off the end** (the fall of `ropes.md`, "After a rope"
   starting on frame F, the frame after the let-go frame): `land-2` on F,
   then 2 frames each of `land-1`, `air-6`, `air-5`, `air-4`, `air-3`,
-  `air-4` and `air-5` (F + 1 to F + 14). Later frames and the landing
-  aren't covered.
+  `air-4` and `air-5` (F + 1 to F + 14), and the list goes on up to
+  F + 29 ("Landing after a rope" below).
 
 If the player catches a rope again in the air, the catch frame shows
 `rope-hang-1` (or the turn's picture, if a turn starts on it).
+
+#### Landing after a rope
+
+L is the landing frame (`landing.md`: the frame carrying `land`). The
+pictures that follow depend on how the player left the rope. "Held from
+L + 1" means the input is the same on every frame from L + 1 on; "not
+held on L" means it isn't held on L itself, so that it's a new press on
+L + 1.
+
+**After jumping off** (jumps of 25 to 68 frames from P to L measured;
+`air-6` on the frames before L):
+
+- With neither Left nor Right held on L, and nothing held from L + 1:
+  `land-1` × 3 (L to L + 2), `land-2` × 3, `land-3` × 3, then `stand-1`
+  × 3 from L + 9, going on as in "Standing still" with L + 9 as S. These
+  are the pictures of a jump landing with M = L (the second example
+  under "A jump and its landing").
+- Jump not held on L, held from L + 1 (no Left or Right on L): `land-1`
+  on L, `jump-1` on L + 1, and the jump's pictures from there
+  ("A jump and its landing").
+- Down held from L + 1 (no Left or Right on L): `land-1` on L and
+  L + 1, `crouch-1` on L + 2 and the crouching pictures from there
+  ("Crouching", with D = L + 2).
+- Action not held on L, Action and Right held from L + 1: `roll-1` on
+  L + 1, and the roll's pictures from there ("A roll").
+  Whatever is shown on L itself is not checked here.
+
+**After sliding off the end** (F, the first frame after the rope, as
+above; landings on F + 4 to F + 13 measured). The 30 frames F to F + 29
+show the list above, whenever the player lands in that range, and
+whatever was held on the frames before L (but see the presses below, and
+the exception under Left or Right):
+
+| F to F + 29 | Pictures |
+|---|---|
+| F | `land-2` |
+| F + 1, F + 2 | `land-1` |
+| F + 3 to F + 12 | `air-6`, `air-5`, `air-4`, `air-3`, `air-4` × 2 each |
+| F + 13 to F + 15 | `air-5` × 3 |
+| F + 16 to F + 19 | `air-6` × 4 |
+| F + 20 to F + 23 | `land-1` × 4 |
+| F + 24 to F + 26 | `land-2` × 3 |
+| F + 27 to F + 29 | `land-3` × 3 |
+
+- With nothing held from L + 1 (and no Left or Right on L): the list
+  above, then the standing pictures from F + 30 (`stand-1` × 3,
+  `stand-2` × 3, … as in "Standing still" with S = F + 30), whenever
+  the player landed.
+- With Left or Right held from L + 1, and neither it nor Action held on
+  L: the list up to F + 19, `walk-1` on F + 30 if the held side is the
+  side the player faces, `turn-a` on F + 30 if it is the other side. The
+  list also holds on F + 20 to F + 29 in all the runs measured but one:
+  in 1 of the 4 runs that landed on F + 8 and had the side the player
+  doesn't face held from L + 1, a walking start and then
+  a turn began on F + 20 and F + 21 instead of `land-1`. What made that
+  run differ is not known, so the pictures on F + 20 to F + 29 with the
+  side the player doesn't face held are covered only where nothing else
+  starts (see Not covered).
+- Jump not held on L, held from L + 1: `jump-1` on L + 1 and the jump's
+  pictures from there. Down held from L + 1: `crouch-1` on L + 2. Action
+  not held on L, Action and Right held from L + 1: `roll-1` on
+  L + 1. In each case the list is left on that frame.
 
 ## Swimming
 
@@ -3153,6 +3215,23 @@ steep face, picking something up):
   ended in hanging. After the rope: 717 jumps off (26 005
   air frames showed the list) and 315 slides off the end (2 240 frames
   showed the list; the longest fall measured shows the list up to F + 14).
+  Landing after a rope: 2 400 runs of up to 300 logic frames, each
+  followed by 30 frames with one fixed input held (nothing, Left, Right,
+  Right and Action, Jump or Down) from L + 1 on, on the second level's
+  two ropes. 914 jumping-off landings (25 to 68 frames in the air) and
+  768 slide-off landings (on F + 4 to F + 13) were logged. Of those whose
+  held input fell under a rule above, all showed the rule's pictures:
+  46 with nothing held, 41 with Jump, 56 with Down and 112 with Action
+  and Right after a jump off, and 43 with nothing held, 106 with
+  Jump, 117 with Down, 111 with Action and Right and 68 with a
+  direction after a slide off. Not counted: 5 of the jump-off landings
+  with nothing held and 2 of the slide-off landings with the side the
+  player doesn't face held, which left the floor again within the frames
+  checked (by walking off a narrow platform they had landed on), and 1
+  slide-off landing with the side the player doesn't face held, whose
+  pictures on F + 20 and F + 21 were a walking and a turning start 10
+  frames earlier than the rule says (the exception stated under Left or
+  Right; 33 runs of that kind were checked in all and 32 matched).
 
 - **Swimming, first character:** 200 runs of 300 logic frames of random
   Up, Down, Left, Right, Jump and Action input, 25 in each of the 8 areas
@@ -3251,8 +3330,13 @@ steep face, picking something up):
 - The rope pictures of the second character and of the follower, the
   pictures on a rope with a knock-out, a hurt or a game pause, on ropes
   of other levels and on a rope whose end is low enough to reach the
-  ground, the landing pictures after a jump off or a slide off a rope,
-  a slide-off fall beyond F + 14, and a jump off that ends before P + 7.
+  ground, the landing pictures after a jump off or a slide off a rope
+  with Left or Right held on L (or Action held on L, or the walking,
+  running and turning pictures after F + 30, and the pictures on F + 20
+  to F + 29 with the side the player doesn't face held, which differed in
+  1 run of 33), jump-offs under 25 frames
+  in the air, slide-off landings outside F + 4 to F + 13, and a jump
+  off that ends before P + 7.
 - The first character's pictures in a launch barrel on the hold frames before the last one (left kind)
   or before the last 12 (down kind), on the shot frame of the `down-launch-barrel`, on the catch frame C and the frames before it,
   on the landing frame and after it, in a flight cut short (by an enemy, a wall or the ceiling) or
