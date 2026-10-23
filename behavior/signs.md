@@ -17,7 +17,9 @@ The first level holds two signs, near its end, with different pictures
 (one shows an arrow, the other a word). The first level's scene
 (`exits.md`, "The scene") holds a third, with a picture of its own (a
 board with words on it). All three are of the one kind `sign`; the
-picture belongs to the reference ("Pictures"). Measured with the first character leading and alone, using the
+picture belongs to the reference ("Pictures"). Measured first with the first character leading and alone (the
+sections before "Two characters"), then with two characters ("Two
+characters"), using the
 level's own signs and, in a copy of the image, copies of each of the
 three placed near the level's start (see "Checks").
 
@@ -74,6 +76,11 @@ were the same on every frame. In particular:
 
 In the pictures checked (the lead standing at each of the two signs),
 the sign was drawn over the lead where they overlapped.
+
+This holds with two characters in the level, whichever leads: the
+second character leading, or the first leading with the second
+following, a sign changed nothing on any frame, and it appeared and was
+removed at the same distances ("Two characters" below).
 
 ## The scene's sign
 
@@ -177,9 +184,31 @@ until play stopped (a knock-out's fade ends a run).
   frames each), the sign was at its entry's position on every frame
   from frame 1 on.
 
+## Two characters
+
+Both signs, copies placed on the floor ahead of a pair of characters
+(nothing else in the checks was changed), same method as above, 30 runs
+of 900 frames of random inputs per sign and per arrangement:
+
+- **The second character leading, the first following.** 53 942
+  frames in all, 4 424 of them with the lead within 48 px of the sign.
+  Differences: 0.
+- **The first character leading, the second following.** 54 504
+  frames, 9 018 with the lead within 48 px. Differences: 0.
+
+Appearing and removal, walking and running (and jumping) towards a copy
+and away from it with a pair: with the first leading, 8 runs (the two
+signs, four walks each) of 500 to 1 050 frames, 10 appearances (all from the
+right except 2 from the left after turning back) and 6 removals; with
+the second leading, 4 runs of 400 to 728 frames, 4 appearances and 4
+removals. Each happened exactly when the rules in "Appearing and being
+removed" say.
+
 ## Not covered
 
-- The second character, leading or following.
+- Signs with the second character leading and the first following in
+  the scene, and with the characters swapping while a sign is in the
+  window.
 - Signs far above or below the view. The copy placed 1 000 px above
   its floor was missing on some frames on which its entry was in the
   window.
