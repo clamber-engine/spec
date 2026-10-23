@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.281.0
+
+The level map's other character on legs with an unchanged x (spec#65).
+
+Part of clamber-engine/spec#65, which stays open for the parts not
+covered yet.
+
+- `behavior/level-map.md`, "The other character": which legs of the
+  first level's map leave, or might leave, the lead's `x` unchanged. The
+  places at the same `x` (Run E's pairs) moved the lead 16 to 24 px. Two
+  of three candidate walks upwards from an appearance point were walked
+  (new Run H): each moved the lead 16 px to the right, with no explanation
+  found, and the other followed the rule. Not covered: the third
+  candidate, and so whether such a leg comes up in the first level's map.
+
 ## spec-v0.280.0
 
 The level map's page pictures and the page change (spec#59, spec#38).
