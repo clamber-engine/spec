@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.299.0
+
+The second character under control against stingers and on tyres
+(spec#38).
+
+Part of clamber-engine/spec#38, which stays open for the parts not
+covered yet.
+
+- `behavior/stinger.md`, "The second character under control": same
+  hurt rule as the first character over a smaller area, with I and A
+  ranges per pose (upright, fidget, moving, crouching) for both facings.
+  Checked in ordinary play for standing, moving and crouching; Not
+  covered updated.
+- `behavior/tyre.md`, "The second character": caught, carried, thrown
+  and given the tyre jump by the same rules as the first character, with
+  the same touch range, on the tyre that squashes. Not covered updated.
+
 ## spec-v0.298.0
 
 The first character's pictures on landing after a rope with a direction
