@@ -3091,10 +3091,11 @@ steep face, picking something up):
   is held on P + 2 after a press with Action and Down on P + 1.
   The one frame in "Evidence" (jumps out of a crouch) that showed a
   picture unrelated to the jump is not explained.
-- The ground action's pictures (`act-1` to `act-30`) of the second
-  character, at a ledge, on a slope, next to a face or a wall, on a
-  landing's frames or after a roll, with a knock-out on t = 17, and
-  the pictures after E when the character was moving on E (beyond E).
+- The first character's ground action pictures (`act-1` to `act-30`)
+  at a ledge, on a slope, next to a face or a wall, on a landing's
+  frames or after a roll, with a knock-out on t = 17, and the pictures
+  after E when the character was moving on E (beyond E). The second
+  character has no ground action.
 - The rope pictures of the second character and of the follower, the
   pictures on a rope with a knock-out, a hurt or a game pause, on ropes
   of other levels and on a rope whose end is low enough to reach the
