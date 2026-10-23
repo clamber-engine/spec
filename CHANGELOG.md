@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.284.0
+
+The level map: the other character against the picture (spec#59,
+spec#38).
+
+Part of clamber-engine/spec#59 and clamber-engine/spec#38, which stay
+open for the parts not covered yet.
+
+- `behavior/level-map.md`: the other character is drawn in front of the
+  whole picture too, like the lead, at the distances from the lead that
+  were measured (six placements at the lead's height, 0 px included).
+  Not covered: which character is in front where they overlap.
+
 ## spec-v0.283.0
 
 The sprites' colours during the first level's dimming (spec#38).
