@@ -2,6 +2,33 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.308.0
+
+The game-over picture, its song and what follows (spec#71), and taking
+extra-life items with the second character leading (spec#19).
+
+Answers clamber-engine/spec#71. Part of clamber-engine/spec#19, which
+stays open for the parts not covered yet.
+
+- `formats/level-map.md`, new section "The game-over picture": it is a
+  page picture (same tile map, tile set and palette set sizes), with the
+  characters and the caption all in that one picture and nothing drawn
+  over it; `formats/locators.md` gains three rows for its tile map, tile
+  set and palette set.
+- `behavior/level-map.md`, "With no tries left": where the picture is
+  placed, the fade-out for a press at any frame (including a press
+  during the fade-in), and the timing of the black screen and the screen
+  that follows. What that screen shows and does stays under "Not
+  covered".
+- `behavior/music.md`: the game-over picture's song, its delay after the
+  cut, and when the following song starts; which song that is stays
+  under "Not covered".
+- `behavior/extra-lives.md`, new section "The second character leading":
+  its pickup ranges standing, moving or jumping, and crouching, and that
+  the following character takes nothing. Landings, ordinary play at the
+  level's own items, riding and the lives display with the second
+  character stay under "Not covered".
+
 ## spec-v0.307.0
 
 Getting off the animal with the second character as the player
