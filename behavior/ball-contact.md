@@ -29,7 +29,9 @@ level's thrower:
   again with every ball removed as soon as it appeared, to tell hits by
   balls from hits by the thrower.
 
-Two characters were checked in a few controlled runs (below).
+Two characters were checked in a few controlled runs (below). The
+second character under control is measured in its own section
+("The second character under control").
 
 ## Offsets
 
@@ -198,13 +200,82 @@ upright and a ball 40 px above (A = 40) is out of reach (above 37). On
 T + 6 the player is airborne: with the ball still 40 px above, A = 40 is
 within 18 to 54, and the player is hurt on T + 7.
 
+## The second character under control
+
+Measured on the same level, near the same thrower, with the second
+character under control after the swap of `second-character.md` and the
+first character following:
+
+- with a setup method used to arrange the situations: a ball one pixel
+  apart from the player in every position around them at the end of a
+  frame, with the player standing, in the fidget pose, turning,
+  walking, running, rolling and the end of a roll, crouching and
+  standing up from a crouch, jumping and hopping from standing and
+  walking, and landing from them, on every frame of each pose, about
+  500 000 situations in all;
+- by inputs alone, 400 runs near the thrower, 132 562 frames, 249 hits
+  by balls, every one on the frame the rules above give and none on any
+  other frame; the same 400 runs seen again with no ball on the screen
+  (a setup method was used) showed that 248 of the 249 hits did not
+  happen on that frame without balls (the other one coincided with the
+  thrower), and that 94 hits next to the thrower happened on the same
+  frame without balls (157 frames with the player in a pose not listed
+  below were left out, among them the bounce).
+
+Everything under "Offsets", "When a ball hurts" and "The ball's turn"
+holds for the second character: the same I and A, a hit on F + 1 from
+the pose on F and the ball's turn at the end of F − 1, no hit on the
+frame the ball bounces or stops ignoring floors. What differs is the
+reach, and that it changes with fewer poses. Ranges, facing right, with
+facing left turned around as above:
+
+| Pose | I, facing right | I, facing left | A |
+|---|---|---|---|
+| standing, turning, fidget | −12 to 9 | −11 to 10 | to 35 |
+| walking, running, rolling, airborne | −18 to 10 | −12 to 16 | −1 to 35 |
+| crouching | −19 to 12 | −14 to 17 | to 22 |
+
+The low end of A was measured with the player in the air. On the
+ground a ball can't be below the floor, so lower values were not
+measured there. The fidget pose has the same range as standing.
+
+Which pose the player has, measured with the second character:
+
+- **Standing** (with turning and the fidget pose): until the player
+  starts to walk, and again once the slow-down after walking is over. A
+  turn keeps the standing range through all its frames, also while the
+  player is already moving in the new direction; the range switches to
+  the walking one on the first frame of walking.
+- **Walking**, **running** and **rolling** share one range. A roll that
+  ends and runs on into walking, or into the stop after a roll, doesn't
+  change it.
+- **Jumping**: the airborne range holds from the press frame P of the
+  jump (`jump-input.md`; measured from standing), through the whole
+  flight and the landing. After the landing frame L (the first frame on
+  which the player is on the ground again) it goes on to L + 16, and a
+  player who is standing again has the standing range from L + 17. This
+  was the same for a hop (jump input held for one frame) and a
+  full-height jump standing still; a jump while walking carries straight
+  on into the walking range.
+- **Crouching**: from the first frame Down is held on the ground, and on
+  the first 12 frames on which Down is no longer held (the recovery);
+  the standing range follows.
+
+A ball hitting the second character hurts it with the same result as a
+hit on the first character in the same situation: with the first
+character following, the second character is lost as in
+`losing-a-character.md`.
+
 ## Not covered
 
 - The ground action meeting balls. Thrown and carried objects meeting
   balls are in `thrown-objects.md`, "Hitting a ball", and in
   `holder-breaking.md`.
 - Poses not listed above: bouncing (`bounce`), carrying an object,
-  being hurt, swapping characters; the second character under control.
+  being hurt, swapping characters. For the second character under
+  control, also: teetering at a ledge, the ground action, walking off
+  ledges and landing from them, carrying an object, and the first frames
+  after a swap.
 - Exactly when the airborne pose ends after a landing and when it
   starts before a walk-off, beyond the cases listed; when the standing
   pose starts after slowing down.
