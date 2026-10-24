@@ -1403,8 +1403,8 @@ rules, as seen:
   height (15 px against 32 px or more), the drop after it, or both may
   matter; which is not known (see Not covered). No face of about 15 px
   without a drop was found in the first level. The
-  second character did not teeter at the 64 px or 128 px face either
-  (see its section).
+  second character did not teeter at the 32 px, 64 px or 128 px face
+  either (see its section).
 - The left-hand side of a ledge top with a steep face, first character,
   one case measured: a flat top with a face of 64 px down (4 px per
   column) to its left, leading on to a lower floor with no drop. The
@@ -2826,6 +2826,21 @@ steep face, picking something up):
   (the walk took the player down the face before it stopped) and in 5 the
   stand lasted under 5
   frames. One-frame presses were not tried.
+- **Teetering, second character, a ledge with a 32 px steep face:** the
+  ledge top and face of the first character's 32 px case above (eight
+  columns, each 1 px wide, the floor dropping 4 px per column, a lower
+  floor with no drop). With a setup method, the player stood 2.2 to 18 px
+  before the face's first column, walked toward it for 1 to 8 frames, and
+  stood 60 frames; 100 runs. 55 stretches of standing of 5
+  frames or more began on the ledge top after a walk's stop, 0.2 to 16.3
+  px before the face's first column (2 620 frames), and none
+  teetered; in the other runs the walk went down the face before it
+  stopped, or the stand was short. Every frame of the stands on the top
+  showed the second character's standing list except two: one frame in
+  each of two stands (the same frame of the stand, in two runs that
+  began 14 px before the face) showed another picture, which was not a
+  teetering one; the cause was not found (listed in "Not covered"). As for the first character, a
+  32 px face with no drop did not make the second character teeter.
 - **Teetering, second character, ledges with a steep face:** the same
   two ledge tops, set up and counted as for the first character (the
   player 1 to 16 px before the face in 200 runs on the ledge with the
@@ -3361,7 +3376,8 @@ steep face, picking something up):
   end with a wall, at the left-hand side of a ledge with a steep face other
   than the one measured (either character), at a face on the right-hand
   side other than the two, on a slope, the second character at faces other
-  than those three, and after a
+  than the ones in its "Evidence" (the 32 px, 64 px and 128 px faces and the
+  ledge with a drop), and after a
   bounce, a fall from a steep face, riding or carrying; after the player has stepped past the end
   of the floor and turned back; and whether a player that stands in the
   outermost columns without having stopped there (for example after
@@ -3369,7 +3385,9 @@ steep face, picking something up):
 - Either character's standing pictures on slopes other than 1-in-4, on
   a steep face (other than at its foot), next to a wall that isn't a
   steep face, and the 13 and 4 frames named in the
-  second character's ledge and slope evidence.
+  second character's ledge and slope evidence, and the two frames in the
+  second character's stands at the 32 px face that showed a picture outside
+  the standing list.
 - The crouching pictures of the second character on the way up the
   slope and on the flat floor after it (no crouch started there), and
   the 11 frames named in its ledge evidence.
