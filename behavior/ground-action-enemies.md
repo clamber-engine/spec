@@ -119,6 +119,21 @@ frames**:
   down from a jump (it stays in the air on K + 1 and K + 2, then lands
   two frames later than it would have). It doesn't catch up, and
   nothing about it is skipped.
+- **Inputs on the pause frames** have no effect, and the held state on
+  them counts as the state before K + 3:
+  - A Jump press on K + 1 or K + 2 doesn't end the action and starts no
+    jump. Jump held on K + 1 or K + 2 and still held on K + 3 isn't a
+    press on K + 3 or on any later frame up to the longest hold
+    measured (see the evidence), which reaches past the action's end:
+    the action goes on to its end as without the press.
+  - Jump not held on K + 2 and pressed on K + 3 or later is an ordinary
+    press: it ends the action as in `ground-action.md`, "Inputs during
+    the action", with K + 3 counted like any other frame after P.
+    Jump released on K + 1 and pressed again on K + 3 is such a press.
+  - Left, Right, Up, Down and Swap pressed or released on K + 1 or K + 2, and
+    Action pressed on them with Down held, change nothing: the action's
+    direction stays what it was on P, and an Action press is refused as on
+    any other frame up to E.
 
 ### Two things in reach
 
@@ -318,6 +333,27 @@ Without the walker, the action would have ended with E on frame 59.
   walkers). These were not checked in ordinary play. Every checked
   placement matched the rules of "Two things in reach", the knock-out
   frames, the pause frames and E, with 0 mismatches.
+- **Inputs on the pause frames.** By inputs alone, at one place in the
+  first level with a small walker heading left and the player facing
+  right. Jump: four situations (knock-out on t = 17 standing, t = 17
+  walking with Right held, t = 25 and t = 31 standing, the press on an
+  earlier frame so that the walker came into range later), each with
+  1 run without the extra input and 16 with it, 68 runs in all. Of the
+  64 with it, per situation: Jump pressed for a single frame on K + 1 or
+  K + 2 (2 runs each, 8 in all) never started a jump; nor did Jump held
+  from K + 1 or K + 2 up to K + 3 or up to frame 90 of the run, 17 or more
+  frames after the action's end (4 runs each, 16 in all). Jump pressed on
+  K + 3 or K + 4, held for one frame or to frame 90, and Jump pressed on
+  K + 1 and again on K + 3 (5 runs each, 20 in all) started a jump on the
+  press frame. A press on K − 1, held for one frame (1 run), and
+  presses on K, held for one frame, for two frames, up to K + 3, or to
+  frame 90 (4 runs), 5 runs each, 20 in all, started a jump on their own
+  frame. Separately from those 68 runs: Left, Right, Up, Down and Swap
+  pressed or released on K + 1 and K + 2 (12 runs, standing and walking,
+  Swap walking only): every frame of the player, the walker and the view
+  matched a run without the input. Action pressed on K + 1, K + 2 or
+  K + 3 for a short time (1 or 2 frames), with Down held from P, made no
+  new action and changed nothing (10 runs, standing and walking).
 - **Knocked-out walkers.** A small walker knocked out after the press
   on 8 different frames, and a large walker after 12. From every frame
   K + 1 to K + 41, with 3 input sequences (walking, running, rolling,
@@ -387,7 +423,12 @@ Without the walker, the action would have ended with E on frame 59.
 - Walkers that are turning, speeding up, stopped or frozen, walkers on a
   different floor from the player, and the action on slopes or at a
   ledge (`ground-action.md`).
-- Inputs on the pause frames (a Jump press, for example).
+- Inputs on the pause frames of a thrower's or a hidden object's
+  knock-out, of a large walker's, and with two characters (a Swap
+  press); Action held over the pause frames and long afterwards; Jump
+  held for longer than the measured holds; the mirrored case (player
+  facing left, walker heading right) and other places than the one
+  measured.
 - Knocked-out walkers on later pause frames (another knock-out during
   their fall): whether they can be removed then. None happened in the
   runs measured. Knocked-out walkers and the second character.
