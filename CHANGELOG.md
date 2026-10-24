@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.331.0
+
+Contact with the thrower after it is knocked out by a thrown object,
+and releases and Action with Down held on the pause frames of the
+thrower, a large walker and a hidden object (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/thrower-contact.md`: a thrower knocked out by a thrown
+  object, in the standing pose, neither hurts the player nor gives a
+  bounce on each frame from `K` + 2 to `K` + 44. Seen in arranged
+  situations only; the "Not covered" item in `thrown-objects.md` is
+  narrowed to match.
+- `behavior/ground-action-enemies.md`, pause frames: Left, Right, Up,
+  Down and Swap released on `K` + 1 or `K` + 2, and Action pressed or
+  held with Down held, change nothing up to `E` for the thrower's, a
+  large walker's and a hidden object's knock-out. Measured in arranged
+  situations only. Jump released on the pause frames, and what follows
+  `E` when Action and Down stay held, are in "Not covered".
+
 ## spec-v0.330.0
 
 Inputs on the pause frames of the thrower, a large walker and a hidden
