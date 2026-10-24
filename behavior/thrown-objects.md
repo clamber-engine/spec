@@ -506,8 +506,8 @@ left to 20 px to the right of it. Which of two walkers it is isn't
 specified. This held for the early and the late area (t from 1 to 19),
 and for the object moving left as well as right: the same one of the
 pair was hit first in both directions. Measured with two large walkers,
-with two medium walkers and with two small walkers; the other cases are
-under "Not covered".
+with two medium walkers, with two small walkers and with a large and a
+medium walker (below); the other cases are under "Not covered".
 
 A setup method was used to arrange these situations; they were not
 observed in ordinary play. Two large walkers stood on flat floor, the
@@ -556,6 +556,23 @@ situation: exactly one walker was hit, the same one throughout the pair,
 1.6 px per frame) to the right and to the left, with the second walker
 at offset 0, both were hit, the second one on the next frame. The two
 small walkers faced left when the object reached them.
+
+A large and a medium walker on flat floor gave the same results, with the
+object moving right and moving left, and with either kind of the two
+standing in the first place (both arrangements). Offsets and positions
+were as for the medium walkers, at t = 1, 5, 13 and 19: 1 220
+situations for each arrangement and direction, of which 646 (large
+first, object moving right), 579 (large first, left), 626 (medium
+first, right) and 586 (medium first, left) had both walkers in range on
+the frame the object reached them. Each was compared with the
+single-walker situation: exactly one walker was hit, the same one
+throughout the pair, 0 mismatches in any of the four. Which of the pair
+was hit first did not depend on which kind it was: in both arrangements
+it was the one standing at the offset from the other. With the object
+moving slowly (about 1.6 px per frame) to the right and to the left, with
+the second walker at offset 0, both were hit in both arrangements, the
+one standing at the offset from the other first and the other one frame
+later.
 
 ### The second character
 
@@ -1417,9 +1434,9 @@ this file doesn't say what decides the mirroring there.
   measured on flat floor only); the object more than 12 px below the
   walker; walkers that are turning (for medium walkers and the later
   rows), still speeding up, outside the picture, or not on the floor; and
-  two walkers in range on the same frame other than two large walkers
-  and two medium or two small walkers (a large and a medium walker, or
-  any other mixed pair, medium or small walkers exchanged or heading
+  two walkers in range on the same frame other than two large walkers,
+  two medium walkers, two small walkers and a large and a medium walker
+  (any other mixed pair, medium or small walkers exchanged or heading
   right, a walker on another floor).
 - How a hit is drawn (something appears where the walker was hit) and
   how the hit walker is drawn while it falls.
