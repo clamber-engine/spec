@@ -134,6 +134,16 @@ frames**:
     Action pressed on them with Down held, change nothing: the action's
     direction stays what it was on P, and an Action press is refused as on
     any other frame up to E.
+  - For the pause of the thrower's knock-out, with K the action's first
+    attack frame (t = 17) and E = P + 61, the Jump, direction, Swap and
+    Action presses above held as measured (see the evidence); releases
+    and Action with Down held are not covered for it.
+  - For the pause of a large walker's knock-out in the situation measured
+    (see the evidence), with K on t = 17, the presses above held as
+    measured; the same limits (releases, Action with Down held) apply.
+  - For the pause of a hidden object struck on the action's first attack
+    frame (K on t = 25, E = P + 61) in the situation measured (see the
+    evidence), the presses above held as measured; the same limits apply.
 
 ### Two things in reach
 
@@ -333,6 +343,29 @@ Without the walker, the action would have ended with E on frame 59.
   walkers). These were not checked in ordinary play. Every checked
   placement matched the rules of "Two things in reach", the knock-out
   frames, the pause frames and E, with 0 mismatches.
+- **Inputs on the pause frames of the thrower.** On the thrower's ledge
+  in the first level, the player facing it and standing 45 px from it
+  (I = −45, inside the range of the thrower's section above), with direction 0: the
+  thrower was knocked out on t = 17 and the action ended on P + 61 in
+  the run without extra input. There were 2 runs without an extra input (one of 60
+  frames, one of 90) and 26 with one: 22 of 60 frames and 4 of 90.
+  Of the 22 of 60 frames: 11 with Jump. Jump pressed for one frame on
+  K + 1 or on K + 2, held over both, held from K + 1 to K + 3, and held
+  from K + 1 or from K + 2 up to frame 59 (6 runs) never started a jump:
+  every frame of the player and the thrower matched the reference. Jump
+  pressed for one frame on K − 1, K, K + 3 or K + 4, and on K + 1
+  together with K + 3 (5 runs) started a jump on the press frame. The
+  other 11: Left, Right, Up, Down and Swap pressed over K + 1 and K + 2
+  (5 runs), Left and Right held from K + 1 for 13 frames (2 runs), and
+  Action pressed for one frame on K + 1, K + 2 or K + 3, or held from
+  K + 1 up to frame 59 (4 runs) changed nothing (Down and Action
+  pressed together on P only). Of the 4 of 90 frames, all with a hold up
+  to frame 89 (28 frames after the action's end): Jump held from K + 1
+  or from K + 2 (2 runs) never started a jump; Jump held from K + 3
+  (1 run) started one on its press frame; Action held from K + 1 (1 run)
+  changed nothing. The thrower's own motion, with
+  its pause on K + 1 and K + 2, matched the section above in all runs.
+  Not checked in ordinary play.
 - **Inputs on the pause frames.** By inputs alone, at one place in the
   first level with a small walker heading left and the player facing
   right. Jump: four situations (knock-out on t = 17 standing, t = 17
@@ -354,6 +387,48 @@ Without the walker, the action would have ended with E on frame 59.
   matched a run without the input. Action pressed on K + 1, K + 2 or
   K + 3 for a short time (1 or 2 frames), with Down held from P, made no
   new action and changed nothing (10 runs, standing and walking).
+- **Inputs on the pause frames of a large walker.** On the flat stretch
+  in the first level, with a setup method, a large walker heading left
+  stood 49, 59 or 69 px in front of the player, who faced it,
+  standing, with direction 0 (3 places, 84 runs in all: 28 each, 2 of
+  them without an extra input, one of 60 frames and one of 90). In
+  every place the walker was knocked out on t = 17, and its own motion
+  (paused on K + 1 and K + 2, moving from t = 20) matched the rest of
+  this section. Of the 26 runs with an extra input in each place: Jump
+  pressed for one frame on K + 1 or K + 2, held over both, held from
+  K + 1 to K + 3, and held from K + 1 or K + 2 up to frame 59 or frame
+  89 (8 runs) never started a jump: every frame of the player and the
+  walker matched the reference. Jump pressed for one frame on K − 1, K,
+  K + 3 or K + 4, on K + 1 together with K + 3, and held from K + 3 up to
+  frame 89 (6 runs) started a jump on the press frame. The other 12:
+  Left, Right, Up, Down and Swap pressed over K + 1 and K + 2 (5 runs),
+  Left and Right held from K + 1 for 13 frames (2 runs), and Action
+  pressed for one frame on K + 1, K + 2 or K + 3, or held from K + 1 up
+  to frame 59 or 89 (5 runs) changed nothing. Only presses were made
+  here, no releases, and Down was held only on P, with the Action that started the
+  action, so these Action presses were made with Down up.
+  Not checked in ordinary play.
+- **Inputs on the pause frames of a hidden object.** On the flat stretch
+  in the first level, with a setup method, a `hidden-bunch` stood in front of the player, who faced it,
+  standing, with direction 0, with I (the player's `x` rounded down minus
+  the object's) of −10, −20 or −30 (3 places, 84 runs in all: 28 each,
+  2 of them without an extra input, one of 70 frames and one of 100).
+  In every place the object was struck on t = 25, the bunch's own motion
+  matched `hidden-objects.md`, and the action ended on P + 61 in the runs
+  without extra input. Of the 26 runs with an extra input in each place:
+  Jump pressed for one frame on K + 1 or K + 2, held over both, held from
+  K + 1 to K + 3, and held from K + 1 or K + 2 up to frame 67 or frame 97
+  (8 runs) never started a jump: every frame of the player and the bunch
+  matched the reference. Jump pressed for one frame on K − 1, K, K + 3 or
+  K + 4, on K + 1 together with K + 3, and held from K + 3 up to frame 97
+  (6 runs) started a jump on the press frame. The other 12: Left, Right,
+  Up, Down and Swap pressed over K + 1 and K + 2 (5 runs), Left and Right
+  held from K + 1 for 13 frames (2 runs), and Action pressed for one frame
+  on K + 1, K + 2 or K + 3, or held from K + 1 up to frame 67 or 97
+  (5 runs) changed nothing. Only presses were made here, no releases, and
+  Down was held only on P, with the Action that started the action, so
+  these Action presses were made with Down up. Not checked in ordinary
+  play.
 - **Knocked-out walkers.** A small walker knocked out after the press
   on 8 different frames, and a large walker after 12. From every frame
   K + 1 to K + 41, with 3 input sequences (walking, running, rolling,
@@ -423,8 +498,11 @@ Without the walker, the action would have ended with E on frame 59.
 - Walkers that are turning, speeding up, stopped or frozen, walkers on a
   different floor from the player, and the action on slopes or at a
   ledge (`ground-action.md`).
-- Inputs on the pause frames of a thrower's or a hidden object's
-  knock-out, of a large walker's, and with two characters (a Swap
+- Inputs on the pause frames of a hidden object's knock-out in
+  ordinary play, in other places than the three measured, or struck on a
+  later attack frame; the same
+  for a large walker's reached in ordinary play or in other places than
+  the three measured; and with two characters (a Swap
   press); Action held over the pause frames and long afterwards; Jump
   held for longer than the measured holds; the mirrored case (player
   facing left, walker heading right) and other places than the one
@@ -432,6 +510,10 @@ Without the walker, the action would have ended with E on frame 59.
 - Knocked-out walkers on later pause frames (another knock-out during
   their fall): whether they can be removed then. None happened in the
   runs measured. Knocked-out walkers and the second character.
+- The pause of the thrower's, a large walker's and a hidden object's
+  knock-out: Jump or other inputs released on K + 1 or K + 2 (only
+  presses and holds were measured), and Action pressed on the pause
+  frames with Down held.
 - The thrower: other offsets, the player facing away, whether it can be
   knocked out from below its ledge, what happens to its throws, and
   balls (`thrower.md`).
