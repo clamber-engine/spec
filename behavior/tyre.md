@@ -443,6 +443,48 @@ frame; no frame showed another one. Frames on which the tyre was not
 wholly inside the screen, or something covered part of it, were not
 counted.
 
+## Other objects
+
+A tyre has no effect on a thrown object and none on a small walker, and
+neither changes the tyre. An object that is thrown or falls into a
+tyre's area, or a walker that walks through it, goes on exactly as it
+would with no tyre there; the tyre stays at rest and doesn't squash,
+wobble or throw anything. Objects pass through the tyre and are not
+stopped, lifted onto its top, bounced or broken by it. Which of the two
+is drawn in front is not covered.
+
+Measured on the tyre that squashes, on flat ground, with the player
+standing 190 px away so that it could not touch the tyre. A setup method
+was used to get the situations below. Each measurement is a pair of
+runs over the same frames, one with the tyre in place and one with no
+tyre there:
+
+- An ordinary thrown object (the barrel kind, `thrown-objects.md`),
+  starting at 77 places (11 `x` offsets from 30 px left to 30 px right
+  of the tyre's `x`, in steps of 6, by 7 heights from 4 px below to
+  20 px above its `y`, in steps of 4), each with 9 speed combinations
+  (`vx` −4, 0 and 4 px/frame, `vy` 3, 0 and −2 px/frame): 693 pairs.
+  In every pair the object's position and speeds were the same on each
+  of the 14 frames after the start, and the tyre stayed at rest.
+  One throw from the player's hands that flew across the tyre (the
+  object at 8 px above the tyre's floor as it crossed it, still moving
+  right at about 4.8 px/frame) was also the same, frame for frame, over
+  its 260 frames.
+- A small walker, starting at 77 places (7 `x` offsets from 30 px left
+  to 30 px right of the tyre's `x`, in steps of 10, by 11 heights from
+  40 px below to 60 px above its `y`, in steps of 10), each with 3
+  speeds (`vx` −1.5625, 0 and 1.5625 px/frame): 231 pairs. In every
+  pair the position and speed were the same on each of the 30 frames
+  after the start, and the tyre stayed at rest. A small walker left to
+  walk across the tyre's place by itself was the same too.
+
+Only the tyre that squashes was used, and only thrown objects of the
+ordinary kind and small walkers. Apart from the one throw from the
+player's hands and the one walker left alone, the situations were
+arranged, not seen in ordinary play, where one throw meets one walker
+at a time; an object rolling along the ground into a tyre was not
+measured.
+
 ## The second character
 
 The second character, while under control, is caught, carried, thrown
@@ -477,7 +519,10 @@ character.
   a press on the frame of an arrival from the air (one case each in
   "Measurements of the stiff tyre"); the stiff tyre in other areas.
 - A fourth reference that places an upside-down tyre (no kind row).
-- Other objects (walkers, thrown objects) touching a tyre.
+- Other objects touching a tyre: objects rolling along the ground into it, medium and large walkers, the object
+  that holds the missing character, balls, critters and stingers, and
+  any of these with the stiff tyre or an upside-down tyre; and whether
+  an object is drawn in front of or behind a tyre.
 - Jump presses during a roll on the top: 60 of 62 measured gave a tyre
   jump as above; in 2 the player didn't take off.
 - Jump presses made in the air before an arrival on the ground (the
