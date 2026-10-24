@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.326.0
+
+Inputs on a ground action's pause frames, and a tyre with thrown
+objects and small walkers (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/ground-action-enemies.md`, the pause after a knock-out:
+  inputs on the two pause frames have no effect. A Jump press on them
+  starts no jump and doesn't end the action, and Jump still held on
+  K + 3 doesn't count as a press then. Jump pressed afresh on K + 3 or
+  later is an ordinary press. Direction, Swap and Action presses on the
+  pause frames change nothing. Measured by inputs alone with a small
+  walker. Other knock-outs, two characters, longer holds and the
+  mirrored case stay in "Not covered".
+- `behavior/tyre.md`, new "Other objects": a tyre has no effect on a
+  thrown object of the ordinary kind or on a small walker, and neither
+  changes the tyre. Measured with the tyre that squashes, mostly in
+  arranged situations. Rolling objects, other walkers and objects, the
+  other tyres and drawing order stay in "Not covered".
+
 ## spec-v0.325.0
 
 The other character in the air during a ground action's pause
