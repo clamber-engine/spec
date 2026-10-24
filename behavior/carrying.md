@@ -68,6 +68,28 @@ So, in practice:
 Moving into the object without Action held does nothing: the player walks
 past it.
 
+**Down or Up held** changed nothing about when a pick-up starts or about
+reach in what was measured (one facing per character, a `barrel` at the
+player's height, listed below); the rest is assumed to be the same, not
+measured. With Down, Up, or both held on f only, or from
+1, 4 or 12 frames earlier (so the player is already crouching on f), and with
+or without the direction toward the object held, the pick-up starts on the
+frames given above and the reach ranges are the same; both ways in
+("Moving into the object" and "Pressing Action while standing") are the
+same. A press out of reach is not a pick-up: with Down held the first
+character starts a ground action instead of a roll
+(`ground-action.md`), and Up changes nothing; for the second character Down
+changes nothing there either. Measured with each character, with the object
+(a `barrel`) at the player's height and every X from −12 to 40 (first
+character, facing right) or −40 to 14 (second character, facing left), next
+to a player standing or crouching, and walking toward it with Action held:
+every in-reach run started the pick-up on f, and the player's action on the
+7 frames from f (the press frame and the six after it) matched the run
+without Down or Up. Not measured: the first character facing left and the
+second facing right (the claim above for those rests on the reach rule being
+the same for both facings), later frames of the pick-up, and random input
+with Down or Up in the mix.
+
 ### Reach
 
 Reach is decided from the positions at the end of the frame before (f −
@@ -616,8 +638,10 @@ standing and does not move.
   down, and for a `holder` already there on the level's first frame.
 - Pressing Action within reach while moving for other kinds of object, at
   other heights, and in ordinary play beyond the random-input runs.
-- Picking up with Down or Up held, while being hit with both characters
-  there, and Action held during a throw or a put-down with another
+- Picking up with Down or Up held for the first character facing left,
+  the second character facing right, a `holder`, an object above or below
+  the player's height, and in random play; picking up while being hit
+  with both characters there, and Action held during a throw or a put-down with another
   object within reach.
 - Where the object is while it is carried (before Q and from G + 15;
   during a pick-up, a throw and a put-down on flat ground, see "The
@@ -659,7 +683,7 @@ standing and does not move.
   put-down (the vocabulary has no names for them yet).
 - With the second character under control: the reach for a `holder`
   (it holds the missing character, so none lies on the level while both
-  are there), Down or Up held while the pick-up starts, Jump and Action during a throw in the air
+  are there), Jump and Action during a throw in the air
   (the table above is for a throw from standing on flat floor, with or
   without a direction held; no random-input check), picking a put-down
   object up again other than the presses in "Putting down" and the
