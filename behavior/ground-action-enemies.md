@@ -115,7 +115,9 @@ frames**:
   what they were at the end of K. From K + 3 it carries on exactly as it
   would have without the pause, two frames later: what it did on frame
   K + j without a pause, it does on K + j + 2. Measured standing, and
-  walking and slowing down behind the player. It doesn't catch up, and
+  walking and slowing down behind the player, and in the air on the way
+  down from a jump (it stays in the air on K + 1 and K + 2, then lands
+  two frames later than it would have). It doesn't catch up, and
   nothing about it is skipped.
 
 ### Two things in reach
@@ -359,6 +361,22 @@ Without the walker, the action would have ended with E on frame 59.
   arranged situations; the rule wasn't checked in ordinary play with
   inputs alone.
 
+  The same with the second character in the air (a setup method was
+  used; on the frame before K a small walker stood 30, 10 or 0 px ahead
+  of the player, level with it): the first character jumped while
+  walking at the start of a run and went on walking after it landed, and
+  the second character repeated the jump. The attack came on 14
+  successive frames after the first character's landing, with the
+  knock-out at t = 16 and at t = 24, against the walker at the 3
+  distances: 14 x 2 x 3 = 84 runs. In the 21 runs at t = 16 with the 7
+  earliest attack frames, the second character was in the air on K, at 7
+  different heights on the way down; in the other 63 it was on the floor.
+  Each run was compared over the 39 frames after K with the same run
+  with the walker out of reach, as above, on the same 6 values: 84 x 39
+  x 6 = 19 656 values, 0 different; in the air, the second character was
+  still in the air on K + 1 and K + 2. These too were arranged
+  situations.
+
 ## Not covered
 
 - Which of two walkers in range on the same attack frame is knocked out.
@@ -380,6 +398,8 @@ Without the walker, the action would have ended with E on frame 59.
 - Other things the action strikes. Hidden objects that release a bunch
   are in `hidden-objects.md`.
 - How a pause affects the view's shake (`view-vertical.md`).
-- The other character during the pause while it runs, rolls or is in the
-  air, and the pause with a walker reached in ordinary play (inputs
-  alone) rather than in the arranged situations above.
+- The other character during the pause while it runs or rolls, or is in
+  the air on the way up in a jump or in a fall from a ledge (only the
+  way down from a jump was measured), and the pause with a walker
+  reached in ordinary play (inputs alone) rather than in the arranged
+  situations above.
