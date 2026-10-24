@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.332.0
+
+The ball placed in the first level against held and carried objects
+(spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/thrown-objects.md`, "Hitting a ball": the ball placed in
+  the level is hit by the same ranges, turn adjustments and results as
+  the thrower's balls, for an object in the hands or carried (11 frames
+  measured, none differing). Seen in arranged situations only. Placed
+  balls against a thrown object, in ordinary play, and falling or rising
+  are in "Not covered".
+
 ## spec-v0.331.0
 
 Contact with the thrower after it is knocked out by a thrown object,
