@@ -338,6 +338,28 @@ runs, the crouching row if Down is held. In one observed case a pickup
 came one frame later than these rules give (see "Not covered"), so the
 ranges may be applied one frame early in some situations.
 
+**Bouncing off a walker, second character leading.** With `B` as in
+"Bouncing off a walker", the second character's bounce has its own
+ranges: on `B`, and on every frame from `B` + 3 until it lands, `I` −23
+to 19 and `D` −10 to 32, facing either way. No bunch is taken on `B` + 1
+and `B` + 2. Up to the frame before `B` the jumping row applies. From
+the landing frame on, the row is that of what it is doing (standing,
+walking, or the walking row while it turns), as in "Landing, second
+character leading", without the 17 frames of the jumping row, which a
+bounce's landing does not have. The first character's bounce box is
+`I` −17 to 27, `D` −7 to 39.
+
+Observed on flat ground on the first level, off a small walker, with a
+setup method used: the bunch stood at every offset one pixel apart
+(`I` −30 to 30, `D` −30 to 80) from 2 frames before `B` to 5 frames
+after the landing. Six bounces were watched, as in "Bouncing off a
+walker": Jump held, Jump released on `B` + 3, a short jump, facing left,
+moving right and landing walking, and the same slowing with Left and
+landing in a turn. On every frame the player took the bunch exactly
+inside these rectangles. This was not checked in ordinary play, so the
+rule is shown only for these six bounces; other walkers, slopes and
+other situations at the bounce are in "Not covered".
+
 For example, the second character standing facing left takes a bunch
 with `xb − X` from −12 to 11, so with `X` from `xb` − 11 to `xb` + 12.
 
@@ -617,7 +639,9 @@ where the bunch was (as for single collectibles, `collectibles.md`,
 - Landing on slopes, and a landing followed at once by a crouch, a
   roll, a turn or another jump.
 - Bounces from a roll, bouncing again before landing, landing on a
-  slope after a bounce, and the second character bouncing.
+  slope after a bounce, and (for the second character) bounces other
+  than off a small walker on flat ground; the second character's
+  bounce ranges were not checked in ordinary play.
 - When a bunch that hasn't been taken is removed as the view moves.
   In the runs for "Pictures", some bunches were gone on the first frame
   their `S` was outside the window, others only once `S` − `V` was
