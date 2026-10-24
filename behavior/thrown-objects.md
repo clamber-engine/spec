@@ -507,7 +507,8 @@ specified. This held for the early and the late area (t from 1 to 19),
 and for the object moving left as well as right: the same one of the
 pair was hit first in both directions. Measured with two large walkers,
 with two medium walkers, with two small walkers and with a large and a
-medium walker (below); the other cases are under "Not covered".
+medium walker, and a large or a medium walker with a small one (below);
+the other cases are under "Not covered".
 
 A setup method was used to arrange these situations; they were not
 observed in ordinary play. Two large walkers stood on flat floor, the
@@ -573,6 +574,25 @@ moving slowly (about 1.6 px per frame) to the right and to the left, with
 the second walker at offset 0, both were hit in both arrangements, the
 one standing at the offset from the other first and the other one frame
 later.
+
+A large and a small walker, and a medium and a small walker, on flat floor
+gave the same results again, with the object moving right and moving left,
+and with either kind of the pair standing in the first place. Offsets and
+positions were as for the small walkers (t = 1, 5, 13 and 19; offsets 20, 8,
+0, −8 and −20 px): 1 220 situations for each of the eight combinations of
+pair, arrangement and direction. Both walkers were in range on the frame
+the object reached them in 630 (large first, small second, object moving
+right), 554 (the same, left), 627 (small first, large second, right), 558
+(the same, left), 598 (medium first, small second, right), 565 (the same,
+left), 615 (small first, medium second, right) and 562 (the same, left) of
+them. Each was compared with the single-walker situation: exactly one
+walker was hit, the same one throughout the pair, 0 mismatches in any of
+the eight. Which of the pair was hit first did not depend on its kind: in
+every arrangement it was the one standing at the offset from the other.
+With the object moving slowly (about 1.6 px per frame) to the right and to
+the left, with the second walker at offset 0, both were hit in all eight,
+the second one on the next frame. The two walkers faced left when the
+object reached them.
 
 ### The second character
 
@@ -1435,9 +1455,10 @@ this file doesn't say what decides the mirroring there.
   walker; walkers that are turning (for medium walkers and the later
   rows), still speeding up, outside the picture, or not on the floor; and
   two walkers in range on the same frame other than two large walkers,
-  two medium walkers, two small walkers and a large and a medium walker
-  (any other mixed pair, medium or small walkers exchanged or heading
-  right, a walker on another floor).
+  two medium walkers, two small walkers, a large and a medium walker,
+  and a large or a medium walker with a small one (any other mixed pair,
+  medium or small walkers exchanged or heading right, a walker on another
+  floor).
 - How a hit is drawn (something appears where the walker was hit) and
   how the hit walker is drawn while it falls.
 - The thrower ("Hitting the thrower"): throwers facing right; an object
