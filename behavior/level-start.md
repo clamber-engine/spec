@@ -113,11 +113,14 @@ their landing frame: `ground-speed.md` ("After a fall or a bounce",
   one: not a press on L − 11 or earlier, not Jump held without a break
   since before then (for example since the throw), and not a press
   released on L or earlier.
-- **Action**: a press on L that is still held on L + 1 starts a roll on
-  L + 1. A press in the air isn't remembered, even if it is held through
-  L: with a direction held it only starts the run on L. A press on
-  L + 1 or later starts a roll on that frame, as on the ground
-  (`roll-input.md`).
+- **Action**: a press on L + 1 or later starts a roll on that frame, as
+  on the ground (`roll-input.md`). Nothing earlier does: a press in the
+  air isn't remembered, and a press on L itself doesn't start a roll on
+  L + 1 or later, however long it is held (with a direction held it
+  only starts the run on L). Action then has to be released and pressed
+  again. That a press on L doesn't
+  start a roll was measured only for play that comes from the level
+  map.
 
 Examples, on flat floor with nothing else held:
 
@@ -132,16 +135,27 @@ Examples, on flat floor with nothing else held:
 | Jump on L only | No jump |
 | Jump on L + 1 only | Jump starts on L + 2 |
 | Action on L only | No roll. Standing starts on L |
+| Action from L to L + 33 | No roll, standing goes on |
+| Action from L − 2 to L + 3 | No roll, standing goes on |
+| Action on L + 1 only | A roll starts on L + 1 |
+| Action on L + 2 only | A roll starts on L + 2 |
+| Right from frame 30 on, Action from L to L + 5 | Running starts on L; no roll |
+| Right from frame 30 on, Action from L + 1 to L + 5 | Walking starts on L; a roll starts on L + 1 |
 
 ### The second character
 
 With two characters, the one that isn't leading stays at the start point,
 not moving, up to and including T. From T + 1 up to and including the
 lead's landing frame, on each frame it is at the lead's position of the
-frame before, rounded down to whole px (`x` and `y`). After that it
-follows the lead as in `following.md`. This holds too when the level
-begins again after its room ("Coming back from the room" below; measured
-in `exits.md`, "Checks", "Two characters").
+frame before, rounded down to whole px (`x` and `y`). On L + 1 it
+stays where it was on L. On L + 2 it is at the lead's position of L,
+rounded down (`x`), at the lead's height (`y`, on flat floor); from then
+on it follows the lead as in `following.md`. The frames from T + 1 up to
+the lead's landing also hold when the level begins again after its room
+("Coming back from the room" below; measured in `exits.md`, "Checks",
+"Two characters"). The detail of L + 1 and L + 2 was measured only for
+play that comes from the level map; coming back from the room is not
+covered for it.
 
 ### The picture
 
@@ -162,7 +176,7 @@ above, with the room-return record's point in place of the start
 record's (`../formats/level-start.md`), and with the entry of kind
 `room-return-entrance` in place of the `entrance`: that entry's object
 bursts on frame 41 and is removed on T, and everything above holds with
-it. The `entrance` entry's object is then there but takes no part.
+it, except what is stated above as measured only from the level map. The `entrance` entry's object is then there but takes no part.
 
 So each of the two entries acts only for its own way into the level:
 
@@ -277,6 +291,18 @@ remembering a held Action press from the air (as after a jump,
 `roll-input.md`, "In the air") would have given 11 rolls that didn't
 happen.
 
+The landing with two characters: 80 runs of the same kind (the same
+inputs for the lead, which was the first character), from the level
+map with both characters. The lead's mode on L (10 running, 20 turning,
+29 walking, 21 standing), its first jump (40 runs) and first roll (36
+runs) matched the rules above in every run, as they did in 19 chosen
+runs with Action around L, which gave the same results with one and
+with two characters. The other character was at the lead's position of
+the frame before on every frame from T + 1 to L, stayed on L + 1 and was
+at the lead's position of L on L + 2, in all 80 runs. A roll started by
+a press on L held on L + 1, as after a jump, would have been wrong in 4
+of the 80 runs and in 6 of the 19 chosen runs.
+
 ## Not covered
 
 - Throws that land before T + 39, and entrances whose throw meets a wall
@@ -288,7 +314,9 @@ happen.
   placed objects are removed").
 - The flash and pieces of the burst: their motion and when they are
   removed.
-- The landing ("The landing") with two characters, and on floor that
-  isn't flat.
+- The landing ("The landing") on floor that isn't flat, and with the
+  second character leading.
+- With two characters, the second character's L + 1 and L + 2 frames
+  and a press on L when the level begins again after its room.
 - Inputs pressed before frame 0 (on the level map or while the level
   loads).
