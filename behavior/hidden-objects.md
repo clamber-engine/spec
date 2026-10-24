@@ -119,6 +119,39 @@ K counts as a frame on which something is knocked out, in the sense of
 frames, the action lasts 2 frames longer, and the player's `x` and `vx`
 stay as they were at the end of K on the pause frames.
 
+### Two hidden objects in range
+
+One attack frame strikes **at most one** hidden object. When two
+`hidden-bunch` objects are in range on the same attack frame K, one of
+them is struck on K, with its pause, and the other is not. The other one
+stays where it is and is struck on the next attack frame, t = 31, if the
+range rule above holds for it at the end of that frame, with a second
+pause. Nothing else changes: the rule for a single object applies to
+each of the two.
+
+- **Both in range on t = 25.** One is struck on t = 25. The other is
+  struck on t = 31 if it is in range then, which for a standing action
+  is always the case, since the player hasn't moved. With both struck the
+  action has two pauses, so E = P + 63; with only one struck, E = P + 61.
+- **Neither in range on t = 25.** One that is in range on t = 31 is
+  struck on t = 31. If both are in range then, only one is struck, and
+  the other is never struck by this action.
+- **One in range on t = 25, the other only on t = 31.** The first is
+  struck on t = 25. The pause that follows moves the attack frame t = 31
+  to 8 frames after the first strike, where the second is struck, so the
+  result is the same as when both are in range on t = 25.
+- **Which one first** is not specified. With no direction pressed, for a
+  given pair of objects it was the same one whatever the player's offset
+  and facing, and not the nearer one. With a direction pressed it can
+  differ with the player's offset.
+- **Never on the same frame.** Two objects are never struck on one frame.
+
+For example, with the player standing, facing right, direction 0, and two
+`hidden-bunch` objects at `I` = −20 and `I` = −40: one is struck on the
+attack frame with t = 25 and the other 8 frames later, on the one with
+t = 31, and E = P + 63. With one of them at `I` = −80 instead, only the
+other is struck, on t = 25, and E = P + 61.
+
 ## Landed on after a long fall
 
 For a player in the air, let **`Fmin`** be the smallest feet line the
@@ -323,6 +356,20 @@ with the same mirroring, on the same frames.
   back 200 times after leaving the view. Each strike, each item
   position and each action length matched the rules. The walkers in
   that stretch were removed every frame.
+- **Two objects in one action.** A setup method was used to arrange the
+  situations; on screen the player stood or walked beside two
+  `hidden-bunch` objects 0 to 55 px apart, in either order, at every offset
+  or every second one over their ranges. 71 660 ground actions were
+  watched, with both facings and two cases for the first frame: no
+  direction pressed, and a direction (left or right) pressed on the first
+  frame. 25 820 of the runs struck both objects, 37 714 one, and 8 126
+  neither. In all of them the frames at which objects were struck followed
+  "Two hidden objects in range" (never two on one frame; the second 8
+  frames after the first), and E was P + 59, P + 61 or P + 63 for none, one
+  or two struck. With no direction pressed the first-struck object never
+  changed with the player's offset (213 starting positions). With a
+  direction it did change. This was seen only in arranged situations, not
+  in ordinary play.
 - **Falls, by placement.** The height rule: started at rest 160 px above
   the object, the player passed through. Started from 160.5 px or higher
   above it, the player bounced. The vertical range was found with the
@@ -386,7 +433,10 @@ with the same mirroring, on the same frames.
   of the player and of other objects.
 - A `hidden-bunch` after it is struck: only the item was looked at, not
   what else is drawn at its place.
-- Two hidden objects struck on the same attack frame (one pause or two).
+- Three or more hidden objects in range of one action, and two hidden
+  objects with the second character as the one acting.
+- Two hidden objects in range of one action in ordinary play, where both
+  came into reach by themselves.
 - The ground action on slopes or at a ledge, and other things that might
   strike a hidden object (a roll of the first character, a thrown
   object, an animal). The second character's roll doesn't strike a

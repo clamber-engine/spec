@@ -175,6 +175,10 @@ action in this way:
 - **A hidden object struck first** doesn't stop a walker: a walker in
   range on a later attack frame is knocked out as usual. The two make
   two pauses (E = P + 63).
+- **Two hidden objects** in range of one action are struck at most one
+  per attack frame; both are struck only if the second is in range on
+  t = 31, and then there are two pauses (`hidden-objects.md`, "Two
+  hidden objects in range").
 
 For example, with the player facing right and direction 0, two small
 walkers heading left that are at I = −30 and I = −55 at the end of
@@ -493,8 +497,7 @@ Without the walker, the action would have ended with E on frame 59.
 - Which of two walkers in range on the same attack frame is knocked out.
   Two things in reach with the large or medium walker and with the
   thrower; two walkers of any kind in ordinary play, where they came
-  into reach by themselves; two hidden objects in reach
-  of one action (`hidden-objects.md`).
+  into reach by themselves.
 - Walkers that are turning, speeding up, stopped or frozen, walkers on a
   different floor from the player, and the action on slopes or at a
   ledge (`ground-action.md`).
