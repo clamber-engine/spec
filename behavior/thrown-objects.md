@@ -1503,8 +1503,11 @@ this file doesn't say what decides the mirroring there.
   inside the ground of the thrower's ledge, which can turn it round
   there (with H from −21 to −1 the thrower was then knocked the other
   way, by the object's new direction); whether the knocked-out thrower
-  can hurt the player or give a bounce after a hit by an object (only
-  its fall and removal were measured); a carried object meeting it while
+  can hurt the player or give a bounce after a hit by an object (standing,
+  on K + 2 to K + 44, in arranged situations only, it can't,
+  `thrower-contact.md`, "The knocked-out thrower"; ordinary play, the
+  jump poses, K and K + 1, later frames and whether it comes back
+  weren't measured); a carried object meeting it while
   the player stands or walks by inputs (only controlled frames), and
   what the player does after a carried object breaks other than in a
   jump; a ball thrown while an object is near the thrower (once a ball

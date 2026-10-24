@@ -265,12 +265,25 @@ B as K), a roll, or the Down + Action ground action
 (`ground-action-enemies.md`, "The thrower"). It moves as described
 there, falling through its ledge and every floor below it. When an
 object knocked it out (`thrown-objects.md`, "Hitting the thrower"), it
-starts falling one frame sooner, and its removal below is the same; the
-other two points weren't measured for that case.
+starts falling one frame sooner, and its removal below is the same; so
+is the first point below, for K + 2 to K + 44 only. The third point
+wasn't measured for that case.
 
 - **It never hurts the player and never gives a bounce**, from K + 4
   on until it is removed, wherever the player is, in each of the poses
-  measured (standing, upright in the air and airborne).
+  measured (standing, upright in the air and airborne). After a hit by
+  an object the same held on each frame from K + 2 to K + 44, in the
+  standing pose only (later frames, the jump poses, K and K + 1 weren't
+  measured). A setup method was used; it was seen in arranged
+  situations only, not in ordinary play. The player was at every second
+  px from 60 px left to 60 px right of the thrower and from 70 px below
+  to 50 px above it (61 × 61 = 3 721 positions on each frame, 160 003
+  over the 43 frames), once moving down at 2 px a frame and once moving
+  up at 1 px a frame (the two motions are separate runs, each with its
+  own 160 003 positions): no hurt and no bounce in either. A thrower
+  that hadn't been knocked out, with the player at the same positions
+  on the same frames, moving down, gave 31 060 bounces and 12 388 hurts
+  among the 160 003 positions.
 - **It is removed** on the first frame from K + 3 on on which, after its
   move, it is outside the picture by the same edges as a ball
   (`thrower.md`, "Leaving the picture"), with its own `x` and `y` in
