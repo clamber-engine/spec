@@ -2,6 +2,31 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.328.0
+
+The entrance landing with two characters, the second character's
+figure pickups while landing, and the second character at a 32 px
+face with no drop (spec#19, spec#61).
+
+Part of clamber-engine/spec#19 and clamber-engine/spec#61, which stay
+open for the parts not covered yet.
+
+- `behavior/level-start.md`, "The landing" and "The second character":
+  with two characters the lead's landing rules are the same as with
+  one; the other character stays where it was on L + 1, is at the
+  lead's position of L on L + 2, then follows as in `following.md`.
+  Correction: a press of Action on L itself doesn't start a roll,
+  however long it is held; only a press on L + 1 or later does
+  (examples added). Measured from the level map only; coming back from
+  the room stays in "Not covered".
+- `behavior/figure.md`, the second character leading: the jumping row
+  goes on through a landing after a standing jump, `L` to `L` + 16,
+  and the standing row applies from `L` + 17. Measured on figure-offset
+  grids only; other landings stay in "Not covered".
+- `behavior/player-frames.md`, teetering: the second character didn't
+  teeter at the first character's 32 px face with no drop either. Two
+  unexplained single frames are listed in "Not covered".
+
 ## spec-v0.327.0
 
 The second character bouncing off a walker into bunches, and lower
