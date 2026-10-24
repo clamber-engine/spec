@@ -360,6 +360,24 @@ inside these rectangles. This was not checked in ordinary play, so the
 rule is shown only for these six bounces; other walkers, slopes and
 other situations at the bounce are in "Not covered".
 
+After a jump taken at the end of a ledge that lands on the floor 176 px
+lower, with Right held through the take-off and then released, the
+jumping row applies on `L` and on every frame to `L` + 17, one frame
+longer than after a landing on the same floor, and the standing row from
+`L` + 18. The frames `L` + 12 to `L` + 14 were not observed; the rule
+assumes the jumping row on them.
+
+Observed with a setup method used: the bunch stood at every offset one
+pixel apart around the second character (`I` −28 to 28, `D` −12 to 44) in
+separate observations, on every frame from 2 before `L` to `L` + 11
+(14 frames of 3 249 offsets), and on `L` + 15 to `L` + 20 (6 frames of
+3 021 offsets, `D` −12 to 40), 63 612 observations in all. On every
+frame the offsets at which the bunch was taken were exactly the jumping
+row's or exactly the standing row's rectangle. This was not checked in
+ordinary play, so the rule is shown only for this one jump, facing
+right; other jumps off a ledge, other drop heights and landing there
+while running or facing left are in "Not covered".
+
 For example, the second character standing facing left takes a bunch
 with `xb − X` from −12 to 11, so with `X` from `xb` − 11 to `xb` + 12.
 
@@ -623,9 +641,11 @@ where the bunch was (as for single collectibles, `collectibles.md`,
 ## Not covered
 
 - The second character's landings other than after a jump onto the
-  floor it started from (onto lower floor, after a bounce, onto a
-  slope), its running with Action released, and its ranges in the
-  states listed in the next item.
+  floor it started from or the one jump off a ledge's end onto the floor
+  176 px lower (other jumps and drop heights, running off a ledge,
+  facing left, after a bounce, onto a slope), the frames `L` + 12 to
+  `L` + 14 of that jump, its running with Action released, and its
+  ranges in the states listed in the next item.
 - One pickup in random play came one frame after the frame the
   second character's rules give, on a frame on which neither character
   moved; what makes it late is not known.
