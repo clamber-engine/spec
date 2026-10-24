@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.329.0
+
+The second character's letter pickups while landing, and its bunch
+pickups while landing off a ledge onto the floor below (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/letters.md`, "Landing, second character leading": after a
+  jump that lands on the floor it started from, a letter is taken by
+  the jumping row on `L` to `L` + 16 and by the standing row from
+  `L` + 17, as bunches are (example added). Measured for one jump
+  length, facing right, and not in ordinary play; other landings stay
+  in "Not covered".
+- `behavior/bunches.md`, the second character leading: after a jump
+  off a ledge's end onto the floor 176 px lower, the jumping row
+  applies on `L` to `L` + 17, one frame longer than on the same floor,
+  and the standing row from `L` + 18. Measured for that one jump,
+  facing right, and not in ordinary play; `L` + 12 to `L` + 14 weren't
+  observed and are in "Not covered" with other ledge jumps.
+
 ## spec-v0.328.0
 
 The entrance landing with two characters, the second character's
