@@ -505,8 +505,9 @@ same one, whether the other walker stood anywhere from 20 px to the
 left to 20 px to the right of it. Which of two walkers it is isn't
 specified. This held for the early and the late area (t from 1 to 19),
 and for the object moving left as well as right: the same one of the
-pair was hit first in both directions. Measured with two large walkers
-and with two medium walkers; the other cases are under "Not covered".
+pair was hit first in both directions. Measured with two large walkers,
+with two medium walkers and with two small walkers; the other cases are
+under "Not covered".
 
 A setup method was used to arrange these situations; they were not
 observed in ordinary play. Two large walkers stood on flat floor, the
@@ -544,6 +545,17 @@ mismatches in either direction. With the object moving slowly (about
 1.6 px per frame) to the right and to the left both were hit, the second
 one on the next frame, at offsets 0 and 8. The two medium walkers faced left
 when the object reached them.
+
+Two small walkers on flat floor gave the same results again, with the
+object moving right and moving left, in the same 1 220 situations for each
+direction (t = 1, 5, 13 and 19; offsets 20, 8, 0, −8 and −20 px): 602
+(right) and 542 (left) of them with both walkers in range on the frame
+the object reached them. Each was compared with the single-walker
+situation: exactly one walker was hit, the same one throughout the pair,
+0 mismatches in either direction. With the object moving slowly (about
+1.6 px per frame) to the right and to the left, with the second walker
+at offset 0, both were hit, the second one on the next frame. The two
+small walkers faced left when the object reached them.
 
 ### The second character
 
@@ -1406,8 +1418,9 @@ this file doesn't say what decides the mirroring there.
   walker; walkers that are turning (for medium walkers and the later
   rows), still speeding up, outside the picture, or not on the floor; and
   two walkers in range on the same frame other than two large walkers
-  and two medium walkers (small walkers, a large and a medium walker,
-  medium walkers exchanged or heading right, a walker on another floor).
+  and two medium or two small walkers (a large and a medium walker, or
+  any other mixed pair, medium or small walkers exchanged or heading
+  right, a walker on another floor).
 - How a hit is drawn (something appears where the walker was hit) and
   how the hit walker is drawn while it falls.
 - The thrower ("Hitting the thrower"): throwers facing right; an object
