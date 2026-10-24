@@ -2,6 +2,39 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.330.0
+
+Inputs on the pause frames of the thrower, a large walker and a hidden
+object; two hidden objects in range of one ground action; and the
+second character rolling, crouching and in the fidget pose against
+the ledge thrower (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/ground-action-enemies.md`, pause frames: for the thrower's
+  knock-out, a large walker's and a hidden object struck on the first
+  attack frame, the presses measured on the pause frames follow the
+  walker's rule (Jump on `K` + 1 or `K` + 2 starts no jump, other
+  presses change nothing). Measured in arranged situations only;
+  releases on the pause frames and Action with Down held are in "Not
+  covered".
+- `behavior/hidden-objects.md`, "Two hidden objects in range": one
+  attack frame strikes at most one hidden object; the other is struck
+  on the next attack frame if it is in range then, with a second pause
+  (`E` = `P` + 63). Which one is struck first is not specified (example
+  added; cross-reference in `ground-action-enemies.md`). Seen in
+  arranged situations only.
+- `behavior/thrower-contact.md`, the second character's rolls against
+  the thrower: its own defeat ranges and attack frames (table), with
+  the rest of "Rolling into the thrower" unchanged. Facing left was
+  checked by placements only.
+- `behavior/thrower-contact.md`, "Crouching and the fidget pose": hurt
+  ranges on the thrower's ledge for a crouching player (both
+  characters, including the frames after Down is released) and the
+  first character's fidget pose; the second character's fidget range is
+  its standing range. Measured in arranged situations only.
+
 ## spec-v0.329.0
 
 The second character's letter pickups while landing, and its bunch
