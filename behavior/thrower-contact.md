@@ -216,6 +216,48 @@ A fast roll pressed with the player facing right at `x` 1033.5 at the
 end of S − 1 (I = 33) and moving 2.33 px on S defeats the thrower on S,
 though I at the end of S is 35.
 
+## Crouching and the fidget pose
+
+On the thrower's ledge (U = −1, so only I is checked) a crouching player
+and, for the first character, a player in the fidget pose have ranges of
+their own. The hit is decided as in "Being hurt": the pose and I at the
+end of H − 1.
+
+**Crouching** (Down held on the ground, standing or walking, facing
+right and left; `ball-contact.md`, "Which pose the player has"). Hurt
+ranges for I:
+
+| Character | Facing right | Facing left |
+|---|---|---|
+| first | −29 to 24 | −23 to 30 |
+| second | −30 to 26 | −25 to 31 |
+
+Facing left, each range is the facing-right range turned around, as in
+"Being hurt". With D the first frame on which Down is held on the
+ground, the range applies from the end of D, unchanged through the
+crouch whatever the player's speed (a player walking when Down is
+pressed has it from the end of D too). It lasts after Down is released:
+with U the first frame without Down, up to the end of U + 7 for the
+first character and up to the end of U + 10 for the second; from the end
+of U + 8 (first) or U + 11 (second) the standing range applies (the
+upright range of the first character, "Being hurt"; the standing range
+of the second, "The second character under control"). Against the upright range (−26 to 33 facing right) the first
+character's crouching range reaches 3 px further back and 9 px less far
+forward; the second character's is wider than standing (−30 to 26
+against −23 to 23).
+
+**Fidget pose.** The first character's range shifts as for walkers
+(`walker-contact.md`, "Fidget pose"): facing right the low end is 10 px
+higher and the high end 3 px higher (−16 to 36); facing left the low
+end is 3 px lower and the high end 10 px lower (−35 to 17). The pose is
+on the frames `ball-contact.md` gives for it (from the 240th frame of
+standing for 180 frames, and again every 457 frames). The second character's range in
+the fidget pose is its standing range (−23 to 23 facing right, −22 to
+24 facing left), on both periods.
+
+Neither pose was measured for bounces: a crouching or fidgeting player
+is on the ledge, where nothing above the thrower can be bounced on.
+
 ## The knocked-out thrower
 
 This holds however the thrower was knocked out on K: by a bounce (with
@@ -315,6 +357,38 @@ U has a lower end of −13 (the first character's is −20). On the ledge a
 player who would end B less than 5 px above its floor lands instead, as
 for the first character (U below 4).
 
+### Rolling into the thrower
+
+The second character's rolls defeat the thrower by the rules of "Rolling
+into the thrower", with this character's own S and D
+(`rolling-into-walkers.md`, "The second character": its rolls last 24
+frames, D = S + 24) and these differences:
+
+| | First character | Second character |
+|---|---|---|
+| Defeat range, facing right, I at the end of K | −24 to 33 | **−29 to 24** |
+| Defeat range, facing left, I at the end of K | −32 to 25 | **−23 to 30** |
+| Attack frames when the roll carries on into running | D to D + 2 | **D to D + 5** |
+| Attack frames when the roll ends in a stop | D to D + 7 | D to D + 7 |
+| Earliest hurt after a roll that carries on | frame after `roll_end` | frame after `roll_end` (D + 7) |
+| Earliest hurt after a stop | D + 12 | D + 12 |
+
+The defeat range is the range for a moving player above, and facing left
+is its mirror image. It is the same on every attack frame, for slow,
+normal and fast rolls, with Action held or released. On S the thrower is
+also defeated when I from the position at the end of S − 1 is within the
+range (visible when the player moves a pixel or more on S, as in a fast
+roll). Everything else in "Rolling into the thrower" holds: nothing on
+D + 8 to D + 11 of a stop, no hurt on an attack frame, none on the frame
+before a throw, and a roll on the floor about 80 px under the ledge
+neither defeats the thrower nor is hurt by it. If the player standing is
+hurt at the end of S − 1 (I −23 to 23 facing right), it is hurt on S and
+no roll starts; with I at the end of S − 1 from −29 to −24, or 24, the
+roll starts and defeats the thrower on S.
+The pause, the boost and the speeds after the defeat are those of
+"The second character" in `rolling-into-walkers.md`, and the thrower's
+motion after the defeat is as in "After the defeat".
+
 ## Examples
 
 Synthetic. The thrower is at `x` 1000, its position 300 px above a
@@ -409,6 +483,45 @@ Rolling into the thrower:
   a defeat: every defeat frame, pause, boost, speed and the thrower's
   motion as described, 0 mismatches.
 
+The second character rolling into the thrower:
+
+- placements (a setup method was used to arrange them) on the ledge,
+  one pixel apart, I from −50 to 50 at the
+  start of the frame, facing right and left, slow, normal and fast
+  rolls, Action held throughout and pressed only on S, every frame from
+  S − 1 to S + 48, and rolls on the floor under the ledge: about 64 000
+  placements, each followed for two frames. Defeats filled the ranges
+  above with no gaps on every attack frame; hurts only in the standing
+  range on S − 1 and from the frame after `roll_end` or from D + 12;
+- in random play with inputs alone, starting with the second character
+  standing on the ledge left of the thrower, the first character away
+  from the ledge and no ball on screen: 200 runs (30 000 frames) with
+  random approaches, slow, normal and fast rolls, Action held, released
+  and pressed again, reversals, Jump and Down presses: 167 defeats (all
+  facing right), 116 boosts, 0 mismatches in defeat frames, pause,
+  boost, speeds and the thrower's motion. No defeat in these runs was
+  facing left, so the facing-left ranges were checked by the
+  placements only.
+
+Crouching and the fidget pose:
+
+- placements (a setup method was used to arrange them) on the ledge, I
+  from −60 to 60 at one-pixel steps, followed for two frames, both
+  characters: Down held from a standing start
+  (facing right and, after a turn, left) and from walking, at the first
+  and every following frame of the crouch; Down released after 20 frames
+  with every frame from the release to 22 frames later; the first
+  character standing at every frame from 225 to 900 (step 2 px in I),
+  facing right, and facing left at six frames; the second character
+  standing at 175 to 300 and at 800 frames. Every range above was the
+  same on every frame of its period, and the edges fell on the frames
+  given. A crouch begun in the first frames of a run, before the first
+  character had settled, had a range one pixel to the left for its first
+  nine frames; that was not reproduced from a settled stand and is not
+  covered. These ranges were measured in arranged situations only, not
+  in random play with inputs alone, and the thrower's flapping and
+  throws were not varied separately.
+
 The knocked-out thrower, knocked out by a bounce:
 
 - contact: every frame from K + 4 until it was removed, the player
@@ -436,8 +549,11 @@ The knocked-out thrower, knocked out by a bounce:
 
 ## Not covered
 
-- Crouching, the fidget pose and the Down + Action ground action on the
-  thrower's ledge (the ground action is in `ground-action-enemies.md`).
+- The Down + Action ground action on the thrower's ledge (the ground
+  action is in `ground-action-enemies.md`). Crouching and the fidget
+  pose away from the ledge; a crouch that begins in the first frames of
+  a run, before the first character has settled; and the crouching and
+  fidget ranges in random play with inputs alone.
 - Rolling: defeats in the stop and on the frames that end a roll were
   measured by placements only (on the ledge, a roll reaches the thrower
   before then); rolls in the air near the thrower (rolling off the
@@ -452,8 +568,10 @@ The knocked-out thrower, knocked out by a bounce:
   Contact and removal were measured after a bounce; after a roll or the
   ground action they are taken to be the same, the thrower's motion
   being the same.
-- The second character rolling into the thrower, crouching, in the
-  fidget pose or using the ground action near it; its landing frames
-  other than those on the ledge. Contact while carrying, being hit or
+- The second character's rolling defeats facing left in random play
+  (checked by placements only); the second character using the
+  ground action near the thrower; its landing frames other than those on
+  the ledge; its rolls in the air near the thrower and two defeats in
+  one roll. Contact while carrying, being hit or
   during a bounce's frozen frames, for either character; the follower.
 - Throwers facing right and throwers in other levels.
