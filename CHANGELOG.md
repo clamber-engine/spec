@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.322.0
+
+The other character during a ground action's pause, Down or Up held at a
+pick-up, and two small walkers in range of one thrown object (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/ground-action-enemies.md`, "The pause": the other character
+  (the second character following the player) is held like the walkers
+  on K + 1 and K + 2 and then carries on two frames later, without
+  catching up. Measured standing and walking behind the player; running,
+  rolling, in the air and ordinary play stay in "Not covered".
+- `behavior/carrying.md`, "Picking up": Down, Up or both held on the
+  press frame or from earlier, with or without the direction toward the
+  object, change neither when a pick-up starts nor the reach. Unmeasured
+  facings, objects, heights and random input stay in "Not covered".
+- `behavior/thrown-objects.md`, "Two walkers in range on the same
+  frame": the same rule holds for two small walkers, with the object
+  moving right and moving left; a slow object hits both, the second on
+  the next frame.
+
 ## spec-v0.321.0
 
 Landings while taking an extra-life item, and Jump and Action during a
