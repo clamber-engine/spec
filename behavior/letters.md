@@ -366,6 +366,20 @@ from take-off until they land.
 This was measured with letters and bunches alike, with each character
 leading (`bunches.md`, "Two characters", has the measurements).
 
+**Landing, second character leading.** After a jump that lands on frame
+`L` on the floor it started from, a letter is taken by the jumping row
+(the walking row) on `L` and on every frame to `L` + 16, and by the
+standing row from `L` + 17, as bunches are (`bunches.md`, "Landing,
+second character leading"). A letter at `I` = −18, for example, is
+taken on `L` + 16 and not on `L` + 17. This was observed with the
+letter at every offset from `I` −24 to 24 and `D` −12 to 44 around the
+second character (a setup method was used), on each frame from 3 before
+`L` to 21 after it, after a jump with Jump let go after 10 frames,
+facing right: 25 grids, each exactly the rectangle of its row. It was
+not checked in ordinary play, so the rule is stated only for that jump.
+Other jump lengths, facing left, moving landings, lower floors and
+slopes were not measured for letters.
+
 ## The letters taken
 
 The player has a set of **letters taken**, which starts empty. Letters
@@ -763,9 +777,11 @@ letter (`H` up to `J` − 12) gave no hit.
 
 ## Not covered
 
-- With two characters: the second character's landings and running
-  state, and the letter row, the letters taken and the reward (only
-  which character takes a letter, and on which frame, was measured).
+- With two characters: the second character's landings other than
+  a rightward jump of 10 frames onto its own floor (other jump lengths,
+  facing left, moving landings), its running state, and the letter row,
+  the letters taken and the reward (only which character takes a
+  letter, and on which frame, was measured).
 - Being hit, bouncing, carrying, and the stop after a fast roll or on
   a slope; walking off a ledge with a steep face. Landing on slopes, and
   a landing followed at once by a crouch, roll, turn or another jump.
