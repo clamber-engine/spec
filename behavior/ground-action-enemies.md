@@ -109,6 +109,14 @@ frames**:
 - The knocked-out walker doesn't move, and neither do other walkers.
 - On K + 3, t is one more than on K, and the speed rule of
   `ground-action.md` continues from the `vx` of K.
+- **The other character**, when there is one that isn't taking part (the
+  second character, following the player), is held like the walkers: on
+  K + 1 and K + 2 its `x`, `vx`, height, mode, facing and picture are
+  what they were at the end of K. From K + 3 it carries on exactly as it
+  would have without the pause, two frames later: what it did on frame
+  K + j without a pause, it does on K + j + 2. Measured standing, and
+  walking and slowing down behind the player. It doesn't catch up, and
+  nothing about it is skipped.
 
 ### Two things in reach
 
@@ -220,6 +228,7 @@ Without the walker, the action would have ended with E on frame 59.
 ## In a trace
 
 - Pause frames have state `ground_action` and repeat `x` and `vx` of K.
+  The other character's rows repeat those of K as well.
 - The action has 59 frames of state `ground_action` plus 2 for each
   pause; E maps as in `ground-action.md`.
 - No event in the trace vocabulary marks a knock-out.
@@ -333,6 +342,23 @@ Without the walker, the action would have ended with E on frame 59.
 - **The thrower:** 28 placements on its ledge, one pixel apart (15
   knock-outs, 13 hurts before the action).
 
+- **The other character during the pause.** Both characters at
+  the level's start, the first leading, and a small walker standing level
+  with the player, 40, 30, 20, 10 and 0 px ahead of it, when the attack
+  knocks it out on frame K, at t = 16, t = 24 and t = 30 (a setup method
+  was used; on the frame before K the walker stood at those distances
+  ahead of the player); the second character
+  either standing or walking behind the player after a 60-frame walk.
+  Each of the 30 runs was compared over 72 frames with the same run with
+  the walker out of reach. On K + 1 and K + 2 the second character's `x`,
+  `vx`, height, mode, facing and whether it stood on the floor equal those
+  on K; from K + 3 each equals the other run's value two frames earlier:
+  12 780 values, 0 different. The second character's picture, in one run
+  each way, stays the same on K + 1 and K + 2 and then goes through the
+  same pictures, two frames later, as in the other run. These were
+  arranged situations; the rule wasn't checked in ordinary play with
+  inputs alone.
+
 ## Not covered
 
 - Which of two walkers in range on the same attack frame is knocked out.
@@ -354,4 +380,6 @@ Without the walker, the action would have ended with E on frame 59.
 - Other things the action strikes. Hidden objects that release a bunch
   are in `hidden-objects.md`.
 - How a pause affects the view's shake (`view-vertical.md`).
-- The other character, when present, during the pause.
+- The other character during the pause while it runs, rolls or is in the
+  air, and the pause with a walker reached in ordinary play (inputs
+  alone) rather than in the arranged situations above.
