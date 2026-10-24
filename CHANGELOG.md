@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.323.0
+
+A large and a medium walker in range of one thrown object (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/thrown-objects.md`, "Two walkers in range on the same
+  frame": a large and a medium walker on flat floor, in both
+  arrangements and with the object moving right and left, give the same
+  results as two walkers of one kind. Only one is hit on the frame both
+  are in range, and the same one throughout the pair, whichever kind it
+  is. A slowly moving object hits both, the second one frame later.
+  Other mixed pairs, exchanged pairs and other floors stay in
+  "Not covered".
+
 ## spec-v0.322.0
 
 The other character during a ground action's pause, Down or Up held at a
