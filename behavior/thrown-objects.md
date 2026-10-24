@@ -439,7 +439,8 @@ the end of the frame. The walker is hit on a frame when it is walking
 (not already hit) and
 
 - I is within the range in the table below for that t, and
-- U is less than the height limit below for that t.
+- U is at least the lower height limit and less than the upper one
+  below for that t.
 
 | Walker | Walker facing | Object moving | t from 1 to 16 | t of 17 or more |
 |---|---|---|---|---|
@@ -456,18 +457,20 @@ the end of the frame. The walker is hit on a frame when it is walking
 | large | right | left | −31 to 51 | −30 to 26 |
 | large | right | right | −50 to 32 | −25 to 31 |
 
-Both ends are included. The height limits are:
+Both ends of the ranges are included. The height limits are (U is
+compared as it is, with its fraction: the lower limit itself is a hit,
+a hair below it is not):
 
 | Walker | t from 1 to 16 | t of 17 or more |
 |---|---|---|
-| small | U less than 63 | U less than 30 |
-| medium | U less than 76 | U less than 43 |
-| large | U less than 89 | U less than 56 |
+| small | U from −51 to less than 63 | U from −27 to less than 30 |
+| medium | U from −48 to less than 76 | U from −24 to less than 43 |
+| large | U from −52 to less than 89 | U from −28 to less than 56 |
 
 So for its first 16 frames out of the hands (Q + 22 to Q + 37) the
 object hits over a much larger area, reaching 25 px further back toward
-where it came from, 1 px further ahead and 33 px higher; from Q + 38 on it hits over the
-smaller area whether it is in the air, rising or falling, bouncing or
+where it came from, 1 px further ahead, 33 px higher and 24 px lower;
+from Q + 38 on it hits over the smaller area whether it is in the air, rising or falling, bouncing or
 rolling. The ranges don't depend on the object's speed or on whether it
 is rising or falling (measured with speeds from 3.5 to 14 px per frame).
 
@@ -482,17 +485,50 @@ on). For medium and large walkers the ranges for t of 17 or more are
 those of a carried object ("A carried object" below) with the player
 facing the way the object moves; for all three kinds the ranges for t
 from 1 to 16 are those for t of 17 or more widened 25 px back and 1 px
-ahead. A medium walker's height limits are a small walker's plus 13 px,
-as for its other heights in `walker-contact.md`.
+ahead. A medium walker's upper height limits are a small walker's plus
+13 px, as for its other heights in `walker-contact.md`; its lower limits
+are 3 px higher than a small walker's instead, and a large walker's
+are 1 px lower.
 
 The walker's facing is the one of `walker.md`: while it turns at the
 end of a patrol, its facing changes on T + 4, and hits on the frames
 in between followed the facing it had (17 hits and about 830 frames
 without a hit, all as the rules say).
 
-The limits were measured with the walker walking at full speed. Hits
-were seen with the object up to 12 px lower than the walker (U down to
-−12, on slopes); lower than that wasn't seen.
+The limits were measured with the walker walking at full speed. The
+lower limits don't depend on how far ahead of or behind the walker the
+object is, within the ranges above, and they don't depend on how far the
+floor is below: an object lower than the limit, in the air or resting on
+a floor, hits nothing, and one resting on a floor within the limit hits
+as one in the air does.
+
+A setup method was used for all of these runs, and none of the situations
+was seen in ordinary play, so the lower limits are measured only in the
+arranged situations below, and the throws were arranged too (the floors,
+and where the walker stood). Observed: a walker at the edge of a floor with a
+second, flat floor 16, 32, 48 or 64 px below it on the other side of the
+edge, and a thrown object in flight beside the walker over the lower
+floor, with the walker facing either way and the object moving either
+way, for each kind, at t = 1, 8, 16, 17, 30 and 44, at every whole pixel
+of height from 0 down to the lower floor and at every whole pixel from 17
+to 40 px beyond the edge (25 to 48 for a medium walker heading right),
+which is the part of each range that lies over the lower floor. That is
+283 392 frames. The height used for the counts is the object's height
+relative to the walker at the end of each frame (the object falls during
+a frame, so it is lower than the height it had when it was beside the
+walker at the start): on 209 664 of the frames it was more than 12 px
+below the walker, 58 244 frames had a hit, 36 129 of them with the
+object more than 12 px below, 0 mismatches, with hits in all 24 rows of
+the tables. With the heights in steps of an eighth of a pixel around the
+limits (31 790 frames, 9 105 hits, for the small and the large walker),
+the limits are exactly those of the table. Then 2 016 throws from the
+lower floor (floors 16 to 112 px below the walker's, thrown toward the
+edge, a walker on the upper floor 16 to 116 px from the edge and walking
+freely heading either way, all three kinds): 24 388 frames on which a
+walking walker and the thrown object were both there, 856 hits, 348 of
+them with the object more than 12 px below the walker (334 for t from 1
+to 16, 14 later), and 1 908 frames on which the object was in the ranges
+and below the lower limit and nothing was hit, 0 mismatches.
 
 One object can hit several walkers, each on its own frame (seen with
 both large walkers in 67 throws).
@@ -598,7 +634,8 @@ object reached them.
 
 With the second character under control (`second-character.md`) the
 object it throws hits walkers by the same rules, the same tables and the
-same height limits. Only the timing differs, because the object leaves
+same height limits (the lower limits were measured only with the first
+character's throws). Only the timing differs, because the object leaves
 its hands earlier (`carrying.md`, "The object, second character"): it
 leaves on Q + 18, and **t = 1 on Q + 19**. So the larger area holds from
 Q + 19 to Q + 34 (t from 1 to 16) and the smaller one from Q + 35 on. What
@@ -626,7 +663,7 @@ the thrown object were both there, 875 hits, among them every row of the
 tables for the object moving left and the larger-area rows for the
 object moving right (the smaller-area rows for the object moving right
 were not reached), 0 mismatches. Frames with the object more than 12 px
-below the walker are left out, as above. With the change of area one frame
+below the walker are left out of these runs. With the change of area one frame
 earlier or later, 23 304 of the controlled frames differ either way, and
 15 (earlier) or 28 (later) of the throws' frames; with t = 1 one frame
 earlier, on Q + 18 when the object leaves, 3 of the throws' frames differ.
@@ -1451,9 +1488,10 @@ this file doesn't say what decides the mirroring there.
   and whether the object is drawn in front of or behind a character.
 - Other enemies. Walkers: medium walkers and the rows measured later
   under "When a walker is hit" on slopes and other floors (they were
-  measured on flat floor only); the object more than 12 px below the
-  walker; walkers that are turning (for medium walkers and the later
-  rows), still speeding up, outside the picture, or not on the floor; and
+  measured on flat floor only); the lower height limits for the second
+  character's throws, for an object moving left in throws (only
+  controlled frames) and with the walker or the lower floor on a slope;
+  walkers that are turning (for medium walkers and the later rows), still speeding up, outside the picture, or not on the floor; and
   two walkers in range on the same frame other than two large walkers,
   two medium walkers, two small walkers, a large and a medium walker,
   and a large or a medium walker with a small one (any other mixed pair,
