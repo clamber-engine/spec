@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.327.0
+
+The second character bouncing off a walker into bunches, and lower
+height limits for thrown objects hitting walkers (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/bunches.md`, "Bouncing off a walker, second character
+  leading": the second character's own pickup ranges on the bounce
+  frame and from two frames later until it lands, none on the two
+  frames between, then the row of what it is doing on landing.
+  Measured off a small walker on flat ground in six arranged bounces;
+  other bounces and ordinary play stay in "Not covered".
+- `behavior/thrown-objects.md`, the hit rule: a thrown object hits a
+  walker only down to a lower height limit for each kind and each part
+  of the flight, as well as below the upper one. The lower limits
+  don't depend on where the object is within the ranges or how far
+  the floor is below. Measured only in arranged situations with the
+  first character's throws; the second character's throws, an object
+  moving left in throws and slopes stay in "Not covered".
+
 ## spec-v0.326.0
 
 Inputs on a ground action's pause frames, and a tyre with thrown
