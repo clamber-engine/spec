@@ -1197,6 +1197,25 @@ turned around and then moved 1 px left. Nothing is hit on Q or on
 Q + 21. Within each row and part the ranges were the same on every
 frame measured, at all the speeds of these throws.
 
+**The ball placed in the level.** The ball that the first level places
+on the ground (`thrower.md`, "Balls placed in a level") is hit by the
+same rules, with the same ranges, turn adjustments and results as the
+thrower's balls. A setup method was used, and this was seen in
+arranged situations only, not in ordinary play. The lead character was
+alone, with the object carried below the thrower's ledge and the placed
+ball beside it, moving left. On each of 11 frames the ball was at every
+whole-pixel offset from 80 px to the left to 80 px to the right of the
+object, and from 75 px below it to 85 px above it (161 columns by 161
+rows = 25 921 positions per frame, 285 131 over the 11 frames). Each
+was compared with the same frame without the ball and without the
+object. The 11 frames were: the object in the hands thrown right on
+Q + 1, 5, 10, 15 and 20, and on Q + 21; in the hands thrown left on
+Q + 1 and Q + 10; and carried standing, carried facing left and carried
+in a jump (one frame each). Every position matched: none differed
+from the ranges above, the object broke or went on as in "What happens
+on a hit", and nothing was removed on Q + 21. The ball falling or rising was
+measured only for the thrower's balls.
+
 ### What happens on a hit
 
 Call the frame of the hit **K**.
@@ -1513,8 +1532,10 @@ this file doesn't say what decides the mirroring there.
   jump; a ball thrown while an object is near the thrower (once a ball
   due on that frame broke an object in the hands, the thrower wasn't
   hit, and no ball was seen); and the second character.
-- Balls ("Hitting a ball"): a ball placed in the level (only the
-  thrower's balls were measured); a ball on its appearance frame (the
+- Balls ("Hitting a ball"): the placed ball against a thrown object
+  (t of 1 or more, which needs the ball to live beyond Q + 21: the
+  rows were measured in the hands and carried only), the placed ball
+  in ordinary play and falling or rising, and a ball on its appearance frame (the
   ball that broke an object in the hands in the item above did so on
   the frame it was due, which the rule, with the ball's position at the
   end of the frame before, doesn't give); two balls, or a ball and the
