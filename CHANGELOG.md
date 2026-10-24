@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.325.0
+
+The other character in the air during a ground action's pause
+(spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/ground-action-enemies.md`, the pause after a knock-out:
+  the other character in the air on the way down from a jump is held
+  like the rest of the scene. It stays in the air on K + 1 and K + 2,
+  then carries on two frames later and lands two frames later than it
+  would have. Running, rolling, the way up in a jump, falls from a
+  ledge and ordinary play stay in "Not covered".
+
 ## spec-v0.324.0
 
 A large or a medium walker with a small one in range of one thrown
