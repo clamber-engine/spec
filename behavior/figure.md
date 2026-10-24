@@ -113,12 +113,20 @@ shift facing left):
 | Walking, running, rolling | −25 to 22 | −25 to 35 |
 | Crouching (Down held on the ground) | −26 to 24 | −28 to 22 |
 | Jumping, from the take-off frame `T` until it lands | −25 to 22 | −25 to 35 |
+| Landing, from `L` to `L` + 16 | −25 to 22 | −25 to 35 |
+| Standing again, from `L` + 17 | −19 to 21 | −29 to 35 |
 
 Its jumps have one row: unlike the first character's, there is no
 change at `T` + 6. With the second character leading, Down + Action
 gives a roll and uses the rolling row. Its running state was reached in
-play after landing from a jump taken while running. Its landings are
-not covered.
+play after landing from a jump taken while running.
+
+**Landing.** `L` is the frame carrying `land` (`jump-arc.md`). The
+jumping row goes on through the landing, for 17 frames, `L` to `L` + 16;
+on `L` + 17 the standing row applies. The change is the same whatever the
+length of the jump (Jump let go early or held to the landing), and
+facing either way. A figure at `I` = −25, `D` = −25, for example, is
+taken on `L` + 16 but not on `L` + 17.
 
 For example, the second character standing facing left takes the figure
 with `xf` + 3 − `X` from −19 to 21, so with `X` from `xf` − 18 to
@@ -133,6 +141,14 @@ run, facing left).
 
 - With the second character leading, every pose gave exactly the ranges
   above, facing either way (82 grids, 629 370 placements, 0 wrong).
+- With the second character leading, standing jumps (Jump let go after
+  4, 10 or 20 frames, held to the landing facing right, and held facing
+  left) were followed from before the landing to at least 20 frames
+  after it,
+  with the figure at each offset from `I` −34 to 30 and `D` −50 to 60
+  (267 grids, over 1.7 million placements): it was taken exactly inside
+  the jumping row up to `L` + 16 and inside the standing row from
+  `L` + 17.
 - With the first character leading and the second following, the
   first character's ranges above held unchanged, including the change
   at `T` + 6 (14 grids, 119 070 placements, 0 wrong).
@@ -305,11 +321,17 @@ of 3 leads to (see "Not covered").
 
 ## Not covered
 
-- The second character leading: its landings, and the states listed in
-  the next item. With the second character following, the first
-  character's running and Down + Action ground action weren't measured.
+- The second character leading: its landings other than after a jump
+  from standing onto the floor it started from (moving jumps, lower
+  floor, slopes, after a bounce), and the states listed in the next
+  item. No pickup in the random-input runs fell on a landing frame, so
+  the landing rule rests on the figure-offset grids only. With the
+  second character following, the first character's running and
+  Down + Action ground action weren't measured.
 - Being hit, bouncing, carrying, riding, falling without a jump, landing
-  (the frames from `L`, the frame carrying `land`, on), turning and the
+  (the frames from `L`, the frame carrying `land`, on; except with the
+  second character leading, after a jump from standing onto the floor it
+  started from, which the Landing rule above covers), turning and the
   frame after a turn, and the stop after a roll.
 - What a figure count of 3 leads to. In the one case measured, play
   left the level for another area about 260 frames after the third
