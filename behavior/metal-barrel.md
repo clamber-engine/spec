@@ -5,9 +5,9 @@ Titles: `title-1`
 The metal barrel is the object a `hidden-metal-barrel` leaves behind
 (`hidden-objects.md`). It is picked up and carried as in `carrying.md`.
 This file says what it does once it is thrown: how it flies, lands and
-rolls, and what it does at a wall. The other things a thrown object can
-meet (walkers, the thrower, balls, the characters) are not covered here;
-see "Not covered".
+rolls, what it does at a wall, and that it defeats walkers. The other
+things a thrown object can meet (the thrower, balls, the characters) are
+not covered here; see "Not covered".
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y`, `vx`
 and `vy` are as in a trace: right and down are positive, speeds in px
@@ -109,6 +109,34 @@ barrel in the same place and the same inputs as a control.
   on a later frame, and in 54 it was removed first (above the height
   limits); these were not compared further.
 
+## Walkers
+
+A thrown metal barrel defeats the walkers it touches (`walker.md`) in
+the same way as a thrown barrel does (`thrown-objects.md`, "Hitting
+walkers"), for small, medium and large walkers, with the walker heading
+either way and the object thrown either way, when it is thrown from the
+flat floor at a walker standing on that floor ahead of the thrower. On
+the frame of a hit the walker's knock-off (its speed, rise and fall) and
+its removal are the same as for the barrel, and the metal barrel goes on
+as if the walker weren't there, as the barrel does. Nothing in the
+object's own motion differs from the barrel's when a walker is hit. Other
+heights and throws made in the air, other floors, and hits while the
+object is rolling are not covered (see "Not covered").
+
+- Walkers, by a setup method: 204 throws left or right from the flat
+  floor in the first level (about 230 to 545 px along the level), each
+  once with the metal barrel and once with a plain barrel, same inputs.
+  A small, a medium or a large walker, heading left or right, stood
+  ahead of the thrower on the same floor at distances of 46 to 238 px
+  in steps of 12 (17 distances, 3 kinds, 2 headings, 2 throw
+  directions). In 177 of the
+  204 pairs every row (the walker's `x`, `y`, speeds and removal, the
+  object's `x`, `y`, speeds and removal frame) was the same; the walker
+  was knocked off in 142 of those 177, in every kind and both throw
+  directions, and the other 35 had it out of reach. The other 27 pairs
+  differ only in the object, which was overlapping a wall at the
+  release (see "Not covered"); they were not compared further.
+
 ## Not covered
 
 - Ordinary play: the rules above were seen only in arranged situations
@@ -118,8 +146,11 @@ barrel in the same place and the same inputs as a control.
   happens on a wall frame was not measured.
 - Riding or standing on it, and whether it takes anything with it: not
   measured.
-- Walkers, the thrower, balls and the other enemies, and whether it
-  defeats them or turns back from them.
+- The thrower, balls and the other enemies, and whether it defeats them
+  or turns back from them. Walkers hit by a metal barrel thrown from
+  other heights or in the air, from other floors, while it is rolling, or
+  just after it turned back at a wall were not measured; nor were the
+  second character's walker hits.
 - The characters: whether it passes through them or hurts them.
 - The second character throwing it; a throw by either character with the
   metal barrel inside a wall at the release (seen twice: no break, `vx`
