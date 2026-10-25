@@ -1064,9 +1064,18 @@ and nothing of its own flight is kept):
 When the knocked-off stinger is removed was measured only in part: in 11
 of the 398 hit runs it was gone on K + 2, in 309 it was there until
 K + 38 to K + 43 and then gone, and in the 78 runs that stopped after 30
-frames it was still there. Whether it can come back, and whether a
-knocked-off stinger can still hurt a player, were not measured (see "Not
-covered").
+frames it was still there. Whether it can come back was not measured (see "Not covered").
+
+A knocked-off stinger can still hurt a standing player. The player is
+hurt on K + 1, the frame after the hit (the hit frame H of
+`knock-out.md`), exactly when a stinger that was not hit but stood at the
+same place would hurt the player: with I as in `stinger.md` ("Touching
+the player") for a standing player facing left on the floor, from −27 to
+26 (the stinger's `x` on K; it does not move on K or K + 1), at an A of 5
+(A was not varied). The hit changes neither the range nor the frame (see the
+evidence below). From H to H + 10 the barrel and the stinger did not
+move, the freeze of `knock-out.md`; the frames after that were not
+compared.
 
 This is the walker's knock-off (`thrown-objects.md`, "The walker") with
 its sideways steps starting one frame later: a walker moves sideways on
@@ -1127,6 +1136,19 @@ plus an offset, on the first frame the barrel was rolling there.
   above frame for frame (speeds, and positions relative to K) as far as
   it was followed: 309 for 38 frames or more, the others until the end of
   the run (30 frames) or the stinger's removal on K + 2 (11).
+- A knocked-off stinger and a standing player: the barrel rolled right
+  at 3.5 px per frame and the stinger stood 20 px ahead of it (hit on K
+  every time), the player on the floor facing left, 5 px below the
+  stinger (A = 5), at I = −44 to 44
+  from the stinger's `x` (51 runs: every even I, and −29, −27, −25, 25,
+  27, 29). The player was hurt on K + 1 in the 30 runs with I from −27
+  to 26 and in none of the 21 others. The same I with the stinger 100 px
+  ahead of the barrel, so not hit (12 runs: −34, −30, −28, −27, −26, 24
+  to 28, 30, 34): hurt on the second frame counting from the first with
+  the stinger there (the hit runs: one frame after the hit, which came on
+  the first) in the 5 runs with I from −27 to 26, and not in the other 7. In all
+  30 hurt hit runs the barrel and the stinger did not move from H to
+  H + 10.
 - The barrel's and the player's rows were the same with and without a
   hit (41 pairs of runs with the stinger 19 and 20 px above, 24 of them
   hits).
@@ -1458,7 +1480,8 @@ frame's view.
   air or on a slope meeting one, a barrel rolling left meeting one that
   flies or sways, a barrel just turned back at a wall, what decides the frame
   a knocked-off stinger is removed (K + 2, or K + 37 to K + 43), whether
-  it can come back, and whether it can still hurt a player.
+  it can come back, and whether it can hurt a player in poses other than
+  standing on the floor facing left, and at an A other than 5.
 - Stingers and the barrel thrown by the second character: where between
   28 and 30 px below the barrel the lowest hit lies, what decides whether
   a stinger at I of −26 or 35 is hit (18 of 25 and 24 of 49 frames
