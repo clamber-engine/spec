@@ -1359,6 +1359,83 @@ its `x` at or below a limit.
   and 170 (the 198 edge runs, all hit, at the other limits, were not
   compared this way; the 1 052 include runs hit after the barrel's turn).
 
+## Pictures
+
+What a metal barrel looks like in `title-1`. Each picture is named by its
+picture hash (`../formats/sprites.md`, "Picture hashes") and drawn at the
+object's position as that file says; the picture given for a frame is the
+one on screen with that frame's view. These are not the barrel's
+pictures (`thrown-objects.md`, "Pictures"): the metal barrel has its own.
+
+| Picture | Picture hash (SHA-256) |
+|---|---|
+| `metal-lying` | `9c43f4706ed498044b71edffa8da2da48d5a2d222a040095f61eba2f0b11afaa` |
+| `metal-thrown-1` | `634434fd17cc5de33861a590f3ef9d62bb69512754abc917c213b3164fc9667b` |
+| `metal-thrown-2` | `363bb924b954f93f4a74a2d3314713e9ed13f82038ede805af2c4d6db517f592` |
+| `metal-thrown-3` | `3c218ed7645a3ba08c06ce889c4499a2bb6c62ffbee13f425a3498219fe0b389` |
+| `metal-thrown-4` | `da92b2ad468de5fa8271fc41e544e4d685b07145255b7cebada3dab1527e4768` |
+| `metal-thrown-5` | `5396967b9f3d1ee3a9644ce23278d24fef05de82ebee3297639a40233ea01db0` |
+| `metal-thrown-6` | `5bca3b2a2b2ac6012e4e3cc80a8c929361b9b8bf81d38beb995058aac4a72ab9` |
+| `metal-thrown-7` | `6f402c16846dacb6165c832a190fbb73fdc9d874d7e8155f628586555b560157` |
+| `metal-thrown-8` | `e627fdb2e8fb95999c946f2a9d2c9e54c78e5b080ea116c4db8cbd1932647c84` |
+
+**When a hash isn't found.** The eight flight pictures belong together:
+if any of them isn't found, the engine shows its own art for a thrown
+metal barrel, with the timing and mirroring given here. If `metal-lying`
+isn't found, the engine shows its own art for a metal barrel lying on
+the floor, not mirrored.
+
+- **Lying.** A metal barrel standing on the floor, not picked up, shows
+  `metal-lying`, not mirrored. After a put-down it shows `metal-lying`,
+  not mirrored, for as long as it lies there. (Its picture on the
+  frames just after a put-down was behind the player; see Not covered.)
+- **In flight.** From the frame it leaves the hands (Q + 21) until it is
+  gone, it cycles through `metal-thrown-1` to `metal-thrown-8` exactly as
+  the barrel does (`thrown-objects.md`, "In flight"): counting `j` from 0
+  on Q + 21, the picture is `metal-thrown-`*n* with *n* = 1 +
+  ⌊(`j` + 1) ÷ 3⌋ mod 8. The cycle goes on through bounces, rolling and
+  turning back at a wall without restarting.
+- **Mirroring.** Mirrored left–right exactly when the object is moving
+  left, not mirrored when moving right. On the frame it turns back at a
+  wall (`vx` changes sign) the mirroring changes with it, and the cycle
+  goes on.
+- **No flash and no pieces.** It doesn't break, so the barrel's flash or
+  piece pictures don't appear when it meets a wall; it flies on with the
+  cycle unbroken.
+
+### Evidence for the pictures
+
+By a setup method a metal barrel was made available to pick up on flat
+floor in the first level, and the first character picked it up, carried
+it for 0 to 90 frames walking, standing or running, and threw or put it
+down at random, in either direction, in 40 runs of up to 600 frames
+(12 292 logged frames). The 40 runs held 48 pick-ups: 40 throws and 8
+put-downs. The picture of each frame was read from the screen with that
+frame's view.
+
+- **Flight.** There were 3 673 frames in flight. On 1 900 the barrel was
+  off the screen, on 125 no picture could be read at its position, and
+  on 26 it was hidden behind another picture; those 2 051 frames were
+  not checked against the pictures. On the other 1 622 frames the
+  picture could be read: 1 620 showed the listed picture at the listed
+  mirroring, and 2 showed another picture (both with other objects at
+  the same place; not explained).
+- **Turns.** There were 19 wall meetings, all while moving left and
+  turning to move right. The barrel kept flying after every one and
+  the cycle went on. On 4 of them the picture could be read on the first
+  frame after the turn, and it was already unmirrored and was the
+  listed picture with no other picture of the barrel; on the other 15
+  the barrel was off the screen or not readable on that frame, so the
+  exact frame of the mirroring change and the absence of a flash were
+  not seen there. No turn from moving right to moving left was seen.
+- **Lying.** `metal-lying` was seen unmirrored on all frames where it
+  could be read, standing and after the 8 put-downs. After a put-down
+  the barrel was behind the player's picture on the first frames: it
+  could not be read on any of the first 7 frames after the player was
+  free; in 5 of the 8 it first showed `metal-lying` 14 to 61 frames
+  after, and in the other 3 it was not read before it was picked up
+  again.
+
 ## Not covered
 
 - Ordinary play: the rules above were seen only in arranged situations
@@ -1459,4 +1536,9 @@ its `x` at or below a limit.
   what it does later, slopes for a second-character throw); a throw by either character with the
   metal barrel inside a wall at the release (seen twice: no break, `vx`
   0 and the object moving up at 5 px per frame; not measured).
-- Its pictures and how it is drawn when it turns, and what sounds play.
+- The pictures while it is picked up and carried and on the first
+  frames after a put-down (none could be read on the screen behind the
+  player), so when `metal-lying` first shows after a put-down; its
+  mirroring when it isn't moving sideways in flight (`vx` 0, for
+  example released inside a wall); a turn from moving right to moving
+  left; the pictures of a ride, and what sounds play. Pictures were read for the first character's throws only.
