@@ -400,6 +400,87 @@ frame is the first one followed in each run.
   rules, and the barrel's frames after it turned back at the wall were
   not followed.
 
+### Rolling right, thrown by the second character
+
+A metal barrel thrown right by the second character, once it has landed
+and is rolling right on the flat floor (the first frame followed was
+37 frames after it left the hands, so "t of 17 or more" in
+`thrown-objects.md`, "When a walker is hit"), defeats a small, medium or
+large walker on the same flat floor by the ranges of that table's "t of
+17 or more" column for an object moving right, as for the first
+character's barrel ("Rolling right on the flat floor"), with the walker
+facing either way and the barrel and walker level. The walker is hit on
+the first frame, after the first one followed, on which the difference is
+in the range, and on that frame its sideways speed is 4 px per frame to
+the left, whichever way it was facing. A walker already in the range on
+the first frame followed was hit on the next frame (173 of the runs); the
+first frame followed itself is not covered, because the walker was on
+the floor from then. Two differences from the first character's rolling barrel
+in the same situation:
+
+- the barrel's speed is not 3.5 px per frame at first: it is 3.62 px per
+  frame (926/256) on the first frame followed, falls by 3/256 or less
+  per frame to 903/256 on the 15th frame, and is 3.5 px per frame
+  (896/256) from the 16th on, through the 29 frames followed (the last
+  on the slope). The hits were not different for it, apart from the
+  next point;
+- a large walker facing right was hit one pixel before the table's lower
+  end, at a difference of −26 instead of −25, in 11 of 71 runs (barrel
+  speed 906/256 to 923/256, 3.54 to 3.61 px per frame). Whether that is the barrel's speed
+  or the throw by the second character was not separated. The lower ends
+  for the other five kinds and facings are the table's.
+
+The barrel is not slowed, lifted or removed by the hit: its rows are
+the same as those of a run with no walker in its way. At the place
+measured it is removed on Q + 84 (66 frames after it left the hands),
+hit or not, once it has rolled past the flat floor's end onto the slope
+and is 382 px right of the picture's left edge; where it is removed
+elsewhere is not covered. The walker's frames after the hit are those of
+"Rolling right on the flat floor" (`thrown-objects.md`, "The walker",
+with d = +1), except that a walker that was hit more than 296 px right of
+the picture's left edge (beyond its right edge) was gone one frame later
+(281 runs), while one hit 277 to 296 px right of it stayed to the end of
+the frames followed (117 runs).
+
+#### Evidence for the second character's barrel rolling right
+
+By a setup method, on the first level with the second character leading:
+it picked the barrel up, walked right to a point where the flat floor
+lay ahead, turned right and let go (the barrel left the hands on Q + 18);
+the barrel flew, bounced and landed on the flat floor. The walker
+stood on the floor from the frame on which the barrel's `x` was first at
+least 700, at an `x` from 3 px behind the barrel's to 67 px ahead of it
+in steps of 1 px (71 positions, 3 kinds, 2 facings: 426 runs of 41
+frames; the barrel was in the picture on the first 29 and removed on
+the 30th). The flat floor ends a short way beyond the last position (a
+slope begins there, at a barrel `x` of 774), so the barrel rolled on the
+flat floor over only about 20 frames, at 3.5 to 3.62 px per frame;
+in 28 runs the walker, near the end of the flat floor, stood 1 to 5 px
+above the barrel's floor on the hit frame and they are not claimed.
+
+- Hit frame: in the 398 runs with the walker level with the barrel on
+  the frame of its hit (small 70 facing left and 59 right, medium 70 and
+  58, large 70 and 71), the first frame on which `x` (rounded down) of
+  the barrel minus that of the walker was inside the range for the kind
+  and facing, after the first frame followed (the hits came on the 2nd
+  to the 15th frame followed, at barrel speeds of 903/256 to 923/256),
+  was the first frame on
+  which the walker was hit (sideways speed −4 px per frame) in 387; in
+  the other 11 (large, facing right) the walker was hit one frame
+  earlier, at −26. In all 398 the difference on the hit frame was from
+  the range's lower end (−26 to −20 by kind and facing) up to 7; the upper ends of the ranges (25 to
+  35) were not reached, because no walker stood far enough
+  behind the barrel on level floor.
+- Walker after the hit: in all 398, 4 844 frames from the one after the
+  hit (the walker was last in the picture 39 frames after the hit, the end
+  of the frames followed, in 117 runs, those hit 277 to 296 px right of
+  the picture's left edge, and one frame after it in 281, those hit
+  more than 296 px right of it), its
+  speed, position and height on every frame were the rule's.
+- Barrel: in all 426 runs the barrel's `x`, `y`, `vx` and `vy` on every
+  frame in the picture (29 frames in each, 12 354 in all) were equal to a run of the same throw with the
+  walker out of reach (the removal frame is not counted), and the second character, standing, was unchanged.
+
 ## The characters
 
 Measured with the first character alone, on flat floor (and, for the
@@ -1549,9 +1630,13 @@ frame's view.
   five frames of the walker appearing), so which frame a walker that
   appears at the edge of the range is hit on is not covered, nor are
   walkers close to the step or just after turning back. A barrel thrown by
-  the second character rolling right against walkers is also not
-  measured (its flight and first walker hits are above), nor is one
-  thrown by the second character rolling left against a walker ahead
+  the second character rolling right against walkers was measured only
+  for the lower ends of the ranges and, once it had landed and was
+  rolling on the flat floor, for its first 29 frames (the last on the
+  slope), at 3.5 to 3.62 px per frame on the flat floor (see "Rolling
+  right, thrown by the second character"); the upper ends, a longer
+  roll, and walkers close to the hands were not. Nor is one thrown by the
+  second character rolling left against a walker ahead
   of it at the range's upper ends (a difference of 17 or more), against
   one that comes into the range from outside it (every hit measured was
   of one already in range on the first frame followed), or when the barrel
