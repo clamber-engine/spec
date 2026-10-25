@@ -39,6 +39,22 @@ by placing the walker at chosen offsets from the rider, one pixel apart:
   thrown walkers' motion was checked on every frame until they
   disappeared.
 
+Measured with the second character as the player (leading, the first
+character following), in the same kind of modified copy (a setup method
+was used), for the small and medium walkers only: with the walker
+standing at offsets one pixel apart from the rider, for all four combinations of rider facing and
+walker facing with the rider at rest; and in 120 runs of random inputs
+with each kind (44 826 frames with small walkers, 44 670 with medium
+walkers). The attack and knock-off ranges came out exactly as in the
+tables below, and in every frame of every random run the rider's `x`,
+`y`, `vx`, `vy`, `ground`, `facing` and part of riding, and whether the
+walker was thrown, were as the rules below give, with the second
+character's riding targets (`riding.md`) and its air control and
+gravity after a knock-off (`second-character.md`), through 98 automatic
+charges, 98 throws and 42 knock-offs. The large walker was not measured with the
+second character, and the attack and knock-off heights only through those
+random runs.
+
 ## Kinds of walker
 
 Three kinds of walker were measured. They walk the same way
@@ -208,6 +224,52 @@ gap each frame, rounded toward zero (becoming 4 when the step would be
 0): 1472, 1416, 1367, 1325 … (in 1/256). What it does at walls and
 whether the player can get back on are not covered.
 
+## Walkers behind the rider
+
+The ranges above are offsets from the rider's `x`, and they reach behind
+the rider as well as in front of it. For a rider facing left, a negative
+I is a walker to the right of the rider, that is, behind it. A walker
+behind the rider is therefore "in front of the animal" (and is thrown,
+below) when it is at most this many pixels behind the rider's `x`:
+
+| Walker | Walker facing left | Walker facing right |
+|---|---|---|
+| small | 24 | 23 |
+| medium | 31 | 21 |
+| large | 27 | 26 |
+
+(Rider facing left; for a rider facing right, use the opposite walker
+facing, as for the other ranges.) These are the same ranges as above, not
+extra ones: the random runs, with the rider moving, turning, jumping and
+charging, and the walkers standing at offsets at rest agreed with them,
+and for the small and medium walkers they are the same for the second
+character (the large walker was not measured with it). Walkers on slopes were not measured.
+
+The knock-off range reaches 2 px farther behind the rider than the
+attack range for every kind and facing (26 and 25 px for the small
+walker, 33 and 23 for the medium, 29 and 28 for the large). So a walker
+walking toward the rider from behind, on the rider's floor, reaches the
+knock-off range first, and what happens depends on the knock-off
+conditions (above):
+
+- With the rider on the floor at the end of both of the last two frames
+  and the walker on the rider's floor, the rider is knocked off.
+- With the rider in the air, the rider is knocked off only if U is at
+  most the knock-off height (table); otherwise the walker is **thrown**
+  once it is in the attack range and U is at most the attack height,
+  like one coming from the front. So a small walker walking under a
+  rider in the air from behind is thrown while U is more than −3 and at
+  most 25 (the small walker's knock-off height is below the floor, so it
+  never knocks off a rider in the air); a medium walker is thrown while
+  U is more than 10 and at most 38; a large walker while U is more than
+  23 and at most 51. A rider who lands with the walker behind and still in the knock-off
+  range is knocked off as the rules above give.
+
+In the 240 random runs with the second character (small and medium
+walkers), 7 walkers that were behind the rider were thrown, all with the
+rider in the air, and 26 walkers that reached the rider from behind
+knocked it off.
+
 ## Examples
 
 All values were measured on flat floor, with positions made relative.
@@ -259,4 +321,6 @@ Here the walker walks under the falling player, who bounces off it
 - What happens after the knock-off landing (protection, getting back on
   the animal, the animal at walls or leaving the view).
 - The large walker's horizontal motion after a throw.
-- Other enemies and objects; the second character.
+- Other enemies and objects; the large walker and the heights of the
+  attack and knock-off with the second character (except through the
+  random runs above).
