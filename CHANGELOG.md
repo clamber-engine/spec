@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.341.0
+
+The thrown metal barrel, the thrower and its balls (spec#76, in part).
+
+Answers part of clamber-engine/spec#76 (enemies).
+
+- `behavior/metal-barrel.md`: new "The thrower and its balls" section.
+  A metal barrel removes a ball and knocks out the thrower in the same
+  places and on the same frames as a plain barrel. When it is hit while
+  in the player's hands or carried, it does not break: no pieces appear,
+  it gets a small upward move and then falls straight through the floor,
+  and it is removed about 250 px below the top of the picture. Whatever
+  was holding it lets go as when a barrel breaks. A metal barrel that
+  has already been thrown goes on as a barrel does. Ball contacts were
+  measured in arranged situations only. The thrower with a carried or
+  left-thrown metal barrel, the frame between hands and throw, and the
+  other enemies are in "Not covered".
+
 ## spec-v0.340.0
 
 The thrown metal barrel and the first character (spec#76, in part).
