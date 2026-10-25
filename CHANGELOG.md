@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.349.0
+
+A metal barrel rolling left against a stinger that doesn't move
+(spec#76, in part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`: new "Rolling left" section under
+  "Stingers". A metal barrel rolling left on a flat floor, 29 to 42
+  frames out of the hands, defeats a stinger that doesn't move: the
+  contact ranges, the mirrored knock-off, and when the knocked-off
+  stinger is removed, as far as measured. Seen only in an arranged
+  situation. Includes an Evidence entry. Stingers that fly or sway, and
+  a barrel just turned back at a wall, are in Not covered.
+
 ## spec-v0.348.0
 
 A metal barrel in the air against the first character (spec#76, in
