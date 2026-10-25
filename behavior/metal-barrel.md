@@ -138,6 +138,77 @@ object is rolling are not covered (see "Not covered").
   differ only in the object, which was overlapping a wall at the
   release (see "Not covered"); they were not compared further.
 
+## The second character throwing it
+
+Thrown by the second character (`second-character.md`, `carrying.md`,
+"The object, second character"), a metal barrel behaves as follows,
+from the frame it leaves the second character's hands (it leaves the
+hands on Q + 18 and first moves on Q + 19, as in `thrown-objects.md`):
+
+- for the throws measured (below; slopes were not singled out), until the frame it meets a wall it
+  moves row for row as a plain barrel thrown by the second character
+  does, in `x`, `y`, `vx`, `vy` and the frame it is removed;
+- on a wall frame it turns back as in "Turning back at a wall": `x` is
+  the whole part of its `x` before the frame and `vx` = 3.5 px per frame
+  (896/256) away from the wall. Its `y` after that frame was not
+  compared with a plain barrel (the plain barrel is broken there);
+- the second character's own motion and timing during the pick-up, the
+  carry and the throw are the same as with a plain barrel (pictures were
+  not compared).
+
+A walker reached by the metal barrel thrown by the second character,
+after a carry on flat floor, with the walker on the same flat floor
+ahead of the object, is defeated exactly
+as when a plain barrel hits it (`thrown-objects.md`, "Hitting walkers";
+the second character's frames are in `carrying.md`): the walker's rows
+and the second character's rows are the same as for the plain barrel,
+for small, medium and large walkers heading either way, the object
+thrown either way. When the walker reaches the second character while
+the object is still in the hands, the object is not broken: it stays,
+with `vx` 0 and `vy` −5 px per frame (1280/256, up) on the first frame
+that differs from a plain barrel (which is removed), as for a metal
+barrel left in the hands of a hit thrower ("The thrower and its
+balls"). It was followed for 37 frames, until it was gone; what it does
+between is not described (see "Not covered").
+
+### Evidence for the second character's throw
+
+Measured on the first level with the second character leading, in
+arranged situations only: a setup method started the second character at
+the start and made a metal barrel available ahead on the flat floor (no
+metal barrel is there in ordinary play). Every run was played twice with
+the same inputs, once with the metal barrel and once with a plain object
+in the same place as a control.
+
+- 600 throws by inputs (walking, standing and jumping either way while
+  carrying, Action let go with Left, Right, Up or nothing held, then
+  random inputs in flight, 200 frames or fewer): 285 matched the control
+  on every frame of the object and the second character to the end; in
+  all 285 the control was removed outside the picture before the end
+  (whether the flat floor only was met was not recorded). In the other
+  315 the control broke at a wall (the 64 px step at the left end of the
+  level) on one frame, with the object moving left;
+  on the frame before, its `y` speed was upward in 46 and zero or
+  downward in 269, and whether it was rolling or in the air was not
+  recorded. On that frame the metal barrel kept an `x` equal to the whole
+  part of its `x` before, with `vx` +3.5 px per frame (896/256) in all
+  315, and was still there 10 frames later in all 315; the runs were not
+  followed further. Before that frame the object's rows matched the
+  control in every run, and the second character's rows matched on every
+  frame.
+- 576 throws at a walker, by inputs, on flat floor, for small, medium and
+  large walkers heading left or right, thrown left or right, Action let
+  go after a carry of 12, 17 or 22 frames, the walker standing 40 to 160
+  px (steps of 8) ahead of the thrown object on the frame before the
+  release; whether the object met the walker in the air or rolling was
+  not recorded, and no throw was made in the air. In all 576 the
+  walker's and the second character's rows were equal to the control's
+  on every frame. The object's rows were equal in 510.
+  In the other 66 (walker 40 to 64 px ahead) the walker reached the
+  second character with the object in its hands: the plain object was
+  removed and the metal barrel was kept as above, and was gone 37 frames
+  later in all 66.
+
 ## The characters
 
 Measured with the first character alone, on flat floor (and, for the
@@ -343,9 +414,9 @@ close behind), in the same arrangement and under the same conditions as
 frame, the barrel's `y` the floor's. The second character carried the
 barrel left and threw it left (Action let go with Left held); it turned
 back at the wall and rolled right toward the character, as in "Turning
-back at a wall" (not compared with a plain barrel for the second
-character's throw; see "Not covered"). `y` and "above" are as in "The
-characters". Each paragraph below says what was measured for the second
+back at a wall" (compared with a plain barrel for the second
+character's throw in "The second character throwing it"). `y` and
+"above" are as in "The characters". Each paragraph below says what was measured for the second
 character; what it does not mention was not measured.
 
 **On the floor, and rising.** As for the first character: a second
@@ -483,9 +554,12 @@ and thrown it left. That arrangement is not seen in ordinary play, so
   sideways at the catch frame (the ranges above are for a character
   standing still before the jump); where between 17.5 and 24.8 px above
   the barrel the catch height limit lies.
-- The second character throwing it, beyond the one throw to the left
-  used to send it back (not compared with a plain barrel); a throw by
-  either character with the
+- The second character throwing it other than the throws described
+  above (whether the metal barrel's turn at the step differs between
+  being in the air and rolling, which was not recorded, walls other than
+  the step, throws in the air, hits on walkers other
+  than those described, the metal barrel in the hands after a hit and
+  what it does later, slopes for a second-character throw); a throw by either character with the
   metal barrel inside a wall at the release (seen twice: no break, `vx`
   0 and the object moving up at 5 px per frame; not measured).
 - Its pictures and how it is drawn when it turns, and what sounds play.
