@@ -1514,6 +1514,9 @@ pictures (`thrown-objects.md`, "Pictures"): the metal barrel has its own.
 | `metal-thrown-7` | `6f402c16846dacb6165c832a190fbb73fdc9d874d7e8155f628586555b560157` |
 | `metal-thrown-8` | `e627fdb2e8fb95999c946f2a9d2c9e54c78e5b080ea116c4db8cbd1932647c84` |
 
+Their colours are the animal's palette (`../formats/sprites.md`, "The other
+objects' palettes").
+
 **When a hash isn't found.** The eight flight pictures belong together:
 if any of them isn't found, the engine shows its own art for a thrown
 metal barrel, with the timing and mirroring given here. If `metal-lying`

@@ -247,6 +247,7 @@ every picture below.
 | The flash of a breaking object | `flash-1` to `flash-8` (`../behavior/thrown-objects.md`) | the shared palette |
 | The smoke of a breaking crate | `smoke-1` to `smoke-6` (`../behavior/animal-crate.md`) | the shared palette |
 | Thrown objects, lying objects and the pieces of a breaking object | `thrown-1` to `thrown-8`, `lying`, `piece-a-1` to `piece-b-8` (`../behavior/thrown-objects.md`) | the thrown objects' palette |
+| The metal barrel | `metal-lying`, `metal-thrown-1` to `metal-thrown-8` (`../behavior/metal-barrel.md`, "Pictures") | the animal's palette, not the thrown objects' |
 | The crate | `crate-whole`, `crate-broken-2` (`../behavior/animal-crate.md`) | the crate's palette |
 | The animal before it is ridden | `animal-1` to `animal-22` (`../behavior/animal-crate.md`) | the animal's palette |
 | The first character mounting the animal | `mounting-1` to `mounting-5` (`../behavior/animal-crate.md`) | the first character's leading palette |
@@ -506,6 +507,19 @@ full frames with every byte hashed for one of them.
     seven tyre pictures were read in each. The first area's colours were
     found in the image as a 24-byte run in one place; the second area's
     were not found, with ten colours as a run, anywhere in it;
+  - the metal barrel (`../behavior/metal-barrel.md`, "Pictures"), in
+    4 seeded runs of 1 500 video frames of random play with the player
+    moving right more often than not, from a saved position at the
+    barrel's start in the first level (before the dimming): 1 248
+    pictures of the nine named pictures were read (the lying picture
+    1 158, each flight picture 9 to 15); every colour read, 9 722 in all,
+    was the colour of its colour number in the animal's palette, 0
+    others. Colour numbers 1 to 11 were read (the highest in a flight
+    picture was 8 to 11, in the lying picture 9); 12 to 15 were never
+    read. Colour numbers 2 to 11 were looked for in the image as a run
+    of the palette's colours, starting anywhere: they were found in the
+    animal's place and in one more place that does not line up with a
+    palette.
   Then, for each group, the most common colour read per colour number
   was looked for in the image as a 30-byte run, starting anywhere. Small,
   large and medium walkers, the thrower, the crate, the animal, the
@@ -533,6 +547,9 @@ full frames with every byte hashed for one of them.
   pictures, one colour per colour number on every picture), with
   only 4 partly hidden two-life pictures and no three-life picture
   read in ordinary play.
+- The metal barrel's colours in other situations: in the first level
+  once the dimming has begun, in other areas, and colour numbers 12 to
+  15 (never read).
 - Which palette the objects not listed above use (the signs, the launch
   barrels, the flying copy of a taken collectible, the objects of other
   areas). The tyres' colours differ between areas (see "Evidence"); which
