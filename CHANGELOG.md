@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.351.0
+
+A metal barrel thrown by the second character, rolling left against a
+stinger that doesn't move (spec#76, in part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`: new "Rolling left, thrown by the second
+  character" section under "Stingers". A metal barrel thrown left by
+  the second character and rolling left on the flat floor within the
+  stated frames and speeds defeats a stinger that doesn't move in the
+  same way as the first character's barrel: the hit ranges (whose ends
+  differ by about one pixel from the first character's), the knock-off
+  frames compared, and the barrel and player going on unchanged.
+  Includes an Evidence entry. The edges of the ranges, later knock-off
+  frames and removal, and faster barrels just after landing are in Not
+  covered.
+
 ## spec-v0.350.0
 
 A metal barrel in the air against the second character (spec#76, in
