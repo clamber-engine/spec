@@ -269,8 +269,9 @@ removed isn't covered.
   bounced, rolled and broke as in `thrown-objects.md`.
 - **A metal barrel** (`hidden-metal-barrel`). An object that can be
   picked up and carried as in `carrying.md`, standing where the item
-  stands. How it moves when thrown and what it does when it meets
-  things aren't covered.
+  stands. How it moves when thrown and what it does at a wall is in
+  `metal-barrel.md`; what it does when it meets other things isn't
+  covered.
 
 A bunch or barrel that hasn't been taken or picked up is removed when it
 leaves the window, and doesn't come back.
@@ -460,6 +461,7 @@ with the same mirroring, on the same frames.
   Nothing else about it was measured.
 - The view on K and K + 1 after a strike (for walkers it does nothing,
   `ground-action-enemies.md`).
-- What the metal barrel does once thrown.
+- What the metal barrel does once thrown, other than flying and
+  turning back at walls (`metal-barrel.md`).
 - The sounds played.
 - Hidden objects in other levels, and kinds holding other things.
