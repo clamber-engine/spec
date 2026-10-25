@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.343.0
+
+The second character throwing the metal barrel (spec#76, in part).
+
+Answers part of clamber-engine/spec#76 (the characters).
+
+- `behavior/metal-barrel.md`: new "The second character throwing it"
+  section. Thrown by the second character, a metal barrel moves as a
+  plain barrel thrown by the second character until it meets a wall,
+  where it turns back as in "Turning back at a wall". A walker it
+  reaches is defeated as by a plain barrel. When a walker reaches the
+  second character with the metal barrel still in the hands, the barrel
+  is not broken and moves off upward. All measured in arranged
+  situations only.
+
 ## spec-v0.342.0
 
 The thrown metal barrel and the second character (spec#76, in part).
