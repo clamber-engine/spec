@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.358.0
+
+The metal barrel's pictures in flight, lying and turning back at a wall
+(spec#76, in part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`: new section "Pictures", naming the lying
+  picture and eight flight pictures by picture hash, with the flight
+  cycle (same timing as the barrel's movement), mirroring with the
+  direction of travel (changing on the turn at a wall), no flash or
+  pieces, and a fallback for unmatched hashes. Evidence is screen
+  observation of play; the held and pick-up pictures and rides are in
+  Not covered.
+
 ## spec-v0.357.0
 
 A metal barrel thrown by the second character and rolling left against
