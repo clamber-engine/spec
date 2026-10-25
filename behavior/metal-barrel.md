@@ -738,6 +738,76 @@ plus an offset, on the first frame the barrel was rolling there.
   hit (41 pairs of runs with the stinger 19 and 20 px above, 24 of them
   hits).
 
+### Rolling left
+
+A metal barrel rolling left on a flat floor, 29 to 42 frames after it
+left the hands and moving left at 3.56 to 3.77 px per frame (measured
+over those frames), defeats a stinger that doesn't move at all in the
+same way, and goes on as if the stinger weren't there. Barrels of other
+ages or speeds were not tried. Contact is decided from whole-pixel positions at the end
+of a frame F, as for rolling right, with the barrel's `x` rounded to the
+nearest whole pixel (halves up) instead of up:
+
+- **I** = the barrel's `x` rounded to the nearest minus the stinger's
+  `x` rounded down;
+- **A** = the barrel's `y` rounded up minus the stinger's `y` rounded up,
+  as above.
+
+The stinger is hit on frame **K** = F + 1 when I is from −25 to 34 and A
+is 19 or less. Both ends are included; the stinger is not hit when A is
+20 or more. Stingers from 20 px below the barrel up to A of 19 were
+tried. The barrel is not slowed, lifted or removed by the hit. The
+knock-off is the one above mirrored: on K the stinger doesn't move and
+its `vx` becomes +4 px per frame (to the right, back toward where the
+barrel came from), on K + 1 it doesn't move and its `vy` becomes −6 px
+per frame, and from K + 2 it follows the same steps toward 2 px per
+frame to the right, moving 3.75 px right and 5.5625 px up on K + 2.
+
+When the knocked-off stinger is removed was measured only in part: of
+the 288 hit runs of the first grid below, all followed to the end of
+their 60 frames, the stinger was gone on K + 2 in 184 and was there
+until K + 38 to K + 43 and then gone in 104.
+
+#### Evidence for rolling left
+
+By a setup method: the barrel thrown left from `x` 540 on the flat floor
+while the player keeps walking left, so that it rolls left on the floor
+at `x` of 340 or less; a stinger that doesn't move stood at the
+barrel's `x` plus an offset and at the floor's height plus an offset on
+the first frame the barrel was rolling there.
+
+- Four grids, 786 runs of 60 frames, 353 of them hits:
+  - 697 runs: heights from 20 px below to 60 px above in steps of 5
+    (17), offsets from −80 to 40 in steps of 3 (41); 288 hit.
+  - 44 runs at the barrel's own height, offsets from −75 to −60 and from
+    22 to 28 in steps of 0.5; 40 hit.
+  - 28 runs at the barrel's own height, offsets from −27 to −21 and from
+    31 to 38 in steps of 0.5; 13 hit.
+  - 17 runs at heights of 18.5 to 20.5 px above in steps of 0.125, one
+    offset; 12 hit (up to 19.875 above hit, 20 did not).
+- In all 786 runs the stinger was hit on frame F + 1 for the first F
+  whose I and A were inside the ranges above, and on no other frame (no
+  mismatch in 27 511 frames checked: from the first frame the stinger
+  stood there up to the hit, or to the end of the run). Frames with I of
+  −26 and −27 (12 frames) and of 35 and 36 (81 frames) at A of 19 or
+  less were checked and are not hits. The frames after a hit are not
+  counted.
+- Every one of the 288 hit runs of the first grid had the knock-off
+  above frame for frame (speeds, and positions relative to K), as far as
+  it was followed (38 frames or more in the 104 runs where the stinger
+  stayed until K + 38 to K + 43; in the other 184 until its removal on
+  K + 2).
+- The barrel's and the player's rows were the same with and without a
+  hit in 36 pairs of runs (the stinger 15 and 20 px above, one hit and
+  one not), for all 61 rows in 27; in the other 9 the player's rows were
+  the same until the player, still walking left, reached the stinger
+  that had not been hit, 48 to 60 frames in, where the player's action
+  changed. The barrel's rows were the same to the end in one of those 9
+  and until one frame after the player's change in the other 8.
+- The barrel's `vx` on the frames up to each hit ran from −966/256 to
+  −911/256 px per frame (−3.77 to −3.56), 29 to 42 frames after it left
+  the hands; at the first frame followed it was −3.77 in all 786 runs.
+
 ## Not covered
 
 - Ordinary play: the rules above were seen only in arranged situations
@@ -751,7 +821,8 @@ plus an offset, on the first frame the barrel was rolling there.
   with the first leading, was not measured.
 - Stingers: ones that fly or sway (only a stinger that doesn't move at
   all was tried), ones more than 20 px below the barrel, a barrel in the
-  air or on a slope or rolling left meeting one, what decides the frame
+  air or on a slope meeting one, a barrel rolling left meeting one that
+  flies or sways, a barrel just turned back at a wall, what decides the frame
   a knocked-off stinger is removed (K + 2, or K + 38 to K + 43), whether
   it can come back, whether it can still hurt a player, and the barrel
   thrown by the second character. The other enemies (not walkers, the
