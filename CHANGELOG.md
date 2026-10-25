@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.356.0
+
+A metal barrel rolling left meeting the second character, and what a
+hit does to stingers 21 to 28 px below the barrel (spec#76, in part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`, "The second character": new section "A
+  barrel rolling left, second character", covering the distance ranges
+  in which the second character is caught when coming down onto a
+  barrel rolling left, and the ride that follows. Its Evidence is in a
+  section of its own.
+- `behavior/metal-barrel.md`, "Stingers": the knock-off and the
+  barrel's rows after a hit are now the same for every stinger hit,
+  including those 21 to 28 px below the barrel, for both directions.
+  New runs are in the Evidence. Not covered drops that gap and widens
+  the window seen for the stinger's removal.
+
 ## spec-v0.355.0
 
 A metal barrel thrown left, and one carried in a jump, meeting the
