@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.346.0
+
+A metal barrel rolling right against a stinger that doesn't move
+(spec#76, in part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`: new "Stingers" section. A metal barrel
+  rolling right on a flat floor defeats a stinger that doesn't move and
+  goes on unaffected. Contact is decided in the stinger's contact terms,
+  within the measured height range. The stinger is knocked off frame by
+  frame (with no sideways move on the first frame, unlike a walker), and
+  its removal is stated as far as it was measured. Includes an Evidence
+  entry. Flying stingers, slopes, the barrel in the air, rolling left,
+  the second character's throw and the stinger coming back are in Not
+  covered.
+- `behavior/stinger.md`: Not covered now points to the metal barrel
+  rule for what defeats a stinger.
+
 ## spec-v0.345.0
 
 Action let go during the pick-up, and the second character's pictures
