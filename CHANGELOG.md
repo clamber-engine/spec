@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.355.0
+
+A metal barrel thrown left, and one carried in a jump, meeting the
+thrower (spec#76, in part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`, "The thrower and its balls": the thrower
+  is now also measured against a metal barrel thrown left, one in the
+  hands while throwing left, and one carried while the player jumps.
+  The thrower's knock-out, its removal and the player's frames are as
+  with a plain barrel, and a metal barrel hit in the hands or carried
+  falls and is removed. A second set of runs is in its Evidence, and
+  Not covered is narrowed to what is still unmeasured.
+
 ## spec-v0.354.0
 
 The lowest stinger a metal barrel rolling left hits, and a walker's
