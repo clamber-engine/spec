@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.345.0
+
+Action let go during the pick-up, and the second character's pictures
+for it (spec#19, in part).
+
+Answers part of clamber-engine/spec#19.
+
+- `behavior/carrying.md`: corrected rule for Action let go during the
+  pick-up with Down held up to the first carrying frame. Q is the next
+  frame (G + 16, second character G + 11), and the object is put down
+  only if Down is also held on that frame; otherwise it is thrown. The
+  old text said put-down whenever Down was held up to and including
+  G + 15 (G + 10). Measured from arranged starts with fixed input
+  patterns only; random and ordinary play are in Not covered.
+- `behavior/player-frames.md`: the second character's pictures for a
+  throw or put-down started during the pick-up, with a new Evidence
+  entry. A one-frame picture difference on Q + 34 of the second
+  character's throws is listed in Not covered.
+
 ## spec-v0.344.0
 
 The metal barrel rolling right against walkers (spec#76, in part).
