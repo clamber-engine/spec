@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.348.0
+
+A metal barrel in the air against the first character (spec#76, in
+part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`: new "A barrel still in the air" rule under
+  "The characters". A metal barrel still in the air after a throw can
+  catch a falling character, with the same distances and ride as a
+  rolling one as far as measured. It never catches or affects a
+  character who is standing or rising, and it falls more slowly with a
+  rider on it. Seen only in an arranged situation, not shown in
+  ordinary play. Includes an Evidence entry. A barrel rolling left
+  meeting a character, a character facing against the barrel, the
+  second character, and the height limit and D ranges of a catch in the
+  air are in Not covered.
+
 ## spec-v0.347.0
 
 A metal barrel rolling left against walkers on a flat floor (spec#76,
