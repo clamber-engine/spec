@@ -2,6 +2,35 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.335.0
+
+Walkers behind the rider and the second character riding (spec#78); an
+object carried into a bounce (spec#75).
+
+Part of clamber-engine/spec#78 and clamber-engine/spec#75, which stay
+open for the parts not covered yet.
+
+- `behavior/riding-walkers.md`, "Walkers behind the rider": how far
+  behind the rider's `x` the attack and knock-off ranges reach for each
+  kind and facing (they are the same ranges, not extra ones), which one
+  a walker coming from behind meets first, and when a walker behind a
+  rider in the air is thrown rather than knocking it off (between the
+  knock-off and attack heights). Checked in random runs with the rider
+  moving, turning, jumping and charging. With the second character
+  riding, the small and medium walkers' ranges are the same; the large
+  walker with the second character and walkers on slopes are in "Not
+  covered".
+- `behavior/thrown-objects.md`, "Carried into a bounce", and a pointer
+  in `behavior/bounce.md`: a carried object leaves the hands when the
+  player bounces off a walker (or the second character is pushed back by
+  a large walker): the frame it leaves, its speeds (a steady 5 px per
+  frame across), its path, an object that holds the missing character
+  breaking on the floor, and hits on
+  other walkers. Measured for both objects with the first character and
+  the barrel with the second, mostly in arranged situations from a setup
+  method, with a by-inputs check. The ranges of those hits, slopes, walls
+  and the second character with that object are in "Not covered".
+
 ## spec-v0.334.0
 
 The second character's carried object against walkers (spec#74, part
