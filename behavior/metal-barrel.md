@@ -800,6 +800,65 @@ ordinary play.
 (walking to it first when the barrel was out of reach), as in
 `carrying.md`.
 
+### A barrel rolling left, second character
+
+The second character under control (the first following) alone with a
+metal barrel **rolling left** on the floor at 3.5 px per frame, which
+had turned back at a face to the right of the character and come back
+along the floor, as for the first character in "A barrel rolling left".
+`y`, "above", D and H are as there and in "The second character". The
+situations were arranged (see "Evidence for a barrel rolling left,
+second character"). Only the following was measured; what is not
+mentioned was not.
+
+**Coming down onto it.** A second character falling in a jump straight
+up is caught on the first frame, among those whose H (the character's
+`y` at the start of the frame, above the barrel's `y`) is from 16.04 to
+45.53 px, on which d is inside the range of the table. d is the
+character's `x` rounded up to a whole pixel minus the barrel's `x`
+rounded down to a whole pixel, the barrel's at the end of that frame. In
+this jump the fall's frames began 51.82, 45.53, 38.81, 31.64, 24.04,
+16.04 and 8.04 px above the barrel; so the frames that count are five,
+and d changes by about 3.5 px from one of them to the next, the barrel
+moving.
+
+| Character faces | Caught if d is | D seen when caught, from | to |
+|---|---|---|---|
+| left | −16 to 27 | −17.379 | 26.570 |
+| right | −22 to 21 | −23.359 | 20.984 |
+
+Whole pixels were used because D alone does not separate the jumps: the
+ends of D that were caught (and the nearest not caught) differ from jump
+to jump by up to 0.3 px, and d separates them without an exception (see
+the evidence). The ranges are 44 pixels wide, as for the second character
+and a barrel rolling right (43.3 and 43.8 px in D) and not the first
+character's 50.1 px for a barrel rolling left. Most catches (911 of
+1 295 facing left, 1 161 of 1 488 facing right) came on the first of the
+five frames (H 45.53); the others came on the later ones, with d in the
+range on those frames only, so a character whose d was in range on a
+later frame was caught on that one: the lower the frame, the
+nearer the barrel. None was caught on the frame that began 51.82
+px above the barrel, though d was inside the range on it in 826 left-facing and 1 153
+right-facing jumps (all but 11 and 82 were caught on a later frame), and
+none on the frame that began 8.04 px above it, though d was inside
+the range on it, and on no frame before, in 96 left-facing and 70
+right-facing jumps. So the limits of H are between 45.53 and 51.82 px
+and between 8.04 and 16.04 px; where in those gaps was not measured.
+The fall with a shorter or longer jump was not tried.
+
+**Riding.** As for the second character on a barrel rolling right,
+mirrored. On the catch frame C the character's `y` becomes the barrel's
+`y` minus 16.04, 16.64 or 16.81 (in the 217 catches checked), and its `x`
+the barrel's `x` (at the end of C) plus a distance of 7.51 to 8.96 px
+facing left or 7.69 to 8.98 px facing right, which differs from catch to
+catch. On C + 1 the character's `x` does not change while the barrel
+moves 3.5 px to the left, so the distance becomes 3.5 px larger (11.01 to
+12.46 px facing left, 11.19 to 12.48 facing right); from C + 2 the
+character moves with the barrel, 3.5 px per frame to the left, at that
+distance for the next 60 frames in every catch. The height above the
+barrel stays between 16.00 and 17.00 px over those 60 frames. The barrel
+moves at 3.5 px per frame to the left.
+
 ### Evidence for the second character
 
 By the same setup method as for the first character, then with the
@@ -864,6 +923,43 @@ and thrown it left. That arrangement is not seen in ordinary play, so
   The same grid with the first character (30 runs, C − 2 to C + 2, in
   its own Evidence) gave the same pattern.
 - Pick-up: 7 runs.
+
+### Evidence for a barrel rolling left, second character
+
+By a setup method a metal barrel was made available to pick up on the
+flat floor in the first level, which on screen ended about 230 px to the
+right of the second character in a face rising 32 px. The second
+character (leading; the first following) picked the barrel up, carried
+it left to a chosen place, turned right (Right held for a chosen number
+of frames while carrying) and threw it right (Action let go with Right
+held). The barrel flew to the face, turned back in the air, and rolled
+left along the floor past the character, who stood where it had thrown
+from. That arrangement is not seen in ordinary play, so **none of this
+was seen in ordinary play.** The character's inputs after the throw were
+a wait of 42, 44 or 46 frames (the throw lasts about 42 frames and
+presses before that were ignored), a press of Left or Right of 1 to 12
+frames (to set the facing and the place), a second wait of 22 to 50
+frames, and a Jump held for 20 frames.
+
+- Catch ranges: 7 656 jumps, in 11 grids of 12 press lengths × 29 second
+  waits × 2 directions (348 per direction each): the three first waits
+  (carry stopped at the same place, a turn of 5 frames), and at the first
+  wait of 42 frames four other places for the carry to stop (which gave
+  the same `x` in some) and four other turn lengths (2, 3, 4 and 7
+  frames), so that the barrel's and the character's `x` met at different
+  fractions of a pixel. The facing at the jump was the direction pressed
+  in every run: 3 828 left-facing (1 295 caught) and 3 828 right-facing
+  (1 488 caught). The rule above held in all 7 656 (no exception, and
+  the frame of each catch the one the rule gives); the frames after the
+  first of the five were the catch frame in 384 left-facing and 327
+  right-facing jumps.
+- Riding values: 217 catches (105 facing left, 112 right), every fifth
+  of the caught jumps of the three first-wait grids (527 caught facing
+  left and 560 facing right in those grids), with the distance and the
+  height on C, C + 1, C + 2 and the extremes over the 60 frames after.
+  The catch frame C began, in these catches, with the character H above
+  the barrel of 45.53 px in 164, 38.81 in 11, 31.64 in 19, 24.04 in 9
+  and 16.04 in 14.
 
 ## Stingers
 
@@ -1198,9 +1294,14 @@ its `x` at or below a limit.
 - The thrower with a carried metal barrel other than in a jump (for
   example carried while walking or standing), and with one thrown left
   after Q + 21 other than the runs above: not measured.
-- The characters: a barrel rolling left meeting the second character,
-  or meeting a character who was moving sideways faster than 0.94 px
-  per frame at the jump; the second character throwing it so that it rolls
+- The characters: a barrel rolling left meeting the second character
+  other than coming down onto it in a jump straight up held for 20
+  frames from a standstill (rising, standing, crouching, walking,
+  picking it up, jumping off the ride, inputs during the ride, the end
+  of the ride, the first character following close behind, the other
+  vertical limits of H), or meeting a character who was moving sideways
+  faster than 0.94 px per frame at the jump; the second character
+  throwing it so that it rolls
   left toward the first; a barrel in the air meeting a character
   who faces against its direction (either character);
   whether a rolling barrel hurts the second character in other situations;
