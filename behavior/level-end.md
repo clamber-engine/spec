@@ -473,6 +473,40 @@ pressed and its take-off frame are as above (the second character's
 The first character went on following the lead from `T` on. Its
 movement during the walk-out is not covered.
 
+### An object in the lead's hands, second character leading
+
+"An object in the lead's hands" holds as it is, with the second
+character carrying: a `barrel` or a `holder` in its hands at the end of
+frame `n` is let go on `T` and moves as there (`vx` of 1 in the
+direction the lead faces on `T`, `vy` of −4 on `T`, then the same fall,
+the same removal), and a throw begun with `Q` + 21 equal to `T` or later
+never happens. The lead's walk-out and the fade are unchanged.
+
+Measured in 105 runs with the second character leading and the first
+following 28 px to its right. A setup method was used to start each run
+with the second character carrying the first level's barrel or one of
+its two holders, both characters near the level's end. On screen, the
+second character then came to the marker: walking in with Action held
+from 7 points (one in small steps), landing on the marker from 4 jumps,
+stopping short and walking on (3 runs), turning toward the right on the
+marker (3 runs), letting go of Action 1 to 25 frames before `T`, on `T`
+or on `T` + 1 (10 runs), standing past the marker and letting go of
+Action before Right was held (9 runs), holding Right, Jump, Down, Up,
+Left, Left with Jump, Left with Action or nothing from `T` + 1 (8
+runs), with each holder (3 runs), and walking out with the object in its
+hands in 58 runs of the kinds above. In every run the marker was passed
+on the frame "When the marker is passed" gives, and the lead's walk-out
+and the fade were as above on all 5 523 frames from `T` on. In 99 runs
+the object was still in the hands at the end of `n`; over the 3 562
+frames from `T` to its removal, `x`, `y`, `vx` and `vy` were as the
+rules give on every frame, to 1/256 px, and it was removed on the frame
+they give (33 frames after `T` with the view at the level's end). In
+the other 6 the object had already been let go.
+
+Every run started from the setup method; carrying the object to the
+marker by inputs alone, from where it is found, was not checked for the
+second character.
+
 ### Checks with the second character leading
 
 At the first level's end, with the second character leading and both
@@ -645,8 +679,12 @@ last frame came 61 frames after `T`.
   leading, when the level has been finished before, and items counted at
   once (`bunches.md`) whose release would come on `F0` + 29. How the
   count display shows an item counted after the last frame.
-- An object in the lead's hands with the second character leading, or
-  with the other character following.
+- An object in the second character's hands carried to the marker by
+  inputs alone, from where it is found (all runs here began from a
+  setup method).
+- An object in the other character's hands (the lead not carrying), and
+  the first character's movement while the second leads with an object
+  in the lead's hands.
 - A lead that is already 240 px or more right of the picture's left
   edge on `T`, other than in the room ("In the first level's room"). In
   the area behind the first wall exit this wasn't seen.
