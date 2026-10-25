@@ -236,6 +236,95 @@ frames of a bounce a stinger, or any other enemy, can hurt on was not
 examined further. No hit during a bounce was reached by inputs alone
 either.
 
+## Hits during a swap (`title-1`)
+
+A swap is in `swap.md`: **Q** is the press frame and **E** the frame on
+which control returns. Measured with the first character as the player
+(the second character takes over) and with the second character as the
+player (the first character takes over).
+
+- **Nobody is hurt from Q to E − 1.** A ground walker moves on Q as it would
+  without the swap, stands still on every frame from Q + 1 to E − 1 (to
+  Q + 78 when the first character is the player, to Q + 71 when the
+  second is) and moves again on E. Whatever is touching either character
+  on those frames does nothing. (E itself has one exception, below.)
+- **The first frame on which the character that takes over can be hurt
+  is E + 1.** A walker or stinger touching it at the end of any frame
+  from Q + 1 to E − 1, or at the end of E, hurts it on E + 1 (the hurt
+  frame H, as in "The hit frame"). A walker that is not touching yet at
+  the end of E hurts it on the frame after it first touches, as without a
+  swap.
+- **An exception, first character as the player.** When a walker is
+  standing next to where the first character ends up (it is the other
+  character from E), the character that takes over can be hurt on **E**
+  itself, though it stands about 60 px away: the walker, heading left,
+  with its `x` minus the first character's `x` at the end of E − 1
+  between **−13.35 and 29.65** (hurt at −13.35 and 29.65, not at −14.35
+  or 30.65) and standing at the first character's height. From E + 1 a
+  walker touching the other character does nothing. With the second
+  character as the player there is no such hurt on E.
+- **After the hit** the character that took over is the hit character,
+  and everything above holds: after a swap with the first character as
+  the player it is the second character ("The second character as the
+  hit character"), the first character being the other character; after
+  a swap with the second as the player it is the first character, as in
+  "The hit character" and "The other character".
+
+Measured with a setup method: walkers stood beside a character at a
+range of distances, touching it at different frames around E, and a
+stinger touched a character on each of the first 90 frames after the
+press (180 runs, 90 for each character taking over). The
+frames of the first hurt matched the rules above in all of them. With the
+first character as the player, 45 hits (3 placement frames, 15 distances)
+had the hit character's rows, the other character's run and the hop
+match "The second character as the hit character"; with the second as
+the player, 100 walker hits matched "The hit character" and "The other
+character" (81 distances, −30 to 50 px, at one placement frame, and 19
+distances, 12 to 30 px, at another; the hop is compared until it meets
+different ground). The
+exception on E was seen in two arrangements, 60 and 62 px apart, and why
+it only happens with the first character as the player was not found.
+All hits were arranged; none was reached by inputs alone, so hits during
+a swap in ordinary play weren't examined. Other enemies
+than a walker and a stinger weren't tried.
+
+## Hits while carrying an object (`title-1`)
+
+**The first character carrying a barrel** (`carrying.md`; held above its
+head). The barrel is let go on H and flies as in `knock-out.md`, "An
+object in the hands": on H it stays where it was held on H − 1, with `vx`
+**1** in the direction the character faced on H − 1 (left if it faced
+left, even though the hit turns it right) and `vy` **−4**; then, each
+frame, `vy` grows by 0.4375 (never above 8) and it moves by `vx` and the
+new `vy`; it touches nothing and is removed under the same rules. Only
+the start differs: with a second character there is no pause, so the
+barrel moves from **H + 1**, not H + 11. A throw that began on H − 1 or on
+H never happens, as in `knock-out.md`; a throw that began on H − 2 or
+earlier is an ordinary thrown object (`thrown-objects.md`). Everything
+else about the hit is as above, the held direction steering the hop as
+usual.
+
+**The second character carrying a barrel** (`carrying.md`, "The second
+character"; held low, beside it). The barrel is **gone on H − 1**, the
+frame before the hurt frame, and doesn't fly off. The hit goes on as in
+"The second character as the hit character". A stinger that touched only
+the barrel, on its far side from the character, removed the barrel and
+did not hurt the character; the range of positions where that happens
+wasn't measured.
+
+Measured with a setup method, a stinger touching the character, the
+character standing and walking, facing both ways, with the hit on frames
+spread over 40 frames of the carry: 88 hits of the first character with
+the barrel in the hands (3 255 frames of the barrel compared with the
+rules above, 0 differences, also its removal) and 109 hits of the second
+character, in every one the barrel gone on H − 1. In a stinger touching
+the character from the side away from the barrel, about 30 px from it,
+the character was hurt and the barrel gone just the same. All hits were
+arranged; none was reached by inputs alone. Only the barrel and only a
+stinger as the cause were tried; walkers hurting a carrying
+character with both there, a holder, and a swap press while carrying
+aren't covered.
+
 ## In a trace
 
 The trace follows the hit character from H to H + 35, and the other
@@ -289,4 +378,8 @@ Rows from H + 36 (the other character):
 - Hits during a roll or a bounce other than those above (rolls with
   other enemies; bounces with the second character; hits during a roll or a
   bounce reached in ordinary play; hits where the hop
-  meets a ceiling), hits during a swap, and hits while carrying an object.
+  meets a ceiling), hits during a swap by other enemies than walkers
+  and stingers, hits while carrying other things than a barrel or by
+  other things than a stinger, a stinger touching only a barrel (positions
+other than those above), a swap press while carrying, and hits during a
+swap or while carrying reached in ordinary play.

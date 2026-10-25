@@ -219,8 +219,9 @@ usual and the swap starts on the next row with `y` unchanged.
   measured), and swaps with the other character out of view.
 - Walls, gaps or ledges between the two characters, and height
   differences whose fractions put them between 7 and 8 px.
-- Enemies and other objects during a swap: whether they keep moving and
-  whether they can hurt either character.
+- Enemies and other objects during a swap, other than ground walkers
+  (they stand still, and nothing hurts either character from Q to E − 1:
+  `losing-a-character.md`, "Hits during a swap").
 - Swaps while carrying an object, while hurt, during a bounce, and the
   Down + Action ground action.
 - When the second character can swap after its own rolls (its roll
