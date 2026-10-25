@@ -235,6 +235,38 @@ not (see the evidence).
   its size falling over the next 21 frames to 3.53 (−903/256) and
   then −3.5 px per frame (−896/256) from the 23rd frame on.
 
+The walker's frames after the hit are those of `thrown-objects.md`, "The
+walker", with d = −1 (the walker is knocked right): on K its sideways
+speed is +4 px per frame; on K + 1 it is +960/256 px per frame (or
++832/256 if its heading turned on K + 1 at the end of its patrol); from
+then on its speed steps toward 2 px per frame in its heading, and its
+height changes by the same amounts per frame as there, until it is
+removed. The hit changes nothing else in the barrel's frames.
+
+- Knock-off after a barrel rolling left, by a setup method: the same
+  arrangement as above, but with the walker standing at the barrel's `x`
+  plus an offset from −100 to −10 px in steps of 3 (31 offsets, 3 kinds,
+  2 facings: 186 runs), with the barrel rolling left on the floor at `x`
+  of 440 on that frame (so that the walker stays in the picture longer).
+  The walker was hit in all 186, with sideways speed +4 px per frame on
+  K. In all 186 the walker's sideways speed, position and height on
+  every frame from K + 1 to the last it was there were the rule's, with
+  no exception: 4 515 frames (111 runs of 40 frames from K + 1 and 75 of
+  1 frame; 62 runs of each kind). The heading was not turned on K + 1 in
+  any of them, so the +832/256 step was not seen for a barrel rolling
+  left. The walker was there for the last time on K + 40 in the 111 runs
+  in which its `x` on K, relative to the picture's left edge, was −39.6
+  to +9.4 px, and on K + 1 in the 75 in which it was −64.6 to −39.6 px
+  (further left; the value −39.6 occurs in both groups, so the edge is
+  not claimed more closely than that). The player was not hurt in any
+  run.
+- The same check for a barrel thrown left by the second character (the
+  runs of "The second character throwing it" that hit a walker, 478): on
+  K the sideways speed was +4 px per frame in all 478; in 462 the walker was
+  there for the last time on K + 1, and in the other 16 on K + 39, with the rule's speed, position and height
+  on every frame (no exception). The heading did not turn on K + 1 in
+  any of the 478.
+
 ## The second character throwing it
 
 Thrown by the second character (`second-character.md`, `carrying.md`,
@@ -1508,9 +1540,10 @@ frame's view.
   frames just after it turned back at a wall were not measured (the
   rolling hits above were at `x` of 200 or more, well after the turn, or
   rolling left at `x` of 340 down to 124);
-  nor were the knock-off frames after the first for a barrel rolling
-  left or thrown by the second character. For a barrel rolling
-  left: a large walker facing right that appears with the difference
+  nor were the knock-off frames after the first for a barrel thrown
+  by the second character beyond the 16 runs followed, or where a
+  walker hit by a barrel rolling left has its heading turned on the next
+  frame. For a barrel rolling left: a large walker facing right that appears with the difference
   first in the range at its upper end (26) was hit later than the first
   frame in the range, at a difference of 21 or 22 (4 of 486 runs, within
   five frames of the walker appearing), so which frame a walker that
