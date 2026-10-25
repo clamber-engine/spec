@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.338.0
+
+The thrown metal barrel: flight, landing, rolling and walls (spec#76, in
+part).
+
+Answers part of clamber-engine/spec#76 (flight, landing, rolling,
+removal and walls).
+
+- `behavior/metal-barrel.md` (new): from 21 frames after the release a
+  thrown metal barrel moves exactly like a barrel that holds nothing
+  (throw, speed rule, falling, bouncing, rolling without stopping,
+  slopes, removal outside the picture). On a frame where a barrel would
+  break against a wall, the metal barrel doesn't break or move
+  horizontally (its fraction of a pixel is dropped), takes 3.5 px per
+  frame away from the wall, and goes on in `y` as it would have. Comes
+  with a synthetic example. Measured in arranged situations only.
+  Ordinary play, objects partly under the floor at a wall, riding it,
+  enemies, the characters, the second character, and pictures and sounds
+  are in "Not covered".
+- `behavior/hidden-objects.md`: the metal-barrel item and its "Not
+  covered" line now point to the new file.
+
 ## spec-v0.337.0
 
 Hits during a swap and while carrying an object, with both characters
