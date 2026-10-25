@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.361.0
+
+The second character's metal barrel against the ledge thrower (spec#76,
+in part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`: the ledge thrower hit by a metal barrel
+  thrown or carried by the second character. The knock-out frame and the
+  thrower's and second character's rows match a plain barrel; a metal
+  barrel that hits while still in the hands is kept, falls through and
+  is removed some frames later. Balls and other thrower situations are
+  in Not covered.
+
 ## spec-v0.360.0
 
 The metal barrel's palette (spec#79); the walker's frames after a hit by
