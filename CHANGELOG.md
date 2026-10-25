@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.359.0
+
+A stinger knocked off by a metal barrel rolling right hurting a
+standing player (spec#76, in part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`: a knocked-off stinger still hurts a
+  standing player facing left on the floor, on the frame after the hit,
+  over the same I range as a stinger that was not hit (at the one height
+  measured), with the barrel and the stinger still during the knock-out
+  freeze. Other poses and heights are in Not covered.
+
 ## spec-v0.358.0
 
 The metal barrel's pictures in flight, lying and turning back at a wall
