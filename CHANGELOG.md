@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.340.0
+
+The thrown metal barrel and the first character (spec#76, in part).
+
+Answers part of clamber-engine/spec#76 (the characters).
+
+- `behavior/metal-barrel.md`: new "The characters" section. A metal
+  barrel rolling right on the floor passes through the first character
+  when they are standing, walking, crouching or rising in a jump. A
+  character coming down onto it within a measured horizontal range
+  (given per facing) is caught and rides it. Riding gives the height and
+  distance, a jump off (from two frames after the catch) with a decaying
+  `vx`, and a ride that ends at a face the barrel meets. A rolling metal
+  barrel can still be picked up from the floor. Measured in arranged
+  situations only. A barrel rolling left or still flying, the second
+  character, moving catches, other walls and the exact catch-height
+  limit are in "Not covered".
+
 ## spec-v0.339.0
 
 The thrown metal barrel and walkers (spec#76, in part).
