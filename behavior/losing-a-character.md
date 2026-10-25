@@ -124,6 +124,118 @@ moves down by 4.875, then 4.5625 (gap 73), and so on; its last moves
 are 3 (from 4.6875 above to 1.6875 above), then 1 (gap 1, to 0.6875
 above, which rounds toward the floor to the target).
 
+## The second character as the hit character (`title-1`)
+
+When the second character is under control and is hit, with the first
+character following, everything above holds with the roles swapped, with
+these differences. Measured with small, medium and large ground walkers
+coming from the right and from the left, with the second character
+standing, walking, running, turning, jumping into the walker and at
+every moment of a jump, in 386 runs. A setup method was used to reach
+these situations: in each, the walker was seen standing close beside the
+second character, on its left or its right. All runs are arranged
+situations; none was reached by inputs alone, so the rules are measured
+only for hits like these. The other character's timings and hop above are
+not valid here.
+
+The hit character (the second character):
+
+- On H it is placed, thrown up and turned right exactly as above:
+  `vy` −8, no horizontal speed, facing right.
+- Falling, `vy` increases by 0.4375 per frame, never above 8. If on
+  H − 1 a jump was in progress with the jump input held on every frame
+  since its press, the increase is **0.3515625** (90/256) instead
+  (the lighter gravity in `second-character.md`).
+- On flat ground it lands on H + 35, as above, and runs out right at 4
+  px per frame from H + 37.
+
+The other character (the first character):
+
+- It is **not** still on H. It makes the move it would have made without
+  the hit (`following.md`), and is still from H + 1 to H + 37.
+- From **H + 38** it moves toward the hit spot by the same rule as above,
+  one frame later than the second character does when it is the other
+  character; T is therefore one frame later than the same distance would
+  give above.
+- The hop starts as above, then moves up by 9.5625 on T + 1, 9.125 on
+  T + 2 and **6.5625** on T + 3, and each frame after that 0.4375 less
+  than the frame before, never more than 8 down. With no Left or Right
+  held, and on flat ground, it rises **71.6875** px (highest on T + 17,
+  the same height on T + 18) and lands on **T + 35** where it started.
+- Control returns as above: Left and Right steer the hop from T + 1 and
+  change facing, as they do in the air for the first character. Jump
+  presses follow `jump-input.md` after the hop's landing; presses from 10
+  frames before to 7 frames after the landing behave exactly as after any
+  landing of the first character.
+
+In a trace the rows follow the same split as above (the hit character
+from H to H + 35, the other from H + 36), except that state `swap` of the
+first character starts on H + 37. On H + 36 the first character is still
+as it has been since the hit: not moving (`vx` 0, `vy` 0, `ground` 1), in
+an ordinary ground state, not `swap`, and with no events.
+
+### Example (made-up numbers)
+
+The second character, standing on flat ground at `x` = 200.25, is hit on
+frame 100 (H). The first character was walking at 2 px per frame and is at
+`x` = 130 on frame 99: it is at 132 on frame 100 and stays there until
+frame 137 (H + 37). On frame 138 it moves by 4.25 (gap 68). The second
+character lands on frame 135 and runs out from frame 137.
+
+## Hits during a roll or a bounce (`title-1`)
+
+**A roll.** A hit on any frame of a roll (`rolling-into-walkers.md`), of
+the stop that ends it, or of the running a roll carries on into, changes
+nothing above: the hit character is thrown up, turned right and flies and
+lands as in "The hit character", whatever its speed was (no roll goes on),
+and the other character waits, runs and hops as in "The other character".
+When the second character is the one rolling, "The second character as
+the hit character" applies (the first character is the other
+character). Measured with a setup method used to reach each situation, a
+stinger touching the rolling character: 74 runs with the first character, one hit on each of 37
+consecutive frames from the first frame of a roll through its stop (the
+hop checked in full) and through the running a roll carries on into
+(flight and run only, since the held direction steers the hop), and 39
+runs with the second character, one hit on each of 39 consecutive frames
+of a roll and its stop. The hit-character rows, the other character's
+rows up to the hop, and the hop, matched the rules of those two
+sections in all of them. All of these situations were arranged; no hit
+during a roll was reached by inputs alone, so the rule is not checked in
+ordinary play. Which contacts hurt around a roll is in
+`rolling-into-walkers.md`; other enemies were not tried.
+
+**A bounce.** For a hit on a frame of a bounce (B is the bounce frame,
+`bounce.md`), the hit character flies up from where it was hit, in the
+air, as above: `x` stays, `vy` is −8 on H, and it lands on the first
+frame the landing rule of `landing.md` gives, on the floor under the hit
+spot. That floor can be well below the hit spot, so the flight is
+longer than the 35 frames of a hit on flat ground, and it ends on
+the frame the landing rule gives. The only difference is the gravity: the
+increase is **0.28125** (9/32) instead of 0.4375 if jump is held on every
+frame from B + 3 up to and including H − 1 (so always when H is B + 3),
+the same hold as the bounce's own lighter gravity; if jump is released
+on any frame in between, or isn't held on B + 3, it is 0.4375. The other
+character waits, runs through the air to the hit spot and hops as in "The
+other character" (first character leading); the hop lands on the floor
+under the hit spot.
+
+Measured with the first character leading and the second following, a
+setup method used to reach each situation, a stinger touching the
+bouncing character: 39 hits on
+consecutive frames from B + 3 on, 9 to 98 px above the floor under the
+hit spot. The hit character's rows and the other character's run
+matched in all of them, and the hop matched in the 20 that were not cut
+short by a ceiling above (the other 19 were not compared). The gravity
+rule was measured in 29 more runs, with jump held from different frames
+to different frames around B + 3 and H − 1, and hits from B + 3 on. With
+the stinger touching the character from different frames, a hit came on
+B + 3 only if it was already touching on B itself, and on B + 7 or
+later otherwise (no hit came on B + 4 to B + 6). This was seen in
+arranged situations only and is not checked in ordinary play; which
+frames of a bounce a stinger, or any other enemy, can hurt on was not
+examined further. No hit during a bounce was reached by inputs alone
+either.
+
 ## In a trace
 
 The trace follows the hit character from H to H + 35, and the other
@@ -160,10 +272,13 @@ Rows from H + 36 (the other character):
   `second-character.md` (walking, running, crouching, jumps, air
   control). Everything else in the other behavior files was measured
   with the first character.
-- The first character joining as the other character, and hits while
-  the second character is under control with the first one following
-  (the second character knocked out with no one left is in
-  `knock-out.md`, "The second character (`title-1`)").
+- The first character joining as the other character (the first
+  character taking over after the second is hit is covered above, only
+  for hits from the side by ground walkers, on flat ground, in arranged
+  situations; hits reached in ordinary play by inputs alone were not
+  checked).
+  The second character knocked out with no one left is in
+  `knock-out.md`, "The second character (`title-1`)".
 - A hit when the other character is already at the hit spot, out of
   view, or facing away from the hit spot when its run begins.
 - Ground or walls between the other character and the hit spot.
@@ -171,4 +286,7 @@ Rows from H + 36 (the other character):
   `protection.md`.
 - What the hit character's run does at walls, pits and the edges of the
   level, beyond following the ground and falling off ledges.
-- Hits during a roll, a bounce or while carrying an object.
+- Hits during a roll or a bounce other than those above (rolls with
+  other enemies; bounces with the second character; hits during a roll or a
+  bounce reached in ordinary play; hits where the hop
+  meets a ceiling), hits during a swap, and hits while carrying an object.
