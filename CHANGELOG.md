@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.353.0
+
+The lowest stinger a metal barrel rolling right hits (spec#76, in
+part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`, "Stingers": a barrel rolling right now
+  hits stingers from 28 px below it up to 19 px above, and not those 29
+  px or more below. Three new grids are in its Evidence. What a hit does
+  after the hit frame to a stinger 21 to 28 px below, and a barrel
+  rolling left meeting a stinger more than 20 px below, are in Not
+  covered.
+
 ## spec-v0.352.0
 
 A metal barrel rolling left meeting the first character (spec#76, in
