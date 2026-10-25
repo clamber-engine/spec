@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.360.0
+
+The metal barrel's palette (spec#79); the walker's frames after a hit by
+a barrel rolling left, and the second character's barrel rolling right
+against walkers (spec#76, in part).
+
+Answers clamber-engine/spec#79 and part of clamber-engine/spec#76.
+
+- `formats/sprites.md`: the metal barrel's pictures (`metal-lying`,
+  `metal-thrown-1` to `metal-thrown-8`) use the animal's palette, not
+  the thrown objects'. Other situations (after the first level's dimming
+  begins, other areas, colour numbers 12 to 15) are in Not covered.
+- `behavior/metal-barrel.md`: a walker hit by a metal barrel rolling
+  left, or thrown left by the second character, follows the knock-off
+  frames of `thrown-objects.md`, "The walker", with d = −1. Not covered
+  updated.
+- `behavior/metal-barrel.md`: a barrel thrown by the second character
+  rolling right against walkers. Covers the hit ranges, the barrel's
+  speed on the flat floor and its removal at the place measured, and the
+  walker's knock-off frames. The upper ends of the ranges and longer
+  rolls are in Not covered.
+
 ## spec-v0.359.0
 
 A stinger knocked off by a metal barrel rolling right hurting a
