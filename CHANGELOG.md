@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.352.0
+
+A metal barrel rolling left meeting the first character (spec#76, in
+part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`: new "A barrel rolling left" section with
+  its Evidence. It covers the first character letting the barrel pass,
+  the catch ranges for each facing, riding it, inputs while riding,
+  jumping off and picking it up. The end of a ride in this direction,
+  and characters moving sideways faster than the measured speeds at the
+  jump, are in Not covered.
+
 ## spec-v0.351.0
 
 A metal barrel thrown by the second character, rolling left against a
