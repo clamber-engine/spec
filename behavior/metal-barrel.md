@@ -5,10 +5,11 @@ Titles: `title-1`
 The metal barrel is the object a `hidden-metal-barrel` leaves behind
 (`hidden-objects.md`). It is picked up and carried as in `carrying.md`.
 This file says what it does once it is thrown: how it flies, lands and
-rolls, what it does at a wall, that it defeats walkers, and what it does
-with the two characters (passing through, catching and carrying them)
-and to the thrower and its balls. The other things a thrown object can
-meet (other enemies) are not covered here; see "Not covered".
+rolls, what it does at a wall, that it defeats walkers and stingers,
+and what it does with the two characters (passing through, catching and
+carrying them) and to the thrower and its balls. The other things a
+thrown object can meet (other enemies) are not covered here; see "Not
+covered".
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y`, `vx`
 and `vy` are as in a trace: right and down are positive, speeds in px
@@ -558,6 +559,85 @@ and thrown it left. That arrangement is not seen in ordinary play, so
   its own Evidence) gave the same pattern.
 - Pick-up: 7 runs.
 
+## Stingers
+
+A metal barrel rolling right at 3.5 px per frame on a flat floor
+defeats a stinger (`stinger.md`) that doesn't move at all, and goes on
+as if the stinger weren't there. Contact is decided like a
+stinger's contact with the player (`stinger.md`, "Touching the
+player"), from whole-pixel positions at the end of a frame F, once
+everything has moved:
+
+- **I** = the barrel's `x` rounded up minus the stinger's `x` rounded
+  down;
+- **A** = how many pixels the stinger is above the barrel: the barrel's
+  `y` rounded up minus the stinger's `y` rounded up.
+
+The stinger is hit on frame **K** = F + 1 when I is from −28 to 32 and A
+is 19 or less. Both ends are included. Stingers from 20 px below the
+barrel (A of −20) up to A of 19 were tried and are hit when I is in
+range; the stinger is not hit when A is 20 or more (its `y` 20 px or
+more above the barrel's). Stingers further below are not covered. The
+barrel is not slowed, lifted or removed by the hit.
+
+The stinger's knock-off, from K (it is moving only in the ways below,
+and nothing of its own flight is kept):
+
+1. On K it doesn't move, and its `vx` becomes −4 px per frame
+   (−1024/256), to the left, back toward where the barrel came from.
+2. On K + 1 it doesn't move. Its `vy` becomes −6 px per frame (up,
+   −1536/256).
+3. From K + 2, every frame: `vx` takes one step of the speed rule
+   toward 2 px per frame to the left (−1024/256, −960/256 on K + 2,
+   −904/256, −855/256, −813/256 and so on, as for a walker in
+   `thrown-objects.md`, "The walker"), `vy` increases by 0.4375 (7/16)
+   but never above 8, and it moves by both. On K + 2 it moves 3.75 px
+   left and 5.5625 px up. It never lands and falls through the floor.
+
+When the knocked-off stinger is removed was measured only in part: in 11
+of the 398 hit runs it was gone on K + 2, in 309 it was there until
+K + 38 to K + 43 and then gone, and in the 78 runs that stopped after 30
+frames it was still there. Whether it can come back, and whether a
+knocked-off stinger can still hurt a player, were not measured (see "Not
+covered").
+
+This is the walker's knock-off (`thrown-objects.md`, "The walker") with
+its sideways steps starting one frame later: a walker moves sideways on
+K + 1, a stinger doesn't. Its rise starts on K + 2 as a walker's does.
+
+### Evidence for stingers
+
+By a setup method, as in "Rolling right on the flat floor": the barrel
+thrown left at the 64 px step, turned back by it, rolling right on the
+flat floor at `x` of 260 or more; a stinger that doesn't move stood
+ahead of it at the barrel's `x` plus an offset and at the floor's height
+plus an offset, on the first frame the barrel was rolling there.
+
+- Four grids, every run with one stinger standing ahead of the barrel
+  from the first frame the barrel was rolling there:
+  - 578 runs of 60 frames: heights from 20 px below to 60 px above in
+    steps of 5 (17), offsets from −40 to 59 in steps of 3 (34); 248 hit.
+  - 246 runs of 70 frames: heights of 17 to 22 px above in steps of 1
+    (6), offsets from −100 to 60 in steps of 4 (41); 72 hit.
+  - 74 runs of 30 frames at the barrel's own height, offsets from −34 to
+    −20 and from 24 to 46 in steps of 0.5 (29 + 45); 70 hit.
+  - 9 runs of 30 frames at heights of 19 to 20 px above in steps of
+    0.125, one offset; 8 hit (19 to 19.875 above hit, 20 did not).
+- In all 907 runs the stinger was hit on frame F + 1 for the first F
+  whose I and A were inside the ranges above, and on no other frame
+  (no mismatch). The frames checked were those from the first frame the
+  stinger stood there up to the hit, or to the end of the run if
+  it wasn't hit: 20 472, 12 381, 293 and 38 in the four grids, 33 184 in
+  all (the frames after a hit, and the first, which could not be a hit,
+  are not counted).
+- Every one of the 398 hit runs (248 + 72 + 70 + 8) had the knock-off
+  above frame for frame (speeds, and positions relative to K) as far as
+  it was followed: 309 for 38 frames or more, the others until the end of
+  the run (30 frames) or the stinger's removal on K + 2 (11).
+- The barrel's and the player's rows were the same with and without a
+  hit (41 pairs of runs with the stinger 19 and 20 px above, 24 of them
+  hits).
+
 ## Not covered
 
 - Ordinary play: the rules above were seen only in arranged situations
@@ -569,9 +649,15 @@ and thrown it left. That arrangement is not seen in ordinary play, so
   than the one measured, or a barrel moving left: not measured. Riding
   the barrel with both characters on the way, or the second character
   with the first leading, was not measured.
-- The other enemies, and whether it defeats them or turns back from
-  them. The thrower and its balls for the second character, and a metal
-  barrel rolling on the floor or just turned back at a wall meeting
+- Stingers: ones that fly or sway (only a stinger that doesn't move at
+  all was tried), ones more than 20 px below the barrel, a barrel in the
+  air or on a slope or rolling left meeting one, what decides the frame
+  a knocked-off stinger is removed (K + 2, or K + 38 to K + 43), whether
+  it can come back, whether it can still hurt a player, and the barrel
+  thrown by the second character. The other enemies (not walkers, the
+  thrower, balls and stingers), and whether it defeats them or turns
+  back from them. The thrower and its balls for the second character,
+  and a metal barrel rolling on the floor or just turned back at a wall meeting
   them. Walkers hit by a metal barrel thrown from other heights or in
   the air, from other floors, rolling on a slope or left, or on the
   frames just after it turned back at a wall were not measured (the

@@ -281,8 +281,10 @@ on frame 2, I = 976 − 996 = −20 and A = 300 − 303 = −3 (the stinger's
 - How a level's stingers get their settings, and stingers placed other
   than near the first level's start (this file was measured with a
   stinger placed there in a copy of the image).
-- What defeats a stinger (for example thrown objects), the ground action
-  near a stinger, and stingers touching other objects.
+- What defeats a stinger other than a metal barrel rolling right against
+  one that doesn't move (`metal-barrel.md`, "Stingers"; other thrown
+  objects are not covered), the ground action near a stinger, and
+  stingers touching other objects.
 - Poses not listed in `ball-contact.md`: bouncing, carrying an object,
   being hurt, swapping characters; the ground action after its first
   part, the first frame of crouching, and the air frames of running off
