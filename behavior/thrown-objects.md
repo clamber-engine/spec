@@ -746,11 +746,12 @@ air after its first bounce.
 ### A carried object
 
 An object that holds nothing also defeats a **large** or **medium**
-walker that it meets while the player carries it (`carrying.md`,
-"Carrying"), and breaks. A small walker on the same floor as the player is never
+walker that it meets while the first character carries it
+(`carrying.md`, "Carrying"), and breaks. A small walker on the same floor as the player is never
 reached: the object is held too high, and the walker hurts the player
 as usual (`walker-contact.md`; for the object, `knock-out.md`, "An
-object in the hands").
+object in the hands"). The second character holds the object lower and
+reaches walkers of all three sizes ("The second character" below).
 
 Measured on the first level with the lead character alone, with the
 object moved into the large walkers' patrol as above:
@@ -871,6 +872,78 @@ the object at `x` = 100, `y` = −40, so H = 40. Speeds in px per frame.
 | K + 1 | 122.75 | 0 | −3.75 | −6 | | |
 | K + 2 | 119.21875 | −5.5625 | −3.53125 | −5.5625 | | |
 | K + 3 | 115.87890625 | −10.6875 | −3.33984375 | −5.125 | | |
+
+#### The second character
+
+With the second character under control (`second-character.md`), a
+carried object that holds nothing defeats walkers of **all three sizes**,
+and the small walker on the player's own floor is one of them. The
+object is held lower than the first character holds it and further in
+front: with the player's `x` rounded down, the object's `x` rounded down
+is 11 to 12 px ahead of it (to the left when the player faces left), and
+the object's `y` rounded up is 9 to 11 px above the player's (the first
+character's is 40 to 43 px above, and within 9 px of its `x`). **I** and **H** are
+taken as above, from the object's position at the end of the frame. A
+walker that is walking (not already hit) is hit on a frame if the player
+was carrying the object at the end of the frame before, I is within the
+range for its size, and H is at most the limit for its size. A frame on
+which the player bounces off the walker gives no hit, as above.
+
+| Walker | Limit of H |
+|---|---|
+| small | **29** |
+| medium | 42 |
+| large | 55 |
+
+The ranges of I for the **large** and **medium** walkers are those of
+the first character's carried object above. For the **small** walker:
+
+| Walker facing | Player facing | I |
+|---|---|---|
+| right | right | −22 to 28 |
+| right | left | −27 to 23 |
+| left | right | −23 to 27 |
+| left | left | −28 to 22 |
+
+Both ends are included. Standing, walking and being in the air don't
+change them (running was not measured). H of 9 to 11 (the player on the
+walker's floor) was the lowest measured; the limits were found with the
+player at heights up to 45 px above the walker. By inputs alone only the
+second character walking right toward each walker was checked (below);
+other facings, heights and jumps were checked only in the arranged
+situations described there.
+
+What happens on a hit is as for the first character
+("What happens on a hit"): the object breaks on K, the walker's `vx`
+becomes −4 on K and it heads left from then on, the player carries
+nothing from K + 1 (on the ground it walks or runs on without the
+object; what it does in the air was not looked at), and nothing is
+paused. The player's positions are those it would have had with the
+object still carried: the same inputs in a copy of the image without the
+walker gave the same `x` on every frame. As for the first
+character, the player can still be hurt on K + 1 by the walker it has
+hit, by the carrying ranges of `walker-contact.md` ("Carrying (second
+character)").
+
+Measured on the first level with the second character leading and the
+first character following, in the copies of `walker-contact.md`
+("Evidence for carrying") with the object at the start of the floor
+and the first walker replaced by a large, a medium or a small walker
+(with and without a patrol). A setup method was used to arrange the
+situations: 301 392 placements on 1 440 frames of play, the walker
+walking at full speed, heading left or heading right from 30 frames
+earlier, the player standing, walking, turning,
+early and late in jumps and falling onto the walker, at every whole
+pixel from 45 px left to 45 px right of it and at heights up to 45 px
+above its floor. The rule gives a hit on exactly the 121 907 placements
+that had one and none of the 170 658 others (frames with a turning
+walker, with a bounce, and those of a turn pressed 3 frames before were
+not part of it). By inputs alone, the second character walking right at
+each of the three walkers with the object: each was hit, the second
+character was not hurt and ran on, and in a copy of the image without
+the walker its `x` was the same on every frame. The first character with
+the same inputs and the small walker was hurt, and the walker was not
+hit.
 
 #### During a pick-up, a throw or a put-down
 
@@ -1557,9 +1630,12 @@ this file doesn't say what decides the mirroring there.
   nothing (only its `vx` on K was measured; `holder-breaking.md` has
   the rest for the object holding the missing character), two walkers
   in range on the same frame, what happens to the carried object when
-  the player bounces off a walker, and the second character. The ranges are given for the object's
-  position; where a carried object is relative to the player is not
-  covered (`carrying.md`).
+  the player bounces off a walker, the second character's pick-ups,
+  throws and put-downs and its objects meeting turning walkers, what the
+  second character does in the air after a hit, and running with the
+  object. The ranges are given for the object's position; where a
+  carried object is relative to the player is covered for the second
+  character only ("The second character"), not the first (`carrying.md`).
 - The object in the hands during a pick-up, a throw or a put-down
   ("During a pick-up, a throw or a put-down"): pick-ups and throws in
   the air (only the ground was measured), slopes and walkers on another

@@ -218,7 +218,7 @@ again ("Evidence for pick-ups, throws and put-downs").
 A medium or large walker that meets the object the player carries can be
 hit by it (`thrown-objects.md`); the rule above still decides whether the
 player is hurt on the next frame, from the positions at the end of the
-frame of the hit. A small walker was never hit by the carried object in
+frame of the hit. With the first character, a small walker was never hit by the carried object in
 these measurements (player on its floor or up to 45 px above it), but
 during a pick-up, a throw or a put-down walkers of all three kinds,
 small ones too, were hit by the object in the hands (frames and ranges
@@ -774,6 +774,34 @@ or the action pressed on L + 1 or later takes effect on that frame, Down
 pressed on L + 2 or later does; a press on L or before has no effect and
 isn't kept. The pictures and the trace state are not specified.
 
+**Carrying (second character).** With the object carried
+(`carrying.md`, "The second character": from G + 10 of the pick-up while
+Action stays held, in the air too) the ranges of I are these, instead of
+the standing, walking and crouching ranges above, on every frame of
+standing, walking, in the air and landing (turning wasn't measured); the
+facing is the player's at the end of H − 1:
+
+| Walker | Player facing | Walker heading left | Walker heading right |
+|---|---|---|---|
+| small | right | −14 to 18 | −13 to 19 |
+| small | left | −19 to 13 | −18 to 14 |
+| medium | right | −21 to 16 | −11 to 26 |
+| medium | left | −26 to 11 | −16 to 21 |
+| large | right | −17 to 21 | −16 to 22 |
+| large | left | −22 to 16 | −21 to 17 |
+
+The reach in the air is U at most **8** (small walker), **21** (medium
+walker) or **34** (large walker). On the ground the player and the
+walker are on the same floor. A medium or large walker, and a small one
+too, that meets the carried object can be hit by it first
+(`thrown-objects.md`, "The second character"); the ranges above still
+decide whether the player is hurt on the next frame. Measured, with a
+setup method arranging the situations, with the placements of `thrown-objects.md` ("The second character"), standing,
+walking, in jumps and landing: 248 885 placements, 47 230 of them
+hurts: the ranges and reaches gave exactly the hurts. Turns of the
+player and walkers that were turning weren't part of it. Bounces while
+carrying aren't covered.
+
 ### Example (second character)
 
 Synthetic. The second character faces right and is falling when it meets
@@ -1080,7 +1108,7 @@ This list is for `title-1`; `title-2` has its own list above.
 - Walkers above the player (U below −6 on the ground, below −4 in the
   air), and the lower end of the vertical reach in the air.
 - The second character's hurt ranges against walkers while turning,
-  rolling, carrying an object, teetering, walking off a ledge or after a
+  rolling, teetering, turning while carrying an object, bounces while carrying, walking off a ledge or after a
   swap, the lower end of its reach in the air, and its pictures and
   trace state when hurt or thrown back, and a thrown-back second character meeting
   another walker. Walkers that aren't at full speed in these contacts.
