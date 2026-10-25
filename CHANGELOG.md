@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.354.0
+
+The lowest stinger a metal barrel rolling left hits, and a walker's
+frames after a hit by a barrel rolling right (spec#76, in part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`, "Stingers": a barrel rolling left now
+  hits stingers from 28 px below it up to 19 px above, and not those 29
+  px or more below. Two new grids are in its Evidence. A stinger that
+  first stands there with I of 35 is in Not covered.
+- `behavior/metal-barrel.md`, walkers: after a hit by a barrel rolling
+  right, the walker is knocked off as in `thrown-objects.md`, "The
+  walker", with d = +1, with Evidence. Runs where the knocked-off walker
+  hurt the player are in Not covered.
+
 ## spec-v0.353.0
 
 The lowest stinger a metal barrel rolling right hits (spec#76, in
