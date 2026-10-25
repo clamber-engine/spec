@@ -6,7 +6,7 @@ The metal barrel is the object a `hidden-metal-barrel` leaves behind
 (`hidden-objects.md`). It is picked up and carried as in `carrying.md`.
 This file says what it does once it is thrown: how it flies, lands and
 rolls, what it does at a wall, that it defeats walkers, and what it does
-with the first character (passing through, catching and carrying it)
+with the two characters (passing through, catching and carrying them)
 and to the thrower and its balls. The other things a thrown object can
 meet (other enemies) are not covered here; see "Not covered".
 
@@ -199,8 +199,12 @@ catch, and the ride was frame for frame the same as without the input.
 an ordinary jump (`jump-arc.md`) from the riding height. On the press
 frame `vx` is the barrel's 3.5 px per frame, and then it falls by one
 eighth each frame (3.5, 3.06, 2.68, 2.35, …); the character comes down
-onto the floor behind the barrel. Presses on
-C + 1 and earlier (tried down to C − 4) do nothing and are not remembered.
+onto the floor behind the barrel. A press that
+begins on C + 1 or earlier does nothing and is not remembered (tried down
+to C − 4), except that a press that began on C, C − 1 or C − 2 and is
+still held on C + 2 starts the jump on C + 2, as if pressed then (held
+presses that began earlier were not tried). One that begins on C + 1 and
+is held does not jump (1 to 6 frames tried).
 
 **The ride ends** when the character would walk into a wall or a face
 that the barrel itself meets (the barrel turns on its own rules above):
@@ -251,6 +255,10 @@ character. That arrangement is not seen in ordinary play.
   above, in none of which a catch came on a rising frame.
 - Jump-off: presses from C − 4 to C + 1 (6 runs) did nothing and were not
   remembered; presses at C + 2 to C + 6 (5 runs) each started a jump.
+  Jump held for 1 to 6 frames starting on C − 2 to C + 2 (30 runs): a
+  start on C + 2 jumped on its first frame; a start on C + 1 never
+  jumped; a start on C, C − 1 or C − 2 that was still held on C + 2
+  (3, 4 or 5 frames or more) jumped on C + 2.
 - Ride: one ride of 913 frames to the face; 4 runs holding Left, Right,
   Down or Action for 10 frames (and 2 with Jump).
 - Pick-up: two runs (see above).
@@ -327,6 +335,126 @@ with the same inputs.
   still, walking right, walking left, and jumping. In each the player
   was the same as with the plain barrel on every frame.
 
+## The second character
+
+Measured with the second character under control (the first following
+close behind), in the same arrangement and under the same conditions as
+"The characters": flat floor, a metal barrel rolling right at 3.5 px per
+frame, the barrel's `y` the floor's. The second character carried the
+barrel left and threw it left (Action let go with Left held); it turned
+back at the wall and rolled right toward the character, as in "Turning
+back at a wall" (not compared with a plain barrel for the second
+character's throw; see "Not covered"). `y` and "above" are as in "The
+characters". Each paragraph below says what was measured for the second
+character; what it does not mention was not measured.
+
+**On the floor, and rising.** As for the first character: a second
+character standing, crouching or walking either way is not touched; the
+barrel rolls through and no hurt pose was seen (standing and crouching:
+`x` unchanged).
+A character who is rising in a jump is not caught.
+
+**Coming down onto it.** A second character falling in the air is caught
+on a frame if D is in range (D as for the first character: the
+character's `x` minus the barrel's `x` at the end of that frame) and the
+character's `y` at the start of that frame, **H**, is between two
+limits above the barrel's `y`. Caught frames had H from 14.11 up to
+45.89 px above; not caught at 47.14 px or more above, nor at 11.48 or
+less; between 11.48 and 14.11 and between 45.89 and 47.14 was not
+measured. H is the character's `y` at the start of the frame, whereas
+the first character's limit above is given for where the fall would end,
+so the two are not directly comparable. A fall covers 6 to 8 px per frame
+there, so a character who comes down with D out of range and has D in
+range on a later frame of the band is caught on that later frame. The
+ranges (px; not caught outside them):
+
+| Character faces | Caught from D = | to D = | Not caught at D = | and at D = |
+|---|---|---|---|---|
+| left | −20.152 | 23.168 | −20.914 or less | 24.16 or more |
+| right | −25.984 | 17.789 | −26.238 or less | 18.062 or more |
+
+These are not the first character's ranges: 43.3 px wide facing left
+and 43.8 facing right, against 50.1 for both. Every tried jump with D inside a range on a frame with H inside the
+band was caught (98 distinct left-facing and 138 distinct right-facing
+values of D, ends included; gaps between neighbouring values up to 1.18
+px on the left and 0.63 px on the right), so each end lies between the
+last caught value and the first not-caught one in the table, no closer.
+
+**Riding.** On the catch frame C the character's `y` becomes the
+barrel's `y` − 16.6 to 16.8 (in the 50 catches checked for this) and its `x` the barrel's `x` (at the end of C) minus a
+distance between 7.8 and 8.5 px that differs from catch to catch. On
+C + 1 the character's `x` does not change; from then on the barrel is
+11.3 to 12.0 px ahead of it (the same distance for the whole ride in each
+catch) and the character moves with the barrel, 3.5 px per frame. The
+height stays between 16.0 and 17.0 px above the barrel's `y`, wobbling
+by less than 1 px from frame to frame on flat floor (17.9 once the
+floor began to rise, in the one arrangement that reached it in the 60
+frames followed). Left, Right, Down, Up and Action held for 10 frames,
+10 frames after the catch, change nothing: the ride is frame for frame
+the same as without the input.
+
+**Jumping off.** As for the first character: a Jump press that begins
+on C + 2 or later starts an ordinary jump from the riding height on that
+frame, with `vx` the barrel's 3.5 px per frame falling by one eighth
+each frame (3.06, 2.68, 2.35 on the next frames). A press that began on
+C, C − 1 or C − 2 and is still held on C + 2 jumps on C + 2 (earlier
+starts were not tried); a press that began on C + 1 does nothing, however
+long held (1 to 6 frames tried, and once 40).
+
+**The ride ends** as for the first character: one ride was followed for
+933 frames, from the catch to a face rising to the right; on the last of
+them the barrel was 11.3 px ahead, and on the next frame the character
+stood on the floor at its `x` of the last frame, no longer riding, and
+walked on at its ordinary speed. The barrel was
+not removed during the ride.
+
+**Picking it up.** Action pressed with the rolling barrel 57, 53, 46, 39,
+36, 29 or 18 px from the character, standing and facing it, picked it up
+(walking to it first when the barrel was out of reach), as in
+`carrying.md`.
+
+### Evidence for the second character
+
+By the same setup method as for the first character, then with the
+second character under control (the first following). Inputs only from
+then on, after the character had picked the barrel up, carried it left
+and thrown it left. That arrangement is not seen in ordinary play, so
+**none of this was seen in ordinary play.**
+
+- Catch ranges and height band: 1 536 jumps, each a standing wait of 3
+  to 40 frames, then a jump straight up, after pressing Left or Right
+  for 1 to 12 frames to set the facing and the place. 624 had Jump held
+  for 20 frames (waits 3 to 28; 12 press lengths × 2 directions × 26
+  waits) and 912 held it for 4, 8, 12 or 16 frames (waits 3 to 40, 6
+  Left press lengths, 38 waits each) to put the fall at other heights.
+  Facing was taken at the jump, not from the direction pressed: a Right
+  press of 1 frame left the character facing left in all 26 such jumps
+  (one per wait), and of 2 frames in 1 of 26. So 1 251 jumps were
+  left-facing (485 caught) and 285 right-facing (179 caught). On 5 534 frames, in 699 jumps, the
+  character's `y` was going up with D inside the range; none was a
+  catch.
+- Riding values: the 50 caught jumps of a grid of 2 directions × 5
+  press lengths (1, 3, 5, 7, 9 frames) × 7 waits (8 to 20 frames in steps
+  of 2), each with the distance and the height on the catch frame,
+  the next two frames and the following 60 frames.
+- Passing: the barrel rolling toward a second character who stood,
+  crouched, walked left for 50 frames or walked right for 160 frames
+  (one run each, repeated once): no hurt pose appeared and the barrel
+  came within 0.85 px of the character's `x` (standing, crouching) or
+  overtook it (walking right) or met it (walking left). Walking was not
+  compared with the same inputs without a barrel. Two jumps straight up
+  after waits of 40 and 60 frames were not caught.
+- Ride: one ride of 933 frames to the face; 5 runs holding Left, Right,
+  Down, Up or Action for 10 frames.
+- Jump-off: Jump held for 1 to 6 frames starting on C − 2 to C + 4 (42
+  runs). Starting on C + 2, C + 3 and C + 4, each jumped on its first
+  frame; starting on C + 1 none jumped; starting on C, C − 1 and C − 2,
+  held through C + 2 (3, 4 and 5 frames or more), the jump came on C + 2.
+  One more run held Jump from C + 1 for 40 frames: no jump.
+  The same grid with the first character (30 runs, C − 2 to C + 2, in
+  its own Evidence) gave the same pattern.
+- Pick-up: 7 runs.
+
 ## Not covered
 
 - Ordinary play: the rules above were seen only in arranged situations
@@ -334,9 +462,10 @@ with the same inputs.
 - Objects with their lowest point under the floor's top at a wall:
   an object inside the ground is lifted on a normal frame, and what
   happens on a wall frame was not measured.
-- Riding or standing on it by the second character, the ride's pictures
-  and sounds, and a ride that meets a wall other than the one measured,
-  or a barrel moving left: not measured.
+- The ride's pictures and sounds, and a ride that meets a wall other
+  than the one measured, or a barrel moving left: not measured. Riding
+  the barrel with both characters on the way, or the second character
+  with the first leading, was not measured.
 - The other enemies, and whether it defeats them or turns back from
   them. The thrower and its balls for the second character, and a metal
   barrel rolling on the floor or just turned back at a wall meeting
@@ -354,7 +483,9 @@ with the same inputs.
   sideways at the catch frame (the ranges above are for a character
   standing still before the jump); where between 17.5 and 24.8 px above
   the barrel the catch height limit lies.
-- The second character throwing it; a throw by either character with the
+- The second character throwing it, beyond the one throw to the left
+  used to send it back (not compared with a plain barrel); a throw by
+  either character with the
   metal barrel inside a wall at the release (seen twice: no break, `vx`
   0 and the object moving up at 5 px per frame; not measured).
 - Its pictures and how it is drawn when it turns, and what sounds play.
