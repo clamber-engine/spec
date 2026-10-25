@@ -2,6 +2,32 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.336.0
+
+Hits with both characters there: the second character as the hit
+character, and hits during a roll or a bounce (spec#77).
+
+Part of clamber-engine/spec#77, which stays open for the parts not
+covered yet.
+
+- `behavior/losing-a-character.md`, "The second character as the hit
+  character": when the second character is under control and hit by a
+  ground walker from the side, the first character takes over (no life
+  is lost). The differences from the first character's case: the hit
+  character's fall gravity (lighter if a held jump was in progress), the
+  first character's wait (it makes its move on H, then is still to
+  H + 37), its run starting one frame later, its hop, the trace rows on
+  H + 36 and H + 37, and a made-up example. Measured in arranged
+  situations only; hits reached by inputs alone are in "Not covered".
+- `behavior/losing-a-character.md`, "Hits during a roll or a bounce": a
+  hit during a roll, its stop or the running after it changes nothing,
+  for either character leading; a hit during a bounce (first character
+  leading) flies from the hit spot to the floor below with the same
+  rules, except a lighter gravity while jump is held from B + 3. Measured
+  in arranged situations only. Swaps, carrying, other enemies, bounces
+  with the second character and hops cut by a ceiling are in "Not
+  covered".
+
 ## spec-v0.335.0
 
 Walkers behind the rider and the second character riding (spec#78); an
