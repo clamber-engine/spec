@@ -361,6 +361,35 @@ rolling right at a face that rises to the right. One ride was followed
 for 913 frames, from the catch to that face; the barrel was not removed
 while the character was on it, and no other end was seen in that ride.
 
+**A barrel still in the air.** A metal barrel that is in the air after
+a throw can also catch a falling character, with the same distances and
+the same ride as a rolling one, as far as these were measured (below).
+On the catch frame C the character's `x` becomes the barrel's `x` (at
+the end of C) minus 7.5 to 8.0 px, and its `y` becomes 15.2 to 16.7 px
+above the barrel's `y`. For a barrel moving left, the same holds
+mirrored: the character is that far to the barrel's right (8.0 to 8.5
+px). From C + 1 on the barrel is 11.0 to 11.5 px ahead of the character
+(11.5 to 12.0 moving left), and from C + 2 the character moves with the
+barrel at 3.5 px per frame, as in "Riding". Every catch was of a
+character who was falling on that frame, with D (as above) from −23.0
+to 23.5 px. Whether the ranges of D in the table above hold for a barrel
+in the air was not measured, nor which falling characters are caught
+(the height limit is in "Not covered"). A character on the floor or
+rising was never caught by a barrel in the air, and nothing else
+happened to it (no hurt, no change of pose or `x`).
+
+With a character riding it, the barrel falls differently from one
+without a rider: its downward speed grows by 0.3125 px per frame each
+frame (once 0.3086), where the free barrel's grows by 0.4375 px per
+frame each frame. In the 2 rides followed to the floor the barrel
+landed, bounced once, and rolled on at 3.5 px per frame with the
+character still riding at the same distance, for 50 frames and more.
+
+All of this was seen only in the arrangement described in the evidence
+below, with a barrel in the air at places that throws and jumps in
+ordinary play do not obviously bring about; it was not shown to hold in
+ordinary play.
+
 **Picking it up.** A rolling metal barrel can be picked up with Action
 from the floor, by a character who is not riding it; the pick-up
 starts as for a barrel (`carrying.md`). Tried twice, with the barrel
@@ -408,6 +437,34 @@ character. That arrangement is not seen in ordinary play.
   (3, 4 or 5 frames or more) jumped on C + 2.
 - Ride: one ride of 913 frames to the face; 4 runs holding Left, Right,
   Down or Action for 10 frames (and 2 with Jump).
+- In the air, by a setup method: after a throw, a metal barrel was in
+  the air at 80 px behind to 80 px ahead of the character (81 places, 2
+  px steps), and the run was followed for 12 frames and compared with
+  the character's run in the same inputs with no barrel near it. With
+  the character standing on the floor: 4 grids of 1 458 placements (81
+  places times 18 heights: level with the character and 2 to 66 px
+  above it in 4 px steps), the barrel thrown right or left, the
+  character facing it or turned away; 5 832 in all: no catch, no hurt,
+  no difference from the run with no barrel. With the character jumping
+  straight up (Jump held for 40 frames), 10 grids of 1 377 placements
+  each (81 places times 17 heights, from 48 px below to 16 px above the
+  character's height on that frame, in 4 px steps), by the number of
+  frames after the Jump press and the facing: 6, 14, 22 and 30 frames,
+  facing right with the barrel thrown right (4 grids, 50 frames of
+  waiting before the Jump); 18, 22, 26 and 30 frames, facing
+  right with the barrel thrown right (4 grids, 49 frames of
+  waiting before the Jump, so the 22- and 30-frame grids of the two
+  groups differ by one frame in when the Jump came after the throw); 18 and 22 frames, facing left with the barrel thrown left (2
+  grids). A
+  further 2 grids (26 and 30 frames, facing left) had the barrel
+  outside the picture and gave no data. The 6- and 14-frame grids
+  (rising) gave no catch. The other 8 gave 227, 201, 111, 235, 228, 191
+  (facing right) and 77, 231 (facing left): 1 501 catches, 1 193 and
+  308, every one on a frame on which the character was falling. The
+  values above (distances on C, C + 1, C + 2, the barrel's 3.5 px per
+  frame on C + 2, the fall speed with a rider) held in all 1 501. A
+  character facing against the barrel's direction, in the air, was not
+  tried.
 - Pick-up: two runs (see above).
 
 ## The thrower and its balls
@@ -719,12 +776,18 @@ plus an offset, on the first frame the barrel was rolling there.
   measured.
 - The thrower with a carried metal barrel, and with one already thrown
   to the left (after Q + 21): not measured.
-- The characters: a barrel still in the air (flying) meeting a
-  character; whether it passes through or hurts the second character; a
-  barrel rolling left; catching a character who comes down while moving
-  sideways at the catch frame (the ranges above are for a character
-  standing still before the jump); where between 17.5 and 24.8 px above
-  the barrel the catch height limit lies.
+- The characters: a barrel rolling left meeting a character (the catch,
+  ride and jump-off measurements above are all for a barrel rolling
+  right toward the character); a barrel in the air meeting a character
+  who faces against its direction, or the second character; whether it passes
+  through or hurts the second character; the vertical limit of a catch
+  in the air, and the ranges of D there; a barrel in the air in
+  ordinary play (seen only in the arrangement in the evidence); the
+  landing of a barrel with a rider on the way (only 2 rides followed);
+  catching a character who comes down while moving sideways at the
+  catch frame (the ranges above are for a character standing still
+  before the jump); where between 17.5 and 24.8 px above the barrel
+  the catch height limit lies.
 - The second character throwing it other than the throws described
   above (whether the metal barrel's turn at the step differs between
   being in the air and rolling, which was not recorded, walls other than
