@@ -300,6 +300,17 @@ barrel left in the hands of a hit thrower ("The thrower and its
 balls"). It was followed for 37 frames, until it was gone; what it does
 between is not described (see "Not covered").
 
+The ledge thrower (`thrower.md`) reached by the second character's metal
+barrel is knocked out on the same frame as by a plain barrel, and the
+thrower's rows and the second character's rows are the same as with a
+plain barrel on every frame. A barrel still in the second character's
+hands when it hits the thrower is not broken, as for the first
+character ("The thrower and its balls"): on the frame of the hit it is
+kept with `vx` 0 and `vy` −5 px per frame (up), then falls straight down
+through the ledge's floor, and was removed 40 or 41 frames after the hit
+(46 for one carried, not yet thrown). In the arrangement measured (below)
+no barrel that had left the hands hit the thrower.
+
 ### Evidence for the second character's throw
 
 Measured on the first level with the second character leading, in
@@ -337,6 +348,30 @@ in the same place as a control.
   second character with the object in its hands: the plain object was
   removed and the metal barrel was kept as above, and was gone 37 frames
   later in all 66.
+
+- The thrower: 102 pairs of runs of 70 frames after 40 frames of
+  standing, played with the metal barrel and with a plain object in the
+  same place (a setup method was used for the start; the second
+  character led and stood on the thrower's ledge with an object in its
+  hands, at 110 px left to 40 px right of the thrower in steps of 3 px,
+  51 positions, and then threw it left, the way it faced, or right
+  after turning, by inputs). The thrower's rows
+  and the second character's rows (`x`, `y`, speeds, action) were the same in the
+  metal run and its control on every frame in all 102 pairs. In 44 pairs
+  (positions from 26 px left to 37 px right of the thrower) the second
+  character landed on the thrower on the first frame and the
+  thrower was knocked out; the object, still in the
+  hands, was thrown as the control was. In 15 pairs the object hit the
+  thrower before it left the hands: 7 thrown left (positions 29 to 47
+  px left of the thrower, hit 1, 3 or 6 frames after Action was let go) and 6
+  right (32 to 47 px left, hit 5 or 6 frames after it), and 2 (one per
+  direction) at 40 px right with the object carried, hit on the first
+  frame. In those 15 the plain object was removed on the hit frame and
+  the metal barrel was kept as above; it was removed 41 (5 runs), 40 (8
+  runs) and 46 (2 runs, carried) frames after the hit. In the other 43 pairs
+  (all 110 to 50 px left of the thrower, and one at 29 px left
+  thrown right) the thrower was not hit and the metal and control rows
+  were the same. No barrel that had left the hands hit the thrower.
 
 ### Rolling left, thrown by the second character, against walkers
 
@@ -1617,7 +1652,9 @@ frame's view.
   player's frames after a hit were compared with nothing.
 - The other enemies (not
   walkers, the thrower, balls and stingers), and whether it defeats them or turns
-  back from them. The thrower and its balls for the second character,
+  back from them. The balls for the second character, the thrower
+  for the second character other than the ledge arrangement above (no barrel that had
+  left the hands reached it there),
   and a metal barrel rolling on the floor or just turned back at a wall meeting
   them. Walkers hit by a metal barrel thrown from other heights or in
   the air, from other floors, rolling on a slope, or on the
