@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.347.0
+
+A metal barrel rolling left against walkers on a flat floor (spec#76,
+in part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`: new "Rolling left on the flat floor"
+  section. A metal barrel rolling left, long after it left the hands,
+  defeats a small, medium or large walker facing either way by the
+  ranges of the "t of 17 or more" column for an object moving left. The
+  walker is knocked off at 4 px per frame to the right, and the barrel
+  goes on unaffected (its `y` and `vx` are stated as measured). Includes
+  an Evidence entry. A walker that appears at the upper end of the
+  range, walkers near the step or just after a turn back, and the second
+  character's throw are in Not covered.
+
 ## spec-v0.346.0
 
 A metal barrel rolling right against a stinger that doesn't move
