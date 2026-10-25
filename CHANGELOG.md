@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.344.0
+
+The metal barrel rolling right against walkers (spec#76, in part).
+
+Answers part of clamber-engine/spec#76 (the characters).
+
+- `behavior/metal-barrel.md`: new "Rolling right on the flat floor"
+  section. A metal barrel rolling right on a flat floor, long after it
+  left the hands, defeats small, medium and large walkers by the
+  thrown-objects ranges for t of 17 or more, with the walker's sideways
+  speed on the hit frame 4 px per frame to the left. The barrel is not
+  slowed, lifted or removed by the hit. Measured in arranged situations
+  only; Not covered now lists only what is still unmeasured for the
+  second character's throws.
+
 ## spec-v0.343.0
 
 The second character throwing the metal barrel (spec#76, in part).
