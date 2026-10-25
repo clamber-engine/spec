@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.342.0
+
+The thrown metal barrel and the second character (spec#76, in part).
+
+Answers part of clamber-engine/spec#76 (the characters).
+
+- `behavior/metal-barrel.md`: new "The second character" section. A
+  metal barrel rolling right passes through a second character standing,
+  crouching or walking, and catches one coming down onto it within
+  ranges and a height band of its own (narrower than the first
+  character's). Riding, jumping off, the end of the ride and picking it
+  up are as for the first character, with the measured distances. All
+  measured in arranged situations only.
+- `behavior/metal-barrel.md`, "The characters": correction to jumping
+  off. A Jump press that began on C, C − 1 or C − 2 and is still held on
+  C + 2 starts the jump on C + 2; one begun on C + 1 does not jump.
+
 ## spec-v0.341.0
 
 The thrown metal barrel, the thrower and its balls (spec#76, in part).
