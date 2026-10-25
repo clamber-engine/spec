@@ -121,8 +121,8 @@ the frame of a hit the walker's knock-off (its speed, rise and fall) and
 its removal are the same as for the barrel, and the metal barrel goes on
 as if the walker weren't there, as the barrel does. Nothing in the
 object's own motion differs from the barrel's when a walker is hit. Other
-heights and throws made in the air, other floors, and hits while the
-object is rolling are not covered (see "Not covered").
+heights and throws made in the air, other floors, and a hit just after
+the barrel turned back are not covered (see "Not covered").
 
 - Walkers, by a setup method: 204 throws left or right from the flat
   floor in the first level (about 230 to 545 px along the level), each
@@ -137,6 +137,38 @@ object is rolling are not covered (see "Not covered").
   directions, and the other 35 had it out of reach. The other 27 pairs
   differ only in the object, which was overlapping a wall at the
   release (see "Not covered"); they were not compared further.
+
+### Rolling right on the flat floor
+
+A metal barrel rolling right at 3.5 px per frame on a flat floor, long
+after it left the hands (t of 17 or more in `thrown-objects.md`, "When a
+walker is hit"; a barrel turned back at a wall has t well past that),
+defeats a small, medium or large walker walking on the same floor by the
+ranges of that table's "t of 17 or more" column for an object moving
+right, with the walker facing either way, and the height limits there
+(the barrel and the walker are level, which is inside them). On the
+frame of the hit the walker's sideways speed is 4 px per frame to the
+left, whichever way it was facing. The barrel is not slowed, lifted or
+removed by the hit; its `vx` stays 3.5 and its `y` stays on the floor
+for the frames followed (70, up to its removal at the edge of the picture).
+
+- Rolling, by a setup method: the barrel thrown left at the 64 px step
+  and turned back by it, then rolling right on the flat floor. With the
+  barrel rolling right on the floor at `x` of 200 or more, a small, a
+  medium or a large walker facing left or right stood at the barrel's
+  `x` plus an offset from −20 to 118 px in steps of 3 (47 offsets,
+  3 kinds, 2 facings: 282 runs of 70 frames, counted from the first
+  frame with the walker standing there). The first frame on which `x`
+  (rounded down) of the barrel minus that of the walker was inside the
+  "t of 17 or more" range for the kind and facing, after that first
+  frame, was the first frame on which the walker was hit, in all 282
+  runs; the walker's sideways speed on that frame was −4 px per frame in
+  every one. In all 282 the barrel kept `vx` 3.5 and its floor `y` on
+  every frame until it was removed, hit or not. It was removed (left the
+  picture) on the 61st frame in 278 runs and was still there on frame 70
+  in 4 (small offsets, the walker behind or just ahead of it), so the
+  claim covers the frames followed. The walker's frames after the hit
+  were not compared with the table's walker rules.
 
 ## The second character throwing it
 
@@ -541,9 +573,12 @@ and thrown it left. That arrangement is not seen in ordinary play, so
   them. The thrower and its balls for the second character, and a metal
   barrel rolling on the floor or just turned back at a wall meeting
   them. Walkers hit by a metal barrel thrown from other heights or in
-  the air, from other floors, while it is rolling, or just after it
-  turned back at a wall were not measured; nor were the second
-  character's walker hits.
+  the air, from other floors, rolling on a slope or left, or on the
+  frames just after it turned back at a wall were not measured (the
+  rolling hits above were at `x` of 200 or more, well after the turn);
+  nor were the knock-off frames after the first. A barrel thrown by
+  the second character rolling right against walkers is also not
+  measured (its flight and first walker hits are above).
 - Q + 21 (neither in the hands nor thrown by the frames measured): not
   measured.
 - The thrower with a carried metal barrel, and with one already thrown
