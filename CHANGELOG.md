@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.339.0
+
+The thrown metal barrel and walkers (spec#76, in part).
+
+Answers part of clamber-engine/spec#76 (walkers).
+
+- `behavior/metal-barrel.md`: new "Walkers" section. A metal barrel
+  thrown from the flat floor defeats small, medium and large walkers
+  standing ahead of the thrower on that floor exactly as a thrown barrel
+  does (same knock-off and removal), with either walker heading and
+  either throw direction, and goes on as if the walker weren't there.
+  Measured in arranged situations only, against a plain-barrel control.
+  Other heights, throws in the air, other floors, hits while rolling or
+  just after turning back, and the second character's hits are in
+  "Not covered".
+
 ## spec-v0.338.0
 
 The thrown metal barrel: flight, landing, rolling and walls (spec#76, in
