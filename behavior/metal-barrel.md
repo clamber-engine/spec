@@ -167,9 +167,30 @@ for the frames followed (70, up to its removal at the edge of the picture).
   every one. In all 282 the barrel kept `vx` 3.5 and its floor `y` on
   every frame until it was removed, hit or not. It was removed (left the
   picture) on the 61st frame in 278 runs and was still there on frame 70
-  in 4 (small offsets, the walker behind or just ahead of it), so the
-  claim covers the frames followed. The walker's frames after the hit
-  were not compared with the table's walker rules.
+  in 4 (a medium walker 14, 17 or 20 px behind the barrel and a large one
+  20 px behind it), so the claim covers the frames followed. (Those 4
+  are the runs in which the player was hurt, below.)
+
+The walker's frames after the hit are those of `thrown-objects.md`, "The
+walker", with d = +1 (the walker is knocked left): on K its sideways
+speed is −4 px per frame; on K + 1 it is −960/256 px per frame (or
+−832/256 if its heading turned on K + 1 at the end of its patrol); from
+then on its speed steps toward 2 px per frame in its heading, and its
+height changes by the same amounts per frame as there, until it is
+removed. The hit changes nothing else in the barrel's frames.
+
+- Knock-off after a barrel rolling right, in the runs above: in the 278
+  runs in which the player was not hurt, the walker's sideways speed on K
+  was −4 px per frame, and its sideways speed, position and height on
+  every frame from K + 1 to the last it was there were the rule's:
+  10 067 frames (251 runs of 40 frames from K + 1 and 27 of 1 frame;
+  small 94 runs, medium 91, large 93; the
+  heading turned on K + 1 in 18 of the large walkers, in none of the
+  others). The walker was there for the last time on K + 40 in 251 runs
+  and on K + 1 in 27. In the other 4 runs (a medium walker 14, 17 or 20
+  px behind the barrel, a large one 20 px behind it, all facing left)
+  the walker, close to the player, hurt the player on K + 1 and the game
+  stood still from then on; they are not claimed.
 
 ### Rolling left on the flat floor
 
@@ -1126,6 +1147,9 @@ its `x` at or below a limit.
   over 4.4 px per frame, were seen with a wider range, I from −25 to 61
   at 5.4 px per frame in a few runs, not measured; rolling right after a
   turn; flying or swaying stingers).
+- A walker knocked off by a barrel rolling right meeting the player: in
+  4 runs it hurt the player on K + 1 and the game stood still; the
+  player's frames after a hit were compared with nothing.
 - The other enemies (not
   walkers, the thrower, balls and stingers), and whether it defeats them or turns
   back from them. The thrower and its balls for the second character,
@@ -1135,7 +1159,8 @@ its `x` at or below a limit.
   frames just after it turned back at a wall were not measured (the
   rolling hits above were at `x` of 200 or more, well after the turn, or
   rolling left at `x` of 340 down to 124);
-  nor were the knock-off frames after the first. For a barrel rolling
+  nor were the knock-off frames after the first for a barrel rolling
+  left or thrown by the second character. For a barrel rolling
   left: a large walker facing right that appears with the difference
   first in the range at its upper end (26) was hit later than the first
   frame in the range, at a difference of 21 or 22 (4 of 486 runs, within
