@@ -171,6 +171,49 @@ for the frames followed (70, up to its removal at the edge of the picture).
   claim covers the frames followed. The walker's frames after the hit
   were not compared with the table's walker rules.
 
+### Rolling left on the flat floor
+
+A metal barrel rolling left on a flat floor, long after it left the
+hands (29 or more frames, so "t of 17 or more"), defeats a small, medium
+or large walker walking on the same floor by the ranges of the "t of 17
+or more" column for an object moving left, with the walker facing either
+way, and the height limits there (the barrel and the walker are level,
+which is inside them). The walker is hit on the first frame on which
+the difference is in the range for its facing on that frame, except in
+the case listed under "Not covered" (a walker that appears right at the
+range's upper end). On the frame of the hit the walker's sideways speed
+is 4 px per frame to the right, whichever way it was facing. The barrel
+is not slowed, lifted or removed by the hit: its `y` stays on the floor
+for the frames followed and its `vx` is the same in every run, hit or
+not (see the evidence).
+
+- Rolling left, by a setup method: the barrel thrown left from the flat
+  floor and the thrower then walking left behind it, so that the barrel
+  stays in the picture (the barrel left the hands 29 frames before the
+  first frame followed, and was rolling on the floor from then on). With
+  the barrel rolling left on the floor at `x` of 340 (`vx` −3.77 px per
+  frame), a small, a medium or a large walker facing left or right stood at the barrel's `x` plus an offset from
+  −100 to −20 px in steps of 1 (81 offsets, 3 kinds, 2 facings: 486 runs
+  of 61 frames, counted from the first frame with the walker standing
+  there). The walker was hit in all 486, with sideways speed +4 px per
+  frame on the frame of the hit. The first frame on which `x` (rounded
+  down) of the barrel minus that of the walker was inside the range for
+  the kind and facing, after that first frame, was the first frame on
+  which it was hit in 481 runs. In 4 (a large walker facing right, the
+  difference first inside the range at its upper end, 26, on one of the
+  first five frames after the walker stood there) the hit came on a
+  later frame, at a difference of 21 or 22. In 1 (a large walker facing
+  left, 100 px ahead) the walker turned round at the end of its
+  patrol one frame before the hit (the turn of `walker.md`) and was hit
+  on the next frame, with the difference in the range for the new
+  facing. In all 486 the barrel was still there at the end of the 61
+  frames, with `y` on the floor and `vy` unchanged on every frame, hit or
+  not (`x` from 336.5 to 124.5; it did not reach the left end of the
+  floor). The barrel's `vx` was the same on every frame in all 486 runs,
+  hit or not: −3.77 px per frame (−966/256) on the first frame followed,
+  its size falling over the next 21 frames to 3.53 (−903/256) and
+  then −3.5 px per frame (−896/256) from the 23rd frame on.
+
 ## The second character throwing it
 
 Thrown by the second character (`second-character.md`, `carrying.md`,
@@ -659,10 +702,17 @@ plus an offset, on the first frame the barrel was rolling there.
   back from them. The thrower and its balls for the second character,
   and a metal barrel rolling on the floor or just turned back at a wall meeting
   them. Walkers hit by a metal barrel thrown from other heights or in
-  the air, from other floors, rolling on a slope or left, or on the
+  the air, from other floors, rolling on a slope, or on the
   frames just after it turned back at a wall were not measured (the
-  rolling hits above were at `x` of 200 or more, well after the turn);
-  nor were the knock-off frames after the first. A barrel thrown by
+  rolling hits above were at `x` of 200 or more, well after the turn, or
+  rolling left at `x` of 340 down to 124);
+  nor were the knock-off frames after the first. For a barrel rolling
+  left: a large walker facing right that appears with the difference
+  first in the range at its upper end (26) was hit later than the first
+  frame in the range, at a difference of 21 or 22 (4 of 486 runs, within
+  five frames of the walker appearing), so which frame a walker that
+  appears at the edge of the range is hit on is not covered, nor are
+  walkers close to the step or just after turning back. A barrel thrown by
   the second character rolling right against walkers is also not
   measured (its flight and first walker hits are above).
 - Q + 21 (neither in the hands nor thrown by the frames measured): not
