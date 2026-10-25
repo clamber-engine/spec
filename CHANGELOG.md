@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.337.0
+
+Hits during a swap and while carrying an object, with both characters
+there (spec#77).
+
+Answers clamber-engine/spec#77 (its last item, after spec-v0.336.0).
+
+- `behavior/losing-a-character.md`, "Hits during a swap": nobody is hurt
+  from the press to the frame before control returns, and ground walkers
+  stand still; the character that takes over can first be hurt on the
+  frame after control returns, with one measured exception on that frame
+  when the first character is the player. After the hit the earlier
+  sections hold in both directions.
+- `behavior/losing-a-character.md`, "Hits while carrying an object": the
+  first character's barrel is let go as in a knock-out but moves from the
+  frame after the hurt frame; the second character's barrel is gone the
+  frame before the hurt frame. Measured in arranged situations only;
+  other enemies and objects, a holder, a swap press while carrying and
+  hits reached in ordinary play are in "Not covered".
+- `behavior/swap.md`: its "Not covered" line on enemies during a swap now
+  points to the new section.
+
 ## spec-v0.336.0
 
 Hits with both characters there: the second character as the hit
