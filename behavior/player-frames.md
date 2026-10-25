@@ -2005,8 +2005,10 @@ floor the pictures are:
 2. **Carrying**, from G + 10 until Q. G + 10 is a frame of standing with
    the object whatever is held (it is S, below); from G + 11 the player
    is standing, moving, turning or jumping with the object.
-3. **A throw**, Q to Q + 39: `s-throw-1` on Q, `s-throw-2` × 2 (Q + 1,
-   Q + 2), `s-throw-3` × 3 (Q + 3 to Q + 5), `s-throw-4` × 5 (Q + 6 to
+3. **A throw**, Q to Q + 39, also when Q is during the pick-up (G + 1 to
+   G + 10): the pick-up's pictures end on Q − 1, and when Down holds Q
+   back to G + 11, G + 10 shows `s-hold`. `s-throw-1` on Q,
+   `s-throw-2` × 2 (Q + 1, Q + 2), `s-throw-3` × 3 (Q + 3 to Q + 5), `s-throw-4` × 5 (Q + 6 to
    Q + 10), `s-throw-5` × 3 (Q + 11 to Q + 13), `s-throw-6` × 2 (Q + 14,
    Q + 15), `s-throw-7` × 2 (Q + 16, Q + 17), `s-throw-8` × 2 (Q + 18,
    Q + 19), `s-throw-9` × 3 (Q + 20 to Q + 22), `s-throw-10` × 5 (Q + 23
@@ -2018,7 +2020,9 @@ floor the pictures are:
    turning".
 4. **A put-down**, Q to Q + 9: `s-pick-5` down to `s-pick-1` × 2 each,
    the pick-up's pictures in reverse. Q + 10 shows `s-stand-1`, whatever
-   is held, and is the S of "Standing still".
+   is held, and is the S of "Standing still". When Action is let go
+   during the pick-up with Down held up to G + 11 (`carrying.md`), Q is
+   G + 11 and G + 10 shows `s-hold`.
 
 **Standing with the object** shows `s-hold` on every frame, for as long
 as the player stands (seen up to 400 frames).
@@ -3182,6 +3186,28 @@ steep face, picking something up):
   steps (3 and 7, 2 and 6, 2 and 8, 1 and 7), 3 818 to 8 049 frames
   differ.
 
+- **Carrying, either character, Action let go during the pick-up:** from
+  a start prepared with a setup method (the object ahead of the player,
+  the other character 200 px behind at the start, and not overlapping the
+  player's picture on any frame of the runs), walking into a `barrel` with
+  Action held and letting go of Action on each of G + 1 to G + 14 (first
+  character) or G + 1 to G + 10 (second character), with Down held for 0
+  to 17 frames (first character: 0, 1, 2,
+  3, 5, 8 and 12 to 17; second: 0, 1, 2, 3, 5, 8 and 10 to 13) from the
+  let-go, or from G + 1 up to the same frame, and nothing else held after
+  the let-go: 536 runs of 61 to 74 frames, 20 468 frames compared on
+  screen with "Carrying", frame by frame, with Q as `carrying.md` gives
+  it: the pick-up's pictures before Q, then the throw's or the
+  put-down's pictures from Q. The first character's 336 runs (168 throws,
+  168 put-downs; 13 812 frames) matched on every frame. The second
+  character's 200 runs (94 throws, 106 put-downs; 6 656 frames) matched
+  except for one frame in each of the 94 throws, Q + 34, where the screen
+  showed `s-throw-12` instead of `s-throw-13` (the previous picture one
+  frame longer; in the one run whose video frames were counted, that
+  logic frame took two video frames). With the earlier reading (a
+  put-down whenever Down was held on every frame up to and including G + 15
+  or G + 10), 328 other frames differ (208 of them the first character's).
+
 - **The first character in a launch barrel:** random play on flat floor (Right mostly, with short
   Jump, Action, Left and nothing segments, then 120 more frames of random input after the catch),
   with a copy of each barrel kind placed on the floor ahead of the character, in a copy of the
@@ -3450,11 +3476,15 @@ steep face, picking something up):
 - The carrying pictures of either character on slopes, at ledges, next
   to walls, walking off a ledge with the object, in a throw or a
   put-down in the air or during a turn, and of a throw or a put-down
-  started during a jump's last frames (J − 2 to L + 1); for the second
-  character also a throw started during the pick-up.
+  started during a jump's last frames (J − 2 to L + 1).
 - Why, on 20 frames during or shortly after 13 throws (Q + 27 to
-  Q + 58), the previous picture was still on screen for one frame. The
-  rules above give the usual frame.
+  Q + 58), and on Q + 34 of the 94 throws of the second character in the
+  runs with Action let go during the pick-up, the previous picture was
+  still on screen for one frame. The rules above give the usual frame.
+  It also showed on Q + 34 of ordinary second-character throws in the
+  same tools, and not in the random-input runs.
+- Action let go during the pick-up, for either character, in random or
+  ordinary play (only runs from a fixed start were measured).
 - The swimming pictures of the second character (it was not present
   in the areas measured), of a swimmer who is hurt, knocked out or
   paused, in `title-2`, and while riding.

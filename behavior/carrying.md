@@ -175,9 +175,9 @@ The pick-up lasts **15 frames**, G to G + 14. Starting on the ground:
   nothing changes on that frame: the pick-up goes on as above, and the
   throw starts, with Q, on the first later frame on which Down isn't held
   (the first frame of carrying, G + 15, still counts as the pick-up for
-  this). If Down is held on every frame up to and including G + 15, there
-  is no throw: the pick-up ends as usual and the object is put down from
-  G + 16 ("Putting down", with Q = G + 16).
+  this). If Down is held on every frame up to and including G + 15, the
+  pick-up ends as usual and Q is G + 16: the object is put down
+  ("Putting down") if Down is held on G + 16, and thrown if it isn't.
 
 From G + 15 the player is carrying.
 
@@ -421,8 +421,9 @@ are as above, with the second character's values where they differ.
   itself on G + 1 to G + 9 and on G + 10, and with Down held on that frame
   the throw waits for the first frame without Down (G + 10 counts as the
   pick-up for this); with Down held on every frame up to and including
-  G + 10, the object is put down from G + 11. The throw's timing after Q
-  is the table's.
+  G + 10, Q is G + 11 and the object is put down if Down is held on
+  G + 11 and thrown if it isn't. The throw's timing after Q is the
+  table's.
 - **G + 10** is a frame of standing with the object, and the target is
   still 0 on it whatever is held. From G + 11 the target follows the
   input, and a held direction starts moving or a turn as from any frame
@@ -519,7 +520,17 @@ frame, or on every frame from G + 1, with no direction or either one held
 (408 runs for each character): in all of them the throw or put-down
 started on the frame the rule gives, and in the throws the object left the
 hands on the frame the throw's timing gives (Q + 21 for the first
-character and Q + 18 for the second).
+character and Q + 18 for the second). Whether a run was a throw or a
+put-down was checked on screen in 536 further runs (`player-frames.md`,
+"Carrying", Evidence), with Action let go on each of G + 1 to G + 14
+(first character) or G + 1 to G + 10 (second) and Down held for up to 17
+frames from the let-go or from G + 1: where Down was held on every frame
+up to G + 15 (G + 10) and not on G + 16 (G + 11) the object was thrown
+(16 runs of the first character, 12 of the second), and where it was
+also held on that frame, put down (168 and 106 runs). These runs
+were all arranged from a start with fixed input patterns; the rule for
+Action let go during the pick-up was not checked in random or ordinary
+play.
 
 ### The object, second character
 
@@ -638,6 +649,9 @@ standing and does not move.
   down, and for a `holder` already there on the level's first frame.
 - Pressing Action within reach while moving for other kinds of object, at
   other heights, and in ordinary play beyond the random-input runs.
+- Action let go during the pick-up (and Down held then), for either
+  character, in random or ordinary play: only runs from a fixed start with
+  fixed input patterns were measured.
 - Picking up with Down or Up held for the first character facing left,
   the second character facing right, a `holder`, an object above or below
   the player's height, and in random play; picking up while being hit
