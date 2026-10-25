@@ -1263,10 +1263,25 @@ move and its `vx` becomes +4 px per frame (1024/256), on K + 1 it doesn't
 move and its `vy` becomes −6 px per frame (1536/256, up), and on K + 2
 it moves 3.75 px right and 5.5625 px up with `vx` 3.75 px per frame
 (960/256) and `vy` −5.5625 px per frame (1424/256). Only K, K + 1 and
-K + 2 were compared with that section; the later frames of the knock-off
-were not. The barrel is not slowed or lifted by the hit. When the stinger
-is removed was seen to vary between runs (on K + 2 in some, many frames
-later in others) and is not described.
+K + 2 were compared with that section, and so were the later frames
+of the knock-off for a barrel at its ordinary speed, up to the 38 frames
+from K that section gave (the same steps, frame for frame; see the
+evidence below). The barrel is not slowed or lifted by the hit.
+
+The stinger is removed on K + 2 when its `x` rounded down minus the
+view's position (as in `walker-view.md`, "Defeated walkers falling out")
+is below −31 after that frame's move. With the view's position near 196
+that was every stinger that stood 10 px or more to the left of the
+barrel's `x` (I of 10 or more) and none that stood 9 px or less to the
+left or anywhere to the right of it. Otherwise it was seen to be removed
+while it falls through the floor, on the frame it has fallen far enough:
+its height was still 95 px or less below the
+floor's on the frame before in all the runs and 97 px or more below on
+the frame it was gone. That was on K + 37 for a stinger 28 px below
+the barrel's height, K + 39 for 10 px below, K + 41 at the barrel's
+height, K + 42 for 10 px above and K + 43 for 19 px above. Whether
+this is the vertical edge of the walker rule was not checked (the
+picture's vertical position was not recorded).
 
 #### Evidence for the second character's barrel against a stinger
 
@@ -1305,6 +1320,34 @@ its `x` at or below a limit.
   frames were hits; at 35, 24 of 49.
 - In all 1 039 hit runs with the barrel moving left the stinger had the
   rows above on K, K + 1 and K + 2 (the three compared).
+- After-effects at the barrel's ordinary speed (limit 170 or 130 as
+  above; 139 runs of 60 frames, a stinger that doesn't move stood at the
+  floor's height plus a height and at the barrel's `x` plus an offset
+  on the first frame the barrel was there): heights −28, −10, 0, 10 and
+  19, offsets −40 to 40 in steps of 4 (21): 105 runs; heights 0 and 19,
+  offsets −13 to −5 in steps of 1 (9): 18 runs; limit 130, height 0,
+  offsets −30 to 0 in steps of 2 (16): 16 runs. Every run had a hit. In
+  119 of them the barrel was moving left on the hit frame and the
+  knock-off was the same in all: the three frames above and then the
+  steps of "Rolling left", frame for frame (speeds, and positions
+  relative to K), for the 38 frames from K the longest run of that
+  section gave, or to the removal if sooner. The 2 286 frames from K
+  until the stinger was removed (43 at the most) were followed in all;
+  those after the 38th (K + 38 to K + 43, in the runs removed on K + 39
+  and later) were not compared with that section. The stinger was removed
+  on K + 2 in 66 and on K + 37 to K + 43 in 53 (9 at K + 37, 9 at
+  K + 39, 13 at K + 41, 9 at K + 42, 13 at K + 43; the heights above in
+  that order). On K + 2 the first rule above was met in all 66, and in
+  the 53 others not on any frame before the removal. The other 20 runs
+  (offsets 28 to 40 of the first grid) were first hit after the barrel
+  had turned back at the wall, with the stinger knocked the other way and
+  removed on K + 13 to K + 18; they are not described here.
+- The barrel's and the player's rows (60 rows) were the same as in runs
+  with the stinger 60 px below and 40 px above (never hit) at the same
+  offsets. Of the 103 hit runs of the first two grids that had controls,
+  85 (the first grid's, without its 20 hit after the turn) had both, 170
+  pairs, and the 18 of the second grid had the one 60 px below, 18 pairs:
+  188 pairs in all. The player was not hurt in any of the compared runs.
 - Frames at A of 20 to 40 above, within the I range, were never hits
   (425 frames at each of 21, 22, 25, 30 and 40, from the first grid
   only; 1 145 at 20, which is also in the third grid: 720 more); at 30 px
@@ -1342,8 +1385,13 @@ its `x` at or below a limit.
 - Stingers and the barrel thrown by the second character: where between
   28 and 30 px below the barrel the lowest hit lies, what decides whether
   a stinger at I of −26 or 35 is hit (18 of 25 and 24 of 49 frames
-  were), the knock-off frames after K + 2 and when the stinger is
-  removed, and the barrel meeting one other than rolling left on the
+  were), the knock-off frames after the 38th from K and the vertical edge for
+  the stinger's removal, the knock-off for the barrel just after it lands (at over 4.4
+  px per frame), the bottom edge as a position, whether the player
+  can be hurt by a stinger standing where this barrel hits it (it
+  was in 16 runs outside the three grids above, with the barrel just
+  after it landed, and those were not compared), and the barrel meeting one
+  other than rolling left on the
   flat floor at the speeds above (the first frames after it lands, at
   over 4.4 px per frame, were seen with a wider range, I from −25 to 61
   at 5.4 px per frame in a few runs, not measured; rolling right after a
