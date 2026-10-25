@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.334.0
+
+The second character's carried object against walkers (spec#74, part
+of spec#19).
+
+Part of clamber-engine/spec#74 and clamber-engine/spec#19, which stay
+open for the parts not covered yet.
+
+- `behavior/thrown-objects.md`, "A carried object", "The second
+  character": with the second character, a carried object that holds
+  nothing hits walkers of all three sizes, the small walker on the
+  player's own floor too; where the object is held relative to the
+  player, the limits of H per size, the small walker's ranges of I, and
+  what happens on a hit (as for the first character). Measured in
+  arranged situations from a setup method, with a by-inputs check
+  walking right at each walker. Running with the object and what the
+  player does in the air after a hit are in "Not covered".
+- `behavior/walker-contact.md`, "Carrying (second character)": the
+  second character's hurt ranges and reach in the air while carrying.
+
 ## spec-v0.333.0
 
 An object in the lead's hands at the first level's end with the second
