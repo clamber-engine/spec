@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.333.0
+
+An object in the lead's hands at the first level's end with the second
+character leading (spec#19).
+
+Part of clamber-engine/spec#19, which stays open for the parts not
+covered yet.
+
+- `behavior/level-end.md`, "An object in the lead's hands, second
+  character leading": the first character's rules hold as they are with
+  the second character carrying (105 runs, no differences). Every run
+  began from a setup method; carrying the object to the marker by inputs
+  alone is in "Not covered", with an object in the follower's hands.
+
 ## spec-v0.332.0
 
 The ball placed in the first level against held and carried objects
