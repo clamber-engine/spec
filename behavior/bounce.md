@@ -62,6 +62,9 @@ following characters). The 151 of them, other than the following
 character and the walker bounced on, that moved at a steady speed
 before B took the same step on B + 3 as on B.
 
+An object the player carries is not in the hands from B and moves on from
+B + 3: `thrown-objects.md`, "Carried into a bounce".
+
 ## Each frame from B + 3
 
 Until the player lands, on each frame:

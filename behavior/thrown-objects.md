@@ -945,6 +945,87 @@ the walker its `x` was the same on every frame. The first character with
 the same inputs and the small walker was hurt, and the walker was not
 hit.
 
+#### Carried into a bounce
+
+When the player bounces off a walker (`bounce.md`, `walker-contact.md`)
+while carrying an object (`carrying.md`), the object **leaves the
+hands** and flies on as an object that holds nothing. This is the same
+for the barrel and for the object that holds the missing character with
+the first character, and for the barrel with the second character, and
+for all three sizes of walker; the first character bounces off all
+three, the second off the small and the medium one. The second character
+pushed back by a large walker (`walker-contact.md`, "The second
+character") loses the barrel the same way, with C below the frame of
+that contact. The second character with the object that holds the
+missing character was not measured. The walker is defeated or
+pushed as without an object.
+
+Call **C** the frame of the contact, which is B for a bounce
+(`bounce.md`). On C the object moves to the player's `x` rounded down and stays
+as far above the player as it was held (40 to 43 px for the first character,
+9 to 11 px for the second). The speeds it gets:
+
+- `vx` is **5 px per frame** in the direction the player faces on C, and
+  it never changes afterwards. Unlike a thrown object (`vx` easing
+  toward 3.5, "Each frame"), the object stays at 5 in the air, on
+  bounces and rolling, until it breaks or is removed.
+- `vy` is **1 px per frame** downward.
+
+The object is still where it is on the frozen frames of a bounce
+(`bounce.md`, "Two frozen frames"): C, C + 1 and C + 2 are one position.
+It leaves on the first frame on which the player is not frozen, **C + 3**
+after a bounce and **C + 1** after a push. On that frame it moves 5 px
+in its direction and 1.4375 px down, and its `vy` is then
+0.00390625 (1/256) downward. From the next frame it follows "In the air"
+and "Rolling" with those rules' values (gravity 0.4375, the 5-px margin
+for touching the floor, half the fall speed for a bounce), except for
+`vx`.
+
+| Frame | Object `x` from C | Object `y` from C | `vy` at the end |
+|---|---|---|---|
+| C | 0 | 0 | 1 |
+| C + 1, C + 2 (bounce) | 0 | 0 | 1 |
+| C + 3 | 5 | 1.4375 | 0.00390625 |
+| C + 4 | 10 | 1.87890625 | 0.44140625 |
+| C + 5 | 15 | 2.7578125 | 0.87890625 |
+| C + 6 | 20 | 4.07421875 | 1.31640625 |
+
+(`y` increases downward; for a push the first row after C is C + 1 and
+there are no frozen rows.) After that it flies, bounces and rolls as a
+thrown object. A held object that holds the missing character breaks the first
+time it touches the floor, as a thrown one does
+(`holder-breaking.md`).
+
+The bounce itself is as without an object: the same `vy` at B (−7.125
+for the first character, −8.5 for the second against the medium
+walker). The hands are empty from C, and the player stood, not carrying,
+after landing. Other walkers that the flying object meets are hit by it:
+in three runs below (a large, a medium and a small walker ahead of the
+object) the walker was hit as the object passed it and rose and fell as
+in "What happens on a hit". At what distances it hits was not measured.
+
+Measured on the first level, with Action held throughout; a setup
+method was used to reach each situation. 162 situations, in a copy of the
+image with a walker of the size named in place of the first walker, each
+with the player just above the walker shortly before the frame of the
+contact, the player's `x` −20 to 20 px from the walker's in steps of 5,
+facing either way: the first character with the barrel and with the
+object that holds the missing character (all three sizes) and the second
+character with the barrel (all three sizes). 159 of them made contact,
+bounces or pushes, and on all of them the object left on C + 3 (C + 1
+for the 18 pushes) with the speeds above. On the 4 529 frames after
+leaving, on flat floor, its `y` followed "In the air" and "Rolling" with
+the values above and its `x` changed by exactly 5 px per frame, with no
+mismatch. The holder broke on its first touch of the floor (53 runs).
+By inputs alone (walking right and jumping at each of 36 frames, for the
+three pairs and the three sizes): 19 jumps came down on a walker, and
+the object left as above on all of them. In three more runs (the first
+character, the barrel, a large walker bounced on; each in a copy with a
+second walker ahead, of one size each) the second walker was hit. The
+flying object was removed by leaving the picture at the limits of
+"Leaving the picture" (one run, facing right) and broke at the wall at
+the left end of the floor (one run, facing left).
+
 #### During a pick-up, a throw or a put-down
 
 With G and Q as in `carrying.md`, the object in the player's hands also
@@ -1629,10 +1710,12 @@ this file doesn't say what decides the mirroring there.
   how a medium walker moves after a hit by a carried object that holds
   nothing (only its `vx` on K was measured; `holder-breaking.md` has
   the rest for the object holding the missing character), two walkers
-  in range on the same frame, what happens to the carried object when
-  the player bounces off a walker, the second character's pick-ups,
-  throws and put-downs and its objects meeting turning walkers, what the
-  second character does in the air after a hit, and running with the
+  in range on the same frame, the ranges at which the object that left
+  the hands on a bounce hits walkers ("Carried into a bounce"), where it
+  breaks on walls and faces and its path on slopes (flat floor only), the
+  second character's pick-ups, the second character with the object
+  that holds the missing character, throws and put-downs and its objects
+  meeting turning walkers, what the second character does in the air after a hit, and running with the
   object. The ranges are given for the object's position; where a
   carried object is relative to the player is covered for the second
   character only ("The second character"), not the first (`carrying.md`).
