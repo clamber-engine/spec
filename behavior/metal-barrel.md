@@ -6,9 +6,9 @@ The metal barrel is the object a `hidden-metal-barrel` leaves behind
 (`hidden-objects.md`). It is picked up and carried as in `carrying.md`.
 This file says what it does once it is thrown: how it flies, lands and
 rolls, what it does at a wall, that it defeats walkers, and what it does
-with the first character (passing through, catching and carrying it).
-The other things a thrown object can meet (the thrower, balls) are not
-covered here; see "Not covered".
+with the first character (passing through, catching and carrying it)
+and to the thrower and its balls. The other things a thrown object can
+meet (other enemies) are not covered here; see "Not covered".
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y`, `vx`
 and `vy` are as in a trace: right and down are positive, speeds in px
@@ -255,6 +255,78 @@ character. That arrangement is not seen in ordinary play.
   Down or Action for 10 frames (and 2 with Jump).
 - Pick-up: two runs (see above).
 
+## The thrower and its balls
+
+A ball (`thrower.md`) is removed by a metal barrel, and the thrower
+(`thrower.md`) is knocked out by it, in exactly the places and on exactly
+the frames where they are for a plain barrel (`thrown-objects.md`,
+"Hitting a ball" and "Hitting the thrower", with the same ranges). For
+the balls this was measured for a thrown object, one still in the
+player's hands (Q + 1 to Q + 20) and one that is carried. For the
+thrower it was measured for a thrown object (thrown right) and one in
+the hands (Q + 1 to Q + 20, thrown right or left); see "Not covered" for
+the rest. The thrower's knock-out, its removal and the player's frames
+are the same as with a plain barrel.
+
+What differs is what happens to the metal barrel when it is in the
+hands or carried. A barrel that is hit there breaks; the metal barrel
+does not:
+
+- Its pieces do not appear; the flash of the hit does.
+- It stays in the level with `vx` = 0 and `vy` = −5 px per frame (moving
+  up) on the frame of the hit, and from then on falls as an object in the
+  air falls (`vy` gaining 0.4375 px per frame, to 8 px per frame down). It
+  keeps its `x`, apart from the move the throw gave it on that frame.
+- It does not stop on the floor, even on the floor of the ledge it was
+  held over, and falls straight down. It was removed 39 to 45 frames
+  after the hit, once it was about 250 px below the top of the picture
+  (250 to 254 on its last frame).
+- What it was held by is let go of as when a barrel breaks: a throw in
+  progress goes on and a carried object is no longer carried (`x`, `y`
+  and action of the player were the same as with a plain barrel for 70
+  frames in four runs).
+
+A metal barrel that was thrown (from Q + 22 on) is not touched by the
+hit and goes on as a barrel does, as in `thrown-objects.md`.
+
+### Evidence
+
+Measured on the first level with the first character alone. With a
+setup method, a metal barrel stood where the plain barrel stood in the
+same situation (beside the ledge the thrower stands on, in the player's
+hands). Every run was repeated with a plain barrel in the same place and
+with the same inputs.
+
+- The thrower: 102 pairs of runs of 70 frames. In each the player stood
+  on the thrower's ledge (a setup method), from 110 px left to 40 px
+  right of the thrower in steps of 3 px (51 positions), and then threw
+  right or left by inputs (2 directions). The thrower was hit in 40
+  pairs, on the same frame in each run of a pair: 20 thrown right, and
+  20 in the hands (7 when throwing right, 13 when throwing left). In all
+  102 pairs the thrower's `x`, `y` and speeds were the same on every
+  frame, and so were the player's. The 20 thrown objects were the same
+  as the plain barrel on every frame; the 20 in the hands were as above.
+  No run had the metal barrel carried, or thrown left.
+- Balls, arranged one frame at a time with a setup method (these
+  situations are not reachable in play): 14 grids of 6 561 positions
+  of a ball beside the object, offsets from −80 to 80 px in `x` and
+  −75 to 85 px in `y` in steps of 2. The grids were: 7 throws to the
+  right, at frames Q + 1, Q + 10, Q + 20, Q + 22, Q + 37, Q + 38 and
+  Q + 51 (the one at Q + 21 was not run); 4 throws to the left, at four
+  other frames from the start of the throw's hold to its flight (not
+  counted from Q, so not listed); and 3 carried states: standing still
+  right after the barrel was picked up, standing still 20 frames later,
+  and 8 frames into a jump with the barrel carried. The ball was removed
+  in 22 498 positions, the same ones as with the plain barrel in every
+  grid. A thrown metal barrel was the same as the plain barrel after the
+  frame in 11 138 of them (all of its speeds, `x` and `y`); the other
+  11 360 were in the hands or carried, with the metal barrel left as
+  above and no pieces.
+- After a carried barrel was hit by a ball at its position (a setup
+  method), the player was followed for 70 frames in 4 runs: standing
+  still, walking right, walking left, and jumping. In each the player
+  was the same as with the plain barrel on every frame.
+
 ## Not covered
 
 - Ordinary play: the rules above were seen only in arranged situations
@@ -265,11 +337,17 @@ character. That arrangement is not seen in ordinary play.
 - Riding or standing on it by the second character, the ride's pictures
   and sounds, and a ride that meets a wall other than the one measured,
   or a barrel moving left: not measured.
-- The thrower, balls and the other enemies, and whether it defeats them
-  or turns back from them. Walkers hit by a metal barrel thrown from
-  other heights or in the air, from other floors, while it is rolling, or
-  just after it turned back at a wall were not measured; nor were the
-  second character's walker hits.
+- The other enemies, and whether it defeats them or turns back from
+  them. The thrower and its balls for the second character, and a metal
+  barrel rolling on the floor or just turned back at a wall meeting
+  them. Walkers hit by a metal barrel thrown from other heights or in
+  the air, from other floors, while it is rolling, or just after it
+  turned back at a wall were not measured; nor were the second
+  character's walker hits.
+- Q + 21 (neither in the hands nor thrown by the frames measured): not
+  measured.
+- The thrower with a carried metal barrel, and with one already thrown
+  to the left (after Q + 21): not measured.
 - The characters: a barrel still in the air (flying) meeting a
   character; whether it passes through or hurts the second character; a
   barrel rolling left; catching a character who comes down while moving
