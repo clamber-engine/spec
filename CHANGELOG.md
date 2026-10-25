@@ -2,6 +2,28 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.357.0
+
+A metal barrel thrown by the second character and rolling left against
+walkers, and what a hit by the second character's barrel does to
+stingers afterwards (spec#76, in part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`: new section "Rolling left, thrown by the
+  second character, against walkers", covering the distance ranges in
+  which a walker on the flat floor is hit (lower ends) and the walker's
+  sideways speed on the hit frame. Its Evidence is in a section of its
+  own; the upper ends, a walker coming into the range from outside it
+  and the walker's frames after the hit are in Not covered.
+- `behavior/metal-barrel.md`, "Stingers": the knock-off after a hit by
+  the second character's barrel rolling left follows "Rolling left" for
+  the frames compared, and the stinger's removal is given (off the left
+  edge of the window as in `walker-view.md`, or after falling through the
+  floor on the frames observed). New runs are in the Evidence; Not
+  covered lists the later knock-off frames, the vertical removal edge and
+  the runs in which the player was hurt.
+
 ## spec-v0.356.0
 
 A metal barrel rolling left meeting the second character, and what a
