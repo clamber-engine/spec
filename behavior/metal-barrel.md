@@ -934,9 +934,13 @@ nearest whole pixel (halves up) instead of up:
   as above.
 
 The stinger is hit on frame **K** = F + 1 when I is from −25 to 34 and A
-is 19 or less. Both ends are included; the stinger is not hit when A is
-20 or more. Stingers from 20 px below the barrel up to A of 19 were
-tried. The barrel is not slowed, lifted or removed by the hit. The
+is from −28 to 19. Both ends are included; the stinger is not hit when A
+is 20 or more, nor when A is −29 or less (29 px or more below the
+barrel, as for rolling right). Stingers from 60 px below the barrel up
+to A of 19 were tried. The knock-off and the barrel's rows after the
+hit were followed only for stingers from 20 px below up (A of −20); for
+A from −28 to −21 only the frame of the hit is measured. The barrel is
+not slowed, lifted or removed by the hit. The
 knock-off is the one above mirrored: on K the stinger doesn't move and
 its `vx` becomes +4 px per frame (to the right, back toward where the
 barrel came from), on K + 1 it doesn't move and its `vy` becomes −6 px
@@ -987,6 +991,27 @@ the first frame the barrel was rolling there.
 - The barrel's `vx` on the frames up to each hit ran from −966/256 to
   −911/256 px per frame (−3.77 to −3.56), 29 to 42 frames after it left
   the hands; at the first frame followed it was −3.77 in all 786 runs.
+- Two grids for stingers well below the barrel (same setup, 61 frames):
+  - 168 runs: heights from 60 to 25 px below in steps of 5 (8), offsets
+    from −44 to 36 in steps of 4 (21); 18 hit, all at 25 px below.
+  - 374 runs: heights from 30 to 20 px below in steps of 1 (11), offsets
+    from −36 to 30 in steps of 2 (34); 288 hit, at every height from 28
+    px below up and none at 29 or 30 px below.
+  In all 542 runs (306 hits) the stinger was hit on frame F + 1 for the
+  first F whose I and A were inside the ranges above (A from −28), and
+  on no other frame: no mismatch in 13 939 frames checked (from the
+  second frame the stinger stood there up to the hit, or to the end of
+  the run; the frames after a hit are not counted). 1 676 of those
+  frames had A of −29 or less with I in range, and none was a hit. The I seen on
+  the frames before the hits ran from −25 to 33. The hits' knock-off and
+  the barrel's rows were not followed beyond the hit frame.
+  Nine of the 374 runs (all at the offset −34, one per height from 28 to
+  20 px below; their hits are among the 288) had I of 35 on the first
+  frame the stinger stood there, and the stinger was hit on the next
+  frame. The rule above does not cover that case (I of 35 on the first
+  frame), and the no-mismatch claim holds only from the second frame on;
+  it is listed in "Not covered". I of 35 on a later frame was not a hit
+  in any run.
 
 ### Rolling left, thrown by the second character
 
@@ -1085,8 +1110,9 @@ its `x` at or below a limit.
   with the first leading, was not measured.
 - Stingers: ones that fly or sway (only a stinger that doesn't move at
   all was tried), what a hit does after the hit frame to a stinger
-  21 to 28 px below the barrel, a barrel rolling left meeting a stinger
-  more than 20 px below it, a barrel in the
+  21 to 28 px below the barrel (for either direction), a stinger below a
+  barrel rolling left that first stands in range with I of 35 (hit one
+  frame later in 9 runs), a barrel in the
   air or on a slope meeting one, a barrel rolling left meeting one that
   flies or sways, a barrel just turned back at a wall, what decides the frame
   a knocked-off stinger is removed (K + 2, or K + 38 to K + 43), whether
