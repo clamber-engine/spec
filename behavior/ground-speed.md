@@ -847,6 +847,41 @@ Left or neither held, with turns, and with Down pressed again 0 to
 12 frames after U: 5,713 runs, every frame as above (742 times Down was
 pressed again between U and U + 9). Crouching on slopes is in `slopes.md`.
 
+#### Turns during a crouch (`title-1`)
+
+For the first character, standing or walking, on flat floor and on
+1-in-4 slopes. D and U are as above.
+
+- **No turn starts** on any frame from D to U + 9, whatever is held. The
+  opposite direction held on those frames does nothing and isn't
+  remembered: if it is released before U + 10, facing stays as it was and
+  no `turn` event is logged.
+- **From U + 10** the usual rule applies ("Facing and turns"): the
+  opposite direction held on U + 10 starts a turn on that frame, and
+  facing changes on T + 4 = U + 14. Held first on a later frame, it
+  starts the turn on that frame.
+- Holding the opposite direction already on D (for instance Down and Left
+  pressed together by a player standing still facing right) is the same:
+  the player slides as the speed rule says, keeps facing right through
+  the crouch, and turns from U + 10.
+
+Example: standing still facing right, Down held on frames 0 to 4 and Left
+held from frame 0 on. The crouch lasts to frame 12 (D + 12), so U is 13.
+Facing stays right on frames 0 to 26; the turn starts on frame 23 (U +
+10), and facing becomes left on frame 27. With Left held on frames 8 to
+10 only, or on frames 18 to 20 only, facing stays right and there is no
+turn. With Left held only from frame 24 on, the turn starts on 24 and facing
+becomes left on 28.
+
+Measured by inputs alone, standing still and walking right at walking
+speed, on flat floor and on a 1-in-4 slope: Down held for 1, 5, 13 and 20
+frames (walking: 1, 13 and 20), Left first held on D or on frames up to
+D + 34, for 1, 3 or 80 frames: all 554 runs follow the rules above.
+
+Not covered: a crouch started while running (Action released on D), the
+second character, Down pressed during a turn already under way, and Down
+pressed again from U to U + 9.
+
 ## In `title-2`
 
 Everything in this section was measured on `title-2` only, with the lead
