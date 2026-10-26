@@ -1725,6 +1725,41 @@ barrel.
   and the critter's rows equal those of the second. The barrel passed
   the critter's `x` in all of them.
 
+### Thrown by the second character
+
+The same holds for a metal barrel thrown right by the second character
+(`second-character.md`, `carrying.md`) and rolling right on the flat
+floor at 4.18 px per frame (1069/256) on the first frame followed, 3.5
+px per frame from about 32 frames later (its speed settling as in "Like
+a barrel"): it passes a critter perched or flying as if it weren't
+there, neither is changed by the other, and the barrel and the second
+character's rows are those of a run with no critter in reach. In the 70
+frames after the first one followed, the barrel was neither removed nor
+turned. This was seen only in arranged situations (see "Not covered").
+
+### Evidence for the second character's throw at a critter
+
+By a setup method a metal barrel was made available to pick up on the
+flat floor in the first level; the second character led (the first one
+following), picked it up, walked right and threw it right. The barrel was seen rolling right at 4.18
+px per frame, 30 px right of the picture's left edge (so that it has
+floor to roll on in the picture), and a critter was seen at its `x`
+plus an offset and at the floor's height plus an offset from that first
+frame. The 71 frames from that one were followed.
+
+- A critter sitting still: offsets from 10 to 148 px ahead in steps of 6
+  (24), heights from 0 to 64 px above the floor in steps of 8 (9); 216
+  runs.
+- A critter flying down towards a point 16 px below where it started,
+  and one flying up towards a point 16 px above: offsets from 10 to 142
+  in steps of 12 (12), heights 0 to 64 in steps of 16 (5); 60 runs each.
+- Each of these 336 runs was compared with two runs from the same frame:
+  one with the critter far above the barrel's path (about 250 px
+  higher), one with the critter as in the run and no barrel in the
+  picture. In all 336 the barrel's and the second character's rows
+  equal those of the first, and the critter's rows equal those of the
+  second. The barrel passed the critter's `x` in all of them.
+
 ## Pictures
 
 What a metal barrel looks like in `title-1`. Each picture is named by its
@@ -1856,9 +1891,12 @@ frame's view.
   own: every critter here was set up at the offsets and heights above,
   some of them places it wouldn't normally have.
 - Critters other than for a barrel rolling right on the flat floor
-  thrown by the first character (a barrel in the air, rolling left,
-  on a slope, just after a turn, thrown by the second character, or
-  a critter that flies in from the top of the picture on its own).
+  thrown by either character (a barrel in the air, rolling left,
+  on a slope, just after a turn, the second character's barrel just after
+  it lands, faster than 4.18 px per frame, or a critter that flies in from the
+  top of the picture on its own). The second character's throw was seen
+  only from a start at the position above, not from where the barrel
+  lands after the throw.
 - The other enemies (not
   walkers, the thrower, balls, stingers and critters), and whether it defeats them or turns
   back from them. The balls for the second character other than those
