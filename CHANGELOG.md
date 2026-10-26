@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.365.0
+
+A metal barrel rolling left against a stinger that sways (spec#76, in
+part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`: a stinger that sways, met by a metal
+  barrel rolling left at 3.5 px per frame on a flat floor, follows the
+  same two-frame rule as for a barrel rolling right, with A from −28 to
+  19 and I from −26 to 34. The knock-off is the same as for a still
+  stinger met by a barrel rolling left. Evidence: 6 561 runs, 4 307
+  ending in a hit; the rule gives 152 929 of the 152 981 frames checked.
+  The 52 other frames (the second frame of a run, at I of 35) are
+  listed in Not covered.
+
 ## spec-v0.364.0
 
 A metal barrel rolling right meeting a critter (spec#76, in part).
