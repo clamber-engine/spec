@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.362.0
+
+The second character's metal barrel against the thrower's balls
+(spec#76, in part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`: balls thrown by the thrower meeting a
+  metal barrel in the second character's hands, carried or thrown. The
+  balls are removed in the same positions as with a plain object; a
+  metal barrel still in the hands or carried is kept where a plain one
+  breaks, and a thrown one acts like the plain one. The second
+  character's rows are unchanged. Other ball situations are in Not
+  covered.
+
 ## spec-v0.361.0
 
 The second character's metal barrel against the ledge thrower (spec#76,
