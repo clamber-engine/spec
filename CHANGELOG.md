@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.374.0
+
+A roll carrying on into running as the ground ends under it (spec#80,
+in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/rolling-off-ledges.md`: new section "Carrying on into running
+  as the ground ends". When a roll that carries on into running leaves
+  the ground on D + 1 to D + 3, it still ends on D + 3 (`roll_end`, state
+  `fall`) instead of going on in the air to the landing. Includes a table
+  by first airborne frame and the landing that follows. Evidence: lead
+  character rolling right, 36 starts at a range of distances from the
+  edge with a setup method; reachability in ordinary play not checked
+  (limitation stated). Not measured: the second character, left rolls
+  and slow rolls.
+
 ## spec-v0.373.0
 
 The landing-ends-roll exception when the roll starts on the first
