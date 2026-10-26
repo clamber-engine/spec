@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.363.0
+
+A metal barrel rolling right against a stinger that sways (spec#76, in
+part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`: a stinger that flies, met by a metal
+  barrel rolling right at 3.5 px per frame on a flat floor, is hit by
+  the same I and A ranges as one that doesn't move, with the barrel's
+  position taken at the end of the frame before the hit frame and the
+  stinger's after its own move on the hit frame. The knock-off is the
+  one for a still stinger, with the stinger's own move on the hit
+  frame added. Evidence: 1 638 runs, 871 hits, no wrong frame in
+  34 229 checked. Other swaying cases are in Not covered.
+
 ## spec-v0.362.0
 
 The second character's metal barrel against the thrower's balls
