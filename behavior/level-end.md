@@ -470,9 +470,6 @@ in the room, and Left and Right held together, the frame a jump is
 pressed and its take-off frame are as above (the second character's
 `vy` on its take-off frame is its own, `second-character.md`).
 
-The first character went on following the lead from `T` on. Its
-movement during the walk-out is not covered.
-
 ### An object in the lead's hands, second character leading
 
 "An object in the lead's hands" holds as it is, with the second
@@ -531,6 +528,35 @@ characters standing left of the marker first:
   it, and frames ending 0.67 px right of it did. With the marker moved
   up or down by 3 or 4 px the lead passed it, and by 5, 6 or 7 px it
   didn't.
+
+### The first character following
+
+The first character, following the second character through the
+walk-out, moves on every frame from `T` to `F0` + 28 as `following.md`
+says for any frame: the walk-out changes nothing for it. The lead's
+positions on those frames (`x` growing by 2 a frame from `T` + 1, rising
+1/8 px a frame, "The walk-out") are the points it follows, so it does
+not move 2 px a frame as the second character does: it catches up when
+it is 28 px or more behind, moves to the lead's side, falls and lands
+where the lead's positions take it, and turns, all as `following.md`
+says. On `T` it can be on the ground or in the air, and following the
+trail or moving to the lead's side.
+
+Measured with the second character leading and the first following, from
+the setup method of "Checks with the second character leading" (both
+characters standing left of the marker), with random inputs that
+included Right alone and with Action, Jump, Up or Down, rolls and
+turning back.
+285 of the 320 runs passed the marker. In 284 of them the rules of
+`following.md` gave the first character's whole-pixel position, its
+mode and its facing on every one of the 17 111 frames from `T` to
+`F0` + 28, with no difference. On `T` it was on the ground in 187 of the
+runs and in the air in 97, following the trail in 251 and moving to the
+lead's side in 33, and 28 px or more behind in 222. Its `x` changed by
+something other than 2 on 4 601 of those frames, so "moves 2 px a frame"
+does not fit. In the 285th run the rules had already given a different
+position for the first character 89 frames before `T`, while it was
+moving to the lead's side; that run is left out.
 
 ## In the first level's room
 
@@ -668,8 +694,6 @@ last frame came 61 frames after `T`.
   first level's end only). Hits and bounces from enemies other than
   walkers, and a hop that lands without a bounce after losing a
   character at the marker.
-- The first character's movement during the walk-out when it follows
-  the second character.
 - Whether the other character can pass the marker, and the other
   character when it is not following (joining, being carried).
 - Enemies other than walkers, and objects other than bunches and an
