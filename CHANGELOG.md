@@ -2,6 +2,18 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.375.0
+
+The stop after a roll next to a left edge (spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/rolling-off-ledges.md`, "The stop after a roll, next to an
+  edge": the stopped-frame rule is now also measured at a left edge,
+  with the directions mirrored (lead character, 420 runs by inputs, no
+  frame contradicting the rule). No rule change; the "Not measured" list
+  no longer includes the left edge.
+
 ## spec-v0.374.0
 
 A roll carrying on into running as the ground ends under it (spec#80,
