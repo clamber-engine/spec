@@ -311,6 +311,15 @@ through the ledge's floor, and was removed 40 or 41 frames after the hit
 (46 for one carried, not yet thrown). In the arrangement measured (below)
 no barrel that had left the hands hit the thrower.
 
+The thrower's balls (`thrower.md`) are removed by the second character's
+metal barrel in exactly the places where a plain object held or thrown
+by the second character removes them, and what happens to the metal
+barrel is as for the first character ("The thrower and its balls"): one
+that is thrown goes on as the plain one does, and one in the hands or
+carried is kept, with `vx` 0 and `vy` −5 px per frame (up), where the
+plain one breaks. What the second character does is the same as with a
+plain object on every frame measured.
+
 ### Evidence for the second character's throw
 
 Measured on the first level with the second character leading, in
@@ -372,6 +381,34 @@ in the same place as a control.
   (all 110 to 50 px left of the thrower, and one at 29 px left
   thrown right) the thrower was not hit and the metal and control rows
   were the same. No barrel that had left the hands hit the thrower.
+- Balls, with the second character leading and holding the object, one
+  frame at a time with a setup method (not reachable in play): 17 grids
+  of 6 561 positions of a ball beside the object (offsets from −80 to
+  80 px in `x` and −75 to 85 px in `y` in steps of 2), 111 537 positions
+  in all, each played with the metal barrel and with a plain object. The
+  ball was one the thrower had thrown. The frames were 7 after a throw to the left and 7 after a
+  throw to the right (1, 10, 20, 22, 37, 38 and 51 frames after Action
+  was let go; the object is still in the hands on the first two and has
+  left them on the others, as it leaves them 18 frames after Action is
+  let go) and 3 with the object carried: standing right after the pick-up,
+  standing 20 frames later, and 8 frames into a jump. The ball turn
+  parts (`ball-contact.md`) were: first in 5 grids, second in 5, third in
+  3 and fourth in 4. In the 6 grids
+  with the object thrown 37, 38 and 51 frames after Action was let go
+  (3 to the left, 3 to the right) the ball was also removed in 14 036
+  positions without the object there (it fell out of the picture or into
+  the floor); those were left out. In the other positions the ball was removed with the object there
+  in 19 288: 8 208 left, 9 401 right and 1 679 carried. The ball
+  was removed in the same positions with the metal barrel and with the
+  plain object in every grid, and the second character's position,
+  speeds and action were the same in both runs in all 111 537. The
+  object was in the hands or carried in 9 479 of the removals (the plain
+  one broke, the metal barrel was kept with `vx` 0 and `vy` −5 px per
+  frame) and thrown in the other 9 809 (the metal barrel's `x`, `y` and
+  speeds equal to the plain object's). The only grid that removed
+  no ball with the object there was the thrown-left one 51 frames after
+  Action was let go. The positions removed were not compared with the
+  table of ranges.
 
 ### Rolling left, thrown by the second character, against walkers
 
@@ -1652,7 +1689,10 @@ frame's view.
   player's frames after a hit were compared with nothing.
 - The other enemies (not
   walkers, the thrower, balls and stingers), and whether it defeats them or turns
-  back from them. The balls for the second character, the thrower
+  back from them. The balls for the second character other than those
+  in the grids above (balls as the thrower throws them in ordinary play
+  while the second character stands or walks by, a ball that was there
+  from the start of the level, the ranges as positions), the thrower
   for the second character other than the ledge arrangement above (no barrel that had
   left the hands reached it there),
   and a metal barrel rolling on the floor or just turned back at a wall meeting
