@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.367.0
+
+A metal barrel thrown right by the second character passing a critter
+(spec#76, in part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`: new subsection "Thrown by the second
+  character" under Critters: a metal barrel thrown right by the second
+  character and rolling right on the flat floor passes a critter,
+  perched or flying, as if it weren't there; neither changes the other,
+  and the barrel is neither removed nor turned in the 70 frames
+  followed. Evidence: 336 arranged runs, each compared with two control
+  runs. Not covered now names the second character's barrel just after
+  it lands, faster barrels, and starts other than the one measured.
+
 ## spec-v0.366.0
 
 The stop's name at the top of the level map (spec#59, in part).
