@@ -265,10 +265,17 @@ In every one of the 2 197 frames from D − 2 to D + 3 that started with
 `vx` above 0 and Right and Action held, the player stood still with `vx`
 0 exactly on those with `vx` at most 1.05859375 and no ground 15 px
 ahead (24 frames, 14 of them from D to D + 3), and moved on the others
-(131 slow frames with ground ahead, 2 042 not slow). Not measured:
-the same stop at a left edge (runs at one left edge stopped earlier than
-the rule gives when a direction was pressed on D + 1 to D + 3; not
-worked out); a direction pressed
+(131 slow frames with ground ahead, 2 042 not slow). The same
+was measured rolling left at the end of a flat stretch whose last
+column with ground is its left end, with the directions mirrored (Right
+held for 4 to 8 frames in the roll, then Left and Action again), in 420
+runs: in each of the 1 730 frames from D − 2 to D + 3 that started with
+`vx` below 0 and Left and Action held, the player stood still with `vx`
+0 exactly on those with `|vx|` at most 1.05859375 and no ground 15 px
+ahead (19 frames, 10 of them from D to D + 3), and moved on the others
+(113 slow frames with ground ahead, 1 598 not slow). Not measured:
+runs at one left edge stopped earlier than the rule gives when a
+direction was pressed on D + 1 to D + 3 (not worked out); a direction pressed
 toward the edge on D + 1 to D + 3 after the roll was reversed away from
 it, where runs also stopped earlier than the rule gives; a roll that carries on into running
 (`roll-input.md`) when its `vx` is that slow on D + 1 to D + 3.
