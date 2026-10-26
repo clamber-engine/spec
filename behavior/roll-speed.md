@@ -123,6 +123,8 @@ Two endings, as in `roll-input.md`.
 - D + 3: the player moves by one more step of the speed rule toward 0,
   but `vx` is 0 at the end of the frame. In a trace, `x` changes on this
   row although `vx` is 0.
+  Next to an edge, a slow stop can end earlier
+  (`rolling-off-ledges.md`, "The stop after a roll, next to an edge").
 - D + 4 to D + 17: `vx` is 0 and the player doesn't move, whatever direction
   or Action is held.
 - D + 18: the speed rule of `ground-speed.md` applies again, starting

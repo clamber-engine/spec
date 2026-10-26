@@ -183,6 +183,48 @@ E − 1 (so E is the first column without):
   (`vx` 1.0390625 at its start), is stopped. The player stays there
   until D.
 
+## The stop after a roll, next to an edge
+
+The test of "Stopping before a ledge" also applies on the frames of a
+roll's stop (`roll-input.md`, "How a roll ends": D to D + 3, while the
+player is still moving). A frame of the stop on the ground is a stopped
+frame when both hold at its start:
+
+- `|vx|` is at most 1.05859375 (271/256), and
+- there is no ground 15 px ahead (as above, in the direction of the
+  roll).
+
+On a stopped frame `vx` becomes 0 and the player doesn't move, so the
+stop ends early. This only matters when the roll was slow at the end,
+for example after the direction opposite to the roll was held for several
+frames, which slows and reverses it (`roll-speed.md`), or when the roll
+stops within 15 px of the edge at a speed close to 1.
+
+Examples, rolling right toward an edge whose last column with ground is
+E − 1, the roll ending in a stop (Action released during the roll), Right
+and Action held on D to D + 3:
+
+- `vx` is 1.0039 on D and floor(x) is E − 15 after D: `vx` is 0 on D + 1
+  and the player doesn't move. With ground 15 px ahead (floor(x) at most
+  E − 16), `vx` would be about 0.88 on D + 1, as the stop's speed rule
+  gives (`roll-speed.md`).
+- `vx` is 1.2421875 on D (not slow), 1.0898 on D + 1 and 0.957 on D + 2,
+  floor(x) = E − 14 from D + 1 on: the player moves on D + 1 and D + 2;
+  D + 3 starts with `vx` 0.957 and is a stopped frame, so the player doesn't
+  make the move that D + 3 has otherwise.
+
+Measured with the lead character on the first level's ground, rolling
+and turning right at the end of a flat stretch, in 420 runs (14 starting
+distances from the edge, Left held for 4 to 8 frames in the roll and then
+Right and Action again, Action released for one frame early in the roll).
+In every one of the 2 197 frames from D − 2 to D + 3 that started with
+`vx` above 0 and Right and Action held, the player stood still with `vx`
+0 exactly on those with `vx` at most 1.05859375 and no ground 15 px
+ahead (24 frames, 14 of them from D to D + 3), and moved on the others
+(131 slow frames with ground ahead, 2 042 not slow). Not measured:
+the same stop at a left edge; a roll that carries on into running
+(`roll-input.md`) when its `vx` is that slow on D + 1 to D + 3.
+
 ## A roll started in the stop after a roll
 
 After a roll that ends in a stop on the ground, the next roll can start
