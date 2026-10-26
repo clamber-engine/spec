@@ -170,7 +170,7 @@ the picture coordinates of "Pictures" ("Where"). Its transparent pixels
 show the backdrop, colour 0 of row 0 of the page's palette set.
 
 The lead, and the name shown at the top of the screen for the stop the
-lead stands at, are drawn over the picture, in front of all of it: no
+lead stands at ("The stop's name"), are drawn over the picture, in front of all of it: no
 part of the picture is drawn over them. The other character is drawn
 the same way: no part of the picture is drawn over it, at the
 distances from the lead measured ("Measurements").
@@ -262,6 +262,118 @@ the lead beside a page edge; no modified copy of the game was used.
   brightness, measured as the sum of the screen's colour channels over
   the new picture's, was `j`/15 to within 0.02 for every frame from `P`
   to `P` + 40 (`j` as above); the new picture was whole from `P` + 32.
+
+## The stop's name
+
+A **name** is drawn at the top of the map's screen, in front of the
+picture, for the stop the lead stands at or is walking to. This section
+says where it is, which names are the same, and which name is on which
+frame. The letters of a name aren't given: the engine draws the stop's
+name in its own text.
+
+**Where.** A name is a line of letters inside rows 16 to 23 of the
+screen (the line's box is 8 rows tall; the letters of 48 stops fill rows
+16 to 23, those of 13 stops rows 16 to 22 because nothing hangs below
+the line, and those of five stops rows 17 to 23). It is centred on the
+screen: the first and last columns of its letters add up to 255 (63 of
+the 66 stops measured; 256 for two and 253 for one). The letters are drawn in
+the palette's brightest colour (white), edged by one darker colour,
+with the sprite layer; the page picture has no letters of its own.
+
+**Which name.** Each stop has one name. Stops with the same name are:
+
+- stop 1 and stop 234;
+- stops 235 and 236;
+- stops 238 to 243;
+- stops 244 to 249;
+- stops 250 to 255.
+
+Every other stop measured has a name of its own (44 stops), so the 66
+stops have 49 different names.
+
+**Which frame.** On a frame on which the lead stands at a stop, the name
+is that stop's. A walk is made of legs ("Walking a path"), and on each
+frame of a leg the name is that of the point the leg ends at. A corner
+has the name of a stop it lies next to (a corner whose record names that
+stop as destination and as next point, `../formats/level-map.md`,
+"Routes"). Corners 112 and 113 lie next to one stop each. The records of
+corners 114 and 115 name both of their stops that way, and which of the
+two gives the name could not be told from the data, so the table gives the
+names as measured in this image:
+
+| Corner | Name of |
+|---|---|
+| 112 | stop 238 |
+| 113 | stop 234 |
+| 114 | stop 12 |
+| 115 | stop 244 |
+
+So in a walk of one leg the name is the destination's from frame 0 of
+the walk, and the departure stop's name is shown up to the frame before
+it. In a walk of two legs, the first leg ends at a corner. If the corner has
+the destination's name, the name changes on frame 0 (stop 22's walk to
+stop 12); if it has the departure's name, the name changes on the first
+frame of the second leg (the walk from 12 to 22). In a walk of three legs, through two
+corners (the walks between stops 234 and 238), the first leg ends at the
+corner next to the departure stop and the second at the corner next to the
+destination, so the name is the departure's on the first leg, the
+destination's from the first frame of the second leg, and the
+destination's on the third. The name changes on no other frame of a walk. The
+frame counts of "Walking a path" are used (the lag frames of "Pages"
+aren't counted), and the picture of a frame is as defined in "Pictures".
+
+When the map appears, the name is that of the stop the lead stands at,
+and it is on every picture that isn't black ("When the map appears"),
+including the first and the dimmed ones. It is part of the
+picture, so it is black where the picture is black ("A page change").
+
+### Example
+
+Synthetic. Stop A (name `NA`) and stop B (name `NB`) are joined by a path
+of two legs through a corner that lies next to B (so it has the name `NB`),
+and each walk's first leg takes 65 frames (frames 0 to 64 of the walk). The lead
+stands at A and walks to B with Right pressed on frame 500. Frames up to 499
+show `NA`. Frame 500 is frame 0 of the walk: it and every frame after it show
+`NB`, up to the last frame of the walk and while the lead stands at B. The lead then walks back
+from B to A, pressed on frame 800. The frames up to 864 show `NB` (the first
+leg ends at the corner, which is named `NB`), and from 865, the first frame of the
+second leg, the name is `NA`.
+
+### Measurements
+
+Measured on screen in the first level's map, with the sprite layer alone
+(a setup method was used for the start of each run; the lead stood at the
+stop with every path to a neighbour open, and no modified copy of the game
+was used). Frames are counted from the first frame of the run.
+
+- The name of each of the 66 stops, with the lead standing at the stop, 120
+  frames into the run. The name's letters were taken to be the pixels of
+  the brightest colour in rows 12 to 28. The letters of 48 stops spanned
+  rows 16 to 23, those of 13 stops rows 16 to 22 and those of five stops
+  rows 17 to 23. The pictures of the letters were the same for stops 1 and
+  234, 235 and 236, and the three groups of six listed above, and differed
+  for all other pairs (49 different names). The letters' first and last
+  columns added up to 255 for 63 stops, 256 for two and 253 for one.
+- Every walk the map's data gives, 128 in all (every stop with each
+  direction that has a neighbour), 130 frames into the run, with
+  the direction pressed for 6 frames and the run going on until the lead
+  stood still for 20 frames. On each of 11 350 pictures (the one for the
+  frame before the press and those for frame 0 to the frame before the last of each walk; 56 more, in the 14 walks
+  over a page edge, were black), the name on screen was the one the rule gives: 0
+  differing. The six walks through a corner changed names where the rule says. Four
+  had two legs (stops 22 and 12 both ways, 191 and 244 both ways): 22 to 12
+  and 191 to 244 changed on frame 0, 12 to 22 and 244 to 191 on the first
+  frame of the second leg. Two had three legs (234 to 238 and 238 to 234,
+  through two corners): both changed once, on the first frame of the second
+  leg. The first leg ended on frame 63 in the walk from 12 to 22 and on
+  frame 64 in the other five, so the second leg's first frame was 64 in one
+  walk and 65 in the others, as "Walking a path" gives.
+- The first level's stop in a new game, and the walk to stop 12 that
+  follows a first finish ("After finishing a level"), each played from a
+  saved state (a setup method was used for the start) with no change made during the run: the name was stop 22's
+  on every picture that wasn't black, and stop 12's from the first frame
+  of the walk. With the second character on the map, the walk from stop 22
+  (a setup method was used for the start; the path to stop 12 was open) showed the same names on the same frames.
 
 ## When the map appears
 
@@ -1124,10 +1236,15 @@ lead stayed at the link point), as "Pressing at a stop" says.
 
 ## Not covered
 
-- What the stop's name looks like and how it is chosen, and anything
-  else drawn over the picture besides the two characters and the name
-  (for example marks along open paths: none was seen in the
-  measured maps).
+- Which stop gives a corner its name when its record names both stops
+  as destination and next point (as the records of corners 114 and 115
+  do), for an image other than this one; the letters of the names, and anything else drawn over the picture
+  besides the two characters and the name (for example marks along
+  open paths: none was seen in the measured maps). The name where a
+  character's picture is in the same rows (a stop high on the map, or
+  a walk past it), and the name in ordinary play for walks other than
+  the first level's stop 22 to 12: the 128 walks of "The stop's name"
+  were started from places set up by a setup method.
 - Which of the two characters is in front where they overlap at other
   places than the first level's.
 - The page change while the other character is on the previous page,
