@@ -2,6 +2,27 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.371.0
+
+Turns during a crouch, and the stopped-frame test next to an edge during
+the stop after a roll (spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/ground-speed.md`: new subsection "Turns during a crouch"
+  (`title-1`, first character, standing or walking, flat floor and 1-in-4
+  slopes): no turn starts from `D` to `U` + 9 and the opposite direction
+  held then isn't remembered; from `U` + 10 the usual turn rule applies.
+  Worked example. Evidence: 554 runs by inputs alone. Not covered list
+  added.
+- `behavior/rolling-off-ledges.md`: new section "The stop after a roll,
+  next to an edge": the stopped-frame test of "Stopping before a ledge"
+  also applies on the frames of a roll's stop (`D` to `D` + 3), so a slow
+  stop next to an edge ends early. Two worked examples; evidence from 420
+  runs. Not measured: left edges, a roll that carries on into running.
+- `behavior/roll-speed.md`: pointer from the stop's `D` + 3 item to the
+  new section.
+
 ## spec-v0.370.0
 
 A Jump or Action press during a turn on the ground (spec#80, in part).
