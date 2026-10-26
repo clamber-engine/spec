@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.368.0
+
+The first character following the second character through the
+walk-out at a level's end (spec#19, in part).
+
+Answers part of clamber-engine/spec#19.
+
+- `behavior/level-end.md`: new subsection "The first character
+  following" under "The second character leading": the follower moves
+  on every frame from `T` to `F0` + 28 as `following.md` says, following
+  the lead's walk-out positions, so it does not move 2 px a frame.
+  Evidence: 284 random-input runs, 17 111 frames, no difference (one run
+  left out and said so). The matching Not covered items are removed.
+
 ## spec-v0.367.0
 
 A metal barrel thrown right by the second character passing a critter
