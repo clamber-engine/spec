@@ -123,7 +123,9 @@ has no effect on speed: the speed rule above applies on every frame of it.
   opposite to facing starts a turn on that same frame (T = the first frame
   it is held). Holding it for one frame is enough: the turn completes and
   facing changes on T + 4 even if nothing is held afterwards, or if the
-  original direction is held for a frame during the turn.
+  original direction is held for a frame during the turn. (A Jump or
+  Action press during the turn is the exception: see "A Jump or Action
+  press during a turn" below.)
 - **At the end of a turn**, if the direction opposite to the new facing is
   held on T + 8, a new turn starts on T + 8. Example: walking right, Left
   held for 5 frames and then Right: facing becomes left 4 frames into the
@@ -246,6 +248,59 @@ only if the turn check changed nothing.
   player moves even a little, so v isn't 0, is not blocked. Holding the
   opposite direction still starts a turn, and the turn follows the usual
   rules.
+
+#### A Jump or Action press during a turn
+
+This applies to the first character, standing, walking or running (for
+running, Jump only: Action is already held), on flat floor and on 1-in-4
+slopes. T is the first frame of the turn, as above, and P is the frame on
+which Jump or Action is first held (a press, not a button held through).
+
+- **P from T to T + 4:** the turn's facing change on T + 4 doesn't
+  happen, whatever the direction does afterwards. What decides facing is
+  the frame after the press, P + 1: if the direction opposite to the
+  facing is held then, facing changes on P + 1 (the row carries `turn`),
+  which for Jump is the frame of `jump_start`. If it isn't held on P + 1, facing stays as it was. The turn is not
+  started again.
+- **P from T + 5:** facing has already changed on T + 4 and nothing
+  differs from a press made with no turn.
+- Whether the opposite direction was released after T, kept held, or
+  held only on T, makes no difference except through its state on P + 1.
+  The same holds for a turn that started while walking at a turn check
+  (T as given by the stride cycle) and one that started from standing.
+
+Worked rows (standing, facing right, Left held on the frames listed, the
+press on the frame listed; frames count from T = 0):
+
+| Left held | Press | Facing becomes left on | `jump_start` |
+|---|---|---|---|
+| 0 | none | 4 | none |
+| 0 | Jump on 2 | never | 3 |
+| 0 | Jump on 5 | 4 | 6 |
+| 0 to 2 | Jump on 1 | 2 | 2 |
+| 0 to 2 | Jump on 2 | never | 3 |
+| 0 to 8 | Jump on 2 | 3 | 3 |
+| 0 to 8 | Jump on 4 | 5 | 5 |
+| 0 to 2 | Action on 2 | never | none |
+| 0 to 8 | Action on 3 | 4 | none |
+
+In the Action rows an Action press starts a roll on P itself (the player's
+state is roll from P), with facing as in the column; the roll rules are in
+`roll-input.md`.
+
+Evidence, all by inputs (nothing was read from inside the program): 240
+runs each starting from standing, half on flat floor and half on a 1-in-4
+slope, with Left held for 1, 3 or 9 frames from T and Jump or Action
+pressed on T to T + 9, either briefly or held (a further 120 runs with Down
+pressed are not part of the rule); 192 runs each starting with walking
+(six different turn starts, Left kept or released after T, Jump or Action
+on T − 1 to T + 6); and 96 runs each starting with running, with Jump only. The rule above
+held in all of them (presses on T − 1 are not part of it).
+
+Not covered: the second character; Action pressed during a turn from
+running; presses on T − 1 or earlier; a press during a turn that starts
+in the air or during the frames after a landing, a roll or a crouch;
+other buttons.
 
 #### The second character's stride cycle
 
