@@ -1338,6 +1338,58 @@ plus an offset, on the first frame the barrel was rolling there.
   hit (41 pairs of runs with the stinger 19 and 20 px above, 24 of them
   hits).
 
+### A stinger that sways
+
+A stinger that flies (`stinger.md`, "Moving") is hit by a metal barrel
+rolling right at 3.5 px per frame on a flat floor by the same ranges as
+one that doesn't move: I from −28 to 32 and A from −28 to 19, both ends
+included. The two positions are taken from different frames, as the
+stinger moves on the hit frame itself:
+
+- the barrel's `x` and `y` at the end of the frame before the hit frame K;
+- the stinger's `x` and `y` at the end of K, after its own move on K.
+
+I and A are formed from them as above (the barrel's `x` rounded up and
+the stinger's rounded down; `y` rounded up for both). For a stinger that
+doesn't move the two frames give the same stinger position, so this is
+the rule above with F = K − 1.
+
+The knock-off is the one above with a stinger's own flight added on K:
+on K the stinger makes its own move of that frame (and no other),
+and its `vx` becomes −4 px per frame; on K + 1 it doesn't move and its
+`vy` becomes −6 px per frame; from K + 2 it is the same flight, whatever
+the stinger's sway was (none of it is kept). Positions relative to its
+position on K were the same in every run, from K + 1 as far as followed.
+
+#### Evidence for a stinger that sways
+
+- 1 638 runs: the stinger's start at 40 px behind to 90 px ahead of the
+  barrel's `x` on the first frame followed (every 10 px, 14 values),
+  30 px below to 50 px above the floor (every 10 px, 9 values), for 13
+  of the 14 settings of `stinger.md` (all but the one that doesn't move).
+  The first frame followed is the stinger's first, at its start; the barrel
+  was rolling right at 3.5 px per frame on the flat floor at `x` of 261
+  (the same in every run). A run ends 60 frames later or when the player is hurt.
+- The stinger was hit on the frame the rule gives, and on no other, in
+  all of 34 229 frames checked. A run is checked from its second frame
+  (the first after the stinger's start, which can already be a hit: 312
+  runs were hit on it) up to its end, which was the first of: the hit
+  (871 runs), the player being hurt (111 runs, before any hit), the
+  stinger being gone (120 runs) and the barrel being removed
+  after it rolled out past the right of the picture (536 runs, all on
+  the 44th frame after the first frame followed, counting that one as
+  the 0th: the barrel was last seen at `x` 411.5 and the picture had not
+  scrolled). I seen in the hits: −28 to 32; A:
+  −28 to 19. The barrel rolled right at 3.5 px per frame on every frame
+  checked. Frames after the player was hurt are not checked: the picture
+  stood still from then (the barrel's `x` did not change). Frames after the barrel was removed are not checked
+  either: no barrel was there. Taking the stinger's position at the end of the
+  frame before K, as for a stinger that doesn't move, gave many wrong
+  frames.
+- In all 871 hit runs the stinger did not move from K to K + 1 and
+  its rows from K + 1 were the same relative to K: 754 followed for 30
+  frames, 117 gone on K + 2.
+
 ### Rolling left
 
 A metal barrel rolling left on a flat floor, 29 to 42 frames after it
@@ -1661,9 +1713,11 @@ frame's view.
   both falling through the ground, so nothing is claimed. Riding
   the barrel with both characters on the way, or the second character
   with the first leading, was not measured.
-- Stingers: ones that fly or sway (only a stinger that doesn't move at
-  all was tried), a stinger below a
-  barrel rolling left that first stands in range with I of 35 (hit one
+- Stingers: ones that sway, other than with the barrel rolling right on
+  the flat floor at 3.5 px per frame (a barrel rolling left, in the air,
+  on a slope, just after a turn, thrown by the second character, and a
+  player hurt by a swaying stinger after the hit),
+  a stinger below a barrel rolling left that first stands in range with I of 35 (hit one
   frame later in 9 runs), a barrel in the
   air or on a slope meeting one, a barrel rolling left meeting one that
   flies or sways, a barrel just turned back at a wall, what decides the frame
