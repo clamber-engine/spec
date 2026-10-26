@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.364.0
+
+A metal barrel rolling right meeting a critter (spec#76, in part).
+
+Answers part of clamber-engine/spec#76.
+
+- `behavior/metal-barrel.md`: a metal barrel rolling right at 3.5 px
+  per frame on a flat floor passes a critter, sitting still or flying,
+  as if it weren't there: neither is changed by the other over the 60
+  frames followed. Evidence: 368 arranged runs, each compared with two
+  runs (critter far from the barrel's path; no barrel). Later frames,
+  critters arriving on their own and other barrel cases are in Not
+  covered.
+
 ## spec-v0.363.0
 
 A metal barrel rolling right against a stinger that sways (spec#76, in
