@@ -76,8 +76,19 @@ the roll ends as if it had started on the frame after landing:
   ground (**G = L + 30**): then **D = G**. The landing frame is already
   the first frame after the roll, and the roll's last frame is G − 1,
   in the air. A fall one frame shorter or longer (G = L + 29 or
-  G = L + 31) ends at G + 30 as above. This is the same with and without
-  a hover, and on the ledges with a face and without.
+  G = L + 31) ends at G + 30 as above. Apart from the case L = S below,
+  this is the same with and without a hover, and on the ledges with a
+  face and without.
+- **When the roll starts on L itself (L = S)**, the exception is one
+  frame earlier: it is G = L + 29 that gives D = G, and a fall of
+  exactly 30 frames ends at G + 30 like any other. A setup method was
+  used to give falls of 25 to 35 frames. For L = S the roll ended on
+  landing for the 29-frame fall only; for L = S + 1 to S + 7 for the
+  30-frame fall only, with Action held and with Action tapped, on two
+  ledges. The L = S case was not reached by inputs alone in ordinary
+  play, so it holds as measured with that setup. This was measured
+  rolling right with the lead character in `title-1`; for the second
+  character and for rolls going left the case L = S wasn't measured.
 - Apart from that exception the roll can't end in the air: a fall
   longer than a whole roll (up to 50 airborne frames were measured)
   still ends at G + 30.
