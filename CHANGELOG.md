@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.373.0
+
+The landing-ends-roll exception when the roll starts on the first
+airborne frame (spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/rolling-off-ledges.md`: when the roll starts on the frame the
+  player leaves the ground (L = S), the roll ends on landing for a fall
+  of exactly 29 frames instead of 30; a 30-frame fall then ends at
+  G + 30 like any other. The "same with and without a hover" sentence is
+  qualified accordingly. Evidence: falls of 25 to 35 frames with a setup
+  method, Action held and tapped, on two ledges, lead character rolling
+  right; not reached by inputs alone in ordinary play (limitation
+  stated). Not measured: the second character and rolls going left.
+
 ## spec-v0.372.0
 
 Facing during the stop after a roll (spec#80, in part).
