@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.366.0
+
+The stop's name at the top of the level map (spec#59, in part).
+
+Answers part of clamber-engine/spec#59.
+
+- `behavior/level-map.md`: new section "The stop's name": where the
+  name is drawn (rows 16 to 23, centred), which stops share a name (66
+  stops, 49 names), and which name is on which frame of a walk of one,
+  two or three legs, including which stop gives a corner its name. The
+  letters aren't given; the engine draws the name in its own text.
+  Evidence: all 128 walks of the map's data, 11 350 pictures, 0
+  differing. Which stop names a corner whose record names both stops,
+  for other images, is in Not covered.
+
 ## spec-v0.365.0
 
 A metal barrel rolling left against a stinger that sways (spec#76, in
