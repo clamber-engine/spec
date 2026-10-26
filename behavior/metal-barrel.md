@@ -1495,6 +1495,76 @@ the first frame the barrel was rolling there.
   60 px below (never hit) in all 136, and the player was not hurt in
   any.
 
+### Rolling left, a stinger that sways
+
+A stinger that flies (`stinger.md`, "Moving") is hit by a metal barrel
+rolling left on a flat floor (as in "Rolling left" above: 29 to 42
+frames after it left the hands, at 3.5 to 3.77 px per frame) with the
+two frames of "A stinger that sways" and the roundings of "Rolling
+left":
+
+- the barrel's `x` (rounded to the nearest whole pixel, halves up) and
+  `y` (rounded up) at the end of the frame before the hit frame K;
+- the stinger's `x` (rounded down) and `y` (rounded up) at the end of K,
+  after its own move on K.
+
+The stinger is hit on K when I is from −26 to 34 and A is from −28 to
+19, both ends included. A has the same ends as for a stinger that
+doesn't move; I begins one pixel lower (−26, where a stinger that
+doesn't move is not hit at −26).
+
+The knock-off is the one for a stinger that doesn't move, rolling left
+(on K the stinger makes its own move of that frame and its `vx` becomes
++4 px per frame, to the right; on K + 1 it doesn't move and its `vy`
+becomes −6 px per frame; from K + 2 the same flight, 3.75 px right and
+5.5625 px up on K + 2), whatever the stinger's sway was.
+
+The stinger was gone on K + 2 in 3 222 of the 4 307 hit runs below, and
+on K + 37 to K + 43 in 1 008 (K + 37: 147, K + 38, K + 39, K + 41 and
+K + 42: 104 each, K + 43: 445); the other 77 ended first. What decides
+which was not found.
+
+#### Evidence for rolling left, a stinger that sways
+
+By a setup method: the barrel thrown left from `x` 540 on the flat
+floor while the player keeps walking left, as for rolling left. The
+first frame followed is the stinger's first, with the stinger at the
+barrel's `x` plus an offset and at the floor's height plus an offset. On
+that frame the barrel was at `x` 336.5, moving left at 3.77 px per frame
+(slowing to 3.5 px per frame within 23 frames), in every run. A run
+ends 60 frames later or when the player is hurt. The 13 settings of
+`stinger.md` other than the one that doesn't move were used.
+
+- 6 561 runs, 4 307 of them hits:
+  - 2 925 runs: offsets from −80 to 40 in steps of 5 (25), heights from
+    30 px below to 50 px above in steps of 10 (9), 13 settings.
+  - 3 042 runs: offsets from −40 to −15 in steps of 1 (26), the same
+    heights, 13 settings.
+  - 594 runs for the edges of A: offsets from −20 to 20 in steps of 5
+    (9), heights from 30 to 26 px below and from 17 to 22 px above in
+    steps of 1 (11), 6 settings.
+- The stinger was hit on the frame the rule gives, and on no other, in
+  152 929 of the 152 981 frames checked, counting from each run's
+  second frame and stopping at the hit, or before the frame the player
+  was hurt. The 52 frames the rule did not give were all the second
+  frame of a run, at I of 35, with the start 34 px ahead of the barrel (to its left, in its path) and
+  at 20 px below to 10 px above, 13 settings: the stinger was hit. They
+  are left out of the rule above and listed in "Not covered". Of the
+  6 561 runs, 4 307 ended in a hit, 420 with the player hurt and no hit
+  (on the 16th to the 61st frame followed), and 1 834 went the 60 frames
+  with neither. The barrel was still there in every one of them up to
+  the frame the player was hurt; frames after that are not checked. Seen
+  in the hits: I from −26 to 34; at I of −27, 11 frames were not hits,
+  and at 35, 591 were not (besides the 52 above). At A of −28, 186
+  frames were hits and at −29, 261 were not; at 19, 807 were hits and at
+  20, 1 603 were not.
+- In all 4 307 hit runs the stinger did not move from K to K + 1 and its
+  rows from K + 1 were the same relative to K, as far as followed
+  (30 rows, or until it was gone).
+- The same setup with a stinger that doesn't move (729 runs, offsets
+  from −40 to 40 in steps of 1, heights from 30 px below to 50 px above
+  in steps of 10) gave I from −25 to 34, as in "Rolling left".
+
 ### Rolling left, thrown by the second character
 
 A metal barrel thrown left by the second character (it leaves the hands
@@ -1750,14 +1820,17 @@ frame's view.
   both falling through the ground, so nothing is claimed. Riding
   the barrel with both characters on the way, or the second character
   with the first leading, was not measured.
-- Stingers: ones that sway, other than with the barrel rolling right on
-  the flat floor at 3.5 px per frame (a barrel rolling left, in the air,
-  on a slope, just after a turn, thrown by the second character, and a
-  player hurt by a swaying stinger after the hit),
+- Stingers: ones that sway, other than with the barrel rolling on the
+  flat floor, right at 3.5 px per frame or left at 3.5 to 3.77 px per
+  frame (not covered: a barrel in the air or on a slope, just after a
+  turn, or thrown by the second character, meeting a stinger that
+  sways, and a player hurt by a swaying stinger after the hit),
   a stinger below a barrel rolling left that first stands in range with I of 35 (hit one
-  frame later in 9 runs), a barrel in the
-  air or on a slope meeting one, a barrel rolling left meeting one that
-  flies or sways, a barrel just turned back at a wall, what decides the frame
+  frame later in 9 runs, and, for a stinger that sways, hit on the
+  second frame of a run in all 52 runs with the start 34 px ahead of the
+  barrel), a barrel in the
+  air or on a slope meeting a stinger that flies, a barrel just turned
+  back at a wall, what decides the frame
   a knocked-off stinger is removed (K + 2, or K + 37 to K + 43), whether
   it can come back, and whether it can hurt a player in poses other than
   standing on the floor facing left, and at an A other than 5.
