@@ -125,6 +125,39 @@ ground, after each frame:
 
 The player lands 40 frames after L, so D = G + 30.
 
+## Carrying on into running as the ground ends
+
+When Action was held on every frame from S to D and the roll is not a
+fast roll (`roll-input.md`), the roll's last three frames, D to D + 2,
+are still `roll` and `roll_end` is on D + 3. If the ground ends under the
+player during that time, with L (the first airborne frame) from D + 1
+to D + 3, the roll doesn't go on in the air to the landing: the carry-on
+still ends on D + 3 as on the ground, and the player is falling from
+then on.
+
+| L | D to D + 2 | D + 3 |
+|---|---|---|
+| D or earlier | `roll`, in the air from L, ending as in "When the roll ends" | same rule |
+| D + 1 to D + 3 | `roll`, in the air from L | `roll_end`, state `fall` |
+| D + 4 or later | `roll` on the ground | `roll_end`, state `run`; `fall` from L |
+
+With L = D + 3 the frame carries both `leave_ground` and `roll_end`, and
+its state is `fall`. Speed and vertical motion don't change at D + 3:
+`vx` goes on as in the roll and the player falls as in a walk-off fall
+(`walk-off.md`). The landing is an ordinary landing: with Action still
+held, the landing frame is `run` and no roll starts (`roll-input.md`,
+"In the air").
+
+Measured with the lead character rolling right, Action pressed on S
+(8 frames after Right) and held, off the end of ground about 170 px above
+the floor. A setup method was used to start the player at a range of
+distances from the edge, so that L went from D − 8 to D + 4 (36 starts,
+two to three for each L): L ≤ D as described by "When the roll ends",
+L = D + 1, D + 2 and D + 3 as above, L = D + 4 with a running frame on
+D + 3 and the fall after it. Whether every one of these distances can be
+reached by inputs alone in ordinary play was not checked, and `vx` after
+D + 3 while still in the air was not measured here. The second character, rolls to the left and slow rolls were not measured.
+
 ## Stopping before a ledge
 
 Where the ground simply ends, a roll that is moving slowly stops before
