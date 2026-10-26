@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.369.0
+
+The first character following a second character who carries an object
+through the walk-out at a level's end (spec#19, in part).
+
+Answers part of clamber-engine/spec#19.
+
+- `behavior/level-end.md`: new subsection "With an object in the lead's
+  hands" under "The first character following": what the second
+  character carries, and whether it lets go or throws, changes nothing
+  for the follower, which follows as `following.md` says from `T` to
+  `F0` + 28. Evidence: 104 runs, 5 461 frames, no difference (one run
+  left out and said so). The matching Not covered item is narrowed.
+
 ## spec-v0.368.0
 
 The first character following the second character through the
