@@ -558,6 +558,24 @@ does not fit. In the 285th run the rules had already given a different
 position for the first character 89 frames before `T`, while it was
 moving to the lead's side; that run is left out.
 
+#### With an object in the lead's hands
+
+What the second character carries changes nothing for the first
+character: it follows the lead's positions as above on every frame from
+`T` to `F0` + 28, whether the object is still in the lead's hands at the
+end of frame `n` or has been let go, and whether the lead throws or not.
+
+Measured in the 105 runs of "An object in the lead's hands, second
+character leading" (a `barrel` or a `holder` in the second character's
+hands, the first character following), replayed with the first
+character's positions recorded. In 104 of them the rules of
+`following.md` gave its whole-pixel position, mode and facing on every one
+of the 5 461 frames from `T` to the end of the fade, with no difference;
+its `x` changed by something other than 2 on 3 023 of those frames. In the
+105th run the rules differed 12 frames after the run began, long before
+`T`, while the first character was still catching up to the lead; that run
+is left out.
+
 ## In the first level's room
 
 The room the first level's upper exit leads to (`exits.md`) has an end
@@ -706,9 +724,7 @@ last frame came 61 frames after `T`.
 - An object in the second character's hands carried to the marker by
   inputs alone, from where it is found (all runs here began from a
   setup method).
-- An object in the other character's hands (the lead not carrying), and
-  the first character's movement while the second leads with an object
-  in the lead's hands.
+- An object in the other character's hands (the lead not carrying).
 - A lead that is already 240 px or more right of the picture's left
   edge on `T`, other than in the room ("In the first level's room"). In
   the area behind the first wall exit this wasn't seen.
