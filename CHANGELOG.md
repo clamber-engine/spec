@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.370.0
+
+A Jump or Action press during a turn on the ground (spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/ground-speed.md`: new subsection "A Jump or Action press
+  during a turn" (`title-1`, first character, standing, walking or
+  running, flat floor and 1-in-4 slopes): a press on `T` to `T` + 4
+  cancels the turn's facing change on `T` + 4; facing then follows the
+  opposite direction's state on `P` + 1. A press from `T` + 5 changes
+  nothing. Worked rows, a note that the Action rows start a roll on `P`,
+  and a pointer from the turn rules above. Evidence: 528 runs by inputs
+  alone. Not covered list added.
+
 ## spec-v0.369.0
 
 The first character following a second character who carries an object
