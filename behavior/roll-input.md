@@ -112,8 +112,30 @@ Inputs other than a direction already act on D + 17: a roll can start
 on D + 17 (next section). Its speed stays 0 on that frame and the player
 first moves on D + 18 (`roll-speed.md`).
 
-While the speed is 0 in the stop, facing turns to a direction on the
-frame it is pressed (measured for presses on D + 14 to D + 17).
+Facing turns to a direction on the frame it is pressed, on every
+frame of the stop from D + 1 to D + 17, including D + 1 to D + 3 while
+the player is still sliding (the trace's `turn` event goes on that
+frame; the slide goes on as above). A direction that was already held
+on D or earlier has turned the roll on the frame it was pressed
+(`roll-speed.md`), so it is not a new press here. A direction pressed
+that is the one the player already faces turns nothing.
+
+Example: a normal roll right, Action released during it, nothing
+held, then Left pressed alone. Pressed on D + 1, D + 2 or D + 3, facing
+turns left on that frame, with `vx` still 2.57, 2.25 and 0 on D + 1,
+D + 2 and D + 3 (the slide is unchanged). Pressed on D + 4 to D + 17 it
+turns on the press frame as well. Pressed on D + 18 or later the turn is
+the standing turn of `ground-speed.md`, which starts on that frame and
+changes facing 4 frames later.
+
+Measured with the lead character on flat ground, the direction pressed
+alone (or with Action) after Action was released during the roll: a
+normal roll right with presses on every frame from D + 1 to D + 17, a
+slow roll right and a normal roll right with Action held with the
+press, D + 1 to D + 11, and a normal roll left, D + 1 to D + 8 (47
+runs, all turning on the press frame), and the roll's own direction
+pressed on D + 1 to D + 13, which turned nothing. Not measured: fast
+rolls, the second character, a Jump or Down pressed with the direction.
 
 The stop is not part of the roll: while the speed is not 0 the trace
 state is `walk` (or `run` if Action is held), then `idle`. A jump can start during the

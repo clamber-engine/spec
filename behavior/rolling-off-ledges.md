@@ -222,7 +222,11 @@ In every one of the 2 197 frames from D − 2 to D + 3 that started with
 0 exactly on those with `vx` at most 1.05859375 and no ground 15 px
 ahead (24 frames, 14 of them from D to D + 3), and moved on the others
 (131 slow frames with ground ahead, 2 042 not slow). Not measured:
-the same stop at a left edge; a roll that carries on into running
+the same stop at a left edge (runs at one left edge stopped earlier than
+the rule gives when a direction was pressed on D + 1 to D + 3; not
+worked out); a direction pressed
+toward the edge on D + 1 to D + 3 after the roll was reversed away from
+it, where runs also stopped earlier than the rule gives; a roll that carries on into running
 (`roll-input.md`) when its `vx` is that slow on D + 1 to D + 3.
 
 ## A roll started in the stop after a roll
