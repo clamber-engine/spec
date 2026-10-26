@@ -7,9 +7,9 @@ The metal barrel is the object a `hidden-metal-barrel` leaves behind
 This file says what it does once it is thrown: how it flies, lands and
 rolls, what it does at a wall, that it defeats walkers and stingers,
 and what it does with the two characters (passing through, catching and
-carrying them) and to the thrower and its balls. The other things a
-thrown object can meet (other enemies) are not covered here; see "Not
-covered".
+carrying them), to the thrower and its balls, and that it passes
+critters. The other things a thrown object can meet (other enemies)
+are not covered here; see "Not covered".
 
 Frames are logic frames at 60 Hz, numbered as in a trace. `x`, `y`, `vx`
 and `vy` are as in a trace: right and down are positive, speeds in px
@@ -1618,6 +1618,43 @@ its `x` at or below a limit.
   and 170 (the 198 edge runs, all hit, at the other limits, were not
   compared this way; the 1 052 include runs hit after the barrel's turn).
 
+## Critters
+
+A metal barrel rolling right at 3.5 px per frame on a flat floor passes
+a critter (`critter.md`) as if it weren't there, as `critter.md` says
+for a thrown barrel: neither of them is changed by the other. In the
+60 frames followed, the barrel keeps its `x`, `y`, speeds and its
+removal as in "Like a barrel", and the critter's perching, flying and
+fluttering go on as they do with no barrel in the picture. This was
+seen for a critter sitting still and for one flying, at the heights and
+distances in the ranges below, including the frames on which they
+overlap. It was seen only in arranged situations (see "Not covered").
+
+### Evidence for critters
+
+The barrel was thrown left at the 64 px step, turned back by it and
+seen rolling right on the flat floor at `x` of 260 or more (as in
+"Rolling right on the flat floor"). A critter was seen at the barrel's
+`x` plus an offset and at the floor's height plus an offset from the
+first frame the barrel was rolling there, and the barrel was followed
+for 60 frames. The first character stood about 100 px behind the
+barrel.
+
+- A critter sitting still (perched): offsets from 20 to 110 px ahead in
+  steps of 6 (16), heights from 0 to 64 px above the floor in steps of
+  8 (9); 144 runs.
+- A critter flying down towards a point 16 px below where it started,
+  and one flying up towards a point 16 px above: offsets as above,
+  heights from 16 to 64 px above the floor in steps of 8 (7); 112 runs
+  each.
+- Each of these 368 runs was compared with two runs from the same
+  frame. In the first the critter was far above the barrel's path (about
+  250 px higher, nowhere near it); in the second the critter was where
+  it was in the run but no barrel was in the picture. In all 368 the
+  barrel's rows and the first character's rows equal those of the first,
+  and the critter's rows equal those of the second. The barrel passed
+  the critter's `x` in all of them.
+
 ## Pictures
 
 What a metal barrel looks like in `title-1`. Each picture is named by its
@@ -1741,8 +1778,16 @@ frame's view.
 - A walker knocked off by a barrel rolling right meeting the player: in
   4 runs it hurt the player on K + 1 and the game stood still; the
   player's frames after a hit were compared with nothing.
+- Critters beyond the 60 frames followed (a later perch, flight or
+  leaving), and critters that came into the picture and flew on their
+  own: every critter here was set up at the offsets and heights above,
+  some of them places it wouldn't normally have.
+- Critters other than for a barrel rolling right on the flat floor
+  thrown by the first character (a barrel in the air, rolling left,
+  on a slope, just after a turn, thrown by the second character, or
+  a critter that flies in from the top of the picture on its own).
 - The other enemies (not
-  walkers, the thrower, balls and stingers), and whether it defeats them or turns
+  walkers, the thrower, balls, stingers and critters), and whether it defeats them or turns
   back from them. The balls for the second character other than those
   in the grids above (balls as the thrower throws them in ordinary play
   while the second character stands or walks by, a ball that was there
