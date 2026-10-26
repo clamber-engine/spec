@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.372.0
+
+Facing during the stop after a roll (spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/roll-input.md`: in the stop after a roll, a direction turns
+  facing on the frame it is pressed on every frame from `D` + 1 to
+  `D` + 17, including `D` + 1 to `D` + 3 while the player is still
+  sliding (the slide is unchanged); pressing the direction already faced
+  turns nothing; from `D` + 18 the standing turn applies. Worked example.
+  Evidence: 47 runs plus 13 controls by inputs (first character). Not
+  measured: fast rolls, the second character, Jump or Down with the
+  direction.
+- `behavior/rolling-off-ledges.md`: two Not measured notes for the stop
+  next to an edge (a left edge, and a direction pressed toward the edge
+  on `D` + 1 to `D` + 3 after the roll was reversed away from it).
+
 ## spec-v0.371.0
 
 Turns during a crouch, and the stopped-frame test next to an edge during
