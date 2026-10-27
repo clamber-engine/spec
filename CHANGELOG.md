@@ -2,6 +2,16 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.388.2
+
+Vectors: the carried object in `valid-objects` (spec#87).
+
+Answers clamber-engine/spec#87.
+
+- `vectors/scenario-v2/valid-objects.scn`: `mode: carrying` now has
+  `with: barrel` instead of `with: crate`, which `scenarios/FORMAT.md`
+  calls an error. The expected row is unchanged.
+
 ## spec-v0.388.1
 
 Scenario v2: where a thrower is for `entity thrower` (spec#84).
