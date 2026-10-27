@@ -61,7 +61,7 @@ the frame's vertical move:
 - Vertical motion is not affected: `y` moves by the frame's `vy` as usual,
   and the landing rule of `landing.md` applies to the floor of the
   player's own column. A blocked frame can also be a landing frame.
-- The player stays airborne (`ground` is 0) unless that landing rule
+- The player stays airborne (`ground` is 0, except on T+1 below) unless that landing rule
   lands them. Facing doesn't change, nothing about the jump changes (a
   held jump keeps the lighter gravity of `jump-arc.md`), and no event is
   added to the row.
@@ -73,6 +73,43 @@ column. So a player falling past a tall wall while holding toward it
 stays at the same `x`, blocked on every frame that would cross into the
 wall's column. A player rising past it can be stepped onto its top once
 the top is no more than 8 px above the feet (an example follows).
+
+### Blocked on the first frame after take-off
+
+If the frame that is blocked is **T+1**, the first frame after the
+take-off frame T of `jump-arc.md`, the row also differs in two fields:
+`state` reads `idle` and `ground` reads **1**, as if the player were still
+standing against the wall. Everything else in the row is as for any
+blocked frame: `x` whole, `vx` 0, `y` moved up by the frame's `vy`
+(the jump's arc is the usual one), facing unchanged. On T+2 the row is
+back to the ordinary jump: `state` `jump`, `ground` 0, and `vx` starts
+again from 0 under `air-control.md`.
+
+Only T+1 does this. A jump that is blocked on T+2 or later reads `jump`,
+`ground` 0 on the blocked frame as above. A jump pressed while the
+player is already standing against the wall has `idle` and `ground` 1 on
+T itself (the player was not moving), then an ordinary T+1.
+
+Seen in the original with the lead at a steep face (4 px per column), to
+the right and to the left, for a walking approach (`vx` 2 px per frame)
+and a running one (3 px per frame), with the jump held for one frame and
+for twenty; the press timed so that the frame after take-off was the first
+to meet the face. Pressed a frame or more earlier, the feet are higher
+and the block comes later (T+2 or later: ordinary rows).
+Against walls built of several stacked surfaces the `idle` and
+`ground` 1 reading was seen lasting for the whole rise; that is not
+covered.
+
+**Example.** Walking right at 2 px per frame on a floor at `y` = 0. A steep
+face's columns from 205 up are all higher than the feet at T+1. Jump
+pressed so that T is the frame with `x` = 204.96875:
+
+| Frame | `x` | `y` | `vx` (1/256) | `vy` (1/256) | `ground` | `state` | Note |
+|---|---|---|---|---|---|---|---|
+| T | 204.96875 | 0 | 512 | −1792 | 1 | walk | |
+| T+1 | 204 | −6.5625 | 0 | −1680 | 1 | idle | Blocked: `x` + `vx` would be column 206 |
+| T+2 | 204.25 | −12.6875 | 64 | −1568 | 0 | jump | |
+| T+3 | 204.71875 | −18.375 | 120 | −1456 | 0 | jump | |
 
 ## Stepped onto (not a face column, 8 px or less)
 
