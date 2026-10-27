@@ -78,6 +78,36 @@ from flat ground that lands on the same ground:
 From H = 26 on, the top of the arc doesn't get higher, but holding longer
 still makes the fall slower and the jump longer.
 
+## The `jump_release` event
+
+`jump_release` is on the row of the first frame on which the jump input is
+no longer held, and only if the player is still rising on that row: its
+`vy` is below 0 (the state is still `jump`). If `vy` on that row is 0 or
+more (the player has reached the top and the state is `fall`), there is no
+event. The test uses the `vy` the row carries, after that frame's gravity,
+not the `vy` of the frame before: a release on the frame that carries the
+player over the top has no event, although the frame before it was still
+rising.
+
+Example (flat floor, jump pressed on P and held on P to P + H − 1, so the
+first frame without it is P + H):
+
+| H | Row P + H: `vy` | `state` | Events |
+|---|---|---|---|
+| 25 | −0.09375 | `jump` | `jump_release` |
+| 26 | 0.1875 | `fall` | none |
+
+The same holds with Left held.
+
+Measured in the original by inputs alone: flat floor, the jump held for 14
+to 39 frames, with no direction and with Left held. Every release row with
+`vy` below 0 has the event (539 rows), and no row with `vy` of 0 or more
+has it. This section is measured for `title-1` only. A second release in
+the same jump (Jump pressed again in the air and released again) was not
+measured, nor was a release while a rope was held; `ropes.md` ("Jumping
+off") gives the event on every frame without the input while `vy` is below
+0, which is the rule above applied to each such frame.
+
 ## Held from take-off to landing
 
 `y` relative to the take-off frame, and `vy`, after each frame:
