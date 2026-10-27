@@ -63,8 +63,34 @@ on H + 18) and lands back on the floor on **H + 35**. Hit higher up it
 lands later.
 
 On the frame after it lands it doesn't move. From the next frame it runs
-**right** at **4 px per frame**, following the ground, until it is out of
-view, and then it is gone. It plays no further part.
+**right** at **4 px per frame**, following the ground (1 to 3 px up or down
+a frame on slopes, seen in the same runs as the drop), until it is out
+of view, and then it is gone. It plays no further part.
+
+The run keeps its running state the whole way, and what it meets on the
+way:
+
+- **A drop.** Where the floor ends (a 64 px drop was measured, in 95 runs
+  with the hit on different frames) it leaves the floor, falls with the
+  usual gravity of `jump-arc.md` while still moving right at 4 px per
+  frame, lands on the lower floor and runs on. Nothing about the run
+  changes.
+- **A wall.** Observed at one wall, on one route of the first level, where
+  a walking character moving right stops: the run stopped at the same `x`
+  as the walking character on that route, with the fraction of `x` kept, and
+  did not turn, climb, jump or play another state. Its horizontal speed stayed
+  at 4. It was still there after 290 frames with the other character playing
+  on, and until the game ended. It is one run (the hit happened once on that
+  route), so other walls and steps are not covered.
+- **Out of view.** It is gone on the first frame where its `x` rounded down
+  is 289 or more to the right of the view's left edge. Over 40 runs its last
+  moving frames were 289.6 to 292.9 right of the view and the frame before
+  was never past 288.9. The cut-off within the gap between 288.9 and 289.6
+  was not pinned down; the rounded-down rule fits all runs. What a run
+  stopped at a wall does when the view moves left, or leaves it behind, was
+  not observed (in the wall run the stopped lead stayed less than 289 from
+  the view). How far the run goes therefore depends on where the view is,
+  which follows the other character.
 
 ## The other character
 
@@ -373,8 +399,12 @@ Rows from H + 36 (the other character):
 - Ground or walls between the other character and the hit spot.
 - Protection from further damage after the take-over is in
   `protection.md`.
-- What the hit character's run does at walls, pits and the edges of the
-  level, beyond following the ground and falling off ledges.
+- What the hit character's run does at a bottomless pit and at the
+  level's right edge before it leaves view; what a run stopped at a wall
+  does once the view moves away from it; walls other than the one
+  measured (a wall in view while the other character stands ahead of
+  the run was not arranged); the second character as the hit
+  character.
 - Hits during a roll or a bounce other than those above (rolls with
   other enemies; bounces with the second character; hits during a roll or a
   bounce reached in ordinary play; hits where the hop
