@@ -91,6 +91,21 @@ way:
   at 4. It was still there after 290 frames with the other character playing
   on, and until the game ended. It is one run (the hit happened once on that
   route), so other walls and steps are not covered.
+- **A stop near the right end of the first level.** On the lower floor at
+  the far right end of the level, a run that began on the upper floor (it ran
+  off a ledge and fell about 200 px while still moving right at 4) stopped
+  for good. Over 7 hits on consecutive frames the stop moved by at most
+  about 4 px between runs: two values alternated one frame after another,
+  2 px apart, and the first start, which landed lower, stopped about 2 px
+  beyond them. After the stop the horizontal speed stayed at 4 while `x` did
+  not change, for 100 more frames, with the other character walking back.
+  The stop was well short of the 289 cut-off (about 164 right of the view's
+  left edge). A walking character on the upper floor goes past this place
+  and leaves the level, so the stop belongs to the lower floor. Whether it
+  is a wall or the level's edge was not separated: a walking character
+  on the lower floor stopped earlier, on a raised floor, so it does not
+  compare. A setup method was used to reach each hit. Not checked in
+  ordinary play with a hit there.
 - **Out of view.** It is gone on the first frame where its `x` rounded down
   is 289 or more to the right of the view's left edge. Over 40 runs its last
   moving frames were 289.6 to 292.9 right of the view and the frame before
@@ -409,7 +424,8 @@ Rows from H + 36 (the other character):
 - Protection from further damage after the take-over is in
   `protection.md`.
 - What the hit character's run does at a bottomless pit and at the
-  level's right edge before it leaves view; what a run stopped at a wall
+  level's right edge before it leaves view (the stop above is not
+  separated into wall or edge); what a run stopped at a wall
   does once the view moves away from it; other rises and steep faces;
   walls other than the one measured (a wall in view while the other character stands ahead of
   the run was not arranged); the second character as the hit
