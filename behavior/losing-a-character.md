@@ -75,6 +75,15 @@ way:
   usual gravity of `jump-arc.md` while still moving right at 4 px per
   frame, lands on the lower floor and runs on. Nothing about the run
   changes.
+- **A steep rise.** A rise of 48 px over about 52 px of `x` on the first
+  level (much steeper than the slopes of `slopes.md`: about 12 px of height
+  per 13 px of `x` on average) was run up in 7 runs with the hit on
+  different frames. A setup method was used to reach each hit. The run
+  didn't slow, stop or change state. It kept 4 px per frame and its
+  height followed the ground, the same in every run for the same `x`:
+  up about 0.5 to 5.2 px a frame along the rise, then about 10.4 px on the
+  frame onto the top. So the 1 to 3 px a frame above is what gentle slopes
+  give, not a limit. Not checked in ordinary play with a hit there.
 - **A wall.** Observed at one wall, on one route of the first level, where
   a walking character moving right stops: the run stopped at the same `x`
   as the walking character on that route, with the fraction of `x` kept, and
@@ -401,8 +410,8 @@ Rows from H + 36 (the other character):
   `protection.md`.
 - What the hit character's run does at a bottomless pit and at the
   level's right edge before it leaves view; what a run stopped at a wall
-  does once the view moves away from it; walls other than the one
-  measured (a wall in view while the other character stands ahead of
+  does once the view moves away from it; other rises and steep faces;
+  walls other than the one measured (a wall in view while the other character stands ahead of
   the run was not arranged); the second character as the hit
   character.
 - Hits during a roll or a bounce other than those above (rolls with
