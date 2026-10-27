@@ -1,0 +1,14 @@
+# clamber-scenario v2
+id: bad-start-key
+summary: v2 file with the v1 start line.
+start: grounded, idle for at least 30 frames, facing right, lead character
+frames: 10
+
+[geometry]
+floor 0..9  0
+
+[start]
+mode: grounded
+
+[inputs]
+0-9  R

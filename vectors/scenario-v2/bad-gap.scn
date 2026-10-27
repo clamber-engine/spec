@@ -1,0 +1,14 @@
+# clamber-scenario v2
+id: bad-gap
+summary: Floor columns have a gap.
+frames: 10
+
+[geometry]
+floor 0..9    0
+floor 12..19  0
+
+[start]
+mode: grounded
+
+[inputs]
+0-9  R

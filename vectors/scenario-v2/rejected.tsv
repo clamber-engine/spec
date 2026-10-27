@@ -1,0 +1,4 @@
+file	reason
+bad-gap.scn	floor columns 10 and 11 are not covered (columns must be contiguous)
+bad-start-key.scn	`start` header key is not allowed in v2
+bad-riding-no-entity.scn	mode riding with no matching entity in the geometry

@@ -1,0 +1,14 @@
+# clamber-scenario v2
+id: bad-riding-no-entity
+summary: Riding without a ridden object in the geometry.
+frames: 10
+
+[geometry]
+floor 0..9  0
+
+[start]
+mode: riding
+with: walker
+
+[inputs]
+0-9  R

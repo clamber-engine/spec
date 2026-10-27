@@ -1,0 +1,26 @@
+# clamber-scenario v2
+id: valid-objects
+summary: Made-up file with a wall, a platform, water, a walker and a carried object.
+frames: 20
+probe: yes
+
+[geometry]
+floor -9..-2  0
+floor -1..39  0
+wall 12..15 -40 0
+platform 20..27 -24
+water 30..39 10
+entity walker 8 0 facing L
+
+[start]
+mode: carrying
+with: crate
+state: idle
+lead: second
+follower: at -12 0
+
+[inputs]
+0-19  R
+
+[metrics]
+final_x   tol 1

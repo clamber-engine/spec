@@ -1,0 +1,20 @@
+# clamber-scenario v2
+id: valid-pit
+summary: Made-up file with a pit and a ceiling.
+frames: 10
+
+[geometry]
+x 0.5
+floor -4..9   0
+floor 10..19  none
+floor 20..29  16
+ceiling 0..29 -80
+
+[start]
+mode: airborne
+height: 12
+vx: 1.5
+facing: L
+
+[inputs]
+0-9  R
