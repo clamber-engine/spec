@@ -162,7 +162,7 @@ which is always 0, is the player's own frame-0 position, and level 0 is
 | `platform C0..C1 H` | A surface at `H` over columns `C0` to `C1` that can be passed through from below and stood on from above (`../behavior/platforms-from-below.md`) |
 | `ceiling C0..C1 H` | Columns have a ceiling whose underside is at `H` |
 | `water C0..C1 H` | Columns hold water whose surface is at `H` (`../behavior/swimming.md`) |
-| `entity KIND C H [facing L\|R]` | An object of the given kind, standing with its base at height `H` in column `C`. `KIND` is the plain name used by the behavior files: `walker`, `thrower`, `critter`, `crate`, `rope`, `launch_barrel`, `metal_barrel`, `collectible`, `sign`. New kinds are added to this list in the pull request that needs them |
+| `entity KIND C H [facing L\|R]` | An object of the given kind, standing with its base at height `H` in column `C`. `KIND` is the plain name used by the behavior files: `walker`, `thrower`, `critter`, `crate`, `rope`, `launch_barrel`, `metal_barrel`, `collectible`, `sign`, `barrel`, `holder`. `barrel` and `holder` are the kinds of `../formats/placements.md` (an object that can be carried, and one that holds the missing character); `crate` is the animal crate. New kinds are added to this list in the pull request that needs them |
 
 Rules:
 
@@ -212,7 +212,25 @@ A key left out takes its default.
 over column 0 reaching the player; a scenario that asks for one without
 it is an error. `mode: carrying` takes no `entity` statement for the
 carried object: `with` names its kind and a runner provides it, held by
-the player.
+the player. The kind is `barrel` or `holder` (`../behavior/carrying.md`);
+`with: crate` and the other kinds are not carried and are an error.
+
+**Frame 0 of `mode: carrying`.** The pick-up is over and the player is
+carrying: frame 0 is the player's first frame of carrying, standing (the
+frame G + 15 of `../behavior/carrying.md` for the first character, G + 10
+for the second), so a direction in the frame 0 inputs starts moving or a
+turn on frame 0 as it does there, and the pictures of standing with the
+object start on frame 0. Nothing is left of the pick-up: its timing no
+longer matters. The object is in the hands for as long as Action is
+held.
+
+Action is not part of the start. Whether it is held on frame 0 is given
+by the scenario's inputs for frame 0, as for any frame: `held` only
+supplies the frame before frame 0 for presses (a Jump press on frame 0
+needs Jump not in `held`). With Action held on frame 0 the player keeps
+the object; with Action not held on frame 0 that frame is Q and the
+object is thrown at once (`../behavior/carrying.md`, "Throwing"). So a
+scenario that carries for a while has `A` in its inputs from frame 0.
 
 Frame 0 of the trace is the state described here after zero frames of
 play: row 0 shows `x`, `y` as 0 and `state` as stated (default as
