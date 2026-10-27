@@ -129,11 +129,23 @@ A player falling onto a platform from above lands on its top by the rule
 of `landing.md`, with one exception. A falling frame whose new position
 is **below the underside** is not a landing on that column's top, even
 if the feet started the frame at or above the top and would land by
-`landing.md`. The player goes on falling. This was seen only in
-controlled frames, on the lowest column of a sloped end, whose top is
-level with the underside.
+`landing.md`. The player goes on falling. This was seen on the
+lowest column of a sloped end, whose top is level with the underside.
 There, feet that started the frame 1 to 2 px above that top and ended
 it just below the top were not caught.
+
+A setup method was used at the same kind of end, with the player moving right
+into the lowest column at 2 px per frame and falling 3 7/16 px per frame
+(vy 3 7/16 after the frame's speed change), in steps of 1/4 px of
+starting height: every start from 1/4 px up to 3 1/4 px above the top
+ended below it and was not caught; a start 3 1/2 px above the top ended
+1/16 px above it and landed on it. The next columns, which are face
+columns, blocked the same player (`air-walls.md`) for every start from
+the underside up to just under their tops, and a start below the
+underside passed through. A run seen by inputs agreed: a player who
+rolled and then jumped, falling at about 5 px per frame into the lowest
+column of a platform's sloped end with the feet about 1 1/2 px above its
+top, fell through to the floor beneath instead of landing.
 
 ## Ground that isn't passable from below
 
