@@ -103,7 +103,8 @@ on D and the player comes to a stop:
   `ground-speed.md` (about ×0.876 per frame), whatever is held;
 - D + 3 to D + 17: speed is 0, whatever direction is held (on D + 3
   the player still moves; see `roll-speed.md`). A direction held on
-  D + 17 doesn't move the player yet;
+  D + 17 doesn't move the player yet. A Jump press on D + 3 is the
+  exception ("A Jump press during the stop" below);
 - from D + 18: normal movement. With a direction held on D + 18 (pressed
   then or at any earlier time), the speed on D + 18 is the first step of
   the `ground-speed.md` rule from 0.
@@ -140,6 +141,49 @@ rolls, the second character, a Jump or Down pressed with the direction.
 The stop is not part of the roll: while the speed is not 0 the trace
 state is `walk` (or `run` if Action is held), then `idle`. A jump can start during the
 stop as usual (`behavior/jump-input.md`).
+
+### A Jump press during the stop
+
+A jump pressed during the stop starts as usual (`jump-input.md`: press
+frame P, `jump_start` on P + 1, `air-control.md` from P + 1). What the
+stop leaves of the speed depends on P, for the first character after a
+roll that came to a stop (not one that carried on into running):
+
+- **P = D + 1 or D + 2:** the speed on P and on the frames before it is
+  the stop's (about ×0.876 per frame). From P + 1 on the air rule of
+  `air-control.md` sets the speed, starting from the value on P, not the
+  stop's rule. With Right held and P = D + 1 the speed is 659/256 on D + 1
+  and 641/256 (2.504) on D + 2, where the stop would give 577/256; with
+  P = D + 2 it is 577/256 on D + 2 and 569/256 on D + 3. With no direction
+  held the air rule's target is 0, as the stop's, so the two agree.
+- **P = D + 3:** the speed on D + 3 is **not 0**. It is one more step of
+  the stop's slowing, as on D + 1 and D + 2, and the player moves by it as
+  on any D + 3. From P + 1 on the air rule applies, from that speed.
+- **P = D + 4 to D + 17:** the speed is 0 on P as in any stop; the jump
+  is one from standing, and the air rule starts from 0.
+
+A press on D + 3 therefore keeps the speed from being 0 on that frame. It makes no
+difference whether Jump is held for one frame or for 20, what is held
+(Right, Left, nothing), or whether the roll was slow or normal.
+
+Example (flat floor, standing, facing right; frame 0 is the first frame of
+input): Right is held on every frame, Action is pressed on frame 2 and
+released on frame 3, so the roll is frames 2 to 30, D = 31 and
+`roll_end` is on 31. Jump is pressed on frame 34 (D + 3) and held to 53.
+`vx` is 753/256 (2.94140625) on D, 659/256 on D + 1, 577/256 on D + 2 and
+505/256 (1.97265625) on D + 3 (a press on D + 4 instead gives 0 there),
+then 2 on every frame after it (the gap to the target 2 is less than
+8/256). With no direction held from frame 29 on, the same press gives
+505/256 on D + 3 and then 442/256, 387/256 and 339/256 on the next three
+frames, the air rule slowing toward 0.
+
+Measured on flat floor with the first character in 56 runs: 22 with
+Jump pressed on each of D − 2 to D + 19 with Right held; 3 with it on D + 2
+to D + 4 and Right released from D − 2; the other 31 varied the roll (slow,
+no direction), the direction (Left held from D − 1) and the length of the
+hold (1 and 20 frames). A press on D + 3 gave a nonzero speed on D + 3
+in every one of those and a press on D + 4 gave 0. Not covered: the second character, fast rolls, and
+the stop on slopes and next to faces or edges.
 
 ## Starting the next roll
 
