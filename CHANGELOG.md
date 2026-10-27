@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.381.0
+
+What a hit on a rider costs, with one character and with both (spec#83).
+
+Answers clamber-engine/spec#83.
+
+- New `behavior/riding-hit.md`: a walker or stinger that reaches the
+  rider knocks it off as in `riding-walkers.md` and costs only the animal,
+  with one character and with two (either leading); lives and characters
+  are unchanged. The animal runs on and does not come back. The player
+  cannot be hurt for 128 frames from the knock-off (first hurt on
+  H + 128), or until H + 130 with one bounce off a walker in the fall.
+  Worked rows; unobserved combinations and other enemies are listed as not
+  covered.
+
 ## spec-v0.380.0
 
 Roll frames in the air are never stopped frames (spec#80, in part).
