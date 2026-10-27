@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.388.0
+
+Scenario v2: what `mode: carrying` carries and its frame 0 (spec#86).
+
+Answers clamber-engine/spec#86.
+
+- `scenarios/FORMAT.md`: `barrel` and `holder` (the kinds of
+  `formats/placements.md`) join the `entity` kinds. `mode: carrying`
+  takes `with: barrel` or `with: holder`; other kinds are an error.
+  Frame 0 of `mode: carrying` is the player's first frame of carrying,
+  after the pick-up (G + 15 for the first character, G + 10 for the
+  second, as in `behavior/carrying.md`). Whether Action is held on
+  frame 0 comes from the frame 0 inputs, not from the start; with it
+  not held, frame 0 is Q.
+
 ## spec-v0.387.0
 
 Scenario format version 2: structured geometry and start state (spec#81).
