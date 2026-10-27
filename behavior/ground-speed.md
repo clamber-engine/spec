@@ -394,7 +394,8 @@ frames**. The speed rule applies as usual on them.
 The most common case is M = L + 1: running on L + 1, the mode on L + 7.
 
 A roll (`roll-input.md`) or a jump (`jump-input.md`) can start on a
-landing frame as those files say; a jump starts on E = M + 2 at the
+landing frame as those files say (for the roll's direction on L to K,
+see `roll-speed.md`); a jump starts on E = M + 2 at the
 earliest. An Action press on L + 1 or a later landing frame starts a
 roll, not a run.
 

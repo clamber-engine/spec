@@ -44,7 +44,34 @@ The roll target is direction × size, where the size is one of:
 
 The direction on S is the player's facing on S, whatever is held. Holding
 the opposite direction on S doesn't reverse the roll on S (see below for
-S + 1).
+S + 1), except on a landing frame, where facing itself follows the input:
+
+- **S is a landing frame or K** (`ground-speed.md`, "After a landing";
+  L, M and K as there; first character, landings after jumps): facing
+  follows the input on S as on any landing frame, so Right held alone on
+  S while facing left turns the player on S (the row carries `roll_start`
+  and `turn`) and the roll goes right; Left held alone while facing right
+  is the mirror. The exception covers every frame from L to K, K
+  included, and no later one: these are the frames on which a lone
+  direction press changes facing at once. From K + 1 the rule above
+  applies: the roll goes the way the player faces on S, and a direction
+  held against it reverses it on S + 1. Example (a jump made facing
+  right with Jump released in the air, Right held to the landing, M = L
+  and K = L + 9, then Action and Left pressed together on L + 4; `vx` in
+  px per frame): 2 on S − 1 and 1.375 on S with facing left and the roll
+  going left. The same press on K + 1 gives 2.125 on S with facing
+  right, and the reversal on S + 1.
+  Measured on `title-1` on flat floor with the first character: four
+  jumps (facing left or right with that direction held from take-off to
+  the landing; Jump held 12 or 40 frames, so released in the air in
+  both), a press of Action and the opposite direction on each of L + 1 to
+  L + 13 (52 presses). K was L + 7 once, L + 8 once and L + 9 twice, M
+  was L, L + 1 or L + 2. Of the 52 presses, 29 fell on landing frames
+  before K, 4 on K and 19 after K; on the first 33 the roll went the way
+  the direction was held on S, on the other 19 the way the player faced.
+  Not covered: a press with Action and the opposite direction on L
+  itself, the second character, landings after falls and bounces
+  (`ground-speed.md`, "After a fall or a bounce"), slopes.
 
 The size on S:
 
