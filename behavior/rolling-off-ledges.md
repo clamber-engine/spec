@@ -273,11 +273,33 @@ runs: in each of the 1 730 frames from D − 2 to D + 3 that started with
 `vx` below 0 and Left and Action held, the player stood still with `vx`
 0 exactly on those with `|vx|` at most 1.05859375 and no ground 15 px
 ahead (19 frames, 10 of them from D to D + 3), and moved on the others
-(113 slow frames with ground ahead, 1 598 not slow). Not measured:
-runs at one left edge stopped earlier than the rule gives when a
-direction was pressed on D + 1 to D + 3 (not worked out); a direction pressed
-toward the edge on D + 1 to D + 3 after the roll was reversed away from
-it, where runs also stopped earlier than the rule gives; a roll that carries on into running
+(113 slow frames with ground ahead, 1 598 not slow).
+
+**Pressing toward the edge while moving away from it.** When the roll
+was reversed so that it is moving away from the edge on D to D + 3 and
+the direction toward the edge is held (with Action, as above), the
+frame's direction for the test is the held one: the ground is looked up
+15 px ahead toward the edge, not in the direction the player is moving.
+So a slow frame (`|vx|` at most 1.05859375) with no ground 15 px toward
+the edge is a stopped frame and the player doesn't move, even though the
+way it was moving has ground ahead. With ground 15 px toward the edge the
+frame moves as usual.
+
+Example, the edge as above, the roll reversed by Left so that `vx` is
+-0.96875 on D, floor(x) = E − 11, Right and Action held: `vx` is 0 after
+D and the player doesn't move.
+
+Measured at the same right edge in 714 runs (6 starting distances from
+the edge, Left held for 2 to 8 frames ending between D − 11 and D + 11, then Right and
+Action again): of the frames from D − 2 to D + 3 that started with `vx`
+below 0 and Right and Action held, all 51 with `|vx|` at most 1.05859375
+and no ground 15 px toward the edge stood still with `vx` 0 (28 of them
+from D to D + 3), and all 25 with ground there moved (6 from D to D + 3).
+The frames before D are the roll's own steering (`roll-speed.md`).
+
+Not measured: runs at one left edge stopped earlier than the rule gives
+when a direction was pressed on D + 1 to D + 3 (not worked out); the left
+edge version of the above; a roll that carries on into running
 (`roll-input.md`) when its `vx` is that slow on D + 1 to D + 3.
 
 ## A roll started in the stop after a roll
