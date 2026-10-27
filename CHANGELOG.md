@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.391.0
+
+A wall that blocks the first frame after take-off (spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/air-walls.md`, new "Blocked on the first frame after
+  take-off": when the blocked frame is T + 1, the row also reads `state`
+  `idle` and `ground` 1; everything else is as for any blocked frame, and
+  T + 2 is an ordinary jump row. Blocks on T + 2 or later, and jumps
+  pressed while already standing against the wall, are unchanged.
+  Worked example; measured by inputs at a steep face, both directions,
+  walking and running, short and held jumps. Walls of several stacked
+  surfaces are not covered.
+
 ## spec-v0.390.0
 
 Scenario v2: riding, launch barrel and metal barrel starts, and the
