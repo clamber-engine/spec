@@ -162,7 +162,7 @@ which is always 0, is the player's own frame-0 position, and level 0 is
 | `platform C0..C1 H` | A surface at `H` over columns `C0` to `C1` that can be passed through from below and stood on from above (`../behavior/platforms-from-below.md`) |
 | `ceiling C0..C1 H` | Columns have a ceiling whose underside is at `H` |
 | `water C0..C1 H` | Columns hold water whose surface is at `H` (`../behavior/swimming.md`) |
-| `entity KIND C H [facing L\|R]` | An object of the given kind, standing with its base at height `H` in column `C` (for `thrower`, see the rule below). `KIND` is the plain name used by the behavior files: `walker`, `thrower`, `critter`, `crate`, `rope`, `launch_barrel`, `metal_barrel`, `collectible`, `sign`, `barrel`, `holder`. `barrel` and `holder` are the kinds of `../formats/placements.md` (an object that can be carried, and one that holds the missing character); `crate` is the animal crate. New kinds are added to this list in the pull request that needs them |
+| `entity KIND C H [facing L\|R]` | An object of the given kind, standing with its base at height `H` in column `C` (for `thrower`, see the rule below). `KIND` is the plain name used by the behavior files: `walker`, `thrower`, `critter`, `crate`, `rope`, `launch_barrel`, `down_launch_barrel`, `metal_barrel`, `collectible`, `sign`, `barrel`, `holder`. `barrel` and `holder` are the kinds of `../formats/placements.md` (an object that can be carried, and one that holds the missing character); `crate` is the animal crate; `launch_barrel`, `down_launch_barrel` and `metal_barrel` are described under "Riding, launch barrels, metal barrels and states" below. New kinds are added to this list in the pull request that needs them |
 
 Rules:
 
@@ -262,6 +262,71 @@ allowed; `state` may only be `rope`; `follower` must be
 rope is not covered (`../behavior/ropes.md`, "Not covered"). `vx`, `vy`,
 `height`, `idle_frames`, `held` and `with` are not allowed. A runner rejects the
 rest as an error.
+
+## Riding, launch barrels, metal barrels and states
+
+**`mode: riding`.** `with` must be `crate` (the animal is the only
+thing ridden; any other kind is an error), and the `entity crate 0 0`
+statement in column 0 is then the animal the player is on, standing
+with its base on the floor under the player (`H` 0, the floor of
+column 0). Frame 0 is the **first riding frame** after a mount
+(`../behavior/riding.md`, "Standing and walking"): the player is on the
+animal on the floor, in no turn, jump, charge or charge end, not on a
+steered frame (`../behavior/riding.md`, "Steered frames"), and `y` and `vy` are as
+"Riding, and turns" gives (`vy` 0). The animal faces the way the player
+does (`facing`). `vx` is the speed on frame 0 before its speed rule:
+any multiple of 1/256 whose size is at most 4. The riding rules of the
+whole file then apply from frame 0 on, with the second character as
+well when `lead: second`. The frame 0 inputs act as on any riding frame,
+with one exception that was measured after a mount: a Jump press on the
+first riding frame does not start a jump
+(`../behavior/riding.md`, first list). A scenario with `J` among the
+frame 0 inputs, or in `held`, is therefore an error until a start
+where it does is measured. `follower` is `none` or `settled`; `at DX
+DY` is an error with `riding`. `state` is `idle` or `walk`: it is
+only the name recorded on row 0 (the default is as in the table above),
+and does not change how the riding goes on.
+
+**`entity launch_barrel C H`** is a `left-launch-barrel` and
+**`entity down_launch_barrel C H`** a `down-launch-barrel`
+(`../behavior/launch-barrel.md`, "The kind"). The barrel's position
+(`xb`, `yb`) is column `C` and height `H`: `H` is the height at which
+a player standing on a floor of that height has `D` 0, so a barrel
+with `H` equal to the floor's height stands on that floor. It is
+**ready** on frame 0 (nothing caught within the 62 frames before). It
+need not stand on a `floor` statement: placed in the air it stays
+where it is (`../behavior/launch-barrel.md`, "The kind").
+`facing` is not allowed on either kind.
+
+**`entity metal_barrel C H`** is a metal barrel lying at rest on a
+floor at `H` in column `C`, as after a put-down (picture `metal-lying`,
+`../behavior/metal-barrel.md`, "Pictures"), ready to be picked up and
+carried and thrown as `../behavior/carrying.md` and
+`../behavior/metal-barrel.md` say. It is not a barrel in flight: a
+barrel already thrown is not a start this format can state. `facing`
+is not allowed. `H` must be the height of the `floor` in column `C`;
+any other value is an error, whether it puts the barrel inside the
+ground or in the air. A barrel resting on a `platform` or on top of a
+`wall` is not a start this format can state.
+
+**`state` other than the default.** Only these combinations are
+defined; a runner rejects any other as an error:
+
+| `mode` | `state` allowed | Frame 0 |
+|---|---|---|
+| `grounded` | `idle` | as in the table above (`idle_frames`) |
+| `airborne` | `jump` (needs `vy` below 0), `fall` (needs `vy` 0 or above) | the player is in the air with the stated velocities; the state only has to agree with `vy` |
+| `riding` | `idle`, `walk` | the name recorded on row 0 (above) |
+| `swimming` | `swim` | as in the table above |
+| `rope` | `rope` | as in the table above |
+| `carrying` | `idle` | as in the table above |
+
+Not covered, so errors until measured: `walk` and `run` on the ground
+(the timing of a walk or a run that is already under way, which
+`../behavior/ground-speed.md` ties to the step cycle, is not a start
+the format can state), `roll`, `bounce`, `hurt`, `swap` and
+`ground_action`, and a `crouch` (it has no name in the vocabulary).
+Reach such a state from a start above with inputs.
 
 Frame 0 of the trace is the state described here after zero frames of
 play: row 0 shows `x`, `y` as 0 and `state` as stated (default as

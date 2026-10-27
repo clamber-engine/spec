@@ -1,0 +1,14 @@
+# clamber-scenario v2
+id: bad-barrel-air
+summary: Metal barrel whose H is not the floor's height (in the air).
+frames: 10
+
+[geometry]
+floor -9..30  0
+entity metal_barrel 5 -20
+
+[start]
+mode: grounded
+
+[inputs]
+0-9  R

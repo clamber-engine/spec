@@ -2,3 +2,9 @@ file	reason
 bad-gap.scn	floor columns 10 and 11 are not covered (columns must be contiguous)
 bad-start-key.scn	`start` header key is not allowed in v2
 bad-riding-no-entity.scn	mode riding with no matching entity in the geometry
+bad-riding-jump.scn	Jump among the frame 0 inputs with mode riding
+bad-riding-kind.scn	mode riding with a kind other than crate
+bad-state-walk.scn	state walk is not defined for mode grounded
+bad-barrel-air.scn	metal_barrel H is not the height of the floor in its column
+bad-launch-facing.scn	facing not allowed on launch_barrel
+bad-barrel-ground.scn	metal_barrel H is not the height of the floor in its column

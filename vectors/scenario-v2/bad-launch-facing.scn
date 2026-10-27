@@ -1,0 +1,14 @@
+# clamber-scenario v2
+id: bad-launch-facing
+summary: Facing on a launch barrel.
+frames: 10
+
+[geometry]
+floor -9..30  0
+entity launch_barrel 5 0 facing L
+
+[start]
+mode: grounded
+
+[inputs]
+0-9  R

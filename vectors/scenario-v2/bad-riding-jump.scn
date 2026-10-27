@@ -1,0 +1,15 @@
+# clamber-scenario v2
+id: bad-riding-jump
+summary: Jump on the first riding frame.
+frames: 10
+
+[geometry]
+floor -9..30  0
+entity crate 0 0
+
+[start]
+mode: riding
+with: crate
+
+[inputs]
+0  J

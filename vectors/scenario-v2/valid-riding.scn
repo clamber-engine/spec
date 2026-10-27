@@ -1,0 +1,20 @@
+# clamber-scenario v2
+id: valid-riding
+summary: Riding the animal at speed with a launch barrel and a metal barrel.
+frames: 10
+
+[geometry]
+floor -9..30  0
+entity crate 0 0
+entity launch_barrel 20 0
+entity metal_barrel 25 0
+
+[start]
+mode: riding
+with: crate
+vx: -1.5
+state: walk
+facing: L
+
+[inputs]
+0-9  L

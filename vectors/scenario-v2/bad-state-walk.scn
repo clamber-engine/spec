@@ -1,0 +1,14 @@
+# clamber-scenario v2
+id: bad-state-walk
+summary: Grounded start in the walk state.
+frames: 10
+
+[geometry]
+floor -9..30  0
+
+[start]
+mode: grounded
+state: walk
+
+[inputs]
+0-9  R

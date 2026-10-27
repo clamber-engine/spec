@@ -1,0 +1,15 @@
+# clamber-scenario v2
+id: bad-riding-kind
+summary: Riding something other than the animal.
+frames: 10
+
+[geometry]
+floor -9..30  0
+entity walker 0 0
+
+[start]
+mode: riding
+with: walker
+
+[inputs]
+0-9  R
