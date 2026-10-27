@@ -2,6 +2,18 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.377.0
+
+Jumping on landing after walking off a ledge (spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/jump-input.md`, "Landings this doesn't cover": new measured
+  case. The lead character walking off a ledge without a face (falls of
+  13 to 42 frames) has E = L + 2 instead of the L + 3 default, so a Jump
+  press in the air on L − 10 or later, held through L + 1, starts the
+  jump on L + 2. Measured in 870 runs by inputs at 15 ledges per side.
+
 ## spec-v0.376.0
 
 Two rules around the stop after a roll (spec#80, in part).
