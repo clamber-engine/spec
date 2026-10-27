@@ -14,7 +14,7 @@ entity walker 8 0 facing L
 
 [start]
 mode: carrying
-with: crate
+with: barrel
 state: idle
 lead: second
 follower: at -12 0
