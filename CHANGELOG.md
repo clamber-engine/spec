@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.382.0
+
+A Jump press during the stop after a roll (spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/roll-input.md`, new "A Jump press during the stop": for the
+  first character after a roll that came to a stop, a Jump press on D + 3
+  leaves `vx` at one more step of the stop's slowing on that frame instead
+  of 0; a press on D + 1 or D + 2 keeps the stop's speed up to the press
+  frame, then the air rule of `air-control.md` from P + 1; a press on
+  D + 4 to D + 17 is a jump from standing. Worked values with Right held
+  and with no direction; measured by inputs in 56 runs. The second
+  character, fast rolls, slopes, faces and edges are listed as not covered.
+- `behavior/roll-input.md` and `behavior/roll-speed.md`: the D + 3 lines
+  of the stop point to the new exception.
+
 ## spec-v0.381.0
 
 What a hit on a rider costs, with one character and with both (spec#83).
