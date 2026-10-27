@@ -852,8 +852,8 @@ pressed again between U and U + 9). Crouching on slopes is in `slopes.md`.
 For the first character, standing or walking, on flat floor and on
 1-in-4 slopes. D and U are as above.
 
-- **No turn starts** on any frame from D to U + 9, whatever is held. The
-  opposite direction held on those frames does nothing and isn't
+- **No turn starts** on any frame from D to U + 9, whatever is held,
+  except for a Jump press (below). The opposite direction held on those frames does nothing and isn't
   remembered: if it is released before U + 10, facing stays as it was and
   no `turn` event is logged.
 - **From U + 10** the usual rule applies ("Facing and turns"): the
@@ -864,6 +864,32 @@ For the first character, standing or walking, on flat floor and on
   pressed together by a player standing still facing right) is the same:
   the player slides as the speed rule says, keeps facing right through
   the crouch, and turns from U + 10.
+- **A Jump press** on any frame from D to U + 9 (P) does turn the player,
+  because the jump's first frame P + 1 isn't a crouch frame: if the
+  opposite direction is held on P + 1, facing changes on P + 1 and the row
+  carries `turn` together with `jump_start`. If it is held on P only and
+  not on P + 1, facing stays as it was and there is no `turn`. It makes
+  no difference whether Down is still held on P or was released earlier,
+  or whether the opposite direction was held before P. This is the rule
+  of "A Jump or Action press during a turn" applied to every press from D
+  to U + 9.
+
+Example (jump press): walking right, Down held on frames 0 to 12 (so U is
+13), then released; Left and Jump pressed together on frame 13 and Left
+held to frame 20. `jump_start` and `turn` are both on frame 14, and
+facing is left from 14. The same holds for a press on any frame from 0 to
+19 with Left held from the press on to frame 20 (so that it is held on
+P + 1); a press on 20 to 22 with Left no longer held on P + 1 doesn't turn.
+With Left held on frame 13 only, facing stays right and there is no
+`turn`.
+
+Measured walking at walking speed on flat floor, in both directions: Jump
+pressed on each frame from D to U + 12 (Down held up to the press or to
+D + 12, whichever is earlier), the opposite direction held from the press,
+from the frame after it, from D on, or on the press frame only. This is
+92 runs by inputs alone (76 + 16). The Jump-press rule was measured only
+walking, and only on flat floor; standing, running and slopes are not
+covered for it.
 
 Example: standing still facing right, Down held on frames 0 to 4 and Left
 held from frame 0 on. The crouch lasts to frame 12 (D + 12), so U is 13.
