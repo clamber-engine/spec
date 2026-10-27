@@ -2,6 +2,32 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.390.0
+
+Scenario v2: riding, launch barrel and metal barrel starts, and the
+allowed `state` values (spec#88).
+
+Answers clamber-engine/spec#88.
+
+- `scenarios/FORMAT.md`: new section "Riding, launch barrels, metal
+  barrels and states".
+  - `mode: riding` needs `with: crate`; frame 0 is the first riding
+    frame after a mount, `vx` any multiple of 1/256 up to 4, and a Jump
+    among the frame 0 inputs or in `held` is an error. `follower` is
+    `none` or `settled`; `state` (`idle` or `walk`) is only the name on
+    row 0.
+  - `entity launch_barrel` is the left-shooting launch barrel; new kind
+    `down_launch_barrel` for the other. `H` is the height at which a
+    player on a floor there has `D` 0; the barrel is ready on frame 0.
+  - `entity metal_barrel` is a metal barrel lying at rest on the
+    `floor` of its column, ready to be picked up; `H` must equal that
+    floor's height.
+  - A table of the defined `state` values for each mode; walk and run
+    on the ground, roll, bounce, hurt, swap, ground_action and crouch
+    are errors until measured.
+- `vectors/scenario-v2/`: one new valid vector (`valid-riding`) and six
+  new rejected ones.
+
 ## spec-v0.389.0
 
 Scenario v2: the start of `mode: rope` (spec#85).
