@@ -244,6 +244,25 @@ the object; with Action not held on frame 0 that frame is Q and the
 object is thrown at once (`../behavior/carrying.md`, "Throwing"). So a
 scenario that carries for a while has `A` in its inputs from frame 0.
 
+With `mode: rope`, the player holds a rope and stands on nothing, so
+level 0 is the player's feet line on frame 0 (the player's own frame-0
+position, `y` 0 in row 0) and not a floor in column 0. (With `airborne`,
+by contrast, level 0 is the floor `height` px below the player.) Column
+0 needs no `floor` statement; if the scenario gives `floor` statements,
+the other rules above apply to them, measured from the feet line.
+`entity rope C H` has `C` 0 and `H` as the rope's bottom end `B`, in the
+same down-positive units: `entity rope 0 100` hangs the rope's bottom end
+100 px below the player's feet line. `H` must be at least −24, or the
+player slides off the end on the first frame. The rope, the holding
+player and the rope last held on frame 0 are fixed by "A rope in a
+scenario" in `../behavior/ropes.md`. In `[start]` with `rope`, `facing`
+(it sets the holding player's facing), `lead` and `x` (in `[geometry]`) are
+allowed; `state` may only be `rope`; `follower` must be
+`none`, because what the other character does while the lead holds a
+rope is not covered (`../behavior/ropes.md`, "Not covered"). `vx`, `vy`,
+`height`, `idle_frames`, `held` and `with` are not allowed. A runner rejects the
+rest as an error.
+
 Frame 0 of the trace is the state described here after zero frames of
 play: row 0 shows `x`, `y` as 0 and `state` as stated (default as
 above). Inputs in `[inputs]` start acting on frame 0, as in v1.

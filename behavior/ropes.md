@@ -247,6 +247,31 @@ Action held, whether Action is held or not:
   doesn't change during this fall, whatever is held. It ends with a
   landing (`landing.md`); it can't catch a rope.
 
+## A rope in a scenario
+
+A scenario with `mode: rope` and `entity rope 0 H` (`../scenarios/FORMAT.md`)
+starts like this on frame 0, before any input acts:
+
+- **The rope** has its bottom end `B` at `H`, a centre `c` at the left edge of
+  column 0 (a whole px), swing limits of 3 px each way and a rope speed of 0.1875 (48/256).
+  Its `x` is `c` exactly, and it is moving right at full speed: `vx` and
+  the target speed `s` are both +48/256. This is a constructed start:
+  whether a swaying rope ever passes through a whole-px centre moving
+  right at full speed is not measured. The rope's
+  motion from there is "The rope" above, step by step.
+- **The player** holds that rope: state `rope`, not on the ground, `vx`
+  and `vy` 0, not climbing and not turning, with `facing` as stated
+  (default right). Its whole `x` is the rope's, its `x` fraction is the
+  scenario's `x OFFSET` (default 0), and its feet line `F` is a whole px,
+  `H` px above `B`.
+- **The rope last held** is this rope, as it is on every frame of holding
+  it. So Jump with Left or Right on frame 0 leaves the rope, and the
+  same rope can't be caught again until it has been out of the player's
+  reach for one frame.
+
+Row 0 of the trace shows `x` and `y` as 0 and state `rope`; its event is
+empty (there was no catch).
+
 ## In a trace
 
 Every frame that **ends** with the player holding a rope has the state
