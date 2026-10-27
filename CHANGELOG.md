@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.389.0
+
+Scenario v2: the start of `mode: rope` (spec#85).
+
+Answers clamber-engine/spec#85.
+
+- `behavior/ropes.md`: new section "A rope in a scenario". With
+  `mode: rope` and `entity rope 0 H`, frame 0 has the rope's bottom end
+  at `H`, its centre at the left edge of column 0, swing limits of 3 px,
+  rope speed 48/256, and the rope at its centre moving right at full
+  speed (a constructed start, not measured). The player holds the rope
+  (state `rope`, `vx`/`vy` 0, not climbing or turning, `facing` as
+  stated) with its feet line `H` px above the bottom end, and that rope
+  is the rope last held. Row 0 has an empty event.
+- `scenarios/FORMAT.md`: with `mode: rope`, level 0 is the player's
+  feet line on frame 0, column 0 needs no `floor`, `H` must be at least
+  −24, and only `facing`, `lead`, `x`, `state: rope` and
+  `follower: none` are allowed in the start.
+
 ## spec-v0.388.2
 
 Vectors: the carried object in `valid-objects` (spec#87).
