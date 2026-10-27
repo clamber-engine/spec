@@ -207,6 +207,24 @@ with that D. (Measured on flat ground next to a ledge, from 19,844
 remembered presses and 4,756 new presses on D + 17; see
 `rolling-off-ledges.md`, "A roll started in the stop after a roll".)
 
+**A Jump press on D + 17** beats a remembered press (and a new press on
+D + 17, as in "On the ground"): the jump starts on D + 18 and no roll
+starts, so the row of D + 17 has no `roll_start`. A Jump press on D + 16
+or earlier jumps (a Jump press during the stop starts a jump), and a Jump press on
+D + 18 or later finds the roll already started on D + 17 (the jump then
+takes the roll's place as in `roll-speed.md`, "Jumping out of a roll").
+
+Example: a roll started on frame 0 with Right and Action, D = 29. Action
+is pressed again on frame 34 (D + 5) and released after 3 frames, Jump and
+Right are pressed on frame 46 (D + 17) and held for 4 frames. There is no
+`roll_start` anywhere after frame 0; `jump_start` is on frame 47.
+Pressing Jump on frame 47 instead gives `roll_start` on frame 46.
+
+Measured on flat ground: remembered presses on D − 2, D − 1, D, D + 5,
+D + 10, D + 14 and D + 16 and a new press on D + 17, each with a Jump
+press on every frame from D + 12 to D + 20, with Right, Left and no
+direction. Only the Jump press on D + 17 differs from the rule above.
+
 ## Down during a roll
 
 From S + 1 to D + 17 of a roll that ends in a stop, and from S + 1 to
