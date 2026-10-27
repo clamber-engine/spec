@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.376.0
+
+Two rules around the stop after a roll (spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/rolling-off-ledges.md`, "The stop after a roll, next to an
+  edge": new rule "Pressing toward the edge while moving away from it".
+  When a roll that was reversed away from the edge has the direction
+  toward the edge held on D to D + 3, the 15 px ground test looks toward
+  the edge, so a slow frame with no ground there is a stopped frame.
+  Measured at a right edge in 714 runs by inputs. The left edge goes on
+  the "Not measured" list.
+- `behavior/roll-input.md`, "Starting the next roll": a Jump press on
+  D + 17 beats a remembered roll press, and a new press on D + 17 too.
+  The jump starts on D + 18 and no roll starts. Worked example; measured
+  on flat ground by inputs.
+
 ## spec-v0.375.0
 
 The stop after a roll next to a left edge (spec#80, in part).
