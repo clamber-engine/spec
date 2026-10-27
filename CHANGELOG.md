@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.383.0
+
+A Jump press during a crouch turns on the jump's first frame (spec#80, in
+part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/ground-speed.md`, "Crouching": the no-turn rule from D to
+  U + 9 now excepts a Jump press. A Jump press on any frame from D to
+  U + 9 turns the player on the jump's first frame P + 1 if the opposite
+  direction is held then (`turn` with `jump_start`); held on P only, there
+  is no turn. Worked example; measured by inputs in 92 runs, walking on
+  flat floor in both directions. Standing, running and slopes are not
+  covered for this rule.
+
 ## spec-v0.382.0
 
 A Jump press during the stop after a roll (spec#80, in part).
