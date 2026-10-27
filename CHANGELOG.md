@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.380.0
+
+Roll frames in the air are never stopped frames (spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/rolling-off-ledges.md`, "Stopping before a ledge": a roll
+  frame in the air is never a stopped frame, however small `|vx|` is;
+  steering and the move apply as usual. Worked example with a normal roll
+  turned in the air beside the edge. Measured in 714 runs: all 2 218
+  airborne roll frames that started with `|vx|` at most 1.05859375 and a
+  direction held moved the player.
+
 ## spec-v0.379.0
 
 What the hit character's run does at drops and walls, and when it is gone
