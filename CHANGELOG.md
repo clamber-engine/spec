@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.386.0
+
+Where the hit character's run stops near the right end of the first level
+(spec#82, in part).
+
+Answers part of clamber-engine/spec#82.
+
+- `behavior/losing-a-character.md`, new "A stop near the right end of the
+  first level" case: a run that falls from the upper floor onto the lower
+  floor at the far right end stops for good, well short of the out-of-view
+  cut-off. Over 7 hits the stop varied by at most about 4 px. After the
+  stop the horizontal speed stays at 4 while `x` doesn't change. Whether
+  this is a wall or the level's edge was not separated. A setup method was
+  used to reach each hit, not checked in ordinary play. "Not covered"
+  updated.
+
 ## spec-v0.385.0
 
 The hit character's run up a steep rise (spec#82, in part).
