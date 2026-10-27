@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.379.0
+
+What the hit character's run does at drops and walls, and when it is gone
+(spec#82, in part).
+
+Answers part of clamber-engine/spec#82.
+
+- `behavior/losing-a-character.md`: the hit character's run keeps its
+  running state the whole way. At a drop it falls with the usual gravity
+  while still moving right at 4 px per frame, lands and runs on (95 runs).
+  At a wall it stops where a walking character moving right would, keeps
+  its speed of 4 and doesn't turn, climb or jump. It stayed there with no
+  time limit (one run at one wall, so other walls aren't covered). It is
+  gone on the first frame where its `x` rounded down is 289 or more to the
+  right of the view's left edge (40 runs). Not covered now lists
+  bottomless pits, the level's right edge, a stopped run once the view
+  moves away from it, and the second character as the hit character.
+
 ## spec-v0.378.0
 
 Falling past the lowest column of a sloped platform end (spec#80, in part).
