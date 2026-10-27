@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.387.0
+
+Scenario format version 2: structured geometry and start state (spec#81).
+
+Answers clamber-engine/spec#81.
+
+- `scenarios/FORMAT.md`, new "Version 2" part. A `[geometry]` section
+  describes the test place in 1 px columns, relative to the player's
+  frame-0 column and level 0. It covers floors (including pits),
+  walls, platforms, ceilings, water and entities. A `[start]` section
+  gives mode (grounded, airborne, riding, carrying, swimming, rope),
+  facing, speeds, state with a default for each mode, height, lead
+  character, follower, idle frames, held inputs and the ridden or
+  carried kind. Column ranges use `C0..C1`. A new optional header key,
+  `probe: yes`, marks starts that ordinary play never produces. v1
+  files stay valid.
+- `vectors/scenario-v2/`: made-up parser vectors, two valid files with
+  expected values and three files that must be rejected.
+
 ## spec-v0.386.0
 
 Where the hit character's run stops near the right end of the first level
