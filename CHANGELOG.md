@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.385.0
+
+The hit character's run up a steep rise (spec#82, in part).
+
+Answers part of clamber-engine/spec#82.
+
+- `behavior/losing-a-character.md`, new "A steep rise" case: on a 48 px
+  rise on the first level, much steeper than the slopes of `slopes.md`,
+  the run doesn't slow, stop or change state. It keeps 4 px per frame and
+  its height follows the ground, up to about 10.4 px in a frame onto the
+  top. So the 1 to 3 px a frame given for gentle slopes is not a limit.
+  Measured in 7 runs with the hit on different frames (a setup method was
+  used to reach each hit), not checked in ordinary play. Other rises and
+  steep faces added to "Not covered".
+
 ## spec-v0.384.0
 
 The roll's direction on landing frames, and when `jump_release` is logged
