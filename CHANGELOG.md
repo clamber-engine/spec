@@ -2,6 +2,26 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.384.0
+
+The roll's direction on landing frames, and when `jump_release` is logged
+(spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/roll-speed.md`, "Size and direction on the press frame": new
+  exception for the first character after a jump. A roll pressed on any
+  frame from L to K (K included) goes the way the lone direction held on
+  S points, since facing follows the input there (the row carries
+  `roll_start` and `turn`); from K + 1 the usual rule applies. Worked
+  values; measured by inputs in 52 presses on flat floor. `ground-speed.md`,
+  "After a landing", points to it.
+- `behavior/jump-arc.md`, new "The `jump_release` event": the event is on
+  the first frame without the jump input only if that row's `vy` is still
+  below 0 (state `jump`); a release on the frame that carries the player
+  over the top has none. Two-row example; measured by inputs on flat
+  floor, `title-1` only.
+
 ## spec-v0.383.0
 
 A Jump press during a crouch turns on the jump's first frame (spec#80, in
