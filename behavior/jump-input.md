@@ -328,6 +328,22 @@ file says otherwise. The mode after these landings is in
 on these landings too. Reference comparisons on them should allow ±1
 frame on the `jump_start` and on frame counts measured from it.
 
+One case is measured: the lead character **walking** off a ledge without
+a face, in a fall of 13 to 42 frames, has **E = L + 2**.
+"Pressing before landing" below applies with this E: a press made in
+the air on P ≥ L − 10 and held through L + 1 starts the jump on L + 2;
+a press on L − 11 or earlier gives no jump, and neither does one
+released before L + 1. A press on L + 1 or later starts a jump on the
+frame after it.
+
+Measured on `title-1` with the lead character, walking right and left
+off 15 ledges at each side (Right or Left held throughout, no Action),
+Jump pressed on L − 14 to L + 4 and held 1 or 30 frames: 870 runs
+(presses made before the player left the ledge are an ordinary jump
+and count as matching). Every take-off matched this rule. With E = L + 3, 258 of them are wrong: the
+take-off is a frame late for presses on L − 9 to L + 1, and missing for
+presses on L − 10.
+
 One case is measured: the second character, leading, landing on floor
 that isn't part of a face after walking or running down a steep face
 into a fall, has **E = L + 2**. A press on L − 4 to L + 1 that is held
