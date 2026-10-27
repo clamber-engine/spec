@@ -162,10 +162,22 @@ which is always 0, is the player's own frame-0 position, and level 0 is
 | `platform C0..C1 H` | A surface at `H` over columns `C0` to `C1` that can be passed through from below and stood on from above (`../behavior/platforms-from-below.md`) |
 | `ceiling C0..C1 H` | Columns have a ceiling whose underside is at `H` |
 | `water C0..C1 H` | Columns hold water whose surface is at `H` (`../behavior/swimming.md`) |
-| `entity KIND C H [facing L\|R]` | An object of the given kind, standing with its base at height `H` in column `C`. `KIND` is the plain name used by the behavior files: `walker`, `thrower`, `critter`, `crate`, `rope`, `launch_barrel`, `metal_barrel`, `collectible`, `sign`, `barrel`, `holder`. `barrel` and `holder` are the kinds of `../formats/placements.md` (an object that can be carried, and one that holds the missing character); `crate` is the animal crate. New kinds are added to this list in the pull request that needs them |
+| `entity KIND C H [facing L\|R]` | An object of the given kind, standing with its base at height `H` in column `C` (for `thrower`, see the rule below). `KIND` is the plain name used by the behavior files: `walker`, `thrower`, `critter`, `crate`, `rope`, `launch_barrel`, `metal_barrel`, `collectible`, `sign`, `barrel`, `holder`. `barrel` and `holder` are the kinds of `../formats/placements.md` (an object that can be carried, and one that holds the missing character); `crate` is the animal crate. New kinds are added to this list in the pull request that needs them |
 
 Rules:
 
+- For `entity thrower C H`, `H` is the height of the floor of the
+  thrower's ledge, as for the other kinds: the thrower's position
+  (`../behavior/thrower-contact.md`) is 1 px above `H`, so a player
+  standing on a floor at `H` in column `C` has U = −1. By the
+  convention of this format the statement does not need a `floor` at `H`:
+  a runner places the thrower at that height whatever the geometry
+  under it is. That this matches ordinary play was checked only with a
+  setup method; it was not checked in ordinary play. Only the measured
+  facing is covered, left; `facing R` on a thrower is an error until
+  right-facing throwers are measured (`../behavior/thrower.md`, "When it
+  throws"). A thrower with no `facing` faces left. Its throws are the
+  default ones (`../formats/placements.md`, "Thrower settings").
 - `floor` statements must not overlap. The columns they cover must be
   contiguous, so every column from the lowest-numbered to the
   highest-numbered covered one has exactly one `floor` statement. The
