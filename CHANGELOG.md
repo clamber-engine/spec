@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.388.1
+
+Scenario v2: where a thrower is for `entity thrower` (spec#84).
+
+Answers clamber-engine/spec#84.
+
+- `scenarios/FORMAT.md`: for `entity thrower C H`, `H` is the floor of
+  the thrower's ledge and the thrower's position is 1 px above it (a
+  player on a floor at `H` has U = −1). By convention the statement
+  needs no `floor` at `H`. Only left-facing throwers are covered: no
+  `facing` means left, and `facing R` on a thrower is an error. Its
+  throws are the defaults of `formats/placements.md`.
+
 ## spec-v0.388.0
 
 Scenario v2: what `mode: carrying` carries and its frame 0 (spec#86).
