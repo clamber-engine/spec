@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.378.0
+
+Falling past the lowest column of a sloped platform end (spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/platforms-from-below.md`, "Falling onto the top": wider
+  measured range for the exception where a falling frame that ends below
+  the underside isn't a landing. At the lowest column of a sloped end,
+  starts from 1/4 px to 3 1/4 px above the top fell through and a start
+  3 1/2 px above landed; the face columns beyond it blocked the player as
+  in `air-walls.md`. A run by inputs confirms the exception in ordinary
+  play. No rule changes.
+
 ## spec-v0.377.0
 
 Jumping on landing after walking off a ledge (spec#80, in part).
