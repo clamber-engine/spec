@@ -186,6 +186,20 @@ where it is until it pushes off, as below. A roll going away from the
 edge has ground ahead, so it has no stopped frames (rolls away from both
 edges, started up to 20 px from them, were checked).
 
+**Not in the air.** A roll frame in the air is never a stopped frame,
+however small `|vx|` is: steering
+(`roll-speed.md`) and the move apply as usual. Example, a normal roll
+(size 3) going left in the air beside the edge, which Right held earlier
+had slowed to `vx` −0.96484375 at the start of the frame, Right and Action
+pressed on that frame: the roll is turned, `vx` becomes −0.47265625 (the
+gap to the target, 3.96484375, divided by 8 and rounded down to a
+256th) and the player moves left by that. Measured in 714 runs of the
+kind described in "The stop after a roll, next to an edge" (Left or
+Right held in the roll, then Action and the other direction again; every
+roll started with a direction held, so every roll was normal): the 2 218
+airborne roll frames that started with `vx` between 0 and 1.05859375 in
+size and a direction held all moved the player.
+
 **Pushing off.** On a frame S + 1 or later of a stopped roll on which
 exactly one of Left or Right is held, in the roll's direction, `vx`
 instead becomes 2 (512/256) in the roll's direction and the player moves
