@@ -860,11 +860,16 @@ For the first character, standing or walking, on flat floor and on
 - **From U + 10** the usual rule applies ("Facing and turns"): the
   opposite direction held on U + 10 starts a turn on that frame, and
   facing changes on T + 4 = U + 14. Held first on a later frame, it
-  starts the turn on that frame.
+  starts the turn on that frame. The one exception is a turn that was
+  abandoned because Down was pressed while it was under way (see "Down
+  during a turn already under way", below): after that, a direction kept
+  held may turn later than U + 10.
 - Holding the opposite direction already on D (for instance Down and Left
-  pressed together by a player standing still facing right) is the same:
-  the player slides as the speed rule says, keeps facing right through
-  the crouch, and turns from U + 10.
+  pressed together by a player standing still facing right) is the same
+  as far as the crouch goes: the player slides as the speed rule says and
+  keeps facing right through the crouch. That example is the k = 0 case of
+  an abandoned turn (below); its turn comes from U + 10 as in the previous
+  bullet.
 - **A Jump press** on any frame from D to U + 9 (P) does turn the player,
   because the jump's first frame P + 1 isn't a crouch frame: if the
   opposite direction is held on P + 1, facing changes on P + 1 and the row
@@ -905,9 +910,51 @@ speed, on flat floor and on a 1-in-4 slope: Down held for 1, 5, 13 and 20
 frames (walking: 1, 13 and 20), Left first held on D or on frames up to
 D + 34, for 1, 3 or 80 frames: all 554 runs follow the rules above.
 
+**Down during a turn already under way.** A turn starts on T as in
+"Facing and turns", and Down is first held on a frame from T to T + 4
+(so D is that frame, even though the turn began earlier): the turn is
+abandoned. Facing doesn't change on T + 4 and no `turn` event is
+logged. A press on T + 5 or later changes nothing: facing changed on
+T + 4 as usual, and the crouch starts on D as usual (a press on T + 5 or
+later doesn't wait for the turn to end). After an abandoned turn the
+rule above holds if the opposite direction was released: the player
+keeps its facing. If it is still held, the turn is not always the one
+from U + 10 that "Turns during a crouch" gives: for a standing player see
+the table below; for a walking player when the next turn comes wasn't
+measured (Not covered).
+
+Example: walking right, Left held from frame 0. The walking turn check
+that starts the turn is on frame 3, so facing would change to left on
+frame 7. Down held on any of frames 3 to 7 (D = that frame), for 1 frame
+or 13, and Left released with it or kept: facing stays right and no turn
+is logged through U + 9; with Left kept held, what comes after that isn't
+measured. Down first held on frame 8 or later: facing is left from
+frame 7 with its `turn` event. Standing still facing right with Left
+held from frame 0 (turn at 0, facing on 4): the same for Down first
+held on frames 0 to 4 and not for Down on 5 or later.
+
+Standing player, Left held from frame 0 and kept held (flat floor),
+Down first held on frame k for 1 or 13 frames (the crouch lasts 13
+frames either way, so U = k + 13): the turn is abandoned for k from 0
+to 4. The next turn's `turn` event (facing change) is logged on frame 27
+for k = 0, 28 for k = 1, then 32, 31 and 32 for k = 2, 3 and 4. The first
+two are U + 14 (the turn from U + 10); the other three come 3, 1 and 1
+frames later than that. Down held for 13 frames gives the same frames as
+1. The earlier example (Down and Left together on frame 0) is the k = 0
+row. For k = 2 to 4 the delays follow no rule found: use the measured
+frames. "Standing" describes the player at the start; with Left kept held
+the logged state is walking from the Left press on, through these frames.
+
+Measured for the lead character standing and walking right on flat floor
+and on a 1-in-4 slope, Left held for 1, 3 or 45 frames starting 0 to 3
+frames before the turn check, Down first held on every frame from 0 to
+11, for 1 or 13 frames, by inputs alone: all as above (the later-turn
+frames in the standing case were measured on flat floor only).
+
 Not covered: a crouch started while running (Action released on D), the
-second character, Down pressed during a turn already under way, and Down
-pressed again from U to U + 9.
+second character, Down pressed again from U to U + 9, and when the next
+turn comes for a walking player after an abandoned turn with the opposite
+direction kept held.
 
 ## In `title-2`
 
