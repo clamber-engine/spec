@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.392.0
+
+Down pressed during a turn already under way (spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/ground-speed.md`, new "Down during a turn already under
+  way": Down first held on T to T + 4 abandons the turn (no facing
+  change on T + 4, no `turn` event); on T + 5 or later it changes
+  nothing. After an abandoned turn with the opposite direction released
+  the player keeps its facing; with it kept held, a standing player's
+  next turn frames are given as a measured table. Worked examples;
+  measured by inputs alone, standing and walking, flat floor and 1-in-4
+  slope. The "Turns during a crouch" bullets now point to the
+  exception. The next turn for a walking player with the direction kept
+  held is not covered.
+
 ## spec-v0.391.0
 
 A wall that blocks the first frame after take-off (spec#80, in part).
