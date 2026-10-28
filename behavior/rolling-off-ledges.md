@@ -696,6 +696,19 @@ between 0.8046875 and 1.109375 on a frame without ground ahead, so the
 limit itself is not pinned for this character. Frames in the air were
 left out.
 
+Rolling left it is the same, mirrored: a roll frame on the ground,
+going left, is a stopped frame when `|vx|` at its start is at most
+1.05859375 and there is no ground 15 px ahead (column floor(x) − 15).
+Measured the same way on a ledge where the ground simply ends at the
+left (the mirror of the one above), 420 rolls with Left held, 9,645
+roll frames on the ground. All 34 frames with `|vx|` at most 1.05859375
+and no ground ahead were stopped frames (`|vx|` from 0.00390625 to
+0.88671875). None of the 261 slow frames with ground ahead stopped, and
+none of the 3,221 frames with no ground ahead but `|vx|` of 1.078125 or
+more did. The limit is not pinned for this character here either (no
+`|vx|` between 0.88671875 and 1.078125 on a frame without ground
+ahead). Frames in the air were left out.
+
 ### Evidence (second character)
 
 Measured on three ledges with a steep face at the top, rolling right,
@@ -988,10 +1001,9 @@ This list is for `title-1`; `title-2` has its own list above.
   carry-on frames (D to D + 3) can be stopped.
 - How long a roll lasts when it is pushed off and still on the ground
   at S + 29 (not seen: pushed rolls always went off the edge first).
-- The second character: ledges where the ground simply ends rolling
-  left, the exact `|vx|` limit of a stopped frame for this character
-  (between 0.8046875 and 1.109375 was seen), pushes off there, and the
-  first character following it.
+- The second character: the exact `|vx|` limit of a stopped frame for
+  this character (between 0.88671875 and 1.078125 was seen), pushes off
+  there, and the first character following it.
 - Rolls that hit a wall or an enemy during the fall or after landing.
 - Jumps pressed during a hover on ledges with a face at the top when
   L is S or S + 8 (not seen there with the first character leading).
