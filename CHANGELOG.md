@@ -2,6 +2,25 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.398.0
+
+The lead's pictures during the entrance throw (spec#90, in part).
+
+Answers part of clamber-engine/spec#90.
+
+- `behavior/level-start.md`, "The lead's pictures in the throw": on the
+  frames that could be read (T + 10 and T + 20 up to the landing frame),
+  the lead goes round the 16 bounce pictures one per frame, in a fixed
+  order that motion and input don't change, with the listed exceptions
+  where a picture repeats or lags one step. The rest of the rise and
+  the frames before T are not covered.
+- "The landing frame and after": from the landing frame the pictures
+  are those of the landing after a bounce, by the mode that starts on L.
+- "The second character": its pictures during the throw can't be read
+  from the screen and are not covered.
+- Measured from play by inputs alone in six runs with one or two
+  characters.
+
 ## spec-v0.397.0
 
 The second character's stopped frames before a ledge when rolling left
