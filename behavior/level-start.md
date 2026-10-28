@@ -164,6 +164,68 @@ steps 3 frames apart: after frame `f` the brightness is ⌊`f` / 3⌋
 fifteenths of full, up to 15 (full from frame 45). Which picture first
 shows each step is not covered.
 
+### The lead's pictures in the throw
+
+The lead isn't drawn on frames 0 to 40. It is drawn from T. On the frames
+that were read (T + 10 and T + 20 to the frame before the landing frame
+L) it shows the 16 pictures `bounce-1` to `bounce-16` of
+`player-frames.md` ("A bounce") going round in order, **one picture per
+frame** (not two, as after a bounce off a walker): on T + *n* it shows
+`bounce-`(*n* mod 16 + 1). So `bounce-1` shows on T + 32 and T + 48, and
+the last frame before L, T + 55, shows `bounce-8`. The fall, with the
+steering from T + 39, shows the same order: neither the motion nor
+anything held changes the pictures. For the rest of the rise (T to T + 9
+and T + 11 to T + 19) the order is not covered; see below.
+
+On T + 10 the picture is one step behind the order above (`bounce-10`
+instead of `bounce-11`); what T + 9 and T + 11 show was not read. On six
+more frames the picture shown is the one of the frame before, and the
+next frame is back in the order above: T + 22 (`bounce-6` instead of
+`bounce-7`), T + 26 (`bounce-10` instead of `bounce-11`), T + 30
+(`bounce-14` instead of `bounce-15`), T + 34 (`bounce-2` instead of
+`bounce-3`), T + 42 (`bounce-10` instead of `bounce-11`) and T + 54
+(`bounce-6` instead of `bounce-7`). That is the whole list for the frames that were read (T + 10 and
+T + 20 to T + 55); for T to T + 9 and T + 11 to T + 19 it isn't known
+(see below).
+
+Measured on the level map's entrance in six runs: with one character and
+with two characters, each with no input; with Right held from frame 60
+and Jump held on frames 70 to 100; and with Left held from frame 40 and
+Action held on frames 80 to 130. All six gave the same pictures on every
+frame that was read:
+
+- T + 27 to T + 55 (frames 78 to 106) were read on every frame in all six
+  runs, with exactly the pictures above.
+- On T to T + 26 the pieces of the burst (frame 41) cover the lead most
+  of the time. Of those frames only T + 10 and T + 20 to T + 26 could be
+  read, in all six runs, and only as the closest of the lead's pictures;
+  they follow the order above, except that T + 10 is one step behind it
+  (as in the paragraph above) and T + 22 and T + 26 show the picture of
+  the frame before.
+- Not covered: T to T + 9, T + 11 to T + 19 (whether the picture repeats
+  on any of them, and which picture shows), and the frames from 41 to
+  T − 1, where the burst's pieces are drawn.
+
+### The landing frame and after
+
+From L the pictures are those of the landing after a bounce, by the mode
+that starts on L: standing shows `stand-1` for 3 frames from L and goes on
+as in `player-frames.md` ("The first character, from B + 4 to the
+landing", landing frame G = L); walking shows `walk-1` on L; running
+shows `run-1` on L. Measured with nothing held (standing, 28 frames
+read), with Right held (walking, 28 frames) and with Left and Action held
+(running from L, a turn from L + 3): the first frames of each agree with
+that section.
+
+### The second character
+
+With two characters, the figure drawn on T + 1 differs from the one drawn
+in the one-character run, so the second character is drawn from T + 1,
+one frame behind the lead; but it lies so near the lead that its
+pictures can't be read from the screen. Its pictures from T to L + 1,
+and the pictures of each character when the second one leads, are not
+covered.
+
 Where the view is from frame 0 and how it moves through the entrance
 are in `view.md` and, for the vertical motion and the view's shake
 after the burst, `view-vertical.md` (both "When an area begins").
