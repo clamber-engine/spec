@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.394.0
+
+The ground ending during a roll's carry-on, for the second character
+(spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/second-character.md`, "Rolls", new paragraph "The ground
+  ends during the carry-on": the carry-on rule of
+  `rolling-off-ledges.md` holds with the second character's frames
+  (first airborne frame D + 1 to D + 6: `roll` to D + 5, `roll_end` with
+  state `fall` on D + 6). Measured from play over a range of starting
+  distances with the same result on every start; later ground ends,
+  left rolls and slow rolls are stated as not measured.
+
 ## spec-v0.393.0
 
 Stopped frames before a ledge for the second character (spec#80, in part).
