@@ -2,6 +2,23 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.399.0
+
+No turn to the downhill side right after a slide down a steep face
+(spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/steep-faces.md`, "Turning to face downhill after a slide": a
+  player carried down a face while facing the rise, with the downhill
+  direction held, starts no turn until 13 frames after the first frame
+  that ends off the face; from then on a held downhill direction starts
+  a turn at once, as for a standing player. Example trace and evidence
+  from 400 runs on a face falling to the left. The mirror, runs, rolls
+  and presses of Jump, Action or Down during the wait are not covered,
+  and the rule wasn't checked in ordinary play.
+- `behavior/ground-speed.md`: pointer to the new section.
+
 ## spec-v0.398.0
 
 The lead's pictures during the entrance throw (spec#90, in part).
