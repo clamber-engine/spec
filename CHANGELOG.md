@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.400.0
+
+The follower's walking and running pictures (spec#91, in part).
+
+Answers part of clamber-engine/spec#91.
+
+- `behavior/following.md`, "The follower's pictures": while it follows
+  the trail, the follower is drawn with the second character's pictures.
+  Its walking or running mode falls back to the lead's mode at the
+  follower's current point (matched 85% of measured frames). Each entry
+  into walking or running restarts the cycle at `s-walk-1` or `s-run-1`,
+  and each picture usually lasts 2 frames, whatever the speed. The
+  pictures for resting, turning, airborne frames and after a bounce are
+  listed as not covered.
+
 ## spec-v0.399.0
 
 No turn to the downhill side right after a slide down a steep face
