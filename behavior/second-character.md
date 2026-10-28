@@ -216,9 +216,13 @@ earlier ends as in `rolling-off-ledges.md`. Measured with the second
 character rolling right, Action pressed 8 frames after Right and held,
 off the end of ground about 170 px above the floor, with the start moved
 back 1 px at a time so that L went from D + 1 to D + 6 (18 starts, one to
-four for each L): the same result on every start. The ground ending
-later than D + 6, rolls to the left and slow rolls were not measured for
-this character.
+four for each L): the same result on every start. The same holds
+rolling left (Action pressed 8 frames after Left and held, the start
+moved back 1 px at a time, 20 starts with L from D + 1 to D + 6). With the
+ground ending later, at L = D + 7 or more (21 starts, L up to D + 13,
+rolling left), D + 6 is `roll_end` with state `run`, the character runs
+on the ground, and the frame it leaves the ground is `fall`. Slow rolls
+were not measured for this character.
 
 In detail:
 
