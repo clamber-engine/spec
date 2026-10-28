@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.397.0
+
+The second character's stopped frames before a ledge when rolling left
+(spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/rolling-off-ledges.md`, "Stopping before a ledge (second
+  character)", "Not covered": rolling left, the second character's roll
+  frames on the ground stop before a ledge by the same rule as rolling
+  right, mirrored. Measured from play by inputs alone on a ledge where
+  the ground ends at the left (420 rolls). The exact speed limit for this
+  character is still not pinned, and the narrower range seen is given.
+
 ## spec-v0.396.0
 
 The second character's sprite colours during the dimming, and the first
