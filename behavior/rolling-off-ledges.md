@@ -675,6 +675,27 @@ On T, `vx` moves toward 2.25 (Right held, Action released). With Jump
 tapped on P alone, T moves the player down by 0.44140625 and L + 5 by
 −7.9140625.
 
+### Stopping before a ledge (second character)
+
+With the second character leading, "Stopping before a ledge" applies as
+for the first character. A roll frame on the ground, going right, is a
+stopped frame when `|vx|` at its start is slow (at most the first
+character's limit, 1.05859375) and there is no ground 15 px ahead
+(column floor(x) + 15): `vx` becomes 0 and the player doesn't move.
+
+Measured with the second character under control after a swap and the
+first character following, on a ledge where the ground simply ends:
+420 rolls started from many distances (normal rolls, Action tapped or
+held), 11,220 roll frames on the ground with Right held, from the start
+of the roll to the end. All 42 frames with
+`|vx|` at most 1.05859375 and no ground 15 px ahead were stopped frames
+(`|vx|` from 0.00390625 to 0.8046875). None of the 280 slow frames with
+ground 15 px ahead stopped, and none of the 4,738 frames with no ground
+ahead but `|vx|` of 1.109375 or more did. The grid produced no `|vx|`
+between 0.8046875 and 1.109375 on a frame without ground ahead, so the
+limit itself is not pinned for this character. Frames in the air were
+left out.
+
 ### Evidence (second character)
 
 Measured on three ledges with a steep face at the top, rolling right,
@@ -967,11 +988,10 @@ This list is for `title-1`; `title-2` has its own list above.
   carry-on frames (D to D + 3) can be stopped.
 - How long a roll lasts when it is pushed off and still on the ground
   at S + 29 (not seen: pushed rolls always went off the edge first).
-- The second character: ledges where the ground simply ends, rolling
-  left, the conditions of a stopped
-  frame (only the stops and pushes at the top of one face in "The
-  second character" were measured), and the first character following
-  it.
+- The second character: ledges where the ground simply ends rolling
+  left, the exact `|vx|` limit of a stopped frame for this character
+  (between 0.8046875 and 1.109375 was seen), pushes off there, and the
+  first character following it.
 - Rolls that hit a wall or an enemy during the fall or after landing.
 - Jumps pressed during a hover on ledges with a face at the top when
   L is S or S + 8 (not seen there with the first character leading).
