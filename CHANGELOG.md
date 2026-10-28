@@ -2,6 +2,19 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.395.0
+
+The second character's carry-on as the ground ends, rolling left and with
+later ground ends (spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/second-character.md`, "Rolls", "The ground ends during the
+  carry-on": the rule now also holds rolling left, and a ground end at
+  D + 7 or later gives `roll_end` with state `run` on D + 6, then `fall`
+  on the frame the character leaves the ground. Measured from play over a
+  range of starting distances; slow rolls are stated as not measured.
+
 ## spec-v0.394.0
 
 The ground ending during a roll's carry-on, for the second character
