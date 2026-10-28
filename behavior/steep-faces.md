@@ -417,7 +417,8 @@ ignored. Then the speed rule of `ground-speed.md` applies unchanged
 - Facing didn't change on any measured frame that started and ended on
   face columns, including up to 10 frames in a row with the uphill
   direction held. Whether a longer hold turns the player on a face isn't
-  covered.
+  covered. With the downhill direction held while facing the rise, see
+  "Turning to face downhill after a slide".
 - After a landing, the 1.5 px per frame downhill starts later, and a
   held uphill direction is still ignored before it starts: see "Landing
   on or next to a face" below.
@@ -552,6 +553,67 @@ Measured moving left off the foot of a face falling to the left (see
 "Evidence (leaving a face onto floor)" below). Leaving a face moving
 right is not covered.
 
+### Turning to face downhill after a slide
+
+A player who is carried down a face while `facing` is toward the rise
+(facing right on a face rising to the right) and who holds the downhill
+direction doesn't turn on the face, and doesn't turn in the first frames
+on the floor beyond it either. Let **O** be the first frame that ends
+on a column that isn't a face column, past the face's lowest column
+(`x` less than 0 in the example below). Then:
+
+- No turn starts on any frame before **O + 13**, whatever was held and
+  for however long. A press of the downhill direction before O + 13 is
+  not remembered: if it is let go before O + 13, nothing happens.
+- From O + 13 on, the player is treated like a standing player
+  (`ground-speed.md`, "Facing and turns"): a frame with the downhill
+  direction held starts a turn on that frame, at any speed (still
+  sliding at 2 px per frame, or slower), and the turn has its usual
+  8 frames with `facing` changing on T + 4. Held through O + 13, the
+  turn starts on O + 13. First held later, it starts on the first frame
+  it is held.
+
+The wait is the same for every starting column on the face and every
+speed measured, and does not depend on when the downhill direction was
+first held. The wait has no effect on speed: the target and the
+speed rule are those of "Leaving a face onto floor" above.
+
+Example, on a face falling to the left. The run starts with the player
+facing right, in the air above the face, 8 px right of the lowest
+column's left edge and about to land on it, nothing held; Left is held
+from frame 3 on. `x` is relative to the left
+edge of the face's lowest column, `y` to the floor beyond the face. The
+player ends frame 8 off the face, so O = 8 and the turn starts on
+frame 21 and shows on frame 25.
+
+```
+frame	input	x	y	vx	state	ground	facing	events
+1	.	8	-33	0	idle	1	R	land
+2	.	7.8125	-29	-0.1875	walk	1	R
+3	L	7.2109375	-29	-0.6015625	walk	1	R
+4	L	6.25	-25	-0.9609375	walk	1	R
+5	L	4.97265625	-17	-1.27734375	walk	1	R
+6	L	3.41796875	-13	-1.5546875	walk	1	R
+7	L	1.62109375	-5	-1.796875	walk	1	R
+8	L	-0.38671875	0	-2.0078125	walk	1	R
+9	L	-2.38671875	0	-2	walk	1	R
+12	L	-8.38671875	0	-2	walk	1	R
+20	L	-24.38671875	0	-2	walk	1	R
+21	L	-26.38671875	0	-2	walk	1	R
+24	L	-32.38671875	0	-2	walk	1	R
+25	L	-34.38671875	0	-2	walk	1	L	turn
+```
+
+Rows not shown have the same `vx`, `y`, `state`, `ground` and `facing`
+as row 9, with `x` 2 less each frame.
+
+Measured only moving left off the foot of a face falling to the left,
+with nothing but Left held (no Action, Jump or Down), in runs that a
+setup method started with the player in the air above the face, about
+to land on it. The rule wasn't checked in ordinary play. The same wait for a face rising to the left, for runs and
+rolls, and for presses of Jump, Action or Down during it are not
+covered.
+
 ### Evidence (leaving a face onto floor)
 
 - 1 200 runs of 100 frames on a face falling to the left, 4 px per
@@ -581,6 +643,16 @@ right is not covered.
 - `facing` on the 2 112 frames held Right among the first four off the
   face that started next to it: the held side on every one, 520 of them
   turning on that frame.
+- Turn starts after a slide ("Turning to face downhill after a slide"):
+  400 runs of 70 frames, 16 starting columns on the face (each run
+  started with the player in the air 6 px above it, nothing held to
+  begin with; a setup method was used, none were taken from ordinary
+  play) times 25 patterns of Left (held
+  from frame 3, 7, ... 39 to the end; frames 3 to 6 and then one more
+  frame b, b = 8, 12, ... 40; frame 3 and then three frames from b,
+  b = 8, 14, ... 38). In all 400 the first turn started on the first
+  frame from O + 13 on with Left held, and in none earlier; O ranged from
+  2 to 18.
 
 ## Landing on or next to a face
 

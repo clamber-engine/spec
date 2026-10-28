@@ -138,7 +138,10 @@ has no effect on speed: the speed rule above applies on every frame of it.
   first held when walking, and 0 to 12 frames when running.
 
 In `title-1`, on frames held toward a rise right ahead, `facing` and the
-start of turns follow `steep-faces.md` ("Turns next to a rise") instead.
+start of turns follow `steep-faces.md` ("Turns next to a rise") instead, and
+after a slide down a face while facing the rise, no turn starts until 13
+frames after the player leaves the face ("Turning to face downhill after
+a slide").
 
 ### Standing, walking and running
 
