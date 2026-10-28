@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.393.0
+
+Stopped frames before a ledge for the second character (spec#80, in part).
+
+Answers part of clamber-engine/spec#80.
+
+- `behavior/rolling-off-ledges.md`, new "Stopping before a ledge
+  (second character)": with the second character leading, on a ledge
+  where the ground simply ends, rolling right, the stopped-frame rule
+  holds as for the first character. Measured by inputs alone over many
+  rolls with no counterexamples; the exact speed limit is not pinned for
+  this character (a gap in the observed speeds is stated). "Not
+  covered" narrowed to match.
+
 ## spec-v0.392.0
 
 Down pressed during a turn already under way (spec#80, in part).
