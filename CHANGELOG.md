@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.396.0
+
+The second character's sprite colours during the dimming, and the first
+character's following palette (spec#89, in part).
+
+Answers part of clamber-engine/spec#89.
+
+- `behavior/dimming.md`, "Sprite colours", "Pictures", scenario checks,
+  "Evidence", "Not covered": the second character's following and leading
+  palettes and the first character's following palette dim by the same
+  table as the covered palettes, and the picture on which each shows a
+  step is given. Measured from play (16 runs for the second character's
+  following palette over all positions of the cycle, standing and in
+  motion; one standing run for the other two). Colour 15, an animal
+  ridden, the second character leading in motion and a change of player
+  during the dimming are listed as not covered.
+- `formats/sprites.md`, "Not covered": updated to match.
+
 ## spec-v0.395.0
 
 The second character's carry-on as the ground ends, rolling left and with
