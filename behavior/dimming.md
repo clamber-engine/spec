@@ -122,18 +122,32 @@ before, with each entry's colour after the last step taken.
 
 ## Sprite colours
 
-Two of the sprites' palettes (`../formats/sprites.md`, "Sprite
+Some of the sprites' palettes (`../formats/sprites.md`, "Sprite
 palettes") dim on the same cycle of step frames, but by a rule of their
 own: the shared palette (`../formats/sprites.md`, "The other objects'
-palettes") and the first character's leading palette (the one the
-character is drawn with when leading). Colour 0 is never drawn. Colours 1
-to 15 of the shared palette and 1 to 14 of the first character's change
-by the table below, for steps 1 to 32 (the dimming's last step); the
-first character's colour 15 does not follow it (it changes more slowly;
-not covered). A colour is only seen while a sprite using it is on the
-screen; steps 9 to 32 are covered for the colours that stayed on the
-screen (see "Evidence"), and pixels of earlier steps' colours also showed
-at some steps (see "Not covered").
+palettes") and the characters' palettes (`../formats/sprites.md`, "The
+characters' palettes"). Colour 0 is never drawn. Colours 1 to 15 of the
+shared palette and 1 to 14 of each character's palettes change by the
+table below, for steps 1 to 32 (the dimming's last step); a character's
+colour 15 does not follow it (the first character's leading colour 15
+changes more slowly; the other palettes' colour 15 is not covered). A
+colour is only seen while a sprite using it is on the screen; steps 9 to
+32 are covered for the colours that stayed on the screen (see
+"Evidence"), and pixels of earlier steps' colours also showed at some
+steps (see "Not covered").
+
+**The characters' palettes.** Both characters' palettes dim, in both
+roles, by the same table: the player's leading palette and the other
+character's following palette. The second character's colours do not stay
+at their daytime colours while the first character's go to night. What
+the screen showed:
+
+| Palette | Steps covered |
+|---|---|
+| First character's leading | 1 to 8, then 9 to 32 for the colours that stayed |
+| Second character's following (first character the player) | 1 to 32, the characters standing and in motion |
+| Second character's leading (second character the player since before the dimming) | 1 to 32, the characters standing |
+| First character's following (same run) | 1 to 32, the characters standing |
 
 **Colours.** Take a colour of one of those palettes (not the first
 character's colour 15) with red `R`, green `G` and blue `B` (0 to 31
@@ -155,7 +169,19 @@ with `G` < `B` is not covered.
 palette from the picture of the step frame on, and on about half of that
 palette's pixels already on the picture of the frame before. The first
 character's colours show, at the latest, from the picture three frames
-after the step frame; where between is not covered.
+after the step frame; where between is not covered. The second
+character's following palette (first character the player) shows a step
+on one picture, all its pixels at once, and never earlier: the picture of
+the step frame + 2; up to the picture before that it shows the colours of
+the step before (16 runs, steps 1 to 8; see "Evidence"). The second
+character's leading palette and the first character's following palette
+(second character the player) were seen in one run, with the characters
+standing: the step showed on most of the palette's pixels from the
+picture of the step frame + 1 (leading) and + 2 (following), and before
+that the colours of the step before showed on most of them; some pixels of
+the other kind were seen on the pictures around, not explained (see
+"Evidence"). Tests check the timing only for the following palette of
+the first case.
 
 ## Example (made-up colours)
 
@@ -214,6 +240,13 @@ T is frame 999, step 1 is on 1 003 (T + 4).
   step, pictures showed earlier steps' colours too, see "Not covered",
   so tests check only the table's colours showing, not the others'
   absence.)
+- that the second character's following palette (first character the
+  player), and the second character's leading and the first character's
+  following palettes (second character the player since before the
+  dimming), show the colours of "Sprite colours" for the last step taken,
+  except colour 15; the timing of the step on the pictures only for the
+  first of the three (see "Pictures" above). The same
+  caution about earlier steps' colours past the 8th step applies.
 
 It may not check which of the 8 placements of the cycle is used, beyond
 step 1 being on T + 4 to T + 11.
@@ -300,21 +333,68 @@ first run and 14 in the second. The
 view stopped moving from step 25 on in both runs (its right limit), and
 the sprites' colours still followed the table up to step 32.
 
+Second character's palettes: the screen with only the sprites drawn.
+Following: 16 runs of the two characters walking the end of the first
+level together (the second following the first, jumping and standing),
+waiting 0 to 15 frames so that T fell on all positions of the cycle; the
+palette's 14 colours (not colour 15) on the screen before step 1, 32
+steps, windows as above (3 frames after the step frame to the frame
+before the next step frame; step 32's window is missing in 5 runs, whose
+log ended on it, so 7 168 pairs less 70): 7 098 pairs of a step and a colour on 2 515 pictures
+(16 × 32 windows of 5 pictures is 2 560, less 25 for the 5 missing windows,
+less 20 because in 8 other runs the log ends 1 to 4 pictures into step
+32's window, so that window is shorter by 4, 3, 2 and 1 pictures, two
+runs each; those windows still count their pairs),
+the table's colour showed in the window in 7 091. The other 7 are one
+colour at step 29 in 7 of the runs (it showed at steps 28 and 30). On
+the pictures, with `F` the step frame: for steps 1 to 8 (128 pictures
+per frame in the 16 runs) the pictures of `F` − 1, `F` and `F` + 1 showed
+only the colours of the step before (18 936 to 19 216 pixels per frame,
+none of the new colours), and those of `F` + 2 to `F` + 7 only the new
+ones (18 748 to 19 486 pixels, none of the old); for step 1 alone the
+same, with 9 454 to 9 608 and 9 302 to 9 747 pixels. Pixels of colours
+the table gives only for earlier steps showed in the windows of steps 4
+to 6, 12 to 16 and 18 to 20 (256 to 1 280 pixels per picture; the same
+in all runs), as in the paragraph above for the other palettes.
+Leading: one run with a change of player, made while the characters
+stood still and before the dimming, then 360 frames standing (so steps 1
+to 32 and the window of each, 160 pictures): the second character's
+leading palette, 14 colours, 448 pairs, all showed the table's colour
+in the window; the first character's following palette, 13 colours, 416
+pairs, all showed it. Pictures, steps 1 to 8 (8 pictures per frame):
+the second character's leading palette showed mostly the step before's
+colours on `F` − 2 to `F` (1 835 to 1 965 pixels per frame), and the new
+ones on `F` + 1 to `F` + 6 (2 103 to 2 310 pixels; 55 to 60 pixels of
+the old ones remained from `F` + 2 on, and 256 pixels of the new ones
+showed on `F` − 2 to `F`, neither explained); the first character's
+following palette showed mostly the step before's colours on `F` − 1 to
+`F` + 1 (509 to 517 pixels; 108 and 116 pixels of the new ones on the
+first two, not explained) and mostly the new ones on `F` + 2 to `F` + 7
+(715 to 764 pixels). In both runs pixels of
+earlier steps' colours showed in some windows (steps 4 to 6, 28 and 29;
+steps 10, 11, 15 to 17).
+
 ## Not covered
 
-- Sprite colours of other palettes than the two in "Sprite colours"
-  (the second character's, the thrown objects', the animal's and the
-  others), of the two with the players' roles the other way round, with
-  an animal ridden, or for a colour with green below blue; the first
-  character's colour 15, which changes more slowly than the table says;
-  on which step frame each palette changes, to the frame; the colours
-  after the last step; the pictures that use a copy of the first
-  character's palette; why the 6 colours per run stop showing; why, at
+- Sprite colours of other palettes than those in "Sprite colours" (the
+  thrown objects', the animal's and the others), the characters'
+  palettes with an animal ridden, with the second character leading
+  in motion, with the characters' roles changed during the dimming (in
+  one run with a change of player at step 13, the pictures after it
+  showed the colours of the same two palettes as before it, in dimmed
+  colours, and no daytime colours; which character each was drawn
+  with is not covered), or for a colour with green below blue; the
+  characters' colour 15 (the first character's leading one changes more
+  slowly than the table says; the other palettes' is not covered);
+  the colours after the last step; the pictures that use a copy of the
+  first character's palette; on which step frame each palette changes, to
+  the frame; why the 6 colours per run stop showing; why, at
   steps 10, 11, 13 and 15 to 18, pixels of colours the table gives only
   for earlier steps showed on every picture of the window (768, 1 280,
   256, 512, 768, 1 280 and 768 pixels per picture, the same in both runs;
   at no other step from 9 to 32), nor which sprites they belong to.
-- On which picture a step first shows, to the frame. In the captured
+- On which picture a step first shows, to the frame (except for the second
+  character's following palette, see "Pictures" under "Sprite colours"). In the captured
   pictures, the far layer's colours of a step already showed on the
   picture of the frame before the step frame, the ground layer's colours
   partly, and the backdrop's lowest rows sometimes (Evidence); the

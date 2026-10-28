@@ -582,7 +582,8 @@ full frames with every byte hashed for one of them.
 - The characters' colours in some situations:
   - near the first level's end, where the colours change with the
     dimming (`../behavior/dimming.md`, "Sprite colours" gives them for
-    the first character leading, alone);
+    the first character leading, alone, and the second character's and
+    the first character's following ones for the cases it lists);
   - in areas where the characters are drawn with changed colours
     throughout (seen in one area other than the first level);
   - while the picture fades out or in (seen on leaving an area and
