@@ -94,6 +94,40 @@ rules of its own. While the lead walks, the follower stays about 28 px
 behind it along the path; at a stop it comes up to under 28 px of the
 lead's last point and waits there, unless it starts to rest.
 
+## The follower's pictures
+
+While it follows the trail, the follower is drawn with pictures of the
+second character (`player-frames.md`: the `s-` pictures), never the
+lead's. This section gives only the walking and running pictures; the
+others are under "Not covered".
+
+- **Which mode.** Whether the follower is walking or running is not
+  specified by the trail, which holds positions only. As a fallback an
+  engine can use the lead's mode (walking or running) on the frame it
+  was at the follower's current point: in the sample below the follower
+  showed that mode on 1269 of 1486 frames on which it moved and the
+  lead's mode at that point was walking or running (85%). Most of the
+  rest were frames on which the follower stood in its standing picture
+  while moving under 1 px per frame.
+- **Cycle start.** When the follower enters walking from any other mode,
+  its first picture is `s-walk-1`; when it enters running (from walking
+  too), it is `s-run-1`. The cycle never carries over from an earlier
+  walk or run. Seen on every one of 186 entries into walking and 42 into
+  running whose first picture could be read.
+- **Timing.** Pictures follow in order, round the 16 walking pictures or
+  the 13 running ones, and each usually lasts 2 logic frames. Of 1916
+  picture changes in walking that could be read at both ends, 1860 came
+  2 frames after the one before (97%), 9 after 1, 39 after 3 and 8
+  after 4; of 313 in running, all 313 came after 2. The other gaps are
+  not explained. The follower's speed does not change this: the 2-frame
+  steps held at up to 5 px per frame in running (313 of 313 changes), so the speed-dependent stride rule of the second character as the
+  player (`ground-speed.md`) does not apply to the follower, whose speed
+  is that of the trail.
+
+Evidence: 24 runs of 2500 frames with the first character leading and
+random play, rows where the lead was not changed by a knock-out in the
+8 frames before and the follower was not hurt.
+
 ## Resting
 
 On a frame of following the trail (after step 2), the follower starts
@@ -417,9 +451,11 @@ first point (976) and follows the trail from there.
   the runs above (standing, walking, running, rolling, crouching,
   jumping, falling), and the follower during a swap (`swap.md`) or a
   take-over (`losing-a-character.md`).
-- What the follower is shown doing (walking, jumping, turning poses),
-  and the exact frames of its turns around its take-offs and landings
-  on the trail.
+- The follower's pictures while it rests (the two standing pictures
+  alternate on a period not found), while it turns, on the airborne
+  frames of the trail (the jump pictures were not checked frame by
+  frame), and after a bounce; and the exact frames of its turns around
+  its take-offs and landings on the trail.
 - Resting on ground that isn't flat or gently sloped, and a rest spot
   across a ledge.
 - Some of the follower's turns while it rests or walks after a resume
