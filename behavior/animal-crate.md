@@ -334,14 +334,18 @@ nothing moves keeps the count it had on the frame before.
 The crate is drawn at (`xc`, `yc`):
 
 - `crate-whole` before it breaks;
+- `crate-broken-1` from B + 4 to B + 17;
 - `crate-broken-2` from B + 18 on, for as long as the crate is there.
 
-`crate-broken-1`, `smoke-1` and `smoke-2` were never seen whole on
-screen (the flash or the smoke is over them on every frame they could be
-shown), and neither was `flash-1`. They stay in the lists only so that
-the groups of hashes below belong together; where and when they are
-shown is not covered, and so is what the crate looks like from B to
-B + 17.
+In ordinary play the flash or the smoke is over the crate on B and on
+every frame up to B + 17, so `crate-broken-1` is only partly visible
+there; whether the visible parts match it in ordinary play was not
+checked. The rule rests on a setup method that let the crate be seen
+whole ("Evidence for the pictures"). From B to B + 3 the crate's
+picture is not covered. `smoke-1` and `smoke-2` were never seen
+whole on screen, and neither was `flash-1`; they stay in the lists only
+so that the groups of hashes below belong together, and where and when
+they are shown is not covered.
 
 None is mirrored. A crate that is removed and comes back
 (`../formats/placements.md`, "When placed objects are removed") is whole
@@ -472,11 +476,17 @@ the place.
 
 - **Crate.** Seen whole on 3 082 frames: always `crate-whole`; on 1 132
   frames after the break (with the animal gone): always `crate-broken-2`
-  (0 different). `crate-broken-1` was never seen whole: the flash or the
-  smoke is over it on every frame it could be shown, and the same goes
-  for `flash-1`, `smoke-1` and `smoke-2`, which is why their frames
-  are not covered. All 9 crates that left the view broken came back
-  whole.
+  (0 different). In ordinary play `crate-broken-1` was never seen whole
+  (the flash or the smoke is over it), and the same goes for `flash-1`,
+  `smoke-1` and `smoke-2`, whose frames are not covered. In 14 further
+  breaks, played with a setup method that let the crate be seen whole on
+  the frames after B, `crate-broken-1` was read unmirrored on B + 4 to
+  B + 17 in all 14, `crate-broken-2` came on B + 18 as before, and the
+  animal came out on B + 18 in all 14. On B + 1 to B + 3 it was read in
+  12 of the 14; the other 2 showed other pictures there, unexplained.
+  Whether ordinary play agrees was not checked. All 9 crates that left
+  the view broken came
+  back whole.
 - **Flash.** On 373 frames the flash showed the picture the rules give,
   each of `flash-2` to `flash-8` at least 23 times; on 1 other frame the
   picture found at its place was another one, with the smoke across it.
@@ -578,7 +588,7 @@ begins on the 23rd frame after the mount, with `y` = 400.
 - What happens to the animal when it leaves the view and comes back. The
   crate is removed and comes back as in `../formats/placements.md`
   ("When placed objects are removed").
-- The crate's picture from B to B + 17, the flash's while `c` is 0 to 3
+- The crate's picture from B to B + 3, the flash's while `c` is 0 to 3
   and the smoke's while `c` is 0 to 4; how `dx` and `dy` of the smoke
   are chosen; the animal's picture on the positions of the waiting
   sequence not seen ("Evidence for the pictures"), the end of part 1 and
