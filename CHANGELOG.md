@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.401.0
+
+The follower's pictures in a replayed jump (spec#91, in part).
+
+Answers part of clamber-engine/spec#91.
+
+- `behavior/following.md`, "A jump replayed on the trail": the frame
+  the follower is placed on the take-off point is `n` = 0, shown in the
+  first jump picture. A table gives the second character's jump, rise
+  and air pictures by `n`, then `s-air-5` until the fall ends, followed
+  by `s-air-6` (1 frame), `s-land-1` and `s-land-2` (2 frames each). When
+  the height starts to change (on `n` = 0, 1 or 2, sometimes later) has
+  no rule found. Falls off a ledge on the trail and the first character
+  as the follower are listed as not covered.
+
 ## spec-v0.400.0
 
 The follower's walking and running pictures (spec#91, in part).
