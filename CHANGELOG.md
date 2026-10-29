@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.406.0
+
+The crate's picture after it breaks (spec#94, in part).
+
+Answers part of clamber-engine/spec#94.
+
+- `behavior/animal-crate.md`, "Pictures": the crate shows
+  `crate-broken-1`, unmirrored, from B + 4 to B + 17, and
+  `crate-broken-2` from B + 18 on as before. Seen in set-up runs where
+  the crate could be seen whole. The crate's picture from B to B + 3
+  (2 of 14 breaks unexplained there) and whether ordinary play agrees,
+  where the flash or the smoke is over the crate, are listed as not
+  covered.
+
 ## spec-v0.405.0
 
 The animal's palette during the dimming (spec#92, in part).
