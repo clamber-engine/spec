@@ -98,9 +98,9 @@ lead's last point and waits there, unless it starts to rest.
 
 While it follows the trail, the follower is drawn with pictures of the
 second character (`player-frames.md`: the `s-` pictures), never the
-lead's. This section gives the walking and running pictures and the
-pictures of a jump the follower replays; the others are under "Not
-covered".
+lead's. This section gives the walking and running pictures, the pictures of
+a turn and the pictures of a jump the follower replays; the others are
+under "Not covered".
 
 - **Which mode.** Whether the follower is walking or running is not
   specified by the trail, which holds positions only. As a fallback an
@@ -124,6 +124,22 @@ covered".
   steps held at up to 5 px per frame in running (313 of 313 changes), so the speed-dependent stride rule of the second character as the
   player (`ground-speed.md`) does not apply to the follower, whose speed
   is that of the trail.
+
+- **Turning.** During the 7 frames of a turn that starts while the
+  follower follows the trail ("Facing") the follower is drawn in
+  `s-stand-5` on the first frame, `s-stand-7` on the next 4 and
+  `s-stand-5` on the last 2, whatever it did before. The facing changes
+  on the 4th frame, in the middle of the `s-stand-7` frames. Seen in 93
+  turns of the second character as the follower: the facing changed on
+  the 4th frame in all 93, and 92 matched the pictures on every frame
+  that could be read (400 frames in all); in the other one the 6th frame
+  showed `s-stand-7`. The frame after a turn showed `s-walk-1` in 52 of
+  the 93, in line with "Cycle start"; in 31 it could not be read and in
+  10 it was another picture. Turns with the first character as the
+  follower (18 more with the same pattern) are left out. Turns that
+  start while the follower rests or on the frame after it leaves rest
+  were not told apart from the others in the sample; they are under
+  "Not covered".
 
 Evidence: 24 runs of 2500 frames with the first character leading and
 random play, rows where the lead was not changed by a knock-out in the
@@ -505,7 +521,8 @@ first point (976) and follows the trail from there.
   jumping, falling), and the follower during a swap (`swap.md`) or a
   take-over (`losing-a-character.md`).
 - The follower's pictures while it rests (the two standing pictures
-  alternate on a period not found), while it turns, after a bounce,
+  alternate on a period not found), while it turns after resting or on the
+  frame after leaving rest, after a bounce,
   while it falls off a ledge on the trail, and for the first character
   as the follower; and the exact frames of its turns around
   its take-offs and landings on the trail.
