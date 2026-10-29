@@ -125,9 +125,9 @@ before, with each entry's colour after the last step taken.
 Some of the sprites' palettes (`../formats/sprites.md`, "Sprite
 palettes") dim on the same cycle of step frames, but by a rule of their
 own: the shared palette (`../formats/sprites.md`, "The other objects'
-palettes") and the characters' palettes (`../formats/sprites.md`, "The
-characters' palettes"). Colour 0 is never drawn. Colours 1 to 15 of the
-shared palette and 1 to 14 of each character's palettes change by the
+palettes"), the characters' palettes (`../formats/sprites.md`, "The
+characters' palettes") and the animal's palette. Colour 0 is never drawn. Colours 1 to 15 of the
+shared palette and 1 to 14 of each character's palettes and of the animal's change by the
 table below, for steps 1 to 32 (the dimming's last step); a character's
 colour 15 does not follow it (the first character's leading colour 15
 changes more slowly; the other palettes' colour 15 is not covered). A
@@ -149,8 +149,26 @@ the screen showed:
 | Second character's leading (second character the player since before the dimming) | 1 to 32, the characters standing |
 | First character's following (same run) | 1 to 32, the characters standing |
 
+**The animal's palette.** The animal's colours dim too, by the table
+of the characters' palettes, in the runs listed below (all set-up runs;
+see "Evidence"): the animal did not keep its daytime colours when the
+level dimmed. This was seen for the animal waiting for the
+first character after its crate is broken, for the animal ridden by the
+first character (leading, the second character following) and for the
+animal ridden by the second character (leading, the first character
+following). While an animal is ridden, the character sitting on it dims
+by the same table as when it is not riding. What the screen showed:
+
+| Palette | Steps covered |
+|---|---|
+| The animal's, waiting (12 colours) | 1 to 32, 372 of 384 colour-steps (the other 12: see "Not covered") |
+| The animal's, ridden by the first character (10 colours) | 1 to 32, all 320 |
+| The animal's, ridden by the second character (10 colours) | 1 to 32, all 320 |
+| First character's leading, while riding (10 colours) | 1 to 32, all 320 |
+| Second character's leading, while riding (7 colours) | 1 to 32, all 224 |
+
 **Colours.** Take a colour of one of those palettes (not the first
-character's colour 15) with red `R`, green `G` and blue `B` (0 to 31
+character's colour 15, nor the animal's colour 15, which is not covered) with red `R`, green `G` and blue `B` (0 to 31
 each) before step 1. After step `k` (`k` = 0 before step 1, up to 32; the
 steps are those of rows 1 to 7) the colour shows
 
@@ -182,6 +200,14 @@ that the colours of the step before showed on most of them; some pixels of
 the other kind were seen on the pictures around, not explained (see
 "Evidence"). Tests check the timing only for the following palette of
 the first case.
+
+Most of the animal's colour-steps (about two thirds in the riding
+runs, more than four fifths for the waiting animal) first showed on the picture of
+the step frame + 4, all of that palette's pixels at once, and up to the
+picture before that showed the colours of the step before. The other
+colour-steps showed on other pictures or not at all, and earlier steps'
+colours showed in most windows (see "Evidence"); these are not explained,
+and tests do not check the animal's timing.
 
 ## Example (made-up colours)
 
@@ -374,12 +400,53 @@ first two, not explained) and mostly the new ones on `F` + 2 to `F` + 7
 earlier steps' colours showed in some windows (steps 4 to 6, 28 and 29;
 steps 10, 11, 15 to 17).
 
+The animal's palette: three runs of 420 logic frames each, all set up
+(a setup method was used; the rule was not checked in ordinary play, for
+example an animal reached and ridden normally while the level dims). The crate (`animal-crate.md`) was
+broken before the observed part began, at a place near the end of the
+first level that is not where the first level has its own crate; the
+arrangement is a limit of the sample, like the rule's not having been
+checked in ordinary play. The observed part began with the characters on
+the final stretch and all 32 steps still to come, in three kinds of run:
+the animal waiting beside the characters after its crate was broken and
+not mounted (the animal 12 colours), the first character already riding
+it (the animal 10 colours, the character on it 10) and the second
+character, leading, already riding it (the animal 10 colours, the
+character on it 7). Per step the window is the 6 pictures from the step
+frame + 6 to the step frame + 11. The pairs are a step and a colour of the
+palette (not colour 15, and not a colour equal to colour 0) that was on
+the screen before step 1: 384 for the waiting animal, 320 for each
+animal ridden and for the first character on it, 224 for the second
+character on it, 1 568 in all; the colour the table gives showed in the
+window in 1 556. The 12 that did not were all of the waiting animal: one
+colour at steps 2 to 10 and another at 3 steps, which showed in the
+colour the table gives at other steps. The picture on which each step
+first showed, for the animal's palette: the colour-steps whose colour
+differs from the step before's and from every other palette's colours
+were 186 in each run; in the first riding run 123 first showed on the
+picture of the step frame + 4, of which 121 no longer showed the step
+before's colour from that picture and 2 still showed it on a picture up
+to the step frame + 7; in the second riding run 120 (118 and 2); for the
+waiting animal 161 (158 and 3). The others (63, 66 and 25) first showed
+on pictures from 2 before the step frame to 1 or 6 after it, or at all
+only in the step before's colour, or not at all in the pictures from 2
+before to 7 after the step frame; not explained. Pixels of earlier
+steps' colours showed in the windows of most steps from the second on,
+in the same amounts in the three runs (for example 6 144 pixels on the
+6 pictures of step 8 and 21 504 of step 23); not explained.
+
 ## Not covered
 
+- The waiting animal's 12 colour-steps that did not show the table's
+  colour (one colour at steps 2 to 10 and another at 3 steps; they showed
+  in the table's colour at other steps): "by the table" holds for the
+  waiting animal except for those.
 - Sprite colours of other palettes than those in "Sprite colours" (the
-  thrown objects', the animal's and the others), the characters'
-  palettes with an animal ridden, with the second character leading
-  in motion, with the characters' roles changed during the dimming (in
+  thrown objects' and the others; the metal barrel, which is drawn with
+  the animal's palette, was not looked at), the animal's colour 15, the
+  animal ridden or waiting while the characters are in motion during the
+  dimming or the roles change during it, the characters' palettes with
+  the second character leading in motion, with the characters' roles changed during the dimming (in
   one run with a change of player at step 13, the pictures after it
   showed the colours of the same two palettes as before it, in dimmed
   colours, and no daytime colours; which character each was drawn
