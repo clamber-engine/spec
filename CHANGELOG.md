@@ -2,6 +2,21 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.403.0
+
+The follower's pictures while it rests (spec#91, in part).
+
+Answers part of clamber-engine/spec#91.
+
+- `behavior/following.md`, "The follower's pictures": while the second
+  character rests as the follower, it is drawn in its standing
+  animation, `s-stand-1` to `s-stand-22` for 4 frames each and then
+  `s-wait-1` for 5 frames, starting again at `s-stand-1` on every rest.
+  Frame 0 is the frame on which the "Resting" conditions are first met.
+  Pictures after `s-wait-1`, rests that began after running, a jump or a
+  landing, and the rare rests whose pictures run a step behind are
+  listed as not covered.
+
 ## spec-v0.402.0
 
 The follower's pictures in a turn (spec#91, in part).
