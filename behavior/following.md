@@ -99,8 +99,8 @@ lead's last point and waits there, unless it starts to rest.
 While it follows the trail, the follower is drawn with pictures of the
 second character (`player-frames.md`: the `s-` pictures), never the
 lead's. This section gives the walking and running pictures, the pictures of
-a turn and the pictures of a jump the follower replays; the others are
-under "Not covered".
+a turn, the pictures of a jump the follower replays and the pictures while
+it rests; the others are under "Not covered".
 
 - **Which mode.** Whether the follower is walking or running is not
   specified by the trail, which holds positions only. As a fallback an
@@ -124,6 +124,36 @@ under "Not covered".
   steps held at up to 5 px per frame in running (313 of 313 changes), so the speed-dependent stride rule of the second character as the
   player (`ground-speed.md`) does not apply to the follower, whose speed
   is that of the trail.
+
+- **Resting.** While the follower rests ("Resting"), including the
+  frames on which it still moves towards its rest spot, it is drawn in the
+  second character's standing animation (`player-frames.md`). Frame 0 is
+  the frame on which the conditions under "Resting" are first met and the
+  follower is shown resting; the frame after it is frame 1. The pictures are
+  `s-stand-1` to `s-stand-22` for 4 frames each (frames 0 to 87), then
+  `s-wait-1` for 5 frames (frames 88 to 92). Every rest starts again at
+  `s-stand-1`, whatever the follower showed before and however long the
+  earlier rest was. Measured on 6 runs of about 1000 frames in which the
+  first character led with scripted inputs (walk, stand still, walk back,
+  stand still): all 949 frames whose picture could be read, in 20 rests
+  (17 that began after walking, 3 after a turn), matched. In the 24 runs
+  of random play with the first character leading (above), the second
+  character rested as follower 64 times (rests of the first character as
+  follower, 22 more, are not counted). The rests were short (at most 41
+  frames, so none reached `s-wait-1`) and covered 629 frames; the picture
+  could be read on 369 of them, and every one of those 369 was one of the
+  second character's standing pictures. The other 260 frames could not be
+  read (no picture was identified), so nothing is known about them. Of the
+  369, 366 matched; 3 showed the picture one step earlier, each in a
+  different rest: on frame 4 of two rests that followed a walk (one lasted 5
+  frames; in the other, of 6 frames, frame 5 showed the expected step, as
+  if that rest began one frame later) and on frame 20 of a 27-frame
+  rest that followed a turn (frame 16 of that rest matched; frames 21 and
+  later were not readable). What tells these rests apart was not found; they
+  are under "Not covered". Pictures after `s-wait-1` were not read: no rest
+  in either sample lasted past frame 92 with a readable picture. The
+  follower's picture does not depend on whether the lead's own standing
+  animation is further along.
 
 - **Turning.** During the 7 frames of a turn that starts while the
   follower follows the trail ("Facing") the follower is drawn in
@@ -520,9 +550,11 @@ first point (976) and follows the trail from there.
   the runs above (standing, walking, running, rolling, crouching,
   jumping, falling), and the follower during a swap (`swap.md`) or a
   take-over (`losing-a-character.md`).
-- The follower's pictures while it rests (the two standing pictures
-  alternate on a period not found), while it turns after resting or on the
-  frame after leaving rest, after a bounce,
+- The follower's pictures after `s-wait-1` of a long rest, in a rest
+  that began after running, a jump or a landing, the rare rest (3 of 64
+  in random play) whose pictures run one step behind the table above for
+  a frame or more for reasons not found, while it turns after
+  resting or on the frame after leaving rest, after a bounce,
   while it falls off a ledge on the trail, and for the first character
   as the follower; and the exact frames of its turns around
   its take-offs and landings on the trail.
