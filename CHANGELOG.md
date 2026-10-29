@@ -2,6 +2,22 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.405.0
+
+The animal's palette during the dimming (spec#92, in part).
+
+Answers part of clamber-engine/spec#92.
+
+- `behavior/dimming.md`, "Sprite colours": the animal's palette dims by
+  the same table as the characters' palettes, seen for the animal
+  waiting after its crate is broken and ridden by either character; a
+  character riding the animal dims by the same table as when not riding.
+  The waiting animal's colour 15, 12 of its colour-steps, the timing of
+  the animal's changes (most on the picture of the step frame + 4, the
+  rest not explained), the metal barrel, characters in motion or changing
+  roles, and ordinary play (all runs were set up) are listed as not
+  covered.
+
 ## spec-v0.404.0
 
 Pictures while mounting the animal (spec#94, in part).
