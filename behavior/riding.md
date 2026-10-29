@@ -345,8 +345,9 @@ ends on frame 56 with `v` 0: standing from frame 56 on.
 
 What the animal and the rider look like in `title-1` while the first
 character rides on flat floor, on every frame of the parts above and of
-"Standing and walking", except the first frames after the mount (see
-"Not covered"). Each picture has a label used in this file and is named
+"Standing and walking", including the first frames after the mount
+(`animal-crate.md`, "While mounting"; what that leaves out is under "Not
+covered"). Each picture has a label used in this file and is named
 by its picture hash (`../formats/sprites.md`, "Picture
 hashes"). The picture given for a frame is the one on screen with that
 frame's view.
@@ -471,7 +472,8 @@ the standing starts:
   frames of it are left) shows `rider-9` on L + 8 to L + 35 and then
   `rider-7`.
 
-The first standing after the mount (M + 22 on) is not covered.
+The first standing after the mount starts on M + 22 and follows the
+rules above, with S = M + 22 (`animal-crate.md`, "While mounting").
 
 ### Walking
 
@@ -868,9 +870,7 @@ starts on frame 40, because Right is held and the rider faces left.
   ledges, hurt or knocked off, and the animal hitting an enemy; and
   the animal's pictures with the first character in view, which hid
   part of it on many frames.
-- The pictures of the rider and the animal on the first frames after
-  the mount (from M + 22 until the first part of riding ends), the
-  animal's picture on one charge frame (another picture than the given
+- The animal's picture on one charge frame (another picture than the given
   one was seen there; no cause found), after a
   charge pressed in a jump, on a jump that starts in the air after a
   hop, on slopes, at walls and ledges, while hurt or knocked off, and

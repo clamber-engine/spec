@@ -420,9 +420,38 @@ The animal's pictures from M + 2 to M + 21:
 
 They are mirrored left to right when the player faces left on M, and
 not mirrored when the player faces right. The animal stays where it
-was (`xc`, and `yc` − `k`, "Mounting the animal"). Which pictures are
-shown on M and M + 1, and from M + 22 until the first part of riding
-ends, is not covered; the pictures of riding itself are in `riding.md`.
+was (`xc`, and `yc` − `k`, "Mounting the animal").
+
+**On M and M + 1** the animal's own picture is not drawn: the only
+picture at the place is the player's `ride-jump-4` (`riding.md`,
+"Pictures"), mirrored the same way. So the animal is gone for those two
+frames, and `mounting-1` appears beside the player's picture on M + 2.
+
+**The player's own pictures** while mounting, drawn with the animal's:
+`ride-jump-4` on M to M + 2, `ride-jump-3` on M + 3 to M + 5,
+`ride-jump-2` on M + 6 to M + 8, `ride-jump-1` on M + 9 to M + 13 and
+`animal-1` on M + 14 to M + 21, mirrored in the same way.
+
+**From M + 22** the pictures are those of riding, with M + 22 as the
+first frame of a stretch of walking or of standing (`riding.md`,
+"Standing and walking" and "Pictures"). Which one follows the rule for
+a first riding frame in `riding.md` (walking at a speed `vx`, as the
+mount left it, of 224/256 px per frame or more, or with forward held;
+standing otherwise). Measured at the mount: walking at 448/256 and
+512/256 (left) and 505/256 (right), standing at 105/256 (left) and
+133/256 (right), with the combinations of held directions given under "Evidence for the
+pictures". Speeds between 133/256 and 448/256 were not tried: the
+limit of 224/256 is assumed from `riding.md`. A stretch of walking from
+M + 22 starts at step 1 of the stride with the rider's moving cycle at
+its start, with one measured exception: at 512/256 (left) and 505/256
+(right) with the facing direction held through the walk, the first
+stretch showed the picture of step 14 for 3 frames (steps 14 and 15)
+where the stride rule gives 2. A stretch of
+standing starts as "On S, in general" says. A turn that starts on
+M + 23 (the opposite direction held) follows the turn's rules, with the
+rider's moving cycle starting on M + 23 when M + 22 was standing.
+The first frame of riding for everything else (a jump or a charge
+press, `vx`) is still M + 23.
 
 ### Evidence for the pictures
 
@@ -474,7 +503,29 @@ the place.
   (mirrored as given) was seen on 448 frames, another picture on 3 (the
   player's own picture across the animal's). On M and M + 1 the picture
   found at the animal's place was never the animal's (36 of 36 frames,
-  where one was found); it is not covered.
+  where one was found). In 10 more mounts from a fixed start (the player
+  jumping onto the waiting animal from 70 px away, either side, with
+  Left or Right held to different frames), on the 2 frames M and M + 1
+  the place showed exactly `ride-jump-4` and nothing else, mirrored as
+  given (20 of 20); on M − 1 the animal's waiting picture was there.
+  The player's own pictures M + 2 to M + 21 were as given in all 10
+  (200 of 200 frames), both sides, at all the speeds below.
+  From M + 22: the mounts that walked, with the direction held to about
+  the mount and nothing held after (448/256 left, 505/256 right), and the
+  one at 512/256 left with nothing held from M + 9 on, had the animal's
+  and the rider's pictures as the walking rules give on all 86 to 88
+  frames; so had the two with the opposite direction also held from just
+  after the mount (512/256 left, 505/256 right: the turn's 8 frames and
+  the walking after). The two with the facing direction held through the
+  walk (512/256 left, 505/256 right) matched on 85 of 86 and 87 of 88
+  frames (to the end of the run); the frames that differed are the
+  3-frame picture of step 14 in the rule. The 3 that stood (105/256 left
+  and 133/256 right with nothing held, 105/256 left with the opposite
+  direction held after the mount) matched the standing rules on all
+  frames read. These rules were checked only in these 10 fixed-start
+  mounts, not in ordinary play: M + 22 on and the player's pictures were
+  not read in the 25 mounts of the random sample.
+  Screen only, sprites only, in the first level.
 
 ## Example
 
@@ -535,7 +586,9 @@ begins on the 23rd frame after the mount, with `y` = 400.
   the crate is broken by a falling object (the broken crate stood 4 px
   to the left in the two cases seen) or by the second character; the
   sounds.
-- The animal's pictures on M and M + 1 and from M + 22 until the first
-  part of riding ends (the later ones are in `riding.md`, "Pictures"),
-  and the animal's pictures when it comes back after leaving the view.
+- The animal's pictures when it comes back after leaving the view; the
+  pictures from M + 22 for a slow mount with the facing direction held
+  and for speeds between 133/256 and 448/256, and the player's pictures
+  and those from M + 22 in ordinary play,
+  and for the second character.
 - The trace state of the player while mounting.
