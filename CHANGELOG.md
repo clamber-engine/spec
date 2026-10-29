@@ -12,11 +12,11 @@ Answers part of clamber-engine/spec#92.
   the same table as the characters' palettes, seen for the animal
   waiting after its crate is broken and ridden by either character; a
   character riding the animal dims by the same table as when not riding.
-  The waiting animal's colour 15, 12 of its colour-steps, the timing of
-  the animal's changes (most on the picture of the step frame + 4, the
-  rest not explained), the metal barrel, characters in motion or changing
-  roles, and ordinary play (all runs were set up) are listed as not
-  covered.
+  The animal's colour 15, 12 of the waiting animal's colour-steps, the
+  timing of the animal's changes (most on the picture of the step frame
+  + 4, the rest not explained), the metal barrel, characters in motion
+  or changing roles, and ordinary play (all runs were set up) are listed
+  as not covered.
 
 ## spec-v0.404.0
 
