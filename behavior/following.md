@@ -98,8 +98,9 @@ lead's last point and waits there, unless it starts to rest.
 
 While it follows the trail, the follower is drawn with pictures of the
 second character (`player-frames.md`: the `s-` pictures), never the
-lead's. This section gives only the walking and running pictures; the
-others are under "Not covered".
+lead's. This section gives the walking and running pictures and the
+pictures of a jump the follower replays; the others are under "Not
+covered".
 
 - **Which mode.** Whether the follower is walking or running is not
   specified by the trail, which holds positions only. As a fallback an
@@ -127,6 +128,58 @@ others are under "Not covered".
 Evidence: 24 runs of 2500 frames with the first character leading and
 random play, rows where the lead was not changed by a knock-out in the
 8 frames before and the follower was not hurt.
+
+### A jump replayed on the trail
+
+When the trail carries a jump of the lead, the follower leaves the
+ground at the point where the lead did and is drawn with the second
+character's jump pictures (`player-frames.md`). Call the **take-off
+point** the first trail point recorded while the lead was off the
+ground after being on it. The follower's current point becomes the
+take-off point on one frame (step 2 above) and the follower is placed
+on it on the next frame (step 1). That next frame is `n` = 0, and the
+follower is drawn in the first jump picture on it (140 of 140 jumps).
+Its height starts to change on `n` = 0, 1 or 2 (55, 29 and 50 jumps) or
+later (5 jumps, up to `n` = 13; 1 more jump ended after 3 frames
+without the height changing), so the picture change and the first rise
+of height do not always coincide; no rule was found for which of
+`n` = 0, 1 or 2 the height starts on. The pictures, by `n`:
+
+| `n` | Picture |
+|---|---|
+| 0 | `s-jump-2` |
+| 1 to 14 | `s-rise-1` to `s-rise-7`, 2 frames each |
+| 15 to 18 | `s-air-1` and `s-air-2`, 2 frames each |
+| 19 to 24 | `s-air-3` and `s-air-4`, 3 frames each |
+| 25 until its fall ends | `s-air-5` |
+
+The fall ends on the first frame at which the follower's feet reach the
+height they stay at. On that frame it shows `s-air-6` for 1 frame, then
+`s-land-1` for 2 frames and `s-land-2` for 2 frames, after which it is
+walking or running again (the cycles above restart at their first
+picture). `s-air-5` lasted from 4 to 37 frames, as long as the follower
+was still falling.
+
+This is the follower's own timing; it differs from that of the second
+character as the player (`player-frames.md`, "Second character").
+
+Evidence: 24 runs of 2500 frames with the first character leading and
+random play, 140 jumps replayed by the follower, rows as above. On the
+first 25 frames, 120 jumps matched the table on every frame whose
+picture could be read (the 3-frame jump among them). Of the other 20,
+8 started late (`s-jump-2` kept for 2 to 13 frames after `n` = 0; the height started to change on `n` = 0
+in 3 of them and on `n` = 3, 4, 5, 5 and 13 in the others, so in 5 the
+jump picture was held before the height changed) and the table
+followed from the first rising picture; 12 differed on 1 to a few frames
+in ways not explained. Of the 140 jumps, 101 showed `s-air-6`; of those,
+67 showed `s-air-6`, `s-land-1` and `s-land-2` as above, 18 were cut off
+by the next jump replayed straight after, 11 differed (`s-air-6` kept
+2 to 5 frames in 7 of them, the rest went to walking early), and 5
+could not be read. The other 39 never showed `s-air-6`: in 2 the run
+ended during the jump; in 37 the follower stopped showing the jump
+pictures during the fall or earlier, going to walking pictures (15),
+standing pictures (9), or a state not covered here (13, among them 10
+where the lead had been knocked out or was in another state not covered).
 
 ## Resting
 
@@ -452,9 +505,9 @@ first point (976) and follows the trail from there.
   jumping, falling), and the follower during a swap (`swap.md`) or a
   take-over (`losing-a-character.md`).
 - The follower's pictures while it rests (the two standing pictures
-  alternate on a period not found), while it turns, on the airborne
-  frames of the trail (the jump pictures were not checked frame by
-  frame), and after a bounce; and the exact frames of its turns around
+  alternate on a period not found), while it turns, after a bounce,
+  while it falls off a ledge on the trail, and for the first character
+  as the follower; and the exact frames of its turns around
   its take-offs and landings on the trail.
 - Resting on ground that isn't flat or gently sloped, and a rest spot
   across a ledge.
