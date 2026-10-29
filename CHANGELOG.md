@@ -2,6 +2,24 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.404.0
+
+Pictures while mounting the animal (spec#94, in part).
+
+Answers part of clamber-engine/spec#94.
+
+- `behavior/animal-crate.md`, "While mounting": on M and M + 1 the
+  animal's own picture is not drawn and only the player's `ride-jump-4`
+  is at its place; the player's own pictures from M to M + 21 are given;
+  from M + 22 the pictures follow `riding.md` with M + 22 as the first
+  frame of walking or standing, including one measured exception to the
+  stride when the facing direction is held through the walk. Checked
+  only in fixed-start mounts; the untried speed range, ordinary play and
+  the crate from B to B + 17 are listed as not covered.
+- `behavior/riding.md`: the first character's "Pictures" now covers the
+  first frames after the mount by pointing to `animal-crate.md`, and the
+  first standing after the mount starts on M + 22.
+
 ## spec-v0.403.0
 
 The follower's pictures while it rests (spec#91, in part).
