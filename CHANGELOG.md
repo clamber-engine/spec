@@ -2,6 +2,20 @@
 
 Spec releases are tagged `spec-vMAJOR.MINOR.PATCH`. The engine pins one.
 
+## spec-v0.402.0
+
+The follower's pictures in a turn (spec#91, in part).
+
+Answers part of clamber-engine/spec#91.
+
+- `behavior/following.md`, "The follower's pictures": during the 7
+  frames of a turn that starts while the second character follows the
+  trail, it is drawn in `s-stand-5` on the first frame, `s-stand-7` on
+  the next 4 and `s-stand-5` on the last 2; the facing changes on the
+  4th frame. Turns that start while resting or on the frame after
+  leaving rest, and the first character as the follower, are listed as
+  not covered.
+
 ## spec-v0.401.0
 
 The follower's pictures in a replayed jump (spec#91, in part).
